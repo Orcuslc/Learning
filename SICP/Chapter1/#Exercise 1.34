@@ -1,0 +1,13 @@
+#Exercise 1.34
+
+The object 2 is not applicable.
+
+(define (f g)
+	(g 2))
+
+execute (f f):
+(f f)
+(f 2)
+(2 2)
+2 is not a procedure which can be applied to the number 2
+

@@ -1,0 +1,5 @@
+#Exercise 2.25
+
+1. (cdr (car (cdr (cdr list))))
+2. (car (car list))
+3. (cdr (cdr (cdr (cdr (cdr (cdr list))))))

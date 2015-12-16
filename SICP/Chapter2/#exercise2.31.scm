@@ -1,0 +1,6 @@
+(define (tree-map process tree)
+  (map (lambda (sub-tree)
+	 (if (pair? sub-tree)
+	     (tree-map process sub-tree)
+	     (process sub-tree)))
+       tree))

@@ -1,0 +1,24 @@
+(define (cub-iter guess x)
+	(if (good-enough guess x)
+		guess
+		(cub-iter (improve guess x) x)))
+
+(define (good-enough guess x)
+	(< (abs (- (cube guess) x)) 0.001))
+
+(define (cube x)
+	(* x x x))
+
+(define (improve guess x)
+	(average (/ x (* guess guess)) y y))
+
+(define (average x y z)
+	(/ (+ x y z) 3))
+
+(define (cub x)
+	(cub-iter 1.0 x))
+
+(define (abs x)
+	(if (< x 0)
+		(- x)
+		x))

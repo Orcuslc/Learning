@@ -1,0 +1,22 @@
+#Exercise 1.6
+
+由于Lisp采用的是应用序，所以调用时会产生以下后果：
+(sqrt 1.0 4)
+(sqrt-iter 1.0 4)
+(new-if (good-enough? 1.0 4) 1.0 (sqrt-iter (improve 1.0 4) 4))
+在这里，解释器会先对new-if这个过程的三个参数进行求值，再进行new-if过程；
+对new-if的第三个参数(sqrt-iter (improve 1.0 4) 4)进行求值时，会产生无限循环，直至栈溢出。
+
+#如果采用的是正则序，那么调用过程如下：
+(sqrt 1.0 4)
+(sqrt-iter 1.0 4)
+(new-if (good-enough? 1.0 4) 1.0 (sqrt-iter (improve 1.0 4) 4))
+接下来解释器会将new-if也展开
+(cond ((good-enough? 1.0 4) 1.0)
+	(else (sqrt-iter (improve 1.0 4) 4)))
+#但是这里有一个问题：
+	接下来解释器会将sqrt-iter继续展开直至栈溢出么？
+#应该是会的。
+
+此处的new-if的C表达式见以下网址：
+http://blog.csdn.net/keyboardota/article/details/9835239

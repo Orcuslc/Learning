@@ -1,0 +1,5 @@
+#Exercise 1.15
+
+1. 5
+2. T(n) = theta(log3(n))
+	S(n) = theta(log3(n))

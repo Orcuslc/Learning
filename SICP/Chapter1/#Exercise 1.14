@@ -1,0 +1,4 @@
+#Exercise 1.14
+
+T(n) = theta(a^n)
+S(n) = theta(n)

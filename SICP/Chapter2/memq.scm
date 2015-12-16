@@ -1,0 +1,1 @@
+Unable to open file "f:\\documents\\giuhub\\sicp\\chapter2\\memq.scm" because: 系沓躜不到龈定典夥径。.

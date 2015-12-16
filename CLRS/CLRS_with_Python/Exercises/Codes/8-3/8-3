@@ -1,0 +1,24 @@
+#Exercise 8-3
+#15.8.8
+import Insertion_sort
+import Basic_Data_Structure
+
+def bucket_sort(A):
+	n = len(A)
+	buckets = [[] for _ in xrange(n)]
+	for a in A:
+		buckets[int(n * a)].append(a)
+	B = []
+	for b in buckets:
+		B.extend(Insertion_sort.insertion_sort(b))
+	return B
+
+def calc_digits(x):
+	count = 0
+	while x > 0:
+		count += 1
+		x = int(x/10)
+	return count
+	
+def longer_sort(A):
+	

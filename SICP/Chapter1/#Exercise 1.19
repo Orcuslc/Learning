@@ -1,0 +1,20 @@
+#Exercise 1.19
+
+First:
+a = bq+aq+ap
+b = bp+aq
+
+Second:
+a = (bp+aq)q + (bq+aq+ap)(p+q)
+b = (bp+aq)p + (bq+aq+ap)q
+
+which means:
+a = b(2pq + q^2) + a(q^2 + (p+q)^2)
+b = b(p^2 + q^2) + a(q^2 + 2pq)
+
+then:
+p' = p^2 + q^2
+q' = 2pq + q^2
+
+in the fibonacci case, p = 0, q = 1, so
+p' = 1, q' = 1

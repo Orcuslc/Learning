@@ -1,0 +1,49 @@
+(define (make-segment a b)
+  (cons a b))
+
+(define (start-segment x)
+  (car x))
+
+(define (end-segment x)
+  (cdr x))
+
+(define (make-point a b)
+  (cons a b))
+
+(define (x-point point)
+  (car point))
+
+(define (y-point point)
+  (cdr point))
+
+(define (make-rect bottom-left top-right)
+  (cons bottom-left top-right))
+
+(define (bottom-left rect) (car rect))
+
+(define (bottom-right rect) 
+  (make-point (x-point (cdr rect))
+	      (y-point (car rect))))
+
+(define (top-left rect)
+  (make-point (x-point (car rect))
+	      (y-point (cdr rect))))
+
+(define (top-right rect) (cdr rect))
+
+(define (width-rect rect)
+  (abs (- (x-point (bottom-left rect))
+	  (x-point (bottom-right rect)))))
+
+(define (height-rect rect)
+  (abs (- (y-point (bottom-left rect))
+	  (y-point (top-left rect)))))
+
+(define (area rect)
+  (* (width-rect rect) (height-rect rect)))
+
+(define (perimeter rect)
+  (* (+ (width-rect rect) (height-rect rect)) 2))
+
+(define r (make-rect (make-point 1 1)
+		     (make-point 2 5)))

@@ -1,0 +1,8 @@
+#Exercise 2.8
+差的最小值应该为一个区间的下界减去另一个区间的上界
+最大值应该为一个区间的上界减去另一个区间的下界
+
+(define (sub-interval x y)
+	(make-interval (- (lower-bound x) (upper-bound y))
+		(- (upper-bound x) (lower-bound y))))
+

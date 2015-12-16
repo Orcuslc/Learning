@@ -1,0 +1,66 @@
+function [value] = value(n, k)
+    str = num2str(n);
+    flag = get_pos_num(str);
+    if n > 1
+        value = more_than_zero(str, flag, k);
+    elseif n > 0.001
+        value = less_than_zero(str, flag, k);
+    else
+        value1 = more_than_zero(str, flag, k);
+        value2 = str(lengt
+    end;
+
+function [flag] = get_pos_num(str)
+    for i = 1 : length(str)
+        if str(i) ~= '0' && str(i) ~= '.'
+            flag = i;
+            break;
+        end;
+    end;
+
+function [value] = more_than_zero(str, flag, k)
+    last = flag + k + 1;
+    for i = 1 : length(str)
+        if str(i) == '.'
+            count = i;
+            break;
+        end;
+    end;
+    if str(last) == '.'
+        last = last + 1;
+    end;
+    string = rounding(str, last);
+    if last < count
+        string(last, count - 1) = '0';
+        value = string(1 : count - 1);
+    else
+        value = string(1 : last - 1);
+    end;
+
+
+function [value] = less_than_zero(str, flag, k)
+     last = flag + k + 1;
+     string = rounding(str, last);
+     value = string(1 : last - 1);
+     
+function [string] = rounding(str, last)
+    tail = str2num(str(last));
+    if tail > 5
+        if str(last - 1) == '.'
+            last = last - 1;
+        end;
+        str(last - 1) = num2str(str2num(str(last - 1)) + 1);
+        string = str;
+    elseif tail < 5
+        string = str;
+    else 
+        if str(last - 1) == '.'
+            last = last - 1;
+        end;
+        if mod(str(last - 1), 2) == 0
+            string = str;
+        else
+            str(last - 1) = num2str(str2num(str(last - 1)) + 1);
+            string = str;
+        end;
+    end;

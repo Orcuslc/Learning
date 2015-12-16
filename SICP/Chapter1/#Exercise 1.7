@@ -1,0 +1,32 @@
+#Exercise 1.7
+
+#Little numbers:
+sqrt(0.00000000000000001)
+#Large numbers:
+sqrt(1000000000000000)
+	but I don't know why large numbers can fail.(Maybe too large to be calc.ed?)
+
+(define (new-sqrt-iter guess x prev-guess)
+	(if (small-enough (- prev-guess guess) prev-guess)
+		guess
+		(new-sqrt-iter (improve guess x) x guess)))
+
+(define (small-enough a b)
+	(< (abs (/ a b)) 0.001))
+
+(define (square x)
+	(* x x))
+
+(define (improve guess x)
+	(average (/ x guess) x))
+
+(define (average x y)
+	(/ (+ x y) 2))
+
+(define (sqrt x)
+	(new-sqrt-iter 1.0 x))
+
+(define (abs x)
+	(if (< x 0)
+		(- x)
+		x))
