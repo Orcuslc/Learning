@@ -16,4 +16,6 @@ eval_points = linspace(1.01, 5.99, 1e2);
 bc = [];
 type = 'P';
 cubic_spline_interpolation(eval_points, given_points, function_values, bc, type);
+hold on
+plot(given_points, function_values, '*');
 

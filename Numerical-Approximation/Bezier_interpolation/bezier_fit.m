@@ -1,18 +1,19 @@
-function [ P, func_output ] = bezier_fit( points, order )
+function [ X, Y ] = bezier_fit( points, order )
 %BEZIER_APPROXIMATION Summary of this function goes here
 %   Detailed explanation goes here
 t = parametrize( points );
-B = zeros( order, length( points ) );
-func = Bernstein_function( order - 1 );
-B( 1, 1 ) = 1;
-B( order, 1 ) = 1;
-for i = 1 : order
-    for j = 2 : length( points )
-        B( i, j ) = func{ j - 1 }( t( i ) );
+B = zeros( length(points), order );
+% func = Bernstein_function( order - 1 );
+% B( 1, 1 ) = 1;
+% B( order, 1 ) = 1;
+for i = 1 : length(points)
+    for j = 1 : order
+%         B( i, j ) = func{ j - 1 }( t( i ) );
+        B(i, j) = Bernstein_function(order - 1, j - 1, t(i));
     end
 end
-Y = transpose( B );
-P = Y * B \ ( Y * points( : , 2 ) );
-func_output = Bernstein_function( order - 1 );
+C = transpose(B);
+X = (C*B) \ (C * transpose(points(1, :)));
+Y = (C*B) \ (C * transpose(points(2, :)));
 end
 

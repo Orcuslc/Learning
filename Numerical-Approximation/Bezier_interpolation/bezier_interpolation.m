@@ -3,15 +3,19 @@ function [  ] = bezier_interpolation( points )
 t = parametrize( points );
 n = length( points );
 B = zeros( n, n );
-func = Bernstein_function( n - 1 );
-B( 1, 1 ) = 1;
-B( 1, n ) = 1;
+% func = Bernstein_function( n - 1 );
+% B( 1, 1 ) = 1;
+% B( 1, n ) = 1;
 for i = 1 : n
-    for j = 2 : n
-        B( i, j ) = func{ j - 1 }( t( i ) );
+    for j = 1 : n
+%         B( i, j ) = func{ j - 1 }( t( i ) );
+        B(i, j) = Bernstein_function(n-1, j -1, t(i));
     end
 end
-P1, P2 = B \ [ points( 1, : )', points( 2, : )' ];
+disp( B \ [ points( 1, : )', points( 2, : )' ])
+P = B \ [ points( 1, : )', points( 2, : )' ];
+P1 = P(:, 1);
+P2 = P(:, 2);
 Bezier_curve( P1', P2' );
 end
 
