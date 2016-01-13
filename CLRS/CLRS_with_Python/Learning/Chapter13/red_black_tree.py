@@ -96,3 +96,82 @@ class red_black_tree(node):
 				z.p.p.color = red
 				self.left_rotate(z)
 		self.root.color = black
+
+	def transplant(self, u, v):
+		if u.p == self.nil:
+			self.root = v
+		elif u == u.p.left:
+			u.p.left = v
+		else:
+			u.p.right = v
+		v.p = u.p
+
+	def delete(self, z):
+		y = z
+		y_original_color = y.color
+		if z.left == self.nil:
+			x = z.right
+			self.transplant(z, z.right)
+		elif z.right == T.nil:
+			x = z.left
+			self.transplant(z, z.left)
+		else:
+			y = self.tree_minimum(z.right)
+			y_original_color = y.color
+			x = y.right
+			if y.p == z:
+				x.p = y
+			else:
+				self.transplant(y, y.right)
+				y.right = z.right
+				y.right.p = y
+			self.transplant(z, y)
+			y.left = z.left
+			y.left.p = y
+			y.color = z.color
+		if y_original_color == black:
+			self.delete_fixup(x)
+
+	def delete_fixup(self, x):
+		while x != self.root and x.color == black:
+			if x == x.p.left:
+				w = x.p.right
+				if w.color == red:
+					w.color = black
+					x.p.color = red
+					self.left_rotate(x.p)
+					w = x.p.right
+				if w.left.color == black and w.right.color == black:
+					w.color = red
+					x = x.p
+				elif w.right.color == black:
+					w.left.color = black
+					w.color = red
+					self.right_rotate(w)
+					w = x.p.right
+				w.color = x.p.color
+				x.p.color = black
+				w.right.color = black
+				self.left_rotate(x.p)
+				x = self.root
+			else:
+				w = x.p.left
+				if w.color == red:
+					w.color = black
+					x.p.color = red
+					self.right_rotate(x.p)
+					w = x.p.left
+				if w.right.color == black and w.left.color == black:
+					w.color = red
+					x = x.p
+				elif w.left.color == black:
+					w.right.color = black
+					w.color = red
+					self.left_rotate(w)
+					w = x.p.left
+				w.color = x.p.color
+				x.p.color = black
+				w.left.color = black
+				self.right_rotate(x.p)
+				x = self.root
+		x.color = black
