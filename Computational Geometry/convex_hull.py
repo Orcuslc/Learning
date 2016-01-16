@@ -57,14 +57,15 @@ if __name__ == '__main__':
 	P_y = [random.random() * 10 for i in range(10)]
 	P = [[P_x[i], P_y[i]] for i in range(len(P_x))]
 	L_upper, L_lower = convex_hull(P)
+	print(L_upper)
 	P_x = [i[0] for i in P]
 	P_y = [i[1] for i in P]
 	lower_x = [i[0] for i in L_lower]
 	lower_y = [i[1] for i in L_lower]
 	upper_x = [i[0] for i in L_upper]
-	upper_y = [i[0] for i in L_upper]
+	upper_y = [i[1] for i in L_upper]
 	plt.plot(P_x, P_y, 'r.')
 	plt.plot(lower_x, lower_y, 'b')
-	plt.plot(upper_x, upper_y, 'b')
+	plt.plot(upper_x, upper_y, 'g')
 	plt.show()
 
