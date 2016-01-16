@@ -1,5 +1,6 @@
 # convex_hull
 import matplotlib.pyplot as plt
+import random
 
 def convex_hull(P):
 	'''
@@ -14,7 +15,7 @@ def convex_hull(P):
 		using insertion sort to sort the list of points P
 		'''
 		n = len(P)
-		for j in range(1, n - 1):
+		for j in range(1, n):
 			backup = P[j]
 			key = P[j][0]
 			i = j - 1
@@ -35,13 +36,33 @@ def convex_hull(P):
 			return True
 
 	P = sort_by_x(P)
-	L_supper = [P[0], P[1]]
-	for i in range(2, n - 1):
-		L_supper.append(P[i])
-		while len(L_supper) >= 3 and is_right_turn(L_supper[-1], L_supper[-2], L_supper[-3]) == False:
-			L_supper.pop(-2)
-			L_supper.pop(-2)
+	L_upper = [P[0], P[1]]
+	for i in range(2, n):
+		L_upper.append(P[i])
+		while len(L_upper) >= 3 and is_right_turn(L_upper[-1], L_upper[-2], L_upper[-3]) == False:
+			L_upper.pop(-2)
+			L_upper.pop(-2)
 	L_lower = [P[-1], P[-2]]
-	
+	for i in range(n - 3, -1):
+		L_lower.append(P[i])
+		while len(L_lower) >= 3 and is_right_turn(L_lower[-1], L_lower[-2], L_lower[-3]) == True:
+			L_lower.pop(-2)
+			L_lower.pop(-2)
+	L_lower.pop(0)
+	L_lower.pop(-1)
+	L_upper.extend(L_lower)
+	return L_upper
 
+if __name__ == '__main__':
+	P_x = [random.random() * 10 for i in range(10)]
+	P_y = [random.random() * 10 for i in range(10)]
+	P = [[P_x[i], P_y[i]] for i in range(len(P_x))]
+	convex = convex_hull(P)
+	P_x = [i[0] for i in P]
+	P_y = [i[1] for i in P]
+	convex_x = [i[0] for i in convex]
+	convex_y = [i[1] for i in convex]
+	plt.plot(P_x, P_y, 'r.')
+	plt.plot(convex_x, convex_y, 'b')
+	plt.show()
 
