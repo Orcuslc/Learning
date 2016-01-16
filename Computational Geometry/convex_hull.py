@@ -19,10 +19,19 @@ def convex_hull(P):
 		for j in range(1, n):
 			backup = P[j]
 			key = P[j][0]
+			key_y = P[j][1]
 			i = j - 1
-			while i >= 0 and P[i][0] > key:
-				P[i + 1] = P[i]
-				i -= 1
+			while i >= 0 and P[i][0] >= key:
+				if P[i][0] > key:
+					P[i + 1] = P[i]
+					i -= 1
+				elif P[i][0] == key:
+					'''
+					if P[i] and P[j] have the same x-value, then sort the list by y-values
+					'''
+					if P[i][1] > key_y:
+						P[i + 1] = P[i]
+						i -= 1
 			P[i + 1] = backup
 		return P
 
@@ -33,7 +42,7 @@ def convex_hull(P):
 		'''
 		line_ac = lambda x: (c[1] - a[1])/(c[0] - a[0]) * (x - a[0]) + a[1]
 		line_b = line_ac(b[0])
-		if line_b > b[1]:
+		if line_b >= b[1]:
 			return False
 		else:
 			return True
