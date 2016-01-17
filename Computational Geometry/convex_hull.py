@@ -62,8 +62,9 @@ def convex_hull(P):
 	return L_upper, L_lower
 
 if __name__ == '__main__':
-	P_x = [random.random() * 10 for i in range(10)]
-	P_y = [random.random() * 10 for i in range(10)]
+	n = 100
+	P_x = [random.random() * 10 for i in range(n)]
+	P_y = [random.random() * 10 for i in range(n)]
 	P = [[P_x[i], P_y[i]] for i in range(len(P_x))]
 	L_upper, L_lower = convex_hull(P)
 	print(L_upper)
