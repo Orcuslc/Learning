@@ -1,13 +1,17 @@
 # find_intersection
-from data_structure import AVLTree, Event_Queue
+from data_structure import AVLTree, Event_Queue, Node
+import random
+import matplotlib.pyplot as plt
 
-class point:
+class point(Node):
 	"""
 	the class of points
 	"""
 	def __init__(self, x, y):
+		super().__init__([y, x], [])
 		self.x = x
 		self.y = y
+
 
 class Line_segment:
 	"""
@@ -16,9 +20,22 @@ class Line_segment:
 	and the key of a line segment is its start_point
 	"""
 	def __init__(self, start_point, end_point):
-		self.start = start_point
-		self.end = end_point
-		self.key = self.start
+		if start_point.y == end_point.y:
+			if start_point.x <= end_point.x:
+				upper = start_point
+				lower = end_point
+			else:
+				upper = end_point
+				lower = start_point
+		elif start_point.y < end_point.y:
+			upper = end_point
+			lower = start_point
+		else:
+			upper = start_point
+			lower = end_point
+		self.upper = upper
+		self.lower = lower
+		self.data = [upper, lower]
 		
 def find_intersection(S):
 	'''
@@ -29,12 +46,32 @@ def find_intersection(S):
 	'''
 	q = Event_Queue()
 	for segment in S:
-		q.push(segment)
+		upper = segment.upper
+		lower = segment.lower
+		upper.segment = segment.data
+		lower.segment = []
+		q.push(upper)
+		q.push(lower)
 	J = AVLTree()
+	# q.traverse(lambda x: print(x.key))
 	while len(q) >= 1:
 		next_event_point = q.pop()
-		handle_event_point(p)
+		handle_event_point(next_event_point)
 
-def 
+	def handle_event_point(event_point):
+		U_p = event_point.data
+		
+
+if __name__ == '__main__':
+	n = 5 * 2
+	x_list = [random.random() * 10 for i in range(n)]
+	y_list = [random.random() * 10 for i in range(n)]
+	points = [point(x_list[i], y_list[i]) for i in range(n)]
+	line_segments = [Line_segment(points[i], points[i+1]) for i in range(int(n/2))]
+	for seg in line_segments:
+		plt.plot([seg.upper.x, seg.lower.x], [seg.upper.y, seg.lower.y], 'r')	
+	plt.show()
+	find_intersection(line_segments)
+
 
 

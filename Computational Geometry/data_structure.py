@@ -13,7 +13,6 @@ class Node:
 		self.data = data
 		self.left = None
 		self.right = None
-		self.p = None
 		self.height = 0
 
 
@@ -34,9 +33,9 @@ class AVLTree(Node):
 		if node is None:
 			return None
 		elif x.key < node.key:
-			return self._find(x, self.left)
+			return self._find(x, node.left)
 		elif x.key > node.key:
-			return self._find(x, self.right)
+			return self._find(x, node.right)
 		else:
 			return node
 
@@ -184,17 +183,17 @@ in other words, key in
 class Event_Queue(AVLTree):
 	def __init__(self):
 		super().__init__()
-		self.data = []
 
 	def push(self, node):
-		cur_node = self._find(node)
+		cur_node = self._find(node, self.root)
 		if cur_node == None:
 			self.put(node)
 		else:
 			'''
 			if the point exists in the queue, then store the segment with the point
+			node.segment has the format [segment]
 			'''
-			cur_node.data.append(node.data)
+			cur_node.segment.append(node.segment)
 
 	def pop(self):
 		next_event = self._findMax(self.root)
