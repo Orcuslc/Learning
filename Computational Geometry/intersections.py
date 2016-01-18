@@ -83,7 +83,11 @@ def find_intersection(S):
 		for segment in U_p.extend(C_p):
 			J.put(segment)
 		if U_p.extend(C_p) == []:
-
+			sl = p.prodecessor()
+			sr = p.successor()
+			find_new_event(sl, sr, p)
+		else:
+			s_1 = 
 		
 
 if __name__ == '__main__':
