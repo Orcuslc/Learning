@@ -36,6 +36,7 @@ class Line_segment:
 		self.upper = upper
 		self.lower = lower
 		self.data = [upper, lower]
+		self.key = upper.key
 		
 def find_intersection(S):
 	'''
@@ -53,13 +54,36 @@ def find_intersection(S):
 		q.push(upper)
 		q.push(lower)
 	J = AVLTree()
+	for segment in S:
+		J.put(segment)
 	# q.traverse(lambda x: print(x.key))
 	while len(q) >= 1:
 		next_event_point = q.pop()
 		handle_event_point(next_event_point)
 
 	def handle_event_point(event_point):
-		U_p = event_point.data
+		intersection_list = []
+		U_p = event_point.segment
+		L_p = []
+		for segment in S:
+			if segment.lower.key == event_point.key:
+				L_p.append(segment)
+		C_p = []
+		for segment in S:
+			if (segment.upper.y - segment.lower.y)/(segment.upper.x - segment.lower.x) == \
+				(event_point.y - segment.lower.y)/(event_point.x - segment.lower.x) and
+				segment.upper.key != event_point.key and segment.lower.key != event_point.key:
+				C_p.append(segment)
+		P = U_p.extend(C_p).extend(L_p)
+		if len(P) > 1:
+			event_point.segment = P
+			intersection_list.append([event_point, P])
+		for segment in L_p.extend(C_p):
+			J.delete(segment)
+		for segment in U_p.extend(C_p):
+			J.put(segment)
+		if U_p.extend(C_p) == []:
+
 		
 
 if __name__ == '__main__':
