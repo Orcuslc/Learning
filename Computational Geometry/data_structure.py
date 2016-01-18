@@ -176,17 +176,31 @@ class AVLTree(Node):
 			self._inorder_traverse(node.right, func)
 
 '''
-Queue
+Event Queue, elements in which are nodes.
+Attention: the nodes in the queue are sorted by py first, and if py of two points are the same, 
+then they are sorted by px;
+in other words, key in 
 '''
-class queue:
+class Event_Queue(AVLTree):
 	def __init__(self):
+		super().__init__()
 		self.data = []
 
-	def push(self, val):
-		self.data.append(val)
+	def push(self, node):
+		cur_node = self._find(node)
+		if cur_node == None:
+			self.put(node)
+		else:
+			'''
+			if the point exists in the queue, then store the segment with the point
+			'''
+			cur_node.data.append(node.data)
 
 	def pop(self):
-		self.data.pop(0)
+		next_event = self._findMax(self.root)
+		self.delete(next_event)
+		return next_event
+
 
 if __name__ == '__main__':
 	datalist = [[i, i + 1] for i in range(10)]
