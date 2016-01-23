@@ -23,7 +23,7 @@ class BTree(Node):
 			return None
 		else:
 			disk_read(x, child[i])
-			return btree_search(x.child[i], k)
+			return self.search(x.child[i], k)
 
 	def create(self):
 		'''
@@ -58,4 +58,44 @@ class BTree(Node):
 		disk_write(z)
 		disk_write(x)
 
-	def 
+	def insert(self, k):
+		r = self.root
+		if r.n == 2 * self.t - 1:
+			s = allocate_node()
+			self.root = s
+			s.leaf = False
+			s.n = 0
+			s.child[0] = r
+			self.split_child(s, 0)
+			insert_nonfull(s, k)
+		else:
+			self.insert_nonfull(r, k)
+
+	def insert_nonfull(self, x, k):
+		i = x.n
+		if x.leaf:
+			while i >= 0 and k < x.keys[i]:
+				x.keys[i + 1] = x.keys[i]
+				i -= 1
+			x.keys[i + 1] = k
+			x.n = x.n + 1	
+			disk_write(x)
+		else:
+			while i >= 0 and k < x.keys[i]:
+				i -= 1
+			disk_read(x.child[i])
+			if x.child[i].n == 2 * self.t - 1:
+				self.split_child(x, i)
+				if k > x.keys[i]:
+					i += 1
+			self.insert_nonfull(x.child[i], k)
+
+	def delete(self, k):
+		x, i = self.search(self.root, k)
+		if x.leaf:
+			for j in range(i, x.n):
+				x.keys[j] = x.keys[j + 1]
+				x.keys.pop(-1)
+		else:
+			
+
