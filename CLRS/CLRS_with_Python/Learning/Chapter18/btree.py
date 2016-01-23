@@ -90,7 +90,7 @@ class BTree(Node):
 					i += 1
 			self.insert_nonfull(x.child[i], k)
 
-	def delete(self, k):
+	def delete(self, x, k):
 		x, i = self.search(self.root, k)
 		if x.leaf:
 			for j in range(i, x.n):
@@ -117,5 +117,7 @@ class BTree(Node):
 						x.keys[i] = x.keys[i + 1]
 						x.keys.pop()
 					self.delete(k)
-
+'''
+attention: delete still not completed
+'''
 
