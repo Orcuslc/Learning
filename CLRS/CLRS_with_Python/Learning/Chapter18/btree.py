@@ -97,5 +97,25 @@ class BTree(Node):
 				x.keys[j] = x.keys[j + 1]
 				x.keys.pop(-1)
 		else:
-			
+			if x.child[i - 1].n >= self.t:
+				y = x.child[i - 1]
+				while y.leaf == False:
+					y = y.child[-1]
+				self.delete(y.keys[0])
+				x.keys[i] = y.keys[0]
+			else:
+				if x.child[i + 1] >= self.t:
+					y = x.child[i + 1]
+					while y.leaf == False:
+						y = y.child[0]
+					self.delete(y.keys[0])
+					x.keys[i] = y.keys[0]
+				else:
+					x.child[i].keys.append(k)
+					x.child[i].keys.extend(x.child[i + 1].keys)
+					for j in range(i, x.n):
+						x.keys[i] = x.keys[i + 1]
+						x.keys.pop()
+					self.delete(k)
+
 
