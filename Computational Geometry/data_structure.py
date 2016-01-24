@@ -200,6 +200,30 @@ class Event_Queue(AVLTree):
 		self.delete(next_event)
 		return next_event
 
+class doubly_connected_edge_list:
+	def __init__(self, vertices_list, faces_list, half_edges_list):
+		self.vertices = vertices_list
+		self.faces = faces_list
+		self.half_edges = half_edges_list
+
+class vertex:
+	def __init__(self, coodinates, incident_edges):
+		self.coodinates = coodinates
+		self.incident_edges = incident_edges
+
+class face:
+	def __init__(self, outer_components, inner_components):
+		self.outer_components = outer_components
+		self.inner_components = inner_components
+
+class half_edge:
+	def __init__(self, origin, twin, incident_face, next_edge, prev_edge):
+		self.origin = origin
+		self.twin = twin
+		self.incident_face = incident_face
+		self.next = next_edge
+		self.prev = prev_edge
+
 
 if __name__ == '__main__':
 	datalist = [[i, i + 1] for i in range(10)]
