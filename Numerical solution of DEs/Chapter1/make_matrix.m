@@ -2,6 +2,7 @@
 % author: chuanlu
 % 2016-03-02
 function [A] = make_matrix(op, n)
+    
     if nargin < 1
         error('More args needed --make matrix');
     elseif nargin == 1
