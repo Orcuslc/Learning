@@ -79,22 +79,25 @@ def ostu_thresholding(img):
 def convolve(img, template):
 	[irow, icol] = list(img.shape)[:2]
 	[trow, tcol] = list(template.shape)[:2]
-	temp = np.zeros([irow, icol])
+	temp = np.zeros([irow, icol], dtype=np.uint8)
 	trhalf = int(np.floor(trow/2))
 	tchalf = int(np.floor(tcol/2))
 	for x in range(trhalf, icol - trhalf + 1):
 		for y in range(tchalf, irow - tchalf + 1):
 			sumim = 0
-			for iwin in range(trow - 1):
-				for jwin in range(tcol - 1):
-					sumim += img[y + jwin - trhalf][x + iwin - trhalf] * template[jwin][iwin]
+			for iwin in range(trow):
+				for jwin in range(tcol):
+					sumim += img[y + jwin - trhalf - 1][x + iwin - trhalf - 1] * template[jwin][iwin]
+					# print(sumim)
 			temp[y][x] = sumim
-	# print(temp)
+			# print(temp[y][x])
+	# print(temp[234][213])
 	return histogram_normalization(temp)
 	# return temp
 
 if __name__ == '__main__':
 	img = cv2.imread('../pics/ad.jpg', 0)
+	# print(img)
 	cv2.imshow('img', img)
 	# histogram(img)
 
@@ -129,6 +132,16 @@ if __name__ == '__main__':
 	# Convolve
 	template = np.array([[1/9, 1/9, 1/9], [1/9, 1/9, 1/9], [1/9, 1/9, 1/9]])
 	img2 = convolve(img, template)
+	# # np.save('../pics/ad_matrix.npy', img2)
+	# # img3 = np.load('../pics/ad_matrix.npy')
+	# cv2.imwrite('../pics/ad_handled.jpg', img2)
+	# img3 = cv2.imread('../pics/ad_handled.jpg', 0)
+	# # img3 = [[float(row[i]) for i in range(len(row))] ]
+	# # cv2.imshow('img3', img3)
+	
+	
+
+
 
 	cv2.imshow('img2', img2)
 	k = cv2.waitKey(0)
