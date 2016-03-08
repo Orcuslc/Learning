@@ -120,6 +120,23 @@ def gaussian_operator(img, winsize, sigma):
 	template = gaussian_template(winsize, sigma)
 	return convolve(img, template)
 
+def medium_operator(img, winsize):
+	[row, col] = list(img.shape)[:2]
+	winarea = winsize ** 2
+	half = np.int(np.floor(winsize/2))
+	temp = np.zeros([row, col], dtype = np.uint8)
+	def get_med(matrix):
+		size = matrix.size
+		mid = np.int(np.floor(size/2) + 1)
+		reshaped = matrix.reshape(1, size)
+		return np.sort(reshaped[0])[mid]
+	for x in range(half, col - half):
+		for y in range(half, row - half):
+			med = get_med(img[y-half:y+winsize-half, x-half:x+winsize-half])
+			temp[y][x] = med
+	return temp
+
+
 if __name__ == '__main__':
 	img = cv2.imread('../pics/ad.jpg', 0)
 	# print(img)
@@ -168,10 +185,14 @@ if __name__ == '__main__':
 	# winsize = 15
 	# img2 = average(img, winsize)
 
-	# gaussian operator
-	winsize = 5
-	sigma = 1.0
-	img2 = gaussian_operator(img, winsize, sigma)
+	# # gaussian operator
+	# winsize = 5
+	# sigma = 1.0
+	# img2 = gaussian_operator(img, winsize, sigma)
+
+	# medium operator
+	winsize = 3
+	img2 = medium_operator(img, winsize)
 
 	cv2.imshow('img2', img2)
 	k = cv2.waitKey(0)
