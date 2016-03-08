@@ -95,6 +95,31 @@ def convolve(img, template):
 	return histogram_normalization(temp)
 	# return temp
 
+def average(img, winsize):
+	[row, col] = list(img.shape)[:2]
+	temp = np.zeros([row, col], dtype = np.uint8)
+	half = np.int(np.floor(winsize/2))
+	winarea = winsize * winsize
+	for x in range(half, col - half):
+		for y in range(half, row - half):
+			sumim = img[y-half:y+winsize-half, x-half:x+winsize-half].sum()
+			# print(sumim)
+			temp[y][x] = np.int(np.floor(sumim/winarea))
+	return temp
+
+def gaussian_operator(img, winsize, sigma):
+	def gaussian_template(winsize, sigma):
+		template = np.zeros([winsize, winsize])
+		center = np.int(np.floor(winsize/2)) + 1
+		sumim = 0
+		for i in range(winsize):
+			for j in range(winsize):
+				template[j][i] = np.exp(-((j-center)**2 + (i-center)**2)/(2*(sigma**2)))
+				sumim += template[j][i]
+		return template / sumim
+	template = gaussian_template(winsize, sigma)
+	return convolve(img, template)
+
 if __name__ == '__main__':
 	img = cv2.imread('../pics/ad.jpg', 0)
 	# print(img)
@@ -130,8 +155,8 @@ if __name__ == '__main__':
 	# print(threshold)
 	
 	# Convolve
-	template = np.array([[1/9, 1/9, 1/9], [1/9, 1/9, 1/9], [1/9, 1/9, 1/9]])
-	img2 = convolve(img, template)
+	# template = np.array([[1/9, 1/9, 1/9], [1/9, 1/9, 1/9], [1/9, 1/9, 1/9]])
+	# img2 = convolve(img, template)
 	# # np.save('../pics/ad_matrix.npy', img2)
 	# # img3 = np.load('../pics/ad_matrix.npy')
 	# cv2.imwrite('../pics/ad_handled.jpg', img2)
@@ -139,9 +164,14 @@ if __name__ == '__main__':
 	# # img3 = [[float(row[i]) for i in range(len(row))] ]
 	# # cv2.imshow('img3', img3)
 	
-	
+	# # average
+	# winsize = 15
+	# img2 = average(img, winsize)
 
-
+	# gaussian operator
+	winsize = 5
+	sigma = 1.0
+	img2 = gaussian_operator(img, winsize, sigma)
 
 	cv2.imshow('img2', img2)
 	k = cv2.waitKey(0)
