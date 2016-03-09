@@ -243,7 +243,7 @@ if __name__ == '__main__':
 	# img2 = time_medium_operator(img, img, img)
 
 	# trun-med operator
-	img2 = trun_med_operator(img, winsize = 9)
+	img2 = trun_med_operator(img, winsize = 13)
 	
 	cv2.imshow('img2', img2)
 	k = cv2.waitKey(0)
