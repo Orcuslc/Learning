@@ -1,27 +1,25 @@
 h1 = [1, 1];
-h2 = [1, -1];
+% h2 = [1, -1];
 % f = @(x)(sin(10*x));
 n = 201;
 x = 0:1/(n-1):1;
-f = sin(10*x) + rand(1, n) + 4 * sin(x);
+f = sin(8*x) + rand(1, n) * 0.1 + 2 * sin(x);
 
 figure(1);
 title('homework1');
-plot(x, f, 'r-o');
+plot(x, f, 'r-');
 hold on;
 
-y1 = convolution(f, h1);
-row_y1 = size(y1);
-row_y1 = row_y1(1);
-xx1 = 0:1/(row_y1-1):1;
-plot(xx1, y1, 'g*-');
+% y1 = convolution(f, h1);
+y1 = conv(f, h1);
+y1 = y1(1:length(y1) - 1) / 2;
+plot(x, y1, 'g-');
 hold on;
 
-y2 = convolution(f, h2);
-row_y2 = size(y2);
-row_y2 = row_y2(1);
-xx2 = 0:1/(row_y2-1):1;
-plot(xx2, y2, 'b.-');
-hold on;
-
-legend('The signal with random', 'The signal handled by [1, 1]', 'The signal handled by [-1, 1]','Location', 'Best');
+% % y2 = convolution(f, h2);
+% y2 = conv(f, h2);
+% y2 = y2(2:length(y2));
+% plot(x, y2, 'b-');
+% hold on;
+title('Medium Operator');
+legend('The signal with random', 'The signal handled by [1, 1]', 'Location', 'Best');

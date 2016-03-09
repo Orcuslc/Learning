@@ -120,22 +120,67 @@ def gaussian_operator(img, winsize, sigma):
 	template = gaussian_template(winsize, sigma)
 	return convolve(img, template)
 
+def get_med(matrix):
+	size = matrix.size
+	mid = np.int(np.floor(size/2) + 1)
+	reshaped = matrix.reshape(1, size)
+	return np.sort(reshaped[0])[mid]
+
+
 def medium_operator(img, winsize):
 	[row, col] = list(img.shape)[:2]
 	winarea = winsize ** 2
 	half = np.int(np.floor(winsize/2))
 	temp = np.zeros([row, col], dtype = np.uint8)
-	def get_med(matrix):
-		size = matrix.size
-		mid = np.int(np.floor(size/2) + 1)
-		reshaped = matrix.reshape(1, size)
-		return np.sort(reshaped[0])[mid]
 	for x in range(half, col - half):
 		for y in range(half, row - half):
 			med = get_med(img[y-half:y+winsize-half, x-half:x+winsize-half])
 			temp[y][x] = med
 	return temp
 
+def time_medium_operator(*args):
+	[row, col] = list(args[0].shape)[:2]
+	count = len(args)
+	temp = np.zeros([row, col], dtype = np.uint8)
+	for x in range(row):
+		for y in range(col):
+			sumim = 0
+			for img in args:
+				sumim += img[x][y]
+			temp[x][y] = np.int(np.floor(sumim / count))
+	return temp
+
+def trun_med_operator(img, winsize):
+	[row, col] = list(img.shape)[:2]
+	temp = np.zeros([row, col], dtype = np.uint8)
+	half = np.int(np.floor(winsize / 2))
+	for x in range(half, col - half - 1):
+		for y in range(half, row - half - 1):
+			# print(x, y)
+			win = copy.deepcopy(img[y-half:y+half+1, x-half:x+half+1])
+			# print(win)
+			med = get_med(win)
+			avg = win.mean()
+			upper = 2 * med - win.min()
+			lower = 2 * med - win.max()
+			trunlist = []
+			for i in range(winsize):
+				for j in range(winsize):
+					if win[j, i] < upper and med < avg:
+						trunlist.append(win[j, i])
+					if win[j, i] > lower and med > avg:
+						trunlist.append(win[j, i])
+			trunlist.sort()
+			trunlen = len(trunlist)
+			if trunlen > 0:
+				if trunlen % 2 == 0:
+					nhalf = np.int(trunlen / 2)
+					temp[y, x] = np.int(np.floor(trunlist[nhalf]/2 + trunlist[nhalf-1]/2))
+				else:
+					temp[y, x] = trunlist[np.int(np.floor(trunlen / 2))]
+			else:
+				temp[y, x] = med
+	return temp
 
 if __name__ == '__main__':
 	img = cv2.imread('../pics/ad.jpg', 0)
@@ -190,10 +235,16 @@ if __name__ == '__main__':
 	# sigma = 1.0
 	# img2 = gaussian_operator(img, winsize, sigma)
 
-	# medium operator
-	winsize = 3
-	img2 = medium_operator(img, winsize)
+	# # medium operator
+	# winsize = 3
+	# img2 = medium_operator(img, winsize)
 
+	# time medium operator
+	# img2 = time_medium_operator(img, img, img)
+
+	# trun-med operator
+	img2 = trun_med_operator(img, winsize = 9)
+	
 	cv2.imshow('img2', img2)
 	k = cv2.waitKey(0)
 	if k == 27:
