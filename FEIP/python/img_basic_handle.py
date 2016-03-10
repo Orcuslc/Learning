@@ -182,6 +182,31 @@ def trun_med_operator(img, winsize):
 				temp[y, x] = med
 	return temp
 
+def anisotropic_diffusion_operator(img):
+	img = np.float32(img)
+	k = 5
+	lambdaimg = 0.25
+	iter_num = 20
+	[row, col] = list(img.shape)[:2]
+	temp = np.zeros([row, col], dtype = np.uint8)
+	for i in range(iter_num):
+		for x in range(1, row - 1):
+			for y in range(1, col - 1):
+				Ei = img[x - 1, y] - img[x, y]
+				Wi = img[x + 1, y] - img[x, y]
+				Ni = img[x, y - 1] - img[x, y]
+				Si = img[x, y + 1] - img[x, y]
+				kk = k * k
+				cN = np.exp((-Ni ** 2)/kk)
+				cS = np.exp((-Si ** 2)/kk)
+				cE = np.exp((-Ei ** 2)/kk)
+				cW = np.exp((-Wi ** 2)/kk)
+				temp[x, y] = np.uint8(img[x, y] + lambdaimg * (cN*Ni + cS*Si + cE*Ei + cW*Wi))
+		img = temp
+	return img
+
+
+
 if __name__ == '__main__':
 	img = cv2.imread('../pics/ad.jpg', 0)
 	# print(img)
@@ -243,7 +268,10 @@ if __name__ == '__main__':
 	# img2 = time_medium_operator(img, img, img)
 
 	# trun-med operator
-	img2 = trun_med_operator(img, winsize = 13)
+	# img2 = trun_med_operator(img, winsize = 13)
+
+	# anisotropic_diffusion_operator
+	img2 = anisotropic_diffusion_operator(img)
 	
 	cv2.imshow('img2', img2)
 	k = cv2.waitKey(0)
