@@ -2,18 +2,33 @@ import numpy as np
 import cv2
 import matplotlib.pyplot as plt
 import copy
+import time
 
 def get_size(img):
 	return list(img.shape)[:2]
 
+# def histogram1(img):
+# 	pixels_at_level = np.zeros([1, 256])[0]
+# 	for row in img:
+# 		for col in row:
+# 			pixels_at_level[col] += 1
+# 	# plt.hist(pixels_at_level, 100)
+# 	# plt.show()
+# 	# print(pixels_at_level)
+# 	return pixels_at_level
+
 def histogram(img):
-	pixels_at_level = np.zeros([1, 256])[0]
-	for row in img:
-		for col in row:
-			pixels_at_level[col] += 1
-	# plt.hist(pixels_at_level, 100)
-	# plt.show()
-	return pixels_at_level
+	# pixels_at_level = np.zeros([1, 256], dtype = np.int)[0]
+	img = img.reshape(1, img.size)[0]
+	# levels = np.unique(img)
+	weight = np.bincount(img)
+	return weight
+	# for index in range(len(levels)):
+	# 	nindex = levels[index]
+	# 	# print(nindex)
+	# 	# print(weight[index])
+	# 	pixels_at_level[levels[index]] = weight[index]
+	# return pixels_at_level
 
 def point_operator(img, func):
 	[row, col] = get_size(img)
@@ -214,7 +229,18 @@ if __name__ == '__main__':
 	img = cv2.imread('../pics/ad.jpg', 0)
 	# print(img)
 	cv2.imshow('img', img)
-	# histogram(img)
+
+	# histogram
+	# start1 = time.time()
+	# hist1 = histogram1(img)
+	# end1 = time.time()
+	start2 = time.time()
+	hist2 = histogram(img)
+	end2 = time.time()
+	# print('time1', end1-start1)
+	print('time2', end2-start2)
+	# print(hist1 - hist2)
+
 
 	# linear operator
 	# func = lambda x: x*10
@@ -274,9 +300,9 @@ if __name__ == '__main__':
 	# img2 = trun_med_operator(img, winsize = 13)
 
 	# anisotropic_diffusion_operator
-	img2 = anisotropic_diffusion_operator(img)
+	# img2 = anisotropic_diffusion_operator(img)
 	
-	cv2.imshow('img2', img2)
-	k = cv2.waitKey(0)
-	if k == 27:
-		cv2.destroyAllWindows()
+	# cv2.imshow('img2', img2)
+	# k = cv2.waitKey(0)
+	# if k == 27:
+	# 	cv2.destroyAllWindows()
