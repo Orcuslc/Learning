@@ -184,7 +184,7 @@ def trun_med_operator(img, winsize):
 
 def anisotropic_diffusion_operator(img):
 	img = np.float32(img)
-	k = 5
+	k = 25
 	lambdaimg = 0.25
 	iter_num = 20
 	[row, col] = list(img.shape)[:2]
