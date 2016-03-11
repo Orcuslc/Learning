@@ -3,6 +3,9 @@ import cv2
 import matplotlib.pyplot as plt
 import copy
 
+def get_size(img):
+	return list(img.shape)[:2]
+
 def histogram(img):
 	pixels_at_level = np.zeros([1, 256])[0]
 	for row in img:
@@ -13,14 +16,14 @@ def histogram(img):
 	return pixels_at_level
 
 def point_operator(img, func):
-	[row, col] = list(img.shape)[:2]
+	[row, col] = get_size(img)
 	for i in range(row):
 		for j in range(col):
 			img[i][j] = func(img[i][j])
 	return img
 
 def histogram_normalization(img):
-	[row, col] = list(img.shape)[:2]
+	[row, col] = get_size(img)
 	shaped_img = img.reshape(1, img.size)
 	maxim = shaped_img.max(1)[0]
 	minim = shaped_img.min(1)[0]
@@ -34,7 +37,7 @@ def histogram_equalization(img):
 	rangeim = 255
 	number = img.size
 	pixels_at_level= [0 for i in range(rangeim + 1)]
-	[row, col] = list(img.shape)[:2]
+	[row, col] = get_size(img)
 	for i in range(col):
 		for j in range(row):
 			pixels_at_level[img[i][j]] += 1
@@ -49,7 +52,7 @@ def histogram_equalization(img):
 	return img
 
 def uniformed_thresholding(img, threshold):
-	[row, col] = list(img.shape)[:2]
+	[row, col] = get_size(img)
 	for i in range(row):
 		for j in range(col):
 			if img[i][j] < threshold:
@@ -60,7 +63,7 @@ def uniformed_thresholding(img, threshold):
 
 def ostu_thresholding(img):
 	N = 255
-	[row, col] = list(img.shape)[:2]
+	[row, col] = get_size(img)
 	pixels_at_level = histogram(img) / (row * col)
 	mu = lambda k, pixel: sum([(i+1) * pixel[i] for i in range(k)])
 	omega = lambda k, pixel: sum([pixel[i] for i in range(k)])
@@ -96,7 +99,7 @@ def convolve(img, template):
 	# return temp
 
 def average(img, winsize):
-	[row, col] = list(img.shape)[:2]
+	[row, col] = get_size(img)
 	temp = np.zeros([row, col], dtype = np.uint8)
 	half = np.int(np.floor(winsize/2))
 	winarea = winsize * winsize
@@ -128,7 +131,7 @@ def get_med(matrix):
 
 
 def medium_operator(img, winsize):
-	[row, col] = list(img.shape)[:2]
+	[row, col] = get_size(img)
 	winarea = winsize ** 2
 	half = np.int(np.floor(winsize/2))
 	temp = np.zeros([row, col], dtype = np.uint8)
@@ -151,7 +154,7 @@ def time_medium_operator(*args):
 	return temp
 
 def trun_med_operator(img, winsize):
-	[row, col] = list(img.shape)[:2]
+	[row, col] = get_size(img)
 	temp = np.zeros([row, col], dtype = np.uint8)
 	half = np.int(np.floor(winsize / 2))
 	for x in range(half, col - half - 1):
@@ -185,9 +188,10 @@ def trun_med_operator(img, winsize):
 def anisotropic_diffusion_operator(img):
 	img = np.float32(img)
 	k = 25
+	kk = k * k
 	lambdaimg = 0.25
 	iter_num = 20
-	[row, col] = list(img.shape)[:2]
+	[row, col] = get_size(img)
 	temp = np.zeros([row, col], dtype = np.uint8)
 	for i in range(iter_num):
 		for x in range(1, row - 1):
@@ -196,7 +200,6 @@ def anisotropic_diffusion_operator(img):
 				Wi = img[x + 1, y] - img[x, y]
 				Ni = img[x, y - 1] - img[x, y]
 				Si = img[x, y + 1] - img[x, y]
-				kk = k * k
 				cN = np.exp((-Ni ** 2)/kk)
 				cS = np.exp((-Si ** 2)/kk)
 				cE = np.exp((-Ei ** 2)/kk)
