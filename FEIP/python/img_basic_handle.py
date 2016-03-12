@@ -60,7 +60,7 @@ def histogram_normalization(img):
 	normf = lambda x : (x - minim) * 255 / rangeim
 	return point_operator(img, normf)
 
-def histogram_equalization(img):
+def histogram_equalization1(img):
 	rangeim = 255
 	number = img.size
 	pixels_at_level= [0 for i in range(rangeim + 1)]
@@ -77,6 +77,9 @@ def histogram_equalization(img):
 		for j in range(row):
 			img[i][j] = hist[img[i][j]]
 	return img
+
+# def histogram_equalization(img):
+	
 
 def uniformed_thresholding(img, threshold):
 	[row, col] = get_size(img)
@@ -290,6 +293,7 @@ if __name__ == '__main__':
 	# print('time1', end1 - start1)
 	# print('time2', end2 - start2)
 	# histogram(img2)
+
 
 	# equalization
 	# img2 = histogram_equalization(img)
