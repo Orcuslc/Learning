@@ -30,23 +30,35 @@ def histogram(img):
 	# 	pixels_at_level[levels[index]] = weight[index]
 	# return pixels_at_level
 
+# def point_operator1(img, func):
+# 	[row, col] = get_size(img)
+# 	for i in range(row):
+# 		for j in range(col):
+# 			img[i][j] = func(img[i][j])
+# 	return img
+
 def point_operator(img, func):
-	[row, col] = get_size(img)
-	for i in range(row):
-		for j in range(col):
-			img[i][j] = func(img[i][j])
-	return img
+	f = np.vectorize(func)
+	return np.uint8(f(img))
+
+# def histogram_normalization1(img):
+# 	[row, col] = get_size(img)
+# 	shaped_img = img.reshape(1, img.size)
+# 	maxim = shaped_img.max(1)[0]
+# 	minim = shaped_img.min(1)[0]
+# 	rangeim = maxim - minim
+# 	for i in range(row):
+# 		for j in range(col):
+# 			img[i][j] = (img[i][j] - minim) * 255 / rangeim;
+# 	return img
 
 def histogram_normalization(img):
-	[row, col] = get_size(img)
 	shaped_img = img.reshape(1, img.size)
 	maxim = shaped_img.max(1)[0]
 	minim = shaped_img.min(1)[0]
 	rangeim = maxim - minim
-	for i in range(row):
-		for j in range(col):
-			img[i][j] = (img[i][j] - minim) * 255 / rangeim;
-	return img
+	normf = lambda x : (x - minim) * 255 / rangeim
+	return point_operator(img, normf)
 
 def histogram_equalization(img):
 	rangeim = 255
@@ -202,7 +214,7 @@ def trun_med_operator(img, winsize):
 
 def anisotropic_diffusion_operator(img):
 	img = np.float32(img)
-	k = 25
+	k = 5	
 	kk = k * k
 	lambdaimg = 0.25
 	iter_num = 20
@@ -230,32 +242,53 @@ if __name__ == '__main__':
 	# print(img)
 	cv2.imshow('img', img)
 
-	# histogram
+# '''
+# 	histogram
+# '''
 	# start1 = time.time()
 	# hist1 = histogram1(img)
-	# end1 = time.time()
-	start2 = time.time()
-	hist2 = histogram(img)
-	end2 = time.time()
-	# print('time1', end1-start1)
-	print('time2', end2-start2)
+	# # end1 = time.time()
+	# start2 = time.time()
+	# hist2 = histogram(img)
+	# end2 = time.time()
+	# # print('time1', end1-start1)
+	# print('time2', end2-start2)
 	# print(hist1 - hist2)
 
 
+# '''
+# 	point operator
+# '''
 	# linear operator
-	# func = lambda x: x*10
+	# func = lambda x : x + 10
 	
 	# sawtooth operator
-	# func = lambda x: x % 50
+	# func = lambda x: x % 100 + 100
 
 	# logarithmic point operator
-	# func = lambda x: 20 * np.log(100 * x)
+	# func = lambda x: 20 * np.log(1000 * x)
+	# start1 = time.time()
+	# img2 = point_operator1(img, func)
+	# end1 = time.time()
+	# start2 = time.time()
+	# img3 = point_operator(img, func)
+	# print(img3)
+	# end2 = time.time()
+	# print('time1', end1 - start1)
+	# print('time2', end2 - start2)
 
-	# img2 = point_operator(img, func)
 
-	# normalization
-	# img2 = histogram_normalization(img)
-	
+# '''
+# 	# normalization
+# '''
+	# start1 = time.time()
+	# img2 = histogram_normalization1(img)
+	# end1 = time.time()
+	# start2 = time.time()
+	# img3 = histogram_normalization(img)
+	# end2 = time.time()
+	# print('time1', end1 - start1)
+	# print('time2', end2 - start2)
 	# histogram(img2)
 
 	# equalization
@@ -302,7 +335,8 @@ if __name__ == '__main__':
 	# anisotropic_diffusion_operator
 	# img2 = anisotropic_diffusion_operator(img)
 	
-	# cv2.imshow('img2', img2)
-	# k = cv2.waitKey(0)
-	# if k == 27:
-	# 	cv2.destroyAllWindows()
+	cv2.imshow('img2', img2)
+	cv2.imshow('img3', img3)
+	k = cv2.waitKey(0)
+	if k == 27:
+		cv2.destroyAllWindows()
