@@ -1,6 +1,7 @@
 from img_basic_handle import *
 import numpy as np
 import cv2
+import time
 
 def amplify_img(img):
 	'''
@@ -28,25 +29,29 @@ def amplify_img(img):
 	'''
 	[row, col] = get_size(img)
 	temp = np.zeros([2*row, 2*col], dtype = np.uint8)
-	for i in range(row):
-		'''
-		a
-		'''
-		temp[2 * i, ::2] = img[i, :]
-		'''
-		b
-		'''
-		temp[2 * i, 1:2*col - 2:2] = np.uint8((img[i, :-1] + img[i, 1:]) / 2)
-		'''
-		b(i, n)
-		'''
-		temp[2 * i, 2*col - 1] = img[i, col - 1]
+	# for i in range(row):
+	'''
+	a
+	'''
+	temp[::2, ::2] = img[:, :]
+	'''
+	b
+	'''
+	temp[::2, 1:2*col - 2:2] = np.uint8((img[:, :-1] + img[:, 1:]) / 2)
+	'''
+	b(i, n)
+	'''
+	temp[::2, 2*col - 1] = img[:, col - 1]
 	
-	for i in range(row - 1):
-		'''
-		c(0:2*row - 1, :)
-		'''
-		temp[2 * i + 1, :] =  np.uint8((temp[2 * i, :] + temp[2 * i + 2, :]) / 2)
+	# for i in range(row - 1):
+	# 	'''
+	# 	c(0:2*row - 1, :)
+	# 	'''
+	# 	temp[2 * i + 1, :] =  np.uint8((temp[2 * i, :] + temp[2 * i + 2, :]) / 2)
+	# print(temp[1::2, :].shape)
+	# print(temp[:-1:2, :].shape)
+	# print(temp[2::2, :].shape)
+	temp[1:-1:2, :] = np.uint8((temp[:-2:2, :] + temp[2::2, :])/2)
 	'''
 	c(2 * row - 1, :)
 	'''
@@ -62,7 +67,10 @@ if __name__ == '__main__':
 	cv2.imshow('img', img)
 
 	# amplify
+	start = time.time()
 	img2 = amplify(img)
+	end = time.time()
+	print('time:', end - start)
 	
 	cv2.imshow('img2', img2)
 	k = cv2.waitKey(0)
