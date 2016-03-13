@@ -37,9 +37,9 @@ def histogram(img):
 # 			img[i][j] = func(img[i][j])
 # 	return img
 
-def point_operator(img, func):
+def point_operator(img, func, *args):
 	f = np.vectorize(func)
-	return np.uint8(f(img))
+	return np.uint8(f(img, args))
 
 # def histogram_normalization1(img):
 # 	[row, col] = get_size(img)
@@ -84,25 +84,28 @@ def histogram_equalization(img):
 	number = img.size
 	[row, col] = get_size(img)
 	weight = np.bincount(img.reshape(1, img.size)[0])
-	global hist	
 	hist = [0 for i in range(rangeim + 1)]
 	sumim = 0
 	for i in range(rangeim):
 		sumim += weight[i]
 		hist[i] = rangeim/number * sumim
-	func = lambda x: hist[x]
-	return point_operator(img, func)
+	func = lambda x, hist: hist[x]
+	return point_operator(img, func, hist)
 	
 
+# def uniformed_thresholding1(img, threshold):
+# 	[row, col] = get_size(img)
+# 	for i in range(row):
+# 		for j in range(col):
+# 			if img[i][j] < threshold:
+# 				img[i][j] = 0
+# 			else:
+# 				img[i][j] = 255
+# 	return img
+
 def uniformed_thresholding(img, threshold):
-	[row, col] = get_size(img)
-	for i in range(row):
-		for j in range(col):
-			if img[i][j] < threshold:
-				img[i][j] = 0
-			else:
-				img[i][j] = 255
-	return img
+	func = lambda x, threshold: 0 if x < threshold else 255
+	return point_operator(img, func, threshold)
 
 def ostu_thresholding(img):
 	N = 255
@@ -310,18 +313,27 @@ if __name__ == '__main__':
 # '''
 	# equalization
 # '''
-	start1 = time.time()
-	img2 = histogram_equalization1(img)
-	end1 = time.time()
-	start2 = time.time()
-	img3 = histogram_equalization(img)
-	end2 = time.time()
-	print('time1', end1 - start1)
-	print('time2', end2 - start2)
+	# start1 = time.time()
+	# img2 = histogram_equalization1(img)
+	# end1 = time.time()
+	# start2 = time.time()
+	# img3 = histogram_equalization(img)
+	# end2 = time.time()
+	# print('time1', end1 - start1)
+	# print('time2', end2 - start2)
 	
 
 	# uniformed_thresholding
-	# img2 = uniformed_thresholding(img, threshold = 150)
+	start1 = time.time()
+	img2 = uniformed_thresholding1(img, threshold = 150)
+	end1 = time.time()
+	start2 = time.time()
+	img3 = uniformed_thresholding(img, threshold = 150)
+	end2 = time.time()
+	print('time1', end1 - start1)
+	print('time2', end2 - start2)
+
+
 
 	# Otsu_thresholding
 	# img = cv2.imread('../pics/1.jpg', 0)
