@@ -239,6 +239,30 @@ def trun_med_operator(img, winsize):
 				temp[y, x] = med
 	return temp
 
+# def anisotropic_diffusion_operator1(img):
+# 	img = np.float32(img)
+# 	k = 5	
+# 	kk = k * k
+# 	lambdaimg = 0.25
+# 	iter_num = 20
+# 	[row, col] = get_size(img)
+# 	temp = np.zeros([row, col], dtype = np.uint8)
+# 	for i in range(iter_num):
+# 		for x in range(1, row - 1):
+# 			for y in range(1, col - 1):
+# 				Ei = img[x - 1, y] - img[x, y]
+# 				Wi = img[x + 1, y] - img[x, y]
+# 				Ni = img[x, y - 1] - img[x, y]
+# 				Si = img[x, y + 1] - img[x, y]
+# 				cN = np.exp((-Ni ** 2)/kk)
+# 				cS = np.exp((-Si ** 2)/kk)
+# 				cE = np.exp((-Ei ** 2)/kk)
+# 				cW = np.exp((-Wi ** 2)/kk)
+# 				temp[x, y] = np.uint8(img[x, y] + lambdaimg * (cN*Ni + cS*Si + cE*Ei + cW*Wi))
+
+# 		img = temp
+# 	return img
+
 def anisotropic_diffusion_operator(img):
 	img = np.float32(img)
 	k = 5	
@@ -248,20 +272,20 @@ def anisotropic_diffusion_operator(img):
 	[row, col] = get_size(img)
 	temp = np.zeros([row, col], dtype = np.uint8)
 	for i in range(iter_num):
-		for x in range(1, row - 1):
-			for y in range(1, col - 1):
-				Ei = img[x - 1, y] - img[x, y]
-				Wi = img[x + 1, y] - img[x, y]
-				Ni = img[x, y - 1] - img[x, y]
-				Si = img[x, y + 1] - img[x, y]
-				cN = np.exp((-Ni ** 2)/kk)
-				cS = np.exp((-Si ** 2)/kk)
-				cE = np.exp((-Ei ** 2)/kk)
-				cW = np.exp((-Wi ** 2)/kk)
-				temp[x, y] = np.uint8(img[x, y] + lambdaimg * (cN*Ni + cS*Si + cE*Ei + cW*Wi))
+		nimg = img[1:row-1, 1:col-1]
+		Ei = img[0:row-2, 1:col-1] - nimg
+		Wi = img[2:row, 1:col-1] - nimg
+		Ni = img[1:row-1, 0:col-2] - nimg
+		Si = img[1:row-1, 2:col] - nimg
+		func = lambda x, kk:np.exp((- x**2)/kk)
+		cN = point_operator(Ni, func, kk)
+		cS = point_operator(Si, func, kk)
+		cW = point_operator(Wi, func, kk)
+		cE = point_operator(Ei, func, kk)
+		temp[1:row-1, 1:col-1] = np.uint8(img[1:row-1, 1:col-1] + lambdaimg * (cN*Ni + cS*Si + cE*Ei + cW*Wi))
 		img = temp
+		# img = np.uint8(img + lambdaimg * (cN*Ni + cS*Si + cE*Ei + cW*Wi))
 	return img
-
 
 
 if __name__ == '__main__':
@@ -347,11 +371,11 @@ if __name__ == '__main__':
 # '''
 	# Otsu_thresholding
 # '''
-	start1 = time.time()
-	img2, threshold = ostu_thresholding(img)
-	end1 = time.time()
-	print('time1', end1 - start1)
-	print(threshold)
+	# start1 = time.time()
+	# img2, threshold = ostu_thresholding(img)
+	# end1 = time.time()
+	# print('time1', end1 - start1)
+	# print(threshold)
 	
 	# Convolve
 	# template = np.array([[1/9, 1/9, 1/9], [1/9, 1/9, 1/9], [1/9, 1/9, 1/9]])
@@ -382,11 +406,21 @@ if __name__ == '__main__':
 	# trun-med operator
 	# img2 = trun_med_operator(img, winsize = 13)
 
-	# anisotropic_diffusion_operator
-	# img2 = anisotropic_diffusion_operator(img)
+# '''
+# anisotropic_diffusion_operator
+# '''
+	# start1 = time.time()
+	# img2 = anisotropic_diffusion_operator1(img)
+	# end1 = time.time()
+	# start2 = time.time()
+	# img3 = anisotropic_diffusion_operator(img)
+	# end2 = time.time()
+	# print('time1', end1 - start1)
+	# print('time2', end2 - start2)
+	
 	
 	cv2.imshow('img2', img2)
-	# cv2.imshow('img3', img3)
+	cv2.imshow('img3', img3)
 	k = cv2.waitKey(0)
 	if k == 27:
 		cv2.destroyAllWindows()
