@@ -120,10 +120,10 @@ def ostu_thresholding(img):
 		omega_k = omega(k, pixels_at_level)
 		mu_k = mu(k, pixels_at_level)
 		delta = (mu_T_img * omega_k - mu_k) ** 2 / (omega_k * (1 - omega_k))
-		values[k] = delta
-	# print(values)
+		values[k] = np.uint8(delta)
 	img = uniformed_thresholding(img, values.argmax(0))
 	return img, values.argmax(0)
+
 
 def convolve(img, template):
 	[irow, icol] = list(img.shape)[:2]
@@ -142,7 +142,15 @@ def convolve(img, template):
 			# print(temp[y][x])
 	# print(temp[234][213])
 	return histogram_normalization(temp)
-	# return temp
+	return temp
+
+# def convolve(img, template):
+# 	[irow, icol] = get_size(img)
+# 	[trow, tcol] = get_size(template)
+# 	temp = np.zeros([irow, icol], dtype=np.uint8)
+# 	trhalf = np.int(np.floor(trow/2))
+# 	tchalf = np.int(np.floor(tcol/2))
+	
 
 def average(img, winsize):
 	[row, col] = get_size(img)
@@ -322,24 +330,28 @@ if __name__ == '__main__':
 	# print('time1', end1 - start1)
 	# print('time2', end2 - start2)
 	
+# '''
+# uniformed_thresholding
+# '''
+	# start1 = time.time()
+	# img2 = uniformed_thresholding1(img, threshold = 150)
+	# end1 = time.time()
+	# start2 = time.time()
+	# img3 = uniformed_thresholding(img, threshold = 150)
+	# end2 = time.time()
+	# print('time1', end1 - start1)
+	# print('time2', end2 - start2)
 
-	# uniformed_thresholding
-	start1 = time.time()
-	img2 = uniformed_thresholding1(img, threshold = 150)
-	end1 = time.time()
-	start2 = time.time()
-	img3 = uniformed_thresholding(img, threshold = 150)
-	end2 = time.time()
-	print('time1', end1 - start1)
-	print('time2', end2 - start2)
 
 
-
+# '''
 	# Otsu_thresholding
-	# img = cv2.imread('../pics/1.jpg', 0)
-	# cv2.imshow('img', img)
-	# img2, threshold = ostu_thresholding(img)
-	# print(threshold)
+# '''
+	start1 = time.time()
+	img2, threshold = ostu_thresholding(img)
+	end1 = time.time()
+	print('time1', end1 - start1)
+	print(threshold)
 	
 	# Convolve
 	# template = np.array([[1/9, 1/9, 1/9], [1/9, 1/9, 1/9], [1/9, 1/9, 1/9]])
@@ -374,7 +386,7 @@ if __name__ == '__main__':
 	# img2 = anisotropic_diffusion_operator(img)
 	
 	cv2.imshow('img2', img2)
-	cv2.imshow('img3', img3)
+	# cv2.imshow('img3', img3)
 	k = cv2.waitKey(0)
 	if k == 27:
 		cv2.destroyAllWindows()
