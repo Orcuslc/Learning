@@ -60,25 +60,38 @@ def histogram_normalization(img):
 	normf = lambda x : (x - minim) * 255 / rangeim
 	return point_operator(img, normf)
 
-def histogram_equalization1(img):
+# def histogram_equalization1(img2):
+# 	img = copy.deepcopy(img2)
+# 	rangeim = 255
+# 	number = img.size
+# 	pixels_at_level= [0 for i in range(rangeim + 1)]
+# 	[row, col] = get_size(img)
+# 	for i in range(col):
+# 		for j in range(row):
+# 			pixels_at_level[img[j][i]] += 1
+# 	hist = [0 for i in range(rangeim + 1)]
+# 	sumim = 0
+# 	for i in range(rangeim):
+# 		sumim += pixels_at_level[i]
+# 		hist[i] = rangeim/number * sumim
+# 	for i in range(col):
+# 		for j in range(row):
+# 			img[j][i] = hist[img[j][i]]
+# 	return img
+
+def histogram_equalization(img):
 	rangeim = 255
 	number = img.size
-	pixels_at_level= [0 for i in range(rangeim + 1)]
 	[row, col] = get_size(img)
-	for i in range(col):
-		for j in range(row):
-			pixels_at_level[img[i][j]] += 1
+	weight = np.bincount(img.reshape(1, img.size)[0])
+	global hist	
 	hist = [0 for i in range(rangeim + 1)]
 	sumim = 0
 	for i in range(rangeim):
-		sumim += pixels_at_level[i]
+		sumim += weight[i]
 		hist[i] = rangeim/number * sumim
-	for i in range(col):
-		for j in range(row):
-			img[i][j] = hist[img[i][j]]
-	return img
-
-# def histogram_equalization(img):
+	func = lambda x: hist[x]
+	return point_operator(img, func)
 	
 
 def uniformed_thresholding(img, threshold):
@@ -294,9 +307,18 @@ if __name__ == '__main__':
 	# print('time2', end2 - start2)
 	# histogram(img2)
 
-
+# '''
 	# equalization
-	# img2 = histogram_equalization(img)
+# '''
+	start1 = time.time()
+	img2 = histogram_equalization1(img)
+	end1 = time.time()
+	start2 = time.time()
+	img3 = histogram_equalization(img)
+	end2 = time.time()
+	print('time1', end1 - start1)
+	print('time2', end2 - start2)
+	
 
 	# uniformed_thresholding
 	# img2 = uniformed_thresholding(img, threshold = 150)
