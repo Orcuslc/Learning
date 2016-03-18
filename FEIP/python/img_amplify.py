@@ -27,6 +27,7 @@ def amplify_img(img):
 
 	b(i, n) = a(i, n)
 	'''
+	img = np.asarray(img, dtype=np.float64)
 	[row, col] = get_size(img)
 	temp = np.zeros([2*row, 2*col], dtype = np.uint8)
 	# for i in range(row):
@@ -37,7 +38,7 @@ def amplify_img(img):
 	'''
 	b
 	'''
-	temp[::2, 1:2*col - 2:2] = np.uint8((img[:, :-1] + img[:, 1:]) / 2)
+	temp[::2, 1:2*col - 2:2] = np.uint8((img[:, :-1]/2 + img[:, 1:]/2))
 	'''
 	b(i, n)
 	'''
@@ -51,28 +52,54 @@ def amplify_img(img):
 	# print(temp[1::2, :].shape)
 	# print(temp[:-1:2, :].shape)
 	# print(temp[2::2, :].shape)
-	temp[1:-1:2, :] = np.uint8((temp[:-2:2, :] + temp[2::2, :])/2)
+	temp[1:-1:2, :] = np.uint8((temp[:-2:2, :]/2 + temp[2::2, :]/2))
 	'''
 	c(2 * row - 1, :)
 	'''
 	temp[2 * row - 1, :] = temp[2 * row - 2, :]
 	return temp
 
-def amplify(img):
+def amplify(img, k, lambdaimg, iter_num):
 	amplified = amplify_img(img)
-	return anisotropic_diffusion_operator(amplified)
+	return anisotropic_diffusion_operator(amplified, k, lambdaimg, iter_num)
+
+def amplify2(img, winsize, sigma):
+	amplified = amplify_img(img)
+	return gaussian_operator(amplified, winsize, sigma)
+
+def substract(img):
+	[row, col] = get_size(img)
+	temp = np.zeros([int(row/2), int(col)/2], dtype = np.uint8)
+	temp = img[::2, ::2]
+	return temp
+
 
 if __name__ == '__main__':
-	img = cv2.imread('../pics/ad.jpg', 0)
+	img = cv2.imread('../pics/a.jpg', 0)
 	cv2.imshow('img', img)
+	# print(img)
 
+
+	# substract
+
+	img_n = substract(img)
 	# amplify
 	start = time.time()
-	img2 = amplify(img)
+	img3 = amplify2(img_n, winsize = 3, sigma = 1)
+	img2 = amplify(img_n, k = 5, lambdaimg = 0.25, iter_num = 5)
+	img4 = amplify_img(img_n)
+	# img2 = amplify2(img, winsize = 3, sigma = 1)
+	# img2 = amplify_img(img)
 	end = time.time()
 	print('time:', end - start)
+	# print(img2)
+	cv2.imshow('img_n', img_n)
+
 	
 	cv2.imshow('img2', img2)
+	cv2.imshow('img3', img3)
+	cv2.imshow('img4', img4)
+
 	k = cv2.waitKey(0)
 	if k == 27:
 		cv2.destroyAllWindows()

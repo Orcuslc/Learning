@@ -3,19 +3,20 @@ import cv2
 import matplotlib.pyplot as plt
 import copy
 import time
+from scipy.ndimage import convolve as conv
 
 def get_size(img):
 	return list(img.shape)[:2]
 
-# def histogram1(img):
-# 	pixels_at_level = np.zeros([1, 256])[0]
-# 	for row in img:
-# 		for col in row:
-# 			pixels_at_level[col] += 1
-# 	# plt.hist(pixels_at_level, 100)
-# 	# plt.show()
-# 	# print(pixels_at_level)
-# 	return pixels_at_level
+def histogram1(img):
+	pixels_at_level = np.zeros([1, 256])[0]
+	for row in img:
+		for col in row:
+			pixels_at_level[col] += 1
+	# plt.hist(pixels_at_level, 100)
+	# plt.show()
+	# print(pixels_at_level)
+	return pixels_at_level
 
 def histogram(img):
 	# pixels_at_level = np.zeros([1, 256], dtype = np.int)[0]
@@ -125,31 +126,56 @@ def ostu_thresholding(img):
 	return img, values.argmax(0)
 
 
-def convolve(img, template):
+def convolve1(img, template):
 	[irow, icol] = list(img.shape)[:2]
 	[trow, tcol] = list(template.shape)[:2]
 	temp = np.zeros([irow, icol], dtype=np.uint8)
 	trhalf = int(np.floor(trow/2))
 	tchalf = int(np.floor(tcol/2))
-	for x in range(trhalf, icol - trhalf + 1):
-		for y in range(tchalf, irow - tchalf + 1):
+	for x in range(trhalf, irow - trhalf + 1):
+		for y in range(tchalf, icol - tchalf + 1):
 			sumim = 0
 			for iwin in range(trow):
 				for jwin in range(tcol):
-					sumim += img[y + jwin - trhalf - 1][x + iwin - trhalf - 1] * template[jwin][iwin]
+					sumim += img[x + iwin - trhalf - 1][y + jwin - tchalf - 1] * template[iwin][jwin]
 					# print(sumim)
-			temp[y][x] = sumim
+			temp[x][y] = sumim
 			# print(temp[y][x])
 	# print(temp[234][213])
-	return histogram_normalization(temp)
+	# return histogram_normalization(temp)
 	return temp
 
+def convolve2(img, template):
+	[irow, icol] = list(img.shape)[:2]
+	[trow, tcol] = list(template.shape)[:2]
+	temp = np.zeros([irow, icol], dtype=np.uint8)
+	trhalf = int(np.floor(trow/2))
+	tchalf = int(np.floor(tcol/2))
+	for x in range(trhalf, irow - trhalf):
+		for y in range(tchalf, icol - tchalf):
+			temp[x, y] = (img[x-trhalf:x+trhalf+1, y-tchalf:y+tchalf+1] * template).sum()
+			# print(temp[y][x])
+	# print(temp[234][213])
+	# return histogram_normalization(temp)
+	return temp
+
+def convolve(img, template):
+	return conv(img, template)
 # def convolve(img, template):
 # 	[irow, icol] = get_size(img)
 # 	[trow, tcol] = get_size(template)
 # 	temp = np.zeros([irow, icol], dtype=np.uint8)
 # 	trhalf = np.int(np.floor(trow/2))
 # 	tchalf = np.int(np.floor(tcol/2))
+# def convolve(img, template):
+# 	[irow, icol] = get_size(img)
+# 	[trow, tcol] = get_size(template)
+# 	trhalf = np.int(np.floor(trow/2))
+# 	tchalf = np.int(np.floor(tcol/2))
+# 	temp = np.zeros([irow, icol], dtype=np.uint8)
+# 	func = lambda x, window: sum(sum(x*window))
+# 	temp[trhalf:irow-trhalf+1, tchalf:icol-tchalf+1] = \
+
 	
 
 def average(img, winsize):
@@ -263,12 +289,12 @@ def trun_med_operator(img, winsize):
 # 		img = temp
 # 	return img
 
-def anisotropic_diffusion_operator(img):
+def anisotropic_diffusion_operator(img, k = 5, lambdaimg = 0.25, iter_num = 20):
 	img = np.float32(img)
-	k = 5	
+	# k = 5	
 	kk = k * k
-	lambdaimg = 0.25
-	iter_num = 20
+	# lambdaimg = 0.25
+	# iter_num = 20
 	[row, col] = get_size(img)
 	temp = np.zeros([row, col], dtype = np.uint8)
 	for i in range(iter_num):
@@ -287,24 +313,31 @@ def anisotropic_diffusion_operator(img):
 		# img = np.uint8(img + lambdaimg * (cN*Ni + cS*Si + cE*Ei + cW*Wi))
 	return img
 
+# def minkowski_erosion(img, template):
+# 	[irow, icol] = get_size(img)
+# 	[trow, tcol] = get_size(template)
+# 	eroded = np.zeros([irow, icol], dtype=np.uint8)
+	
 
+
+	
 if __name__ == '__main__':
 	img = cv2.imread('../pics/ad.jpg', 0)
 	# print(img)
 	cv2.imshow('img', img)
 
 # '''
-# 	histogram
+# # 	histogram
 # '''
-	# start1 = time.time()
-	# hist1 = histogram1(img)
-	# # end1 = time.time()
-	# start2 = time.time()
-	# hist2 = histogram(img)
-	# end2 = time.time()
-	# # print('time1', end1-start1)
-	# print('time2', end2-start2)
-	# print(hist1 - hist2)
+	start1 = time.time()
+	hist1 = histogram1(img)
+	end1 = time.time()
+	start2 = time.time()
+	hist2 = histogram(img)
+	end2 = time.time()
+	print('time1', end1-start1)
+	print('time2', end2-start2)
+	print(hist1 - hist2)
 
 
 # '''
@@ -376,17 +409,33 @@ if __name__ == '__main__':
 	# end1 = time.time()
 	# print('time1', end1 - start1)
 	# print(threshold)
-	
-	# Convolve
-	# template = np.array([[1/9, 1/9, 1/9], [1/9, 1/9, 1/9], [1/9, 1/9, 1/9]])
-	# img2 = convolve(img, template)
-	# # np.save('../pics/ad_matrix.npy', img2)
-	# # img3 = np.load('../pics/ad_matrix.npy')
+
+# '''
+# 	# Convolve
+# # ''' 	
+# 	template = np.array([[1/9, 1/9, 1/9], [1/9, 1/9, 1/9], [1/9, 1/9, 1/9]])
+# 	start1 = time.time()
+# 	img2 = convolve1(img, template)
+# 	end1 = time.time()
+	# np.save('../pics/ad_matrix.npy', img2)
+	# img3 = np.load('../pics/ad_matrix.npy')
 	# cv2.imwrite('../pics/ad_handled.jpg', img2)
 	# img3 = cv2.imread('../pics/ad_handled.jpg', 0)
-	# # img3 = [[float(row[i]) for i in range(len(row))] ]
+	# img3 = [[float(row[i]) for i in range(len(row))] ]
 	# # cv2.imshow('img3', img3)
-	
+	# start2 = time.time()
+	# img3 = convolve(img, template)
+	# end2 = time.time()
+	# # img4 = img3 - img2
+	# # cv2.imshow('img4', img4)
+	# print('time1', end1 - start1)
+	# print('time2', end2 - start2)
+
+
+
+
+
+
 	# # average
 	# winsize = 15
 	# img2 = average(img, winsize)
@@ -419,8 +468,8 @@ if __name__ == '__main__':
 	# print('time2', end2 - start2)
 	
 	
-	cv2.imshow('img2', img2)
-	cv2.imshow('img3', img3)
-	k = cv2.waitKey(0)
-	if k == 27:
-		cv2.destroyAllWindows()
+	# cv2.imshow('img2', img2)
+	# cv2.imshow('img3', img3)
+	# k = cv2.waitKey(0)
+	# if k == 27:
+	# 	cv2.destroyAllWindows()
