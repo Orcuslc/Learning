@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (MiKTeX 2.9) (preloaded format=pdflatex 2016.3.11)  18 MAR 2016 20:24
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (MiKTeX 2.9) (preloaded format=pdflatex 2016.3.11)  21 MAR 2016 21:58
 entering extended mode
 **"F:/Documents/GitHub/Learning/Numerical solution of DEs/Chapter2/Homework4/La
 TeX/main.tex"
@@ -348,47 +348,77 @@ LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
 LaTeX Font Info:    Font shape `OMS/cmr/m/sl' in size <10> not available
 (Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 286.
  [4]
-<converge.jpg, id=31, 1864.9675pt x 1005.7575pt>
-File: converge.jpg Graphic file (type jpg)
- <use converge.jpg>
-Package pdftex.def Info: converge.jpg used on input line 336.
-(pdftex.def)             Requested size: 426.79134pt x 230.15302pt.
+Package epstopdf Info: Source file: <converge.eps>
+(epstopdf)                    date: 2016-03-21 21:58:19
+(epstopdf)                    size: 85916 bytes
+(epstopdf)             Output file: <converge-eps-converted-to.pdf>
+(epstopdf)             Command: <epstopdf --outfile=converge-eps-converted-to.p
+df converge.eps>
+(epstopdf)             \includegraphics on input line 336.
+runsystem(epstopdf --outfile=converge-eps-converted-to.pdf converge.eps)...exec
+uted (allowed).
 
-<error_list.jpg, id=32, 1864.9675pt x 1005.7575pt>
-File: error_list.jpg Graphic file (type jpg)
- <use error_list.jpg>
-Package pdftex.def Info: error_list.jpg used on input line 342.
-(pdftex.def)             Requested size: 426.79134pt x 230.15302pt.
+Package epstopdf Info: Result file: <converge-eps-converted-to.pdf>
+(epstopdf)                    date: 2016-03-21 21:58:57
+(epstopdf)                    size: 14177 bytes.
 
-[5 <./converge.jpg>] [6 <./error_list.jpg>] (main.aux) ) 
+<converge-eps-converted-to.pdf, id=31, 421.575pt x 316.18124pt>
+File: converge-eps-converted-to.pdf Graphic file (type pdf)
+
+<use converge-eps-converted-to.pdf>
+Package pdftex.def Info: converge-eps-converted-to.pdf used on input line 336.
+(pdftex.def)             Requested size: 426.79134pt x 320.09798pt.
+Package epstopdf Info: Source file: <error_list.eps>
+(epstopdf)                    date: 2016-03-21 21:57:58
+(epstopdf)                    size: 41611 bytes
+(epstopdf)             Output file: <error_list-eps-converted-to.pdf>
+(epstopdf)             Command: <epstopdf --outfile=error_list-eps-converted-to
+.pdf error_list.eps>
+(epstopdf)             \includegraphics on input line 342.
+runsystem(epstopdf --outfile=error_list-eps-converted-to.pdf error_list.eps)...
+executed (allowed).
+
+Package epstopdf Info: Result file: <error_list-eps-converted-to.pdf>
+(epstopdf)                    date: 2016-03-21 21:58:59
+(epstopdf)                    size: 6012 bytes.
+
+<error_list-eps-converted-to.pdf, id=32, 421.575pt x 316.18124pt>
+File: error_list-eps-converted-to.pdf Graphic file (type pdf)
+
+<use error_list-eps-converted-to.pdf>
+Package pdftex.def Info: error_list-eps-converted-to.pdf used on input line 342
+.
+(pdftex.def)             Requested size: 426.79134pt x 320.09798pt.
+ [5 <./converge-eps-converted-to.pdf>]
+[6 <./error_list-eps-converted-to.pdf>] (main.aux) ) 
 Here is how much of TeX's memory you used:
  5293 strings out of 495255
- 70228 string characters out of 3182092
+ 70364 string characters out of 3182092
  220105 words of memory out of 3000000
  8478 multiletter control sequences out of 15000+200000
  11597 words of font info for 45 fonts, out of 3000000 for 9000
  14 hyphenation exceptions out of 8191
  42i,6n,42p,855b,2084s stack positions out of 5000i,500n,10000p,200000b,50000s
-<C:/Program Files (x86)
-/MikTeX/fonts/type1/public/amsfonts/cm/cmbx10.pfb><C:/Program Files (x86)/MikTe
-X/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Program Files (x86)/MikTeX/font
-s/type1/public/amsfonts/cm/cmex10.pfb><C:/Program Files (x86)/MikTeX/fonts/type
-1/public/amsfonts/cm/cmmi10.pfb><C:/Program Files (x86)/MikTeX/fonts/type1/publ
-ic/amsfonts/cm/cmmi5.pfb><C:/Program Files (x86)/MikTeX/fonts/type1/public/amsf
-onts/cm/cmmi7.pfb><C:/Program Files (x86)/MikTeX/fonts/type1/public/amsfonts/cm
-/cmr10.pfb><C:/Program Files (x86)/MikTeX/fonts/type1/public/amsfonts/cm/cmr12.
-pfb><C:/Program Files (x86)/MikTeX/fonts/type1/public/amsfonts/cm/cmr17.pfb><C:
-/Program Files (x86)/MikTeX/fonts/type1/public/amsfonts/cm/cmr5.pfb><C:/Program
- Files (x86)/MikTeX/fonts/type1/public/amsfonts/cm/cmr7.pfb><C:/Program Files (
-x86)/MikTeX/fonts/type1/public/amsfonts/cm/cmsl10.pfb><C:/Program Files (x86)/M
-ikTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Program Files (x86)/MikTeX/
-fonts/type1/public/amsfonts/cm/cmsy7.pfb><C:/Program Files (x86)/MikTeX/fonts/t
-ype1/public/amsfonts/cm/cmti10.pfb><C:/Program Files (x86)/MikTeX/fonts/type1/p
-ublic/amsfonts/symbols/msam10.pfb><C:/Program Files (x86)/MikTeX/fonts/type1/pu
-blic/amsfonts/symbols/msbm10.pfb>
-Output written on main.pdf (6 pages, 432931 bytes).
+<C:/Program Files (x86)/Mik
+TeX/fonts/type1/public/amsfonts/cm/cmbx10.pfb><C:/Program Files (x86)/MikTeX/fo
+nts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Program Files (x86)/MikTeX/fonts/ty
+pe1/public/amsfonts/cm/cmex10.pfb><C:/Program Files (x86)/MikTeX/fonts/type1/pu
+blic/amsfonts/cm/cmmi10.pfb><C:/Program Files (x86)/MikTeX/fonts/type1/public/a
+msfonts/cm/cmmi5.pfb><C:/Program Files (x86)/MikTeX/fonts/type1/public/amsfonts
+/cm/cmmi7.pfb><C:/Program Files (x86)/MikTeX/fonts/type1/public/amsfonts/cm/cmr
+10.pfb><C:/Program Files (x86)/MikTeX/fonts/type1/public/amsfonts/cm/cmr12.pfb>
+<C:/Program Files (x86)/MikTeX/fonts/type1/public/amsfonts/cm/cmr17.pfb><C:/Pro
+gram Files (x86)/MikTeX/fonts/type1/public/amsfonts/cm/cmr5.pfb><C:/Program Fil
+es (x86)/MikTeX/fonts/type1/public/amsfonts/cm/cmr7.pfb><C:/Program Files (x86)
+/MikTeX/fonts/type1/public/amsfonts/cm/cmsl10.pfb><C:/Program Files (x86)/MikTe
+X/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Program Files (x86)/MikTeX/font
+s/type1/public/amsfonts/cm/cmsy7.pfb><C:/Program Files (x86)/MikTeX/fonts/type1
+/public/amsfonts/cm/cmti10.pfb><C:/Program Files (x86)/MikTeX/fonts/type1/publi
+c/amsfonts/symbols/msam10.pfb><C:/Program Files (x86)/MikTeX/fonts/type1/public
+/amsfonts/symbols/msbm10.pfb>
+Output written on main.pdf (6 pages, 225517 bytes).
 PDF statistics:
- 91 PDF objects out of 1000 (max. 8388607)
+ 99 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  11 words of extra memory for PDF output out of 10000 (max. 10000000)
 
