@@ -1,0 +1,1 @@
+double lenv4(int* vec);

@@ -328,16 +328,16 @@ if __name__ == '__main__':
 
 # '''
 # # 	histogram
-# '''
-	start1 = time.time()
-	hist1 = histogram1(img)
-	end1 = time.time()
-	start2 = time.time()
-	hist2 = histogram(img)
-	end2 = time.time()
-	print('time1', end1-start1)
-	print('time2', end2-start2)
-	print(hist1 - hist2)
+# # '''
+# 	start1 = time.time()
+# 	hist1 = histogram1(img)
+# 	end1 = time.time()
+# 	start2 = time.time()
+# 	hist2 = histogram(img)
+# 	end2 = time.time()
+# 	print('time1', end1-start1)
+# 	print('time2', end2-start2)
+# 	print(hist1 - hist2)
 
 
 # '''
@@ -413,7 +413,7 @@ if __name__ == '__main__':
 # '''
 # 	# Convolve
 # # ''' 	
-# 	template = np.array([[1/9, 1/9, 1/9], [1/9, 1/9, 1/9], [1/9, 1/9, 1/9]])
+	# template = np.array([[1/9, 1/9, 1/9], [1/9, 1/9, 1/9], [1/9, 1/9, 1/9]])
 # 	start1 = time.time()
 # 	img2 = convolve1(img, template)
 # 	end1 = time.time()
@@ -469,7 +469,7 @@ if __name__ == '__main__':
 	
 	
 	# cv2.imshow('img2', img2)
-	# cv2.imshow('img3', img3)
-	# k = cv2.waitKey(0)
-	# if k == 27:
-	# 	cv2.destroyAllWindows()
+	cv2.imshow('img3', img3)
+	k = cv2.waitKey(0)
+	if k == 27:
+		cv2.destroyAllWindows()
