@@ -47,20 +47,43 @@
 
 \begin{problem}{1}
 \text{ }\\
-Calculate the confidence interval with a confidence level of 0.95 of the samples given.
+The relationship of amplitude and argument of the LTS system with the angle omega.
 \end{problem}
 \begin{proof}
-Firstly, the mean of the samples $\overline{x} = \frac{1}{10}\sum_{i}{x_{i}} = 10.05,$ the variance of the samples 
+\subsection{The code is shown as follows.}
+\begin{lstlisting}[language = {MATLAB}]
+r = @(omega)(5-4.*cos(omega));
+phi  = @(omega)(mod(2*(pi - atan(sin(omega) ./ (2-cos(omega))) - omega), 2*pi));
+
+xx = 0:1e-6:2*pi;
+ry = r(xx);
+phiy = phi(xx);
+
+plot(xx, ry);
+hold on;
+plot(xx, phiy);
+
+legend('amplitude', 'argument', 'Location', 'Best');
+title('The amplitude and argument with omega');
+grid on;
+\end{lstlisting}
+\subsection{The result is shown as follows.}
+\begin{figure}[htbp]
+\centering
+\includegraphics[width = 15cm]{relationship.eps}
+\caption{The relationship of amplitude and argument with omega.}
+\label{Relationship}
+\end{figure}
 \end{proof}
 
 
-\begin{problem}{2}
-\text{ }\\
-If the rate of abnormality in this area is below the average with the information provided.
-\end{problem}
-\begin{proof}
-$P(\mbox{Only one person is of abnormality}\vert\mbox{The rate of abnormality is 0.01}) =  \dbinom{400}{1}*(1-0.01)^{399}*0.01 = 0.0725 > 0.05$, which implies that this phenomenon is just possible, hence the rate of abnormality in this area can NOT be seen as below the average.
-\end{proof}
+% \begin{problem}{2}
+% \text{ }\\
+% If the rate of abnormality in this area is below the average with the information provided.
+% \end{problem}
+% \begin{proof}
+% $P(\mbox{Only one person is of abnormality}\vert\mbox{The rate of abnormality is 0.01}) =  \dbinom{400}{1}*(1-0.01)^{399}*0.01 = 0.0725 > 0.05$, which implies that this phenomenon is just possible, hence the rate of abnormality in this area can NOT be seen as below the average.
+% \end{proof}
 
 % \begin{problem}{3}
 % \text{ } \\

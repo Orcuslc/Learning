@@ -1,0 +1,312 @@
+\documentclass{article}
+\usepackage{listings}
+\usepackage{xcolor}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amsthm,amssymb}
+\usepackage{graphicx}
+\usepackage{epstopdf}
+\DeclareGraphicsExtensions{.eps,.ps,.jpg,.bmp}
+\lstset{
+	numbers=left,
+    framexleftmargin=10mm,
+    frame=none,
+    backgroundcolor=\color[RGB]{245,245,244},
+	keywordstyle=\bf\color{blue},
+	identifierstyle=\bf,
+	numberstyle=\color[RGB]{0,192,192},
+	commentstyle=\it\color[RGB]{0,96,96},
+	stringstyle=\rmfamily\slshape\color[RGB]{128,0,0},
+	showstringspaces=false
+    }
+
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+
+\newenvironment{theorem}[2][Theorem]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{lemma}[2][Lemma]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{exercise}[2][Exercise]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{problem}[2][Problem]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{question}[2][Question]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{corollary}[2][Corollary]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+
+\begin{document}
+
+\title{Homework 2016-03-21}
+\author{Chuan Lu\\
+13300180056}
+
+\maketitle
+
+\begin{problem}{1}
+\text{ }\\
+Calculate the confidence interval with a confidence level of 0.95 of the samples given.
+\end{problem}
+\begin{proof}
+Firstly, the mean of the samples $\overline{x} = \frac{1}{10}\sum_{i}{x_{i}} = 10.05,$ the variance of the samples $\sigma = \frac{1}{10}\sum_{i}{(x_{i} - \overline{x})^{2}} = 0.0525.$ We can then check from the t-distribution table that the confidence interval is $[\overline{X} - t_{\alpha/2}(n-1)\frac{\sigma}{\sqrt{n}}, \overline{X} + t_{\alpha/2}(n-1)\frac{\sigma}{\sqrt{n}}] = [9.9854, 10.1146]$
+\end{proof}
+
+
+\begin{problem}{2}
+\text{ }\\
+If the rate of abnormality in this area is below the average with the information provided.
+\end{problem}
+\begin{proof}
+$P(\mbox{Only one person is of abnormality}\vert\mbox{The rate of abnormality is 0.01}) =  \dbinom{400}{1}*(1-0.01)^{399}*0.01 = 0.0725 > 0.05$, which implies that this phenomenon is just possible, hence the rate of abnormality in this area can NOT be seen as below the average.
+\end{proof}
+
+\begin{problem}{3}
+\text{ } \\
+Derive out the EM algorithm of a distribution mixed by three normal distributions.
+\end{problem}
+\begin{proof}
+Let \[z_{ij} = \begin{cases} 
+		1&\text{$X_{i}$ belongs to the $j^{th}$ distribution},\\ 
+		0&\text{others},\end{cases}\] and $P(z_{i} = 1) = t_{i}$, where $\sum_{i=1}^{3}{t_{i}} = 1.$\\
+Then the likelihood function is $L(\theta;X,Z) = \prod_{i=1}^{n}{\prod_{j=1}^{3}{t_{j}\frac{1}{(\sqrt{2\pi})^{n}\sqrt(det(\Sigma_{j}))}e^{-\frac{1}{2}(x-\mu)^{T}\Sigma^{-1}(x-\mu)}}}$, the log-likelihood of which is $l(\theta;x,z) = \sum_{i=1}^{n}{\sum_{j=1}^{3}{z_{ij}[log(t_{j})-\frac{d}{2}log(2\pi)-\frac{1}{2}(x_{i} - \mu_{j})^{T}\Sigma^{-1}(x-\mu)]}}$. \\
+\quad E-step: \\
+Assume there are a vector of $\theta_{n}$, then $Q(\theta|\theta_{m}) = E(l(\theta; x, z)) = \sum_{i=1}^{n}{\sum_{j=1}^{3}{T_{i,j}^{(m)}[log(t_{j})-\frac{d}{2}log(2\pi)-\frac{1}{2}(x_{i} - \mu_{j})^{T}\Sigma^{-1}(x-\mu)]}}$, in which $T_{ij}^{(m)} = P(z_{ij} = 1|X_{i} = x_{i}; \theta_{m}) = \frac{t_{j}^{(m)}f(x_{i}; \mu_{j}^{(m)},\Sigma_{j}^{(m)})}{\sum_{k=1}^{3}{t_{k}^{(m)}f(x_{i}; \mu_{k}^{(m)},\Sigma_{k}^{(m)})}}, j=1,2,3.$ \\
+\quad M-step: \\
+For $t_{m+1}$,\\ $t_{m+1} = argmax_{t}Q(\theta|\theta_{m}) = argmax_{t}\lgroup[\sum_{i=1}^{n}{T_{i, 1}^{(m)}}]log(t_1)+[\sum_{i=1}^{n}{T_{i, 2}^{(m)}}]log(t_2)+[\sum_{i=1}^{n}{T_{i, 3}^{(m)}}]log(t_3)\rgroup,$ so $t_{j}^{(m+1)} = \frac{1}{n}\sum_{i=1}^{n}{T_{i, j}^{(m)}}.$ \\
+For $\mu_{m+1}, \sigma_{m+1}, \\(\mu_{m+1}, \sigma_{m+1}) = argmax_{\mu, \sigma}Q(\theta|\theta_{m})$, so $\mu_{j}^{(m+1)} = \frac{\sum_{i=1}^{n}{T_{i, j}^{(m)}}x_{i}}{\sum_{i=1}^{n}{T_{i, j}^{(m)}}},$ and $\sigma_{j}^{(m+1)} = \frac{\sum_{i=1}^{n}{T_{i, j}^{(m)}(x_{i} - \mu_{j}^{(m)})(x_{i} - \mu_{j}^{(m)})^{T}}}{\sum_{i=1}^{n}{T_{i, j}^{(m)}}}$
+\end{proof}
+
+\begin{problem}{4}
+\text{ }\\
+Estimate the arguments with the data given.
+\end{problem}
+
+\begin{proof}
+\subsection{The code is shown as follows.}
+\begin{lstlisting}[language = {R}]
+source('em_func.R')
+em = function(x, dim, mu, sigma, t, maxit = 100, error = 1e-6) {
+  # mu, sigma, t are listsa containing init data
+  # Init
+  n = nrow(x)
+  T = matrix(rep(0, n*dim), ncol=dim)
+
+  for(step in 1:maxit) {
+    
+    # E-step
+    for(j in 1:dim) {
+      for(i in 1:n) {
+        # print(x[i, ])
+        T[i, j] = em_FUNC(x[i, ], mu[[j]], sigma[[j]]) * t(j)
+      }
+    }
+    T = T/rowSums(T)
+    
+    sigma0 = sigma
+    t0 = t
+    mu0 = mu
+    
+    # M-step
+    for(j in 1:dim) {
+      v1 = sum(T[, j])
+      v2 = matrix(rep(0, ncol(x)), nrow=1)
+      for(i in 1:n) {
+        v2 = v2 + (T[i, j] * x[i, ])
+      }
+      mu[[j]] = v2 / v1
+      t[j] = v1 / n
+      v3 = matrix(rep(0, ncol(x)^2), nrow=ncol(x))
+      for(i in 1:n) {
+        temp1 = matrix(x[i, ])
+        temp2 = matrix(mu[[j]])
+        delta = temp1 - temp2
+        v3 = v3 + (T[i, j] * delta %*% t(delta))
+      }
+      sigma[[j]] = (v3/v1)
+    }
+    mu_sum = 0
+    sigma_sum = 0
+    for(i in 1:length(mu)) {
+      mu_sum = mu_sum + sum(abs(mu0[[i]] - mu[[i]]))
+    }
+    for(i in 1:length(sigma)) {
+      sigma_sum = sigma_sum + sum(abs(sigma0[[i]] - sigma[[i]]))
+    }
+    # Check if converged
+    if(mu_sum < error & sigma_sum < error & sum(abs(t-t0)) < error)
+      break
+  }
+  returnlist = list(mu, sigma, t)
+  
+  return(returnlist)
+}
+\end{lstlisting}
+\begin{lstlisting}[language={R}]
+em_FUNC <- function(x, mu, sigma) {
+  n = ncol(t(matrix(x)))
+  res = 1/((sqrt(2*pi))^n * sqrt(abs(det(sigma)))) * exp(-1/2 * (x-mu)%*%solve(sigma)%*%t(x-mu))
+  return (res)
+}
+\end{lstlisting}
+\begin{lstlisting}[language={R}]
+# Exercise 4
+source('EM.R')
+data = read.csv('Data1.csv')
+x1 = data['V1']
+x2 = data['V2']
+x = data.frame(x1, x2)
+x = data.matrix(x)
+dim = 3
+n = 2
+mu = list(t(matrix(runif(n))), t(matrix(runif(n))), t(matrix(runif(n))))
+sigma = list(matrix(runif(n*n), ncol = n), matrix(runif(n*n), ncol = n), matrix(runif(n*n), ncol = n))
+t = c(0.1, 0.7, 0.2)
+rlist = em(x, dim, mu, sigma, t)
+print(rlist[[1]])
+print(rlist[[2]])
+print(rlist[[3]])
+\end{lstlisting}
+\subsection{The result is shown as follows, in which rlist[[1] is mu, rlist[[2]] is sigma, rlist[[3]] is t.}
+\begin{lstlisting}[language = {R}]
+> print(rlist[[1]])
+[[1]]
+          [,1]      [,2]
+[1,] -2.274075 -3.209265
+
+[[2]]
+         [,1]      [,2]
+[1,] 5.271368 -2.079697
+
+[[3]]
+          [,1]       [,2]
+[1,] 0.8930116 -0.6144073
+
+> print(rlist[[2]])
+[[1]]
+           [,1]       [,2]
+[1,]  0.6014583 -0.1520107
+[2,] -0.1520107  0.8660930
+
+[[2]]
+             [,1]         [,2]
+[1,]  1.577730561 -0.009383941
+[2,] -0.009383941  1.104548710
+
+[[3]]
+         [,1]     [,2]
+[1,] 4.439728 3.414217
+[2,] 3.414217 4.359960
+
+> print(rlist[[3]])
+[1] 0.1783595 0.4624902 0.3591504
+\end{lstlisting}
+\end{proof}
+
+
+\begin{problem}{5}
+\text{ }\\
+Estimate the average height of men and women with the data givem.
+\end{problem}
+
+\begin{proof}
+\subsection{The code is shown as follows, and the function `EM' is given within the answer to the former exercise.}
+\begin{lstlisting}[language = {R}]
+# Exercise5
+source('EM.R')
+x = matrix(c(171, 174, 159, 176, 164, 169, 170, 173, 159,
+             172, 166, 175, 161, 186, 160, 168, 166, 174,
+             159, 178, 165, 189, 164, 168, 165, 185, 160,
+             175, 172, 168, 167, 171, 160, 174, 168, 174,
+             167, 175, 162, 177))
+dim = 2
+mu = list(matrix(c(163)), matrix(c(176)))
+sigma = list(matrix(runif(1)), matrix(runif(1)))
+t = c(0.2, 0.8)
+rlist = em(x, dim, mu, sigma, t)
+print(rlist[[1]])
+print(rlist[[2]])
+print(rlist[[3]])
+\end{lstlisting}
+\subsection{The result is shown as follows, in which rlist[[1]] is mu, rlist[[2]] is sigma, rlist[[3]] is t.}
+\begin{lstlisting}[language = {R}]
+> print(rlist[[1]])
+[[1]]
+         [,1]
+[1,] 163.6147
+
+[[2]]
+         [,1]
+[1,] 172.5814
+
+> print(rlist[[2]])
+[[1]]
+        [,1]
+[1,] 14.6682
+
+[[2]]
+         [,1]
+[1,] 46.11688
+
+> print(rlist[[3]])
+[1] 0.3269247 0.6730753
+\end{lstlisting}
+\end{proof}
+
+% % \begin{problem}{6}
+% % \text{ }\\
+% % Which of the following are Groups? Which of the following are not groups, and why?\\
+
+% % \indent (1)  $G = \{{2, 4, 6, 8}\}$ in $\Z_{10}$.  Where $a \star b = ab$\\
+% % \indent (2)  $G = \Q^{\ast}$, where $a \star b = \frac{a}{b}$\\
+% % \indent (3) $G = \Z$, where $a \star b = a - b$\\
+% % \indent (4) $G = \{ {2^{x}\mid x \in \Q} \}$, where $a \star b = ab$\\
+
+% % \end{problem}
+
+% % \begin{proof}
+
+% % \end{proof}
+
+% % \begin{problem}{7}
+% % \text{ }\\
+% % Consider the set $Q =$ \{ $\pm$1, $\pm$i, $\pm$j, $\pm$k\} of the complex matrices as follows:\\
+% % \[
+% % 1=
+% %   \begin{bmatrix}
+% %     1 & 0\\
+% %     0 & 1\\
+% %   \end{bmatrix}
+% % \]
+
+% % \[
+% % i=
+% %   \begin{bmatrix}
+% %     i & 0\\
+% %     0 & $-$i\\
+% %   \end{bmatrix}
+% % \]
+
+% % \[
+% % j=
+% %   \begin{bmatrix}
+% %     0 & 1\\
+% %     $-$1 & 0\\
+% %   \end{bmatrix}
+% % \]
+
+% % \[
+% % k=
+% %   \begin{bmatrix}
+% %     0 & i\\
+% %     i & 0\\
+% %   \end{bmatrix}
+% % \]
+% % Show that $Q$ is a group under matrix multiplication by writing out its multiplicaiton table. (Note: $Q$ is called the quartenion group).
+% % \end{problem}
+% % \begin{proof}
+
+% % \end{proof}
+
+\end{document}

@@ -1,7 +1,10 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (MiKTeX 2.9) (preloaded format=pdflatex 2016.3.11)  21 MAR 2016 22:06
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (MiKTeX 2.9) (preloaded format=pdflatex 2016.3.11)  23 MAR 2016 14:25
 entering extended mode
-**F:/Documents/GitHub/Learning/DSP/homework2/main.tex
-(F:/Documents/GitHub/Learning/DSP/homework2/main.tex
+**"F:/Documents/GitHub/Learning/Numerical solution of DEs/Chapter2/Homework6/La
+TeX/main.tex"
+
+("F:/Documents/GitHub/Learning/Numerical solution of DEs/Chapter2/Homework6/LaT
+eX/main.tex"
 LaTeX2e <2015/10/01> patch level 2
 Babel <3.9m> and hyphenation patterns for 0 languages loaded.
 ("C:\Program Files (x86)\MikTeX\tex\latex\base\article.cls"
@@ -323,60 +326,89 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 (C:\CTEX\MiKTeX\tex\latex\listings\lstlang1.sty
 File: lstlang1.sty 2004/09/05 1.3 listings language file
 )
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 55.
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 66.
 
 ("C:\Program Files (x86)\MikTeX\tex\latex\base\omscmr.fd"
 File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
-LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 55.
+LaTeX Font Info:    Font shape `OMS/cmr/m/it' in size <10> not available
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 66.
+LaTeX Font Info:    Try loading font information for OML+cmr on input line 74.
 
-Overfull \hbox (10.24986pt too wide) in paragraph at lines 56--58
-[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][
-][][][][][][][][][][][][][] 
- []
-
-Package epstopdf Info: Source file: <relationship.eps>
-(epstopdf)                    date: 2016-03-21 17:46:38
-(epstopdf)                    size: 137608 bytes
-(epstopdf)             Output file: <relationship-eps-converted-to.pdf>
-(epstopdf)                    date: 2016-03-21 17:47:46
-(epstopdf)                    size: 26856 bytes
-(epstopdf)             Command: <epstopdf --outfile=relationship-eps-converted-
-to.pdf relationship.eps>
-(epstopdf)             \includegraphics on input line 73.
-Package epstopdf Info: Output file is already uptodate.
-<relationship-eps-converted-to.pdf, id=1, 421.575pt x 316.18124pt>
-File: relationship-eps-converted-to.pdf Graphic file (type pdf)
-
-<use relationship-eps-converted-to.pdf>
-Package pdftex.def Info: relationship-eps-converted-to.pdf used on input line 7
-3.
-(pdftex.def)             Requested size: 426.79134pt x 320.09798pt.
+("C:\Program Files (x86)\MikTeX\tex\latex\base\omlcmr.fd"
+File: omlcmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
+)
+LaTeX Font Info:    Font shape `OML/cmr/m/n' in size <10> not available
+(Font)              Font shape `OML/cmm/m/it' tried instead on input line 74.
  [1
 
-{C:/CTEX/UserData/pdftex/config/pdftex.map{Unicode.sfd}{UGBK.sfd}}] [2 <./relat
-ionship-eps-converted-to.pdf>]
+{C:/CTEX/UserData/pdftex/config/pdftex.map{Unicode.sfd}{UGBK.sfd}}]
+LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 97.
+ [2]
+LaTeX Font Info:    Font shape `OMS/cmr/m/sl' in size <10> not available
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 177.
+ [3]
+Package epstopdf Info: Source file: <solve.eps>
+(epstopdf)                    date: 2016-03-23 14:16:25
+(epstopdf)                    size: 241143 bytes
+(epstopdf)             Output file: <solve-eps-converted-to.pdf>
+(epstopdf)                    date: 2016-03-23 14:25:37
+(epstopdf)                    size: 37766 bytes
+(epstopdf)             Command: <epstopdf --outfile=solve-eps-converted-to.pdf 
+solve.eps>
+(epstopdf)             \includegraphics on input line 219.
+Package epstopdf Info: Output file is already uptodate.
+
+<solve-eps-converted-to.pdf, id=22, 1399.2275pt x 754.82pt>
+File: solve-eps-converted-to.pdf Graphic file (type pdf)
+
+<use solve-eps-converted-to.pdf>
+Package pdftex.def Info: solve-eps-converted-to.pdf used on input line 219.
+(pdftex.def)             Requested size: 426.79134pt x 230.22552pt.
+ [4 <./solve-eps-converted-to.pdf>] [5]
+[6]
+Package epstopdf Info: Source file: <errorlist.eps>
+(epstopdf)                    date: 2016-03-23 14:16:12
+(epstopdf)                    size: 31866 bytes
+(epstopdf)             Output file: <errorlist-eps-converted-to.pdf>
+(epstopdf)                    date: 2016-03-23 14:25:40
+(epstopdf)                    size: 6461 bytes
+(epstopdf)             Command: <epstopdf --outfile=errorlist-eps-converted-to.
+pdf errorlist.eps>
+(epstopdf)             \includegraphics on input line 373.
+Package epstopdf Info: Output file is already uptodate.
+ <errorlist-eps-converted-to.pdf, id=36, 421.575pt x 316.18124pt>
+File: errorlist-eps-converted-to.pdf Graphic file (type pdf)
+
+<use errorlist-eps-converted-to.pdf>
+Package pdftex.def Info: errorlist-eps-converted-to.pdf used on input line 373.
+
+(pdftex.def)             Requested size: 426.79134pt x 320.09798pt.
+ [7 <./errorlist-eps-converted-to.pdf>]
 (main.aux) ) 
 Here is how much of TeX's memory you used:
- 5232 strings out of 495255
- 69345 string characters out of 3182092
- 172307 words of memory out of 3000000
- 8421 multiletter control sequences out of 15000+200000
+ 5308 strings out of 495255
+ 70514 string characters out of 3182092
+ 211623 words of memory out of 3000000
+ 8493 multiletter control sequences out of 15000+200000
  11597 words of font info for 45 fonts, out of 3000000 for 9000
  14 hyphenation exceptions out of 8191
- 42i,6n,42p,387b,1765s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 42i,6n,42p,426b,2084s stack positions out of 5000i,500n,10000p,200000b,50000s
 <C:/Program Files (x86)/MikTeX/fonts/type1/public/amsfonts/cm/cmbx1
 0.pfb><C:/Program Files (x86)/MikTeX/fonts/type1/public/amsfonts/cm/cmbx12.pfb>
-<C:/Program Files (x86)/MikTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Pro
-gram Files (x86)/MikTeX/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Program Fi
-les (x86)/MikTeX/fonts/type1/public/amsfonts/cm/cmr17.pfb><C:/Program Files (x8
-6)/MikTeX/fonts/type1/public/amsfonts/cm/cmsl10.pfb><C:/Program Files (x86)/Mik
-TeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Program Files (x86)/MikTeX/fo
-nts/type1/public/amsfonts/cm/cmti10.pfb>
-Output written on main.pdf (2 pages, 121210 bytes).
+<C:/Program Files (x86)/MikTeX/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Pr
+ogram Files (x86)/MikTeX/fonts/type1/public/amsfonts/cm/cmmi7.pfb><C:/Program F
+iles (x86)/MikTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Program Files (x
+86)/MikTeX/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Program Files (x86)/Mik
+TeX/fonts/type1/public/amsfonts/cm/cmr17.pfb><C:/Program Files (x86)/MikTeX/fon
+ts/type1/public/amsfonts/cm/cmr7.pfb><C:/Program Files (x86)/MikTeX/fonts/type1
+/public/amsfonts/cm/cmsl10.pfb><C:/Program Files (x86)/MikTeX/fonts/type1/publi
+c/amsfonts/cm/cmsy10.pfb><C:/Program Files (x86)/MikTeX/fonts/type1/public/amsf
+onts/cm/cmti10.pfb>
+Output written on main.pdf (7 pages, 204921 bytes).
 PDF statistics:
- 46 PDF objects out of 1000 (max. 8388607)
+ 80 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
- 6 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 11 words of extra memory for PDF output out of 10000 (max. 10000000)
 
