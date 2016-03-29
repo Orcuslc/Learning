@@ -1,7 +1,7 @@
 # Convolution Neural Network
 import numpy as np
 from copy import deepcopy
-
+from sklearn import preprocessing
 def get_size(img):
 	return list(img.shape)[:2]
 
@@ -45,10 +45,12 @@ class NN:
 	def _proporgate(self, index):
 		func = np.vectorize(self.funclist[index])
 		newdata = func(np.dot(self.datalist[index], self.weightlist[index]))
+		# a = preprocessing.MinMaxScaler()
+		# newdata = a.fit_transform(newdata)
 		self.datalist.append(newdata)
 
 	def _calct(self, index):
-		eps = 0.01
+		eps = 0.1
 		w = deepcopy(self.weightlist[index])
 		t = deepcopy(w)
 		[row, col] = get_size(t)
@@ -58,7 +60,6 @@ class NN:
 			w[i, j] -= (2*eps)
 			cost2 = self._cost(index, w)
 			return (cost2 - cost1) / (2*eps)
-			print(cost2, cost1)
 		for i in range(row):
 			for j in range(col):
 				t[i, j] = cal(w, i, j)
@@ -83,7 +84,7 @@ class NN:
 		# print(self._error * self.dfunclist[index-1](self.datalist[index]))
 		delta = np.dot(np.transpose(self.datalist[index-1]), self._error * self.dfunclist[index-1](self.datalist[index]))
 		self.weightlist[index-1] *= (1-self.lam)
-		self.weightlist[index-1] -= delta * self.step
+		self.weightlist[index-1] += delta * self.step
 		self._error = np.dot(self._error * self.dfunclist[index-1](self.datalist[index]) , np.transpose(self.weightlist[index-1]))
 
 	def _thresholding(self):
@@ -97,6 +98,7 @@ class NN:
 	def _iter(self):
 		for i in range(self.N - 1):
 			self._proporgate(i)
+		# self._calct(1)
 		self._thresholding()
 		self._error = self.catagory - self.datalist[-1]
 		for i in range(self.N-1, 0, -1):
@@ -105,25 +107,31 @@ class NN:
 
 	def _evaluate(self):
 		self.p = np.abs(self._error).sum()
+		print(self.p)
 
-	def run(self):
+	def train(self):
 		for i in range(self.maxiter):
 			self._iter()
-			self._calct(0)
+			self._evaluate()
 		for i in range(self.N - 1):
 			self._proporgate(i)
 		self._thresholding()
 
+	# def run(self, data):
+	# 	self.
+	# 	for i in range(self.N):
+	# 		self._proporgate()
 
 if __name__ == '__main__':
 	data = np.asarray([[0.01*i, 0.01*j] for i in range(101) for j in range(101)])
 	f = lambda x1, x2: 0 if x1 ** 2 + x2 ** 2 - 1/4 < 0 else 1
 	catagory = np.asarray([[0, 1] if f(x[0], x[1]) == 0 else [1, 0] for x in data])
-	funclist = [lambda x: 1/(1+np.exp(-x)) for i in range(2)]
-	dfunclist = [lambda x: x*(1-x) for i in range(2)]
-	weight_size_list = [2, 5, 2]
+	funclist = [lambda x: 1/(1+np.exp(-x)) for i in range(3)]
+	dfunclist = [lambda x: x*(1-x) for i in range(3)]
+	weight_size_list = [2, 3, 2]
 	n = NN(data, catagory, weight_size_list, funclist, dfunclist)
-	n.run()
+	n.train()
+
 	
 # class CNN(NN):
 # 	def __init__(self, data, ):
