@@ -1,8 +1,13 @@
 # Convolution Neural Network
 import numpy as np
+from copy import deepcopy
 
 def get_size(img):
 	return list(img.shape)[:2]
+
+def normalize(m):
+	row_sums = m.sum(axis = 1)
+	return m / row_sums[:, np.newaxis]
 
 class NN:
 	'''
@@ -25,10 +30,11 @@ class NN:
 		self.weightlist = None
 		self._init_weight(weight_size_list)
 		self.result = None
+		self.init_data = data
 		self.datalist = [data]
 		self.maxiter = maxiter
 		self.lam = lam
-
+		self.p = 0
 
 	def _init_weight(self, weight_size_list):
 		weightlist = []
@@ -41,36 +47,78 @@ class NN:
 		newdata = func(np.dot(self.datalist[index], self.weightlist[index]))
 		self.datalist.append(newdata)
 
-	def _bp(self, error, index):
-		delta = np.dot(np.transpose(self.datalist[index-1]), error * dfunclist[index-1](self.datalist[index]))
-		self.weightlist[index] *= (1-self.lam)
-		self.weightlist[index] -= delta * self.step
-		self._error = np.dot(np.transpose(self.weightlist[index-1]), error * dfunclist[index-1](self.datalist[index-1]))
+	def _calct(self, index):
+		eps = 0.01
+		w = deepcopy(self.weightlist[index])
+		t = deepcopy(w)
+		[row, col] = get_size(t)
+		def cal(w, i, j):
+			w[i, j] += eps
+			cost1 = self._cost(index, w)
+			w[i, j] -= (2*eps)
+			cost2 = self._cost(index, w)
+			return (cost2 - cost1) / (2*eps)
+			print(cost2, cost1)
+		for i in range(row):
+			for j in range(col):
+				t[i, j] = cal(w, i, j)
+		# print(t)
 
-	def _thresholding(self):
-		result = self.datalist[-1]
+	def _cost(self, index, w):
+		func = np.vectorize(self.funclist[index])
+		newdata = func(np.dot(self.datalist[index], w))
+		for i in range(index + 1, self.N - 1):
+			newdata = func(np.dot(newdata, self.weightlist[i]))
+		result = newdata
 		maxpos = result.argmax(1)
 		for index in range(len(maxpos)):
 			result[index, :] = 0
 			result[index, maxpos[index]] = 1
-		self.datalist.append(result)
+		cost = np.abs(result - self.catagory).sum()
+		return cost
+
+	def _bp(self, index):
+		# print(self._error)
+		# print(self.dfunclist[index-1](self.datalist[index]))
+		# print(self._error * self.dfunclist[index-1](self.datalist[index]))
+		delta = np.dot(np.transpose(self.datalist[index-1]), self._error * self.dfunclist[index-1](self.datalist[index]))
+		self.weightlist[index-1] *= (1-self.lam)
+		self.weightlist[index-1] -= delta * self.step
+		self._error = np.dot(self._error * self.dfunclist[index-1](self.datalist[index]) , np.transpose(self.weightlist[index-1]))
+
+	def _thresholding(self):
+		result = deepcopy(self.datalist[-1])
+		maxpos = result.argmax(1)
+		for index in range(len(maxpos)):
+			result[index, :] = 0
+			result[index, maxpos[index]] = 1
+		self.datalist.append(result)  
 
 	def _iter(self):
 		for i in range(self.N - 1):
 			self._proporgate(i)
 		self._thresholding()
 		self._error = self.catagory - self.datalist[-1]
-		for i in range(self.N-2, -1, -1):
-			self._bp(self._error, i)
+		for i in range(self.N-1, 0, -1):
+			self._bp(i)
+		self.datalist = [self.init_data]
+
+	def _evaluate(self):
+		self.p = np.abs(self._error).sum()
 
 	def run(self):
 		for i in range(self.maxiter):
 			self._iter()
+			self._calct(0)
+		for i in range(self.N - 1):
+			self._proporgate(i)
+		self._thresholding()
+
 
 if __name__ == '__main__':
-	data = [[0.01*i, 0.01*j] for i in range(101) for j in range(101)]
+	data = np.asarray([[0.01*i, 0.01*j] for i in range(101) for j in range(101)])
 	f = lambda x1, x2: 0 if x1 ** 2 + x2 ** 2 - 1/4 < 0 else 1
-	catagory = [[0, 1] if f(x[0], x[1]) == 0 else [1, 0] for x in data]
+	catagory = np.asarray([[0, 1] if f(x[0], x[1]) == 0 else [1, 0] for x in data])
 	funclist = [lambda x: 1/(1+np.exp(-x)) for i in range(2)]
 	dfunclist = [lambda x: x*(1-x) for i in range(2)]
 	weight_size_list = [2, 5, 2]
