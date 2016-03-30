@@ -40,7 +40,7 @@ def histogram(img):
 
 def point_operator(img, func, *args):
 	f = np.vectorize(func)
-	return np.uint8(f(img, args))
+	return np.uint8(f(img, *args))
 
 # def histogram_normalization1(img):
 # 	[row, col] = get_size(img)
@@ -364,16 +364,16 @@ if __name__ == '__main__':
 
 # '''
 # 	# normalization
-# '''
-	# start1 = time.time()
-	# img2 = histogram_normalization1(img)
-	# end1 = time.time()
-	# start2 = time.time()
-	# img3 = histogram_normalization(img)
-	# end2 = time.time()
-	# print('time1', end1 - start1)
-	# print('time2', end2 - start2)
-	# histogram(img2)
+# # '''
+# 	start1 = time.time()
+# 	img2 = histogram_normalization1(img)
+# # 	end1 = time.time()
+# 	start2 = time.time()
+# 	img3 = histogram_normalization(img)
+# 	end2 = time.time()
+# 	print('time1', end1 - start1)
+# 	print('time2', end2 - start2)
+# 	histogram(img2)
 
 # '''
 	# equalization
