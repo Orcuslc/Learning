@@ -49,6 +49,7 @@ em = function(x, dim, mu, sigma, t, maxit = 100, error = 1e-6) {
     # Check if converged
     if(mu_sum < error & sigma_sum < error & sum(abs(t-t0)) < error)
       break
+    print(mu)
   }
   returnlist = list(mu, sigma, t)
   

@@ -13,3 +13,4 @@ rlist = em(x, dim, mu, sigma, t)
 print(rlist[[1]])
 print(rlist[[2]])
 print(rlist[[3]])
+

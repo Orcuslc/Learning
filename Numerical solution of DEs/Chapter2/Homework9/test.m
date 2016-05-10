@@ -1,0 +1,11 @@
+f = @(t, u)(1000 * (-u + cos(t)));
+inteval = [0 10];
+init = [0 0];
+[t1, u1] = ode113(f, inteval, init);
+figure(1);
+plot(t1, u1, 'g-');
+hold on;
+[t2, u2] = ode15s(f, inteval, init);
+plot(t2, u2, 'r.-');
+legend('Adams', 'Gear');
+grid on;

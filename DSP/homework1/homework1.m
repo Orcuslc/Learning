@@ -12,7 +12,7 @@ hold on;
 
 % y1 = convolution(f, h1);
 y1 = convolution(f, h1);
-y1 = y1(1:length(y1) - 1) / 2;
+y1 = y1(1:length(y1) - 1);
 plot(x, y1, 'g-');
 hold on;
 

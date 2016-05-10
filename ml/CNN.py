@@ -163,6 +163,12 @@ class NN:
 		# 	raise ImportError('The weightlist is not trained yet')
 
 
+class CNN(NN):
+	def __init__(self, convlist, data, catagory, weight_size_list, funclist, dfunclist, path, step = 1, lam = 0.3, maxiter = 10, minerror = 1e-7):
+		'''
+
+		'''
+		super().__init__(data, catagory, weight_size_list, 	funclist, dfunclist, path, step, lam, maxiter, minerror)
 
 
 if __name__ == '__main__':
@@ -176,11 +182,11 @@ if __name__ == '__main__':
 	# # data = np.arctan(data) * 2/np.pi
 	path = "NN_1.npz"
 	n = NN(data, catagory, weight_size_list, funclist, dfunclist, maxiter=10000, minerror=1e-100, path=path)
-	# n.train()
-	data = np.asarray([[0.01, 0.02]])
-	cata = np.asarray([[0, 1]])
-	res, p = n.run(data, cata)
-	print(res, p)
+	n.train()
+	# data = np.asarray([[0.01, 0.02]])
+	# cata = np.asarray([[0, 1]])
+	# res, p = n.run(data, cata)
+	# print(res, p)
 
 	#test2
 	# data = np.asarray([[0, 0], [0, 1], [1, 0], [1, 1]])

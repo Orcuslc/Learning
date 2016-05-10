@@ -9,5 +9,8 @@ for i = 1:col2
     A(i:i + col1 - 1, i) = transpose(x);
 end
 y = A * transpose(h);
-y = y / length(h);
+% y = y / sum(h);
+
+% In order to constrain the length of y;
+y = y(2:length(y));
 

@@ -1,6 +1,8 @@
 import numpy as np
 import random
 from matplotlib import pyplot as plt
+import time
+from numba import *
 
 class kmeans:
 	'''
@@ -11,11 +13,11 @@ class kmeans:
 		A is a Data Matrix with a type of np.ndarray,
 		in which each line is a data point of n-dimension.
 
-		The last number in each line is the type of the point.
+		# The last number in each line is the type of the point.
 
 		n is the number of centers
 		'''
-		self.A = A
+		self.A = np.asarray([[data, 0] for data in A])
 		self.n = n
 		[self.row, self.col] = self._get_size()
 		self.col -= 1
@@ -32,6 +34,7 @@ class kmeans:
 	def _get_size(self):
 		return list(self.A.shape)[:2]
 
+	# @jit
 	def _init_centers(self):
 		indexlist = [random.randint(0, self.row-1) for i in range(self.n)]
 		for i in range(self.n):
@@ -42,6 +45,7 @@ class kmeans:
 		self._determine_types()
 		self._refresh_centers()
 
+	# @jit
 	def _determine_types(self):
 		for i in range(self.row):
 			dist_list = []
@@ -53,6 +57,7 @@ class kmeans:
 	def _get_distance(self, a, b):
 		return np.sqrt(sum((a-b)**2))
 
+	# @jit
 	def _get_min_dis(self, dist_list):
 		flag = dist_list[0]
 		key = 0
@@ -62,6 +67,7 @@ class kmeans:
 				flag = dist_list[i]
 		return key
 
+	# @jit
 	def _refresh_centers(self):
 		self.data_by_center = [[] for i in range(self.n)]
 		for data in self.A:
@@ -76,7 +82,11 @@ class kmeans:
 		for i in range(self.maxiter):
 			self._iter()
 
+	# @jit
 	def plot(self):
+		'''
+		TWO-DIMENSION PLOT
+		'''
 		data_x = []
 		data_y = []
 		z = []
@@ -92,14 +102,16 @@ class kmeans:
 
 
 if __name__ == '__main__':
-	m = 100
+	m = 10000
 	A = np.random.random([m, 2])
-	A = np.asarray([[data, 0] for data in A])
-	k = kmeans(A, n=3)
+	# A = np.asarray([[data, 0] for data in A])
+	k = kmeans(A, n=40)
+	t1 = time.time()
 	k.run()
+	t2 = time.time()
+	print(t2-t1)
 	# print(k.data_by_center)
 	k.plot()
-
 
 
 

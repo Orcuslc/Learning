@@ -1,0 +1,432 @@
+\documentclass{article}
+\usepackage{listings}
+\usepackage{xcolor}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amsthm,amssymb}
+\usepackage{graphicx}
+\usepackage{epstopdf}
+\DeclareGraphicsExtensions{.eps,.ps,.jpg,.bmp}
+\lstset{
+	numbers=left,
+    framexleftmargin=10mm,
+    frame=none,
+    backgroundcolor=\color[RGB]{245,245,244},
+	keywordstyle=\bf\color{blue},
+	identifierstyle=\bf,
+	numberstyle=\color[RGB]{0,192,192},
+	commentstyle=\it\color[RGB]{0,96,96},
+	stringstyle=\rmfamily\slshape\color[RGB]{128,0,0},
+	showstringspaces=false
+    }
+
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+
+\newenvironment{theorem}[2][Theorem]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{lemma}[2][Lemma]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{exercise}[2][Exercise]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{problem}[2][Problem]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{question}[2][Question]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{corollary}[2][Corollary]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+
+\begin{document}
+
+\title{Homework 2016-04-18}
+\author{Chuan Lu\\
+13300180056}
+
+\maketitle
+
+\begin{problem}{1}
+\text{ }\\
+Given an HMM with a state transition matrix and display matrix, calculate the probability of the state series HTTT.
+\end{problem}
+\begin{proof}
+Since the initial condition is not given in this problem, we can suppose that the beginning probability vector is [p, q], where p + q = 1. \\
+Then $f_{F}(1) = p * 0.5 = 0.5p,$ \\
+$f_{B}(1) = q * 0.8 = 0.8q,$ \\
+$f_{F}(2) = 0.5*(0.5p*0.6+0.8q*0.4) = 0.15p+0.32q,$ \\ 
+$f_{B}(2) = 0.2*(0.5p*0.4+0.8q*0.6) = 0.04p+0.096q,$ \\ 
+$f_{F}(3) = 0.5*(0.6*(0.15p+0.32q)+0.4*(0.04p+0.096q)) = 0.053p+0.1102q,$ \\
+$f_{B}(3) = 0.2*(0.4*(0.15p+0.32q)+0.6*(0.04p+0.096q)) = 0.0168p+0.03712q,$ \\
+$f_{F}(4) = 0.5*(0.6*(0.053p+0.1102q)+0.4*(0.0168p+0.03712q)) = 0.01926p+0.040484q,$ \\
+$f_{B}(4) = 0.2*(0.4*(0.053p+0.1102q)+0.6*(0.0168p+0.03712q)) = 0.006256p+0.0132704q.$ \\
+Hence, $$P(HTTT) = f_{F}(4) + f_{B}(4) = 0.025516p+0.0537544q.$$
+\end{proof}
+
+
+\begin{problem}{2}
+\text{ }\\
+Calculate the probability that the hidden state be B for each explicit state.
+\end{problem}
+\begin{proof}
+According to the basic hypothesis of HMM, \\
+$P(B|H) = \frac{P(B)*P(H|B)}{P(H)} = \frac{(P(B|F)+P(B|B))*P(H|B)}{P(H|B)+P(H|A)} = \frac{0.8}{0.8+0.5} = \frac{8}{13},$ \\
+$P(F|H) = \frac{5}{13}.$
+\end{proof}
+
+\begin{problem}{3}
+\text{ } \\
+Calculate the probability of hidden state series FFBB.
+\end{problem}
+\begin{proof}
+Like problem 1, suppose the initial probability vector is [p, q], where p + q = 1. \\
+Then according to the basic hypothesis of HMM, \\
+$P(FFBB|HTTT) = \frac{P(FFBB,HTTT)}{P(HTTT)} = \frac{P(F|init)P(H|F)P(F|F)P(T|F)P(B|F)P(T|B)P(B|B)P(T|B)}{P(HTTT)} = \frac{p*0.5*0.6*0.5*0.4*0.2*0.6*0.2}{0.025516p + 0.537544q} = \frac{0.00144p}{0.025516p+0.537544q}.$
+% $$f_{F}(1) = p, f_{B}(1) = q;$$
+% $$f_{F}(2) = p * 0.6 + q * 0.4 = 0.6p+0.4q, f_{B}(2) = p*0.4+q*0.6 = 0.4p+0.6q;$$
+% $$f_{F}(3) = 0.6*(0.6*p+0.4q)+0.4*(0.4p+0.6q) = 0.52p+0.48q, f_{B}(3) = 0.4*(0.6p+0.4q)+0.6*(0.4p+0.6q) = 0.48p+0.52q;$$
+% $$f_{B}(4) = 
+\end{proof}
+
+\begin{problem}{4}
+\text{ }\\
+With the assumptions given at problem 1, calculate the most probable hidden route.
+\end{problem}
+\begin{proof}
+According to Viterbi Algorithm, $v_{0}(0)=1, v_{B}(0)=0, v_{F}(0)=0;$ \\
+$v_{B}(1)=P(x_{1}=H|s_{1}=B)*max_{l}P(s_1=B|init=l)v_{l}(0)=P(H|B)*q=0.8q,$ \\
+$v_{F}(1)=P(x_{1}=H|s_{1}=F)*max_{l}P(s_1=F|init=l)v_{l}(0)=P(H|F)*q=0.5p,$ \\
+$v_{B}(2)=P(x_{2}=T|s_{2}=B)*max_{l}P(s_2=B|s_{1}=l)v_{l}(1)=max\{0.04p, 0.096q\},$ \\
+$v_{F}(2)=P(x_{2}=T|s_{2}=F)*max_{l}P(s_2=F|s_{1}=l)v_{l}(1)=max\{0.15p, 0.16q\},$ \\
+$v_{B}(3)=P(x_{3}=T|s_{3}=B)*max_{l}P(s_3=B|s_{2}=l)v_{l}(2)=max\{0.012p, 0.0128q\},$ \\
+$v_{F}(3)=P(x_{3}=T|s_{3}=F)*max_{l}P(s_3=F|s_{2}=l)v_{l}(2)=max\{0.045p, 0.048q\},$ \\
+$v_{B}(4)=P(x_{4}=T|s_{4}=B)*max_{l}P(s_4=B|s_{3}=l)v_{l}(3)=max\{0.0036p, 0.00384q\},$ \\
+$v_{F}(4)=P(x_{4}=T|s_{4}=F)*max_{l}P(s_4=F|s_{3}=l)v_{l}(3)=max\{0.0135p, 0.0144q\}. $\\
+Hence, The most probable route should be (B if $q\leqslant\frac{5}{13}$ else F), F, F, F.
+\end{proof}
+
+
+\begin{problem}{5}
+\text{ }\\
+Estimate the state transition matrix and emission matrix with the data given, and estimate the most probable hidden sequence.
+\end{problem}
+
+\begin{proof}
+\subsection{The code is shown as follows.}
+\begin{lstlisting}[language = {R}]
+baum_welch = function(data, hidden_states, observed_states, max_iter=1000, max_error=1e-8) {
+ 
+   # init parameters with hidden_states and observed_states;
+  transition_matrix = matrix(rep(1, hidden_states^2), ncol = hidden_states)
+  # transition_matrix = matrix(runif(hidden_states*hidden_states), nrow = hidden_states)
+  transition_matrix = transition_matrix/rowSums(transition_matrix)
+  emission_matrix = matrix(runif(hidden_states*observed_states), ncol = observed_states)
+  emission_matrix = emission_matrix/rowSums(emission_matrix)
+  
+  # instrumental variables, A for transition_matrix, E for emission_matrix
+  A = matrix(rep(0, hidden_states*hidden_states), nrow = hidden_states)
+  E = matrix(rep(0, hidden_states*observed_states), ncol = observed_states)
+  
+  # Number of sequences and length of sequences;
+  n_seq = ncol(data)
+  len_seq = nrow(data)
+  
+  # Iteration
+  for (step in 1:max_iter) {
+    
+    #print("step")
+    print(step)
+    # the lists saving the results of forward and backward algorithm, the x_th element 
+    # is the result of the x_th sequence
+    F_list = list()
+    B_list = list()
+    for (i in 1:n_seq) {
+      F_list[[i]] = forward(matrix(data[, i], ncol=1), transition_matrix, emission_matrix)
+      B_list[[i]] = backward(matrix(data[, i], ncol=1), transition_matrix, emission_matrix)
+    }
+    
+    # We assume the probabilities for each sequence observed are the same;
+    # And each time a multiplication is applied, a const related to the length of the
+    # sequence should be multipled to it, so as to enlarge the result.
+    # Step 1
+    for (k in 1:hidden_states) {
+      for (l in 1:hidden_states) {
+        temp = 0
+        for (j in 1:n_seq) {
+          x = data[, j]
+          F = F_list[[j]]
+          B = B_list[[j]]
+          for (i in 1:len_seq) {
+            # Attemtion : We replace the i-1 in F[k ,i] for i
+            #print(F[k, i]*transition_matrix[k, l]*emission_matrix[l, x[i]]*B[l, i])
+            temp = temp + F[k, i]*transition_matrix[k, l]*emission_matrix[l, x[i]]*B[l, i]
+          }
+          temp = temp * (len_seq^5)
+        }
+        A[k, l] = temp
+      }
+    }
+    
+    # Step 2
+    for (k in 1:hidden_states) {
+      for (b in 1:observed_states) {
+        temp = 0
+        for (j in 1:n_seq) {
+          x = data[, j]
+          F = F_list[[j]]
+          B = B_list[[j]]
+          for (i in 1:len_seq) {
+            if (x[i] == b) {
+              temp = temp + F[k, i]*B[k, i]
+            }
+          }
+          temp = temp * (len_seq^5)
+        }
+        E[k, b] = temp
+      }
+    }
+    
+    # Judging of convergence
+    #print(A)
+    Normalized_A = A/rowSums(A)
+    Normalized_E = E/rowSums(E)
+    error_A = sum(abs(transition_matrix - Normalized_A))
+    error_E = sum(abs(emission_matrix - Normalized_E))
+    #print(error_A, error_E)
+    if (error_A < max_error & error_E < max_error) {
+      break
+    }
+    
+    # Step 3
+    transition_matrix = Normalized_A
+    emission_matrix = Normalized_E
+    #print(emission_matrix)
+  }
+  
+  # Return: A list of transition matrix and emission matrix
+  returnlist = list(transition_matrix, emission_matrix)
+  return(returnlist)
+}
+
+forward = function(x, a, e) {
+  # forward algorithm;
+  # a is the transition matrix and e is the emission matrix;
+  # x is the observed sequence.
+  n = nrow(x)
+  
+  # hs is the number of hidden states.
+  hs = nrow(a)
+
+  # F is the forward matrix;
+  # The l_th row and i_th col means f_l(i);
+  # The iteration of F is: f_l(i) = e[l, i]*\sigma_k(F[k, i-1] * a[k, l])
+  F = matrix(rep(0, n*hs), ncol = n)
+  F[, 1] = e[, 1]
+  
+  for (i in 2:n) {
+    for (l in 1:hs) {
+      F[l, i] = e[l, x[i]]*sum(F[, i-1]*a[, l])
+    }
+  }
+  return(F)
+}
+
+backward = function(x, a, e) {
+  # backward algorithm;
+  # x is the observed sequence;
+  # a is the transition matrix and e is the emission matrix;
+  n = nrow(x)
+  hs = nrow(a)
+  
+  # B is the backward matrix;
+  # the i_th row and j_th col means b_i(j);
+  # The iteration of B is: b_i(j) = \sigma_{s_k}P(s_k|s_i)P(x_{j+1}|s_k)b_k(j+1)
+  B = matrix(rep(0, n*hs), ncol = n)
+  B[, n] = matrix(rep(1, hs), ncol = 1)
+  
+  for (j in n-1:-1:1) {
+    for (i in 1:hs) {
+      B[i, j] = a[i, ] %*% (e[, x[j+1]] * B[, j+1])
+    }
+  }
+  return(B)
+}
+
+viterbi = function(x, a, e) {
+  # viterbi algorithm
+  # x is the observed sequence, a is the state transition matrix,
+  # and e is the emission matrix;
+  n = nrow(x)
+  hs = nrow(a)
+
+  # v is the viterbi matrix;
+  # the i_th row and j_th col is v_k(i)
+  # The iteration of V is v_k(i) = P(x_i|s_i = k)*max_{l}{P(s_i=k|s_{i-1} = l)}v_l(i-1)
+  # Attention : the first column of V is v_k(0)
+  v = matrix(rep(0, (n+1)*hs), ncol = n + 1)
+  v[1, 1] = 1
+
+  for (i in 2:(n+1)) {
+    for (l in 1:hs) {
+      v[l, i] = e[l, x[i-1]] * max(v[, i-1] * a[, l])
+    }
+  }
+  
+  # S is the most probable sequence
+  s = matrix(rep(0, n), nrow = 1)
+  s[n] = which(v[, n+1] == max(v[, n+1]))
+
+  for (i in (n-1):1) {
+    temp = a[, s[i+1]] * v[, i+1]
+    s[i] = which(temp == max(temp))
+  }
+  return(s)
+}
+
+\end{lstlisting}
+\begin{lstlisting}[language = {R}]
+data = read.csv('assign2.csv')
+row = nrow(data)
+col = ncol(data)
+tdata = data[, 2:col]
+data = matrix(rep(0, row*(col-1)), nrow = row)
+for (i in 1:col-1) {
+  d = factor(tdata[, i], levels = c('L', 'R'), labels = c('1', '2'))
+  d = as.numeric(d)
+  data[, i] = matrix(d)
+}
+
+# data = matrix(c(2,2,2,2,2), ncol=1)
+source("hmm.R")
+hidden_states = 2
+observed_states = 2
+rlist = baum_welch(data, hidden_states, observed_states)
+a = rlist[[1]]
+e = rlist[[2]]
+s1 = viterbi(matrix(data[, 1]), a, e)
+s2 = viterbi(matrix(data[, 2]), a, e)
+\end{lstlisting}
+
+\subsection{The result is shown as follows.}
+\begin{lstlisting}[language = {R}]
+> a
+          [,1]      [,2]
+[1,] 0.7871485 0.2128515
+[2,] 0.4170624 0.5829376
+
+> e
+     [,1] [,2]
+[1,]  0.5  0.5
+[2,]  0.5  0.5
+
+> s1
+     [,1] [,2] [,3] [,4] [,5] [,6] [,7] [,8] [,9] [,10] [,11] [,12]
+[1,]    1    1    1    1    1    1    1    1    1     1     1     1
+     [,13] [,14] [,15] [,16] [,17] [,18] [,19] [,20] [,21] [,22]
+[1,]     1     1     1     1     1     1     1     1     1     1
+     [,23] [,24] [,25] [,26] [,27] [,28] [,29] [,30] [,31] [,32]
+[1,]     1     1     1     1     1     1     1     1     1     1
+     [,33] [,34] [,35] [,36] [,37] [,38] [,39] [,40] [,41] [,42]
+[1,]     1     1     1     1     1     1     1     1     1     1
+     [,43] [,44] [,45] [,46] [,47] [,48] [,49] [,50] [,51] [,52]
+[1,]     1     1     1     1     1     1     1     1     1     1
+     [,53] [,54] [,55] [,56] [,57] [,58] [,59] [,60] [,61] [,62]
+[1,]     1     1     1     1     1     1     1     1     1     1
+     [,63] [,64] [,65] [,66] [,67] [,68] [,69] [,70] [,71] [,72]
+[1,]     1     1     1     1     1     1     1     1     1     1
+     [,73] [,74] [,75] [,76] [,77] [,78] [,79] [,80] [,81] [,82]
+[1,]     1     1     1     1     1     1     1     1     1     1
+     [,83] [,84] [,85] [,86] [,87] [,88] [,89] [,90] [,91] [,92]
+[1,]     1     1     1     1     1     1     1     1     1     1
+     [,93] [,94] [,95] [,96] [,97] [,98] [,99] [,100]
+[1,]     1     1     1     1     1     1     1      1
+> s2
+     [,1] [,2] [,3] [,4] [,5] [,6] [,7] [,8] [,9] [,10] [,11] [,12]
+[1,]    1    1    1    1    1    1    1    1    1     1     1     1
+     [,13] [,14] [,15] [,16] [,17] [,18] [,19] [,20] [,21] [,22]
+[1,]     1     1     1     1     1     1     1     1     1     1
+     [,23] [,24] [,25] [,26] [,27] [,28] [,29] [,30] [,31] [,32]
+[1,]     1     1     1     1     1     1     1     1     1     1
+     [,33] [,34] [,35] [,36] [,37] [,38] [,39] [,40] [,41] [,42]
+[1,]     1     1     1     1     1     1     1     1     1     1
+     [,43] [,44] [,45] [,46] [,47] [,48] [,49] [,50] [,51] [,52]
+[1,]     1     1     1     1     1     1     1     1     1     1
+     [,53] [,54] [,55] [,56] [,57] [,58] [,59] [,60] [,61] [,62]
+[1,]     1     1     1     1     1     1     1     1     1     1
+     [,63] [,64] [,65] [,66] [,67] [,68] [,69] [,70] [,71] [,72]
+[1,]     1     1     1     1     1     1     1     1     1     1
+     [,73] [,74] [,75] [,76] [,77] [,78] [,79] [,80] [,81] [,82]
+[1,]     1     1     1     1     1     1     1     1     1     1
+     [,83] [,84] [,85] [,86] [,87] [,88] [,89] [,90] [,91] [,92]
+[1,]     1     1     1     1     1     1     1     1     1     1
+     [,93] [,94] [,95] [,96] [,97] [,98] [,99] [,100]
+[1,]     1     1     1     1     1     1     1      1
+\end{lstlisting}
+
+However, every time I rerun the same algorithm, even under the same initial parameters,
+the result of a, the state transition matrix, can be totally different, while the result of e,
+ the emission matrix, stay all the same. 
+\end{proof}
+
+\begin{problem}{6}
+\text{ } \\
+\end{problem}
+\begin{proof}
+
+\end{proof}
+
+% % \begin{problem}{6}
+% % \text{ }\\
+% % Which of the following are Groups? Which of the following are not groups, and why?\\
+
+% % \indent (1)  $G = \{{2, 4, 6, 8}\}$ in $\Z_{10}$.  Where $a \star b = ab$\\
+% % \indent (2)  $G = \Q^{\ast}$, where $a \star b = \frac{a}{b}$\\
+% % \indent (3) $G = \Z$, where $a \star b = a - b$\\
+% % \indent (4) $G = \{ {2^{x}\mid x \in \Q} \}$, where $a \star b = ab$\\
+
+% % \end{problem}
+
+% % \begin{proof}
+
+% % \end{proof}
+
+% % \begin{problem}{7}
+% % \text{ }\\
+% % Consider the set $Q =$ \{ $\pm$1, $\pm$i, $\pm$j, $\pm$k\} of the complex matrices as follows:\\
+% % \[
+% % 1=
+% %   \begin{bmatrix}
+% %     1 & 0\\
+% %     0 & 1\\
+% %   \end{bmatrix}
+% % \]
+
+% % \[
+% % i=
+% %   \begin{bmatrix}
+% %     i & 0\\
+% %     0 & $-$i\\
+% %   \end{bmatrix}
+% % \]
+
+% % \[
+% % j=
+% %   \begin{bmatrix}
+% %     0 & 1\\
+% %     $-$1 & 0\\
+% %   \end{bmatrix}
+% % \]
+
+% % \[
+% % k=
+% %   \begin{bmatrix}
+% %     0 & i\\
+% %     i & 0\\
+% %   \end{bmatrix}
+% % \]
+% % Show that $Q$ is a group under matrix multiplication by writing out its multiplicaiton table. (Note: $Q$ is called the quartenion group).
+% % \end{problem}
+% % \begin{proof}
+
+% % \end{proof}
+
+\end{document}
