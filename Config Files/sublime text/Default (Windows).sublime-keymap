@@ -2,4 +2,6 @@
 	{"keys": ["ctrl+up"], "command": "select_lines", "args": {"forward": false}},
 	{"keys": ["ctrl+down"], "command": "select_lines", "args": {"forward": true}},
 	{ "keys": ["ctrl+a"], "command": "move", "args": {"by": "word_ends", "forward": true} },
+	{ "keys": ["ctrl+shift+a"], "command": "select_all" },
+
 ]
