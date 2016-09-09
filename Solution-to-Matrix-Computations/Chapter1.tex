@@ -1,0 +1,45 @@
+\documentclass[12pt]{article}
+\usepackage[margin=1in]{geometry} 
+\usepackage{amsmath,amsthm,amssymb,amsfonts}
+\usepackage{listings}
+\usepackage{clrscode3e}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+ 
+\newenvironment{problem}[2][Problem]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+%If you want to title your bold things something different just make another thing exactly like this but replace "problem" with the name of the thing you want, like theorem or lemma or whatever
+ 
+\begin{document}
+% \renewcommand{\qedsymbol}{\filledbox}
+%Good resources for looking up how to do stuff:
+%Binary operators: http://www.access2science.com/latex/Binary.html
+%General help: http://en.wikibooks.org/wiki/LaTeX/Mathematics
+%Or just google stuff
+ 
+\title{Answers to Chapter 1}
+\author{Chuan Lu}
+\maketitle
+ 
+\begin{problem}{Page 13, P1.1.1}
+\end{problem}
+ 
+\begin{proof}
+$M = \Pi_{i=1}^{r}(A-x_{i}I)=A^r-\Sigma_{i=1}^{r}x_{i}A^{r-1}+\Sigma_{1<x_i<x_j<r}x_ix_jA^{r-2}+...+(-1)^r\Pi_{i=1}^{r}x_iI.$\\
+So the first column of M should be the linear combination of each components in the formula above. Now we give an algorithm to compute the first column of $A^k$.
+\begin{codebox}
+\Procname{$\proc{Algorithm 1.1.1}$}
+\zi Input: A n*n matrix A, an integer k.
+\zi Output: The first column of $A^1, A^2, ..., A^k$.
+\li T = A
+\li \For $i \gets 1$ \To $k$
+\li 	\Do
+			$B[:, i] = T[:, 1]$
+\li			$T = A*T[:, 1]$
+		\End
+\li \Return $B$
+\end{codebox}
+The time complexity of this algorithm is $O(k*n^2)$, and time complexity of calculating the coefficients is $O(C_{r}^{r/2})$. So the total time cost should be $O(kC_{r}^{r/2}n^2)$.
+\end{proof}
+
+\end{document}
