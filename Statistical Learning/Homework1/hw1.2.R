@@ -31,7 +31,8 @@ plot(c(-10, -10, 10, 10), c(-10, 10, -10, 10));
 
 CH = evaluate_CH(data, max_k = max_k);
 H = evaluate_H(data, max_k = max_k);
-lines(1:max_k, H)
-calc_GAP(data, k = 2);
+lines(1:max_k, H);
+# calc_GAP(data, k = 2);
+evaluate_GAP(data);
 
 
