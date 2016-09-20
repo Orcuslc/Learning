@@ -1,5 +1,8 @@
 kmeans = function(A, k, max_iter = 1000, min_error = 1e-6) {
   # Kmeans, using Lloyd Algorithm;
+  # While one of the types have NO points,
+  # Kick the farthest point in the largest type out and mark it the NULL type;
+  
   # A: The data matrix, each record being a row;
   # k: The number of cluster centers;
   # max_iter: The number of max iteration;
@@ -14,41 +17,49 @@ kmeans = function(A, k, max_iter = 1000, min_error = 1e-6) {
   count = 0;  # Number of iter count;
   
   while(TRUE && count <= max_iter) {
-	for(i in 1:ndata) {
-	  type[i] = nearest_center(A[i, ], centers);
-	}
+	  for(i in 1:ndata) {
+	   type[i] = nearest_center(A[i, ], centers);
+  	}
     
-  # To add robustance; while one of the types have NO points,
-  # Then Kick one point in the largest type out and mark it the NULL type;
-  while(TRUE) {
-    type_count = rep(0, k);
-    for(j in 1:k) {
-      type_count[j] = length(which(type == j));
-    }
-    if(min(type_count) > 0) {
-      break;
-    }
-    largest_type = which(type_count == max(type_count))[1];
-    for(j in 1:k) {
-      if(type_count[j] == 0) {
-        type[which(type == largest_type)[1]] = j;
+  # To add robustance; rearrange types;
+    while(TRUE) {
+      type_count = rep(0, k);
+      for(j in 1:k) {
+        type_count[j] = length(which(type == j));
+      }
+      if(min(type_count) > 0) {
+        break;
+      }
+      largest_type = which(type_count == max(type_count))[1];
+      for(j in 1:k) {
+        if(type_count[j] == 0) {
+          # type[which(type == largest_type)[1]] = j;
+          t = which(type == largest_type);
+          B = A[t, ];
+          ln = length(t);
+          dist_t = rep(0, ln);
+          for(m in 1:ln) {
+            print(t[m])
+            dist_t = calc_dist(B[m, ], centers[largest_type, ]);
+          }
+          min_t = which(dist_t == min(dist_t))[1];
+          type[which(type == largest_type)[min_t]] = j;
+        }
       }
     }
-  }
   
-	for(i in 1:k) {
-	  A_t = A[which(type == i), ];
-	  ncenters[i, ] = update_centers(A_t);
-	}
-	if(is_stable(centers, ncenters, min_error)) {
-	  break;
-	}
-	count = count + 1;
-	centers = ncenters;
-	print(count)
-  }
-  res = list(type, centers)
-  return(res);
+  	for(i in 1:k) {
+  	  A_t = A[which(type == i), ];
+  	  ncenters[i, ] = update_centers(A_t);
+  	}
+  	if(is_stable(centers, ncenters, min_error)) {
+  	  break;
+  	}
+  	count = count + 1;
+  	centers = ncenters;
+    }
+    res = list(type, centers)
+    return(res);
 }
 
 update_centers = function(A_t) {
@@ -110,7 +121,13 @@ plot_points = function(A, type, k) {
   bcol = floor(657/k);
   for(i in 1:nrow(A)) {
     colc = bcol * type[i];
-    points(A[i, 1], A[i, 2], type = 'o', col = cl[colc], pch = 16);
+    points(A[i, 1], A[i, 2], type = 'o', col = cl[colc], pch = 19);
+  }
+  for(i in 1:k) {
+    x = A[which(type == i), 1];
+    y = A[which(type == i), 2];
+    hull = chull(x, y);
+    polygon(x[hull], y[hull]);
   }
 }
 
@@ -120,50 +137,5 @@ read = function(path) {
   data = as.matrix(data)[, 2:ncol(data)];
   colnames(data) = NULL;
   return(data);
-}
-
-calc_squares = function(A) {
-  # To calculate the squares within clusters, used in calc_w;
-  n = nrow(A);
-  if(is.null(n)) {
-	return(0);
-  }
-  else {
-	nsum = 0;
-	for(i in 1:n) {
-	  for(j in i:n) {
-		nsum = nsum + calc_dist(A[i, ], A[j, ]);
-	  }
-	}
-	return(nsum);
-  }
-}
-
-calc_w = function(A, k, type, centers) {
-  # Calculate the W(k) in C-H and H evaluation;
-  nsum = 0;
-  for(i in 1:k) {
-	nsum = nsum + calc_squares(A[which(type==i), ]);
-  }
-  return(nsum);
-}
-
-calc_b = function(A, k, type, centers) {
-  # Calculate the B(k) in C-H evaluation;
-  return(calc_squares(centers));
-}
-
-evaluate_CH = function(A, max_k = 20, max_iter = 1000, min_error = 1e-6) {
-  CH = rep(0, max_k);
-  n = nrow(A);
-  for(k in 2:max_k) {
-	print(k);
-	res = kmeans(A, k);
-	type = res[[1]];
-	centers = res[[2]];
-	nCH = (calc_b(A, k, type, centers)/(k-1))/(calc_w(A, k, type, centers)/(n-k));
-	CH[k] = nCH;
-  }
-  return(CH);
 }
 

@@ -1,5 +1,6 @@
 # Homework 1.2
 source("kmeans.R");
+source("evaluate.R")
 
 
 data = read("Data1.csv");
@@ -22,6 +23,15 @@ data = read("Data1.csv");
 # CH = evaluate_CH(data, max_k);
 # plot(1:max_k, CH)
 k = 6;
+max_k = 20;
 type = kmeans(data, k = k, max_iter = 10000, min_error = 1e-8)[[1]];
-# plot(c(-10, -10, 10, 10), c(-10, 10, -10, 10));
-plot_points(data, type, k)
+plot(c(-10, -10, 10, 10), c(-10, 10, -10, 10));
+
+# lines(data, type, k);
+
+CH = evaluate_CH(data, max_k = max_k);
+H = evaluate_H(data, max_k = max_k);
+lines(1:max_k, H)
+calc_GAP(data, k = 2);
+
+
