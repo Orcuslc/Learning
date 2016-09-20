@@ -22,17 +22,20 @@ data = read("Data1.csv");
 # max_k = 10;
 # CH = evaluate_CH(data, max_k);
 # plot(1:max_k, CH)
-k = 6;
-max_k = 20;
-type = kmeans(data, k = k, max_iter = 10000, min_error = 1e-8)[[1]];
-plot(c(-10, -10, 10, 10), c(-10, 10, -10, 10));
+# k = 6;
+# max_k = 20;
+# type = kmeans(data, k = k, max_iter = 10000, min_error = 1e-8)[[1]];
+plot(c(-1, -1, 10, 10), c(-2, 2, -2, 2));
 
 # lines(data, type, k);
 
-CH = evaluate_CH(data, max_k = max_k);
-H = evaluate_H(data, max_k = max_k);
-lines(1:max_k, H);
+# CH = evaluate_CH(data, max_k = max_k);
+# H = evaluate_H(data, max_k = max_k);
+# lines(1:max_k, H);
 # calc_GAP(data, k = 2);
-evaluate_GAP(data);
+max_k = 10;
+res = evaluate_GAP(data, max_k = max_k);
+print(res);
+lines(1:max_k, res[[2]]);
 
 

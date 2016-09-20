@@ -84,10 +84,13 @@ gen_GAP = function(A) {
   return(smp);
 }
 
-evaluate_GAP = function(A, B = 10, max_k = 10, max_iter = 1000, min_error = 1e-6) {
+evaluate_GAP = function(A, B = 100, max_k = 10, max_iter = 1000, min_error = 1e-6) {
   # Gap Statistic;
   # We use method (a) to generate reference datasets;
-  gap_last = 0;
+  gap_last = -Inf;
+  gap = rep(0, max_k);
+  nres = max_k;
+  count = 0;
   for(m in 2:max_k) {
     res = calc_GAP(A, k = m);
     gap_k = res[[2]];
@@ -95,19 +98,20 @@ evaluate_GAP = function(A, B = 10, max_k = 10, max_iter = 1000, min_error = 1e-6
     l = mean(log_W);
     sd_k = sqrt(mean((log_W - l)^2));
     s_k = sd_k * sqrt(1+1/B);
-    if(gap_last >= gap_k - s_k) {
-      return(m - 1);
+    if(gap_last >= gap_k - s_k && count == 0) {
+      nres = m - 1;
+      count = count + 1;
     }
     gap_last = gap_k;
+    gap[m] = gap_last;
   }
-  return(max_k)
+  return(list(nres, gap));
 }
 
 calc_GAP = function(A, B = 10, k) {
   res = kmeans(A, k);
   type = res[[1]];
   log_W_data = log(calc_w_GAP(A, k, type));
-  log_W_ref = 0;
   log_W_ref_B = rep(0, B);
   for(i in 1:B) {
     smp = gen_GAP(A);
@@ -115,9 +119,8 @@ calc_GAP = function(A, B = 10, k) {
     type = res[[1]];
     W = log(calc_w_GAP(smp, k, type));
     log_W_ref_B[i] = W;
-    log_W_ref = log_W_ref + W;
   }
-  return(list(log_W_ref_B, log_W_ref/B - log_W_data));
+  return(list(log_W_ref_B, mean(log_W_ref_B) - log_W_data));
 }
 
 calc_w_GAP = function(A, k, type) {
@@ -125,7 +128,14 @@ calc_w_GAP = function(A, k, type) {
   for(i in 1:k) {
     nsum = 0;
     A_t = A[which(type == i), ];
+    if(is.null(nrow(A_t))) {
+      A_t = matrix(A_t);
+    }
     n = nrow(A_t);
+    if(n==1)
+    {
+      print(n)
+    }
     for(j in 1:n) {
       for(k in 1:n) {
         nsum = nsum + calc_dist(A_t[j, ], A_t[k, ]);
