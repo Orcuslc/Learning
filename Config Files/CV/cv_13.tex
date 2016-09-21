@@ -1,0 +1,299 @@
+%!TEX program = xelatex
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Wilson Resume/CV
+% XeLaTeX Template
+% Version 1.0 (22/1/2015)
+%
+% This template has been downloaded from:
+% http://www.LaTeXTemplates.com
+%
+% Original author:
+% Howard Wilson (https://github.com/watsonbox/cv_template_2004) with
+% extensive modifications by Vel (vel@latextemplates.com)
+%
+% License:
+% CC BY-NC-SA 3.0 (http://creativecommons.org/licenses/by-nc-sa/3.0/)
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%----------------------------------------------------------------------------------------
+%	PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
+%----------------------------------------------------------------------------------------
+
+\documentclass[10pt]{article} % Default font size
+
+\input{structure.tex} % Include the file specifying document layout
+
+%----------------------------------------------------------------------------------------
+
+\begin{document}
+
+%----------------------------------------------------------------------------------------
+%	NAME AND CONTACT INFORMATION
+%----------------------------------------------------------------------------------------
+
+\title{Chuan Lu} % Print the main header
+
+%------------------------------------------------
+
+\parbox{0.5\textwidth}{ % First block
+\begin{tabbing} % Enables tabbing
+\hspace{3cm} \= \hspace{4cm} \= \kill % Spacing within the block
+{\bf Address} \> 18-628, 440 Guoding Road\\ % Address line 1
+\> 200433 Shanghai \\ % Address line 2
+% {\bf Date of Birth} \> 14$^{th}$ December 1996 \\ % Date of birth 
+% {\bf Nationality} \> British % Nationality
+{\bf Homepage} \> \href{http://chuanlu.xyz}{http://chuanlu.xyz} \\
+\end{tabbing}}
+\hfill % Horizontal space between the two blocks
+\parbox{0.5\textwidth}{ % Second block
+\begin{tabbing} % Enables tabbing
+\hspace{3cm} \= \hspace{4cm} \= \kill % Spacing within the block
+% {\bf Home Phone} \> +0 (000) 111 1111 \\ % Home phone
+{\bf Phone} \> +86 130-6266-1218 \\ % Mobile phone
+{\bf Email} \> \href{mailto:chuanlu13@fudan.edu.cn}{chuanlu13@fudan.edu.cn} \\ % Email address
+{\bf GitHub} \> \href{http://github.com/orcuslc}{http://github.com/orcuslc}
+\end{tabbing}}
+
+%----------------------------------------------------------------------------------------
+%	PERSONAL PROFILE
+%----------------------------------------------------------------------------------------
+
+% \section{Personal Profile}
+
+% Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis elementum nec dolor sed sagittis. Cras justo lorem, volutpat mattis lacus vel, consequat aliquam quam. Interdum et malesuada fames ac ante ipsum primis in faucibus. Integer blandit, massa at tincidunt ornare, dolor magna interdum felis, ac blandit urna neque in turpis.
+
+%----------------------------------------------------------------------------------------
+%	EDUCATION SECTION
+%----------------------------------------------------------------------------------------
+
+\section{Education}
+
+\tabblock
+{2013-}{Present}{BSc, Information and Computing Sciences - \href{http://math.fudan.edu.cn}{Fudan University, Expected 2017}}
+{Bsc Minor, Data Science - \href{http://www.sds.fudan.edu.cn/}{Fudan University}}
+{\textit{GPA} \> 3.21/4.00 \> \textit{Rank} \> 12/71\\
+\textit{GRE} \> 330 \> \textit{TOEFL-iBT} \> 104 \\
+\textit{\href{http://math.fudan.edu.cn/ShowPeople.aspx?info_lb=548&flag=526&info_id=3152}{Mathematical Analysis AII}} \> A- \>
+\textit{\href{http://homepage.fudan.edu.cn/qhxie/}{Advanced Algebra II}} \> B+ \\
+\textit{\href{http://homepage.fudan.edu.cn/yaoyaojr/}{College Physics B I, II}} \> A- \> \textit{\href{http://math.fudan.edu.cn/ShowPeople.aspx?info_lb=548&flag=526&info_id=2137}{Real Analysis}} \> B+ \\
+\textit{\href{http://homepage.fudan.edu.cn/weilin/}{ODE}} \> B+ \> \textit{\href{http://math.fudan.edu.cn/ShowPeople.aspx?info_lb=548&flag=526&info_id=2209}{Probability Theory}} \> A- \\
+\textit{\href{http://homepage.fudan.edu.cn/yangfeng/}{Numerical Approximation}} \> A \> \textit{\href{http://homepage.fudan.edu.cn/wggao/}{Computational Methods}} \> A- \\
+\textit{\href{http://math.fudan.edu.cn/ShowPeople.aspx?info_lb=548&flag=526&info_id=3140}{Digital Signal Processing}} \> A \> \textit{\href{http://homepage.fudan.edu.cn/zqwang/}{PDE}} \> B+ \\
+\textit{\href{http://math.fudan.edu.cn/ShowPeople.aspx?info_lb=548&flag=526&info_id=3144}{Statistical Computing}} \> B+ \\
+}
+% %------------------------------------------------
+
+% \tabbedblock{
+% \bf{2001-2003} \> Advanced Secondary Education - \href{http://www.berkeleycollege.edu}{Berkeley College, California}\\[5pt]
+% \>\+
+% \textit{Pure Mathematics} \> A \\
+% \textit{Statistics (AS)} \> A \\
+% \textit{Physics} \> A \\
+% \textit{Economics} \> B
+% }
+
+%------------------------------------------
+%   RESEARCH SECTION
+%------------------------------------------
+\section{RESEARCH}
+\research
+{Apr 2016 -}{Present}
+{BigVid Lab, School of Computer Sciences}
+{Prof. Yugang Jiang}{http://yugangjiang.info/}
+{Member of Fudan-NTT team in TRECVID 2016 - MED}
+{
+\begin{itemize-noindent} \itemsep -2pt
+\item{In charge of audio speech recognition.}
+\item{Build an automatic ASR module with \href{http://kaldi-asr.org}{Kaldi-ASR}, code:\\\href{https://github.com/Orcuslc/MED2016}{https://github.com/Orcuslc/MED2016}}
+\item{Developed a server-client structure for word to vector inquiry, code:\\\href{https://github.com/Orcuslc/Word2Vec-server}{https://github.com/Orcuslc/Word2Vec-server}}
+\item{Established an automatic module for keyword extraction, word root extraction and word to vector using \href{http://www.nltk.org/}{Python-NLTK} and \href{http://nlp.stanford.edu/projects/glove/}{data from Wikipedia.}}
+\item{Conducted some research on far field voice/background seperation using FFT-based filters, IIR filters and statistical learning mathods like nearest neighbours and neural networks, and improved recognization by 20 percent.}
+\item{Now doing research on voice/background seperation using Markov Chains.}
+\end{itemize-noindent}
+}
+
+\research
+{June 2016 -}{Present}
+{School of Mathematical Sciences}
+{Prof. Donghua Zhao}{http://math.fudan.edu.cn/ShowPeople.aspx?info_lb=548&flag=526&info_id=3140}
+{To establish a big data platform for Eastern China State Grid}
+{
+\begin{itemize-noindent} \itemsep -2pt
+\item{Performed as the main programmer in the group}
+\item{In charge of mid-term and long-term load forecasting}
+\item{Established a model for long term max load forecasting using SVR and NN forests, code:\\ \href{https://github.com/Orcuslc/ECSGCC-Data}{https://github.com/Orcuslc/ECSGCC-Data}}
+\item{Developed a 24-hour load forecasting model using Monte Carlo methods.}
+\end{itemize-noindent}
+}
+
+\research
+{Oct 2015 - }{Present}
+{School of Mathematical Sciences}
+{Prof. Yashan Xu}{http://math.fudan.edu.cn/ShowPeople.aspx?info_lb=548&flag=526&info_id=3129}
+{To study the trends in stock prices with their public attention}
+{
+\begin{itemize-noindent} \itemsep -2pt
+\item{Performed as the main programmer in the group}
+\item{Developed an online platform to test the profit of stock investing strategies, code:\\\href{http://chuanlu.xyz/easyshares}{http://chuanlu.xyz/easyshares}}
+\item{Proposed a novel method to quantify the degree of public attention on stocks.}
+\item{Now using statistical methods to continue the research.}
+\end{itemize-noindent}
+}
+
+%----------------------------------------------------------------------------------------
+%	EMPLOYMENT HISTORY SECTION
+%----------------------------------------------------------------------------------------
+\section{Work Experience}
+
+\job
+{June 2015 -}{Oct 2015}
+% {Lehman Brothers, 1234 Mario Park, San Francisco, CA, United States}
+{Sinolink Innovation Investment, Shanghai}
+{http://www.gjll.com.cn/}
+{Research Intern, Quantitative Trading Department}
+{\begin{itemize-noindent} \itemsep -2pt
+\item{Implemented two trading strategies modified on momentum factors proposed by collegues.}
+\item{Established and maintained a local database for stock information.}
+\item{Collaborated on the developing of a value-reversal strategy in option market.}
+\end{itemize-noindent}
+\rule{0mm}{3mm}\textbf{Technologies:} Python 3.4, Python-sqlalchemy, tushare, numpy, scipy, matplotlib, flask; MongoDB, NoSQL; R, C++.}
+
+%------------------------------------------------
+
+% \job
+% {Oct 2009 -}{Sep 2010}
+% {Initech Inc., Otis St, CA 94025, United States}
+% {http://www.initech.com}
+% {Analyst}
+% {Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis elementum nec dolor:
+
+% \begin{itemize-noindent}
+% \item{Developed spreadsheets for risk analysis on exotic derivatives on a wide array of commodities (ags, oils, precious and base metals.)}
+% \item{Managed blotter and secondary trades on structured notes, liaised with Middle Office, Sales and Structuring for bookkeeping.}
+% \end{itemize-noindent}
+
+% Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis elementum nec dolor sed sagittis.}
+
+%----------------------------------------------------------------------------------------
+%	IT/COMPUTING SKILLS SECTION
+%----------------------------------------------------------------------------------------
+
+\section{Software Engineering Skills}
+
+\skillgroup{Programming Languages and Scientific Computing Related Skills}
+{
+\textbf{Experienced in:} Python(3.4, 2.7), MATLAB, C/C++, LaTeX, git, sqlite3\\[3pt]
+\textbf{Proficient in:} Linux Shell, R, Markdown, Scala\\[3pt]
+\textbf{Frequent user of:} MIT-Scheme, MongoDB, MySQL, Pascal\\
+}
+
+%------------------------------------------------
+
+\skillgroup{Web-Related Development}
+{
+\textbf{Experienced in:} Web spiders, Apache, Nginx, HTML5, Python-Flask, BeautifulSoup \\[3pt]
+\textbf{Frequent user of:} Javascript, jQuery, CSS \\
+% \skill{Experienced in}{Web spiders, Apache, Nginx, HTML5, Python-Flask, BeautifulSoup}
+% \skill{Frequent user of:}{Javascript, jQuery, CSS}
+}
+
+\skillgroup{Computer Vision Tools}
+{
+\textbf{Experienced in:} OpenCV, Kaldi-ASR, Word2Vec tools, Tesseract-OCR
+}
+\vspace{2mm}
+
+%------------------------------------------------
+
+% \skillgroup{Miscellaneous}
+% {
+% \textit{Microsoft SQL Server 2000/2005} - database architecture and administration\\
+% \textit{Transact-SQL} - data definition and manipulation\\
+% \textit{SQL Profiler} - performance tuning and debugging\\
+% \textit{MySQL Server}\\
+% \textit{CVS, DARCS, git} - source version control
+% }
+
+%---------------------------------------------------------------
+%         Projects Section
+%---------------------------------------------------------------
+\section{Projects}
+\awardgroup{
+\project{GrabCut}{An implementation of \href{http://dl.acm.org/citation.cfm?id=1015720}{\textit{Grabcut: Interactive foreground extraction using iterated graph cuts}}}{https://github.com/orcuslc/GrabCut}
+\project{EasyShares}{A platform to test yields of stock portfolios, see at \href{http://chuanlu.xyz/easyshares}{http://chuanlu.xyz/easyshares}}{https://github.com/orcuslc/stock}
+\project{W2V API}{A server-client structure for word to vector querying, reduced load cost to 1/1000}{https://github.com/orcuslc/word2vec-server}
+\project{Auto ASR}{The auto ASR module for TRECVID-MED 2016}{https://github.com/orcuslc/MED2016}
+\project{xq spider}{A web spider for \href{https://xueqiu.com}{https://xueqiu.com}, in order to get stock comments and follows}{https://github.com/orcuslc/xueqiu\_spider}
+\project{BingBest}{An application of changing desktop background from \href{https://cn.bing.com}{https://bing.com} for Windows and Linux}{https://github.com/orcuslc/bingbest}
+\project{ECSGCC}{Scripts for the program to build a big-data platform for State Grid of China}{https://github.com/orcuslc/ecsgcc-data}
+\project{Learning}{Homework of my courses, implementation of algorithms and answers to problems in publications}{https://github.com/orcuslc/learning}
+}
+
+
+
+
+
+
+
+
+
+
+
+%----------------------------------------------------------------
+%   AWARDS SECTION
+%----------------------------------------------------------------
+\section{Awards}
+\awardgroup{
+\award{Nov 2014}{Third Prize Scholarship of Fudan University}
+\award{Nov 2014}{Academic Scholarship of Fudan University}
+\award{Dec 2015}{Academic Scholarship of Fudan University}
+}
+%----------------------------------------------------------------------------------------
+%	INTERESTS SECTION
+%----------------------------------------------------------------------------------------
+
+% \section{Interests}
+
+% \interestsgroup{
+% \interest{Badminton, Tennis, Running, Cycling, Sailing}
+% \interest{Travelling}
+% \interest{Creative Writing}
+% \interest{Photography}
+% \interest{Car Mechanics}
+% }
+
+\section{Extra-Curricular Activities}
+\awardgroup{
+\award{Oct 2013}{Joined Infinity Volleyball Association as a member of liaison department.}
+\award{Feb 2014}{Elected Head of Liaison Department, Infinity Volleyball Association.}
+\award{Sept 2014}{Elected Vice Chair, Infinity Volleyball Association.}
+}
+
+%----------------------------------------------------------------------------------------
+%	REFEREE SECTION
+%----------------------------------------------------------------------------------------
+
+% \section{Referees}
+
+% \parbox{0.5\textwidth}{ % First block
+% \begin{tabbing}
+% \hspace{2.75cm} \= \hspace{4cm} \= \kill % Spacing within the block
+% {\bf Name} \> Bill Lumbergh \\ % Referee name
+% {\bf Company} \> Initech Inc. \\ % Referee company
+% {\bf Position} \> Vice President \\ % Referee job title 
+% {\bf Contact} \> \href{mailto:bill@initech.com}{bill@initech.com} % Referee contact information
+% \end{tabbing}}
+% \hfill % Horizontal space between the two blocks
+% \parbox{0.5\textwidth}{ % Second block
+% \begin{tabbing}
+% \hspace{2.75cm} \= \hspace{4cm} \= \kill % Spacing within the block
+% {\bf Name} \> Michael "Big Mike" Tucker\\ % Referee name
+% {\bf Company} \> Burbank Buy More \\ % Referee company
+% {\bf Position} \> Store Manager \\ % Referee job title 
+% {\bf Contact} \> \href{mailto:mike@buymore.com}{mike@buymore.com} % Referee contact information
+% \end{tabbing}}
+
+% %----------------------------------------------------------------------------------------
+
+\end{document}

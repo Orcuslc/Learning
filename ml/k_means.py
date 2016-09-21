@@ -2,7 +2,7 @@ import numpy as np
 import random
 from matplotlib import pyplot as plt
 import time
-from numba import *
+#from numba import *
 
 class kmeans:
 	'''
@@ -102,10 +102,10 @@ class kmeans:
 
 
 if __name__ == '__main__':
-	m = 10000
+	m = 100000
 	A = np.random.random([m, 2])
 	# A = np.asarray([[data, 0] for data in A])
-	k = kmeans(A, n=40)
+	k = kmeans(A, n=50)
 	t1 = time.time()
 	k.run()
 	t2 = time.time()

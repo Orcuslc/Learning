@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.3-1.40.12 (MiKTeX 2.9) (preloaded format=pdflatex 2016.4.18)  1 JUN 2016 10:22
+This is pdfTeX, Version 3.1415926-2.3-1.40.12 (MiKTeX 2.9) (preloaded format=pdflatex 2016.4.18)  21 SEP 2016 21:44
 entering extended mode
 **E:/Chuan/Documents/GitHub/Learning/Statistical*Computing/homework4/LaTeX/main
 .tex
@@ -351,16 +351,17 @@ File: omlcmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OML/cmr/m/n' in size <10> not available
 (Font)              Font shape `OML/cmm/m/it' tried instead on input line 142.
- [2]
-Underfull \hbox (badness 10000) in paragraph at lines 175--180
+ [2] [3] [4]
+Underfull \hbox (badness 10000) in paragraph at lines 262--267
 
  []
 
-[3]
-Overfull \hbox (4.2498pt too wide) in paragraph at lines 200--202
+
+Overfull \hbox (4.2498pt too wide) in paragraph at lines 287--289
 [][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
  []
 
+[5]
 Package epstopdf Info: Source file: <Rplot.eps>
 (epstopdf)                    date: 2016-06-01 01:33:50
 (epstopdf)                    size: 256402 bytes
@@ -369,23 +370,23 @@ Package epstopdf Info: Source file: <Rplot.eps>
 (epstopdf)                    size: 588894 bytes
 (epstopdf)             Command: <epstopdf --outfile=Rplot-eps-converted-to.pdf 
 Rplot.eps>
-(epstopdf)             \includegraphics on input line 249.
+(epstopdf)             \includegraphics on input line 336.
 Package epstopdf Info: Output file is already uptodate.
-<Rplot-eps-converted-to.pdf, id=28, 547.04375pt x 628.3475pt>
+ <Rplot-eps-converted-to.pdf, id=34, 547.04375pt x 628.3475pt>
 File: Rplot-eps-converted-to.pdf Graphic file (type pdf)
 
 <use Rplot-eps-converted-to.pdf>
-Package pdftex.def Info: Rplot-eps-converted-to.pdf used on input line 249.
+Package pdftex.def Info: Rplot-eps-converted-to.pdf used on input line 336.
 (pdftex.def)             Requested size: 426.79134pt x 490.22414pt.
- [4] [5 <E:/Chuan/Documents/GitHub/Learning/Statistical Computing/homework4/LaT
+ [6] [7 <E:/Chuan/Documents/GitHub/Learning/Statistical Computing/homework4/LaT
 eX/Rplot-eps-converted-to.pdf>]
 ("E:\Chuan\Documents\GitHub\Learning\Statistical Computing\homework4\LaTeX\main
 .aux") ) 
 Here is how much of TeX's memory you used:
- 5450 strings out of 495354
- 70709 string characters out of 3183859
- 207085 words of memory out of 3000000
- 8537 multiletter control sequences out of 15000+200000
+ 5465 strings out of 495354
+ 70861 string characters out of 3183859
+ 209085 words of memory out of 3000000
+ 8552 multiletter control sequences out of 15000+200000
  12104 words of font info for 47 fonts, out of 3000000 for 9000
  14 hyphenation exceptions out of 8191
  42i,6n,43p,417b,1916s stack positions out of 5000i,500n,10000p,200000b,50000s
@@ -402,9 +403,9 @@ MiKTeX/fonts/type1/public/amsfonts/cm/cmr7.pfb><C:/CTEX/MiKTeX/fonts/type1/publ
 ic/amsfonts/cm/cmsy10.pfb><C:/CTEX/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy5.
 pfb><C:/CTEX/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy7.pfb><C:/CTEX/MiKTeX/fo
 nts/type1/public/amsfonts/cm/cmti10.pfb>
-Output written on main.pdf (5 pages, 787016 bytes).
+Output written on main.pdf (7 pages, 798861 bytes).
 PDF statistics:
- 93 PDF objects out of 1000 (max. 8388607)
+ 101 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  6 words of extra memory for PDF output out of 10000 (max. 10000000)
 

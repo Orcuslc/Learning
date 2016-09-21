@@ -1,0 +1,129 @@
+%!TEX program = xelatex
+
+% \documentclass[10pt]{article}
+\input{structure.tex}
+\usepackage{epstopdf}
+\usepackage{graphics}
+\usepackage{subfig}
+\usepackage{listings}
+\lstset{
+  numbers=left,
+    framexleftmargin=10mm,
+    frame=none,
+    backgroundcolor=\color[RGB]{245,245,244},
+  keywordstyle=\bf\color{blue},
+  identifierstyle=\bf,
+  numberstyle=\color[RGB]{0,192,192},
+  commentstyle=\it\color[RGB]{0,96,96},
+  stringstyle=\rmfamily\slshape\color[RGB]{128,0,0},
+  showstringspaces=false,
+  extendedchars=false
+    }
+\DeclareGraphicsExtensions{.eps,.ps,.jpg,.bmp}
+
+\begin{document}
+
+\title{Homework 1}{16.9.21, Chuan Lu}
+
+\problem{1}{Rewrite the target function of K-means in matrix form.}
+\solution{Solution}{
+$f(x) = argmin_{\mathcal{S}}\sum_{i=1}^{k}\sum_{x_j\in S_j}\sum_{1\le m\le p}\lvert x_{jl} - x_{jm} \rvert^2.$
+}
+
+\problem{2}{Cluster $Data_i.csv$ with K-means, judge the number of clusters, and compare differences between different evaluating methods.}
+\solution{Solution}{
+The code of K-means, evaluating and test scripts can be found from attachments(kmeans.R, evaluate.R, hw1.2.R).
+}
+\solution{Result}{
+For Data1.csv, we cluster with k = 3. The result is shown as below.
+\begin{figure}[htbp]
+\centering
+\includegraphics[width = 15cm]{pics/hw2_data1_cluster.eps}
+\caption{The clusters of Data1.csv with k = 3}
+\label{clusters of data1}
+\end{figure}
+\\[1mm]
+
+For choosing k, the result of Data1.csv is shown below; The first is the result of Calinski-Harabasz method, the second Hartigan method and the last Gap Statistic. \\[3pt]
+The result of CH method is 9, if we may add a limit that $k\le 10.$ The result of H method is 3, and result of GAP statistic is 3.\\[3pt]
+
+\begin{figure}[htbp]
+\centering
+\subfloat[CH method]{ %
+	\includegraphics[width = 0.3\textwidth]{pics/hw2_data1_k_CH.eps}}\hfill
+\subfloat[H method]{ %
+	\includegraphics[width = 0.3\textwidth]{pics/hw2_data1_k_H.eps}}\hfill
+\subfloat[GAP statistic]{ %
+	\includegraphics[width = 0.3\textwidth]{pics/hw2_data1_k_GAP.eps}}\hfill
+\caption{The three evaluating methods of choosing k for Data1.csv}
+\label{EVA Data1}
+\end{figure}
+
+For Data2.csv, since each data point is of 3 dims, we cannot plot its clustering result here. But after deploying the evaluating methods we consider k = 3. The type of datas can be find in attachments(CLUSTER\_DATA2.txt). \\[3pt]
+
+The result of CH method is 8, if we limit that $k\le 10$. The result of H method and result of GAP statistic are 3. \\[3pt]
+The pics are shown below.
+
+\begin{figure}[htbp]
+\centering
+\subfloat[CH method]{ %
+	\includegraphics[width = 0.3\textwidth]{pics/hw2_data2_k_CH.eps}}\hfill
+\subfloat[H method]{ %
+	\includegraphics[width = 0.3\textwidth]{pics/hw2_data2_k_H.eps}}\hfill
+\subfloat[GAP statistic]{ %
+	\includegraphics[width = 0.3\textwidth]{pics/hw2_data2_k_GAP.eps}}\hfill
+\caption{The three evaluating methods of choosing k for Data2.csv}
+\label{EVA Data2}
+\end{figure}
+
+For Data3.csv, we fix k = 3 after evaluating k with H method and GAP statistic; The result of clustering can be found in attachments(CLUSTER\_DATA3.txt). \\[3pt]
+
+The result of CH method is 9, if we limit that $k\le 10$. The result of H method and result of GAP statistic are 3. \\[3pt]
+The pics are shown below.
+
+\begin{figure}[htbp]
+\centering
+\subfloat[CH method]{ %
+	\includegraphics[width = 0.3\textwidth]{pics/hw2_data3_k_CH.eps}}\hfill
+\subfloat[H method]{ %
+	\includegraphics[width = 0.3\textwidth]{pics/hw2_data3_k_H.eps}}\hfill
+\subfloat[GAP statistic]{ %
+	\includegraphics[width = 0.3\textwidth]{pics/hw2_data3_k_GAP.eps}}\hfill
+\caption{The three evaluating methods of choosing k for Data3.csv}
+\label{EVA Data2}
+\end{figure}
+
+For Data4.csv, we found k = 3 after evaluating k with H method and GAP statistic; The result of clustering can be found in attachments(CLUSTER\_DATA4.txt). \\[3pt]
+
+The result of CH method is 7, if we limit that $k\le 10$. The result of H method and result of GAP statistic are 3. \\[3pt]
+The pics are shown below.
+
+\begin{figure}[htbp]
+\centering
+\subfloat[CH method]{ %
+	\includegraphics[width = 0.3\textwidth]{pics/hw2_data4_k_CH.eps}}\hfill
+\subfloat[H method]{ %
+	\includegraphics[width = 0.3\textwidth]{pics/hw2_data4_k_H.eps}}\hfill
+\subfloat[GAP statistic]{ %
+	\includegraphics[width = 0.3\textwidth]{pics/hw2_data4_k_GAP.eps}}\hfill
+\caption{The three evaluating methods of choosing k for Data4.csv}
+\label{EVA Data2}
+\end{figure}
+}
+\solution{Analysis}{
+It is suprising that result of Calinski-Harabasz method does not agree with the other methods. I consider it as the result that I misunderstood the meaning of $W(k), B(k)$. I calculate the former as the target function of cluster; the latter as $\sum_{c_i, c_j \in C}\lVert c_i - c_j \rVert^2$, in which $C$ is the set of cluster centers.
+}
+
+\problem{3}{Use hierarchical clustering methods to cluster $Data_i.csv$}
+\solution{Solution}{
+The code of hierarchical clustering and the test script can be found from attachments(hierarchical\_clustering.R, hw1.3.R).
+}
+\solution{Result}{
+It is somehow embarrassing that I still did't know how to draw trees in R without $hcluster()$. The result can be shown is the attachments, (HC\_DATA1.txt and HC\_DATA2.txt). \\[3pt]
+Each result is a (n-1) * narg matrix, in which n is the number of data points and narg is the number of dims in each data point. Each row in the matrix(for example, A[1, ]) means a step when two points merged with each other; A[1, 1] and A[1, 2] merged into a new A[1, 1], and the point represented by A[1, 2] is abandoned. \\[3pt]
+It is possible to draw the tree and do Tree-Cut with the results.
+}
+
+
+
+\end{document}
