@@ -95,10 +95,16 @@ SmallCapsFeatures = {Letters = SmallCaps}
 #2 \\[5pt]
 }
 
-\newcommand{\solution}[2] {
+\renewcommand{\proof}[2] {
 \large{\color{slateblue}\textit{\textbf{#1.}}}
 #2 \qed \\[3mm]
-} 
+}
+
+\newcommand{\solution}[2] {
+\large{\color{slateblue}\textit{\textbf{#1.}}}
+#2 \\[3mm]
+}
+
 
 \newcommand{\algorithm}[2] {
 \begin{codebox}

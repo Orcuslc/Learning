@@ -95,14 +95,20 @@ SmallCapsFeatures = {Letters = SmallCaps}
 #2 \\[5pt]
 }
 
-\newcommand{\solution}[2] {
+\renewcommand{\proof}[2] {
 \large{\color{slateblue}\textit{\textbf{#1.}}}
 #2 \qed \\[3mm]
-} 
+}
+
+\newcommand{\solution}[2] {
+\large{\color{slateblue}\textit{\textbf{#1.}}}
+#2 \\[3mm]
+}
+
 
 \newcommand{\algorithm}[2] {
 \begin{codebox}
-\Procname{$\proc{Algorithm #1}$}
+\Procname{$\proc{\textbf{Algorithm #1}}$}
 #2
 \end{codebox}
 }

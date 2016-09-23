@@ -8,10 +8,8 @@
 \usepackage{listings}
 \lstset{
   numbers=left,
-    framexleftmargin=10mm,
-    frame=none,
-    backgroundcolor=\color[RGB]{245,245,244},
-  keywordstyle=\bf\color{blue},
+  frame=shadowbox,
+  keywordstyle=\bf\color{blue!70},
   identifierstyle=\bf,
   numberstyle=\color[RGB]{0,192,192},
   commentstyle=\it\color[RGB]{0,96,96},
@@ -34,111 +32,276 @@
 % \parbox{0.3\textwidth}{
 % chuanlu13@fudan.edu.cn}
 
-\problem{1}{Rewrite the target function of K-means in matrix form.}
-\solution{Solution}{
-$f(x) = argmin_{\mathcal{S}}\sum_{i=1}^{k}\sum_{x_j\in S_j}\sum_{1\le m\le p}\lvert x_{jl} - x_{jm} \rvert^2.$
+\problem{1}{}
+\solution{Abstract}{
+\\[5pt]
+About the computation of roots and its sensitivity on coefficients of a quadratic polynomial.
 }
 
-\problem{2}{Cluster $Data_i.csv$ with K-means, judge the number of clusters, and compare differences between different evaluating methods.}
-\solution{Solution}{
-The code of K-means, evaluating and test scripts can be found from attachments(kmeans.R, evaluate.R, hw1.2.R).
+\solution{Introduction and Algorithm}{
+\\[5pt]
+In middle school we learned that the roots of a quadratic polynomial $ax^2+bx+c=0$ can be expressed as $x_1 = \frac{-b+\sqrt{b^2-4ac}}{2a}, x_2 = \frac{-b-\sqrt{b^2-4ac}}{2a}$. \\[5pt] 
+However in computation, when $4ac\ll b^2$, the so-called catastrophic cancellation would happen: if $b\ge 0$, then $\sqrt{b^2-4ac}\approx b$, which would cause a decreas in the number of significant digits of $-b+\sqrt{b^2-4ac}$. This statement also holds when $b\le 0$. \\[10pt] 
+In order to avoid this, we use a different but equivalent expression for the roots. \\[10pt]
+When $b\ge 0$, $\left\{
+\begin{aligned}
+x_1 & = & \frac{-b-\sqrt{b^2-4ac}}{2a} \\
+x_2 & = & \frac{-2c}{b+\sqrt{b^2-4ac}}
+\end{aligned}
+\right.$; 
+when $b < 0$, $\left\{
+\begin{aligned}
+x_1 & = & \frac{-b+\sqrt{b^2-4ac}}{2a} \\
+x_2 & = & \frac{2c}{-b+\sqrt{b^2-4ac}} 
+\end{aligned}
+\right.$ \\[10pt]
+The correctness can be easily proved by using Vieta theorem.
+}
+
+\solution{Code}{
+\\[5pt]
+The code can be found in the attachment(\texttt{extract\_quadratic.m}); We use the name \texttt{\textbf{MyFunc}} to refer this function in the following sections.
+}
+
+\solution{Results}{
+\\[5pt]
+In the following sections, we always use $x_1$ to refer to the larger root, and $x_2$ to the smaller root. \\[5pt]
+For $(b=-56, c=1)$, the result is in Table 1 below: \\
+\begin{table}[htbp] \large \centering
+\begin{tabular}{|c|c|c|}
+\hline
+& $x_1$ & $x_2$ \\
+\hline
+\texttt{MyFunc()} & 55.9821 & 0.0179 \\
+\hline
+\texttt{root()} & 55.9821 & 0.0179 \\
+\hline
+\end{tabular}
+\caption{Result of $(b=-56, c=1)$}
+\end{table}\\
+For $(b=-10^8, c=1)$, the result is in Table 2 below:\\
+\begin{table}[htbp] \large \centering
+\begin{tabular}{|c|c|c|}
+\hline
+& $x_1$ & $x_2$ \\
+\hline
+\texttt{MyFunc()} & 100000000 & 1.0000e-08 \\
+\hline
+\texttt{root()} & $1.0000*10^8$  & $0.0000*10^8$ \\
+\hline
+\end{tabular}
+\caption{Result of $(b=-10^8,c=1)$}
+\end{table} \\
+When $4ac\approx b^2$, the results are the same; but when $4ac\ll b^2$, the significant number of the smaller root using \texttt{root} is eliminated.
+}
+
+\solution{Sensitivity}{
+\\[5pt]
+According to Taylor series, $$x(t+\delta)\approx x(t)+\delta\frac{dx}{dt}(t).$$
+Therefore the sensitivity of x on t can be defined as $s_x(t) = dx/dt$. \\[5pt]
+In this problem, $F(x, b, c) = x^2+bx+c$. According to implicit function theorem, $$\frac{\partial x}{\partial b} = -\frac{F_x}{F_b} = -\frac{2x+b}{x} = -2+\frac{b}{x}, $$
+$$\frac{\partial x}{\partial c} = -\frac{F_x}{F_c} = -(2x+b).$$ \\[5pt]
+In consequence, when $\lvert x\rvert\ll\lvert b\rvert$, $x$ is very sensitive to a little change in $b$. Similarly, when $\lvert2x+b\rvert\gg 1$, $x$ is very sensitive to a little change in $c$.
+}
+
+\solution{Discussion and Conclusion}{
+With the conclusion in Sensitivity part, we can make some explanation for the difference between results of \texttt{MyFunc} and \texttt{root}. \\[5pt]
+1. For the first case, when $b=-56, c=1$, and the result $x_1\approx56, x_2\approx0.018$. \\[5pt]
+In this case $\frac{\partial x_1}{\partial b} \approx -3, \frac{\partial x_1}{\partial c}\approx -56,$ and $\frac{\partial x_2}{\partial b} \approx -3113, \frac{\partial x_1}{\partial c}\approx 56$. Since the sensitivities are not large enough to have strong effects on a \texttt{\textbf{format short}} computation, the result of \texttt{MyFunc} and \texttt{root} seems the same. \\[5pt]
+2. For the second case, when $b=-10^8, c=1$, and the result $x_1\approx 10^8, x_2\approx 10^{-8}.$ \\[5pt]
+In this case $\frac{\partial x_1}{\partial b} \approx -3, \frac{\partial x_1}{\partial c}\approx -10^8,$ and $\frac{\partial x_2}{\partial b} \approx 10^16, \frac{\partial x_2}{\partial c} \approx 10^8$. \\[5pt]
+Apparently, sensitivity of $x_2$ on both $b$ and $c$ are large enough to make a obvious change in significant numbers. It leads to that the result of $x_2$ being $0$ when using \texttt{root}.
+In this scenario we may regard this numerial problem an ill-conditioned one; though the numerical algorithm by MATLAB may be a stable one, the results can be far from true ones.
+}
+
+\problem{2}{}
+\solution{Abstract}{
+\\[5pt]
+(a) Program row and column oriented algorithms and compare the time cost between them \\
+(b) Program algorithms for update a matrix using different methods and compare the time cost.
+}
+
+\solution{Introduction and Algrithm}{
+\\[5pt]
+For problem (a), we will use back substitution algorithm in row-oriented and column-oriented ways for solving an upper triangular system. 
+\algorithm{1.1, Row-oriented Back Substitution}{
+\zi Input: An upper triangular matrix $U\in \mathbb{R}^{n\times n}$, and a vector $b\in \mathbb{R}^{n}$.
+\zi Output: Updated $b\in \mathbb{R}^{n}$.
+\li $b(n) = b(n)/U(n, n)$
+\li \For $i \gets n-1$ \To $1$ \By $-1$
+\li   \Do
+          $b(i) = (b(i)-U(i, i+1:n)\cdot b(i+1:n))/U(i, i)$
+      \End
+\li \Return $b$
+}
+\algorithm{1.2, Column-oriented Back Substitution}{
+\zi Input: An upper triangular matrix $U\in \mathbb{R}^{n\times n}$, and a vector $b\in \mathbb{R}^{n}$.
+\zi Output: Updated $b\in \mathbb{R}^{n}$.
+\li \For $j \gets n$ \To $2$ \By $-1$
+\li   \Do
+          $b(j) = b(j)/U(j, j)$
+\li       $b(1:j-1)=b(1:j-1)-b(j)\cdot U(1:j-1, j)$
+      \End
+\li $b(1) = b(1)/U(1, 1)$
+}
+These two algorithms do not need extra space. \\
+
+For problem (b), the five algorithms are shown below.
+
+\algorithm{2.1, Loop-update}{
+\zi Input: Three matrices $A, B, C\in\mathbb{R}^{n\times n}$.
+\zi Output: The updated $C\in\mathbb{R}^{n\times n}$.
+\li \For $i \gets 1$ \To n
+\li   \Do
+      \For $j \gets 1$ \To n
+\li     \Do
+        \For $k \gets 1$ \To n
+\li         \Do
+              $C(i, j) = C(i, j)+A(i, k)\cdot B(k, j)$
+            \End
+        \End
+      \End
+\li \Return $C$      
+}
+\algorithm{2.2, Dot-update}{
+\zi Input: Three matrices $A, B, C\in\mathbb{R}^{n\times n}$.
+\zi Output: The updated $C\in\mathbb{R}^{n\times n}$.
+\li \For $i \gets 1$ \To $n$
+\li   \Do
+        \For $j \gets 1$ \To $n$
+\li       \Do
+            $C(i, j) = C(i, j)+A(i, :)\cdot B(:, j)$
+          \End
+      \End
+\li \Return $C$
+}
+\algorithm{2.3, Daxpy-update}{
+\zi Input: Three matrices $A, B, C\in\mathbb{R}^{n\times n}$.
+\zi Output: The updated $C\in\mathbb{R}^{n\times n}$.
+\li \For $i \gets 1$ \To $n$
+\li   \Do
+        \For $j \gets 1$ \To $n$
+\li       \Do
+            $C(:, i) = C(:, i)+A(:, j)\cdot B(j, i)$
+          \End
+      \End
+\li \Return $C$        
+}
+\algorithm{2.4, MatVec-update}{
+\zi Input: Three matrices $A, B, C\in\mathbb{R}^{n\times n}$.
+\zi Output: The updated $C\in\mathbb{R}^{n\times n}$.
+\li \For $i \gets 1$ \To $n$
+\li   \Do
+        $C(:, i) = C(:, i)+A\cdot B(:, i)$
+      \End
+\li \Return $C$
+}
+
+\algorithm{2.5, OuterDot-update}{
+\zi Input: Three matrices $A, B, C\in\mathbb{R}^{n\times n}$.
+\zi Output: The updated $C\in\mathbb{R}^{n\times n}$.
+\li \For $i \gets 1$ \To $n$
+\li   \Do
+        $C = C+A(:, i)\cdot \B(i, :)$
+      \End
+\li \Return $C$
+}
+I am not quite sure about the MatVec update.
+}
+
+\solution{Code}{
+The code can be found in the attachments(\texttt{row\_back\_substitute.m},\ \texttt{col\_back\_substitute.m},\ \texttt{mmloop.m},\ \texttt{mmdot.m},\ \texttt{mmdaxpy.m},\ \texttt{mmmatvec.m},\ \texttt{mmouterdot.m}). And the test script is \texttt{test.m}.\\[5pt]
+Code for checking errors is ignored here, since I think in this problem it is of less importance.
 }
 \solution{Result}{
-For Data1.csv, we cluster with k = 3. The result is shown as below.
-\begin{figure}[htbp]
-\centering
-\includegraphics[width = 15cm]{pics/hw2_data1_cluster.eps}
-\caption{The clusters of Data1.csv with k = 3}
-\label{clusters of data1}
-\end{figure}
-\\[1mm]
+For problem (a), the time cost is in Table 3 below. (Of course I know that MATLAB is using some precompile skills to accelerate the computing speed, so I run the same test several times after the time cost converge to a stable status.) \\[5pt]
+\begin{table}[htbp] \large \centering
+\begin{tabular}{|c|c|c|c|c|}
+\hline
+n & 128 & 256 & 512 & 1024 \\
+\hline
+row-oriented & 0.000477 &  0.000957 & 0.002858 & 0.009390\\
+\hline
+col-oriented & 0.000436 & 0.000912 & 0.002631 & 0.006705\\
+\hline
+\end{tabular}
+\caption{Time cost of solving a upper triangle system}
+\end{table}
+However, after test my program several times, I found that when $n$ is small, which, to be exact, when $n<50$, difference between solution of row-oriented and col-oriented algorithms $\lVert x_r - x_c \rVert$ is quite small. In this case $\lVert x_r - x_c \rVert \le 10^{-4} \Vert U\Vert$. However, when $n$ is larger, the difference becomes larger. 
+Table 4 shows the relative norm of difference vectors between result of the two als and result of directly using MATLAB's inner functions(i represents MATLAB's inner function). $$\Vert\Delta_{error}\Vert = \frac{\Vert x_1 - x_2\Vert}{\Vert U\Vert}$$
+\begin{table}[htbp] \large \centering
+\begin{tabular}{|c|c|c|c|c|}
+\hline
+n & 128 & 256 & 512 & 1024 \\
+\hline
+r-c & $5.948e^{-6}$ & $1.504e^{27}$ & $6.904e^{85}$ & $4.179e^{168}$\\
+\hline
+r-i & $5.680e^{-6}$ & $1.521e^{27}$ & $2.952e^{85}$ & $6.968e^{167}$\\
+\hline
+c-i & $1.091e^{-6}$ & $1.693e^{25}$ & $2.261e^{85}$ & $4.875e^{168}$ \\
+\hline
+\end{tabular}
+\caption{Relative norm of difference vector}
+\end{table}
 
-For choosing k, the result of Data1.csv is shown below; The first is the result of Calinski-Harabasz method, the second Hartigan method and the last Gap Statistic. \\[3pt]
-The result of CH method is 9, if we may add a limit that $k\le 10.$ The result of H method is 3, and result of GAP statistic is 3.\\[3pt]
+For Problem (b), the time cost for als is shown in Table 5 below.
+\begin{table}[htbp] \large \centering
+\begin{tabular}{|c|c|c|c|c|}
+\hline
+n & 128 & 256 & 512 & 1024 \\
+\hline
+loop & 0.050033 & 0.425775 & 3.196842 & 39.002625 \\
+\hline
+dot & 0.026959 & 0.134890 & 0.787452 & 13.141148 \\
+\hline
+daxpy & 0.003710 & 0.023131 & 0.158915 & 1.182440 \\
+\hline
+matvec & 0.001167 & 0.005713 & 0.026144 & 0.375322 \\
+\hline
+outerdot & 0.007415 & 0.030481 & 0.426991 & 4.375097 \\
+\hline
+\end{tabular}
+\caption{Time cost of updating a matrix}
+\end{table}
 
-\begin{figure}[htbp]
-\centering
-\subfloat[CH method]{ %
-	\includegraphics[width = 0.3\textwidth]{pics/hw2_data1_k_CH.eps}}\hfill
-\subfloat[H method]{ %
-	\includegraphics[width = 0.3\textwidth]{pics/hw2_data1_k_H.eps}}\hfill
-\subfloat[GAP statistic]{ %
-	\includegraphics[width = 0.3\textwidth]{pics/hw2_data1_k_GAP.eps}}\hfill
-\caption{The three evaluating methods of choosing k for Data1.csv}
-\label{EVA Data1}
-\end{figure}
-
-For Data2.csv, since each data point is of 3 dims, we cannot plot its clustering result here. But after deploying the evaluating methods we consider k = 3. The type of datas can be find in attachments(CLUSTER\_DATA2.txt). \\[3pt]
-
-The result of CH method is 8, if we limit that $k\le 10$. The result of H method and result of GAP statistic are 3. \\[3pt]
-The pics are shown below.
-
-\begin{figure}[htbp]
-\centering
-\subfloat[CH method]{ %
-	\includegraphics[width = 0.3\textwidth]{pics/hw2_data2_k_CH.eps}}\hfill
-\subfloat[H method]{ %
-	\includegraphics[width = 0.3\textwidth]{pics/hw2_data2_k_H.eps}}\hfill
-\subfloat[GAP statistic]{ %
-	\includegraphics[width = 0.3\textwidth]{pics/hw2_data2_k_GAP.eps}}\hfill
-\caption{The three evaluating methods of choosing k for Data2.csv}
-\label{EVA Data2}
-\end{figure}
-
-For Data3.csv, we fix k = 3 after evaluating k with H method and GAP statistic; The result of clustering can be found in attachments(CLUSTER\_DATA3.txt). \\[3pt]
-
-The result of CH method is 9, if we limit that $k\le 10$. The result of H method and result of GAP statistic are 3. \\[3pt]
-The pics are shown below.
-
-\begin{figure}[htbp]
-\centering
-\subfloat[CH method]{ %
-	\includegraphics[width = 0.3\textwidth]{pics/hw2_data3_k_CH.eps}}\hfill
-\subfloat[H method]{ %
-	\includegraphics[width = 0.3\textwidth]{pics/hw2_data3_k_H.eps}}\hfill
-\subfloat[GAP statistic]{ %
-	\includegraphics[width = 0.3\textwidth]{pics/hw2_data3_k_GAP.eps}}\hfill
-\caption{The three evaluating methods of choosing k for Data3.csv}
-\label{EVA Data2}
-\end{figure}
-
-For Data4.csv, we found k = 3 after evaluating k with H method and GAP statistic; The result of clustering can be found in attachments(CLUSTER\_DATA4.txt). \\[3pt]
-
-The result of CH method is 7, if we limit that $k\le 10$. The result of H method and result of GAP statistic are 3. \\[3pt]
-The pics are shown below.
-
-\begin{figure}[htbp]
-\centering
-\subfloat[CH method]{ %
-	\includegraphics[width = 0.3\textwidth]{pics/hw2_data4_k_CH.eps}}\hfill
-\subfloat[H method]{ %
-	\includegraphics[width = 0.3\textwidth]{pics/hw2_data4_k_H.eps}}\hfill
-\subfloat[GAP statistic]{ %
-	\includegraphics[width = 0.3\textwidth]{pics/hw2_data4_k_GAP.eps}}\hfill
-\caption{The three evaluating methods of choosing k for Data4.csv}
-\label{EVA Data2}
-\end{figure}
+The norm of relative error (with MATLAB inner *) is shown in Table 6 below.
+$$\Vert\Delta_{error}\Vert = \frac{\Vert\hat{C} - C\Vert}{\Vert C\Vert}$$
+\begin{table}[htbp] \large \centering
+\begin{tabular}{|c|c|c|c|c|}
+\hline
+n & 128 & 256 & 512 & 1024 \\
+\hline
+loop & $1.841e^{-15}$ & $2.614e^{-15}$ & $1.408e^{-14}$ & $2.660e^{-14}$ \\
+\hline
+dot & $3.515e^{-15}$ & $6.756e^{-15}$ & $5.502e^{-15}$ & $6.474e^{-15}$ \\
+\hline
+daxpy & $1.144e^{-15}$ & $2.614e^{-15}$ & $1.408e^{-14}$ & $2.660e^{-14}$ \\
+\hline
+matvec & $1.178e^{-15}$ & $1.643e^{-15}$ & $1.385e^{-14}$ & $2.628e^{-14}$ \\
+\hline
+outerdot & $1.195e^{-13}$ & $2.614e^{-15}$ & $1.408e^{-14}$ & $2.660e^{-14}$ \\
+\hline
+\end{tabular}
+\caption{Norm of error in updating a matrix}
+\end{table}
 }
-\solution{Analysis}{
-It is suprising that result of Calinski-Harabasz method does not agree with the other methods. I consider it as the result that I misunderstood the meaning of $W(k), B(k)$. I calculate the former as the target function of cluster; the latter as $\sum_{c_i, c_j \in C}\lVert c_i - c_j \rVert^2$, in which $C$ is the set of cluster centers.
+\solution{Discussion}{
+From result of problem (a), we found that column-oriented algorithm is slightly quicker that row-oriented algorithm in solving upper triangular system. \\[5pt]
+From the algorithm's point of view, in $i^{th}$ loop, col-oriented al need to do (i-1) times' multiplication, (i-1) times' subtraction, and 1 division, while row-oriented al need to do (n-i) times multiplication, (n-i) times addition, and 1 division. \\[5pt]
+In consequence, C-O al need to do $\frac{(n-1)(n-2)}{2}$ times' multiplication and substraction, and (n-1) times' division; while R-O al need to do 1 more division than C-O. So I am curious why C-O cost only 2/3 time comparing with R-O when $U \in\mathbb{R}^{1024\times 1024}$. \\[5pt]
+On the other hand, since the matrices are generated by random numbers, it is of much possibility that those matrices are nearly singular. It is not difficult to understand why the result of $x$ has such a huge error. \\[5pt]
+
+For problem (b), result of the five algorithms are of good precision, which can be found with norm of errors. \\[5pt]
+Let's analysis the flops of the als. Loop update needs $n^3$ times of loops, each contains a multiplication and an addition. Dot update needs $n^2$ times of loops, each contains an addition and a Vectorized Dot. Daxpy update needs $n^2$ times of loops, each contains an Vectorized Addition and a Vectorized Scalar multiplication with a vector. MatVec update needs $n$ times of loops, each contains a Vectorized Addition and a Vectorized Scalar multiplication with a matrix. OuterDot update needs $n$ times of loops, each contains a Vectorized Addtion with a matrix and an outer dot of two vectors.\\[5pt]
+Though the total flops of the five als are the same, we all know that in MATLAB, \texttt{for} loops are much slower that vectorized computations. So the result of experiment is trivial.
 }
 
-\problem{3}{Use hierarchical clustering methods to cluster $Data_i.csv$}
-\solution{Solution}{
-The code of hierarchical clustering and the test script can be found from attachments(hierarchical\_clustering.R, hw1.3.R).
-}
-\solution{Result}{
-It is somehow embarrassing that I still did't know how to draw trees in R without $hcluster()$. The result can be shown is the attachments, (HC\_DATA1.txt and HC\_DATA2.txt). \\[3pt]
-Each result is a (n-1) * narg matrix, in which n is the number of data points and narg is the number of dims in each data point. Each row in the matrix(for example, A[1, ]) means a step when two points merged with each other; A[1, 1] and A[1, 2] merged into a new A[1, 1], and the point represented by A[1, 2] is abandoned. \\[3pt]
-It is possible to draw the tree and do Tree-Cut with the results.
-}
+
 
 \refgroup{
-\reference{a a a a  a a}
-\reference{b b b b b b}
-\reference{c c c c c c}
-\reference{b}
-
+\reference{Jixiu Chen, \textit{Mathematical Analysis II}, Page 174-175.}
+\reference{D. P. O’Leary, \textit{Scientific Computing with case studies}, Page 23-24.}
+\reference{Gene H. Golub, \textit{Matrix Computations}, Page 10-11.}
 }
 
 

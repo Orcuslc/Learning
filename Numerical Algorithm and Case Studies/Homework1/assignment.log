@@ -1,13 +1,15 @@
-This is XeTeX, Version 3.1415926-2.3-0.9997.5 (MiKTeX 2.9) (preloaded format=xelatex 2016.9.12)  22 SEP 2016 18:52
+This is XeTeX, Version 3.1415926-2.3-0.9997.5 (MiKTeX 2.9) (preloaded format=xelatex 2016.9.12)  23 SEP 2016 20:53
 entering extended mode
-**E:/Chuan/Documents/GitHub/Learning/Config*Files/Assignment-TEX/assignment.tex
+**E:/Chuan/Documents/GitHub/Learning/Numerical*Algorithm*and*Case*Studies/Homew
+ork1/assignment.tex
 
-("E:/Chuan/Documents/GitHub/Learning/Config Files/Assignment-TEX/assignment.tex
-"
+("E:/Chuan/Documents/GitHub/Learning/Numerical Algorithm and Case Studies/Homew
+ork1/assignment.tex"
 LaTeX2e <2011/06/27>
 Babel <v3.8m> and hyphenation patterns for loaded.
-("E:\Chuan\Documents\GitHub\Learning\Config Files\Assignment-TEX\structure.tex"
-(C:\CTEX\MiKTeX\tex\latex\base\article.cls
+
+("E:\Chuan\Documents\GitHub\Learning\Numerical Algorithm and Case Studies\Homew
+ork1\structure.tex" (C:\CTEX\MiKTeX\tex\latex\base\article.cls
 Document Class: article 2007/10/19 v1.4h Standard LaTeX document class
 (C:\CTEX\MiKTeX\tex\latex\base\size10.clo
 File: size10.clo 2007/10/19 v1.4h Standard LaTeX file (size option)
@@ -1004,18 +1006,18 @@ LaTeX Info: Redefining \upshape on input line 1893.
 
 (C:\CTEX\MiKTeX\tex\latex\fontspec\fontspec.cfg)))
 Requested font "[./fonts/Erewhon-Regular.otf]/ICU" at 10.0pt
- -> E:/Chuan/Documents/GitHub/Learning/Config Files/Assignment-TEX/fonts/Erewho
-n-Regular.otf
+ -> E:/Chuan/Documents/GitHub/Learning/Numerical Algorithm and Case Studies/Hom
+ework1/fonts/Erewhon-Regular.otf
 \g_fontspec_family_Erewhon-Regular_int=\count280
 Requested font "[./fonts/Erewhon-Bold.otf]/ICU" at 10.0pt
- -> E:/Chuan/Documents/GitHub/Learning/Config Files/Assignment-TEX/fonts/Erewho
-n-Bold.otf
+ -> E:/Chuan/Documents/GitHub/Learning/Numerical Algorithm and Case Studies/Hom
+ework1/fonts/Erewhon-Bold.otf
 Requested font "[./fonts/Erewhon-Italic.otf]/ICU" at 10.0pt
- -> E:/Chuan/Documents/GitHub/Learning/Config Files/Assignment-TEX/fonts/Erewho
-n-Italic.otf
+ -> E:/Chuan/Documents/GitHub/Learning/Numerical Algorithm and Case Studies/Hom
+ework1/fonts/Erewhon-Italic.otf
 Requested font "[./fonts/Erewhon-BoldItalic.otf]/ICU" at 10.0pt
- -> E:/Chuan/Documents/GitHub/Learning/Config Files/Assignment-TEX/fonts/Erewho
-n-BoldItalic.otf
+ -> E:/Chuan/Documents/GitHub/Learning/Numerical Algorithm and Case Studies/Hom
+ework1/fonts/Erewhon-BoldItalic.otf
 .................................................
 . fontspec info: "defining-font"
 . 
@@ -1048,8 +1050,8 @@ n-BoldItalic.otf
 .................................................
 Requested font "[./fonts/Erewhon-Regular.otf]/ICU:script=latn;language=DFLT;" a
 t 10.0pt
- -> E:/Chuan/Documents/GitHub/Learning/Config Files/Assignment-TEX/fonts/Erewho
-n-Regular.otf
+ -> E:/Chuan/Documents/GitHub/Learning/Numerical Algorithm and Case Studies/Hom
+ework1/fonts/Erewhon-Regular.otf
 
 (C:\CTEX\MiKTeX\tex\latex\sectsty\sectsty.sty
 Package: sectsty 2002/02/25 v2.0.2 Commands to change all sectional heading sty
@@ -1090,39 +1092,32 @@ Package caption Info: listings package is loaded.
 \sf@top=\skip71
 \sf@bottom=\skip72
 )
-("E:\Chuan\Documents\GitHub\Learning\Config Files\Assignment-TEX\assignment.aux
-"
-
-LaTeX Warning: Label `EVA Data2' multiply defined.
-
-
-LaTeX Warning: Label `EVA Data2' multiply defined.
-
-)
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 24.
-LaTeX Font Info:    ... okay on input line 24.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 24.
-LaTeX Font Info:    ... okay on input line 24.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 24.
-LaTeX Font Info:    ... okay on input line 24.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 24.
-LaTeX Font Info:    ... okay on input line 24.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 24.
-LaTeX Font Info:    ... okay on input line 24.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 24.
-LaTeX Font Info:    ... okay on input line 24.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 24.
-LaTeX Font Info:    ... okay on input line 24.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 24.
-LaTeX Font Info:    ... okay on input line 24.
-LaTeX Font Info:    Checking defaults for EU1/lmr/m/n on input line 24.
-LaTeX Font Info:    ... okay on input line 24.
-LaTeX Font Info:    Checking defaults for T3/cmr/m/n on input line 24.
-LaTeX Font Info:    Try loading font information for T3+cmr on input line 24.
+("E:\Chuan\Documents\GitHub\Learning\Numerical Algorithm and Case Studies\Homew
+ork1\assignment.aux")
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 22.
+LaTeX Font Info:    ... okay on input line 22.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 22.
+LaTeX Font Info:    ... okay on input line 22.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 22.
+LaTeX Font Info:    ... okay on input line 22.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 22.
+LaTeX Font Info:    ... okay on input line 22.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 22.
+LaTeX Font Info:    ... okay on input line 22.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 22.
+LaTeX Font Info:    ... okay on input line 22.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 22.
+LaTeX Font Info:    ... okay on input line 22.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 22.
+LaTeX Font Info:    ... okay on input line 22.
+LaTeX Font Info:    Checking defaults for EU1/lmr/m/n on input line 22.
+LaTeX Font Info:    ... okay on input line 22.
+LaTeX Font Info:    Checking defaults for T3/cmr/m/n on input line 22.
+LaTeX Font Info:    Try loading font information for T3+cmr on input line 22.
  (C:\CTEX\MiKTeX\tex\latex\tipa\t3cmr.fd
 File: t3cmr.fd 2001/12/31 TIPA font definitions
 )
-LaTeX Font Info:    ... okay on input line 24.
+LaTeX Font Info:    ... okay on input line 22.
 \c@lstlisting=\count289
 
 *geometry* detected driver: pdftex
@@ -1164,9 +1159,9 @@ Package lastpage Info: Please have a look at the pageslts package at
 (lastpage)             or
 (lastpage)             http://www.ctan.org/tex-archive/ 
 (lastpage)             install/macros/latex/contrib/pageslts.tds.zip
-(lastpage)             ! on input line 24.
+(lastpage)             ! on input line 22.
 \AtBeginShipoutBox=\box41
-Package hyperref Info: Link coloring OFF on input line 24.
+Package hyperref Info: Link coloring OFF on input line 22.
 (C:\CTEX\MiKTeX\tex\latex\hyperref\nameref.sty
 Package: nameref 2010/04/30 v2.40 Cross-referencing by name of section
 
@@ -1175,14 +1170,14 @@ Package: gettitlestring 2010/12/03 v1.4 Cleanup title references (HO)
 )
 \c@section@level=\count290
 )
-LaTeX Info: Redefining \ref on input line 24.
-LaTeX Info: Redefining \pageref on input line 24.
-LaTeX Info: Redefining \nameref on input line 24.
+LaTeX Info: Redefining \ref on input line 22.
+LaTeX Info: Redefining \pageref on input line 22.
+LaTeX Info: Redefining \nameref on input line 22.
 
-("E:\Chuan\Documents\GitHub\Learning\Config Files\Assignment-TEX\assignment.out
-")
-("E:\Chuan\Documents\GitHub\Learning\Config Files\Assignment-TEX\assignment.out
-")
+("E:\Chuan\Documents\GitHub\Learning\Numerical Algorithm and Case Studies\Homew
+ork1\assignment.out")
+("E:\Chuan\Documents\GitHub\Learning\Numerical Algorithm and Case Studies\Homew
+ork1\assignment.out")
 \@outlinefile=\write3
 
 *** you should *not* be loading the inputenc package
@@ -1195,117 +1190,122 @@ LaTeX Info: Redefining \nameref on input line 24.
 .................................................
 \symlegacymaths=\mathgroup6
 LaTeX Font Info:    Overwriting symbol font `legacymaths' in version `bold'
-(Font)                  OT1/cmr/m/n --> OT1/cmr/bx/n on input line 24.
-LaTeX Font Info:    Redeclaring math accent \acute on input line 24.
-LaTeX Font Info:    Redeclaring math accent \grave on input line 24.
-LaTeX Font Info:    Redeclaring math accent \ddot on input line 24.
-LaTeX Font Info:    Redeclaring math accent \tilde on input line 24.
-LaTeX Font Info:    Redeclaring math accent \bar on input line 24.
-LaTeX Font Info:    Redeclaring math accent \breve on input line 24.
-LaTeX Font Info:    Redeclaring math accent \check on input line 24.
-LaTeX Font Info:    Redeclaring math accent \hat on input line 24.
-LaTeX Font Info:    Redeclaring math accent \dot on input line 24.
-LaTeX Font Info:    Redeclaring math accent \mathring on input line 24.
-LaTeX Font Info:    Redeclaring math symbol \Gamma on input line 24.
-LaTeX Font Info:    Redeclaring math symbol \Delta on input line 24.
-LaTeX Font Info:    Redeclaring math symbol \Theta on input line 24.
-LaTeX Font Info:    Redeclaring math symbol \Lambda on input line 24.
-LaTeX Font Info:    Redeclaring math symbol \Xi on input line 24.
-LaTeX Font Info:    Redeclaring math symbol \Pi on input line 24.
-LaTeX Font Info:    Redeclaring math symbol \Sigma on input line 24.
-LaTeX Font Info:    Redeclaring math symbol \Upsilon on input line 24.
-LaTeX Font Info:    Redeclaring math symbol \Phi on input line 24.
-LaTeX Font Info:    Redeclaring math symbol \Psi on input line 24.
-LaTeX Font Info:    Redeclaring math symbol \Omega on input line 24.
-LaTeX Font Info:    Redeclaring math symbol \mathdollar on input line 24.
-LaTeX Font Info:    Redeclaring symbol font `operators' on input line 24.
+(Font)                  OT1/cmr/m/n --> OT1/cmr/bx/n on input line 22.
+LaTeX Font Info:    Redeclaring math accent \acute on input line 22.
+LaTeX Font Info:    Redeclaring math accent \grave on input line 22.
+LaTeX Font Info:    Redeclaring math accent \ddot on input line 22.
+LaTeX Font Info:    Redeclaring math accent \tilde on input line 22.
+LaTeX Font Info:    Redeclaring math accent \bar on input line 22.
+LaTeX Font Info:    Redeclaring math accent \breve on input line 22.
+LaTeX Font Info:    Redeclaring math accent \check on input line 22.
+LaTeX Font Info:    Redeclaring math accent \hat on input line 22.
+LaTeX Font Info:    Redeclaring math accent \dot on input line 22.
+LaTeX Font Info:    Redeclaring math accent \mathring on input line 22.
+LaTeX Font Info:    Redeclaring math symbol \Gamma on input line 22.
+LaTeX Font Info:    Redeclaring math symbol \Delta on input line 22.
+LaTeX Font Info:    Redeclaring math symbol \Theta on input line 22.
+LaTeX Font Info:    Redeclaring math symbol \Lambda on input line 22.
+LaTeX Font Info:    Redeclaring math symbol \Xi on input line 22.
+LaTeX Font Info:    Redeclaring math symbol \Pi on input line 22.
+LaTeX Font Info:    Redeclaring math symbol \Sigma on input line 22.
+LaTeX Font Info:    Redeclaring math symbol \Upsilon on input line 22.
+LaTeX Font Info:    Redeclaring math symbol \Phi on input line 22.
+LaTeX Font Info:    Redeclaring math symbol \Psi on input line 22.
+LaTeX Font Info:    Redeclaring math symbol \Omega on input line 22.
+LaTeX Font Info:    Redeclaring math symbol \mathdollar on input line 22.
+LaTeX Font Info:    Redeclaring symbol font `operators' on input line 22.
 LaTeX Font Info:    Encoding `OT1' has changed to `EU1' for symbol font
-(Font)              `operators' in the math version `normal' on input line 24.
+(Font)              `operators' in the math version `normal' on input line 22.
 LaTeX Font Info:    Overwriting symbol font `operators' in version `normal'
 (Font)                  OT1/cmr/m/n --> EU1/Erewhon-Regular(0)/m/n on input lin
-e 24.
+e 22.
 LaTeX Font Info:    Encoding `OT1' has changed to `EU1' for symbol font
-(Font)              `operators' in the math version `bold' on input line 24.
+(Font)              `operators' in the math version `bold' on input line 22.
 LaTeX Font Info:    Overwriting symbol font `operators' in version `bold'
 (Font)                  OT1/cmr/bx/n --> EU1/Erewhon-Regular(0)/m/n on input li
-ne 24.
+ne 22.
 LaTeX Font Info:    Overwriting symbol font `operators' in version `normal'
 (Font)                  EU1/Erewhon-Regular(0)/m/n --> EU1/Erewhon-Regular(0)/m
-/n on input line 24.
+/n on input line 22.
 LaTeX Font Info:    Overwriting math alphabet `\mathrm' in version `normal'
 (Font)                  EU1/Erewhon-Regular(0)/m/n --> EU1/Erewhon-Regular(0)/m
-/n on input line 24.
+/n on input line 22.
 LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `normal'
 (Font)                  OT1/cmr/m/it --> EU1/Erewhon-Regular(0)/m/it on input l
-ine 24.
+ine 22.
 LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `normal'
 (Font)                  OT1/cmr/bx/n --> EU1/Erewhon-Regular(0)/bx/n on input l
-ine 24.
+ine 22.
 LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `normal'
-(Font)                  OT1/cmss/m/n --> EU1/lmss/m/n on input line 24.
+(Font)                  OT1/cmss/m/n --> EU1/lmss/m/n on input line 22.
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `normal'
-(Font)                  OT1/cmtt/m/n --> EU1/lmtt/m/n on input line 24.
+(Font)                  OT1/cmtt/m/n --> EU1/lmtt/m/n on input line 22.
 LaTeX Font Info:    Overwriting symbol font `operators' in version `bold'
 (Font)                  EU1/Erewhon-Regular(0)/m/n --> EU1/Erewhon-Regular(0)/b
-x/n on input line 24.
+x/n on input line 22.
 LaTeX Font Info:    Overwriting math alphabet `\mathrm' in version `bold'
 (Font)                  EU1/Erewhon-Regular(0)/m/n --> EU1/Erewhon-Regular(0)/b
-x/n on input line 24.
+x/n on input line 22.
 LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `bold'
 (Font)                  OT1/cmr/bx/it --> EU1/Erewhon-Regular(0)/bx/it on input
- line 24.
+ line 22.
 LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `bold'
-(Font)                  OT1/cmss/bx/n --> EU1/lmss/bx/n on input line 24.
+(Font)                  OT1/cmss/bx/n --> EU1/lmss/bx/n on input line 22.
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
-(Font)                  OT1/cmtt/m/n --> EU1/lmtt/bx/n on input line 24.
+(Font)                  OT1/cmtt/m/n --> EU1/lmtt/bx/n on input line 22.
 Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: subfig package v1.3 is loaded.
 Package caption Info: End \AtBeginDocument code.
 Requested font "[./fonts/Erewhon-Regular.otf]/ICU:script=latn;language=DFLT;" a
 t 24.88pt
- -> E:/Chuan/Documents/GitHub/Learning/Config Files/Assignment-TEX/fonts/Erewho
-n-Regular.otf
+ -> E:/Chuan/Documents/GitHub/Learning/Numerical Algorithm and Case Studies/Hom
+ework1/fonts/Erewhon-Regular.otf
 Requested font "[./fonts/Erewhon-Bold.otf]/ICU:script=latn;language=DFLT;" at 2
 4.88pt
- -> E:/Chuan/Documents/GitHub/Learning/Config Files/Assignment-TEX/fonts/Erewho
-n-Bold.otf
+ -> E:/Chuan/Documents/GitHub/Learning/Numerical Algorithm and Case Studies/Hom
+ework1/fonts/Erewhon-Bold.otf
 Requested font "[./fonts/Erewhon-Regular.otf]/ICU:script=latn;language=DFLT;" a
 t 17.28pt
- -> E:/Chuan/Documents/GitHub/Learning/Config Files/Assignment-TEX/fonts/Erewho
-n-Regular.otf
+ -> E:/Chuan/Documents/GitHub/Learning/Numerical Algorithm and Case Studies/Hom
+ework1/fonts/Erewhon-Regular.otf
 Requested font "[./fonts/Erewhon-Bold.otf]/ICU:script=latn;language=DFLT;" at 1
 7.28pt
- -> E:/Chuan/Documents/GitHub/Learning/Config Files/Assignment-TEX/fonts/Erewho
-n-Bold.otf
+ -> E:/Chuan/Documents/GitHub/Learning/Numerical Algorithm and Case Studies/Hom
+ework1/fonts/Erewhon-Bold.otf
 Requested font "[./fonts/Erewhon-Regular.otf]/ICU:script=latn;language=DFLT;" a
 t 12.0pt
- -> E:/Chuan/Documents/GitHub/Learning/Config Files/Assignment-TEX/fonts/Erewho
-n-Regular.otf
+ -> E:/Chuan/Documents/GitHub/Learning/Numerical Algorithm and Case Studies/Hom
+ework1/fonts/Erewhon-Regular.otf
 Requested font "[./fonts/Erewhon-Bold.otf]/ICU:script=latn;language=DFLT;" at 1
 2.0pt
- -> E:/Chuan/Documents/GitHub/Learning/Config Files/Assignment-TEX/fonts/Erewho
-n-Bold.otf
+ -> E:/Chuan/Documents/GitHub/Learning/Numerical Algorithm and Case Studies/Hom
+ework1/fonts/Erewhon-Bold.otf
 
-Underfull \hbox (badness 10000) in paragraph at lines 26--27
+Underfull \hbox (badness 10000) in paragraph at lines 24--25
 
  []
 
 Requested font "[./fonts/Erewhon-Italic.otf]/ICU:script=latn;language=DFLT;" at
  12.0pt
- -> E:/Chuan/Documents/GitHub/Learning/Config Files/Assignment-TEX/fonts/Erewho
-n-Italic.otf
+ -> E:/Chuan/Documents/GitHub/Learning/Numerical Algorithm and Case Studies/Hom
+ework1/fonts/Erewhon-Italic.otf
 Requested font "[./fonts/Erewhon-BoldItalic.otf]/ICU:script=latn;language=DFLT;
 " at 12.0pt
- -> E:/Chuan/Documents/GitHub/Learning/Config Files/Assignment-TEX/fonts/Erewho
-n-BoldItalic.otf
+ -> E:/Chuan/Documents/GitHub/Learning/Numerical Algorithm and Case Studies/Hom
+ework1/fonts/Erewhon-BoldItalic.otf
+
+Underfull \hbox (badness 10000) in paragraph at lines 35--40
+
+ []
+
 Requested font "[./fonts/Erewhon-Regular.otf]/ICU:script=latn;language=DFLT;" a
 t 8.0pt
- -> E:/Chuan/Documents/GitHub/Learning/Config Files/Assignment-TEX/fonts/Erewho
-n-Regular.otf
+ -> E:/Chuan/Documents/GitHub/Learning/Numerical Algorithm and Case Studies/Hom
+ework1/fonts/Erewhon-Regular.otf
 Requested font "[./fonts/Erewhon-Regular.otf]/ICU:script=latn;language=DFLT;" a
 t 6.0pt
- -> E:/Chuan/Documents/GitHub/Learning/Config Files/Assignment-TEX/fonts/Erewho
-n-Regular.otf
+ -> E:/Chuan/Documents/GitHub/Learning/Numerical Algorithm and Case Studies/Hom
+ework1/fonts/Erewhon-Regular.otf
 Requested font "cmmi12" at 12.0pt
  -> cmmi12
 Requested font "cmmi8" at 8.0pt
@@ -1324,7 +1324,7 @@ Requested font "cmex8" at 8.0pt
  -> cmex8
 Requested font "cmex7" at 6.0pt
  -> cmex7
-LaTeX Font Info:    Try loading font information for U+msa on input line 40.
+LaTeX Font Info:    Try loading font information for U+msa on input line 59.
 (C:\CTEX\MiKTeX\tex\latex\amsfonts\umsa.fd
 File: umsa.fd 2009/06/22 v3.00 AMS symbols A
 )
@@ -1334,7 +1334,7 @@ Requested font "msam10" at 8.0pt
  -> msam10
 Requested font "msam7" at 6.0pt
  -> msam7
-LaTeX Font Info:    Try loading font information for U+msb on input line 40.
+LaTeX Font Info:    Try loading font information for U+msb on input line 59.
 
 (C:\CTEX\MiKTeX\tex\latex\amsfonts\umsb.fd
 File: umsb.fd 2009/06/22 v3.00 AMS symbols B
@@ -1352,44 +1352,59 @@ Requested font "cmr8" at 8.0pt
 Requested font "cmr6" at 6.0pt
  -> cmr6
 
-Underfull \hbox (badness 10000) in paragraph at lines 37--41
+Underfull \hbox (badness 10000) in paragraph at lines 59--60
 
  []
 
-Requested font "cmmi12" at 17.28pt
- -> cmmi12
-Requested font "cmsy10" at 17.28pt
- -> cmsy10
-Requested font "cmex10" at 17.28pt
- -> cmex10
-Requested font "msam10" at 17.28pt
- -> msam10
+LaTeX Font Info:    Try loading font information for EU1+lmtt on input line 64.
+
+(C:\CTEX\MiKTeX\tex\latex\euenc\eu1lmtt.fd
+File: eu1lmtt.fd 2009/10/30 v1.6 Font defs for Latin Modern
+)
+Requested font "[lmmono12-regular]" at 12.0pt
+ -> C:/CTEX/MiKTeX/fonts/opentype/public/lm/lmmono12-regular.otf
+LaTeX Font Info:    Font shape `EU1/lmtt/bx/n' in size <12> not available
+(Font)              Font shape `EU1/lmtt/b/n' tried instead on input line 64.
+Requested font "[lmmonolt10-bold]" at 12.0pt
+ -> C:/CTEX/MiKTeX/fonts/opentype/public/lm/lmmonolt10-bold.otf
+
+Overfull \hbox (0.60527pt too wide) in paragraph at lines 64--65
+\EU1/Erewhon-Regular(0)/m/n/12 The code can be found in the attachment(\EU1/lmt
+t/m/n/12 extract_quadratic.m\EU1/Erewhon-Regular(0)/m/n/12 ); We use the name \
+EU1/lmtt/b/n/12 MyFunc
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 64--65
+
+ []
+
+Requested font "[./fonts/Erewhon-Regular.otf]/ICU:script=latn;language=DFLT;" a
+t 7.0pt
+ -> E:/Chuan/Documents/GitHub/Learning/Numerical Algorithm and Case Studies/Hom
+ework1/fonts/Erewhon-Regular.otf
+Requested font "[./fonts/Erewhon-Regular.otf]/ICU:script=latn;language=DFLT;" a
+t 5.0pt
+ -> E:/Chuan/Documents/GitHub/Learning/Numerical Algorithm and Case Studies/Hom
+ework1/fonts/Erewhon-Regular.otf
+Requested font "cmex7" at 7.0pt
+ -> cmex7
+Requested font "cmex7" at 5.0pt
+ -> cmex7
 Requested font "msam10" at 10.0pt
  -> msam10
-Requested font "msbm10" at 17.28pt
- -> msbm10
+Requested font "msam7" at 7.0pt
+ -> msam7
+Requested font "msam5" at 5.0pt
+ -> msam5
 Requested font "msbm10" at 10.0pt
  -> msbm10
-Requested font "cmr17" at 17.28pt
- -> cmr17
-File: pics/hw2_data1_cluster.eps Graphic file (type eps)
-<pics/hw2_data1_cluster.eps>
-Underfull \hbox (badness 10000) in paragraph at lines 42--121
+Requested font "msbm7" at 7.0pt
+ -> msbm7
+Requested font "msbm5" at 5.0pt
+ -> msbm5
 
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 121--121
-
- []
-
-File: pics/hw2_data1_k_CH.eps Graphic file (type eps)
-<pics/hw2_data1_k_CH.eps>
-File: pics/hw2_data1_k_H.eps Graphic file (type eps)
- <pics/hw2_data1_k_H.eps>
-File: pics/hw2_data1_k_GAP.eps Graphic file (type eps)
- <pics/hw2_data1_k_GAP.eps>
-Underfull \hbox (badness 10000) in paragraph at lines 121--121
+Underfull \hbox (badness 10000) in paragraph at lines 96--97
 
  []
 
@@ -1398,73 +1413,102 @@ File: se-ascii-print.def 2010/03/01 v1.8 stringenc: Printable ASCII characters
 ) [1
 
 ]
-File: pics/hw2_data2_k_CH.eps Graphic file (type eps)
-
-<pics/hw2_data2_k_CH.eps>
-File: pics/hw2_data2_k_H.eps Graphic file (type eps)
- <pics/hw2_data2_k_H.eps>
-File: pics/hw2_data2_k_GAP.eps Graphic file (type eps)
- <pics/hw2_data2_k_GAP.eps>
-Underfull \hbox (badness 10000) in paragraph at lines 121--121
+Underfull \hbox (badness 10000) in paragraph at lines 105--106
 
  []
 
-File: pics/hw2_data3_k_CH.eps Graphic file (type eps)
-<pics/hw2_data3_k_CH.eps>
-File: pics/hw2_data3_k_H.eps Graphic file (type eps)
- <pics/hw2_data3_k_H.eps>
-File: pics/hw2_data3_k_GAP.eps Graphic file (type eps)
- <pics/hw2_data3_k_GAP.eps>
-Underfull \hbox (badness 10000) in paragraph at lines 121--121
 
+Underfull \hbox (badness 10000) in paragraph at lines 115--116
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 117--123
+
+ []
+
+
+Overfull \hbox (13.2608pt too wide) in paragraph at lines 210--210
+\EU1/Erewhon-Regular(0)/m/n/12 For problem (a), we will use back substitution a
+lgorithm in row-oriented and column-oriented
  []
 
 [2]
-File: pics/hw2_data4_k_CH.eps Graphic file (type eps)
- <pics/hw2_data4_k_CH.eps>
-File: pics/hw2_data4_k_H.eps Graphic file (type eps)
- <pics/hw2_data4_k_H.eps>
-File: pics/hw2_data4_k_GAP.eps Graphic file (type eps)
+Requested font "[./fonts/Erewhon-Regular.otf]/ICU:script=latn;language=DFLT;+sm
+cp;+smcp;" at 12.0pt
+ -> E:/Chuan/Documents/GitHub/Learning/Numerical Algorithm and Case Studies/Hom
+ework1/fonts/Erewhon-Regular.otf
+Requested font "[./fonts/Erewhon-Bold.otf]/ICU:script=latn;language=DFLT;+smcp;
++smcp;" at 12.0pt
+ -> E:/Chuan/Documents/GitHub/Learning/Numerical Algorithm and Case Studies/Hom
+ework1/fonts/Erewhon-Bold.otf
+Requested font "[./fonts/Erewhon-Regular.otf]/ICU:script=latn;language=DFLT;+sm
+cp;+smcp;" at 8.0pt
+ -> E:/Chuan/Documents/GitHub/Learning/Numerical Algorithm and Case Studies/Hom
+ework1/fonts/Erewhon-Regular.otf
+Requested font "[./fonts/Erewhon-Bold.otf]/ICU:script=latn;language=DFLT;+smcp;
++smcp;" at 8.0pt
+ -> E:/Chuan/Documents/GitHub/Learning/Numerical Algorithm and Case Studies/Hom
+ework1/fonts/Erewhon-Bold.otf
+Requested font "[./fonts/Erewhon-Regular.otf]/ICU:script=latn;language=DFLT;+sm
+cp;+smcp;" at 6.0pt
+ -> E:/Chuan/Documents/GitHub/Learning/Numerical Algorithm and Case Studies/Hom
+ework1/fonts/Erewhon-Regular.otf
+Requested font "[./fonts/Erewhon-Bold.otf]/ICU:script=latn;language=DFLT;+smcp;
++smcp;" at 6.0pt
+ -> E:/Chuan/Documents/GitHub/Learning/Numerical Algorithm and Case Studies/Hom
+ework1/fonts/Erewhon-Bold.otf
 
-<pics/hw2_data4_k_GAP.eps>
-Underfull \hbox (badness 10000) in paragraph at lines 121--125
+Underfull \hbox (badness 10000) in paragraph at lines 210--210
 
  []
 
-
-Overfull \hbox (35.92989pt too wide) in paragraph at lines 126--135
-[]\EU1/Erewhon-Regular(0)/bx/n/17.28 Problem 3.[] \EU1/Erewhon-Regular(0)/m/n/1
-7.28 Use hierarchical clustering methods to cluster $\OML/cmm/m/it/17.28 Data[]
-:csv$ 
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 126--135
-
- []
-
-
-AED: lastpage setting LastPage
 [3]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 145.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 145.
 
-("E:\Chuan\Documents\GitHub\Learning\Config Files\Assignment-TEX\assignment.aux
-")
-Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 145.
-Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 145.
+LaTeX Warning: Command \B invalid in math mode on input line 210.
+
+Missing character: There is no ̵ in font cmmi12!
+
+Underfull \hbox (badness 10000) in paragraph at lines 210--211
+
+ []
 
 
-LaTeX Warning: There were multiply-defined labels.
+Overfull \hbox (58.57327pt too wide) in paragraph at lines 215--287
+[]\EU1/Erewhon-Regular(0)/bx/it/12 Code.[]  \EU1/Erewhon-Regular(0)/m/n/12 The 
+code can be found in the attachments(\EU1/lmtt/m/n/12 row_back_substitute.m\EU1
+/Erewhon-Regular(0)/m/n/12 , \EU1/lmtt/m/n/12 col_back_substitute.m\EU1/Erewhon
+-Regular(0)/m/n/12 ,
+ []
 
+[4]
+Underfull \hbox (badness 10000) in paragraph at lines 287--297
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 297--298
+
+ []
+
+[5] 
+AED: lastpage setting LastPage
+[6]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 308.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 308.
+
+("E:\Chuan\Documents\GitHub\Learning\Numerical Algorithm and Case Studies\Homew
+ork1\assignment.aux")
+Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 308.
+Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 308.
  ) 
 Here is how much of TeX's memory you used:
- 22864 strings out of 430478
- 423920 string characters out of 3191502
- 472248 words of memory out of 3000000
- 25716 multiletter control sequences out of 15000+200000
- 11162 words of font info for 61 fonts, out of 3000000 for 9000
+ 22892 strings out of 430478
+ 425063 string characters out of 3191502
+ 478008 words of memory out of 3000000
+ 25742 multiletter control sequences out of 15000+200000
+ 10987 words of font info for 71 fonts, out of 3000000 for 9000
  14 hyphenation exceptions out of 8191
- 44i,11n,48p,672b,398s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 44i,12n,43p,703b,403s stack positions out of 5000i,500n,10000p,200000b,50000s
 
-Output written on assignment.pdf (3 pages).
+Output written on assignment.pdf (6 pages).

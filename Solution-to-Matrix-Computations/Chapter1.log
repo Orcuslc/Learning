@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.3-1.40.12 (MiKTeX 2.9) (preloaded format=pdflatex 2016.4.18)  13 SEP 2016 10:55
+This is pdfTeX, Version 3.1415926-2.3-1.40.12 (MiKTeX 2.9) (preloaded format=pdflatex 2016.4.18)  23 SEP 2016 13:17
 entering extended mode
 **E:/Chuan/Documents/GitHub/Learning/Solution-to-Matrix-Computations/Chapter1.t
 ex
@@ -273,7 +273,7 @@ x) )
 Here is how much of TeX's memory you used:
  3808 strings out of 495354
  49898 string characters out of 3183859
- 112895 words of memory out of 3000000
+ 113895 words of memory out of 3000000
  6950 multiletter control sequences out of 15000+200000
  12740 words of font info for 49 fonts, out of 3000000 for 9000
  14 hyphenation exceptions out of 8191
@@ -287,7 +287,7 @@ m/cmr17.pfb><C:/CTEX/MiKTeX/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/CTEX/Mi
 KTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/CTEX/MiKTeX/fonts/type1/publ
 ic/amsfonts/cm/cmsy8.pfb><C:/CTEX/MiKTeX/fonts/type1/public/amsfonts/cm/cmti12.
 pfb>
-Output written on Chapter1.pdf (1 page, 112655 bytes).
+Output written on Chapter1.pdf (1 page, 112861 bytes).
 PDF statistics:
  50 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
