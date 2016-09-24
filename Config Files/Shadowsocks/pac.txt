@@ -2,6 +2,7 @@
 // https://github.com/clowwindy/gfwlist2pac
 
 var domains = {
+"ets.org":1,
 "live.com":1,
 "av9.cc":1,
 "superuser.com":1,
