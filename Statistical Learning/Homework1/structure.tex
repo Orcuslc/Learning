@@ -1,0 +1,107 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Modified By Orcuslc, 2016-9-21
+% Modified for Assignments
+% http://github.com/orcuslc
+%
+% Wilson Resume/CV
+% Structure Specification File
+% Version 1.0 (22/1/2015)
+%
+% This file has been downloaded from:
+% http://www.LaTeXTemplates.com
+%
+% License:
+% CC BY-NC-SA 3.0 (http://creativecommons.org/licenses/by-nc-sa/3.0/)
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%----------------------------------------------------------------------------------------
+%	PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
+%----------------------------------------------------------------------------------------
+\documentclass[10pt]{article}
+
+\usepackage{listings}
+\usepackage{xcolor}
+\usepackage{amsmath,amsthm,amssymb}
+\usepackage{epstopdf}
+\usepackage{graphicx}
+
+\DeclareGraphicsExtensions{.eps,.ps,.jpg,.bmp}
+
+
+\usepackage[a4paper, hmargin=25mm, vmargin=30mm, top=20mm]{geometry} % Use A4 paper and set margins
+
+\usepackage{fancyhdr} % Customize the header and footer
+
+\usepackage{lastpage} % Required for calculating the number of pages in the document
+
+\usepackage{hyperref} % Colors for links, text and headings
+
+\setcounter{secnumdepth}{0} % Suppress section numbering
+
+%\usepackage[proportional,scaled=1.064]{erewhon} % Use the Erewhon font
+%\usepackage[erewhon,vvarbb,bigdelims]{newtxmath} % Use the Erewhon font
+\usepackage[utf8]{inputenc} % Required for inputting international characters
+\usepackage[T1]{fontenc} % Output font encoding for international characters
+
+\usepackage{fontspec} % Required for specification of custom fonts
+\setmainfont[Path = ./fonts/,
+Extension = .otf,
+BoldFont = Erewhon-Bold,
+ItalicFont = Erewhon-Italic,
+BoldItalicFont = Erewhon-BoldItalic,
+SmallCapsFeatures = {Letters = SmallCaps}
+]{Erewhon-Regular}
+
+\usepackage{color} % Required for custom colors
+\definecolor{slateblue}{rgb}{0.17,0.22,0.34}
+
+\usepackage{sectsty} % Allows customization of titles
+\sectionfont{\color{slateblue}} % Color section titles
+
+\fancypagestyle{plain}{\fancyhf{}\cfoot{\thepage\ of \pageref{LastPage}}} % Define a custom page style
+\pagestyle{plain} % Use the custom page style through the document
+\renewcommand{\headrulewidth}{0pt} % Disable the default header rule
+\renewcommand{\footrulewidth}{0pt} % Disable the default footer rule
+
+\setlength\parindent{0pt} % Stop paragraph indentation
+
+% Non-indenting itemize
+\newenvironment{itemize-noindent}
+{\setlength{\leftmargini}{0em}\begin{itemize}}
+{\end{itemize}}
+
+% Text width for tabbing environments
+\newlength{\smallertextwidth}
+\setlength{\smallertextwidth}{\textwidth}
+\addtolength{\smallertextwidth}{-2cm}
+
+\newcommand{\sqbullet}{~\vrule height 1ex width .8ex depth -.2ex} % Custom square bullet point 
+
+
+\renewcommand{\title}[2] {
+{\Huge{\color{slateblue}\textbf{#1}}}
+\hfill
+\LARGE{\color{slateblue}\textbf{#2}}
+\rule{\textwidth}{0.5mm}
+}
+
+\newcommand{\problem}[2] {
+\vspace{20pt}
+\LARGE{\color{slateblue}\textbf{Problem #1.}}
+\vspace{2mm}
+#2 \\[5pt]
+}
+
+\newcommand{\solution}[2] {
+\large{\color{slateblue}\textit{\textbf{#1.}}}
+#2 \qed \\[3mm]
+} 
+
+% \newcommand{\solution}[2] {
+% \LARGE{\color{slateblue}\textit{#1}}
+% \ #2 \qed
+% }
+
+% \newenvironment{problem}[2][Problem]{\begin{trivlist}
+% \item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
