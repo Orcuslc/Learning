@@ -6,22 +6,16 @@
 \usepackage{graphics}
 \usepackage{subfig}
 \usepackage{listings}
-\lstset{
-  numbers=left,
-  frame=shadowbox,
-  keywordstyle=\bf\color{blue!70},
-  identifierstyle=\bf,
-  numberstyle=\color[RGB]{0,192,192},
-  commentstyle=\it\color[RGB]{0,96,96},
-  stringstyle=\rmfamily\slshape\color[RGB]{128,0,0},
-  showstringspaces=false,
-  extendedchars=false
-    }
+\usepackage{xcolor}
+\usepackage{courier}
+\renewcommand{\sfdefault}{phv}
+
 \DeclareGraphicsExtensions{.eps,.ps,.jpg,.bmp}
 
 \begin{document}
 
 \title{Homework 1}{16.9.22}
+\tiny{Code of this assignment are in the attachment, and they can also be found in GitHub: https://github.com/Orcuslc/Learning/tree/master/Numerical\%20Algorithm\%20and\%20Case\%20Studies/Homework1/code}
 
 % \parbox{0.3\textwidth}{
 % Chuan Lu}
@@ -55,7 +49,7 @@ x_1 & = & \frac{-b+\sqrt{b^2-4ac}}{2a} \\
 x_2 & = & \frac{2c}{-b+\sqrt{b^2-4ac}} 
 \end{aligned}
 \right.$ \\[10pt]
-The correctness can be easily proved by using Vieta theorem.
+\textbf{Verification}: The correctness can be easily proved by using Vieta theorem.
 }
 
 \solution{Code}{
@@ -111,7 +105,12 @@ In this case $\frac{\partial x_1}{\partial b} \approx -3, \frac{\partial x_1}{\p
 2. For the second case, when $b=-10^8, c=1$, and the result $x_1\approx 10^8, x_2\approx 10^{-8}.$ \\[5pt]
 In this case $\frac{\partial x_1}{\partial b} \approx -3, \frac{\partial x_1}{\partial c}\approx -10^8,$ and $\frac{\partial x_2}{\partial b} \approx 10^16, \frac{\partial x_2}{\partial c} \approx 10^8$. \\[5pt]
 Apparently, sensitivity of $x_2$ on both $b$ and $c$ are large enough to make a obvious change in significant numbers. It leads to that the result of $x_2$ being $0$ when using \texttt{root}.
-In this scenario we may regard this numerial problem an ill-conditioned one; though the numerical algorithm by MATLAB may be a stable one, the results can be far from true ones.
+In this scenario we may regard this numerial problem an ill-conditioned one; though the numerical algorithm by MATLAB may be a stable one, the results can be far from true ones. \\[5pt]
+}
+\solution{Remarks}{
+I used Python to solve the equation $x^2 - 1e^8x+1 = 0$:
+\lstinputlisting[language=Python]{code/rt_extract.py}
+The result is: $x_1 = 1e^{-8}, x_2 = 1e^8.$ So I am wondering, since \texttt{Scipy} could solve this equation perfectly, why can't MATLAB? The \texttt{roots()} function even doesn't provide a chance to choose the initial points.
 }
 
 \problem{2}{}
@@ -206,15 +205,18 @@ For problem (b), the five algorithms are shown below.
       \End
 \li \Return $C$
 }
-I am not quite sure about the MatVec update.
+The template used here for these algorithms is \texttt{clrscode3e}.
 }
 
-\solution{Code}{
+\solution{Code and Implementation issues}{
 The code can be found in the attachments(\texttt{row\_back\_substitute.m},\ \texttt{col\_back\_substitute.m},\ \texttt{mmloop.m},\ \texttt{mmdot.m},\ \texttt{mmdaxpy.m},\ \texttt{mmmatvec.m},\ \texttt{mmouterdot.m}). And the test script is \texttt{test.m}.\\[5pt]
-Code for checking errors is ignored here, since I think in this problem it is of less importance.
-}
+Code for checking and handling errors in each function is omitted, since I think in this problem it is of less importance. \\[5pt]
+The input and output of these algorithms are listed within the algorithms, and they only used scalar and vector multiplication contained in MATLAB. \\[5pt]
+\textbf{Verification}: It is not difficult to find 
+that all these algorithms are equal to the first, triple-loop algorithm.}
 \solution{Result}{
-For problem (a), the time cost is in Table 3 below. (Of course I know that MATLAB is using some precompile skills to accelerate the computing speed, so I run the same test several times after the time cost converge to a stable status.) \\[5pt]
+All the data used are sampled by using \texttt{rand()}. To be specific, each number in each matrix is sampled with a \texttt{rand()}. \\[5pt]
+For problem (a), the time cost is in Table 3 below. (I know that MATLAB is using some precompile skills to accelerate the computing speed, so I run the same test several times until the time cost converge to a stable status.) \\[5pt]
 \begin{table}[htbp] \large \centering
 \begin{tabular}{|c|c|c|c|c|}
 \hline
@@ -289,8 +291,7 @@ outerdot & $1.195e^{-13}$ & $2.614e^{-15}$ & $1.408e^{-14}$ & $2.660e^{-14}$ \\
 From result of problem (a), we found that column-oriented algorithm is slightly quicker that row-oriented algorithm in solving upper triangular system. \\[5pt]
 From the algorithm's point of view, in $i^{th}$ loop, col-oriented al need to do (i-1) times' multiplication, (i-1) times' subtraction, and 1 division, while row-oriented al need to do (n-i) times multiplication, (n-i) times addition, and 1 division. \\[5pt]
 In consequence, C-O al need to do $\frac{(n-1)(n-2)}{2}$ times' multiplication and substraction, and (n-1) times' division; while R-O al need to do 1 more division than C-O. So I am curious why C-O cost only 2/3 time comparing with R-O when $U \in\mathbb{R}^{1024\times 1024}$. \\[5pt]
-On the other hand, since the matrices are generated by random numbers, it is of much possibility that those matrices are nearly singular. It is not difficult to understand why the result of $x$ has such a huge error. \\[5pt]
-
+On the other hand, since the matrices are generated by random numbers, it is of much possibility that those matrices are nearly singular. So it is not difficult to understand why the result of $x$ has such a huge error. \\[5pt]
 For problem (b), result of the five algorithms are of good precision, which can be found with norm of errors. \\[5pt]
 Let's analysis the flops of the als. Loop update needs $n^3$ times of loops, each contains a multiplication and an addition. Dot update needs $n^2$ times of loops, each contains an addition and a Vectorized Dot. Daxpy update needs $n^2$ times of loops, each contains an Vectorized Addition and a Vectorized Scalar multiplication with a vector. MatVec update needs $n$ times of loops, each contains a Vectorized Addition and a Vectorized Scalar multiplication with a matrix. OuterDot update needs $n$ times of loops, each contains a Vectorized Addtion with a matrix and an outer dot of two vectors.\\[5pt]
 Though the total flops of the five als are the same, we all know that in MATLAB, \texttt{for} loops are much slower that vectorized computations. So the result of experiment is trivial.
@@ -299,10 +300,10 @@ Though the total flops of the five als are the same, we all know that in MATLAB,
 
 
 \refgroup{
-\reference{Jixiu Chen, \textit{Mathematical Analysis II}, Page 174-175.}
+\reference{Jixiu Chen \textit{et al}, \textit{Mathematical Analysis II}, Page 174-175.}
 \reference{D. P. O’Leary, \textit{Scientific Computing with case studies}, Page 23-24.}
-\reference{Gene H. Golub, \textit{Matrix Computations}, Page 10-11.}
-\reference{Shufang Xu, \textit{Numerical Linear Algebra}, Page 11-13.}
+\reference{Gene H. Golub \textit{et al}, \textit{Matrix Computations}, Page 10-11.}
+\reference{Shufang Xu \textit{et al}, \textit{Numerical Linear Algebra}, Page 11-13.}
 }
 
 
