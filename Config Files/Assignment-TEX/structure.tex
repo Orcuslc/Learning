@@ -80,6 +80,14 @@ SmallCapsFeatures = {Letters = SmallCaps}
 \newcommand{\sqbullet}{~\vrule height .8ex width .6ex depth -.05ex} % Custom square bullet point 
 
 
+\newcommand{\tbf}[1]{\textbf{#1}}
+\newcommand{\tit}[1]{\textit{#1}}
+\newcommand{\mbb}[1]{\mathbb{#1}}
+\newcommand{\blue}[1]{\color{blue}{#1}}
+\newcommand{\red}[1]{\color{red}{#1}}
+\newcommand{\sblue}[1]{\color{slateblue}{#1}}
+\newcommand{\n}{\\[5pt]}
+
 \renewcommand{\title}[2] {
 {\Huge{\color{slateblue}\textbf{#1}}}
 \hfill
@@ -92,7 +100,7 @@ SmallCapsFeatures = {Letters = SmallCaps}
 \vspace{20pt}
 \LARGE{\color{slateblue}\textbf{Problem #1.}}
 \vspace{2mm}
-#2 \\[5pt]
+#2 \\[10pt]
 }
 
 \renewcommand{\proof}[2] {
