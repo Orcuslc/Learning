@@ -1,0 +1,85 @@
+%!TEX program = xelatex
+
+% \documentclass[10pt]{article}
+\input{structure.tex}
+\usepackage{epstopdf}
+\usepackage{graphics}
+\usepackage{subfig}
+\usepackage{listings}
+\usepackage{xcolor}
+\usepackage{courier}
+\renewcommand{\sfdefault}{phv}
+
+\DeclareGraphicsExtensions{.eps,.ps,.jpg,.bmp}
+
+\begin{document}
+
+\title{Assignment 2}{16.10.2}
+\tiny{Code of this assignment are in the attachment, and they can also be found in GitHub: https://github.com/Orcuslc/Learning/tree/master/Numerical\%20Algorithm\%20and\%20Case\%20Studies/Homework2/code}
+
+% \parbox{0.3\textwidth}{
+% Chuan Lu}
+% \hfill
+% \parbox{0.3\textwidth}{
+% 13300180056}
+% \hfill
+% \parbox{0.3\textwidth}{
+% chuanlu13@fudan.edu.cn}
+
+\problem{1 \& 2}{}
+\solution{Abstract}{
+\\[5pt]
+Details of the implementation of LU decomposition in MATLAB.
+}
+\solution{Introduction}{
+\\[5pt]
+In most cases pivoting is necessary. If we randomly choose a matrix $M\in \mathbb{R}^{n\times n}$, the probability that $M(1, 1) = max_{i}M(i, 1)$ is $\frac{1}{n}$. So the efficiency of pivoting is a great concern. \\[5pt]
+In the experiment below, we generate the matrix $M$ by using MATLAB function \texttt{randn(n, n)}; and we use seperately
+$$\texttt{[L, U] = lu(A)}$$
+$$\texttt{[L, U, P] = lu(A)}$$
+for the two problems.
+}
+\solution{Results \& Discussion}{
+After trying for several times with different $n$, the dimension of the random matrix, we found that in most cases, calling \texttt{[L, U] = lu(A)} leads to $L$ not being a lower triangular matrix, but $U$ is always an upper triangular matrix. \\[5pt]
+When we count the number of non-zero elements of each row in $L$, we can find out the list of the numbers is a permutation of \texttt{[1, 2, ..., n]}. \\[5pt]
+Thus I tried to call \texttt{[L1, U1, P] = lu(A)}, and the $P$ is exactly the permutation matrix: $$PL1 = L$$.
+So it is obvious how MATLAB express the $P$: it simply multiplied it with the L; In order to represent this, I guess that MATLAB records the number of lines that need interchanging in each step; when the algorithm ends, it conbines the records to gain a permutation matrix. \\[5pt]
+In order to realize $P*b$, we should use the pernutation record: in each of the $n$ steps, change the elements of two lines, and it will only need $O(n)$ time, and no extra space.
+}
+
+\problem{3}{}
+\solution{Abstract \& Introduction}{
+As is known to all, using Cholesky decomposition for a symmetric positive definite matrix will need half of the flops comparing LU decomposition; In the mean time, since there is no need of pivoting for a symmetric positive definite matrix, in each step $n-1$ times of comparing and $2n$ times of exchanging will be saved on average.
+}
+\solution{Result}{
+We generate the symmetric matrix A by
+$$\texttt{A = randn(n, n); A = A + A';}$$
+and we did the experiment with $n = 4, 6, 8, 10$. The result of calling 
+$$\texttt{L = chol(A)}$$
+is:
+$$\texttt{Error using \textbf{chol}: Matrix must be positive definite}.$$
+}
+\solution{Analysis}{
+If $A\in \mathbb{R}^{n\times n}$ is not positive definite, then according to the properties of symmetric elementary transformations, $PAP^\top$ is still not positive definite, where $P$ is a permutation matrix. \\[5pt]
+Thus, we can assume $A(1:2, 1:2)$ is not positive definite. According to the algorithm, we have
+$$l_{11} = \sqrt{a_{11}},$$
+$$l_{21} = \frac{a_{21}}{l_{11}},$$
+$$l_{22} = (a_{22} - l_{21}^2)^{1/2}.$$
+That means $l_{22} = a_{22} - \frac{a_{21}^2}{a_{11}} = \frac{a_{22}a_{11} - a_{21}^2}{a_{11}}$. Since A is symmetric and not positive definite, we have $a_{22}a_{11}-a_{21}^2 = a_{22}a_{11}-a{21}a_{12}<0$. So $l_{22}$ does not exist.
+}
+
+\problem{4}{}
+\solution{Introduction}{
+The $LDL^\top$ decomposition is used for Hermitian indefinite matrices.
+}
+\solution{Discussion}{
+I found an introduction to $LDL^\top$ decomposition from Golub's \textit{Matrix Computations}, Page 186. It said the method was developed by Bunch and Parlett. I searched their paper in Google Scholar, but it seemed that our school has no access to siam.org, so I cannot read the paper.
+}
+
+
+\refgroup{
+\reference{Gene H. Golub \textit{et al}, \textit{Matrix Computations}, Page 186-187.}
+}
+
+
+\end{document}
