@@ -41,8 +41,15 @@ For spectral clustering, we already know that the eigenvector $u_2$ correspondin
 $$ \min_{\tbf{f}} \ \tbf{f}^\top\tbf{L}\tbf{f},$$
 $$s.t. \quad \tbf{f}^\top \tbf{f} = 1, \tbf{f}^\top\tbf{1} = 0$$
 In fact, if we define 
-$$G(f) = G(f_1, \cdots)$$
-For Min Cut, if we define $\tbf{f} = (f_1, f_2\cdots f_n)\tr$
+$$G(f) = G(f_1,\cdots, f_n) = f\tr\tbf{L}f - \lambda_1 (f\tr f-1) - \lambda_2 f\tr\tbf{1} $$ $$ =  \frac{1}{2}\sum_{i,j=1}^{n}w_{ij}(f_i-f_j)^2-\lambda_1(\sum_{i=1}^{n}f_i^2-1)-\lambda_2\sum_{i=1}^n f_i$$
+Then according to Lagrange Theorm, we let
+$$\frac{\partial G}{\partial f_i} = \sum_{j=1}^n (f_i-f_j) - 2\lambda_1 f_i - \lambda_2 = 0, \quad  i=1:n$$
+If we add the $n$ equations, we get
+$$2\lambda_1\sum_{i, j=1}^n f_i + n\lambda_2=0$$
+Since $f\tr\tbf{1} = 0$, then $\lambda_2 = 0$. So
+$$\sum_{j=1}^n w_{ij}f_{j} = \lambda f_i, \quad i=1:n,$$
+which means $f$ is an eigenvector of $\tbf{L}$.\n
+For Min Cut, if we define $\tbf{f} = (f_1, f_2\cdots f_n)^\top$
 }
 
 % \problem{2}{Cluster $Data_i.csv$ with K-means, judge the number of clusters, and compare differences between different evaluating methods.}
