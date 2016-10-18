@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.1415926-2.3-0.9997.5 (MiKTeX 2.9) (preloaded format=xelatex 2016.9.12)  10 OCT 2016 00:35
+This is XeTeX, Version 3.1415926-2.3-0.9997.5 (MiKTeX 2.9) (preloaded format=xelatex 2016.9.12)  11 OCT 2016 13:09
 entering extended mode
 **E:/Chuan/Documents/GitHub/Learning/Statistical*Learning/Homework2/assignment.
 tex
@@ -1319,7 +1319,7 @@ Requested font "cmex8" at 8.0pt
  -> cmex8
 Requested font "cmex7" at 6.0pt
  -> cmex7
-LaTeX Font Info:    Try loading font information for U+msa on input line 53.
+LaTeX Font Info:    Try loading font information for U+msa on input line 70.
 (C:\CTEX\MiKTeX\tex\latex\amsfonts\umsa.fd
 File: umsa.fd 2009/06/22 v3.00 AMS symbols A
 )
@@ -1329,7 +1329,7 @@ Requested font "msam10" at 8.0pt
  -> msam10
 Requested font "msam7" at 6.0pt
  -> msam7
-LaTeX Font Info:    Try loading font information for U+msb on input line 53.
+LaTeX Font Info:    Try loading font information for U+msb on input line 70.
 
 (C:\CTEX\MiKTeX\tex\latex\amsfonts\umsb.fd
 File: umsb.fd 2009/06/22 v3.00 AMS symbols B
@@ -1355,32 +1355,131 @@ Requested font "[./fonts/Erewhon-Bold.otf]/ICU:script=latn;language=DFLT;" at 6
  -> E:/Chuan/Documents/GitHub/Learning/Statistical Learning/Homework2/fonts/Ere
 whon-Bold.otf
 
-Underfull \hbox (badness 10000) in paragraph at lines 53--54
-
- []
-
-
-AED: lastpage setting LastPage
 (C:\CTEX\MiKTeX\tex\generic\oberdiek\se-ascii-print.def
 File: se-ascii-print.def 2010/03/01 v1.8 stringenc: Printable ASCII characters
 ) [1
 
 ]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 158.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 158.
+Underfull \hbox (badness 10000) in paragraph at lines 70--71
+
+ []
+
+File: pics/hw2_2_data1_kmeans.eps Graphic file (type eps)
+<pics/hw2_2_data1_kmeans.eps>
+File: pics/hw2_2_data1_full_1.eps Graphic file (type eps)
+ <pics/hw2_2_data1_full_1.eps>
+File: pics/hw2_2_data1_full_2.eps Graphic file (type eps)
+
+<pics/hw2_2_data1_full_2.eps>
+File: pics/hw2_2_data1_epsilon_01.eps Graphic file (type eps)
+ <pics/hw2_2_data1_epsilon_01.eps>
+File: pics/hw2_2_data1_epsilon_1.eps Graphic file (type eps)
+
+<pics/hw2_2_data1_epsilon_1.eps>
+File: pics/hw2_2_data1_epsilon_3.eps Graphic file (type eps)
+ <pics/hw2_2_data1_epsilon_3.eps>
+File: pics/hw2_2_data1_directed_3.eps Graphic file (type eps)
+
+<pics/hw2_2_data1_directed_3.eps>
+File: pics/hw2_2_data1_directed_5.eps Graphic file (type eps)
+ <pics/hw2_2_data1_directed_5.eps>
+File: pics/hw2_2_data1_directed_10.eps Graphic file (type eps)
+
+<pics/hw2_2_data1_directed_10.eps>
+File: pics/hw2_2_data1_undirected_3.eps Graphic file (type eps)
+ <pics/hw2_2_data1_undirected_3.eps>
+File: pics/hw2_2_data1_undirected_5.eps Graphic file (type eps)
+
+<pics/hw2_2_data1_undirected_5.eps>
+File: pics/hw2_2_data1_undirected_20.eps Graphic file (type eps)
+ <pics/hw2_2_data1_undirected_20.eps>
+File: pics/hw2_2_data3_kmeans.eps Graphic file (type eps)
+
+<pics/hw2_2_data3_kmeans.eps>
+File: pics/hw2_2_data3_full_1.eps Graphic file (type eps)
+ <pics/hw2_2_data3_full_1.eps>
+File: pics/hw2_2_data3_full_2.eps Graphic file (type eps)
+
+<pics/hw2_2_data3_full_2.eps>
+File: pics/hw2_2_data3_epsilon_0_1.eps Graphic file (type eps)
+ <pics/hw2_2_data3_epsilon_0_1.eps>
+File: pics/hw2_2_data3_epsilon_2.eps Graphic file (type eps)
+
+<pics/hw2_2_data3_epsilon_2.eps>
+File: pics/hw2_2_data3_epsilon_5.eps Graphic file (type eps)
+ <pics/hw2_2_data3_epsilon_5.eps>
+File: pics/hw2_2_data3_directed_3.eps Graphic file (type eps)
+
+<pics/hw2_2_data3_directed_3.eps>
+File: pics/hw2_2_data3_undirected_3.eps Graphic file (type eps)
+ <pics/hw2_2_data3_undirected_3.eps>
+Underfull \hbox (badness 10000) in paragraph at lines 72--151
+
+ []
+
+[2] [3] [4] [5] [6]
+File: pics/hw2_3_circle_full.eps Graphic file (type eps)
+ <pics/hw2_3_circle_full.eps>
+File: pics/hw2_3_circle_epsilon_1.eps Graphic file (type eps)
+
+<pics/hw2_3_circle_epsilon_1.eps>
+File: pics/hw2_3_circle_epsilon_2.eps Graphic file (type eps)
+ <pics/hw2_3_circle_epsilon_2.eps>
+File: pics/hw2_3_circle_directed_5.eps Graphic file (type eps)
+
+<pics/hw2_3_circle_directed_5.eps>
+File: pics/hw2_3_circle_directed_10.eps Graphic file (type eps)
+ <pics/hw2_3_circle_directed_10.eps>
+File: pics/hw2_3_circle_undirected_2.eps Graphic file (type eps)
+
+<pics/hw2_3_circle_undirected_2.eps>
+File: pics/hw2_3_circle_undirected_5.eps Graphic file (type eps)
+ <pics/hw2_3_circle_undirected_5.eps>
+File: pics/hw2_3_curve_full.eps Graphic file (type eps)
+
+<pics/hw2_3_curve_full.eps>
+File: pics/hw2_3_curve_epsilon_1.eps Graphic file (type eps)
+ <pics/hw2_3_curve_epsilon_1.eps>
+File: pics/hw2_3_curve_epsilon_3.eps Graphic file (type eps)
+
+<pics/hw2_3_curve_epsilon_3.eps>
+File: pics/hw2_3_curve_epsilon_10.eps Graphic file (type eps)
+ <pics/hw2_3_curve_epsilon_10.eps>
+File: pics/hw2_3_curve_directed_10.eps Graphic file (type eps)
+
+<pics/hw2_3_curve_directed_10.eps>
+File: pics/hw2_3_curve_directed_20.eps Graphic file (type eps)
+ <pics/hw2_3_curve_directed_20.eps>
+File: pics/hw2_3_curve_directed_30.eps Graphic file (type eps)
+
+<pics/hw2_3_curve_directed_30.eps>
+File: pics/hw2_3_curve_undirected_5.eps Graphic file (type eps)
+ <pics/hw2_3_curve_undirected_5.eps>
+File: pics/hw2_3_curve_undirected_10.eps Graphic file (type eps)
+
+<pics/hw2_3_curve_undirected_10.eps>
+Underfull \hbox (badness 10000) in paragraph at lines 153--215
+
+ []
+
+
+AED: lastpage setting LastPage
+[7] [8] [9]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 337.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 337.
 
 ("E:\Chuan\Documents\GitHub\Learning\Statistical Learning\Homework2\assignment.
 aux")
-Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 158.
-Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 158.
+Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 337.
+Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 337.
  ) 
 Here is how much of TeX's memory you used:
- 22829 strings out of 430478
- 423307 string characters out of 3191502
- 471072 words of memory out of 3000000
- 25695 multiletter control sequences out of 15000+200000
+ 22914 strings out of 430478
+ 425502 string characters out of 3191502
+ 475214 words of memory out of 3000000
+ 25742 multiletter control sequences out of 15000+200000
  9224 words of font info for 55 fonts, out of 3000000 for 9000
  14 hyphenation exceptions out of 8191
- 44i,11n,43p,675b,333s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 44i,12n,48p,675b,402s stack positions out of 5000i,500n,10000p,200000b,50000s
 
-Output written on assignment.pdf (1 page).
+Output written on assignment.pdf (9 pages).

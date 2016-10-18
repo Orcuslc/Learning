@@ -47,12 +47,191 @@ $$\frac{\partial G}{\partial f_i} = \sum_{j=1}^n (f_i-f_j) - 2\lambda_1 f_i - \l
 If we add the $n$ equations, we get
 $$2\lambda_1\sum_{i, j=1}^n f_i + n\lambda_2=0$$
 Since $f\tr\tbf{1} = 0$, then $\lambda_2 = 0$. So
-$$\sum_{j=1}^n w_{ij}f_{j} = \lambda f_i, \quad i=1:n,$$
+$$\sum_{j=1}^n w_{ij}f_{j} = \lambda f_i,\quad \lambda = \sum_{j=1}^{n}w_{ij}-2\lambda_1,\quad i=1:n, $$
 which means $f$ is an eigenvector of $\tbf{L}$.\n
-For Min Cut, if we define $\tbf{f} = (f_1, f_2\cdots f_n)^\top$
+For Min Cut, if we define $\tbf{f} = (f_1, f_2\cdots f_n)^\top\in\mbb{R}^n$,
+$$\bra{f_i}{1}{-1}{if\ v_i\in\mbb{A}}{if\ v_i\in\mbb{\bar{A}}}$$
+Then
+$$\bra{(f_i-f_j)^2}{4}{0}{i\in\mbb{A},j\in\mbb{\bar{A}}}{else}$$
+So 
+$$MCut(A_1,\cdots,A_k) = \sum_{i=1}^{k}cut(A_i, \bar{A_i}) = \frac{1}{4}f\tr\tbf{L}f$$
+We can minimize this with the $f$ from spectral clustering. \n
+For Ratio Cut, we can define $f$ as
+$$\bra{f_i}{\sqrt{\vt{\bar{A}}/\vt{\bar{A}}}}{-\sqrt{\vt{A}/\vt{\bar{A}}}}{v_i\in\mbb{A}}{v_i\in\mbb{\bar{A}}}$$
+Then
+$$\bra{(f_i-f_j)^2}{\frac{\vt{A}}{\vt{\bar{A}}}+\frac{\vt{\bar{A}}}{\vt{A}}+2}{0}{v_i, v_j\ in \ the \ same \ part}{else}$$
+So 
+$$RCut(A, \bar{A}) = \frac{1}{2}\frac{\vt{A}\vt{\bar{A}}}{(\vt{A}+\vt{\bar{A}})^2}\frac{1}{\vt{A}+\vt{\bar{A}}}\sum_{i, j}(f_i-f_j)^2w_{ij}=\frac{f\tr\tbf{L}f}{2n^2}$$
+For normalized spectral clustering, we have
+$$L_{sym} = I - D^{-1/2}WD^{-1/2} = D^{-1/2}LD^{-1/2}$$
+and normalized cut can be done using $g^*$, the Fiedler vector of $D^{-1/2}LD^{-1/2}.$ \\[1cm]
+When $k \geq 3$, we can find $k$ points $x_i$ in $\mbb{R}^k$, s.t. $\vt{x_i-x_j} = \vt{x_k - x_l}$, for each $i, j, k, l$. \\
+Then define $f_i = x_i$, and it is same with $k = 2$.
 }
 
-% \problem{2}{Cluster $Data_i.csv$ with K-means, judge the number of clusters, and compare differences between different evaluating methods.}
+\problem{2}{Cluster Data.csv with spectral clustering, construct three different graphs and compare the difference with result of K-means.}
+\solution{Solution}{
+For Data1.csv, the result is shown as follows.
+\begin{figure}[htbp]
+\centering
+\includegraphics[width = 10cm]{pics/hw2_2_data1_kmeans.eps}
+\caption{Kmeans}
+\label{Kmeans for data 1}
+\end{figure}
+\begin{figure}[htbp]
+\centering
+\subfloat[Full-connect1]{ %
+	\includegraphics[width = 0.45\textwidth]{pics/hw2_2_data1_full_1.eps}}\hfill
+\subfloat[Full-connect2]{
+	\includegraphics[width = 0.45\textwidth]{pics/hw2_2_data1_full_2.eps}}
+\end{figure}
+\begin{figure}[htbp]
+\centering
+\subfloat[Epsilon = 0.1]{ %
+	\includegraphics[width = 0.3\textwidth]{pics/hw2_2_data1_epsilon_01.eps}}\hfill
+\subfloat[Epsilon = 1]{
+	\includegraphics[width = 0.3\textwidth]{pics/hw2_2_data1_epsilon_1.eps}}\hfill
+\subfloat[Epsilon = 3]{
+	\includegraphics[width = 0.3\textwidth]{pics/hw2_2_data1_epsilon_3.eps}}	
+\end{figure}
+\begin{figure}[htbp]
+\centering
+\subfloat[Directed, n = 3]{ %
+	\includegraphics[width = 0.3\textwidth]{pics/hw2_2_data1_directed_3.eps}}\hfill
+\subfloat[Directed, n = 5]{
+	\includegraphics[width = 0.3\textwidth]{pics/hw2_2_data1_directed_5.eps}}\hfill
+\subfloat[Directed, n = 10]{
+	\includegraphics[width = 0.3\textwidth]{pics/hw2_2_data1_directed_10.eps}}	
+\end{figure}
+\begin{figure}[htbp]
+\centering
+\subfloat[Undirected, n = 3]{ %
+	\includegraphics[width = 0.3\textwidth]{pics/hw2_2_data1_undirected_3.eps}}\hfill
+\subfloat[Undirected, n = 5]{
+	\includegraphics[width = 0.3\textwidth]{pics/hw2_2_data1_undirected_5.eps}}\hfill
+\subfloat[Undirected, n = 20]{
+	\includegraphics[width = 0.3\textwidth]{pics/hw2_2_data1_undirected_20.eps}}	
+\end{figure}
+\\[1cm]
+For Data3.csv, the result is shown as follows.
+\begin{figure}[htbp]
+\centering
+\includegraphics[width = 10cm]{pics/hw2_2_data3_kmeans.eps}
+\caption{Kmeans}
+\label{Kmeans for data 3}
+\end{figure}
+\begin{figure}[htbp]
+\centering
+\subfloat[Full-connect1]{ %
+	\includegraphics[width = 0.45\textwidth]{pics/hw2_2_data3_full_1.eps}}\hfill
+\subfloat[Full-connect2]{
+	\includegraphics[width = 0.45\textwidth]{pics/hw2_2_data3_full_2.eps}}
+\end{figure}
+\begin{figure}[htbp]
+\centering
+\subfloat[Epsilon = 0.1]{ %
+	\includegraphics[width = 0.3\textwidth]{pics/hw2_2_data3_epsilon_0_1.eps}}\hfill
+\subfloat[Epsilon = 2]{
+	\includegraphics[width = 0.3\textwidth]{pics/hw2_2_data3_epsilon_2.eps}}\hfill
+\subfloat[Epsilon = 5]{
+	\includegraphics[width = 0.3\textwidth]{pics/hw2_2_data3_epsilon_5.eps}}	
+\end{figure}
+\begin{figure}[htbp]
+\centering
+\includegraphics[width = 10cm]{pics/hw2_2_data3_directed_3.eps}
+\caption{directed, n = 3}
+\end{figure}
+\begin{figure}[htbp]
+\centering
+\includegraphics[width = 10cm]{pics/hw2_2_data3_undirected_3.eps}
+\caption{Undirected, n = 3}
+\end{figure} \\
+From the results we can know that for these groups, spectral clustering is not always better than kmeans. The parameters in spectral clustering are also important.
+}
+\newpage
+
+\problem{3}{Cluster circles, curves with spectral clustering}
+\solution{Solution}{
+The results of circles.csv is as follows.
+\begin{figure}[htbp]
+\centering
+\includegraphics[width = 10cm]{pics/hw2_3_circle_full.eps}
+\caption{full connection}
+\end{figure}
+\begin{figure}[htbp]
+\centering
+\subfloat[epsilon = 1]{ %
+	\includegraphics[width = 0.45\textwidth]{pics/hw2_3_circle_epsilon_1.eps}}\hfill
+\subfloat[epsilon = 2]{
+	\includegraphics[width = 0.45\textwidth]{pics/hw2_3_circle_epsilon_2.eps}}
+\end{figure}
+\begin{figure}[htbp]
+\centering
+\subfloat[directed, n = 5]{ %
+	\includegraphics[width = 0.45\textwidth]{pics/hw2_3_circle_directed_5.eps}}\hfill
+\subfloat[directed, n = 10]{
+	\includegraphics[width = 0.45\textwidth]{pics/hw2_3_circle_directed_10.eps}}
+\end{figure}
+\begin{figure}[htbp]
+\centering
+\subfloat[undirected, n = 2]{ %
+	\includegraphics[width = 0.45\textwidth]{pics/hw2_3_circle_undirected_2.eps}}\hfill
+\subfloat[undirected, n = 5]{
+	\includegraphics[width = 0.45\textwidth]{pics/hw2_3_circle_undirected_5.eps}}
+\end{figure}
+\\
+The result of curves.csv is shown as follows.
+\begin{figure}[htbp]
+\centering
+\includegraphics[width = 10cm]{pics/hw2_3_curve_full.eps}
+\caption{full connection}
+\end{figure}
+\begin{figure}[htbp]
+\centering
+\subfloat[epsilon = 1]{ %
+	\includegraphics[width = 0.3\textwidth]{pics/hw2_3_curve_epsilon_1.eps}}\hfill
+\subfloat[epsilon = 3]{
+	\includegraphics[width = 0.3\textwidth]{pics/hw2_3_curve_epsilon_3.eps}}\hfill
+\subfloat[epsilon = 10]{
+	\includegraphics[width = 0.3\textwidth]{pics/hw2_3_curve_epsilon_10.eps}}
+\end{figure}
+\begin{figure}[htbp]
+\centering
+\subfloat[directed, n = 10]{ %
+	\includegraphics[width = 0.3\textwidth]{pics/hw2_3_curve_directed_10.eps}}\hfill
+\subfloat[directed, n = 20]{
+	\includegraphics[width = 0.3\textwidth]{pics/hw2_3_curve_directed_20.eps}}\hfill
+\subfloat[directed, n = 30]{
+	\includegraphics[width = 0.3\textwidth]{pics/hw2_3_curve_directed_30.eps}}
+\end{figure}
+\begin{figure}[htbp]
+\centering
+\subfloat[undirected, n = 5]{ %
+	\includegraphics[width = 0.45\textwidth]{pics/hw2_3_curve_undirected_5.eps}}\hfill
+\subfloat[undirected, n = 10]{
+	\includegraphics[width = 0.45\textwidth]{pics/hw2_3_curve_undirected_10.eps}}
+\end{figure}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+% \begin{figure}[htbp]
+% \centering
+% \includegraphics[width = 10cm]{pics/hw2_data1_cluster.eps}
+% \caption{The clusters of Data1.csv with k = 3}
+% \label{clusters of data1}
+% \end{figure}
+% \\[1mm]
+% \problem{2}{Cluster $Data_i.csv$ with K-means, judge the number of clusters, and compare differences between different evaluating methodss.}
 % \solution{Solution}{
 % The code of K-means, evaluating and test scripts can be found from attachments(kmeans.R, evaluate.R, hw1.2.R).
 % }
@@ -60,7 +239,7 @@ For Min Cut, if we define $\tbf{f} = (f_1, f_2\cdots f_n)^\top$
 % For Data1.csv, we cluster with k = 3. The result is shown as below.
 % \begin{figure}[htbp]
 % \centering
-% \includegraphics[width = 15cm]{pics/hw2_data1_cluster.eps}
+% \includegraphics[width = 10cm]{pics/hw2_data1_cluster.eps}
 % \caption{The clusters of Data1.csv with k = 3}
 % \label{clusters of data1}
 % \end{figure}
