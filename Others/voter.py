@@ -1,6 +1,7 @@
 import requests as rq
 import pandas as pd
 import random, time
+import sys, os
 
 class voter:
 	def __init__(self, pid):
@@ -29,5 +30,6 @@ class voter:
 			time.sleep(t)
 
 if __name__ == '__main__':
-	v = voter(8)
-	v.run(100)
+	pid, n = sys.argv[1], sys.argv[2]
+	v = voter(pid)
+	v.run(int(n))
