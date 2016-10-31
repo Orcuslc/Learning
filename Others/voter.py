@@ -14,7 +14,7 @@ class voter:
 			"Accept-Language": "zh-CN,zh;q=0.8,en-US;q=0.5,en;q=0.3",
 			# "Accept-Encoding": gzip, deflate
 			"Referer": "http://lady.163.com/special/sense/hanfuzhihua.html?from=timeline&isappinstalled=0",
-			"Cookie": "P_INFO=orcuslc@163.com|1472803307|0|mail163|00&99|shh&1472775651&kaola#shh&null#10#0#0|130218&0|kaola|orcuslc@163.com; _ntes_nnid=d9db00f791dc6969b1d591214f4adfe4,1472774510478; _ntes_nuid=d9db00f791dc6969b1d591214f4adfe4; vjuids=-470240628.157dcd457d8.0.6623535fa21748; vjlast=1476878686.1476878686.30; ne_analysis_trace_id=1476878686194; vinfo_n_f_l_n3=274d2fc4309df1cf.1.0.1476878686206.0.1476878786446; s_n_f_l_n3=274d2fc4309df1cf1476878686210",
+			# "Cookie": "P_INFO=orcuslc@163.com|1472803307|0|mail163|00&99|shh&1472775651&kaola#shh&null#10#0#0|130218&0|kaola|orcuslc@163.com; _ntes_nnid=d9db00f791dc6969b1d591214f4adfe4,1472774510478; _ntes_nuid=d9db00f791dc6969b1d591214f4adfe4; vjuids=-470240628.157dcd457d8.0.6623535fa21748; vjlast=1476878686.1476878686.30; ne_analysis_trace_id=1476878686194; vinfo_n_f_l_n3=274d2fc4309df1cf.1.0.1476878686206.0.1476878786446; s_n_f_l_n3=274d2fc4309df1cf1476878686210",
 			"Connection": "keep-alive"
 		}
 
@@ -30,6 +30,7 @@ class voter:
 			time.sleep(t)
 
 if __name__ == '__main__':
-	pid, n = sys.argv[1], sys.argv[2]
+	# pid, n = sys.argv[1], sys.argv[2]
+	pid, n = 6, 10
 	v = voter(pid)
 	v.run(int(n))
