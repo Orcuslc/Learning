@@ -88,6 +88,14 @@ SmallCapsFeatures = {Letters = SmallCaps}
 \newcommand{\sblue}[1]{\color{slateblue}{#1}}
 \newcommand{\n}{\\[5pt]}
 \newcommand{\tr}{^\top}
+\newcommand{\bra}[5]{
+#1=\left\{
+\begin{aligned}
+#2 ,&\quad #4 \\
+#3 ,&\quad #5
+\end{aligned}
+\right.
+}
 
 \renewcommand{\title}[2] {
 {\Huge{\color{slateblue}\textbf{#1}}}

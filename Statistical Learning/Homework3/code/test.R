@@ -1,4 +1,5 @@
 source('PCA.R')
+source('NMF.R')
 library(rgl)
 # library("rgl")
 # x = sort(runif(100))
@@ -30,8 +31,8 @@ library(rgl)
 # print(r6$rate);
 
 ## Problem 2 ##
-data = read('../data/assignment32.csv');
-# data[is.na(data)] = 0;
+data = read('../data/assign32.csv');
+data[is.na(data)] = 0;
 # r1 = PCA(data, 1);
 # r1_X = r1$X;
 # plot(r1_X, rep(0, length(r1_X)));
@@ -51,3 +52,6 @@ data = read('../data/assignment32.csv');
 # print(r6$rate);
 
 ## Problem 2.2 ##
+r1 = NMF(data, 2);
+# print(r1$W)
+print(r1$rate);
