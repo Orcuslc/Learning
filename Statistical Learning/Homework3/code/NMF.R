@@ -1,4 +1,4 @@
-NMF = function(X, r, max_iter = 1e5) {
+NMF = function(X, r, max_iter = 1e3) {
 	# Nonnegative Matrix Factorization
 	# X = W*H;
 	# X is a n*p matrix, W is a n*r matrix, and H is a r*p matrix.
@@ -19,12 +19,9 @@ NMF = function(X, r, max_iter = 1e5) {
 			}
 		}
 	}
-	r$W = W;
-	r$H = H;
 	WH = W %*% H;
 	n1 = norm(X, "F");
 	n2 = norm((X-WH), "F");
-	print(X-WH)
-	r$rate = n2/n1;
+	r = list(W = W, H = H, rate = n2/n1);
 	return(r);
 }

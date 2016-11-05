@@ -16,8 +16,7 @@ PCA = function(X, k) {
 	total_sum = sum(eigC_val);
 	energy = sum(eigC_val[1:k]);
 	NX = X %*% P;
-	r$X = NX;
-	r$rate = energy/total_sum;
+	r = list(X = NX, rate = energy/total_sum);
 	return(r);
 }
 
