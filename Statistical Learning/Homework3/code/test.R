@@ -1,12 +1,13 @@
 source('PCA.R')
 source('NMF.R')
-library(rgl)
 library("rgl")
+
+## Test ##
 # x = sort(runif(100))
 # y = 2*x+runif(100)*0.5
 # plot(x, y)
-# Y = PCA(t(rbind(x, y)), 2)
-# plot(Y[, 1], Y[, 2])
+# r = PCA(t(rbind(x, y)), 2)
+# plot(r$X[, 1], r$X[, 2])
 
 
 ## Problem 1 ##
@@ -31,8 +32,8 @@ library("rgl")
 # print(r6$rate);
 
 ## Problem 2 ##
-data = read('../data/assign32.csv');
-data[is.na(data)] = 0;
+# data = read('../data/assign32.csv');
+# data[is.na(data)] = 0;
 # r1 = PCA(data, 1);
 # r1_X = r1$X;
 # plot(r1_X, rep(0, length(r1_X)));
@@ -52,6 +53,30 @@ data[is.na(data)] = 0;
 # print(r6$rate);
 
 ## Problem 2.2 ##
-r1 = NMF(data, 10);
+# n = 4;
+# m = 5;
+# rates = rep(0, n*m);
+# par(mfrow = c(n, m))
+# for(i in 1:(n*m)) {
+#     r = NMF(data, i, 'M');
+#     rates[i] = r$rate;
+#     plot_basis(r$W);
+}
+# window()
+# plot(1:(n*m), rates, type = 'l');
 # print(r1$W)
-print(r1$rate);
+# print(r1$rate);
+
+## Problem 3.2 ##
+im = read.csv('../data/test2.csv');
+colnames(im) = NULL;
+im = as.matrix(im);
+n = 3;
+m = 3;
+rn = c(1, 2, 3, 4, 5, 10, 20, 50);
+par(mfrow = c(n, m))
+for(i in 1:(n*m)) {
+    r = NMF(im, rn[i], 'D');
+    image(r$W%*%r$H, col = gray.colors(256), xlab = paste('NMF, D, k = ', as.character(rn[i])));
+}
+# image(im, col = gray.colors(256));

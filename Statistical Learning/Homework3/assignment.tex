@@ -5,6 +5,7 @@
 \usepackage{epstopdf}
 \usepackage{graphics}
 \usepackage{subfig}
+\usepackage{float}
 \usepackage{listings}
 \lstset{
   numbers=left,
@@ -36,7 +37,7 @@
 
 \problem{1}{Perform PCA to assign31.csv.}
 \solution{Result}{
-Since there are many NAs in assign31.csv, we changed those NA to 0. \n
+Since there are many NAs in assign31.csv, I changed those NA to 0. \n
 The results are as follows: The rate in the table is the rate of information reserved after PCA.
 \begin{table}[htbp] \large \centering
 \begin{tabular}{|c|c|c|c|c|c|c|}
@@ -48,20 +49,19 @@ Rate & 0.2139058 &  0.396026 & 0.5165856 & 0.6697862 & 0.920202 & 1\\
 \end{tabular}
 \caption{Reserved information rate of different orders in PCA.}
 \end{table}
-
-\begin{figure}[htbp]
+\begin{figure}[H]
 \centering
 \includegraphics[width = 15cm]{pics/hw1_pca_1.eps}
 \caption{PCA, k = 1}
 \label{PCA1}
 \end{figure}
-\begin{figure}[htbp]
+\begin{figure}[H]
 \centering
 \includegraphics[width = 15cm]{pics/hw1_pca_2.eps}
 \caption{PCA, k = 2}
 \label{PCA2}
 \end{figure}
-\begin{figure}[htbp]
+\begin{figure}[H]
 \centering
 \includegraphics[width = 15cm]{pics/hw1_pca_3.png}
 \caption{PCA, k = 3}
@@ -84,51 +84,88 @@ Rate & 0.4326317 &  0.7648243 & 0.9298461 \\
 \end{tabular}
 \caption{Reserved information rate of different orders in PCA.}
 \end{table}
-\begin{figure}[htbp]
+\begin{figure}[H]
 \centering
 \includegraphics[width = 15cm]{pics/hw2_pca_1.eps}
 \caption{PCA, k = 1}
-\label{PCA1}
+\label{PCA2_1}
 \end{figure}
-\begin{figure}[htbp]
+\begin{figure}[H]
 \centering
 \includegraphics[width = 15cm]{pics/hw2_pca_2.eps}
 \caption{PCA, k = 2}
-\label{PCA2}
+\label{PCA2_2}
 \end{figure}
-\begin{figure}[htbp]
+\begin{figure}[H]
 \centering
 \includegraphics[width = 15cm]{pics/hw2_pca_3.png}
 \caption{PCA, k = 3}
-\label{PCA3}
+\label{PCA2_3}
 \end{figure}
 From figure(k = 1) we can assert nothing; from figure(k = 2) it seems the data can be simulated by two parallel lines. From the table we can find when k = 3, the rate of reserved information is over 0.9, which means k = 3 is a good estimation. \n
-For NMF, the result of error rate is as follows:
+For NMF, the result is as follows: \n
+Firstly, we use the Divergence objective function
+$$min\quad \Sigma_{i, j}(A_{ij}log(\frac{A_{ij}}{WH_{ij}})-A_{ij}+WH_{ij})$$
+which assumes the elements in A obey a Poisson distribution. The error rate is defined as follows for both Divergence objective function and Mean squared obj. function.
 $$ rate = \frac{\vt{A - WH}_F}{\vt{A}_F} $$
-\begin{table}[htbp] \large \centering
-\begin{tabular}{|c|c|c|c|c|c|}
-\hline
-k & 1 & 2 & 3 & 5 & 10\\
-\hline
-Rate & 0.6764784 &  0.6904373 & 2.629497 & 4.993591 & 14.36354\\
-\hline
-\end{tabular}
-\caption{Error rates of different orders in NMF.}
-\end{table}
-It must be wrong somewhere that with k being larger, the estimation becoming worse. I think it should be the number of iterations, which is fixed at 1000.
+The basis of NMF(divergence obj func) are as follows:\n
+\begin{figure}[H]
+\centering
+\includegraphics[width = 15cm]{pics/hw2_nmf_d_basis.eps}
+\caption{NMF, D, basis, n=1:10}
+\label{NMF_D1}
+\end{figure}
+And the error rate is as follows:
+\begin{figure}[H]
+\centering
+\includegraphics[width = 5cm]{pics/hw2_nmf_d_error.eps}
+\caption{NMF, error rate, n=1:20}
+\label{NMF_D2}
+\end{figure}
+From the curve of error rates we can know, that in this case the assumption that entries obeys Poisson distribution is not acceptable. So I tried Mean squared error objective function instead. In the meantime, MSE converged much quicker than D.\n
+When using Mean squared error objective function
+$$min\quad \vt{A-WH}_F^2$$
+The basis is as follows:
+\begin{figure}[H]
+\centering
+\includegraphics[width = 15cm]{pics/hw2_nmf_m_basis.eps}
+\caption{NMF, M, basis, n=1:10}
+\label{NMF_M1}
+\end{figure}
+And the error rate is as follows:
+\begin{figure}[H]
+\centering
+\includegraphics[width = 5cm]{pics/hw2_nmf_m_error.eps}
+\caption{NMF, M, basis, n=1:20}
+\label{NMF_M2}
+\end{figure}
+One can tell from the error curve, that when we choose $k=6$, the result is good enough to represent the data from A.
 }
 
-\problem{3}{Perform PCA and nmf to test2.csv}
+\problem{3}{Perform PCA and NMF to test2.csv}
+\solution{Analysis}{
+When we do PCA to an image, we assume each row being a data point. Then PCA can be presented as
+$$Y = XP$$
+where $P$ is the matrix constructed by eigenvectors of $X\tr X$. Then 
+$$X\tr X = P\Sigma P\tr$$
+where $\Sigma$ is a diagonal matrix.
+So choosing the first $k$ principle conponents is equivalent to choosing the first $k$ columns of $P$. We denote it as $P_1$.\n
+If we let $A = XP_1 P_1\tr$, then
+$$A\tr A = P_1 P_1\tr X\tr XP_1 P_1\tr = P_1 P_1\tr PDP\tr P_1 P_1\tr$$ 
+$$ = P_1 D_{1:k} P_1\tr $$
+So 
+$$\hat{X} = XP_1 P_1\tr$$ is a approximation of $X$, and it is equivalent to restoring $X$ with its first $k$ singular values.
+}
 \solution{Result}{
-For PCA, the result is shown as follows:
-\begin{figure}[htbp]
+For PCA, the result is shown as follows:\n
+(I used Python-OpenCV to draw these images.)
+\begin{figure}[H]
 \centering
 \includegraphics[width = 5cm]{pics/hw3_original.png}
 \caption{Original Picture}
 \label{Original}
 \end{figure}
-
-\begin{figure}[htbp]
+\begin{figure}[H]
 \centering
 \subfloat[k = 1]{ %
 	\includegraphics[width = 0.3\textwidth]{pics/hw3_pca_1.png}}\hfill
@@ -137,7 +174,7 @@ For PCA, the result is shown as follows:
 \subfloat[k = 3]{
 	\includegraphics[width = 0.3\textwidth]{pics/hw3_pca_3.png}}	
 \end{figure}
-\begin{figure}[htbp]
+\begin{figure}[H]
 \centering
 \subfloat[k = 4]{ %
 	\includegraphics[width = 0.3\textwidth]{pics/hw4_pca_4.png}}\hfill
@@ -146,7 +183,7 @@ For PCA, the result is shown as follows:
 \subfloat[k = 10]{
 	\includegraphics[width = 0.3\textwidth]{pics/hw3_pca_10.png}}	
 \end{figure}
-\begin{figure}[htbp]
+\begin{figure}[H]
 \centering
 \subfloat[k = 20]{ %
 	\includegraphics[width = 0.3\textwidth]{pics/hw3_pca_20.png}}\hfill
@@ -155,6 +192,21 @@ For PCA, the result is shown as follows:
 \subfloat[k = 200]{
 	\includegraphics[width = 0.3\textwidth]{pics/hw3_pca_200.png}}	
 \end{figure}
-For NMF, 
+For NMF, when we use Mean squared error obj func, the results are as follows:
+\begin{figure}[H]
+\centering
+\includegraphics[width = 15cm]{pics/hw3_nmf_m.eps}
+\caption{NMF, using MSE}
+\label{hw3_NMF1}
+\end{figure}
+When we use Divergence squared error obj func, the results are as follows:
+\begin{figure}[H]
+\centering
+\includegraphics[width = 15cm]{pics/hw3_nmf_d.eps}
+\caption{NMF, using Divergence}
+\label{hw3_NMF2}
+\end{figure}
+One can tell from the images that using mean squared error is almost the same as using divergence obj func, and their results are better than using PCA. I think it is because entries in a image are nonnegative, so if we use NMF, then the new basis are nonnegative which could be more appropriate.
+However, since PCA can be performed easily using SVD, the speed of PCA is hundreds faster than NMF.
 }
 \end{document}

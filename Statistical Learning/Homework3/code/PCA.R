@@ -37,6 +37,9 @@ draw = function(X) {
     }
 }
 
+Recover = function(X, P) {
+    return(X%*%P%*%t(P));
+}
 # # data = read("../data/assign32.csv");
 # data = read.csv("../data/test2.csv");
 # # ndata = matrix(rep(0, nrow(data)*ncol(data)*3), ncol = 3);
