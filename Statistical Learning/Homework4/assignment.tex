@@ -1,0 +1,132 @@
+%!TEX program = xelatex
+
+% \documentclass[10pt]{article}
+\input{structure.tex}
+\usepackage{epstopdf}
+\usepackage{graphics}
+\usepackage{subfig}
+\usepackage{float}
+\usepackage{listings}
+\lstset{
+  numbers=left,
+    framexleftmargin=10mm,
+    frame=none,
+    backgroundcolor=\color[RGB]{245,245,244},
+  keywordstyle=\bf\color{blue},
+  identifierstyle=\bf,
+  numberstyle=\color[RGB]{0,192,192},
+  commentstyle=\it\color[RGB]{0,96,96},
+  stringstyle=\rmfamily\slshape\color[RGB]{128,0,0},
+  showstringspaces=false,
+  extendedchars=false
+    }
+\DeclareGraphicsExtensions{.eps,.ps,.jpg,.bmp}
+
+\begin{document}
+
+\title{Homework 4}{16.11.6}
+
+% \parbox{0.3\textwidth}{
+% Chuan Lu}
+% \hfill
+% \parbox{0.3\textwidth}{
+% 13300180056}
+% \hfill
+% \parbox{0.3\textwidth}{
+% chuanlu13@fudan.edu.cn}
+
+\problem{1}{Perform Linear Regression to simplerlr1.csv, and do inference to coefficents.}
+\solution{Result}{
+The result is as follows:
+$$\beta = (-0.9540925, 3.1561384)\tr$$
+\begin{figure}[htbp]
+\centering
+\includegraphics[width = 15cm]{pics/hw1_lr.eps}
+\caption{The clusters of Data1.csv with k = 3}
+\label{clusters of data1}
+\end{figure}
+We use t-statistics to do inference.\n
+The Null-hypothesis is $\beta_0 = 0$, and we choose $\alpha = 0.05$.\n
+\begin{table}[H] \centering
+\begin{tabular}{|c|c|c|}
+\hline
+& 0 & 10 \\
+\hline
+$\beta_0$ & True & False \\
+\hline
+$\beta_1$ & False & False \\
+\hline
+\end{tabular}
+\end{table}
+
+However, when we use F-statistics, the result shows that we should reject $H_0$.
+}
+
+\problem{2}{Perform Linear Regression to lr2.csv, and do inference to coefficents.}
+\solution{Result}{
+The result is as follows:
+$$\beta = (1.3050691, 1.8833781, 2.8539523, 0.6671587, -0.1968839)\tr$$
+We use seperately t-statistics and F-statistics to do inference. \n
+t-statistics:
+\begin{table}[htbp] \large \centering
+\begin{tabular}{|c|c|c|c|}
+\hline
+& 0 & 10 & -10 \\
+\hline
+$\beta_0$ & True & True & False \\
+\hline
+$\beta_1$ & True & False & False\\
+\hline
+$\beta_2$ & True & False & False\\
+\hline
+$\beta_3$ & True & False & False \\
+\hline
+$\beta_4$ & True & False & False \\
+\hline
+\end{tabular}
+\caption{Result of t-statistics}
+\end{table}
+
+F-statistics:
+\begin{table}[htbp] \large \centering
+\begin{tabular}{|c|c|c|c|}
+\hline
+$\beta_0$ & False & $\beta_1$ & False \\
+\hline
+$\beta_2$ & False & $\beta_3$ & False \\
+\hline
+$\beta_4$ & True & & \\
+\hline
+$\beta_0, \beta_1$ & False & $\beta_0, \beta_2$ & False \\
+\hline
+$\beta_0, \beta_3$ & False & $\beta_0, \beta_4$ & False \\
+\hline
+$\beta_1, \beta_2$ & False & $\beta_1, \beta_3$ & False \\
+\hline
+$\beta_1, \beta_4$ & False & $\beta_2, \beta_3$ & False \\
+\hline
+$\beta_2, \beta_4$ & False & $\beta_3, \beta_4$ & True \\
+\hline
+$\beta_0, \beta_1, \beta_2$ & False & $\beta_0, \beta_1, \beta_3$ & False \\ 
+\hline
+$\beta_0, \beta_1, \beta_4$ & False & $\beta_0, \beta_2, \beta_3$ & False \\ 
+\hline
+$\beta_0, \beta_2, \beta_4$ & False & $\beta_1, \beta_2, \beta_3$ & False \\ 
+\hline
+$\beta_1, \beta_2, \beta_4$ & False & $\beta_1, \beta_3, \beta_4$ & False \\ 
+\hline
+$\beta_2, \beta_3, \beta_4$ & False & & \\ 
+\hline
+$\beta_0, \beta_1, \beta_2, \beta_3$ & False & $\beta_0, \beta_1, \beta_2, \beta_4$ & False \\ 
+\hline
+$\beta_0, \beta_1, \beta_3, \beta_4$ & False & $\beta_0, \beta_2, \beta_3, \beta_4$ & False \\ 
+\hline
+$\beta_1, \beta_2, \beta_3, \beta_4$ & False & $\beta_0, \beta_1, \beta_2, \beta_3, \beta_4$ & False \\ 
+\hline
+\end{tabular}
+\caption{Result of F-statistics}
+\end{table}
+}
+
+
+\end{document}

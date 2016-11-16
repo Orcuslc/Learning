@@ -14,11 +14,11 @@ inference_t = function(X, Y, beta, i = 1, beta_0 = 0, alpha = 0.05) {
 	p = ncol(X);
 	M = solve(t(X) %*% X);
 	Y_hat = X %*% beta;
-	sigma_2 = sum((Y - Y_hat) ^ 2)/(N-p);
-	var_beta = M * sigma_2;
-	sigma = sqrt(sigma_2);
+	sigma = (sum((Y - Y_hat) ^ 2))/(N-p);
 	v = diag(M);
-	z = (beta[i] - beta_0)/(diag(var_beta)[i]);
+	# z = (beta[i] - beta_0)/(sqrt(sigma*(1/N+(mean(X[, 2])^2)/(sum(X[, 2]^2)-N*mean(X[, 2])^2))))
+	z = (beta[i] - beta_0)/(sqrt(sigma*v[i]));
+	# print(z)
 	return(abs(z) <= qt(1-alpha/2, N-p));
 }
 
@@ -31,7 +31,8 @@ inference_F = function(X, Y, beta, i = c(1), alpha = 0.05) {
 	N = nrow(X);
 	p1 = ncol(X);
 	p0 = length(i);
-	F = ((norm(X %*% beta_r - X %*% beta)^2)/p0)/(norm(Y - X %*% beta)^2/(N-p1));
+	F = ((-norm(Y-X%*%beta)^2+norm(Y-X%*%beta_r)^2)/p0)/(norm(Y - X %*% beta)^2/(N-p1));
+	# print(F)
 	return(F <= qf(1-alpha, p0, N-p1));
 }
 
@@ -47,3 +48,10 @@ read = function(data_path) {
     return(list(X = X, Y = Y));
 }
 
+sub = function(X) {
+	# Normalize(Centerlize) the matrix;
+	ssub = function(X) {
+		return(X - mean(X));
+	}
+	X = apply(X, 2, ssub);
+}
