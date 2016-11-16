@@ -2,4 +2,5 @@
 ! See https://adblockplus.org/en/filter-cheatsheet
 *.edu^
 @@*.fudan.edu.cn/*
+@@*.github.com/*
 *.ets.org^
