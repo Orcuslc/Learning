@@ -1,7 +1,9 @@
+source('std.R')
+
 LARS = function(X, Y) {
 	# Least Angle Regression
 	Y = Y - mean(Y); # Standardize Y;
-	X = apply(X, 2, normalize); # Standardize each col of X, formula (1.1);
+	X = apply(X, 2, std); # Standardize each col of X, formula (1.1);
 	n = nrow(X); # Number of datapoints in X;
 	p = ncol(X); # Number of parameters in X;
 	mu = as.matrix(rep(0, n), ncol = 1); # The weight of each parameter;
@@ -28,8 +30,8 @@ LARS = function(X, Y) {
 
 		if(length(A_C) > 0) {
 			for(i in 1:length(A_C)) {
-				gamma_list[2*i-1] = (C_hat-C[i])/(A_A-a[i]);
-				gamma_list[2*i] = (C_hat+C[i])/(A_A+a[i]);
+				gamma_list[2*i-1] = (C_hat-C[A_C[i]])/(A_A-a[A_C[i]]);
+				gamma_list[2*i] = (C_hat+C[A_C[i]])/(A_A+a[A_C[i]]);
 			}
 			flag = Inf;
 			key = 0;
@@ -44,13 +46,7 @@ LARS = function(X, Y) {
 				}	
 			}		# formula (2.13)
 			mu = mu + flag * u_A;	# formula (2.12)
-		}	
+		}
 	}
 	return(list(mu = mu, beta = solve(t(X) %*% X) %*% t(X) %*% mu, ord = ord));
-}
-
-normalize = function(X) {
-	X = X - mean(X);
-	X = X / norm(X, type = '2');
-	return(X);
 }
