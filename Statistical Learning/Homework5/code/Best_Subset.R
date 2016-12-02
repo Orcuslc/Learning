@@ -1,6 +1,7 @@
 source('std.R')
 
 Best_Subset = function(X, Y, k) {
+	print(k)
 	Y = Y - mean(Y); # Standardize Y;
 	X = apply(X, 2, std); # Standardize each col of X, formula (1.1);
 	n = nrow(X);
@@ -24,7 +25,6 @@ Best_Subset = function(X, Y, k) {
 			error[index_j] = norm(beta_j - beta_0);
 		}
 	}
-	print(which(error == min(error)))
 	best_subset = subset[, which(error == min(error))];
 	bs = best_subset[which(best_subset != 0)];
 	X_bs = X[, bs];
