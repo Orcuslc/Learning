@@ -33,9 +33,18 @@ def test():
 	q.join()
 # test()
 
-_local = local()
+# _local = local()
 @contextmanager
 def acquire(*locks):
 	locks = sorted(locks, key = lambda x: id(x))
 	acquire = getattr(_local, 'acquired', [])
-	
+
+
+def countdown(n):
+	while n > 0:
+		print('T-minus', n)
+		yield
+		n -= 1
+	print('end')
+
+t = countdown(10)
