@@ -1,0 +1,77 @@
+%!TEX program = xelatex
+
+% \documentclass[10pt]{article}
+\input{structure.tex}
+\usepackage{epstopdf}
+\usepackage{graphics}
+\usepackage{subfig}
+\usepackage{listings}
+\lstset{
+  numbers=left,
+    framexleftmargin=10mm,
+    frame=none,
+    backgroundcolor=\color[RGB]{245,245,244},
+  keywordstyle=\bf\color{blue},
+  identifierstyle=\bf,
+  numberstyle=\color[RGB]{0,192,192},
+  commentstyle=\it\color[RGB]{0,96,96},
+  stringstyle=\rmfamily\slshape\color[RGB]{128,0,0},
+  showstringspaces=false,
+  extendedchars=false
+    }
+\DeclareGraphicsExtensions{.eps,.ps,.jpg,.bmp}
+
+\begin{document}
+
+\title{Assignment 1}
+\\
+Code can be obtained at https://github.com/orcuslc/Learning/
+
+% \parbox{0.3\textwidth}{
+% Chuan Lu}
+% \hfill
+% \parbox{0.3\textwidth}{
+% 13300180056}
+% \hfill
+% \parbox{0.3\textwidth}{
+% chuanlu13@fudan.edu.cn}
+
+\problem{1}{Show the numerical result of $f(x) = \frac{1 - cos(x)}{x ^{2}}$ when $x \to 0^+$.}
+\solution{Solution}{
+The result is as follows.
+\begin{figure}[h!]
+	\centering
+    \includegraphics[width=15cm]{pics/problem1.eps}
+    \caption{problem1}
+    \label{problem1}
+\end{figure}
+}
+
+\problem{2}{Analyse the inversed iteration of $u_{n+2} = 3u_{n+1}-2u_n$}
+\solution{Solution}{
+The inversed iteration is
+$$u_n = \frac{3}{2}u_{n+1}-\frac{1}{2}u_{n+2}.$$
+And the computed value is
+$$\hat{u_n} = \frac{3}{2}\hat{u_{n+1}}-\frac{1}{2}\hat{u_{n+2}}+\epsilon_n.$$
+If we let
+$$w_n = \left(\begin{array}{cc} u_n \\ u_{n+1}\end{array}\right),A = \left(\begin{array}{cc} \frac{3}{2} & -\frac{1}{2} \\ 1 & 0\end{array}\right), \hat{w_n} = \left(\begin{array}{cc} \hat{u_n} \\ \hat{u_{n+1}}\end{array}\right), \hat{\epsilon_n} = \left(\begin{array}{cc} \epsilon_n \\ 0\end{array}\right)$$
+Then
+$$w_{n} = Aw_{n+1}, \hat{w_n} = A\hat{w_{n+1}}+\hat{\epsilon_n}$$
+Define the error as $e_n = \hat{w_n} - w_n$, then 
+$$e_n = Ae_{n+1} + \hat{\epsilon_n}$$
+Since $A$ has the eigenvalue decomposition
+$$P^{-1}AP = \Lambda, P = \left(\begin{array}{cc} 1 & \frac{1}{2} \\ 1 & 1\end{array}\right), \Lambda = \left(\begin{array}{cc} 1 & 0 \\ 0 & \frac{1}{2}\end{array}\right)$$
+the iteration can be wrote as
+$$P^{-1}e_n = \Lambda P^{-1}e_{n+1} + P^{-1}\hat{\epsilon_n}$$
+With the same analysis of Page 13 of the textbook, we can know that $e_0$ is under control by a constant value of $e_n$.
+}
+
+\problem{3}{Prove (1.2.8) of the textbook}
+\solution{Proof}{
+From (1.2.7) we can know
+$$\|x_{n+1} - x_{n}\| \leqslant \alpha^n\|x_1 - x_0\|$$
+So
+$$\|x^{*} - x_n\| \leqslant \sum_{k = n}^{\infty}\|x_{k+1} - x_k\| \leqslant \sum_{k = n}^{\infty} \alpha^k\|x_1 - x_0\| = \frac{\alpha^n}{1-\alpha}\|x_1 - x_0\|$$
+}
+
+\end{document}

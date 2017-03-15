@@ -1,0 +1,70 @@
+%!TEX program = xelatex
+
+% \documentclass[10pt]{article}
+\input{structure.tex}
+\usepackage{epstopdf}
+\usepackage{graphics}
+\usepackage{subfig}
+\usepackage{listings}
+\lstset{
+  numbers=left,
+    framexleftmargin=10mm,
+    frame=none,
+    backgroundcolor=\color[RGB]{245,245,244},
+  keywordstyle=\bf\color{blue},
+  identifierstyle=\bf,
+  numberstyle=\color[RGB]{0,192,192},
+  commentstyle=\it\color[RGB]{0,96,96},
+  stringstyle=\rmfamily\slshape\color[RGB]{128,0,0},
+  showstringspaces=false,
+  extendedchars=false
+    }
+\DeclareGraphicsExtensions{.eps,.ps,.jpg,.bmp}
+
+\begin{document}
+
+\title{Assignment 3}
+\\
+Code can be obtained at https://github.com/orcuslc/Learning/
+
+\problem{1}{Display the Runge Phenomenon.}
+\solution{Solution}{
+The result is as follows.
+\begin{figure}[h!]
+\centering
+\includegraphics[width = 15cm]{pics/runge.eps}
+\caption{The Runge Phenomenon}
+\label{Runge}
+\end{figure}
+}
+
+
+\problem{2}{Calculate the integral of $x^{n}$ with Newton-Cotes Formula.}
+\solution{Solution}{
+The result is shown as the table.
+\begin{table}[h!]
+\begin{tabular}{c|c|c|c|c|c|c}
+    \hline
+    & Exact Value & medium formula & trapezium formula & Simpson formula & 3/8 formula & Cotes formula \\
+    \hline
+    $x^{1}$ & 0.5000 & 0.5000 & 0.5000 & 0.5000 & 0.5000 & 0.5000 \\
+    \hline
+    $x^{2}$ & 0.3333  &  0.2500  &  0.5000 &  0.3333  &  0.3333  &  0.3333 \\
+    \hline
+    $x^{3}$ & 0.2500  &  0.1250  &  0.5000 & 0.2500  &  0.2500   &    0.2500 \\
+    \hline
+    $x^{4}$  & 0.2000 &  0.0625  &  0.5000  & 0.2083 &   0.2037  &   0.2000 \\
+    \hline
+    $x^{5}$   &  0.1667  &  0.0313 &  0.5000 &  0.1875 &  0.1759  &  0.1667 \\
+    \hline
+    $x^{6}$  &   0.1429  &  0.0156  &  0.5000  &  0.1771  &  0.1584  &  0.1432 \\
+    \hline
+    $x^{7}$   &  0.1250  &  0.0078  &  0.5000  &  0.1719   & 0.1471  &  0.1263 \\
+    \hline
+    \end{tabular}
+    \caption{Integral of $x^{n}$ using Newton-Cotes Formula}
+    \end{table}
+}
+
+
+\end{document}

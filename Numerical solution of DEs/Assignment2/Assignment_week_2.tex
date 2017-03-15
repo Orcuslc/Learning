@@ -1,0 +1,104 @@
+%!TEX program = xelatex
+
+% \documentclass[10pt]{article}
+\input{structure.tex}
+\usepackage{epstopdf}
+\usepackage{graphics}
+\usepackage{subfig}
+\usepackage{listings}
+\lstset{
+  numbers=left,
+    framexleftmargin=10mm,
+    frame=none,
+    backgroundcolor=\color[RGB]{245,245,244},
+  keywordstyle=\bf\color{blue},
+  identifierstyle=\bf,
+  numberstyle=\color[RGB]{0,192,192},
+  commentstyle=\it\color[RGB]{0,96,96},
+  stringstyle=\rmfamily\slshape\color[RGB]{128,0,0},
+  showstringspaces=false,
+  extendedchars=false
+    }
+\DeclareGraphicsExtensions{.eps,.ps,.jpg,.bmp}
+
+\begin{document}
+
+\title{Assignment 2}
+\\
+Code can be obtained at https://github.com/orcuslc/Learning/
+
+\problem{1}{Given $G(x) = e^{-x}$ and $F(x) = x - e^{-x}$, compare Fixed-point iteration and Newton-Raphson iteration.}
+\solution{Solution}{
+The result is as follows.
+\begin{tabular}{c|c}
+   \hline
+   Fixed-point iter & Newton-Raphson iter\\
+   \hline
+   % after \\: \hline or \cline{col1-col2} \cline{col3-col4} ...
+   1.000000000000000 &  1.000000000000000\\
+  \hline
+   0.367879441171442 &  0.537882842739990\\
+   \hline
+   0.692200627555346 &  0.566986991405413\\
+   \hline
+   0.500473500563637 &  0.567143285989123\\
+   \hline
+   0.606243535085597 &  \\
+   \hline
+   0.545395785975027 &  \\
+   \hline
+   0.579612335503379 &  \\
+   \hline
+   0.560115461361089 &  \\
+   \hline
+   0.571143115080177 &  \\
+   \hline
+   0.564879347391050 &  \\
+   \hline
+   0.568428725029061 &  \\
+   \hline
+   0.566414733146883 &  \\
+   \hline
+   0.567556637328283 &  \\
+   \hline
+   0.566908911921495 &  \\
+   \hline
+   0.567276232175570 &  \\
+   \hline
+   0.567067898390788 &  \\
+   \hline
+   0.567186050099357 &  \\
+   \hline
+   0.567119040057215 &  \\
+   \hline
+   0.567157044001298 &  \\
+   \hline
+   0.567135490206278 &  \\
+   \hline
+   0.567147714260119 &  \\
+   \hline
+   0.567140781458298 &  \\
+   \hline
+   0.567144713346570 &  \\
+   \hline
+   0.567142483401307 &  \\
+   \hline
+   Root &  Root\\
+   \hline
+   0.567143748099411 & 0.567143290409784\\
+   \hline
+ \end{tabular}
+}
+\solution{Analysis}{
+When using Newton-Raphson iteration to extract the root of an equation, according to (1.2.22), the error is of second order, while the error of fixed point iteration is of first order. Hence, the speed of convergence is much quicker for Newton-Raphson iteration. 
+}
+
+\problem{2}{For a n-dimension vector \textbf{x}, when $1\leqslant p\leqslant q,$ prove $\Vert\textbf{x}\Vert_q \leqslant\Vert\textbf{x}\Vert_p\leqslant n^{\frac{1}{p}-\frac{1}{q}}\Vert\textbf{x}\Vert_q$.}
+\solution{Proof}{
+On one hand, assume $\Vert\textbf{x}\Vert_q = 1$, then $$\Vert x_i\Vert\leqslant 1,\quad for\quad 1\leqslant i \leqslant n$$\\
+Because $1\leqslant p\leqslant q,$ then $\Vert x_{i}\Vert^{q}\leqslant\Vert x_{i}\Vert^{p}.$ Hence, $(\sum_{i=1}^{n}\Vert x_{i}\Vert^p)^\frac{1}{p}\geqslant(\sum_{i=1}^{n}\Vert x_{i}\Vert^q)^\frac{1}{q},$ which means $\Vert x\Vert_q\leqslant\Vert x\Vert_p.$\\
+On the other hand, according to $H\ddot{o}lder$ inequation, $$\frac{(\sum_{i=1}^{n}\Vert x_{i}\Vert^{p})^\frac{1}{p}}{n^\frac{1}{p}} \leqslant \frac{(\sum_{i=1}^{n}\Vert x_{i}\Vert^{q})^\frac{1}{q}}{n^\frac{1}{q}},$$ hence $$\Vert\textbf{x}\Vert_p\leqslant n^{\frac{1}{p}-\frac{1}{q}}\Vert\textbf{x}\Vert_q$$
+}
+
+
+\end{document}
