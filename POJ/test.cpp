@@ -1,13 +1,24 @@
 #include <iostream>
 #include <string>
+#include <algorithm>
+
 using namespace std;
+
+void reversed(string* s) {
+	int len = s->length();
+	char temp;
+	for(int i = 0; i < len/2; i++) {
+		temp = (*s)[i];
+		(*s)[i] = (*s)[len-i-1];
+		(*s)[len-i-1] = temp;
+	}
+}
+
 
 int main() {
 	string s;
-	int t;
 	cin >> s;
-	// t = s.substr(0, 2).append(s);
-	t = s.find('.');
-	cout << t << endl;
+	reversed(&s);
+	cout << s << endl;
 	return(0);
 }
