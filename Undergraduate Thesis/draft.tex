@@ -67,14 +67,14 @@
 
 \def\theequation{\arabic{section}.\arabic{equation}}
 \setcounter{equation}{0}
-\def\thedefinition{\arabic{section}.\arabic{definition}.}
+\def\thedefinition{\arabic{section}.\arabic{definition}}
 
 % title - \zihao{1} for size requirement \heiti for font family requirement
-\title{{\zihao{1}\heiti{} }}
+\title{{\zihao{1}\heiti{} TEST}}
 
 \author{卢川，13300180056，信息与计算科学}
 
-\date{}
+\date{\today}
 %%%%%%%%%%%%%%%%%%%导言区设置完毕
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{document}
@@ -104,9 +104,14 @@
 %%%  论文的页码从正文开始计数, 摘要页不显示页码
 % 撰写论文的摘要
 
+\begin{abstract}
+test test test \\
+\noindent{\heiti 关键字:} test, test.
+\end{abstract}
+
 \section{导言}
 \subsection{问题简介}
-考虑以下的一个随机微分方程组:
+考虑以下的一个随机微分方程组, 其作用为改进对模型误差的滤波:
 \begin{equation} \label{E0}
 \begin{split}
 & \frac{du(t)}{dt} = (-\gamma(t)+i\omega)u(t)+b(t)+f(t)+\sigma W(t), \\
@@ -118,6 +123,7 @@
 & \frac{d\gamma(t)}{dt} = -d_\gamma(\gamma(t)-\hat{\gamma})+\sigma_\gamma W_\gamma(t)
 \end{split}
 \end{equation}
+其中$\omega$为$u(t)$的振荡频率, $f(t)$为外部驱动力, $\sigma$表示白噪声$W(t)$的强度. 此外, 参数$\gamma_b$和$d_\gamma$表示振荡阻尼, $\sigma_b$和$\sigma_\gamma$分别表示加性和乘性修正((\ref{E0})中第2, 3式)中白噪声的强度. $\hat{b}$和$\hat{\gamma}$分别表示$b(t)$和$\gamma(t)$的固定平均偏差修正, $\omega_b$表示加性噪声的频率. 白噪声$W_\gamma(t)$是实值函数, 而$W(t)$及$W_b(t)$均为复值, 且其实部和虚部均为独立的白噪声. \\
 由求解线性微分方程组的相关知识\cite{fulinjin1984ordinary}可以知道, (\ref{E0})的第二和第三项均为线性方程, 故有通解
 \begin{equation} \label{Sb}
 b(t) = \hat{b}+(b_0-\hat{b})e^{\lambda_b(t-t_0)}+\sigma_b\int_{t_0}^t e^{\lambda_b(t-s)}dW_b(s),
@@ -136,9 +142,35 @@ u(t) &= e^{-J(t_0, t)+\hat{\lambda}(t-t_0)}u_0 + \int_{t_0}^t (b(s)+f(s))e{-J(s,
 & + \sigma\int_{t_0}^{t}e{-J(s, t)+\hat{\lambda}(s-t_0)}dW(s).
 \end{split}
 \end{equation}
+以下将对方程(\ref{E0})的各个变量$u, b, \gamma$, 分别计算其统计量.
 
 \subsection{一些前置引理}
-在应用中, 往往将布朗运动置于一个随机微分方程(组)中, 来近似的模拟白噪声的性质\cite{hida1980brownian}. 在求解这样的随机微分方程时, 需要针对布朗运动做积分, 为此我们引入以下的It\^{o}积分\cite{oksendal2003stochastic}:
+在应用中, 往往将布朗运动置于一个随机微分方程(组)中, 来近似的模拟白噪声的性质\cite{hida1980brownian}. 
+为此, 我们需要引入布朗运动的一些基本性质.\cite{oksendal2003stochastic}\cite{nelson1967dynamical}
+\begin{theorem} \label{brownian1}
+布朗运动$B_t$是一个Gauss过程. 对于所有的$0 \leqslant t_1 \leqslant\cdots\leqslant t_k$, 随机变量$Z = (B_{t_1}, B_{t_2}\cdots ,B_{t_k})\in \mathbb{R}^{nk}$ 服从多重正态分布. 如果设$B_t$的初值为$x$, 则其期望为 
+$$M = E[Z] = (x, x, \cdots, x) \in \mathbb{R}^{nk},$$
+协方差矩阵为
+$$C = \left(\begin{matrix}
+			t_1I_n & t_1I_n & \cdots & t_1I_n \\
+			t_1I_n & t_2I_n & \cdots & t_2I_n \\
+			\vdots & \vdots & \ddots & \vdots \\
+			t_1I_n & t_2I_n & \cdots & t_kI_n 
+			\end{matrix}
+			\right).$$
+\end{theorem}
+此定理的证明利用了特征函数的性质, 具体过程可见\cite{oksendal2003stochastic}的附录A. 以下的定理是(\ref{brownian1})的直接而显然的推论:
+\begin{theorem}
+假设布朗运动$B_t$满足定理(\ref{brownian1})中的条件, 那么对于$\forall t\geqslant 0$, $E[B_t] = x$, $E[(B_t - x)^2] = nt$, $E[(B_t - x)(B_s - x)] = n\cdot min(s, t)$. 而且如果$t \geqslant s$, 有$E[(B_t - B_s)^2] = n(t-s)$.
+\end{theorem}
+此外, 以下的定理也是布朗运动的一个重要性质, 其证明见\cite{oksendal2003stochastic}的(2.2.12)式.
+\begin{theorem}
+$B_t$的增量独立, 即对满足$\forall 0 \leqslant t_1 < t_2 \cdots < t_k$的$(t_1, t_2, \cdots t_k)$,
+$$B_{t_1}, B_{t_2}-B{t_1}, \cdots, B_{t_k}-B_{t_{k-1}}$$相互独立.
+\end{theorem}
+
+
+在求解类似(\ref{E0})的随机微分方程时, 需要针对布朗运动做积分, 为此我们引入以下的It\^{o}积分\cite{oksendal2003stochastic}:
 \begin{definition}(It\^{o}积分)	设$f\in\mathcal{V}(S, T)$. 则$f$的It\^{o}积分定义为
 $$\int_S^T f(t, \omega)dB_t(\omega) = \lim_{n\to\infty}\int_S^T\phi_n(t, \omega)dB_t(\omega),$$
 其中${\phi_n}$为基本函数序列, 且满足当$n \to \infty$时
@@ -148,22 +180,29 @@ $$E[\int_S^T (f(t, \omega)-\phi_n(t, \omega))^2dt] \to 0.$$
 \begin{theorem}(It\^{o}等距) 对于$\forall f\in\mathcal{V}(S, T)$有
 $$E[(\int_S^T f(t, \omega)dB_t)^2] = E[\int_S^T f^2(t, \omega)dt].$$
 \end{theorem}
-为了便于计算, 我们还需要引入以下的一维It\^{o}公式.
+这里$\mathcal{V}(S, T)$见\cite{oksendal2003stochastic}中的定义3.1.2至3.1.4. 为了便于计算, 我们还需要引入以下的一维It\^{o}公式.
 \begin{theorem}(It\^{o}公式) 设$X_t$为一个如下的It\^{o}过程:
 $$dX_t = udt+vdB_t,$$
-$g(t, x) \in \mathit{C}^2([0, \infty) \times \mathbb{R}$, 则$Y_t = g(t, X_t)$也是一个It\^{o}过程, 且满足:
+$g(t, x) \in C^2([0, \infty) \times \mathbb{R})$, 则$Y_t = g(t, X_t)$也是一个It\^{o}过程, 且满足:
 $$dY_t = \frac{\partial g}{\partial t}(t, X_t)dt + \frac{\partial g}{\partial x}(t, X_t)dX_t + \frac{1}{2}\frac{\partial^2 g}{\partial x^2}(t, X_t)\cdot(dX_t)^2,$$
 其中
 $$dt\cdot dt = dt\cdot dB_t = dB_t\cdot dt = 0, \quad dB_t\cdot dB_t = dt.$$
 \end{theorem}
 以下是上述It\^{o}公式的积分形式.
-\begin{theorem}(分部积分) 设$f(s, \omega)$对几乎所有的$\omega$关于$s\in [0, t]$是连续的, 且为有界变差函数, 则有
+\begin{theorem} \label{Itoint}(分部积分) 设$f(s, \omega)$对几乎所有的$\omega$关于$s\in [0, t]$是连续的, 且为有界变差函数, 则有
 $$\int_0^t f(s)dB_s = f(t)B_t - \int_0^t B_s df_s.$$
 \end{theorem}
 上述几个定理的证明请见\cite{oksendal2003stochastic}, 21-24页及36-39页.
 
 \section{一阶统计量}
-\
+当t固定时, 由(\ref{Sb})式可知, $b(t)$的通解前两项均为常数. 结合It\^{o}分部积分公式(\ref{Itoint})考虑
+\begin{equation} \label{Eb1}
+\begin{split}
+E[\sigma_b\int_{t_0}^t e^{\lambda_b(t-s)}dW_b(s)] &= 1 \\ 
+	& = 2
+\end{split}
+\end{equation}
+
 
 \bibliographystyle{plain}
 \bibliography{../../CONFIG/LaTeX-bib/Chuan}
