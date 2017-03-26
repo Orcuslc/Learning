@@ -1,3 +1,9 @@
-POJ/1002
-POJ/1002_2
-POJ/test
+*.bak
+*.out
+*.toc
+*.gz
+*.log
+*.aux
+*.bbl
+*.gz(busy)
+*.blg
