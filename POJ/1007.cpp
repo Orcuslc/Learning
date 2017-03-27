@@ -9,6 +9,10 @@ public:
 	int rev;
 private:
 	int count_rev();
+<<<<<<< HEAD
+=======
+	int _calc(str);
+>>>>>>> f367072467b444d8dd88f83cc9e792c964a3770a
 };
 
 int str_rev::count_rev() {
