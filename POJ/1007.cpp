@@ -5,17 +5,22 @@ using namespace std;
 
 class str_rev {
 public:
-	string str;
+	string* str;
 	int rev;
+	str_rev();
 private:
-	int count_rev();
-<<<<<<< HEAD
-=======
-	int _calc(str);
->>>>>>> f367072467b444d8dd88f83cc9e792c964a3770a
+	void _merge(int left, int mid, int right);
 };
 
-int str_rev::count_rev() {
+void str_rev::_merge(int left, int mid, int right) {
+	string L(*str, left, mid-left);
+	string R(*str, mid+1, right-mid);
+	L += '\0';
+	R += '\0';
+
+}
+
+int str_rev::str_rev() {
 	rev = 0;
 	
 }
