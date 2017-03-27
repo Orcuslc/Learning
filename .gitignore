@@ -7,3 +7,5 @@
 *.bbl
 *.gz(busy)
 *.blg
+*.o
+*.sp
