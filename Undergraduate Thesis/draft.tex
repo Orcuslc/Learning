@@ -124,6 +124,18 @@ test test test \\
 \end{split}
 \end{equation}
 其中$\omega$为$u(t)$的振荡频率, $f(t)$为外部驱动力, $\sigma$表示白噪声$W(t)$的强度. 此外, 参数$\gamma_b$和$d_\gamma$表示振荡阻尼, $\sigma_b$和$\sigma_\gamma$分别表示加性和乘性修正((\ref{E0})中第2, 3式)中白噪声的强度. $\hat{b}$和$\hat{\gamma}$分别表示$b(t)$和$\gamma(t)$的固定平均偏差修正, $\omega_b$表示加性噪声的频率. 白噪声$W_\gamma(t)$是实值函数, 而$W(t)$及$W_b(t)$均为复值, 且其实部和虚部均为独立的白噪声. \\
+
+我们一般认为方程组(\ref{E0})有初值
+\begin{equation} \label{init_values}
+\begin{split}
+& u(t_0) = u_0, \\
+& b(t_0) = b_0, \\
+& \gamma(t_0) = \gamma_0,
+\end{split}
+\end{equation}
+且$u_0$, $b_0$, $\gamma_0$均为独立的高斯随机变量, 其统计量均假设为已知(注意到$b(t)$和$u(t)$均为复数):
+$E[u_0]$, $E[\gamma_0]$, $E[b_0]$, $var(u_0)$, $var(\gamma_0)$, $var(b_0)$, $cov(u_0, u_0^*)$, $cov(u_0, \gamma_0)$, $cov(u_0, b_0)$, $cov(u_0, b_0^*)$.
+
 由求解线性微分方程组的相关知识\cite{fulinjin1984ordinary}可以知道, (\ref{E0})的第二和第三项均为线性方程, 故有通解
 \begin{equation} \label{Sb}
 b(t) = \hat{b}+(b_0-\hat{b})e^{\lambda_b(t-t_0)}+\sigma_b\int_{t_0}^t e^{\lambda_b(t-s)}dW_b(s),
@@ -177,10 +189,21 @@ $$\int_S^T f(t, \omega)dB_t(\omega) = \lim_{n\to\infty}\int_S^T\phi_n(t, \omega)
 $$E[\int_S^T (f(t, \omega)-\phi_n(t, \omega))^2dt] \to 0.$$
 \end{definition}
 由上述定义即可得到It\^{o}积分的一个重要性质:
-\begin{theorem}(It\^{o}等距) 对于$\forall f\in\mathcal{V}(S, T)$有
+\begin{theorem} \label{Ito isometric} (It\^{o}等距) 对于$\forall f\in\mathcal{V}(S, T)$有
 $$E[(\int_S^T f(t, \omega)dB_t)^2] = E[\int_S^T f^2(t, \omega)dt].$$
 \end{theorem}
-这里$\mathcal{V}(S, T)$见\cite{oksendal2003stochastic}中的定义3.1.2至3.1.4. 为了便于计算, 我们还需要引入以下的一维It\^{o}公式.
+这里$\mathcal{V}(S, T)$见\cite{oksendal2003stochastic}中的定义3.1.2至3.1.4. \\
+利用上述方法, 即利用基本函数序列来逼近$\mathcal{V}(S, T)$中的函数, 我们能够得到It\^{o}积分的线性性质:
+\begin{theorem} \label{Itoint_property}
+设$f, g \in \mathcal{V}(0, T)$, $0 \leqslant S < U < T$. 那么
+\begin{flalign*}
+& (1)\quad \int_S^T fdB_t = \int_S^U fdB_t + \int_U^T fdB_t, \quad a.e.\\
+& (2)\quad \int_S^T (cf+g)dB_t = c\cdot\int_S^T fdB_t + \int_S^T gdB_t, \quad a.e.\\
+& (3)\quad E[\int_S^T fdB_t] = 0.
+\end{flalign*}
+\end{theorem}
+
+为了便于计算, 我们还需要引入以下的一维It\^{o}公式.
 \begin{theorem}(It\^{o}公式) 设$X_t$为一个如下的It\^{o}过程:
 $$dX_t = udt+vdB_t,$$
 $g(t, x) \in C^2([0, \infty) \times \mathbb{R})$, 则$Y_t = g(t, X_t)$也是一个It\^{o}过程, 且满足:
@@ -194,14 +217,42 @@ $$\int_0^t f(s)dB_s = f(t)B_t - \int_0^t B_s df_s.$$
 \end{theorem}
 上述几个定理的证明请见\cite{oksendal2003stochastic}, 21-24页及36-39页.
 
-\section{一阶统计量}
-当t固定时, 由(\ref{Sb})式可知, $b(t)$的通解前两项均为常数. 结合It\^{o}分部积分公式(\ref{Itoint})考虑
-\begin{equation} \label{Eb1}
+\section{统计量的计算}
+\subsection{均值}
+当t固定时, 由(\ref{Sb})式可知, $b(t)$的通解第一项为常数, 而第二项中只有$b_0$是一个随机变量. 那么由(\ref{init_values})可知, $b(t)$通解第二项的期望为$(E[b_0]-\hat{b})e^{\lambda_b(t-t_0)}$. 而由于
+$$f = f(s) = e^(\lambda_b(t-s))\in\mathcal{V}(S, T),$$
+故由(\ref{Itoint_property})的(3)式可知,
+$$E[\sigma_b\int_{t_0}^{t} e^{\lambda_b(t-s)dW_b(s)}] = 0.$$
+从而
+\begin{equation} \label{b_stat_1}
+E(b(t)) = \hat{b} + (E[b_0] - \hat{b})e^{\lambda_b(t-t_0)}.
+\end{equation}
+对于$\gamma$亦有相同的结论
+\begin{equation} \label{gamma_stat_1}
+E(\gamma(t)) = \hat{\gamma} + (E[\gamma_0] - \hat{\gamma})e^{-d_{\gamma}(t-t_0)}.
+\end{equation}
+
+\subsection{方差}
+当t固定时, 由\cite{shuyuanhe2006probability}的第四章相关知识, 考虑到$(b_0-\hat{b})e^{\lambda_b(t-t_0)}$与$\sigma_b\int_{t_0}^t e^{\lambda_b(t-s)}dW_b(s)$相互独立(由(\ref{init_values})可知),
+\begin{equation} \label{b_stat_2_process}
 \begin{split}
-E[\sigma_b\int_{t_0}^t e^{\lambda_b(t-s)}dW_b(s)] &= 1 \\ 
-	& = 2
+var(b(t)) &= var((b_0 - \hat{b})e^{\lambda_b(t-t_0)}) + var(\sigma_b\int_{t_0}^{t}e^{\lambda_b(t-s)}dW_b(s)) \\
+&= (e^{\lambda_b(t-t_0)})^2var(b_0) + var(\sigma_b\int_{t_0}^t e^{\lambda_b(t-s)}dW_b(s)) \\
+&= Re\{e^{2(-\gamma_b+i\omega_b)(t-t_0)}var(b_0)\} + E[(\sigma_b\int_{t_0}^t e^{\lambda_b(t-s)}dW_b(s))^2] \\
+&= e^{-2\gamma_b(t-t_0)}var(b_0) + Re\{\sigma_b^2E[\int_{t_0}^t e^{2\lambda_b (t-s)}dt]\}
 \end{split}
 \end{equation}
+上面的最后一式右边利用了It\^{o}等距(\ref{Ito isometric}).
+计算右边即可得到
+\begin{equation} \label{b_stat_2} 
+var(b(t)) = e^{-2\gamma_b(t-t_0)}var(b_0) + \frac{\sigma_b^2}{2\gamma_b}(1-e^{-2\gamma_b(t-t_0)}).
+\end{equation}
+同样的, 我们也有
+\begin{equation} \label{gamma_stat_2}
+var(\gamma(t)) = e^{-2d_\gamma(t-t_0)}var(\gamma_0) + \frac{\sigma_\gamma^2}{2d_\gamma}(1-e^{-2d_\gamma(t-t_0)}).
+\end{equation}
+
+\subsection{协方差}
 
 
 \bibliographystyle{plain}
