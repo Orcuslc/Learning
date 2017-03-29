@@ -90,7 +90,7 @@
            beforeskip={0.4cm},afterskip={0.4cm}]{section}
 \CTEXsetup[format={\zihao{-4}\bfseries},%
            titleformat={\zihao{-4}},%
-           number={\arabic{section}.\arabic{subsection}.},%
+           number={\arabic{section}.\arabic{subsection}},%
            beforeskip={0.4cm},afterskip={0.4cm}]{subsection}
 \CTEXoptions[abstractname={摘要：}]
 \CTEXoptions[bibname={\heiti 参考文献}]
@@ -150,13 +150,14 @@ $$J(s, t) = \int_s^t (\gamma(s')-\hat{\gamma})ds'$$
 则(\ref{E0})的通解可以表示为
 \begin{equation} \label{Su}
 \begin{split}
-u(t) &= e^{-J(t_0, t)+\hat{\lambda}(t-t_0)}u_0 + \int_{t_0}^t (b(s)+f(s))e{-J(s, t)+\hat{\lambda}(s-t_0)}ds \\
-& + \sigma\int_{t_0}^{t}e{-J(s, t)+\hat{\lambda}(s-t_0)}dW(s).
+u(t) &= e^{-J(t_0, t)+\hat{\lambda}(t-t_0)}u_0 + \int_{t_0}^t (b(s)+f(s))e{-J(s, t)+\hat{\lambda}(t-s)}ds \\
+& + \sigma\int_{t_0}^{t}e{-J(s, t)+\hat{\lambda}(t-s)}dW(s).
 \end{split}
 \end{equation}
 以下将对方程(\ref{E0})的各个变量$u, b, \gamma$, 分别计算其统计量.
 
-\subsection{一些前置引理}
+\section{一些前置引理}
+\subsection{布朗运动的性质}
 在应用中, 往往将布朗运动置于一个随机微分方程(组)中, 来近似的模拟白噪声的性质\cite{hida1980brownian}. 
 为此, 我们需要引入布朗运动的一些基本性质.\cite{oksendal2003stochastic}\cite{nelson1967dynamical}
 \begin{theorem} \label{brownian1}
@@ -181,7 +182,7 @@ $B_t$的增量独立, 即对满足$\forall 0 \leqslant t_1 < t_2 \cdots < t_k$�
 $$B_{t_1}, B_{t_2}-B{t_1}, \cdots, B_{t_k}-B_{t_{k-1}}$$相互独立.
 \end{theorem}
 
-
+\subsection{It\^{o}积分及其性质}
 在求解类似(\ref{E0})的随机微分方程时, 需要针对布朗运动做积分, 为此我们引入以下的It\^{o}积分\cite{oksendal2003stochastic}:
 \begin{definition}(It\^{o}积分)	设$f\in\mathcal{V}(S, T)$. 则$f$的It\^{o}积分定义为
 $$\int_S^T f(t, \omega)dB_t(\omega) = \lim_{n\to\infty}\int_S^T\phi_n(t, \omega)dB_t(\omega),$$
@@ -215,9 +216,29 @@ $$dt\cdot dt = dt\cdot dB_t = dB_t\cdot dt = 0, \quad dB_t\cdot dB_t = dt.$$
 \begin{theorem} \label{Itoint}(分部积分) 设$f(s, \omega)$对几乎所有的$\omega$关于$s\in [0, t]$是连续的, 且为有界变差函数, 则有
 $$\int_0^t f(s)dB_s = f(t)B_t - \int_0^t B_s df_s.$$
 \end{theorem}
-上述几个定理的证明请见\cite{oksendal2003stochastic}, 21-24页及36-39页.
+上述几个定理的证明请见\cite{oksendal2003stochastic}, 21-24页及36-39页. \\
 
-\section{统计量的计算}
+\subsection{特征函数}
+除此之外, 我们还需要引入随机变量的特征函数这个工具, 用于计算较为复杂的随机变量的统计量.
+\begin{definition}(特征函数) 如果$X$是实值随机变量, $E[sin(tX)], E[cos(tX)]$均存在, 那么称
+$$\phi(t) = E[e^{itX}] = E[cos(tX)] + iE[sin(tX)], \quad t\in \mathbb{R}$$
+为$X$的特征函数, 其中$i$为虚数单位.
+\end{definition}
+对于随机向量, 其特征函数定义为
+\begin{definition} 设$\textbf{X} = (X_1, X_2, \cdots, X_n)$为随机向量, 则$\textbf{X}$的特征函数为
+$$\phi(t) = E[exp(i\textbf{t}\textbf{X}^\top)], \quad \textbf{t} = (t_1, t_2, \cdots, t_n)\in \mathbb{R}^n.$$
+\end{definition}
+以下为高斯分布的特征函数.
+\begin{proposition} \label{Characteristic function of Gaussian Distribution}
+Gauss分布$N(\mu, \sigma^2)$的特征函数为
+$$\phi(t) = e^{i\mu t - \frac{1}{2}\sigma^2t^2}$$
+\end{proposition}
+此命题的证明见\cite{shuyuanhe2006probability}第五章例2.4.
+一个更一般的定义如下\cite{jiangangying2013probability}:
+\begin{definition} 设
+
+
+\section{$b(t)$与$\gamma(t)$的统计量}
 \subsection{均值}
 当t固定时, 由(\ref{Sb})式可知, $b(t)$的通解第一项为常数, 而第二项中只有$b_0$是一个随机变量. 那么由(\ref{init_values})可知, $b(t)$通解第二项的期望为$(E[b_0]-\hat{b})e^{\lambda_b(t-t_0)}$. 而由于
 $$f = f(s) = e^(\lambda_b(t-s))\in\mathcal{V}(S, T),$$
@@ -253,7 +274,55 @@ var(\gamma(t)) = e^{-2d_\gamma(t-t_0)}var(\gamma_0) + \frac{\sigma_\gamma^2}{2d_
 \end{equation}
 
 \subsection{协方差}
-
+考虑到$b(t)$为复值函数, 由协方差的定义\cite{shuyuanhe2006probability}即可知
+\begin{equation} \label{b_b*_cov_process}
+\begin{split}
+cov(b(t), b(t)^*) &= E[(b(t) - E[b(t)])(b(t)^* - E[b(t)^*])] \\
+&= E[(b_0 - E[b_0]e^{\lambda_b (t-t_0)}+\sigma_b\int_{t_0}^{t} e^{\lambda_b (t-s)}dW_b(s))\cdot \\
+&\quad ((b_0^* - E[b_0^*])e^{\lambda_b(t-t_0)}+\sigma_b\int_{t_0}^t e^{\lambda_b (t-s)}dW_b(s))] \quad\cdots(\ref{b_stat_1}) \\
+&= E[(b_0 - E[b_0])(b_0^* - E[b_0^*])e^{2\lambda_b (t-t_0)}] + \sigma_bE[(b_0 - E[b_0])\int_{t_0}^{t}e^{\lambda_b(t-s)}dW_b(s)]\\
+&+ \sigma_bE[(b_0^*-E[b_0^*])e^{\lambda_b(t-t_0)}\int_{t_0}^{t}e^{\lambda_b(t-s)}dW_b(s)] + \sigma_b^2E[(\int_{t_0}^{t}e^{\lambda_b(t-s)}dW_b(s))^2]
+\end{split}
+\end{equation}
+在上式的第二项中, 由于$b_0$与$\int_{t_0}^{t} e^{\lambda_b (t-s)}dW_b(s)$相互独立, 故由It\^{o}积分的性质(\ref{Itoint_property})可知
+\begin{equation}
+\sigma_bE[(b_0 - E[b_0])\int_{t_0}^{t}e^{\lambda_b(t-s)}dW_b(s)] = \sigma_bE[b_0 - E[b_0]]E[\int_{t_0}^{t}e^{\lambda_b(t-s)}dW_b(s)] = 0
+\end{equation}
+同样的, (\ref{b_b*_cov_process})中第三项也为0, 而第四项由It\^{o}等距(\ref{Ito isometric})即知为0. 故
+\begin{equation} \label{b_b*_cov}
+cov(b(t), b(t)^*) = E[(b_0-E[b_0])(b_0^*-E[b_0^*])]e^{2\lambda_b(t-t_0)} = cov(b_0, b_0^*)e^{2\lambda_b(t-t_0)}
+\end{equation}
+与之类似的,
+\begin{equation} \label{b_gamma_cov}
+\begin{split}
+cov(b(t), \gamma(t)) &= E[(b(t) - E[b(t)])(\gamma(t)-E[\gamma(t)])] \\
+&= E[(b_0 - E[b_0]e^{\lambda_b (t-t_0)}+\sigma_b\int_{t_0}^{t} e^{\lambda_b (t-s)}dW_b(s)) \cdot \\
+&\quad ((\gamma_0-E[\gamma_0])e^{-d_\gamma(t-t_0)}+\sigma_\gamma \int_{t_0}^{t} e^{-d_\gamma(t-s)}dW_\gamma(s))] \\
+&= E[(b_0-E[b_0])(\gamma_0-E[\gamma_0])]e^{(\lambda_b-d_\gamma)(t-t_0)} \\
+&= cov(b_0, \gamma_0)e^{(\lambda_b-d_\gamma)(t-t_0)}
+\end{split}
+\end{equation}
+上述的第三个等式也用到了It\^{o}等距(\ref{Ito isometric}).
+\section{$u(t)$的统计量}
+\subsection{均值}
+在$u(t)$的表达式(\ref{Su})中, $e^{\hat{\lambda}(t-t_0)}$, $f(t)$和$\sigma$均为常值. 那么由数学期望的线性性质(\cite{shuyuanhe2006probability}第四章定理2.2)和It\^{o}积分的性质(\ref{Itoint_property})可知
+\begin{equation} \label{u_stat_1}
+\begin{split}
+E[u(t)] &= e^{\hat{\lambda}(t-t_0)}E[e^{-J_0(t_0, t)}u_0] + \int_{t_0}^t e^{\hat{\lambda}(t-s)}E[b(s)e^{-J(s, t)}]ds  \\
+&+ \sigma\int_{t_0}^{t} e^{\hat{\lambda}(t-s)}f(s)E[e^{-J(s, t)}]ds.
+\end{split}
+\end{equation}
+下面我们用高斯随机过程$J(s, t)$的特征函数\cite{gershgorin2008nonlinear}\cite{gershgorin2010filtering}来计算上式的右边. \\
+考虑
+$$E[ze^{ibx}],$$
+其中z为复值高斯随机变量, x为实值高斯随机变量. 不妨记
+$$z = y + iw, \quad y, w\in \mathbb{R}. \label{z substitution}$$
+那么我们只要计算出$E[ye^{ibx}]$和$E[we^{ibx}]$, 然后利用(\ref{z substitution})将其组合起来. 令
+$\textbf{v} = (x, y, w)$, 那么由于$\textbf{v}$为一个满足多元Gauss分布的随机向量, 其特征函数由(\ref{Characteristic function of Gaussian Distribution})即可给出:
+\begin{equation} \label{characteristic function of v}
+\phi_v(\textbf{s}) = exp(i\textbf{s}^\top E[\textbf{v}]-\frac{1}{2}\textbf{s}^\top\Sigma\textbf{s}),
+\end{equation}
+其中$\Sigma$为协方差矩阵. 由特征函数的定义\cite{}
 
 \bibliographystyle{plain}
 \bibliography{../../CONFIG/LaTeX-bib/Chuan}
