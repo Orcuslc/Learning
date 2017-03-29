@@ -235,7 +235,17 @@ $$\phi(t) = e^{i\mu t - \frac{1}{2}\sigma^2t^2}$$
 \end{proposition}
 此命题的证明见\cite{shuyuanhe2006probability}第五章例2.4.
 一个更一般的定义如下\cite{jiangangying2013probability}:
-\begin{definition} 设
+\begin{definition} \label{characteristic function definition 2} 设$\xi$为d-维随机变量, $F$为$\xi$的分布函数. 那么
+$$\hat{F}(x) = \int_{\mathbb{R}^d} e^{ix\cdot y}dF(y), \quad x\in \mathbb{R}^d$$
+(其中$x\cdot y$为$\mathbb{R}^d$空间中的内积) 称为分布函数$F$的特征函数.
+\end{definition}
+由此定义即可看出, 特征函数即为概率密度函数的Fourier变换:
+\begin{equation} \label{characteristic function definition 3}
+\hat{F}(x) = \int_{\mathbb{R}^d}e^{ix\cdot y}f(y)dy.
+\end{equation}
+
+以下是Fourier变换的一个基本性质, 在求$u(t)$的统计量时将会用到:
+\begin{proposition} \label{Fourier transform property 1}
 
 
 \section{$b(t)$与$\gamma(t)$的统计量}
@@ -320,9 +330,13 @@ $$z = y + iw, \quad y, w\in \mathbb{R}. \label{z substitution}$$
 那么我们只要计算出$E[ye^{ibx}]$和$E[we^{ibx}]$, 然后利用(\ref{z substitution})将其组合起来. 令
 $\textbf{v} = (x, y, w)$, 那么由于$\textbf{v}$为一个满足多元Gauss分布的随机向量, 其特征函数由(\ref{Characteristic function of Gaussian Distribution})即可给出:
 \begin{equation} \label{characteristic function of v}
-\phi_v(\textbf{s}) = exp(i\textbf{s}^\top E[\textbf{v}]-\frac{1}{2}\textbf{s}^\top\Sigma\textbf{s}),
+\phi_\textbf{v}(\textbf{s}) = exp(i\textbf{s}^\top E[\textbf{v}]-\frac{1}{2}\textbf{s}^\top\Sigma\textbf{s}),
 \end{equation}
-其中$\Sigma$为协方差矩阵. 由特征函数的定义\cite{}
+其中$\Sigma$为协方差矩阵. 记$g(\textbf{v})$为$\textbf{v}$的概率密度函数, 那么由特征函数的定义(\ref{characteristic function definition 3}), 即特征函数为概率密度的Fourier变换即可知道,
+\begin{equation}
+\phi_\textbf{v}(\textbf{s}) = \frac{1}{(2\pi)^3}\int e^{i\textbf{s}^\top\textbf{v}}g(\textbf{v})d\textbf{v}
+\end{equation}
+利用Fourier变换的性质
 
 \bibliographystyle{plain}
 \bibliography{../../CONFIG/LaTeX-bib/Chuan}
