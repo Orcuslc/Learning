@@ -218,7 +218,15 @@ $$\int_0^t f(s)dB_s = f(t)B_t - \int_0^t B_s df_s.$$
 \end{theorem}
 上述几个定理的证明请见\cite{oksendal2003stochastic}, 21-24页及36-39页. \\
 
-\subsection{特征函数}
+\subsection{高斯分布与特征函数}
+在我们的假设中各个噪声信号都服从高斯分布, 为此我们需要知道多元高斯分布的概率密度\cite{shuyuanhe2006probability}.
+\begin{proposition} \label{multivariable gaussian pdf}
+如果随机向量$\textbf{x}$服从多元正态分布
+$$\textbf{x} \sim \mathcal{N}(\mu, \Sigma),$$
+那么$\textbf{x}$的概率密度为
+$$f_x(x_1, \cdots, x_k) = \frac{exp(-\frac{1}{2}(\textbf{x}-\mu)^\top)\Sigma^{-1}(\textbf{x}-\mu)}{\sqrt{(2\pi)^k|\Sigma|}}$$
+\end{proposition}
+
 除此之外, 我们还需要引入随机变量的特征函数这个工具, 用于计算较为复杂的随机变量的统计量.
 \begin{definition}(特征函数) 如果$X$是实值随机变量, $E[sin(tX)], E[cos(tX)]$均存在, 那么称
 $$\phi(t) = E[e^{itX}] = E[cos(tX)] + iE[sin(tX)], \quad t\in \mathbb{R}$$
@@ -245,8 +253,15 @@ $$\hat{F}(x) = \int_{\mathbb{R}^d} e^{ix\cdot y}dF(y), \quad x\in \mathbb{R}^d$$
 \end{equation}
 
 以下是Fourier变换的一个基本性质, 在求$u(t)$的统计量时将会用到:
-\begin{proposition} \label{Fourier transform property 1}
-
+\begin{proposition}(Fourier变换的微分关系) \label{Fourier transform property 1}
+如果
+$$\lim_{|x|\to\infty} f(x) = 0,$$
+且$f'(x)$的Fourier变换存在, 那么
+$$\mathcal{F}[f'(x)] = i\omega\mathcal{F}[f(x)].$$
+更一般的, 若
+$f(\infty) = f'(\infty) = \cdots = f^{(k-1)}(\infty) = 0,$ 且$\mathcal{F}[f^{(k)}(x)]$存在, 则
+$$\mathcal{F}[f^{(k)}(x)] = (i\omega)^k \mathcal{F}[f].$$
+\end{proposition}
 
 \section{$b(t)$与$\gamma(t)$的统计量}
 \subsection{均值}
@@ -323,9 +338,13 @@ E[u(t)] &= e^{\hat{\lambda}(t-t_0)}E[e^{-J_0(t_0, t)}u_0] + \int_{t_0}^t e^{\hat
 \end{split}
 \end{equation}
 下面我们用高斯随机过程$J(s, t)$的特征函数\cite{gershgorin2008nonlinear}\cite{gershgorin2010filtering}来计算上式的右边. \\
-考虑
-$$E[ze^{ibx}],$$
-其中z为复值高斯随机变量, x为实值高斯随机变量. 不妨记
+首先我们有以下的命题:
+\begin{proposition} \label{multivariable gaussian exp 1}
+$$E[ze^{ibx}] = (E[z]+ibcov(z, x))e^{ibE[x]-\frac{1}{2}b^2var(x)}$$
+其中z为复值高斯随机变量, x为实值高斯随机变量. 
+\end{proposition}
+\begin{proof}[证明]
+不妨记
 $$z = y + iw, \quad y, w\in \mathbb{R}. \label{z substitution}$$
 那么我们只要计算出$E[ye^{ibx}]$和$E[we^{ibx}]$, 然后利用(\ref{z substitution})将其组合起来. 令
 $\textbf{v} = (x, y, w)$, 那么由于$\textbf{v}$为一个满足多元Gauss分布的随机向量, 其特征函数由(\ref{Characteristic function of Gaussian Distribution})即可给出:
@@ -336,7 +355,41 @@ $\textbf{v} = (x, y, w)$, 那么由于$\textbf{v}$为一个满足多元Gauss分�
 \begin{equation}
 \phi_\textbf{v}(\textbf{s}) = \frac{1}{(2\pi)^3}\int e^{i\textbf{s}^\top\textbf{v}}g(\textbf{v})d\textbf{v}
 \end{equation}
-利用Fourier变换的性质
+利用Fourier变换的性质(\ref{Fourier transform property 1}), 我们不妨对$s_2$求偏导\cite{gershgorin2008nonlinear}, 有
+\begin{equation} \label{partial over s2}
+\frac{\partial \phi_\textbf{v}(\textbf{s})}{\partial s_2} = \frac{1}{(2\pi)^3}\int iy_0e^{i\textbf{s}^\top\textbf{v}}g(\textbf{v})d\textbf{v} = iE[y_0e^{i\textbf{s}^\top\textbf{v}}].
+\end{equation}
+令$\textbf{v} = (b, 0, 0)^\top$, 根据(\ref{partial over s2})即能得到
+\begin{equation} \label{E over y0}
+\left.E[y_0e^{ibx_0}] = -i\frac{\partial \phi_\textbf{v}(s)}{\partial s_2}\right|_{\textbf{s} = (b, 0, 0)^\top}
+\end{equation}
+同样的, 我们有
+\begin{equation} \label{E over w0}
+\left.E[w_0e^{ibx_0}] = -i\frac{\partial \phi_\textbf{v}(s)}{\partial s_3}\right|_{\textbf{s} = (b, 0, 0)^\top}
+\end{equation}
+
+由多元高斯分布的概率密度函数(\ref{multivariable gaussian pdf})有
+\begin{equation} \label{partial over s2-2}
+\frac{\partial \phi_\textbf{v}(\textbf{s})}{\partial s_2} = (iE[y_0]-var(y_0)s_2-cov(x_0, y_0)s_1-cov(y_0, w_0)s_3)\phi_{\textbf{v}}(s)
+\end{equation}
+\begin{equation} \label{partial over s3-2}
+\frac{\partial \phi_\textbf{v}(\textbf{s})}{\partial s_3} = (iE[w_0]-var(w_0)s_3-cov(x_0, w_0)s_1-cov(y_0, w_0)s_2)\phi_{\textbf{v}}(s)
+\end{equation}
+分别计算这两个偏导数(\ref{partial over s2-2})及(\ref{partial over s3-2})在$\textbf{s} = (b, 0, 0)^\top$处的值, 有
+\begin{equation} \label{partial over s2 at s}
+E[y_0e^{ibx_0}] = (E[y_0]+icov(x_0, y_0)b)exp(ibE[x_0] - \frac{1}{2}var(x_0)b^2)
+\end{equation}
+\begin{equation} \label{partial over s3 at s}
+E[w_0e^{ibx_0}] = (E[w_0]+icov(x_0, w_0)b)exp(ibE[x_0] - \frac{1}{2}var(x_0)b^2)
+\end{equation}
+结合(\ref{partial over s2 at s}), (\ref{partial over s3 at s})即有
+$$E[ze^{ibx}] = (E[z]+ibcov(z, x))e^{ibE[x]-\frac{1}{2}b^2var(x)}.$$
+\end{proof}
+由此我们立刻可以得到
+\begin{corollary} 在(\ref{multivariable gaussian exp 1})的条件下,
+$$E[ze^{bx}] = (E[z]+bcov(z, x))e^{bE[x]+\frac{1}{2}b^2var(x)}.$$
+\end{corollary}
+
 
 \bibliographystyle{plain}
 \bibliography{../../CONFIG/LaTeX-bib/Chuan}
