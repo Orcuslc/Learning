@@ -134,7 +134,7 @@ test test test \\
 \end{split}
 \end{equation}
 且$u_0$, $b_0$, $\gamma_0$均为独立的高斯随机变量, 其统计量均假设为已知(注意到$b(t)$和$u(t)$均为复数):
-$E[u_0]$, $E[\gamma_0]$, $E[b_0]$, $Var(u_0)$, $Var(\gamma_0)$, $Var(b_0)$, $cov(u_0, u_0^*)$, $cov(u_0, \gamma_0)$, $cov(u_0, b_0)$, $cov(u_0, b_0^*)$.
+$E[u_0]$, $E[\gamma_0]$, $E[b_0]$, $Var(u_0)$, $Var(\gamma_0)$, $Var(b_0)$, $Cov(u_0, u_0^*)$, $Cov(u_0, \gamma_0)$, $Cov(u_0, b_0)$, $Cov(u_0, b_0^*)$.
 
 由求解线性微分方程组的相关知识\cite{fulinjin1984ordinary}可以知道, (\ref{E0})的第二和第三项均为线性方程, 故有通解
 \begin{equation} \label{Sb}
@@ -300,9 +300,9 @@ Var(\gamma(t)) = e^{-2d_\gamma(t-t_0)}Var(\gamma_0) + \frac{\sigma_\gamma^2}{2d_
 
 \subsection{协方差}
 考虑到$b(t)$为复值函数, 由协方差的定义\cite{shuyuanhe2006probability}即可知
-\begin{equation} \label{b_b*_cov_process}
+\begin{equation} \label{b_b*_Cov_process}
 \begin{split}
-cov&(b(t), b(t)^*) = E\left[(b(t) - E[b(t)])(b(t)^* - E[b(t)^*])\right] \\
+Cov&(b(t), b(t)^*) = E\left[(b(t) - E[b(t)])(b(t)^* - E[b(t)^*])\right] \\
 &= E\left[(b_0 - E[b_0]e^{\lambda_b (t-t_0)}+\sigma_b\int_{t_0}^{t} e^{\lambda_b (t-s)}dW_b(s))\right. \cdot \\
 &\quad \left.((b_0^* - E[b_0^*])e^{\lambda_b(t-t_0)}+\sigma_b\int_{t_0}^t e^{\lambda_b (t-s)}dW_b(s))\right] \quad\cdots(\ref{b_stat_1}) \\
 &= E\left[(b_0 - E[b_0])(b_0^* - E[b_0^*])e^{2\lambda_b (t-t_0)}\right] + \sigma_bE\left[(b_0 - E[b_0])\int_{t_0}^{t}e^{\lambda_b(t-s)}dW_b(s)\right]\\
@@ -313,18 +313,18 @@ cov&(b(t), b(t)^*) = E\left[(b(t) - E[b(t)])(b(t)^* - E[b(t)^*])\right] \\
 \begin{equation}
 \sigma_bE\left[(b_0 - E[b_0])\int_{t_0}^{t}e^{\lambda_b(t-s)}dW_b(s)\right] = \sigma_bE\left[b_0 - E[b_0]\right]E\left[\int_{t_0}^{t}e^{\lambda_b(t-s)}dW_b(s)\right] = 0
 \end{equation}
-同样的, (\ref{b_b*_cov_process})中第三项也为0, 而第四项由It\^{o}等距(\ref{Ito isometric})即知为0. 故
-\begin{equation} \label{b_b*_cov}
-cov(b(t), b(t)^*) = E[(b_0-E[b_0])(b_0^*-E[b_0^*])]e^{2\lambda_b(t-t_0)} = cov(b_0, b_0^*)e^{2\lambda_b(t-t_0)}
+同样的, (\ref{b_b*_Cov_process})中第三项也为0, 而第四项由It\^{o}等距(\ref{Ito isometric})即知为0. 故
+\begin{equation} \label{b_b*_Cov}
+Cov(b(t), b(t)^*) = E[(b_0-E[b_0])(b_0^*-E[b_0^*])]e^{2\lambda_b(t-t_0)} = Cov(b_0, b_0^*)e^{2\lambda_b(t-t_0)}
 \end{equation}
 与之类似的,
-\begin{equation} \label{b_gamma_cov}
+\begin{equation} \label{b_gamma_Cov}
 \begin{split}
-cov&(b(t), \gamma(t)) = E[(b(t) - E[b(t)])(\gamma(t)-E[\gamma(t)])] \\
+Cov&(b(t), \gamma(t)) = E[(b(t) - E[b(t)])(\gamma(t)-E[\gamma(t)])] \\
 &= E\left[\left(b_0 - E[b_0]e^{\lambda_b (t-t_0)}+\sigma_b\int_{t_0}^{t} e^{\lambda_b (t-s)}dW_b(s)\right)\right. \cdot \\
 &\quad \left.\left((\gamma_0-E[\gamma_0])e^{-d_\gamma(t-t_0)}+\sigma_\gamma \int_{t_0}^{t} e^{-d_\gamma(t-s)}dW_\gamma(s)\right)\right] \\
 &= E\left[(b_0-E[b_0])(\gamma_0-E[\gamma_0])\right]e^{(\lambda_b-d_\gamma)(t-t_0)} \\
-&= cov(b_0, \gamma_0)e^{(\lambda_b-d_\gamma)(t-t_0)}
+&= Cov(b_0, \gamma_0)e^{(\lambda_b-d_\gamma)(t-t_0)}
 \end{split}
 \end{equation}
 上述的第三个等式也用到了It\^{o}等距(\ref{Ito isometric}).
@@ -340,7 +340,7 @@ E[u(t)] &= e^{\hat{\lambda}(t-t_0)}E\left[e^{-J_0(t_0, t)}u_0\right] + \int_{t_0
 下面我们用高斯随机过程$J(s, t)$的特征函数\cite{gershgorin2008nonlinear}\cite{gershgorin2010filtering}来计算上式的右边. \\
 首先我们有以下的命题:
 \begin{proposition} \label{multiVariable gaussian exp 1}
-$$E\left[ze^{ibx}\right] = (E[z]+ibcov(z, x))e^{ibE[x]-\frac{1}{2}b^2Var(x)}$$
+$$E\left[ze^{ibx}\right] = (E[z]+ibCov(z, x))e^{ibE[x]-\frac{1}{2}b^2Var(x)}$$
 其中z为复值高斯随机变量, x为实值高斯随机变量. 
 \end{proposition}
 \begin{proof}[证明]
@@ -370,34 +370,36 @@ $\textbf{v} = (x, y, w)$, 那么由于$\textbf{v}$为一个满足多元Gauss分�
 
 由多元高斯分布的概率密度函数(\ref{multiVariable gaussian pdf})有
 \begin{equation} \label{partial over s2-2}
-\frac{\partial \phi_\textbf{v}(\textbf{s})}{\partial s_2} = (iE[y_0]-Var(y_0)s_2-cov(x_0, y_0)s_1-cov(y_0, w_0)s_3)\phi_{\textbf{v}}(s)
+\frac{\partial \phi_\textbf{v}(\textbf{s})}{\partial s_2} = (iE[y_0]-Var(y_0)s_2-Cov(x_0, y_0)s_1-Cov(y_0, w_0)s_3)\phi_{\textbf{v}}(s)
 \end{equation}
 \begin{equation} \label{partial over s3-2}
-\frac{\partial \phi_\textbf{v}(\textbf{s})}{\partial s_3} = (iE[w_0]-Var(w_0)s_3-cov(x_0, w_0)s_1-cov(y_0, w_0)s_2)\phi_{\textbf{v}}(s)
+\frac{\partial \phi_\textbf{v}(\textbf{s})}{\partial s_3} = (iE[w_0]-Var(w_0)s_3-Cov(x_0, w_0)s_1-Cov(y_0, w_0)s_2)\phi_{\textbf{v}}(s)
 \end{equation}
 分别计算这两个偏导数(\ref{partial over s2-2})及(\ref{partial over s3-2})在$\textbf{s} = (b, 0, 0)^\top$处的值, 有
 \begin{equation} \label{partial over s2 at s}
-E\left[y_0e^{ibx_0}\right] = (E[y_0]+icov(x_0, y_0)b)exp(ibE[x_0] - \frac{1}{2}Var(x_0)b^2)
+E\left[y_0e^{ibx_0}\right] = (E[y_0]+iCov(x_0, y_0)b)exp(ibE[x_0] - \frac{1}{2}Var(x_0)b^2)
 \end{equation}
 \begin{equation} \label{partial over s3 at s}
-E\left[w_0e^{ibx_0}\right] = (E[w_0]+icov(x_0, w_0)b)exp(ibE[x_0] - \frac{1}{2}Var(x_0)b^2)
+E\left[w_0e^{ibx_0}\right] = (E[w_0]+iCov(x_0, w_0)b)exp(ibE[x_0] - \frac{1}{2}Var(x_0)b^2)
 \end{equation}
 结合(\ref{partial over s2 at s}), (\ref{partial over s3 at s})即有
-$$E\left[ze^{ibx}\right] = (E[z]+ibcov(z, x))e^{ibE[x]-\frac{1}{2}b^2Var(x)}.$$
+$$E\left[ze^{ibx}\right] = (E[z]+ibCov(z, x))e^{ibE[x]-\frac{1}{2}b^2Var(x)}.$$
 \end{proof}
 由此我们立刻可以得到
 \begin{corollary} \label{multiVariable gaussian exp 2} 在命题\ref{multiVariable gaussian exp 1}的条件下,
-$$E\left[ze^{bx}\right] = (E[z]+bcov(z, x))e^{bE[x]+\frac{1}{2}b^2Var(x)}.$$
+$$E\left[ze^{bx}\right] = (E[z]+bCov(z, x))e^{bE[x]+\frac{1}{2}b^2Var(x)}.$$
 \end{corollary}
 
 利用推论\ref{multiVariable gaussian exp 2}即有
 \begin{equation} \label{E u(t)}
 \begin{split}
-E&[u(t)] = e^{\hat{\lambda}(t-t_0)}(E[u_0]-cov(u_0, J(t_0, t)))e^{-E[J(t_0, t)]+\frac{1}{2}Var(J(t_0, t))} \\
-&+ \int_{t_0}^t e^{\hat{\lambda}(t-s)}(\hat{b}+e^{\lambda_b(s-t_0)}(E[b_0]-\hat{b}-cov(b_0, J(s, t))))e^{-E[J(s, t)]+\frac{1}{2}Var(J(s, t))}ds \\
+E&[u(t)] = e^{\hat{\lambda}(t-t_0)}(E[u_0]-Cov(u_0, J(t_0, t)))e^{-E[J(t_0, t)]+\frac{1}{2}Var(J(t_0, t))} \\
+&+ \int_{t_0}^t e^{\hat{\lambda}(t-s)}(\hat{b}+e^{\lambda_b(s-t_0)}(E[b_0]-\hat{b}-Cov(b_0, J(s, t))))e^{-E[J(s, t)]+\frac{1}{2}Var(J(s, t))}ds \\
 &+ \int_{t_0}^t e^{\hat{\lambda}(t-s)}f(s)e^{-E[J(s, t)]+\frac{1}{2}Var(J(s, t))}ds
 \end{split}
 \end{equation}
+下面我们计算
+$$Cov(u_0, J(s, t)), Cov(b_0, J(s, t)), E[J(s, t)], Var(J(s, t)).$$
 由于
 \begin{equation}
 \begin{split} \label{J(s, t) all}
@@ -406,17 +408,17 @@ J(s, t) &= \int_s^t \left[(\gamma_0-\hat{\gamma})e^{-d_\gamma(s'-t_0)}+\sigma_\g
 \end{split}
 \end{equation}
 由协方差的线性性质,
-\begin{equation} \label{cov u0 J(s, t)}
+\begin{equation} \label{Cov u0 J(s, t)}
 \begin{split}
-cov&(u_0, J(s, t)) = cov\left(u_0, \frac{1}{d_\gamma}(e^{-d_\gamma(s-t_0)}-e^{-d_\gamma(t-t_0)})(\gamma_0 - \hat{\gamma})\right) \\
-&+ cov\left(u_0, \int_s^t \sigma_\gamma \int_{t_0}^{s'} e^{-d_\gamma(s'-x)} dW_\gamma(x)ds'\right)\\
-&= \frac{1}{d_\gamma}(e^{-d_\gamma(s-t_0)}-e^{-d_\gamma(t-t_0)})[cov(u_0, \gamma_0)-cov(u_0, \hat{\gamma})] \\
-&= \frac{1}{d_\gamma}(e^{-d_\gamma(s-t_0)}-e^{-d_\gamma(t-t_0)})cov(u_0, \gamma_0).
+Cov&(u_0, J(s, t)) = Cov\left(u_0, \frac{1}{d_\gamma}(e^{-d_\gamma(s-t_0)}-e^{-d_\gamma(t-t_0)})(\gamma_0 - \hat{\gamma})\right) \\
+&+ Cov\left(u_0, \int_s^t \sigma_\gamma \int_{t_0}^{s'} e^{-d_\gamma(s'-x)} dW_\gamma(x)ds'\right)\\
+&= \frac{1}{d_\gamma}(e^{-d_\gamma(s-t_0)}-e^{-d_\gamma(t-t_0)})[Cov(u_0, \gamma_0)-Cov(u_0, \hat{\gamma})] \\
+&= \frac{1}{d_\gamma}(e^{-d_\gamma(s-t_0)}-e^{-d_\gamma(t-t_0)})Cov(u_0, \gamma_0).
 \end{split}
 \end{equation}
 这是因为$u_0$与$\hat{\gamma}$相互独立. 同理有
-\begin{equation} \label{cov b0 J(s, t)}
-cov(b_0, J(s, t)) = \frac{1}{d_\gamma}(e^{-d_\gamma(s-t_0)}-e^{-d_\gamma(t-t_0)})cov(b_0, \gamma_0).
+\begin{equation} \label{Cov b0 J(s, t)}
+Cov(b_0, J(s, t)) = \frac{1}{d_\gamma}(e^{-d_\gamma(s-t_0)}-e^{-d_\gamma(t-t_0)})Cov(b_0, \gamma_0).
 \end{equation}
 为了计算$E[J(s, t)]$, 我们对(\ref{gamma_stat_1})求积分, 有
 \begin{equation} \label{E J(s, t)}
@@ -461,7 +463,7 @@ Var&(J(s, t)) = \frac{1}{d_\gamma^2}\left(e^{-d_\gamma(s-t_0)}-e^{-d_\gamma(t-t_
 &+ \frac{\sigma_\gamma^2}{d_\gamma^3}\left(-1+d_\gamma(t-s)+e^{-d_\gamma(s+t-2t_0)}+e^{-d_\gamma(t-s)}-\frac{1}{2}e^{-2d_\gamma(t-t_0)}-\frac{1}{2}e^{-2d_\gamma(s-t_0)}\right) 
 \end{split}
 \end{equation}
-将(\ref{Var J(s, t) final}), (\ref{cov u0 J(s, t)}), (\ref{cov b0 J(s, t)})代入(\ref{E u(t)})式即得$u(t)$的均值.
+将(\ref{Var J(s, t) final}), (\ref{Cov u0 J(s, t)}), (\ref{Cov b0 J(s, t)})代入(\ref{E u(t)})式即得$u(t)$的均值.
 \subsection{方差}
 
 \bibliographystyle{plain}
