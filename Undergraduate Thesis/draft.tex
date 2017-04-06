@@ -266,7 +266,7 @@ $$\mathcal{F}[f^{(k)}(x)] = (i\omega)^k \mathcal{F}[f].$$
 \section{$b(t)$与$\gamma(t)$的统计量}
 \subsection{均值}
 当t固定时, 由(\ref{Sb})式可知, $b(t)$的通解第一项为常数, 而第二项中只有$b_0$是一个随机变量. 那么由(\ref{init_values})可知, $b(t)$通解第二项的期望为$(E[b_0]-\hat{b})e^{\lambda_b(t-t_0)}$. 而由于
-$$f = f(s) = e^(\lambda_b(t-s))\in\mathcal{V}(S, T),$$
+$$f = f(s) = e^{\lambda_b(t-s)}\in\mathcal{V}(S, T),$$
 故由(\ref{Itoint_property})的(3)式可知,
 $$E\left[\sigma_b\int_{t_0}^{t} e^{\lambda_b(t-s)dW_b(s)}\right] = 0.$$
 从而
@@ -465,6 +465,49 @@ Var&(J(s, t)) = \frac{1}{d_\gamma^2}\left(e^{-d_\gamma(s-t_0)}-e^{-d_\gamma(t-t_
 \end{equation}
 将(\ref{Var J(s, t) final}), (\ref{Cov u0 J(s, t)}), (\ref{Cov b0 J(s, t)})代入(\ref{E u(t)})式即得$u(t)$的均值.
 \subsection{方差}
+利用
+\begin{equation}
+Var(u(t)) = E\left[(|u(t)|^2)\right] - \left|E[u(t)]\right|^2.
+\end{equation}
+我们记
+\begin{equation}
+u(t) = A + B + C,
+\end{equation}
+其中
+\begin{equation}
+A = e^{-J(t_0, t)+\hat{\lambda}(t-t_0)}u_0,
+\end{equation}
+\begin{equation}
+B = \int_{t_0}^t (b(s)+f(s))e^{-J(s, t)+\hat{\lambda}(t-s)}ds,
+\end{equation}
+\begin{equation}
+C = \sigma\int_{t_0}^t e^{-J(s, t)+\hat{\lambda}(t-s)}dW(s).
+\end{equation}
+
+于是由It\^{o}积分的性质有
+\begin{equation}
+E\left[|u(t)|^2\right] = E\left[|A|^2\right]+ E\left[|B|^2\right] + E\left[|C|^2\right] + 2Re{(A*B)}.
+\end{equation}
+由命题\ref{multiVariable gaussian exp 1}可知
+\begin{proposition} 对于复值Gaussian随机变量$z$和$w$, 以及实值Gaussian随机变量$x$,
+\begin{equation}
+\begin{split}
+E&\left[zwe^{bx}\right] = \left[E[z]E[w]+Cov(z, w^*)+b(E[z]Cov(w, x))+E[w]Cov(z, x)+ \right. \\
+& \left.b^2Cov(z, x)Cov(w, x)\right]e^{bE[x]+\frac{b^2}{2}Var(x)}. \\
+\end{split}
+\end{equation}
+\end{proposition}
+
+利用上述命题, 有
+\begin{equation}
+\begin{split}
+E&\left[|A|^2\right] = \left(|E[u_0]|^2 +Var(u_0) - 4Re\left\{E[u_0]^*Cov(u_0, J(t_0, t)\right\} +4|Cov(u_0, J(t_0, t)|^2\right) \cdot \\
+& e^{-2\hat{\gamma}(t-t_0)-2E[J(t_0, t)]+2Var(J(t_0, t))}.
+\end{split}
+\end{equation}
+而
+\begin{equation}
+E\left[|B|^2\right] = 
 
 \bibliographystyle{plain}
 \bibliography{../../CONFIG/LaTeX-bib/Chuan}
