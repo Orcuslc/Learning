@@ -489,7 +489,7 @@ C = \sigma\int_{t_0}^t e^{-J(s, t)+\hat{\lambda}(t-s)}dW(s).
 E\left[|u(t)|^2\right] = E\left[|A|^2\right]+ E\left[|B|^2\right] + E\left[|C|^2\right] + 2Re{(A*B)}.
 \end{equation}
 由命题\ref{multiVariable gaussian exp 1}可知
-\begin{proposition} 对于复值Gaussian随机变量$z$和$w$, 以及实值Gaussian随机变量$x$,
+\begin{proposition}  \label{multiVariable gaussian exp 3} 对于复值Gaussian随机变量$z$和$w$, 以及实值Gaussian随机变量$x$,
 \begin{equation}
 \begin{split}
 E&\left[zwe^{bx}\right] = \left[E[z]E[w]+Cov(z, w^*)+b(E[z]Cov(w, x))+E[w]Cov(z, x)+ \right. \\
@@ -507,7 +507,20 @@ E&\left[|A|^2\right] = \left(|E[u_0]|^2 +Var(u_0) - 4Re\left\{E[u_0]^*Cov(u_0, J
 \end{equation}
 而
 \begin{equation}
-E\left[|B|^2\right] = 
+\begin{split}
+E&\left[|B|^2\right] = E\left[\left|\int_{t_0}^t (b(s)+f(s))e^{-J(s, t)+\hat{\lambda}(t-s)}ds\right|^2\right] \\
+&= \int_{t_0}^t ds\int_{t_0}^t dr E\left[(b(s)+f(s))e^{-J(s, t)+\hat{\lambda}(t-s)}\left[(b(r)+f(r))e^{-J(r, t)+\hat{\lambda}(t-r)}\right]^*\right]
+\end{split}
+\end{equation}
+
+利用命题\ref{multiVariable gaussian exp 3}可知, 在上式中, 被积的最后一项为
+\begin{equation}
+\begin{split}
+E&\left[(b(s)+f(s))e^{-J(s, t)+\hat{\lambda}(t-s)}\left[(b(r)+f(r))e^{-J(r, t)+\hat{\lambda}(t-r)}\right]^*\right] \\
+&= e^{-\hat{\gamma}(2t-s-r)+i\omega(r-s)-E[J(s, t)]-E[J(r, t)]+\frac{1}{2}Var(J(s,t))+Cov(J(s, t), J(r, t))}\cdot \\
+& []
+\end{split}
+\end{equation}
 
 \bibliographystyle{plain}
 \bibliography{../../CONFIG/LaTeX-bib/Chuan}
