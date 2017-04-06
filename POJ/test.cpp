@@ -16,9 +16,11 @@ void reversed(string* s) {
 
 
 int main() {
-	string s;
-	cin >> s;
-	reversed(&s);
-	cout << s << endl;
-	return(0);
+	int num;
+	int* a = new int[num];
+	cin >> num;
+	for(int i = 0; i < num; i++) cin >> a[i];
+	sort(a, a+num);
+	for(int i = 0; i < num; i++) cout << a[i] << endl;
+	return 0;
 }
