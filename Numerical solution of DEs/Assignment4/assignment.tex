@@ -1,0 +1,50 @@
+%!TEX program = xelatex
+
+% \documentclass[10pt]{article}
+\input{structure.tex}
+\usepackage{epstopdf}
+\usepackage{graphics}
+\usepackage{subfig}
+\usepackage{listings}
+\lstset{
+  numbers=left,
+    framexleftmargin=10mm,
+    frame=none,
+    backgroundcolor=\color[RGB]{245,245,244},
+  keywordstyle=\bf\color{blue},
+  identifierstyle=\bf,
+  numberstyle=\color[RGB]{0,192,192},
+  commentstyle=\it\color[RGB]{0,96,96},
+  stringstyle=\rmfamily\slshape\color[RGB]{128,0,0},
+  showstringspaces=false,
+  extendedchars=false
+    }
+\DeclareGraphicsExtensions{.eps,.ps,.jpg,.bmp}
+
+\begin{document}
+
+\title{Assignment 4}{17.4.1}
+
+\problem{1}{Prove Implicit Euler Iteration is of first-order convergence for Dahlquist test.}
+\solution{Proof}{
+\quad According to (2.2.20), $u_{n} = \frac{1}{(1-a\Delta t)^{n}}u_{0}.$ For $e_{n} = u(t_{n}) - u_{n},$ we have $e_{n} = u_{0}(e^{at_{n}} - e^{-nln(1-a\Delta t)}).$ From Taylor expansion we can know that $$e_{n} = -u_{0}e^{at_{n}}(\frac{a^{2}t_{n}}{2}\Delta t + O(\Delta t^{2})).$$\\
+\quad In consequence, for a fixed $T = N\Delta t,$ $\Vert u(T) - u(N)\Vert\leqslant C\Delta t,$ which means the implicit iteration is of first-order convergence.
+}
+
+\problem{2}{Compute $\frac{du}{dt} = au$ with Euler Iterations, and show the convergence by image.}
+\solution{Result}{
+\begin{figure}[!h]
+\centering
+\includegraphics[width = 15cm]{img/converge.eps}
+\caption{The convergence of Euler Iteration.}
+\label{Convergence}
+\end{figure}
+\begin{figure}[!h]
+\centering
+\includegraphics[width = 15cm]{img/error_list.eps}
+\caption{The error of Euler Iteration.}
+\label{Error}
+\end{figure}
+}
+
+\end{document}

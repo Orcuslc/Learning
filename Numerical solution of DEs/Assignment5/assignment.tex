@@ -1,0 +1,51 @@
+%!TEX program = xelatex
+
+% \documentclass[10pt]{article}
+\input{structure.tex}
+\usepackage{epstopdf}
+\usepackage{graphics}
+\usepackage{subfig}
+\usepackage{listings}
+\lstset{
+  numbers=left,
+    framexleftmargin=10mm,
+    frame=none,
+    backgroundcolor=\color[RGB]{245,245,244},
+  keywordstyle=\bf\color{blue},
+  identifierstyle=\bf,
+  numberstyle=\color[RGB]{0,192,192},
+  commentstyle=\it\color[RGB]{0,96,96},
+  stringstyle=\rmfamily\slshape\color[RGB]{128,0,0},
+  showstringspaces=false,
+  extendedchars=false
+    }
+\DeclareGraphicsExtensions{.eps,.ps,.jpg,.bmp}
+
+\begin{document}
+
+\title{Assignment 5}{17.4.5}
+
+\problem{1}{Analysis the stability and absolute stable interval of Modified and Revised Euler Iteration for Dahlquist test.}
+\solution{For Modified Euler Iteration:}{
+{\centering \[\ u_{n+1} = u_{n} + \frac{\Delta t}{2}(f_{n} + f_{n+1})\]}
+\quad Assume that the disturbed initiate value is $\widetilde{u_{0}}$ and the exact initiate value is $u_{0}$. Mark the following value calculated by the Modified Euler Iteration as $\widetilde{u_{i}}, i = 1, 2, \cdots$. Then $\widetilde{u_{n}} = \widetilde{u_{n-1}} + \frac{\Delta t}{2}(a\widetilde{u_{n-1}} + a\widetilde{u_{n}}), \quad \widetilde{u_{n}} = \frac{1+\frac{a\Delta t}{2}}{1 - \frac{a\Delta t}{2}}\widetilde{u_{n-1}},\quad u_{n} = \frac{1+\frac{a\Delta t}{2}}{1 - \frac{a\Delta t}{2}}u_{n-1}$.\quad Hence, $\Vert\widetilde{u_{n}} - u_{n}\Vert =  \frac{1+\frac{a\Delta t}{2}}{1 - \frac{a\Delta t}{2}}\Vert\widetilde{u_{n-1}} - u_{n-1}\Vert = \dots = (\frac{1+\frac{a\Delta t}{2}}{1 - \frac{a\Delta t}{2}})^{n}\Vert\widetilde{u_{0}} - u_{0}\Vert.$\\
+\quad If we expect that to a fixed $\Delta t$, when $n\to\infty$, the error can still be of control, then it must be true: $$\Arrowvert\frac{1+\frac{a\Delta t}{2}}{1 - \frac{a\Delta t}{2}}\Arrowvert\leqslant 1.$$ Hence, because that $\Delta t \geqslant 0,$ it can only be true when $a\leqslant 0,$ and $0\leqslant\Delta t < \frac{2}{\vert a\vert}.$\\
+\quad On the other hand, take $z = a\Delta t,$ we have $\Arrowvert\frac{2+z}{2-z}\Arrowvert\leqslant 1, \quad z\in\mathcal{Z}.$
+}
+\solution{For Revised Euler Iteration:}{
+{\centering \[\ u_{n+1} = u_{n} + \Delta ta(u_{n} + \frac{\Delta t}{2}au_{n})\]}
+\quad Claimed as above, we have $\widetilde{u_{n+1}} = \widetilde{u_{n}}(1+\Delta ta + \frac{1}{2}(\Delta ta)^{2}).$ Hence, $\Vert\widetilde{u_{n}} - u_{n}\Vert = (1+\Delta ta + \frac{1}{2}(\Delta ta)^{2})^{n}\Vert\widetilde{u_{0}} - u_{0}\Vert.$ As shown above, $\Vert 1+\Delta ta+\frac{1}{2}(\Delta ta)^{2}\Vert\leqslant 1.$
+\quad On the other hand, take $z = a\Delta t, $ we have $\Vert z^{2} + 2z + 2\Vert\leqslant 2.$
+}
+
+\problem{2}{Draw the convergence order of 1st-4th-order format}
+\solution{Result}{
+\begin{figure}[!h]
+\centering
+\includegraphics[width=15cm]{errorlist.eps}
+\caption{The convergence order of 1-4 order format}
+\label{convergence}
+\end{figure}
+}
+
+\end{document}

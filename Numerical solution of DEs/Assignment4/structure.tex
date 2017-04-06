@@ -1,0 +1,154 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Modified By Orcuslc, 2016-9-21
+% Modified for Assignments
+% http://github.com/orcuslc
+%
+% Wilson Resume/CV
+% Structure Specification File
+% Version 1.0 (22/1/2015)
+%
+% This file has been downloaded from:
+% http://www.LaTeXTemplates.com
+%
+% License:
+% CC BY-NC-SA 3.0 (http://creativecommons.org/licenses/by-nc-sa/3.0/)
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%----------------------------------------------------------------------------------------
+%	PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
+%----------------------------------------------------------------------------------------
+\documentclass[10pt]{article}
+
+\usepackage{listings}
+\usepackage{xcolor}
+\usepackage{amsmath,amsthm,amssymb}
+\usepackage{epstopdf}
+\usepackage{graphicx}
+% \usepackage{clrscode3e}
+
+\DeclareGraphicsExtensions{.eps,.ps,.jpg,.bmp}
+
+
+\usepackage[a4paper, hmargin=25mm, vmargin=30mm	, top=20mm]{geometry} % Use A4 paper and set margins
+
+\usepackage{fancyhdr} % Customize the header and footer
+
+\usepackage{lastpage} % Required for calculating the number of pages in the document
+
+\usepackage{hyperref} % Colors for links, text and headings
+
+\setcounter{secnumdepth}{0} % Suppress section numbering
+
+%\usepackage[proportional,scaled=1.064]{erewhon} % Use the Erewhon font
+%\usepackage[erewhon,vvarbb,bigdelims]{newtxmath} % Use the Erewhon font
+\usepackage[utf8]{inputenc} % Required for inputting international characters
+\usepackage[T1]{fontenc} % Output font encoding for international characters
+
+\usepackage{fontspec} % Required for specification of custom fonts
+\setmainfont[Path = ./fonts/,
+Extension = .otf,
+BoldFont = Erewhon-Bold,
+ItalicFont = Erewhon-Italic,
+BoldItalicFont = Erewhon-BoldItalic,
+SmallCapsFeatures = {Letters = SmallCaps}
+]{Erewhon-Regular}
+
+\usepackage{color} % Required for custom colors
+\definecolor{slateblue}{rgb}{0.17,0.22,0.34}
+
+\usepackage{sectsty} % Allows customization of titles
+\sectionfont{\color{slateblue}} % Color section titles
+
+\fancypagestyle{plain}{\fancyhf{}\cfoot{\thepage\ of \pageref{LastPage}}} % Define a custom page style
+\pagestyle{plain} % Use the custom page style through the document
+\renewcommand{\headrulewidth}{0pt} % Disable the default header rule
+\renewcommand{\footrulewidth}{0pt} % Disable the default footer rule
+
+\setlength\parindent{0pt} % Stop paragraph indentation
+
+% Non-indenting itemize
+\newenvironment{itemize-noindent}
+{\setlength{\leftmargini}{0em}\begin{itemize}}
+{\end{itemize}}
+
+% Text width for tabbing environments
+\newlength{\smallertextwidth}
+\setlength{\smallertextwidth}{\textwidth}
+\addtolength{\smallertextwidth}{-2cm}
+
+\newcommand{\sqbullet}{~\vrule height .8ex width .6ex depth -.05ex} % Custom square bullet point 
+
+
+\newcommand{\tbf}[1]{\textbf{#1}}
+\newcommand{\tit}[1]{\textit{#1}}
+\newcommand{\mbb}[1]{\mathbb{#1}}
+\newcommand{\blue}[1]{\color{blue}{#1}}
+\newcommand{\red}[1]{\color{red}{#1}}
+\newcommand{\sblue}[1]{\color{slateblue}{#1}}
+\newcommand{\n}{\\[5pt]}
+\newcommand{\tab}{$\quad$}
+\newcommand{\tr}{^\top}
+\newcommand{\vt}[1]{
+\Vert #1 \Vert
+}
+\newcommand{\bra}[5]{
+#1=\left\{
+\begin{aligned}
+#2 ,&\quad #4 \\
+#3 ,&\quad #5
+\end{aligned}
+\right.
+}
+
+\renewcommand{\title}[2] {
+{\Huge{\color{slateblue}\textbf{#1}}}
+\hfill
+\LARGE{\color{slateblue}\textbf{#2}} \\[10pt]
+\large{\color{slateblue}\textbf{Chuan Lu, 13300180056, chuanlu13@fudan.edu.cn}} \\[1mm]
+\rule{\textwidth}{0.5mm}
+}
+
+\newcommand{\problem}[2] {
+\vspace{20pt}
+\LARGE{\color{slateblue}\textbf{Problem #1.}}
+\vspace{2mm}
+#2 \\[10pt]
+}
+
+\renewcommand{\proof}[2] {
+\large{\color{slateblue}\textit{\textbf{#1.}}}
+#2 \qed \\[3mm]
+}
+
+\newcommand{\solution}[2] {
+\large{\color{slateblue}\textit{\textbf{#1.}}}
+#2 \\[3mm]
+}
+
+
+\newcommand{\algorithm}[2] {
+\begin{codebox}
+\Procname{$\proc{Algorithm #1}$}
+#2
+\end{codebox}
+}
+
+\newcommand{\refgroup}[1] {
+\LARGE{\color{slateblue}\textbf{Reference}} 
+\begin{tabbing}
+\hspace{5mm} \= \kill
+#1
+\end{tabbing}
+}
+
+\newcommand{\reference}[1] {
+\sqbullet \ \  \large{#1} \\
+}
+% \newcommand{\solution}[2] {
+% \LARGE{\color{slateblue}\textit{#1}}
+% \ #2 \qed
+% }
+
+% \newenvironment{problem}[2][Problem]{\begin{trivlist}
+% \item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
