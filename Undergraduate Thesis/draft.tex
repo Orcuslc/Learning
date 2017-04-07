@@ -513,12 +513,20 @@ E&\left[|B|^2\right] = E\left[\left|\int_{t_0}^t (b(s)+f(s))e^{-J(s, t)+\hat{\la
 \end{split}
 \end{equation}
 
+先引入两个显然的结论, 其中$a, b, c, d$均为随机变量:
+\begin{proposition} \label{Var 1}
+$Var(a+b) = Var(a)+Var(b)+2Cov(a, b)$.
+\end{proposition}
+\begin{proposition} \label{Cov 1}
+$Cov(a+b, c+d) = Cov(a, c)+Cov(a, d)+Cov(b, c)+Cov(b, d)$.
+\end{proposition}
+
 利用命题\ref{multiVariable gaussian exp 3}可知, 在上式中, 被积的最后一项为
 \begin{equation}
 \begin{split}
 E&\left[(b(s)+f(s))e^{-J(s, t)+\hat{\lambda}(t-s)}\left[(b(r)+f(r))e^{-J(r, t)+\hat{\lambda}(t-r)}\right]^*\right] \\
-&= e^{-\hat{\gamma}(2t-s-r)+i\omega(r-s)-E[J(s, t)]-E[J(r, t)]+\frac{1}{2}Var(J(s,t))+Cov(J(s, t), J(r, t))}\cdot \\
-& []
+&= e^{-\hat{\gamma}(2t-s-r)+i\omega(r-s)-E[J(s, t)]-E[J(r, t)]+\frac{1}{2}Var(J(s,t))+\frac{1}{2}Var(J(r, t))+Cov(J(s, t), J(r, t))}\cdot \\
+& 
 \end{split}
 \end{equation}
 
