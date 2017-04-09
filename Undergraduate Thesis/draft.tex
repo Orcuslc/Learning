@@ -521,14 +521,33 @@ $Var(a+b) = Var(a)+Var(b)+2Cov(a, b)$.
 $Cov(a+b, c+d) = Cov(a, c)+Cov(a, d)+Cov(b, c)+Cov(b, d)$.
 \end{proposition}
 
-利用命题\ref{multiVariable gaussian exp 3}可知, 在上式中, 被积的最后一项为
+由以上两个命题, 并结合命题\ref{multiVariable gaussian exp 3}可知, 在上式中, 被积的最后一项为
 \begin{equation}
 \begin{split}
 E&\left[(b(s)+f(s))e^{-J(s, t)+\hat{\lambda}(t-s)}\left[(b(r)+f(r))e^{-J(r, t)+\hat{\lambda}(t-r)}\right]^*\right] \\
-&= e^{-\hat{\gamma}(2t-s-r)+i\omega(r-s)-E[J(s, t)]-E[J(r, t)]+\frac{1}{2}Var(J(s,t))+\frac{1}{2}Var(J(r, t))+Cov(J(s, t), J(r, t))}\cdot \\
-& 
+&= E\left[(b(s)+f(s))(b^*(r)+f^*(r))e^{-J(s, t)-J(r, t)+(-\hat{\gamma}+i\omega)(t-s)+(-\hat{\gamma}-i\omega)(t-r)}\right] \\
+&= E\left[(b(s)+f(s))(b^*(r)+f^*(r))e^{-J(s, t)-J(r, t)-\hat{\gamma}(2t-s-r)+i\omega(r-s)}\right] \\
+&= e^{-J(s, t)-J(r, t)+\frac{1}{2}Var(J(s, t))+\frac{1}{2}Var(J(r, t))+Cov(J(s, t), J(r, t))-\hat{\gamma}(2t-s-r)+i\omega(r-s)} \times \\
+&\quad \{E\left[b(s)b^*(r)\right] + E[b(s)f^*(r)] + E[f(s)b^*(r)] + E[f(s)f^*(r)] \\
+&\quad+ Cov(b(s), b(r)) + Cov(b(s), f(r))+Cov(f(s), b(r))+Cov(f(s), f(r)) \\
+&\quad+ (E[b(s)]+E[f(s)])\times[Cov(b^*(r), -J(s, t))+Cov(b^*(r), -J(r, t)) \\
+&\quad\quad +Cov(f^*(r), -J(s, t))+Cov(f^*(r), -J(r, t))] \\
+&\quad+ (E[b^*(r)]+E[f^*(r)])\times[Cov(b(s), -J(s, t))+Cov(f(s), -J(s, t)) \\
+&\quad\quad +Cov(f(s), -J(r, t))+Cov(b(s), -J(r, t))] \\
+&\quad+ [Cov(b(s), -J(s, t))+Cov(b(s), -J(r, t))+Cov(f(s), -J(s, t))+Cov(f(s), -J(r,t))] \\
+&\quad\quad\times [Cov(b^*(r), -J(s, t))+Cov(b^*(r), -J(r, t))+Cov(f^*(r), -J(s,t))+Cov(f^*(r), -J(r, t))]\} \\
+&= e^{-J(s, t)-J(r, t)+\frac{1}{2}Var(J(s, t))+\frac{1}{2}Var(J(r, t))+Cov(J(s, t), J(r, t))-\hat{\gamma}(2t-s-r)+i\omega(r-s)} \times \\
+&\quad \{E[b(s)b^*(r)]+E[b(s)]\times[Cov(b^*(r), -J(s, t))+Cov(b^*(r), -J(r, t))] \\
+&\quad\quad+ E[b^*(r)]\times[Cov(b(s), -J(s, t))+Cov(b(s), -J(r, t))]\\
+&\quad\quad+ [Cov(b^*(r), J(s, t))+Cov(b^*(r), J(r, t))]\times [Cov(b(s), J(s, t))+Cov(b(s), J(r, t))] \\
+&\quad\quad+ f^*(r)\times[E[b(s)]-Cov(b(s), J(s, t)-Cov(b(s), J(r, t)))] \\
+&\quad\quad+ f(s)\times[E[b^*(r)]-Cov(b(r), J^*(s, t)-Cov(b(r), J^*(r, t)))] \\
+&\quad\quad+f(s)f^*(r)\}. \\
 \end{split}
 \end{equation}
+且
+\begin{equation}
+E[b(s)b^*(r)] = E
 
 \bibliographystyle{plain}
 \bibliography{../../CONFIG/LaTeX-bib/Chuan}
