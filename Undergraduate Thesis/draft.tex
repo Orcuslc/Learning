@@ -547,7 +547,12 @@ E&\left[(b(s)+f(s))e^{-J(s, t)+\hat{\lambda}(t-s)}\left[(b(r)+f(r))e^{-J(r, t)+\
 \end{equation}
 且
 \begin{equation}
-E[b(s)b^*(r)] = E
+\begin{split}
+E&[b(s)b(r)] = E\left[\left(\hat{b}+(b_0-\hat{b})e^{\lambda_b(s-t_0)}+\sigma_b\int_{t_0}^s e^{\lambda_b(s-w)}dW_b(w)\right)\right.\times \\
+&\quad\quad\quad\quad\quad\quad\left.\left(\hat{b}+(b_0-\hat{b})e^{\lambda_b(r-t_0)}+\sigma_b\int_{t_0}^r e^{\lambda_b(r-w)}dW_b(w)\right) \right] \\
+&= \left(1-e^{\lambda_b(s-t_0)}\right)\left(1-e^{\lambda_b(r-t_0)}\right)\hat{b}^2
+\end{split}
+\end{equation}
 
 \bibliographystyle{plain}
 \bibliography{../../CONFIG/LaTeX-bib/Chuan}
