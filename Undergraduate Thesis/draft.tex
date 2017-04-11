@@ -145,12 +145,16 @@ b(t) = \hat{b}+(b_0-\hat{b})e^{\lambda_b(t-t_0)}+\sigma_b\int_{t_0}^t e^{\lambda
 \end{equation}
 其中$\lambda_b = -\gamma_b+i\omega_b$, $\hat{b}$与$\hat{\gamma}$分别是$b(t)$和$\gamma(t)$的固定偏差校正.
 如果我们记
-$$\hat{\lambda} = -\hat{\gamma}+i\omega, $$
-$$J(s, t) = \int_s^t (\gamma(s')-\hat{\gamma})ds'$$
+\begin{equation}
+\hat{\lambda} = -\hat{\gamma}+i\omega,
+\end{equation}
+\begin{equation} \label{def J(s, t)}
+J(s, t) = \int_s^t (\gamma(s')-\hat{\gamma})ds'
+\end{equation}
 则(\ref{E0})的通解可以表示为
 \begin{equation} \label{Su}
 \begin{split}
-u(t) &= e^{-J(t_0, t)+\hat{\lambda}(t-t_0)}u_0 + \int_{t_0}^t (b(s)+f(s))e{-J(s, t)+\hat{\lambda}(s-t_0)}ds \\
+u(t) &= e^{-J(t_0, t)+\hat{\lambda}(t-t_0)}u_0 + \int_{t_0}^t (b(s)+f(s))e^{-J(s, t)+\hat{\lambda}(s-t_0)}ds \\
 & + \sigma\int_{t_0}^{t}e^{-J(s, t)+\hat{\lambda}(s-t_0)}dW(s).
 \end{split}
 \end{equation}
@@ -603,7 +607,8 @@ E&[A^*B] = E\left[\left(e^{-J(t_0, t)+\hat{\lambda}(t-t_0)}u_0\right)^*\int_{t_0
 \begin{equation}
 \begin{split}
 E&\left[u_0^*b_0e^{-J(t_0, t)-J(s, t)}\right] = e^{-E[J(s, t)]-E[J(t_0, t)]+\frac{1}{2}Var(J(s, t))+\frac{1}{2}Var(J(t_0, t))+Cov(J(s, t), J(t_0, t))}\times \\
-&[E[u_0^*]E[b_0]+Cov(u_0^*, b_0^*) - E[u_0^*](Cov(b_0, J(s, t))+Cov(b_0, J(t_0, t)))-E[b_0](Cov(J(s, t), u_0^*)+Cov(J(t_0, t), u_0^*)) \\
+&[E[u_0^*]E[b_0]+Cov(u_0^*, b_0^*) - E[u_0^*](Cov(b_0, J(s, t))\\
+&+Cov(b_0, J(t_0, t)))-E[b_0](Cov(J(s, t), u_0^*)+Cov(J(t_0, t), u_0^*)) \\
 &\quad +(Cov(u_0^*, J(s, t))+Cov(u_0^*, J(t_0, t)))\times(Cov(b_0, J(s, t))+Cov(b_0, J(t_0, t)))]
 \end{split}
 \end{equation}
@@ -675,7 +680,33 @@ E&[u_0b_0e^{-J(t_0, t)-J(s, t)}] = e^{-E[J(t_0, t)]-E[J(s, t)]+\frac{1}{2}(Var(J
 \end{equation}
 代入即可. \\
 
-下面考虑$Cov(u(t), \gamma(t))$.
+下面考虑$Cov(u(t), \gamma(t))$.由定义,
+\begin{equation}
+Cov(u(t), \gamma(t)) = E[u(t)\gamma(t)] - E[u(t)]E[\gamma(t)] = E[u(t)(\gamma(t)-\hat\gamma)] + E[u(t)](\hat\gamma-E[\gamma(t)]). 
+\end{equation}
+上式的第二项由(\ref{gamma_stat_1})和(\ref{E u(t)})可以直接计算得到. 下面我们计算上式的第一项. 由It\^o等距知,
+\begin{equation} \label{E[u(t)(\gamma(t)-\hat\gamma)]}
+\begin{split}
+E&[u(t)(\gamma(t)-\hat\gamma)] = E\left[\left(e^{-J(t_0, t)+\hat\lambda(t-t_0)}u_0+\int_{t_0}^t(b(s)+f(s))e^{-J(s, t)+\hat\lambda(s-t_0)}ds\right.\right. \\
+&\quad \left.\left.+\sigma\int_{t_0}^t e^{-J(s, t)+\hat\lambda(s-t_0)}dW(s)\right)\times(\gamma(t)-\hat\gamma)\right] \\
+&= e^{\hat\lambda(t-t_0)}E\left[(\gamma(t)-\hat\gamma)u_0e^{\hat\lambda(t-t_0)}\right]+\int_{t_0}^t e^{-\hat\lambda(s-t_0)}E\left[(b(s)+f(s))(\gamma(t)-\hat\gamma)e^{-J(s, t)}\right]ds
+\end{split}
+\end{equation}
+由$J(t_0, t)$的定义(\ref{def J(s, t)})可知,
+$$
+\frac{\partial J(t_0, t)}{\partial t} = (\gamma(t)-\hat\gamma),
+$$
+那么(\ref{E[u(t)(\gamma(t)-\hat\gamma)]})可以表示为
+\begin{equation}
+-e^{\hat\lambda(t-t_0)}\frac{\partial}{\partial t}E\left[u_0e^{-J(t_0, t)}\right]-\int_{t_0}^t e^{\hat\lambda(s-t_0)}\frac{\partial}{\partial t}E\left[(b(s)+f(s))e^{-J(s, t)}\right]ds,
+\end{equation}
+其中由(\ref{multiVariable gaussian exp 2}),
+\begin{equation}
+\begin{split}
+\frac{\partial}{\partial t}&E\left[u_0e^{-J(t_0, t)}\right] = \frac{\partial}{\partial t}\left[(E[u_0]+Cov(-J(t_0, t), u_0))e^{-E[J(t_0, t)]+\frac{1}{2}Var(J(t_0, t))}\right] \\
+&= 
+\end{split}
+\end{equation}
 \bibliographystyle{plain}
 \bibliography{../../CONFIG/LaTeX-bib/Chuan}
-\end{document}
+\end{document}{}
