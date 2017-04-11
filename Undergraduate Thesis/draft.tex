@@ -187,7 +187,7 @@ $$B_{t_1}, B_{t_2}-B{t_1}, \cdots, B_{t_k}-B_{t_{k-1}}$$相互独立.
 \end{theorem}
 
 \subsection{It\^{o}积分及其性质}
-在求解类似(\ref{E0})的随机微分方程时, 需要针对布朗运动做积分, 为此我们引入以下的It\^{o}积分\cite{oksendal2003stochastic}:
+在求解类似(\ref{E0})的随机微分方程时, 需要针对布朗运动做积分, 为此我们引入以下的It\^{o}积分\cite{oksendal2003stochastic}\cite{lawler2006introduction}:
 \begin{definition}(It\^{o}积分)	设$f\in\mathcal{V}(S, T)$. 则$f$的It\^{o}积分定义为
 $$\int_S^T f(t, \omega)dB_t(\omega) = \lim_{n\to\infty}\int_S^T\phi_n(t, \omega)dB_t(\omega),$$
 其中${\phi_n}$为基本函数序列, 且满足当$n \to \infty$时
@@ -208,7 +208,7 @@ $$E\left[(\int_S^T f(t, \omega)dB_t)^2\right] = E\left[\int_S^T f^2(t, \omega)dt
 \end{flalign*}
 \end{theorem}
 
-为了便于计算, 我们还需要引入以下的一维It\^{o}公式.
+为了便于计算, 我们还需要引入以下的一维It\^{o}公式\cite{jiangangying2016stochastic}.
 \begin{theorem}(It\^{o}公式) \label{Ito formula} 设$X_t$为一个如下的It\^{o}过程:
 $$dX_t = udt+vdB_t,$$
 $g(t, x) \in C^2([0, \infty) \times \mathbb{R})$, 则$Y_t = g(t, X_t)$也是一个It\^{o}过程, 且满足:
@@ -730,10 +730,61 @@ $$
 $$
 Cov(u(t), b(t)) = E[u(t)b^*(t)] - E[u(t)]E[b(t)]^*.
 $$
-上式的第二项由(\ref{E u(t)})和(\ref{b_stat_1})即可计算得到. 完全类似之前的计算过程, 第一项为
+上式的第二项由(\ref{E u(t)})和(\ref{b_stat_1})即可计算得到. 结合It\^o公式, 完全类似之前的计算过程, 第一项为
 \begin{equation}
 \begin{split}
-E&[u(t)b^*(t)] = 
+E&[u(t)b^*(t)] = E\left[u(t)\left(\hat{b}^*+(b_0^*-\hat{b}^*)e^{\lambda_b^*(t-t_0)}+\sigma_b\int_{t_0}^t e^{\lambda_b(t-s)}dW_b(s)\right)\right] \\
+&= \left(1-e^{\lambda_b^*(t-t_0)}\right)\hat{b}^*E[u(t)] + E\left[u(t)b_0^*e^{\lambda_b^*(t-t_0)}\right] \\
+&\quad + E[\sigma\sigma_b\int_{t_0}^t\int_{t_0}^te^{-J(s, t)+\hat\lambda(s-t_0)+\lambda_b^*(t-\xi)}dW(s)dW_b(\xi)] \\
+&= \left(1-e^{\lambda_b^*(t-t_0)}\right)\hat{b}^*E[u(t)] + E\left[\left(e^{-J(t_0, t)+\hat\lambda(s-t_0)}+\int_{t_0}^t (b(s)+f(s))e^{-J(s, t)+\hat\lambda(s-t_0)}ds\right)b_0^*e^{\lambda_b^*(t-t_0)}\right] \\
+&\quad + \frac{\sigma\sigma_b}{2\gamma_b}E\left[\int_{t_0}^t e^{-J(s, t)}e^{-\lambda(t-s)}\left(e^{\lambda_b^*(t-s)}-e^{-i\omega_b(t-s)-\gamma_b(s+t-2t_0)}\right)\right] \\
+&= \left(1-e^{\lambda_b^*(t-t_0)}\right)\hat{b}^*E[u(t)] + e^{(\hat\lambda+\lambda_b^*)(t-t_0)}E\left[u_0b_0^*e^{-J(t_0, t)}\right] + e^{\lambda_b^*(t-t_0)}\times \\
+&\quad \int_{t_0}^t e^{\hat\lambda(t-s)}\left(E\left[b_0^*b(s)e^{-J(s, t)}\right]+f(s)E\left[b_0e^{-J(s, t)}\right]^*ds\right) \\
+&\quad + \frac{\sigma\sigma_b}{2\gamma_b}E\left[\int_{t_0}^t e^{-E[J(s, t)]+\frac{1}{2}Var(J(s, t))}e^{-\lambda(t-s)}\left(e^{\lambda_b^*(t-s)}-e^{-i\omega_b(t-s)-\gamma_b(s+t-2t_0)}\right)\right],
+\end{split}
+\end{equation}
+并利用命题(\ref{multiVariable gaussian exp 3}), 在上式中
+\begin{equation}
+E\left[b_0e^{-J(s, t)}\right] = e^{-E[J(s, t)]+\frac{1}{2}Var(J(s, t))}\times(E[b_0]+Cov(b_0, -J(s, t))),
+\end{equation}
+\begin{equation}
+\begin{split}
+E&\left[u_0b_0^*e^{-J(t_0, t)}\right] = e^{-E[J(t_0, t)]+\frac{1}{2}Var(J(t_0, t))}\times[E[u_0]E[b_0]^*+Cov(u_0, b_0)+E[u_0]Cov(b_0, -J(t_0, t))^*\\
+&+E[b_0]^*Cov(u_0, -J(t_0, t)) + Cov(u_0, -J(t_0, t))Cov(b_0, -J(t_0, t))^*],
+\end{split}]
+\end{equation}
+\begin{equation}
+\begin{split}
+E&[b_0^*b(s)e^{-J(s, t)}] = e^{-J(s, t)+\frac{1}{2}Var(J(s, t))}\times [E[b_0]^*E[b(s)]+Cov(b_0, b(s))+E[b_0]^*Cov(b(s), -J(s, t))\\
+&+E[b(s)]Cov(b_0, -J(s, t))^*+Cov(b_0, -J(s, t))^*Cov(b(s), -J(s, t))].
+\end{split}
+\end{equation}
+最后我们考虑$Cov(u(t), b^*(t))$.由定义,
+$$
+Cov(u(t), b^*(t)) = E[u(t)b(t)] - E[u(t)]E[b(t)].
+$$
+和前一部分类似的, 只要考虑上式的第一项.我们有
+\begin{equation}
+\begin{split}
+E&[u(t)b(t)] = E\left[u(t)\left(\hat{b}+(b_0-\hat{b})e^{\lambda_b(t-t_0)}+\sigma_b\int_{t_0}^t e^{\lambda_b(t-s)}dW_b(s)\right)\right] \\
+&= \left(1-e^{\lambda_b(t-t_0)}\right)\hat{b}E[u(t)] + E\left[u(t)b_0e^{\lambda_b(t-t_0)}\right] \\
+&\quad + E[\sigma\sigma_b\int_{t_0}^t\int_{t_0}^te^{-J(s, t)+\hat\lambda(s-t_0)+\lambda_b(t-\xi)}dW(s)dW_b(\xi)] \\
+&= \left(1-e^{\lambda_b^*(t-t_0)}\right)\hat{b}E[u(t)] + E\left[\left(e^{-J(t_0, t)+\hat\lambda(s-t_0)}+\int_{t_0}^t (b(s)+f(s))e^{-J(s, t)+\hat\lambda(s-t_0)}ds\right)b_0e^{\lambda_b(t-t_0)}\right] \\
+&= \left(1-e^{\lambda_b(t-t_0)}\right)\hat{b}E[u(t)] + e^{(\hat\lambda+\lambda_b)(t-t_0)}E\left[u_0b_0e^{-J(t_0, t)}\right] + e^{\lambda_b(t-t_0)}\times \\
+&\quad \int_{t_0}^t e^{\hat\lambda(t-s)}\left(E\left[b_0b(s)e^{-J(s, t)}\right]+f(s)E\left[b_0e^{-J(s, t)}\right]ds\right) \\
+\end{split}
+\end{equation}
+在上式中, 由命题(\ref{multiVariable gaussian exp 3})知,
+\begin{equation}
+\begin{split}
+E&\left[u_0b_0e^{-J(t_0, t)}\right] = e^{-E[J(t_0, t)]+\frac{1}{2}Var(J(t_0, t))}\times[E[u_0]E[b_0]+Cov(u_0, b_0^*)+E[b_0]Cov(u_0, -J(t_0, t))\\
+&\quad + E[u_0]Cov(b_0, -J(t_0, t))+Cov(u_0, -J(t_0, t))Cov(b_0, -J(t_0, t))],
+\end{split}
+\end{equation}
+\begin{equation}
+\begin{split}
+E&\left[b_0b(s)e^{-J(s, t)}\right] = e^{-J(s, t)+\frac{1}{2}Var(J(s, t))}\times [E[b_0]E[b(s)]+Cov(b_0, b(s)^*)+E[b_0]Cov(b(s), -J(s, t)) \\
+&\quad + E[b(s)]Cov(b_0, -J(s, t)) + Cov(b_0, -J(s, t))Cov(b(s), -J(s, t))]
 \end{split}
 \end{equation}
 \bibliographystyle{plain}
