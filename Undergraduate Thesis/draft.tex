@@ -789,13 +789,17 @@ E&\left[b_0b(s)e^{-J(s, t)}\right] = e^{-J(s, t)+\frac{1}{2}Var(J(s, t))}\times 
 \end{equation}
 
 \section{数值模拟}
-考虑以下的这样一个简单例子. 在(\ref{E0})中, 我们不妨取
+考虑以下的这样一个简单例子. 在(\ref{E0})中, 我们不妨假设外部驱动力$f(t)$为一个周期驱动力,即
+$$
+f(t) = sin(t),
+$$
+且方程组中的各个参数可以取为
 \begin{equation}
 \left\{
 \begin{aligned}
 &\omega = 2, \sigma = \frac{1}{2} \\
 &\omega_b = 5, \sigma_b = \frac{1}{2} \\
-&\gamma_b = 1, d_\gamma = 2 \\
+&\gamma_b = 1, d_\gamma = 2 , \sigma_\gamma = \frac{1}{3} \\
 &\hat\gamma = 1, \hat{b} = 2 \\
 \end{aligned}
 \right.
@@ -821,6 +825,7 @@ Cov(u_0, u_0^*) &= E\left[Re(u_0)^2+Im(u_0)^2\right] - \left(E[Re(u_0)]^2+E[Im(u
 &= Var(Re(u_0))+Var(Im(u_0)) = 2
 \end{split}
 \end{equation}
+
 
 
 \bibliographystyle{plain}
