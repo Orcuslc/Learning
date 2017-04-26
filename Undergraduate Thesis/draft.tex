@@ -793,12 +793,36 @@ E&\left[b_0b(s)e^{-J(s, t)}\right] = e^{-J(s, t)+\frac{1}{2}Var(J(s, t))}\times 
 \begin{equation}
 \left\{
 \begin{aligned}
-&\omega = 1, \sigma = 0.5 \\
-&\omega_b = 2.5, \sigma_b = 2 \\
-&
+&\omega = 2, \sigma = \frac{1}{2} \\
+&\omega_b = 5, \sigma_b = \frac{1}{2} \\
+&\gamma_b = 1, d_\gamma = 2 \\
+&\hat\gamma = 1, \hat{b} = 2 \\
 \end{aligned}
-\right
+\right.
 \end{equation}
+
+以及初始参数
+\begin{equation}
+\left\{
+\begin{aligned}
+&Re(u_0), Im(u_0), Re(b_0), Im(b_0) \sim \mathcal{N}(0, 1) \\
+&\gamma_0 \sim \mathcal{N}(0, 1) \\
+&Cov(u_0, \gamma_0) = \frac{1+i}{2} \\
+&Cov(u_0, b_0) = \frac{2+i}{3} \\
+&Cov(u_0, b_0^*) = \frac{1+2i}{3}
+\end{aligned}
+\right.
+\end{equation}
+
+那么我们有
+\begin{equation}
+\begin{split}
+Cov(u_0, u_0^*) &= E\left[Re(u_0)^2+Im(u_0)^2\right] - \left(E[Re(u_0)]^2+E[Im(u_0)]^2\right) \\
+&= Var(Re(u_0))+Var(Im(u_0)) = 2
+\end{split}
+\end{equation}
+
+
 \bibliographystyle{plain}
 \bibliography{../../CONFIG/LaTeX-bib/Chuan}
 \end{document}{}
