@@ -30,8 +30,8 @@ def func(vec, t):
 			-d_gamma*(gamma-gamma_hat)+sigma_gamma*white_noise()
 			)
 
-def Monte_Carlo(n):
-	u_re = u_im = b_re = b_im = gamma = np.zeros(NUM_POINT)
+def Monte_Carlo(n, t):
+	u_re, u_im, b_re, b_im, gamma = np.zeros(NUM_POINT), np.zeros(NUM_POINT), np.zeros(NUM_POINT), np.zeros(NUM_POINT), np.zeros(NUM_POINT)
 	for i in range(n):
 		u_0_re = white_noise()
 		u_0_im = white_noise()
@@ -50,8 +50,8 @@ def Monte_Carlo(n):
 
 
 # Plotting
-def plot(n):
-	u_re, u_im, b_re, b_im, gamma = Monte_Carlo(n)
+def plot(n, t):
+	u_re, u_im, b_re, b_im, gamma = Monte_Carlo(n, t)
 	plt.subplot(511)
 	plt.plot(t, u_re)
 	plt.ylabel('Re(u)')
@@ -82,4 +82,4 @@ def plot(n):
 # ax = fig.add_axes([0.1, 0.1, 0.9, 0.9])
 
 if __name__ == '__main__':
-	plot(100)
+	plot(100, t)
