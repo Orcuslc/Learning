@@ -826,24 +826,41 @@ E&\left[b_0b(s)e^{-J(s, t)}\right] = e^{-J(s, t)+\frac{1}{2}Var(J(s, t))}\times 
 % \end{split}
 % \end{equation}
 
-我们不妨考虑当阻尼系数$\gamma(t)$为常数$\bar{d}$的情形, 此时(\ref{E0})成为
-\begin{equation}
-\begin{split}
-&\frac{du(t)}{dt} = (-\bar{d}+\omega i)u(t)+b(t)+f(t)+\sigma \frac{dW_u(t)}{dt}, \\
-&\frac{db(t)}{dt} = (-\gamma_b+\omega_bi)(b(t)-\hat{b})+\sigma_b\frac{dW_b(t)}{dt}
-\end{split}
+在实践中, 我们可以考虑以下的一个简单例子. 在(\ref{E0})中, 我们令外界驱动力
+$$f(t) = 0,$$
+布朗运动$W$均满足标准正态分布. 方程组的参数可以取为
+\begin{equation} \label{parameters}
+\left\{
+\begin{aligned}
+&d = 1.5,  &d_\gamma = 0.01d\\
+&\sigma = 0.1549,& \omega = 1.78 \\
+&\sigma_\gamma = 5\sigma, &\gamma_b = 0.1d \\
+&\sigma_b = 5\sigma, &\omega_b = \omega \\
+&\hat{b} = 0, &\hat\gamma = 0
+\end{aligned}
+\right.
 \end{equation}
-我们令参数为
+而问题的初值条件可以做一个简单的假设, 即
 \begin{equation}
 \left\{
 \begin{aligned}
-&\bar{d} = 1.5, \sigma = 1, \omega = 2 \\ 
-&\gamma_b = 0.1\bar{d} = 0.15, \sigma_\gamma = 5\sigma = 5 \\
-&\sigma_b = 5\sigma = 5, \omega_b = \omega = 2
+&Re(u_0), Im(u_0) \sim \mathcal{N}(0, 1), \quad i.i.d. \\
+&Re(b_0), Im(b_0) \sim \mathcal{N}(0, 1), \quad i.i.d. \\
+&gamma_0 \sim \mathcal{N}(0, 1) \quad i.i.d.
+\end{aligned}
+\right.
+\end{equation}
+那么初始变量间的统计量为
+\begin{equation}
+\left\{
+\begin{aligned}
+&Cov(u_0, u_0^*) = Var(Re(u_0))+Var(Im(u_0)) = 2 \\
+&Cov(u_0, \gamma_0) = 0 \\
+&Cov(u_0, b_0) = 0 \\
+&Cov(u_0, b_0^*) = 0
+\right.
 \end{aligned}
 \end{equation}
-
-
 
 \bibliographystyle{plain}
 \bibliography{../../CONFIG/LaTeX-bib/Chuan}
