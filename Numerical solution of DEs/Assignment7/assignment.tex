@@ -1,0 +1,85 @@
+%!TEX program = xelatex
+
+% \documentclass[10pt]{article}
+\input{structure.tex}
+\usepackage{epstopdf}
+\usepackage{graphics}
+\usepackage{subfig}
+\usepackage{listings}
+\lstset{
+  numbers=left,
+    framexleftmargin=10mm,
+    frame=none,
+    backgroundcolor=\color[RGB]{245,245,244},
+  keywordstyle=\bf\color{blue},
+  identifierstyle=\bf,
+  numberstyle=\color[RGB]{0,192,192},
+  commentstyle=\it\color[RGB]{0,96,96},
+  stringstyle=\rmfamily\slshape\color[RGB]{128,0,0},
+  showstringspaces=false,
+  extendedchars=false
+    }
+\DeclareGraphicsExtensions{.eps,.ps,.jpg,.bmp}
+
+\begin{document}
+
+\title{Assignment 7}{17.4.26}
+
+\problem{1}{Derive A-B, A-M and Gear Formula with Newton Interpolation.}
+\solution{Solution}{
+With Newton Interpolation on $t_{n+1}, t_{n}, \cdots, t_{n+1-k}$, $f(t, u) = f_{n+1-k} + f_{n+1-k, n+2-k}(t - t_{n+1-k}) + \dots + f_{n+1-k, n+2-k ,\cdots, n+1}\Pi_{i=1}^{k}(t-t_{n-k+i}) + f_{n+1-k, n+2-k, \cdots, n+1, t}\Pi_{i=1}^{k+1}(t-t_{n-k+i}).$ \\
+Let $p_{n, k}(t) = f(t, u) - f_{n+1-k, n+2-k, \cdots, n+1, t}\Pi_{i=1}^{k+1}(t-t_{n-k+i})$, 
+Integrate within $[t_{n}, t_{n+1}]$, $u_{n+1} - u_{n} = \Delta t\Sigma_{i=0}^{k}b_{k, i}f_{i}$. 
+\subsection{Adams-Bashforth Formula}
+Like Adams-Moulton formula, with Newton interpolation on $t_{n}, t_{n-1}, \cdots, t_{n-k}$, $f(t, u) = f_{n-k} + f_{n-k, n+1-k}(t - t_{n-k}) + \dots + f_{n-k, n+1-k ,\cdots, n}\Pi_{i=0}^{k-1}(t-t_{n-k+i}) + f_{n-k, n+1-k, \cdots, n, t}\Pi_{i=0}^{k}(t-t_{n-k+i}).$ \\
+Let $p_{n, k}(t) = f(t, u) - f_{n-k, n+1-k, \cdots, n, t}\Pi_{i=0}^{k}(t-t_{n-k+i})$, 
+Integrate within $[t_{n}, t_{n+1}]$, $u_{n+1} - u_{n} = \Delta t\Sigma_{i=0}^{k}b_{k, i}f_{i}$. 
+\subsection{Gear Formula}
+Let $I_{k}u = u_{n-k+1} + u_{n-k+1, n-k+2}(t - t_{n-k+1}) + \cdots + u_{n-k+1, n-k+2, \cdots, n+1}\Pi_{i = n-k+1}^{n}(t-t_{i})$. \\
+Use derivative of $I_{n}u(t)$ to take the place of the derivative of $u(t)$ when $t = t_{n+1}$, there exists $$f(t, u)|_{t = t_{n+1}} = \frac{du}{dt}|_{t=t_{n+1}} = \frac{dI_{k}u}{dt}|_{t=t_{n+1}}$$. \\
+In consequence, $\Delta tf_{n+1} = (\Delta t)^{2}(u_{n-k+1} + u_{n-k+1, n-k+2}(t - t_{n-k+1}) + \cdots + u_{n-k+1, n-k+2, \cdots, n+1}\Pi_{i = n-k+1}^{n}(t-t_{i}))$.
+}
+
+\problem{2}{Consider the equation $$\frac{du}{dt}=\lambda(-u + cos(t))$$}
+\solution{Solution}{
+
+\subsection{The exact solution of the equation.}
+The exact solution is $u(t) = c_{0}e^{-\lambda t}+\int_{0}^{t}e^{-\lambda(t-s)}\lambda cos(s)ds$.
+
+\subsection{For $\lambda = 1,10,100,1000,$ use explicit and implicit Euler iteration to solve.}
+\begin{figure}[!h]
+\centering
+\includegraphics[width = 15cm]{lambda=1.eps}
+\caption{lambda = 1}
+\label{Lambda1}
+\end{figure}
+\begin{figure}[!h]
+\centering
+\includegraphics[width = 15cm]{lambda=10.eps}
+\caption{lambda = 10}
+\label{Lambda2}
+\end{figure}
+\begin{figure}[!h]
+\centering
+\includegraphics[width = 15cm]{lambda=100.eps}
+\caption{lambda = 100}
+\label{Lambda3}
+\end{figure}
+\begin{figure}[!h]
+\centering
+\includegraphics[width = 15cm]{lambda=1000.eps}
+\caption{lambda = 1000}
+\label{Lambda4}
+\end{figure}
+
+\subsection{Use Adams and Gear iteration to solve the equation when $\lambda=1000$.}
+\begin{figure}[!h]
+\centering
+\includegraphics[width = 15cm]{3.eps}
+\caption{Adams and Gear}
+\label{Lambda}
+\end{figure}
+.
+}
+
+\end{document}
