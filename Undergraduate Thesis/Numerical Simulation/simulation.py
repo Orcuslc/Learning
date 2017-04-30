@@ -73,11 +73,11 @@ def kernel(t):
 	for i in range(1, t.size):
 		dt = t[i] - t[i-1]
 		stp = np.sqrt(dt)
-		du_re = -gamma[i-1]*u_re[i-1]-omega*u_im[i-1]+b_re[i-1]+f(t[i-1])+sigma*randn()*stp
-		du_im = omega*u_re[i-1]-gamma[i-1]*u_im[i-1]+b_im[i-1]+sigma*randn()*stp
-		db_re = -gamma_b*(b_re[i-1]-b_hat_re)-omega_b*(b_im[i-1]-b_hat_im)+sigma_b*randn()*stp
-		db_im = -gamma_b*(b_im[i-1]-b_hat_im)+omega_b*(b_re[i-1]-b_hat_re)+sigma_b*randn()*stp
-		dgamma = -d_gamma*(gamma[i-1]-gamma_hat)+sigma_gamma*randn()*stp
+		du_re = -gamma[i-1]*u_re[i-1]-omega*u_im[i-1]+b_re[i-1]+f(t[i-1])+sigma*randn()
+		du_im = omega*u_re[i-1]-gamma[i-1]*u_im[i-1]+b_im[i-1]+sigma*randn()
+		db_re = -gamma_b*(b_re[i-1]-b_hat_re)-omega_b*(b_im[i-1]-b_hat_im)+sigma_b*randn()
+		db_im = -gamma_b*(b_im[i-1]-b_hat_im)+omega_b*(b_re[i-1]-b_hat_re)+sigma_b*randn()
+		dgamma = -d_gamma*(gamma[i-1]-gamma_hat)+sigma_gamma*randn()
 		u_re[i] = u_re[i-1]+du_re*dt
 		u_im[i] = u_im[i-1]+du_im*dt
 		b_re[i] = b_re[i-1]+db_re*dt

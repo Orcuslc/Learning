@@ -21,12 +21,11 @@ lambda_b = -gamma_b + 1j*omega_b
 def brownian(inteval, step):
 	time = np.arange(inteval[0], inteval[1], step)
 	W = np.zeros(time.shape)
-	dW = np.zeros(time.shape)
-	dW[0] = np.sqrt(step)*randn()
-	W[0] = dW[0]
+	dW = np.sqrt(step)*randn()
+	W[0] = dW
 	for i in range(1, len(time)):
-		dW[i] = np.sqrt(step)*randn();
-		W[i] = W[i-1]+dW[i];
+		dW = np.sqrt(step)*randn();
+		W[i] = W[i-1]+dW;
 	return W
 
 def intepolate_brownian(func, inteval, step = 1e-2):
@@ -43,37 +42,48 @@ def quad(func, a, b, **kwargs):
 	return real_int[0]+1j*imag_int[0]
 
 E_J = 0
-Var_J = lambda s, t: 1/(d_gamma**2)*(np.exp(-d_gamma*s)-np.exp(-d_gamma*t))**2 - sigma_gamma**2/(d_gamma**3)*(1+d_gamma*(s-t)+np.exp(-d_gamma*(s+t))*(-1-np.exp(2*d_gamma*s)+np.cosh(d_gamma*(s-t))))
+Var_J = lambda s, t: 1/(d_gamma**2)*(np.exp(-d_gamma*s)-np.exp(-d_gamma*t))**2 - (sigma_gamma**2)/(d_gamma**3)*(1+d_gamma*(s-t)+np.exp(-d_gamma*(s+t))*(-1-np.exp(2*d_gamma*s)+np.cosh(d_gamma*(s-t))))
 
-def E_u(t):
-	return np.exp(lambda_hat*t-E_J+1/2*Var_J(0, t)) + quad(lambda s: np.exp(lambda_hat*(t-s))*(b_hat+np.exp(lambda_b*s)*(-b_hat))*np.exp(-E_J+1/2*Var_J(s, t)), 0, t) + quad(lambda s: np.exp(lambda_hat*(t-s))*f(s)*np.exp(-E_J+1/2*Var_J(s, t)), 0, t)
+E_u = lambda t: quad(lambda s: np.exp(lambda_hat*(t-s))*(b_hat+np.exp(lambda_b*s)*(-b_hat))*np.exp(-E_J+1/2*Var_J(s, t)), 0, t) + quad(lambda s: np.exp(lambda_hat*(t-s))*f(s)*np.exp(-E_J+1/2*Var_J(s, t)), 0, t)
+ # np.exp(lambda_hat*t-E_J+1/2*Var_J(0, t)) + 
+# print(E_u(0))
 
+E_b = lambda t: b_hat*(1-np.exp(lambda_b*t))
+
+real = lambda f, t: [scipy.real(f(i)) for i in t]
+imag = lambda f, t: [scipy.imag(f(i)) for i in t]
 
 if __name__ == '__main__':
-	inteval = [0, 0.2]
+	inteval = [0, 1]
 	step = 1e-3
+	start = 0
 	t = np.arange(inteval[0], inteval[1], step)
-	n = 10000
+	n = 100000
 	# W = brownian(inteval, step)
-	# plt.plot(time, W)
+	# plt.plot(t, W)
 	# plt.show()
 	u_re, u_im, b_re, b_im, gamma = Monte_Carlo(n, t)
+	[u_re, u_im, b_re, b_im, gamma, t] = map(lambda x: x[start:], [u_re, u_im, b_re, b_im, gamma, t])
+
 	plt.subplot(511)
 	plt.plot(t, u_re)
-	plt.plot(t, [scipy.real(E_u(i)) for i in t])
+	plt.plot(t, real(E_u, t))
+	print(real(E_u, t))
 	plt.ylabel('Re(u)')
 
 	plt.subplot(512)
 	plt.plot(t, u_im)
-	plt.plot(t, [scipy.imag(E_u(i)) for i in t])
+	plt.plot(t, imag(E_u, t))
 	plt.ylabel('Im(u)')
 
 	plt.subplot(513)
 	plt.plot(t, b_re)
+	plt.plot(t, real(E_b, t))
 	plt.ylabel('Re(b)')
 
 	plt.subplot(514)
 	plt.plot(t, b_im)
+	plt.plot(t, imag(E_b, t))
 	plt.ylabel('Im(b)')
 
 	plt.subplot(515)
