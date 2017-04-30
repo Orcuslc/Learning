@@ -1,7 +1,7 @@
 # from generate import *
 import numpy as np
 import scipy
-from simulation import *
+from simulation2 import *
 from matplotlib import pyplot as plt
 # import scipy.integrate as integrate
 from scipy.integrate import quad as quad1
@@ -50,15 +50,19 @@ E_u = lambda t: quad(lambda s: np.exp(lambda_hat*(t-s))*(b_hat+np.exp(lambda_b*s
 
 E_b = lambda t: b_hat*(1-np.exp(lambda_b*t))
 
+E_gamma = lambda t: gamma_hat*(1-np.exp(-d_gamma*t))
+
 real = lambda f, t: [scipy.real(f(i)) for i in t]
 imag = lambda f, t: [scipy.imag(f(i)) for i in t]
+
+
 
 if __name__ == '__main__':
 	inteval = [0, 1]
 	step = 1e-3
 	start = 0
 	t = np.arange(inteval[0], inteval[1], step)
-	n = 100000
+	n = 2000
 	# W = brownian(inteval, step)
 	# plt.plot(t, W)
 	# plt.show()
@@ -66,9 +70,8 @@ if __name__ == '__main__':
 	[u_re, u_im, b_re, b_im, gamma, t] = map(lambda x: x[start:], [u_re, u_im, b_re, b_im, gamma, t])
 
 	plt.subplot(511)
-	plt.plot(t, u_re)
+	# plt.plot(t, u_re)
 	plt.plot(t, real(E_u, t))
-	print(real(E_u, t))
 	plt.ylabel('Re(u)')
 
 	plt.subplot(512)
@@ -88,6 +91,7 @@ if __name__ == '__main__':
 
 	plt.subplot(515)
 	plt.plot(t, gamma)
+	plt.plot(t, E_gamma(t))
 	plt.ylabel('gamma')
 	plt.xlabel('time')
 	plt.show()

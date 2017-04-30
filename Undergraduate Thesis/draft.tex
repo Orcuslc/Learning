@@ -857,13 +857,22 @@ $$f(t) = 0,$$方程组的参数可以取为
 &Cov(u_0, \gamma_0) = 0 \\
 &Cov(u_0, b_0) = 0 \\
 &Cov(u_0, b_0^*) = 0
-\right.
 \end{aligned}
+\right.
 \end{equation}
 
-由(\cite{higham2001algorithmic})知布朗运动可以由以下的方法进行模拟:
-
-
+由(\cite{higham2001algorithmic})知对布朗运动进行的随机It\^o积分可以由Euler-Maruyama方法进行模拟:
+\begin{equation}
+X_j = X_{j-1}+f(X_{j-1})\Delta t+g(X_{t-1})(W(\tau_j) - W(\tau_{j-1}))
+\end{equation}
+其中
+$$
+W(\tau_j) - W(\tau_{j-1}) = \sum_{k = jR-R+1}^{jR} dW_k,
+$$
+在上式中$R$为E-M算法的步长, 且
+$$
+dW = sqrt(dt)*randn().
+$$
 \bibliographystyle{plain}
 \bibliography{../../CONFIG/LaTeX-bib/Chuan}
 \end{document}{}
