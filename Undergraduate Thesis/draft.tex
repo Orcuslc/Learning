@@ -903,7 +903,7 @@ E&\left[b_0b(s)e^{-J(s, t)}\right] = e^{-J(s, t)+\frac{1}{2}Var(J(s, t))}\times 
 % &= Var(Re(u_0))+Var(Im(u_0)) = 2
 % \end{split}
 % \end{equation}
-
+\subsection{参数选择}
 在实践中, 我们可以考虑以下的一个简单例子. 在(\ref{E0})中, 我们令外界驱动力
 $$f(t) = 0,$$方程组的参数可以取为
 \begin{equation} \label{parameters}
@@ -941,6 +941,7 @@ $$f(t) = 0,$$方程组的参数可以取为
 \right.
 \end{equation}
 
+\subsection{数值模拟}
 由(\cite{higham2001algorithmic})知对布朗运动进行的随机It\^o积分可以由Euler-Maruyama方法进行模拟\cite{higham2000mean}:
 \begin{equation}
 X_j = X_{j-1}+f(X_{j-1})\Delta t+g(X_{t-1})(W(\tau_j) - W(\tau_{j-1}))
@@ -958,62 +959,66 @@ $$W_{Re(u)}(t) = \frac{1}{\sqrt{2}}W(t),$$
 其余项和初值也做相同的处理. \\
 
 对$R=1$进行100,000次Monte Carlo模拟\cite{robert2004monte}, $u(t)$, $b(t)$的实部和虚部,$\gamma(t)$的期望, $u(t)$, $b(t)$和$\gamma(t)$的方差的模拟结果如下图\cite{mckinney2012python}\cite{hunter2007matplotlib}, 其中蓝色的曲线为模拟产生的值, 绿色的曲线是理论计算得到的值. \\
-\begin{figure}[!h]
+\begin{figure}[!ht]
 \centering
 \includegraphics[width = 12cm]{NumericalSimulation/EuRe0.png}
 \caption{Simulation of E[Re(u)]}
 \label{Simulation of E[Re(u)]}
 \end{figure}
 
-\begin{figure}[!h]
+\begin{figure}[!ht]
 \centering
 \includegraphics[width = 12cm]{NumericalSimulation/EuIm0.png}
 \caption{Simulation of E[Im(u)]}
 \label{Simulation of E[Im(u)]}
 \end{figure}
 
-\begin{figure}[!h]
+\begin{figure}[!ht]
 \centering
 \includegraphics[width = 12cm]{NumericalSimulation/EbRe0.png}
 \caption{Simulation of E[Re(b)]}
 \label{Simulation of E[Re(b)]}
 \end{figure}
 
-\begin{figure}[!h]
+\begin{figure}[!ht]
 \centering
 \includegraphics[width = 12cm]{NumericalSimulation/EbIm0.png}
 \caption{Simulation of E[Im(b)]}
 \label{Simulation of E[Im(b)]}
 \end{figure}
 
-\begin{figure}[!h]
+\begin{figure}[!ht]
 \centering
 \includegraphics[width = 12cm]{NumericalSimulation/Egamma0.png}
 \caption{Simulation of E[$\gamma$]}
 \label{Simulation of E[gamma]}
 \end{figure}
 
-\begin{figure}[!h]
+\begin{figure}[!ht]
 \centering
 \includegraphics[width = 12cm]{NumericalSimulation/Varu0.png}
 \caption{Simulation of Var(u)}
 \label{Simulation of Var(u)}
 \end{figure}
 
-\begin{figure}[!h]
+\begin{figure}[!ht]
 \centering
 \includegraphics[width = 12cm]{NumericalSimulation/Varb0.png}
 \caption{Simulation of Var(b)}
 \label{Simulation of Var(b)}
 \end{figure}
 
-\begin{figure}[!h]
+\begin{figure}[!ht]
 \centering
 \includegraphics[width = 12cm]{NumericalSimulation/Vargamma0.png}
 \caption{Simulation of Var($\gamma$)}
 \label{Simulation of Var(gamma)}
 \end{figure}
-在模拟结果中我们可以看到, 对期望和方差的模拟结果和理论值均比较符合. 而两者的差别就在于, 因为初值是一个服从标准正态分布的随机变量, 故其期望和方差的模拟值和理论值有一些偏差.
+在模拟结果中我们可以看到, 对期望和方差的模拟结果和理论结果均比较符合. 而两者的差别在于方程组的初值为一个服从标准正态分布的随机变量, 其期望和方差的模拟值和理论值有一些偏差, 而这样的偏差随着时间$t$的增加而保持. 此外, $b(t)$和$\gamma(t)$的系统误差对$u(t+\Delta t)$的误差会产生影响, 下面我们对这样的影响进行分析. 
+
+\subsection{误差分析}
+在这里我们不考虑数值计算舍入误差, 只关注系统误差.
+
 
 \bibliographystyle{plain}
 \bibliography{../../CONFIG/LaTeX-bib/Chuan}
