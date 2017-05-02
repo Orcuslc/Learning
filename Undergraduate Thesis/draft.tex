@@ -601,8 +601,8 @@ E&\left[(b(s)+f(s))e^{-J(s, t)+\hat{\lambda}(t-s)}\left[(b(r)+f(r))e^{-J(r, t)+\
 &\quad \{E[b(s)b^*(r)]+E[b(s)]\times[Cov(b^*(r), -J(s, t))+Cov(b^*(r), -J(r, t))] \\
 &\quad\quad+ E[b^*(r)]\times[Cov(b(s), -J(s, t))+Cov(b(s), -J(r, t))]\\
 &\quad\quad+ [Cov(b^*(r), J(s, t))+Cov(b^*(r), J(r, t))]\times [Cov(b(s), J(s, t))+Cov(b(s), J(r, t))] \\
-&\quad\quad+ f^*(r)\times[E[b(s)]-Cov(b(s), J(s, t)-Cov(b(s), J(r, t)))] \\
-&\quad\quad+ f(s)\times[E[b^*(r)]-Cov(b(r), J^*(s, t)-Cov(b(r), J^*(r, t)))] \\
+&\quad\quad+ f^*(r)\times[E[b(s)]-Cov(b(s), J(s, t))-Cov(b(s), J(r, t))] \\
+&\quad\quad+ f(s)\times[E[b^*(r)]-Cov(b(r), J^*(s, t))-Cov(b(r), J^*(r, t))] \\
 &\quad\quad+f(s)f^*(r)\}. \\
 \end{split}
 \end{equation}
@@ -961,65 +961,60 @@ $$W_{Re(u)}(t) = \frac{1}{\sqrt{2}}W(t),$$
 对$R=1$进行100,000次Monte Carlo模拟\cite{robert2004monte}, $u(t)$, $b(t)$的实部和虚部,$\gamma(t)$的期望, $u(t)$, $b(t)$和$\gamma(t)$的方差的模拟结果如下图\cite{mckinney2012python}\cite{hunter2007matplotlib}, 其中蓝色的曲线为模拟产生的值, 绿色的曲线是理论计算得到的值. \\
 \begin{figure}[!ht]
 \centering
-\includegraphics[width = 12cm]{NumericalSimulation/EuRe0.png}
+\includegraphics[width = 12cm]{NumericalSimulation/res/EuRe.png}
 \caption{Simulation of E[Re(u)]}
 \label{Simulation of E[Re(u)]}
 \end{figure}
 
 \begin{figure}[!ht]
 \centering
-\includegraphics[width = 12cm]{NumericalSimulation/EuIm0.png}
+\includegraphics[width = 12cm]{NumericalSimulation/res/EuIm.png}
 \caption{Simulation of E[Im(u)]}
 \label{Simulation of E[Im(u)]}
 \end{figure}
 
 \begin{figure}[!ht]
 \centering
-\includegraphics[width = 12cm]{NumericalSimulation/EbRe0.png}
+\includegraphics[width = 12cm]{NumericalSimulation/res/EbRe.png}
 \caption{Simulation of E[Re(b)]}
 \label{Simulation of E[Re(b)]}
 \end{figure}
 
 \begin{figure}[!ht]
 \centering
-\includegraphics[width = 12cm]{NumericalSimulation/EbIm0.png}
+\includegraphics[width = 12cm]{NumericalSimulation/res/EbIm.png}
 \caption{Simulation of E[Im(b)]}
 \label{Simulation of E[Im(b)]}
 \end{figure}
 
 \begin{figure}[!ht]
 \centering
-\includegraphics[width = 12cm]{NumericalSimulation/Egamma0.png}
+\includegraphics[width = 12cm]{NumericalSimulation/res/Egamma.png}
 \caption{Simulation of E[$\gamma$]}
 \label{Simulation of E[gamma]}
 \end{figure}
 
 \begin{figure}[!ht]
 \centering
-\includegraphics[width = 12cm]{NumericalSimulation/Varu0.png}
+\includegraphics[width = 12cm]{NumericalSimulation/res/Varu.png}
 \caption{Simulation of Var(u)}
 \label{Simulation of Var(u)}
 \end{figure}
 
 \begin{figure}[!ht]
 \centering
-\includegraphics[width = 12cm]{NumericalSimulation/Varb0.png}
+\includegraphics[width = 12cm]{NumericalSimulation/res/Varb.png}
 \caption{Simulation of Var(b)}
 \label{Simulation of Var(b)}
 \end{figure}
 
 \begin{figure}[!ht]
 \centering
-\includegraphics[width = 12cm]{NumericalSimulation/Vargamma0.png}
+\includegraphics[width = 12cm]{NumericalSimulation/res/Vargamma.png}
 \caption{Simulation of Var($\gamma$)}
 \label{Simulation of Var(gamma)}
 \end{figure}
-在模拟结果中我们可以看到, 对期望和方差的模拟结果和理论结果均比较符合. 而两者的差别在于方程组的初值为一个服从标准正态分布的随机变量, 其期望和方差的模拟值和理论值有一些偏差, 而这样的偏差随着时间$t$的增加而保持. 此外, $b(t)$和$\gamma(t)$的系统误差对$u(t+\Delta t)$的误差会产生影响, 下面我们对这样的影响进行分析. 
-
-\subsection{误差分析}
-在这里我们不考虑数值计算舍入误差, 只关注系统误差.
-
-
+在模拟结果中我们可以看到, 对期望和方差的模拟结果和理论结果均比较符合. 而两者的差别在于方程组的初值为一个服从标准正态分布的随机变量, 其期望和方差的模拟值和理论值有一些偏差, 而这样的偏差随着时间$t$的增加而保持.
 \bibliographystyle{plain}
 \bibliography{../../CONFIG/LaTeX-bib/Chuan}
 \end{document}{}

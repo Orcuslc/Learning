@@ -21,6 +21,8 @@ f = lambda t: 1.5*np.exp(0.1*1j*t)
 randn = lambda : rd.normalvariate(0, 1)
 ########################################
 
+conj = sp.conj
+
 def simulation(t):
 	[u_re, u_im, b_re, b_im, gamma] = [np.zeros(t.size) for i in range(5)]
 	# [u_re[0], u_im[0], b_re[0], b_im[0], gamma[0]] = [randn() for i in range(5)]
@@ -57,13 +59,40 @@ def _stat_(data):
 
 def stat(data):
 	mean = list(map(lambda x: np.mean(x, axis = 0), data))
-	var = list(map(lambda x: np.var(x, axis = 0), data))
-	return mean, [var[0]+var[1], var[2]+var[3], var[4]]
+	var = list(map(lambda x: np.var(x, axis = 0, ddof = 1), data))
+	row = data[0].shape[1]
+	Cov_u_u_star = np.asarray([cov(data[0][:, i]+1j*data[1][:, i], data[0][:, i]-1j*data[1][:, i]) for i in range(row)])
+	Cov_u_gamma = np.asarray([cov(data[0][:, i]+1j*data[1][:, i], data[4][:, i]) for i in range(row)])
+	Cov_u_b = np.asarray([cov(data[0][:, i]+1j*data[1][:, i], data[2][:, i]+1j*data[3][:, i]) for i in range(row)])
+	Cov_u_b_star = np.asarray([cov(data[0][:, i]+1j*data[1][:, i], data[2][:, i]-1j*data[3][:, i]) for i in range(row)])
+	return mean, [var[0]+var[1], var[2]+var[3], var[4]], [Cov_u_u_star, Cov_u_gamma, Cov_u_b, Cov_u_b_star]
+
+def cov(x, y):
+	# return np.mean(x*conj(y)) - np.mean(x)*np.mean(conj(y))
+	return np.cov(x, y)[0, 0]
 
 def test(n):
 	a = np.asarray([[randn() for i in range(10)] for j in range(n)])
 	b = np.asarray([[randn() for i in range(10)] for j in range(n)])
-	print(np.var(a, axis = 0)+np.var(b, axis = 0))
+	# print(np.var(a, axis = 0)+np.var(b, axis = 0))
+	print([np.cov(a[:,i], b[:,i])[0, 0] for i in range(10)])
+
+def test_cov(n):
+	re = np.zeros(n)
+	im = np.zeros(n)
+	for i in range(n):
+		re[i] = randn()/np.sqrt(2)
+		im[i] = randn()/np.sqrt(2)
+	# print(cov(re+1j*im, re-1j*im))
+	print(abs(np.cov(re+1j*im, re-1j*im)))
 
 if __name__ == '__main__':
-	test(100)
+	# t = np.arange(0, 0.2, 1e-3)
+	# data = MC(100, t)
+	# _, _, cov = stat(data)
+	# import matplotlib.pyplot as plt
+	# print(cov[0])
+	# plt.plot(t, cov[0])
+	# plt.show()
+	# test_cov(10000)
+	test(1000000)
