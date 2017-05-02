@@ -2,6 +2,7 @@ import numpy as np
 import scipy as sp
 import random as rd
 from simulation2 import kernel
+# from theoretical import real, imag
 
 ############# Parameters ###############
 d = 1.5
@@ -61,13 +62,23 @@ def stat(data):
 	mean = list(map(lambda x: np.mean(x, axis = 0), data))
 	var = list(map(lambda x: np.var(x, axis = 0, ddof = 1), data))
 	row = data[0].shape[1]
-	Cov_u_u_star = np.asarray([cov(data[0][:, i]+1j*data[1][:, i], data[0][:, i]-1j*data[1][:, i]) for i in range(row)])
-	Cov_u_gamma = np.asarray([cov(data[0][:, i]+1j*data[1][:, i], data[4][:, i]) for i in range(row)])
-	Cov_u_b = np.asarray([cov(data[0][:, i]+1j*data[1][:, i], data[2][:, i]+1j*data[3][:, i]) for i in range(row)])
-	Cov_u_b_star = np.asarray([cov(data[0][:, i]+1j*data[1][:, i], data[2][:, i]-1j*data[3][:, i]) for i in range(row)])
-	return mean, [var[0]+var[1], var[2]+var[3], var[4]], [Cov_u_u_star, Cov_u_gamma, Cov_u_b, Cov_u_b_star]
+	Cov_u_u_star_re = np.asarray([cov(data[0][:, i]+1j*data[1][:, i], data[0][:, i]-1j*data[1][:, i])[0] for i in range(row)])
+	Cov_u_u_star_im = np.asarray([cov(data[0][:, i]+1j*data[1][:, i], data[0][:, i]-1j*data[1][:, i])[1] for i in range(row)])
+	Cov_u_gamma_re = np.asarray([cov(data[0][:, i]+1j*data[1][:, i], data[4][:, i])[0] for i in range(row)])
+	Cov_u_gamma_im = np.asarray([cov(data[0][:, i]+1j*data[1][:, i], data[4][:, i])[1] for i in range(row)])
+	Cov_u_b_re = np.asarray([cov(data[0][:, i]+1j*data[1][:, i], data[2][:, i]+1j*data[3][:, i])[0] for i in range(row)])
+	Cov_u_b_im = np.asarray([cov(data[0][:, i]+1j*data[1][:, i], data[2][:, i]+1j*data[3][:, i])[1] for i in range(row)])
+	Cov_u_b_star_re = np.asarray([cov(data[0][:, i]+1j*data[1][:, i], data[2][:, i]-1j*data[3][:, i])[0] for i in range(row)])
+	Cov_u_b_star_im = np.asarray([cov(data[0][:, i]+1j*data[1][:, i], data[2][:, i]-1j*data[3][:, i])[1] for i in range(row)])
+	return mean, [var[0]+var[1], var[2]+var[3], var[4]], [Cov_u_u_star_re, Cov_u_u_star_im, Cov_u_gamma_re, Cov_u_gamma_im, Cov_u_b_re, Cov_u_b_im, Cov_u_b_star_re, Cov_u_b_star_im]
 
 def cov(x, y):
+	# print(x, y)
+	# print(x-np.mean(x), y-np.mean(y), (x-np.mean(x))*conj(y-np.mean(y)))
+	cov = np.mean((x-np.mean(x))*conj(y-np.mean(y)))
+	return sp.real(cov), sp.imag(cov)
+
+def cov_(x, y):
 	# return np.mean(x*conj(y)) - np.mean(x)*np.mean(conj(y))
 	return np.cov(x, y)[0, 0]
 
@@ -84,10 +95,20 @@ def test_cov(n):
 		re[i] = randn()/np.sqrt(2)
 		im[i] = randn()/np.sqrt(2)
 	# print(cov(re+1j*im, re-1j*im))
-	print(abs(np.cov(re+1j*im, re-1j*im)))
+
+def test_sim(n, t):
+	data = MC(n, t)
+	_, _, cov = stat(data)
+	print(cov)
+	
+def test_rd():
+	[r1, r2, i1, i2] = [randn() for i in range(4)]
+	x = np.asarray([r1+1j*i1, r2+1j*i2])
+	y = np.asarray([r1-1j*i1, r2-1j*i2])
+	print(cov(x, y))
 
 if __name__ == '__main__':
-	# t = np.arange(0, 0.2, 1e-3)
+	t = np.arange(0, 0.2, 1e-1)
 	# data = MC(100, t)
 	# _, _, cov = stat(data)
 	# import matplotlib.pyplot as plt
@@ -95,4 +116,6 @@ if __name__ == '__main__':
 	# plt.plot(t, cov[0])
 	# plt.show()
 	# test_cov(10000)
-	test(1000000)
+	# test(1000000)
+	test_sim(10, t)
+	# test_rd()

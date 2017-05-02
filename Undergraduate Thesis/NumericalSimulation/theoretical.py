@@ -5,13 +5,13 @@ from simulation import *
 
 ######### Configurations #########
 ######## Const Init Values #######
-Cov_u0_u0_star = 1 
+Cov_u0_u0_star = 0
 Cov_u0_gamma0 = 0 
 Cov_u0_b0 = 0 
-Cov_u0_b0_star = 0 
-Cov_b0_b0_star = 1
+Cov_u0_b0_star = 0
+Cov_b0_b0_star = 0
 Cov_u0_star_b0_star = 0
-Cov_b0_gamma0 = 0 
+Cov_b0_gamma0 = 0
 Var_b0 = 1
 Var_u0 = 1 
 Var_gamma0 = 1 
