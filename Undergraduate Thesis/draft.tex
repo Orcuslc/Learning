@@ -70,7 +70,7 @@
 \def\thedefinition{\arabic{section}.\arabic{definition}}
 
 % title - \zihao{1} for size requirement \heiti for font family requirement
-\title{{\zihao{1}\heiti{} TEST}}
+\title{{\zihao{1}\heiti{} 卡尔曼滤波中一个随机微分方程组解的统计量}}
 
 \author{卢川，13300180056，信息与计算科学}
 
@@ -924,7 +924,7 @@ $$f(t) = 0,$$方程组的参数可以取为
 \begin{aligned}
 &Re(u_0), Im(u_0) \sim \mathcal{N}(0, 1/2), \quad i.i.d. \\
 &Re(b_0), Im(b_0) \sim \mathcal{N}(0, 1/2), \quad i.i.d. \\
-&gamma_0 \sim \mathcal{N}(0, 1) \quad i.i.d.
+&\gamma_0 \sim \mathcal{N}(0, 1) \quad i.i.d.
 \end{aligned}
 \right.
 \end{equation}
@@ -1014,7 +1014,64 @@ $$W_{Re(u)}(t) = \frac{1}{\sqrt{2}}W(t),$$
 \caption{Simulation of Var($\gamma$)}
 \label{Simulation of Var(gamma)}
 \end{figure}
-在模拟结果中我们可以看到, 对期望和方差的模拟结果和理论结果均比较符合. 而两者的差别在于方程组的初值为一个服从标准正态分布的随机变量, 其期望和方差的模拟值和理论值有一些偏差, 而这样的偏差随着时间$t$的增加而保持.
+在模拟结果中我们可以看到, 对期望和方差的模拟结果和理论结果均比较符合. 而两者的差别在于方程组的初值为一个服从标准正态分布的随机变量, 其期望和方差的模拟值和理论值有一些偏差, 而这样的偏差随着时间$t$的增加而保持. \\
+对于协方差的模拟结果, 可见下图. 模拟值和理论结果偏差较大, 其原因我们尚无法确定.
+
+\begin{figure}[!ht]
+\centering
+\includegraphics[width = 12cm]{NumericalSimulation/res/CovuustarRe.png}
+\caption{Simulation of $Re(Cov(u, u^*))$}
+\label{Simulation of Re(Cov(u, u*))}
+\end{figure}
+\begin{figure}[!ht]
+
+\centering
+\includegraphics[width = 12cm]{NumericalSimulation/res/CovuustarIm.png}
+\caption{Simulation of $Im(Cov(u, u^*))$}
+\label{Simulation of Im(Cov(u, u*))}
+\end{figure}
+
+\begin{figure}[!ht]
+\centering
+\includegraphics[width = 12cm]{NumericalSimulation/res/CovugammaRe.png}
+\caption{Simulation of $Re(Cov(u, \gamma))$}
+\label{Simulation of Re(Cov(u, gamma))}
+\end{figure}
+
+\begin{figure}[!ht]
+\centering
+\includegraphics[width = 12cm]{NumericalSimulation/res/CovugammaIm.png}
+\caption{Simulation of $Im(Cov(u, \gamma))$}
+\label{Simulation of Im(Cov(u, gamma))}
+\end{figure}
+
+\begin{figure}[!ht]
+\centering
+\includegraphics[width = 12cm]{NumericalSimulation/res/CovubRe.png}
+\caption{Simulation of $Re(Cov(u, b)$}
+\label{Simulation of Re(Cov(u, b)}
+\end{figure}
+
+\begin{figure}[!ht]
+\centering
+\includegraphics[width = 12cm]{NumericalSimulation/res/CovubIm.png}
+\caption{Simulation of $Im(Cov(u, b))$}
+\label{Simulation of Im(Cov(u, b))}
+\end{figure}
+
+\begin{figure}[!ht]
+\centering
+\includegraphics[width = 12cm]{NumericalSimulation/res/CovubstarRe.png}
+\caption{Simulation of $Re(Cov(u, b^*))$}
+\label{Simulation of Re(Cov(u, b*))}
+\end{figure}
+
+\begin{figure}[!ht]
+\centering
+\includegraphics[width = 12cm]{NumericalSimulation/res/CovubstarIm.png}
+\caption{Simulation of $Im(Cov(u, b^*))$}
+\label{Simulation of Im(Cov(u, b*))}
+\end{figure}
 \bibliographystyle{plain}
 \bibliography{../../CONFIG/LaTeX-bib/Chuan}
 \end{document}{}
