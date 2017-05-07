@@ -1,0 +1,146 @@
+%!TEX program = xelatex
+
+% \documentclass[10pt]{article}
+\input{structure.tex}
+\usepackage{epstopdf}
+\usepackage{graphics}
+\usepackage{subfig}
+\usepackage{listings}
+\lstset{
+  numbers=left,
+    framexleftmargin=10mm,
+    frame=none,
+    backgroundcolor=\color[RGB]{245,245,244},
+  keywordstyle=\bf\color{blue},
+  identifierstyle=\bf,
+  numberstyle=\color[RGB]{0,192,192},
+  commentstyle=\it\color[RGB]{0,96,96},
+  stringstyle=\rmfamily\slshape\color[RGB]{128,0,0},
+  showstringspaces=false,
+  extendedchars=false
+    }
+\DeclareGraphicsExtensions{.eps,.ps,.jpg,.bmp}
+
+\begin{document}
+
+\title{Assignment 8}{17.5.6}
+
+\problem{1}{Explain that when $c(x) < 0$, the extremum principle may not stand.}
+\solution{Proof}{
+Consider the 1-dimension Helmholtz equation:
+$$
+\frac{d^2u}{dx^2}+k^2u = 1, \quad u(0) = u(1) = 0.
+$$
+We can find the solution of this equation has a form like
+$$
+u(x) = \frac{\cos k+1}{k^2\sin k}\cos kx-\frac{1}{k^2}\sin kx+\frac{1}{k^2}.
+$$
+If we let $k = \frac{\pi}{2}$, then $u'(\frac{1}{2}) = 0$, but $u(\frac{1}{2}) = \frac{4(1-\sqrt{2})}{\pi^2} < 0$. So this time the extremum principle does not stand.
+}
+
+\problem{2}{If $u(0) = u(1) = 0$, and $\frac{d^2u}{dx^2} = f(x)$. Prove
+$$
+u(x) = \int_0^1 G(x; x_0)f(x_0) dx_0
+$$
+with Green function.}
+\solution{Proof}{
+In fact, we just check if $u(x)$ satisfies the conditions in the problem. \\
+First,
+\begin{equation}
+\begin{split}
+&u(0) = \int_0^1 x_0\times0\times f(x_0)dx_0 = 0, \\
+&u(1) = \int_0^1 x_0\times0\times f(x_0)dx_0 = 0.
+\end{split}
+\end{equation}
+Second,
+\begin{equation}
+\begin{split}
+u'(x) &= \int_0^x (1-x_0)f(x_0)dx_0 + (1-x)xf(x) + \int_x^1-x_0f(x_0)dx_0-x(1-x)f(x) \\
+&= \int_0^x f(x_0)dx_0-\int_0^1x_0f(x_0)dx_0,
+\end{split}
+\end{equation}
+So $u''(x) = f(x)$, with uniqueness of Cauchy problem, we can prove the $u(x)$ is the function we need.
+}
+
+\problem{3}{Consider the equation
+$$
+-a\frac{d^2u}{dx^2}+b\frac{du}{dx}+cu=1,
+$$
+with boundary conditions $u(0) = 0$, $\frac{du}{dx}(1)+u(1)=0$, and parameters $a > 0, c\geqslant 0$ in $(0, 1)$. Solve the equation in accurate form and by difference scheme.
+}
+\solution{Accurate}{
+The characteristic equation of this differential equation is 
+$$
+-a\lambda^2+b\lambda+c = 0.
+$$
+Case 1: $b = c = 0$. In this case, $u(x) = \frac{-x^2+2}{2a}.$ \\
+Case 2: $c = 0, b \ne 0.$ The roots of the characteristic equation are $x_1 = 0, x_2 = -\frac{a}{b}.$ So the general solution is $u(x) = k_1e^{bx/a}+k_2$ for the homogeneous problem. And a special solution of the nonhomogeneous problem is $u = \frac{x}{b}$, and the accurate solution is 
+$$
+u(x) = -\frac{a}{b^2}e^{bx/a} - \frac{1}{b}e^{b/a} + \frac{x}{b}- \frac{a}{b^2}.
+$$
+considering the boundary conditions. \\
+Case 3: $b, c\ne 0.$ Using the same techniques, the accurate solution is
+$$
+u(x) = \frac{e^{\lambda_2}-(1+\lambda_1)}{c((1+\lambda_2)e^{\lambda_1}-(1+\lambda_1)e^{\lambda_2})}e^{\lambda_1x} + \frac{e^{\lambda_1}-(1+\lambda_2)}{c((1+\lambda_1)e^{\lambda_2}-(1+\lambda_2)e^{\lambda_1})}e^{\lambda_2x}+\frac{1}{c},
+$$
+in which $\lambda_1, \lambda_2$ are roots of $-a\lambda^2+b\lambda+c=0$.
+}
+
+\solution{Numerical}{
+The computing scheme of this problem is
+\begin{equation}
+-a\frac{u_{i+1}-2u_i+u_{i-1}}{h^2}+b\frac{u_{i+1}-u_{i-1}}{2h}+cu_i = f_i, \quad i = 1, 2, \cdots, N-1.
+\end{equation}
+Then the linear equation can be written as
+$$
+\mathbf{Au}+\mathbf{Bu}+\mathbf{Cu} = \mathbf{f},
+$$
+with
+$$
+\mathbf{A} = \mathrm{tridiag}(1, -2, 1),
+$$
+$$
+\mathbf{B} = \mathrm{tridiag}(-1, 0, 1),
+$$
+$$
+\mathbf{C} = \mathrm{diag}(1),
+$$
+$$
+\mathbf{f}=\left(                 
+  \begin{array}{cccccc}   
+    1\\  
+    1\\  
+    ...\\
+    ...\\
+    1\\
+    1\\
+    \end{array}
+\right)+\left(                 
+  \begin{array}{cccccc}   
+    \frac{a}{h^{2}}u_{0}-\frac{b}{2h}u_{0}\\  
+    0\\  
+    ...\\
+    ...\\
+    0\\
+    \frac{a}{h^{2}}u_{N}-\frac{b}{2h}u_{N}\\
+    \end{array}
+\right).
+$$
+We can simply give the solution by
+$$
+\mathbf{u} = (\mathbf{A+B+C})^{-1}\mathbf{f}.
+$$
+The numerical simulation is as follows, in which we choose $a = 1, b = 10, c = 10.$
+\begin{figure}[!h] \centering
+\includegraphics[width = 15cm]{code/Simulation.eps}
+\caption{Simulation and Accurate results}
+\end{figure}
+Relative error is as follows:
+\begin{figure}[!h] \centering
+\includegraphics[width = 15cm]{code/error.eps}
+\caption{Relative error}
+\end{figure}
+}
+
+
+\end{document}
