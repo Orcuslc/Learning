@@ -19,13 +19,13 @@ mean, var, cov = stat(data)
 [Cov_u_u_star_re_sim, Cov_u_u_star_im_sim, Cov_u_u_star_re_sim, Cov_u_u_star_im_sim, Cov_u_b_re_sim, Cov_u_b_im_sim, Cov_u_b_star_re_sim, Cov_u_b_star_im_sim] = cov
 
 ## theoretical results ###
-# E_u = [E_u(i) for i in t]
-# E_b = [E_b(i) for i in t]
-# E_gamma = [E_gamma(i) for i in t]
+E_u = [E_u(i) for i in t]
+E_b = [E_b(i) for i in t]
+E_gamma = [E_gamma(i) for i in t]
 
-# Var_b = [Var_b(i) for i in t]
-# Var_gamma = [Var_gamma(i) for i in t]
-# Var_u = [Var_u(i) for i in t]
+Var_b = [Var_b(i) for i in t]
+Var_gamma = [Var_gamma(i) for i in t]
+Var_u = [Var_u(i) for i in t]
 
 Cov_u_u_star = [Cov_u_u_star(i) for i in t]
 Cov_u_gamma = [Cov_u_gamma(i) for i in t]
@@ -42,25 +42,27 @@ labels_cov = ['Re(Cov(u, u*))', 'Im(Cov(u, u*))', 'Re(Cov(u, gamma))', 'Im(Cov(u
 ### Plot ###
 ### Expectations ###
 
-# for i in range(5):
-# 	plt.figure(i)
-# 	plt.title('Expectation of '+ labels_mean[i])
-# 	l1, = plt.plot(t[::EM_STEP], mean[i][::EM_STEP], label = 'Simulation')
-# 	l2, = plt.plot(t[::EM_STEP], theo_mean[i][::EM_STEP], label = 'Theoretical')
-# 	plt.ylabel(labels_mean[i])
-# 	plt.legend((l1,l2), ('Simulation', 'Theoretical'))
-# 	plt.xlabel('time')
-# 	plt.show()
+for i in range(5):
+	plt.figure(i)
+	plt.title('Expectation of '+ labels_mean[i])
+	l1, = plt.plot(t[::EM_STEP], mean[i][::EM_STEP], label = 'Simulation')
+	l2, = plt.plot(t[::EM_STEP], theo_mean[i][::EM_STEP], label = 'Theoretical')
+	plt.ylabel(labels_mean[i])
+	plt.legend((l1,l2), ('Simulation', 'Theoretical'))
+	plt.xlabel('time')
+	plt.show()
+
 # ## Variances ###
-# for i in range(3):
-# 	plt.figure(6+i)
-# 	plt.title('Variance of ' + labels_var[i])
-# 	l1, = plt.plot(t[::EM_STEP], var[i][::EM_STEP])
-# 	l2, = plt.plot(t[::EM_STEP], theo_var[i][::EM_STEP])
-# 	plt.ylabel(labels_var[i])
-# 	plt.legend((l1, l2), ('Simulation', 'Theoretical'))
-# 	plt.xlabel('time')
-# 	plt.show()
+for i in range(3):
+	plt.figure(6+i)
+	plt.title('Variance of ' + labels_var[i])
+	l1, = plt.plot(t[::EM_STEP], var[i][::EM_STEP])
+	l2, = plt.plot(t[::EM_STEP], theo_var[i][::EM_STEP])
+	plt.ylabel(labels_var[i])
+	plt.legend((l1, l2), ('Simulation', 'Theoretical'))
+	plt.xlabel('time')
+	plt.show()
+	
 ## Covariances ###
 for i in range(8):
 	plt.figure(9+i)

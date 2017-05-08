@@ -35,12 +35,31 @@ def simulation(t):
 	for i in range(EM_STEP, t.size, EM_STEP):
 		dt = t[i] - t[i-EM_STEP]
 		stp = np.sqrt(dt)/np.sqrt(EM_STEP)
-		u_re[i] = u_re[i-1] + (-gamma[i-1]*u_re[i-1]-omega*u_im[i-1]+sp.real(f(t[i-1])))*dt + sigma*sum([randn() for i in range(EM_STEP)])*stp/np.sqrt(2)
-		u_im[i] = u_im[i-1] + (-gamma[i-1]*u_im[i-1]+omega*u_re[i-1]+sp.imag(f(t[i-1])))*dt + sigma*sum([randn() for i in range(EM_STEP)])*stp/np.sqrt(2)
+		u_re[i] = u_re[i-1] + (-gamma[i-1]*u_re[i-1]-omega*u_im[i-1]+b_re[i-1]+sp.real(f(t[i-1])))*dt + sigma*sum([randn() for i in range(EM_STEP)])*stp/np.sqrt(2)
+		u_im[i] = u_im[i-1] + (-gamma[i-1]*u_im[i-1]+omega*u_re[i-1]+b_im[i-1]+sp.imag(f(t[i-1])))*dt + sigma*sum([randn() for i in range(EM_STEP)])*stp/np.sqrt(2)
 		b_re[i] = b_re[i-1] + (-gamma_b*(b_re[i-1]-b_hat_re)-omega_b*(b_im[i-1]-b_hat_im))*dt + sigma_b*sum([randn() for i in range(EM_STEP)])*stp*1/np.sqrt(2)
 		b_im[i] = b_im[i-1] + (-gamma_b*(b_im[i-1]-b_hat_im)+omega_b*(b_re[i-1]-b_hat_re))*dt + sigma_b*sum([randn() for i in range(EM_STEP)])*stp*1/np.sqrt(2)
 		gamma[i] = gamma[i-1] + (-d_gamma*(gamma[i-1]-gamma_hat))*dt + sigma_gamma*sum([randn() for i in range(EM_STEP)])*stp
 	return u_re, u_im, b_re, b_im, gamma
+
+def simulation_half_step(t):
+	[u_re, u_im, b_re, b_im, gamma] = [np.zeros(t.size) for i in range(5)]
+	gamma[0] = randn()
+	[u_re[0], u_im[0], b_re[0], b_im[0]] = [randn()/np.sqrt(2) for i in range(4)]
+	for i in range(EM_STEP, t.size, EM_STEP):
+		dt = t[i] - t[i-EM_STEP]
+		stp = np.sqrt(dt)/np.sqrt(EM_STEP)
+		gamma[i] = gamma[i-1] + (-d_gamma*(gamma[i-1]-gamma_hat))*dt + sigma_gamma*sum([randn() for i in range(EM_STEP)])*stp
+		b_re[i] = b_re[i-1] + (-gamma_b*(b_re[i-1]-b_hat_re)-omega_b*(b_im[i-1]-b_hat_im))*dt + sigma_b*sum([randn() for i in range(EM_STEP)])*stp*1/np.sqrt(2)
+		b_im[i] = b_im[i-1] + (-gamma_b*(b_im[i-1]-b_hat_im)+omega_b*(b_re[i-1]-b_hat_re))*dt + sigma_b*sum([randn() for i in range(EM_STEP)])*stp*1/np.sqrt(2)
+		gamma_half = (gamma[i]+gamma[i-1])/2
+		b_re_half = (b_re[i]+b_re[i-1])/2
+		b_im_half = (b_im[i]+b_im[i-1])/2
+		t_half = (t[i]+t[i-1])/2
+		u_re[i] = u_re[i-1] + (-gamma_half*u_re[i-1]-omega*u_im[i-1]+sp.real(f(t_half)))*dt + sigma*sum([randn() for i in range(EM_STEP)])*stp/np.sqrt(2)
+		u_im[i] = u_im[i-1] + (-gamma_half*u_im[i-1])
+
+
 
 def MC(n, t):
 	[u_re, u_im, b_re, b_im, gamma] = [np.zeros((n, t.size)) for i in range(5)]
