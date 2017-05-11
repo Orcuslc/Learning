@@ -70,11 +70,13 @@
 \def\thedefinition{\arabic{section}.\arabic{definition}}
 
 % title - \zihao{1} for size requirement \heiti for font family requirement
-\title{{\zihao{1}\heiti{} 卡尔曼滤波中一个随机微分方程组解的统计量}}
 
-\author{卢川，13300180056，信息与计算科学}
+\title{{\zihao{1}\heiti{} 一个随机微分方程解的统计量}}
 
-\date{\today}
+\author{卢川\\学号：13300180056\\专业：信息与计算科学}
+
+\date{}
+
 %%%%%%%%%%%%%%%%%%%导言区设置完毕
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{document}
@@ -184,7 +186,7 @@ $$C = \left(\begin{matrix}
 
 此定理的证明利用了特征函数的性质, 具体过程可见\cite{oksendal2003stochastic}的附录A. 以下的定理是(\ref{brownian1})的直接而显然的推论:
 \begin{theorem}
-假设布朗运动$B_t$满足定理(\ref{brownian1})中的条件, 那么对于$\forall t\geqslant 0$, $E[B_t] = x$, $E\left[(B_t - x)^2\right] = nt$, $E[(B_t - x)(B_s - x)] = n\cdot min(s, t)$. 而且如果$t \geqslant s$, 有$E\left[(B_t - B_s)^2\right] = n(t-s)$.
+假设布朗运动$B_t$满足定理(\ref{brownian1})中的条件, 那么对于$\forall t\geqslant 0$, $E[B_t] = x$, $E\left[(B_t - x)^2\right] = nt$, $E[(B_t - x)(B_s - x)] = n\cdot \min(s, t)$. 而且如果$t \geqslant s$, 有$E\left[(B_t - B_s)^2\right] = n(t-s)$.
 \end{theorem}
 
 此外, 以下的定理也是布朗运动的一个重要性质, 其证明见\cite{oksendal2003stochastic}的(2.2.12)式.

@@ -57,9 +57,11 @@ def simulation_half_step(t):
 		b_im_half = (b_im[i]+b_im[i-1])/2
 		t_half = (t[i]+t[i-1])/2
 		u_re[i] = u_re[i-1] + (-gamma_half*u_re[i-1]-omega*u_im[i-1]+sp.real(f(t_half)))*dt + sigma*sum([randn() for i in range(EM_STEP)])*stp/np.sqrt(2)
-		u_im[i] = u_im[i-1] + (-gamma_half*u_im[i-1])
-
-
+		u_im[i] = u_im[i-1] + (-gamma_half*u_im[i-1]+omega*u_re[i-1]+sp.real(f(t_half)))*dt + sigma*sum([randn() for i in range(EM_STEP)])*stp/np.sqrt(2)
+		b_re[i] = b_re[i-1] + (-gamma_b*(b_re[i-1]-b_hat_re)-omega_b*(b_im[i-1]-b_hat_im))*dt + sigma_b*sum([randn() for i in range(EM_STEP)])*stp*1/np.sqrt(2)
+		b_im[i] = b_im[i-1] + (-gamma_b*(b_im[i-1]-b_hat_im)+omega_b*(b_re[i-1]-b_hat_re))*dt + sigma_b*sum([randn() for i in range(EM_STEP)])*stp*1/np.sqrt(2)
+		gamma[i] = gamma[i-1] + (-d_gamma*(gamma[i-1]-gamma_hat))*dt + sigma_gamma*sum([randn() for i in range(EM_STEP)])*stp
+	return u_re, u_im, b_re, b_im, gamma
 
 def MC(n, t):
 	[u_re, u_im, b_re, b_im, gamma] = [np.zeros((n, t.size)) for i in range(5)]
@@ -80,22 +82,26 @@ def _stat_(data):
 def stat(data):
 	mean = list(map(lambda x: np.mean(x, axis = 0), data))
 	var = list(map(lambda x: np.var(x, axis = 0, ddof = 1), data))
-	row = data[0].shape[1]
-	Cov_u_u_star_re = np.asarray([cov(data[0][:, i]+1j*data[1][:, i], data[0][:, i]-1j*data[1][:, i])[0] for i in range(row)])
-	Cov_u_u_star_im = np.asarray([cov(data[0][:, i]+1j*data[1][:, i], data[0][:, i]-1j*data[1][:, i])[1] for i in range(row)])
-	Cov_u_gamma_re = np.asarray([cov(data[0][:, i]+1j*data[1][:, i], data[4][:, i])[0] for i in range(row)])
-	Cov_u_gamma_im = np.asarray([cov(data[0][:, i]+1j*data[1][:, i], data[4][:, i])[1] for i in range(row)])
-	Cov_u_b_re = np.asarray([cov(data[0][:, i]+1j*data[1][:, i], data[2][:, i]+1j*data[3][:, i])[0] for i in range(row)])
-	Cov_u_b_im = np.asarray([cov(data[0][:, i]+1j*data[1][:, i], data[2][:, i]+1j*data[3][:, i])[1] for i in range(row)])
-	Cov_u_b_star_re = np.asarray([cov(data[0][:, i]+1j*data[1][:, i], data[2][:, i]-1j*data[3][:, i])[0] for i in range(row)])
-	Cov_u_b_star_im = np.asarray([cov(data[0][:, i]+1j*data[1][:, i], data[2][:, i]-1j*data[3][:, i])[1] for i in range(row)])
-	return mean, [var[0]+var[1], var[2]+var[3], var[4]], [Cov_u_u_star_re, Cov_u_u_star_im, Cov_u_gamma_re, Cov_u_gamma_im, Cov_u_b_re, Cov_u_b_im, Cov_u_b_star_re, Cov_u_b_star_im]
+	col = data[0].shape[1]
+	# Cov_u_u_star_re = np.asarray([cov(data[0][:, i]+1j*data[1][:, i], data[0][:, i]-1j*data[1][:, i])[0] for i in range(col)])
+	# Cov_u_u_star_im = np.asarray([cov(data[0][:, i]+1j*data[1][:, i], data[0][:, i]-1j*data[1][:, i])[1] for i in range(col)])
+	# Cov_u_gamma_re = np.asarray([cov(data[0][:, i]+1j*data[1][:, i], data[4][:, i])[0] for i in range(col)])
+	# Cov_u_gamma_im = np.asarray([cov(data[0][:, i]+1j*data[1][:, i], data[4][:, i])[1] for i in range(col)])
+	# Cov_u_b_re = np.asarray([cov(data[0][:, i]+1j*data[1][:, i], data[2][:, i]+1j*data[3][:, i])[0] for i in range(col)])
+	# Cov_u_b_im = np.asarray([cov(data[0][:, i]+1j*data[1][:, i], data[2][:, i]+1j*data[3][:, i])[1] for i in range(col)])
+	# Cov_u_b_star_re = np.asarray([cov(data[0][:, i]+1j*data[1][:, i], data[2][:, i]-1j*data[3][:, i])[0] for i in range(col)])
+	# Cov_u_b_star_im = np.asarray([cov(data[0][:, i]+1j*data[1][:, i], data[2][:, i]-1j*data[3][:, i])[1] for i in range(col)])
+	Cov_u_u_star = np.asarray([cov(data[0][:, i]+1j*data[1][:, i], data[0][:, i]-1j*data[1][:, i]) for i in range(col)], dtype=np.complex)
+	Cov_u_gamma = np.asarray([cov(data[0][:, i]+1j*data[1][:, i], data[4][:, i]) for i in range(col)], dtype=np.complex)
+	Cov_u_b = np.asarray([cov(data[0][:, i]+1j*data[1][:, i], data[2][:, i]+1j*data[3][:, i]) for i in range(col)], dtype=np.complex)
+	Cov_u_b_star = np.asarray([cov(data[0][:, i]+1j*data[1][:, i], data[2][:, i]-1j*data[3][:, i]) for i in range(col)], dtype=np.complex)
+	return mean, [var[0]+var[1], var[2]+var[3], var[4]], [sp.real(Cov_u_u_star), sp.imag(Cov_u_u_star), sp.real(Cov_u_gamma), sp.imag(Cov_u_gamma), sp.real(Cov_u_b), sp.imag(Cov_u_b), sp.real(Cov_u_b_star), sp.imag(Cov_u_b_star)]
 
 def cov(x, y):
 	# print(x, y)
 	# print(x-np.mean(x), y-np.mean(y), (x-np.mean(x))*conj(y-np.mean(y)))
 	cov = np.mean((x-np.mean(x))*conj(y-np.mean(y)))
-	return sp.real(cov), sp.imag(cov)
+	return cov
 
 def cov_(x, y):
 	# return np.mean(x*conj(y)) - np.mean(x)*np.mean(conj(y))

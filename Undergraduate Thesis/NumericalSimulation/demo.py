@@ -6,10 +6,10 @@ import matplotlib as mpl
 from simulation2 import Monte_Carlo
 
 inteval = [0, 0.2]
-step = 1e-3
+step = 1e-2
 start = 0
 t = np.arange(inteval[0], inteval[1], step)
-n = 100000
+n = 10
 
 ## simulation results ###
 data = MC(n, t)
@@ -52,7 +52,7 @@ for i in range(5):
 	plt.xlabel('time')
 	plt.show()
 
-# ## Variances ###
+# # ## Variances ###
 for i in range(3):
 	plt.figure(6+i)
 	plt.title('Variance of ' + labels_var[i])
