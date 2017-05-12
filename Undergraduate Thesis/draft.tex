@@ -1,5 +1,5 @@
-%!TEX program = pdfLaTeX 
-
+%!TEX program = XeLaTeX 
+% 下周: 东主1820, 2:30-4:30
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%5%%%%%%%%%%%%%%%
 %  本文档可在安装了CTEX宏包, CTEX字体下的TEX系统运行,
 %  访问http://www.ctex.org, 可以获得最新的宏包与字体安装包
@@ -24,6 +24,7 @@
 % twoside - if you want to print on both side of the paper, or else you should omit this
 
 \documentclass[notitlepage,cs4size,punct,oneside]{ctexrep}
+\usepackage{subfig}
 
 % default paper settings, change it according to your word
 \usepackage[a4paper,hmargin={2.54cm,2.54cm},vmargin={3.17cm,3.17cm}]{geometry}
@@ -71,7 +72,7 @@
 
 % title - \zihao{1} for size requirement \heiti for font family requirement
 
-\title{{\zihao{1}\heiti{} 一个随机微分方程解的统计量}}
+\title{{\zihao{1}\heiti{} 一个随机微分方程组解的统计量}}
 
 \author{卢川\\学号：13300180056\\专业：信息与计算科学}
 
@@ -961,119 +962,178 @@ $$W_{Re(u)}(t) = \frac{1}{\sqrt{2}}W(t),$$
 其余项和初值也做相同的处理. \\
 
 对$R=1$进行100,000次Monte Carlo模拟\cite{robert2004monte}, $u(t)$, $b(t)$的实部和虚部,$\gamma(t)$的期望, $u(t)$, $b(t)$和$\gamma(t)$的方差的模拟结果如下图\cite{mckinney2012python}\cite{hunter2007matplotlib}, 其中蓝色的曲线为模拟产生的值, 绿色的曲线是理论计算得到的值. \\
+% \begin{figure}[!ht]
+% \centering
+% \includegraphics[width = 12cm]{NumericalSimulation/res/EuRe.png}
+% \caption{Simulation of E[Re(u)]}
+% \label{Simulation of E[Re(u)]}
+% \end{figure}
+
+% \begin{figure}[!ht]
+% \centering
+% \includegraphics[width = 12cm]{NumericalSimulation/res/EuIm.png}
+% \caption{Simulation of E[Im(u)]}
+% \label{Simulation of E[Im(u)]}
+% \end{figure}
+
+% \begin{figure}[!ht]
+% \centering
+% \includegraphics[width = 12cm]{NumericalSimulation/res/EbRe.png}
+% \caption{Simulation of E[Re(b)]}
+% \label{Simulation of E[Re(b)]}
+% \end{figure}
+
+% \begin{figure}[!ht]
+% \centering
+% \includegraphics[width = 12cm]{NumericalSimulation/res/EbIm.png}
+% \caption{Simulation of E[Im(b)]}
+% \label{Simulation of E[Im(b)]}
+% \end{figure}
+
+% \begin{figure}[!ht]
+% \centering
+% \includegraphics[width = 12cm]{NumericalSimulation/res/Egamma.png}
+% \caption{Simulation of E[$\gamma$]}
+% \label{Simulation of E[gamma]}
+% \end{figure}
+
+% \begin{figure}[!ht]
+% \centering
+% \includegraphics[width = 12cm]{NumericalSimulation/res/Varu.png}
+% \caption{Simulation of Var(u)}
+% \label{Simulation of Var(u)}
+% \end{figure}
+
+% \begin{figure}[!ht]
+% \centering
+% \includegraphics[width = 12cm]{NumericalSimulation/res/Varb.png}
+% \caption{Simulation of Var(b)}
+% \label{Simulation of Var(b)}
+% \end{figure}
+
+% \begin{figure}[!ht]
+% \centering
+% \includegraphics[width = 12cm]{NumericalSimulation/res/Vargamma.png}
+% \caption{Simulation of Var($\gamma$)}
+% \label{Simulation of Var(gamma)}
+% \end{figure}
+
 \begin{figure}[!ht]
 \centering
-\includegraphics[width = 12cm]{NumericalSimulation/res/EuRe.png}
-\caption{Simulation of E[Re(u)]}
-\label{Simulation of E[Re(u)]}
+\subfloat[E(Re(u))]{
+  \includegraphics[width = .4\textwidth]{NumericalSimulation/res/EuRe.png}
+  }\hfill
+\subfloat[E(Im(u))]{
+  \includegraphics[width = .4\textwidth]{NumericalSimulation/res/EuIm.png}
+  }\\
+\subfloat[E(Re(b))]{
+  \includegraphics[width = .4\textwidth]{NumericalSimulation/res/EbRe.png}
+  }\hfill
+\subfloat[E(Im(b))]{
+  \includegraphics[width = .4\textwidth]{NumericalSimulation/res/EbIm.png}
+  }\\
+\subfloat[E($\gamma$)]{
+  \includegraphics[width = .4\textwidth]{NumericalSimulation/res/Egamma.png}
+  }\hfill
+\subfloat[Var(u)]{
+  \includegraphics[width = .4\textwidth]{NumericalSimulation/res/Varu.png}
+  }\\
+\subfloat[Var(b)]{
+  \includegraphics[width = .4\textwidth]{NumericalSimulation/res/Varb.png}
+  }\hfill
+\subfloat[Var($\gamma$)]{
+  \includegraphics[width = .4\textwidth]{NumericalSimulation/res/Vargamma.png}
+  }
+\caption{Simulation of Expectations and Variances}
+\label{Simulation of Expectations and Variances}
 \end{figure}
 
 \begin{figure}[!ht]
 \centering
-\includegraphics[width = 12cm]{NumericalSimulation/res/EuIm.png}
-\caption{Simulation of E[Im(u)]}
-\label{Simulation of E[Im(u)]}
+\subfloat[$Im(Cov(u, u^*))$]{
+  \includegraphics[width = .4\textwidth]{NumericalSimulation/res/CovuustarRe.png}
+}\hfill
+\subfloat[$Im(Cov(u, u^*))$]{
+  \includegraphics[width = .4\textwidth]{NumericalSimulation/res/CovuustarIm.png}
+}\\
+\subfloat[$Re(Cov(u, \gamma))$]{
+  \includegraphics[width = .4\textwidth]{NumericalSimulation/res/CovugammaRe.png}
+}\hfill
+\subfloat[$Im(Cov(u, \gamma))$]{
+  \includegraphics[width = .4\textwidth]{NumericalSimulation/res/CovugammaIm.png}
+}\\
+\subfloat[$Re(Cov(u, b)$]{
+  \includegraphics[width = .4\textwidth]{NumericalSimulation/res/CovubRe.png}
+}\hfill
+\subfloat[$Im(Cov(u, b))$]{
+  \includegraphics[width = .4\textwidth]{NumericalSimulation/res/CovubIm.png}
+}\\
+\subfloat[$Re(Cov(u, b^*))$]{
+  \includegraphics[width = .4\textwidth]{NumericalSimulation/res/CovubstarRe.png}
+}\hfill
+\subfloat[$Im(Cov(u, b^*))$]{
+  \includegraphics[width = .4\textwidth]{NumericalSimulation/res/CovubstarIm.png}
+}
+\caption{Simulation of Covariances}
+\label{Simulation of Covariances}
 \end{figure}
 
-\begin{figure}[!ht]
-\centering
-\includegraphics[width = 12cm]{NumericalSimulation/res/EbRe.png}
-\caption{Simulation of E[Re(b)]}
-\label{Simulation of E[Re(b)]}
-\end{figure}
-
-\begin{figure}[!ht]
-\centering
-\includegraphics[width = 12cm]{NumericalSimulation/res/EbIm.png}
-\caption{Simulation of E[Im(b)]}
-\label{Simulation of E[Im(b)]}
-\end{figure}
-
-\begin{figure}[!ht]
-\centering
-\includegraphics[width = 12cm]{NumericalSimulation/res/Egamma.png}
-\caption{Simulation of E[$\gamma$]}
-\label{Simulation of E[gamma]}
-\end{figure}
-
-\begin{figure}[!ht]
-\centering
-\includegraphics[width = 12cm]{NumericalSimulation/res/Varu.png}
-\caption{Simulation of Var(u)}
-\label{Simulation of Var(u)}
-\end{figure}
-
-\begin{figure}[!ht]
-\centering
-\includegraphics[width = 12cm]{NumericalSimulation/res/Varb.png}
-\caption{Simulation of Var(b)}
-\label{Simulation of Var(b)}
-\end{figure}
-
-\begin{figure}[!ht]
-\centering
-\includegraphics[width = 12cm]{NumericalSimulation/res/Vargamma.png}
-\caption{Simulation of Var($\gamma$)}
-\label{Simulation of Var(gamma)}
-\end{figure}
 在模拟结果中我们可以看到, 对期望和方差的模拟结果和理论结果均比较符合. 而两者的差别在于方程组的初值为一个服从标准正态分布的随机变量, 其期望和方差的模拟值和理论值有一些偏差, 而这样的偏差随着时间$t$的增加而保持. \\
-对于协方差的模拟结果, 可见下图. 模拟值和理论结果偏差较大, 其原因我们尚无法确定.
+% \begin{figure}[!ht]
+% \centering
+% \includegraphics[width = 12cm]{NumericalSimulation/res/CovuustarRe.png}
+% \caption{Simulation of $Re(Cov(u, u^*))$}
+% \label{Simulation of Re(Cov(u, u*))}
+% \end{figure}
 
-\begin{figure}[!ht]
-\centering
-\includegraphics[width = 12cm]{NumericalSimulation/res/CovuustarRe.png}
-\caption{Simulation of $Re(Cov(u, u^*))$}
-\label{Simulation of Re(Cov(u, u*))}
-\end{figure}
-\begin{figure}[!ht]
+% \begin{figure}[!ht]
+% \centering
+% \includegraphics[width = 12cm]{NumericalSimulation/res/CovuustarIm.png}
+% \caption{Simulation of $Im(Cov(u, u^*))$}
+% \label{Simulation of Im(Cov(u, u*))}
+% \end{figure}
 
-\centering
-\includegraphics[width = 12cm]{NumericalSimulation/res/CovuustarIm.png}
-\caption{Simulation of $Im(Cov(u, u^*))$}
-\label{Simulation of Im(Cov(u, u*))}
-\end{figure}
+% \begin{figure}[!ht]
+% \centering
+% \includegraphics[width = 12cm]{NumericalSimulation/res/CovugammaRe.png}
+% \caption{Simulation of $Re(Cov(u, \gamma))$}
+% \label{Simulation of Re(Cov(u, gamma))}
+% \end{figure}
 
-\begin{figure}[!ht]
-\centering
-\includegraphics[width = 12cm]{NumericalSimulation/res/CovugammaRe.png}
-\caption{Simulation of $Re(Cov(u, \gamma))$}
-\label{Simulation of Re(Cov(u, gamma))}
-\end{figure}
+% \begin{figure}[!ht]
+% \centering
+% \includegraphics[width = 12cm]{NumericalSimulation/res/CovugammaIm.png}
+% \caption{Simulation of $Im(Cov(u, \gamma))$}
+% \label{Simulation of Im(Cov(u, gamma))}
+% \end{figure}
 
-\begin{figure}[!ht]
-\centering
-\includegraphics[width = 12cm]{NumericalSimulation/res/CovugammaIm.png}
-\caption{Simulation of $Im(Cov(u, \gamma))$}
-\label{Simulation of Im(Cov(u, gamma))}
-\end{figure}
+% \begin{figure}[!ht]
+% \centering
+% \includegraphics[width = 12cm]{NumericalSimulation/res/CovubRe.png}
+% \caption{Simulation of $Re(Cov(u, b)$}
+% \label{Simulation of Re(Cov(u, b)}
+% \end{figure}
 
-\begin{figure}[!ht]
-\centering
-\includegraphics[width = 12cm]{NumericalSimulation/res/CovubRe.png}
-\caption{Simulation of $Re(Cov(u, b)$}
-\label{Simulation of Re(Cov(u, b)}
-\end{figure}
+% \begin{figure}[!ht]
+% \centering
+% \includegraphics[width = 12cm]{NumericalSimulation/res/CovubIm.png}
+% \caption{Simulation of $Im(Cov(u, b))$}
+% \label{Simulation of Im(Cov(u, b))}
+% \end{figure}
 
-\begin{figure}[!ht]
-\centering
-\includegraphics[width = 12cm]{NumericalSimulation/res/CovubIm.png}
-\caption{Simulation of $Im(Cov(u, b))$}
-\label{Simulation of Im(Cov(u, b))}
-\end{figure}
+% \begin{figure}[!ht]
+% \centering
+% \includegraphics[width = 12cm]{NumericalSimulation/res/CovubstarRe.png}
+% \caption{Simulation of $Re(Cov(u, b^*))$}
+% \label{Simulation of Re(Cov(u, b*))}
+% \end{figure}
 
-\begin{figure}[!ht]
-\centering
-\includegraphics[width = 12cm]{NumericalSimulation/res/CovubstarRe.png}
-\caption{Simulation of $Re(Cov(u, b^*))$}
-\label{Simulation of Re(Cov(u, b*))}
-\end{figure}
-
-\begin{figure}[!ht]
-\centering
-\includegraphics[width = 12cm]{NumericalSimulation/res/CovubstarIm.png}
-\caption{Simulation of $Im(Cov(u, b^*))$}
-\label{Simulation of Im(Cov(u, b*))}
-\end{figure}
+% \begin{figure}[!ht]
+% \centering
+% \includegraphics[width = 12cm]{NumericalSimulation/res/CovubstarIm.png}
+% \caption{Simulation of $Im(Cov(u, b^*))$}
+% \label{Simulation of Im(Cov(u, b*))}
+% \end{figure}
 \bibliographystyle{plain}
 \bibliography{../../CONFIG/LaTeX-bib/Chuan}
 \end{document}{}

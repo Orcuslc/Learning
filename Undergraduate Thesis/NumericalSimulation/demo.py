@@ -6,10 +6,10 @@ import matplotlib as mpl
 from simulation2 import Monte_Carlo
 
 inteval = [0, 0.2]
-step = 1e-2
+step = 1e-3
 start = 0
 t = np.arange(inteval[0], inteval[1], step)
-n = 10
+n = 100000
 
 ## simulation results ###
 data = MC(n, t)

@@ -100,7 +100,8 @@ def Cov_u_u_star(t):
 	A = np.exp(2*gamma_hat*t)*(E_u0**2+Cov_u0_u0_star-4*E_u0*Cov_u0_Jst(0, t)+4*Cov_u0_Jst(0, t)**2)*np.exp(-2*E_J(0, t)+2*Var_J(0, t))
 	B = complex_dblquad(lambda s, r: np.exp(lambda_hat*(2*t-s-r)*np.exp(-E_J(s, t)-E_J(r, t)+1/2*Var_J(s, t)+1/2*Var_J(r, t)+Cov_Jst_Jrt(t, s, r))) * (E_bs_br(s, r) - E_b(s)*(Cov_br_Jst(t, s, r)+Cov_br_Jst(t, r, r)) - E_b(r)*(Cov_br_Jst(t, s, s)+Cov_br_Jst(t, r, s)) + (Cov_br_Jst(t, s, r)+Cov_br_Jst(t, r, r))*(Cov_br_Jst(t, s, s)+Cov_br_Jst(t, r, s)) + f(r)*(E_b(s)-Cov_br_Jst(t, s, s)-Cov_br_Jst(t, r, s)) + f(s)*(E_b(r)-Cov_br_Jst(t, s, r)-Cov_br_Jst(t, r, r)) + f(s)*f(r)), 0, t, lambda s: 0, lambda s: t)
 	AB = complex_quad(lambda s: np.exp(lambda_hat*(2*t-s)+lambda_b*s)*(Cov_u0_b0_star + E_u0*E_b0 - E_u0*(Cov_b0_Jst(0, t)+Cov_b0_Jst(s, t)) - E_b0*(Cov_u0_Jst(0, t)+Cov_u0_Jst(s, t)) + (Cov_b0_Jst(0, t)+Cov_b0_Jst(s, t))*(Cov_u0_Jst(0, t)+Cov_u0_Jst(s, t)))*np.exp(-E_J(0, t)-E_J(s, t)+1/2*Var_J(0, t)+1/2*Var_J(s, t)+Cov_Jst_Jrt(t, 0, s)), 0, t) + complex_quad(lambda s: np.exp(lambda_hat*(2*t-s))*(b_hat*(1-np.exp(lambda_b*s))+f(s))*t2(s, t), 0, t)
-	return A+B+2*AB-abs(E_u(t))**2
+	# return A+B+2*AB-abs(E_u(t))**2
+	return A+B+2*AB-E_u(t)**2
 
 def Cov_u_gamma(t):
 	pVar_J = lambda s, t: -1/(d_gamma**2)*(sigma_gamma**2*(np.exp(-d_gamma*(t-s))-1)) + (sigma_gamma**2-2*d_gamma*Var_gamma0)*(np.exp(-d_gamma*(t+s))-np.exp(-2*d_gamma*t))
@@ -117,7 +118,8 @@ def Cov_u_b(t):
 
 def Cov_u_b_star(t):
 	A = E_u(t)*b_hat*(1-np.exp(lambda_b*t)) + np.exp((lambda_hat+lambda_b)*t)*(Cov_u0_b0_star + E_u0*E_b0 - E_b0*Cov_u0_Jst(0, t) - E_u0*Cov_b0_Jst(0, t) + Cov_u0_Jst(0, t)*Cov_b0_Jst(0, t))*np.exp(-E_J(0, t)+1/2*Var_J(0, t))
-	B = np.exp(lambda_b*t)*complex_quad(lambda s: np.exp(-lambda_hat*(t-s))*(np.exp(lambda_b*s)*Cov_b0_b0_star + E_b(s)*E_b0 - E_b0*Cov_br_Jst(t, s, s) - E_b(s)*Cov_b0_Jst(s, t) + Cov_br_Jst(t, s, s)*Cov_b0_Jst(s, t))*np.exp(-E_J(s, t)+1/2*Var_J(s, t)), 0, t)
+	# B = np.exp(lambda_b*t)*complex_quad(lambda s: np.exp(-lambda_hat*(t-s))*(np.exp(lambda_b*s)*Cov_b0_b0_star + E_b(s)*E_b0 - E_b0*Cov_br_Jst(t, s, s) - E_b(s)*Cov_b0_Jst(s, t) + Cov_br_Jst(t, s, s)*Cov_b0_Jst(s, t))*np.exp(-E_J(s, t)+1/2*Var_J(s, t)), 0, t)
+	B = np.exp(lambda_b*t)*complex_quad(lambda s: np.exp(-lambda_hat*(t-s))*(Cov_b0_b0_star + E_b(s)*E_b0 - E_b0*Cov_br_Jst(t, s, s) - E_b(s)*Cov_b0_Jst(s, t) + Cov_br_Jst(t, s, s)*Cov_b0_Jst(s, t))*np.exp(-E_J(s, t)+1/2*Var_J(s, t)), 0, t)
 	C = np.exp(lambda_b*t)*complex_quad(lambda s: np.exp(lambda_hat*(t-s))*f(s)*(E_b0-Cov_b0_Jst(s, t))*np.exp(-E_J(s, t)+1/2*Var_J(s, t)), 0, t)
 	return A+B+C - E_u(t)*E_b(t)
 
