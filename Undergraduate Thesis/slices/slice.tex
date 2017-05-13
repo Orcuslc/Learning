@@ -1,0 +1,90 @@
+\documentclass[10pt]{beamer}
+
+\usepackage{beamerthemesplit}
+
+\usepackage{times}
+\usefonttheme{structurebold}
+
+\usepackage[english]{babel}
+% \usepackage{fontspec}
+% \setsansfont{Microsoft YaHei}
+\usepackage{pgf,pgfarrows,pgfnodes,pgfautomata,pgfheaps}
+\usepackage{amsmath,amssymb}
+\usepackage[latin1]{inputenc}
+\usepackage{multimedia}
+
+\setbeamercovered{dynamic}
+
+\newcommand{\Lang}[1]{\operatorname{\text{\textsc{#1}}}}
+
+\newcommand{\Class}[1]{\operatorname{\mathchoice
+  {\text{\sf \small #1}}
+  {\text{\sf \small #1}}
+  {\text{\sf #1}}
+  {\text{\sf #1}}}}
+
+\newcommand{\NumSAT}      {\text{\small\#SAT}}
+\newcommand{\NumA}        {\#_{\!A}}
+
+\newcommand{\barA}        {\,\bar{\!A}}
+
+\newcommand{\Nat}{\mathbb{N}}
+\newcommand{\Set}[1]{\{#1\}}
+
+\usepackage[latin1]{inputenc}
+\usepackage{beamerthemesplit}
+\usepackage{pgf,pgfarrows,pgfnodes,pgfautomata,pgfheaps,pgfshade}
+\usepackage{graphicx}
+%\usepackage{chemarrow}
+
+\usepackage{epsfig, subfigure}
+\usepackage{latexsym,amssymb,lastpage}
+\usepackage{graphicx,amsfonts}
+\usepackage{times,mathptmx,bm,amsmath}
+\usepackage{dcolumn}
+\newcommand{\me}{\mathrm{e}}
+\newcommand{\mi}{\mathrm{i}}
+\newcommand{\md}{\mathrm{d}}
+
+\usefonttheme[onlymath]{serif}
+\newcommand*\oldmacro{}%
+\let\oldmacro\insertshorttitle%
+\renewcommand*\insertshorttitle{%
+  \oldmacro\hfill%
+  \insertframenumber\,/\,\inserttotalframenumber}
+
+\setbeamercovered{transparent}
+\usetheme{default}
+\pgfdeclareimage[height=.8cm]{logo}{fd1}
+
+\title[Statistics of Solutions to A Stochastic Differential Equation Set]{Statistics of Solutions to A Stochastic Differential Equation Set}
+\author[Chuan Lu]{\Large{Chuan Lu}}
+\institute{\large{Information and Computing Science}\linebreak \linebreak
+\pgfuseimage{logo}
+}
+\date{June 2017}
+
+\AtBeginSection[]{\frame{\frametitle{Outline}\tableofcontents[current]}}
+
+
+
+\begin{document}
+\frame{\titlepage}
+% \frame{\tableofcontents[all]}
+
+\section{Introduction}
+\frame{\frametitle{Introduction}
+\begin{block}{Original SDEs}
+\begin{equation}
+\left\{
+\begin{split}
+& \frac{du(t)}{dt} = (-\gamma(t)+i\omega)u(t)+b(t)+f(t)+\sigma W(t), \\
+& \frac{db(t)}{dt} = (-\gamma_b+i\omega_b)(b(t)-\hat{b})+\sigma_b W_b(t), \\
+& \frac{d\gamma(t)}{dt} = -d_\gamma(\gamma(t)-\hat{\gamma})+\sigma_\gamma W_\gamma(t)
+\end{split}
+\right.
+\end{equation}
+\end{block}
+In which the initial values are all complex random variables, with their real and imaginary parts both obey the normalized Gaussian distribution, i.i.d. \\
+}
+\end{document}
