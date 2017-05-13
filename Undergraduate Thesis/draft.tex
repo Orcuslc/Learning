@@ -24,13 +24,14 @@
 % twoside - if you want to print on both side of the paper, or else you should omit this
 
 \documentclass[notitlepage,cs4size,punct,oneside]{ctexrep}
+% \documentclass[fleqn]{article}
 \usepackage{subfig}
 
 % default paper settings, change it according to your word
 \usepackage[a4paper,hmargin={2.54cm,2.54cm},vmargin={3.17cm,3.17cm}]{geometry}
 
 \usepackage{amsmath,amssymb,amsthm}
-
+% \usepackage[fleqn]{amsmath}
 % 公式编号的计数格式, 在章内计数
 \numberwithin{equation}{section}
 
@@ -121,6 +122,7 @@
 \subsection{问题简介}
 考虑以下的一个随机微分方程组, 其作用为改进对模型误差的滤波\cite{gershgorin2010test}:
 \begin{equation} \label{E0}
+\left\{
 \begin{split}
 & \frac{du(t)}{dt} = (-\gamma(t)+i\omega)u(t)+b(t)+f(t)+\sigma W(t), \\
 % \end{equation}
@@ -130,20 +132,23 @@
 % \begin{equation}
 & \frac{d\gamma(t)}{dt} = -d_\gamma(\gamma(t)-\hat{\gamma})+\sigma_\gamma W_\gamma(t)
 \end{split}
+\right.
 \end{equation}
 
 其中$\omega$为$u(t)$的振荡频率, $f(t)$为外部驱动力, $\sigma$表示白噪声$W(t)$的强度. 此外, 参数$\gamma_b$和$d_\gamma$表示振荡阻尼, $\sigma_b$和$\sigma_\gamma$分别表示加性和乘性修正((\ref{E0})中第2, 3式)中白噪声的强度. $\hat{b}$和$\hat{\gamma}$分别表示$b(t)$和$\gamma(t)$的固定平均偏差修正, $\omega_b$表示加性噪声的频率. 白噪声$W_\gamma(t)$是实值函数, 而$W(t)$及$W_b(t)$均为复值, 且其实部和虚部均为独立的白噪声. \\
 
 我们一般认为方程组(\ref{E0})有初值
 \begin{equation} \label{init_values}
+\left\{
 \begin{split}
 & u(t_0) = u_0, \\
 & b(t_0) = b_0, \\
 & \gamma(t_0) = \gamma_0,
 \end{split}
+\right.
 \end{equation}
-且$u_0$, $b_0$, $\gamma_0$均为独立的高斯随机变量, 其统计量均假设为已知(注意到$b(t)$和$u(t)$均为复数):
-$\E[u_0]$, $\E[\gamma_0]$, $\E[b_0]$, $\Var(u_0)$, $\Var(\gamma_0)$, $\Var(b_0)$, $\Cov(u_0, u_0^*)$, $\Cov(u_0, \gamma_0)$, $\Cov(u_0, b_0)$, $\Cov(u_0, b_0^*)$.
+且$u_0$, $b_0$, $\gamma_0$均为独立的高斯随机变量, 其统计量
+$\E[u_0]$, $\E[\gamma_0]$, $\E[b_0]$, $\Var(u_0)$, $\Var(\gamma_0)$, $\Var(b_0)$, $\Cov(u_0, u_0^*)$, $\Cov(u_0, \gamma_0)$, $\Cov(u_0, b_0)$, $\Cov(u_0, b_0^*)$均假设为已知.
 
 由求解线性微分方程组的相关知识\cite{fulinjin1984ordinary}可以知道, (\ref{E0})的第二和第三项均为线性方程, 故有通解
 \begin{equation} \label{Sb}
@@ -356,15 +361,15 @@ $$\E\left[\sigma_b\int_{t_0}^{t} e^{\lambda_b(t-s)dW_b(s)}\right] = 0.$$
 
 与之类似的,
 \begin{equation} \label{b_gamma_Cov}
-\begin{split}
-\Cov&(b(t), \gamma(t)) = \E[(b(t) - \E[b(t)])(\gamma(t)-\E[\gamma(t)])] \\
-&= \E\left[\left(b_0 - \E[b_0]e^{\lambda_b (t-t_0)}+\sigma_b\int_{t_0}^{t} e^{\lambda_b (t-s)}dW_b(s)\right)\right. \cdot \\
-&\quad \left.\left((\gamma_0-\E[\gamma_0])e^{-d_\gamma(t-t_0)}+\sigma_\gamma \int_{t_0}^{t} e^{-d_\gamma(t-s)}dW_\gamma(s)\right)\right] \\
-&= \E\left[(b_0-\E[b_0])(\gamma_0-\E[\gamma_0])\right]e^{(\lambda_b-d_\gamma)(t-t_0)} \\
-&= \Cov(b_0, \gamma_0)e^{(\lambda_b-d_\gamma)(t-t_0)}
-\end{split}
+% \begin{split}
+\Cov(b(t), \gamma(t)) = \E[(b(t) - \E[b(t)])(\gamma(t)-\E[\gamma(t)])]
+% &= \E\left[\left(b_0 - \E[b_0]e^{\lambda_b (t-t_0)}+\sigma_b\int_{t_0}^{t} e^{\lambda_b (t-s)}dW_b(s)\right)\right. \cdot \\
+% &\quad \left.\left((\gamma_0-\E[\gamma_0])e^{-d_\gamma(t-t_0)}+\sigma_\gamma \int_{t_0}^{t} e^{-d_\gamma(t-s)}dW_\gamma(s)\right)\right] \\
+% &= \E\left[(b_0-\E[b_0])(\gamma_0-\E[\gamma_0])\right]e^{(\lambda_b-d_\gamma)(t-t_0)} \\
+= \Cov(b_0, \gamma_0)e^{(\lambda_b-d_\gamma)(t-t_0)}
+% \end{split}
 \end{equation}
-上述的第三个等式也用到了It\^{o}等距(\ref{Ito isometric}).
+% 上述的第三个等式也用到了It\^{o}等距(\ref{Ito isometric}).
 
 \section{$u(t)$的统计量}
 \subsection{均值}
@@ -388,29 +393,29 @@ $$\E\left[ze^{ibx}\right] = (\E[z]+ib\Cov(z, x))e^{ib\E[x]-\frac{1}{2}b^2\Var(x)
 $$z = y + iw, \quad y, w\in \mathbb{R}. \label{z substitution}$$
 那么我们只要计算出$\E[ye^{ibx}]$和$\E[we^{ibx}]$, 然后利用(\ref{z substitution})将其组合起来. 令
 $\textbf{v} = (x, y, w)$, 那么由于$\textbf{v}$为一个满足多元Gauss分布的随机向量, 其特征函数由(\ref{Characteristic function of Gaussian Distribution})即可给出:
-\begin{equation} \label{characteristic function of v}
+\[
 \phi_\textbf{v}(\textbf{s}) = exp(i\textbf{s}^\top \E[\textbf{v}]-\frac{1}{2}\textbf{s}^\top\Sigma\textbf{s}),
-\end{equation}
+\]
 
 其中$\Sigma$为协方差矩阵. 记$g(\textbf{v})$为$\textbf{v}$的概率密度函数, 那么由特征函数的定义(\ref{characteristic function definition 3}), 即特征函数为概率密度的Fourier变换即可知道,
-\begin{equation}
+\[
 \phi_\textbf{v}(\textbf{s}) = \frac{1}{(2\pi)^3}\int e^{i\textbf{s}^\top\textbf{v}}g(\textbf{v})d\textbf{v}
-\end{equation}
+\]
 
 利用Fourier变换的性质(\ref{Fourier transform property 1}), 我们不妨对$s_2$求偏导\cite{gershgorin2008nonlinear}, 有
-\begin{equation} \label{partial over s2}
+\[
 \frac{\partial \phi_\textbf{v}(\textbf{s})}{\partial s_2} = \frac{1}{(2\pi)^3}\int iy_0e^{i\textbf{s}^\top\textbf{v}}g(\textbf{v})d\textbf{v} = i\E\left[y_0e^{i\textbf{s}^\top\textbf{v}}\right].
-\end{equation}
+\]
 
-令$\textbf{v} = (b, 0, 0)^\top$, 根据(\ref{partial over s2})即能得到
-\begin{equation} \label{E over y0}
+令$\textbf{v} = (b, 0, 0)^\top$,
+\[
 \left.\E[y_0e^{ibx_0}] = -i\frac{\partial \phi_\textbf{v}(s)}{\partial s_2}\right|_{\textbf{s} = (b, 0, 0)^\top}
-\end{equation}
+\]
 
 同样的, 我们有
-\begin{equation} \label{E over w0}
+\[
 \left.\E[w_0e^{ibx_0}] = -i\frac{\partial \phi_\textbf{v}(s)}{\partial s_3}\right|_{\textbf{s} = (b, 0, 0)^\top}
-\end{equation}
+\]
 
 由多元高斯分布的概率密度函数(\ref{multiVariable gaussian pdf})有
 \[
@@ -434,80 +439,70 @@ $$\E\left[ze^{ibx}\right] = (\E[z]+ib\Cov(z, x))e^{ibE[x]-\frac{1}{2}b^2Var(x)}.
 
 由此我们立刻可以得到
 \begin{corollary} \label{multiVariable gaussian exp 2} 在命题\ref{multiVariable gaussian exp 1}的条件下,
-$$E\left[ze^{bx}\right] = (E[z]+bCov(z, x))e^{bE[x]+\frac{1}{2}b^2Var(x)}.$$
+$$\E\left[ze^{bx}\right] = (\E[z]+b\Cov(z, x))e^{b\E[x]+\frac{1}{2}b^2\Var(x)}.$$
 \end{corollary}
 
 利用推论\ref{multiVariable gaussian exp 2}即有
 \begin{equation} \label{E u(t)}
 \begin{split}
-E&[u(t)] = e^{\hat{\lambda}(t-t_0)}(E[u_0]-Cov(u_0, J(t_0, t)))e^{-E[J(t_0, t)]+\frac{1}{2}Var(J(t_0, t))} \\
-&+ \int_{t_0}^t e^{\hat{\lambda}(t-s)}(\hat{b}+e^{\lambda_b(s-t_0)}(E[b_0]-\hat{b}-Cov(b_0, J(s, t))))e^{-E[J(s, t)]+\frac{1}{2}Var(J(s, t))}ds \\
-&+ \int_{t_0}^t e^{\hat{\lambda}(t-s)}f(s)e^{-E[J(s, t)]+\frac{1}{2}Var(J(s, t))}ds
+\E&[u(t)] = e^{\hat{\lambda}(t-t_0)}(\E[u_0]-\Cov(u_0, J(t_0, t)))e^{-\E[J(t_0, t)]+\frac{1}{2}\Var(J(t_0, t))} \\
+&+ \int_{t_0}^t e^{\hat{\lambda}(t-s)}(\hat{b}+e^{\lambda_b(s-t_0)}(\E[b_0]-\hat{b}-\Cov(b_0, J(s, t))))e^{-\E[J(s, t)]+\frac{1}{2}\Var(J(s, t))}ds \\
+&+ \int_{t_0}^t e^{\hat{\lambda}(t-s)}f(s)e^{-\E[J(s, t)]+\frac{1}{2}\Var(J(s, t))}ds
 \end{split}
 \end{equation}
 
 下面我们计算
-$$Cov(u_0, J(s, t)), Cov(b_0, J(s, t)), E[J(s, t)], Var(J(s, t)).$$
-先引入两个显然的结论, 其中$a, b, c, d$均为随机变量:
-\begin{proposition} \label{Var 1}
-$Var(a+b) = Var(a)+Var(b)+2Cov(a, b)$.
-\end{proposition}
+$$\Cov(u_0, J(s, t)), \Cov(b_0, J(s, t)), \E[J(s, t)], \Var(J(s, t)).$$
 
-\begin{proposition} \label{Cov 1}
-$Cov(a+b, c+d) = Cov(a, c)+Cov(a, d)+Cov(b, c)+Cov(b, d)$.
-\end{proposition}
-
-由于
-\begin{equation}
-\begin{split} \label{J(s, t) all}
+首先,
+\begin{equation} \label{J(s, t) all}
+\begin{split}
 J(s, t) &= \int_s^t \left[(\gamma_0-\hat{\gamma})e^{-d_\gamma(s'-t_0)}+\sigma_\gamma\int_{t_0}^{s'}e^{-d_\gamma(s'-x)}dW_\gamma(x)\right]ds' \\
 & = \int_s^t(\gamma_0-\hat{\gamma})e^{-d_\gamma(s'-t_0)}ds' +\int_s^t \sigma_\gamma\int_{t_0}^{s'} e^{-d_\gamma(s'-x)}dW_\gamma(x)ds'
 \end{split}
 \end{equation}
 
-由命题(\ref{Cov 1}),
+那么
 \begin{equation} \label{Cov u0 J(s, t)}
 \begin{split}
-Cov&(u_0, J(s, t)) = Cov\left(u_0, \frac{1}{d_\gamma}(e^{-d_\gamma(s-t_0)}-e^{-d_\gamma(t-t_0)})(\gamma_0 - \hat{\gamma})\right) \\
-&+ Cov\left(u_0, \int_s^t \sigma_\gamma \int_{t_0}^{s'} e^{-d_\gamma(s'-x)} dW_\gamma(x)ds'\right)\\
-&= \frac{1}{d_\gamma}(e^{-d_\gamma(s-t_0)}-e^{-d_\gamma(t-t_0)})[Cov(u_0, \gamma_0)-Cov(u_0, \hat{\gamma})] \\
-&= \frac{1}{d_\gamma}(e^{-d_\gamma(s-t_0)}-e^{-d_\gamma(t-t_0)})Cov(u_0, \gamma_0).
+\Cov&(u_0, J(s, t)) = \Cov\left(u_0, \frac{1}{d_\gamma}(e^{-d_\gamma(s-t_0)}-e^{-d_\gamma(t-t_0)})(\gamma_0 - \hat{\gamma})\right) \\
+&+ \Cov\left(u_0, \int_s^t \sigma_\gamma \int_{t_0}^{s'} e^{-d_\gamma(s'-x)} dW_\gamma(x)ds'\right)\\
+&= \frac{1}{d_\gamma}(e^{-d_\gamma(s-t_0)}-e^{-d_\gamma(t-t_0)})[\Cov(u_0, \gamma_0)-\Cov(u_0, \hat{\gamma})] \\
+&= \frac{1}{d_\gamma}(e^{-d_\gamma(s-t_0)}-e^{-d_\gamma(t-t_0)})\Cov(u_0, \gamma_0).
 \end{split}
 \end{equation}
 
 这是因为$u_0$与$\hat{\gamma}$相互独立. 同理有
 \begin{equation} \label{Cov b0 J(s, t)}
-Cov(b_0, J(s, t)) = \frac{1}{d_\gamma}(e^{-d_\gamma(s-t_0)}-e^{-d_\gamma(t-t_0)})Cov(b_0, \gamma_0).
+\Cov(b_0, J(s, t)) = \frac{1}{d_\gamma}(e^{-d_\gamma(s-t_0)}-e^{-d_\gamma(t-t_0)})\Cov(b_0, \gamma_0).
 \end{equation}
 
-为了计算$E[J(s, t)]$, 我们对(\ref{gamma_stat_1})求积分, 有
+为了计算$\E[J(s, t)]$, 我们对(\ref{gamma_stat_1})求积分, 有
 \begin{equation} \label{E J(s, t)}
 \begin{split}
-E[&J(s, t)] = E\left[\int_s^t (\gamma(s')-\hat{\gamma})ds'\right] = \int_s^t (E[\gamma(s')]-\hat{\gamma})ds' \\
-&= \int_s^t (E[\gamma_0]-\hat{\gamma})e^{-d_\gamma(s'-t_0)}ds' \\
-&= \frac{1}{d_\gamma}(e^{-d_\gamma(s-t_0)}-e^{-d_\gamma(t-t_0)})(E[\gamma_0]-\hat{\gamma}))
+\E[&J(s, t)] = \E\left[\int_s^t (\gamma(s')-\hat{\gamma})ds'\right] = \int_s^t (\E[\gamma(s')]-\hat{\gamma})ds' \\
+&= \int_s^t (\E[\gamma_0]-\hat{\gamma})e^{-d_\gamma(s'-t_0)}ds' \\
+&= \frac{1}{d_\gamma}(e^{-d_\gamma(s-t_0)}-e^{-d_\gamma(t-t_0)})(\E[\gamma_0]-\hat{\gamma}))
 \end{split}
 \end{equation}
 
 结合(\ref{E J(s, t)})和(\ref{J(s, t) all})可知,
-\begin{equation} \label{E J(s, t) 2}
-E\left[\sigma_\gamma\int_s^t\int_{t_0}^{s'}e^{-d_\gamma(s'-x)}dW_\gamma(x)ds'\right] = 0.
-\end{equation}
+\[
+\E\left[\sigma_\gamma\int_s^t\int_{t_0}^{s'}e^{-d_\gamma(s'-x)}dW_\gamma(x)ds'\right] = 0.
+\]
 
-那么
-\begin{equation} \label{Var J(s, t) process 1}
+\[
 \begin{split}
-Var&(J(s, t)) = E\left[J^2(s, t)\right] - E[J(s, t)]^2 \\
+\Var&(J(s, t)) = E\left[J^2(s, t)\right] - E[J(s, t)]^2 \\
 &= E\left[\left(\int_s^t (\gamma_0-\hat{\gamma})e^{-d_\gamma(s'-t_0)}ds'\right)^2\right] - E[J(s, t)]^2 \\
-&+ 2E\left[\left(\int_s^t(\gamma_0-\hat{\gamma})e^{-d_\gamma(s'-t_0)}ds'\right)\left(\sigma_\gamma\int_s^t\int_{t_0}^{s'}e^{-d_\gamma(s'-x)}dW_\gamma(x)ds'\right)\right] \\
-&+ \sigma_\gamma^2E\left[\left(\int_s^t\int_{t_0}^{s}e^{-d_\gamma(s'-s)}dW_\gamma(s)ds'\right)^2\right] \\
-&= \frac{1}{d_\gamma^2}\left(e^{-d_\gamma(s-t_0)}-e^{-d_\gamma(t-t_0)}\right)^2(E[\gamma_0^2]-E[\gamma_0]^2) \\
-&+ \sigma_\gamma^2E\left[\left(\int_{t_0}^t \frac{1}{d_\gamma}\left(1-e^{-d_\gamma}(t-x)\right)dW_\gamma(x)\right)^2\right]
+&\quad+ 2E\left[\left(\int_s^t(\gamma_0-\hat{\gamma})e^{-d_\gamma(s'-t_0)}ds'\right)\left(\sigma_\gamma\int_s^t\int_{t_0}^{s'}e^{-d_\gamma(s'-x)}dW_\gamma(x)ds'\right)\right] \\
+&\quad+ \sigma_\gamma^2E\left[\left(\int_s^t\int_{t_0}^{s}e^{-d_\gamma(s'-s)}dW_\gamma(s)ds'\right)^2\right] \\
+&= \frac{1}{d_\gamma^2}\left(e^{-d_\gamma(s-t_0)}-e^{-d_\gamma(t-t_0)}\right)^2(E[\gamma_0^2]-E[\gamma_0]^2) + \sigma_\gamma^2E\left[\left(\int_{t_0}^t \frac{1}{d_\gamma}\left(1-e^{-d_\gamma}(t-x)\right)dW_\gamma(x)\right)^2\right]
 \end{split}
-\end{equation}
+\]
 
 由It\^{o}等距(定理\ref{Ito isometric})和It\^{o}公式(定理\ref{Ito formula})知上式的第二项为
-\begin{equation} \label{Var J(s, t) 2}
+\[
 \begin{split}
 \sigma_\gamma^2E&\left[\left(\int_{t_0}^t \frac{1}{d_\gamma}\left(1-e^{-d_\gamma}(t-x)\right)dW_\gamma(x)\right)^2\right] \\
 &= \sigma_\gamma^2E\left[\left(\int_{t_0}^{s}\int_{t_0}^{t}e^{-d_\gamma(s'-x)}ds'dW_\gamma(x)+\int_s^t\int_x^t e^{-d_\gamma(s'-x)}ds'dW_\gamma(x)\right)^2\right] \\
@@ -518,7 +513,7 @@ Var&(J(s, t)) = E\left[J^2(s, t)\right] - E[J(s, t)]^2 \\
 &= \frac{\sigma_\gamma^2}{d_\gamma^3}\left(-1+d_\gamma(t-s)+e^{-d_\gamma(s+t-2t_0)}+e^{-d_\gamma(t-s)}-\frac{1}{2}e^{-2d_\gamma(t-t_0)}-\frac{1}{2}e^{-2d_\gamma(s-t_0)}\right. \\
 &+ \left.\frac{1}{2}e^{-2d_\gamma(s-t)}-\frac{1}{2}e^{-2d_\gamma(t-s)}\right) + 2E\left[\int_{\min\{s, t_0\}}^t\left(e^{-d_\gamma(s-x)}-e^{-d_\gamma(t-x)}\right)\left(1-e^{-d_\gamma(t-x)}\right)dt\right]
 \end{split}
-\end{equation}
+\]
 
 这里我们将两个积分区域均扩展至$[\min\{s, t_0\}, t]$上, 并设积分区域较小的被积函数在延拓的区间上为0. 那么
 \begin{equation} \label{Var J(s, t) final}
@@ -588,7 +583,7 @@ E&\left[|B|^2\right] = E\left[\left|\int_{t_0}^t (b(s)+f(s))e^{-J(s, t)+\hat{\la
 \end{split}
 \end{equation}
 
-由命题(\ref{Var 1})和(\ref{Cov 1}), 并结合命题\ref{multiVariable gaussian exp 3}可知, 在上式中, 被积的最后一项为
+由命题\ref{multiVariable gaussian exp 3}可知, 在上式中, 被积的最后一项为
 \begin{equation} \label{E B^2}
 \begin{split}
 E&\left[(b(s)+f(s))e^{-J(s, t)+\hat{\lambda}(t-s)}\left[(b(r)+f(r))e^{-J(r, t)+\hat{\lambda}(t-r)}\right]^*\right] \\
@@ -636,7 +631,7 @@ Cov&(b(r), J(s, t)) = e^{\lambda_b(r-t_0)}Cov(b_0, J(s, t)) + \sigma_bCov\left(\
 Cov(J(s, t), J(r, t)) = Cov(J(s, t), J(r, s)+J(s, t)) = Var(J(s, t)) + Cov(J(s, t), J(r, s)).
 \end{equation}
 
-其中$Var(J(s, t))$由(\ref{Var J(s, t) final})已求出. 由类似(\ref{Var J(s, t) process 1})和(\ref{Var J(s, t) 2})的过程, 有
+其中$Var(J(s, t))$由(\ref{Var J(s, t) final})已求出. 由类似求$\Var(J(s, t))$的过程, 有
 \begin{equation}
 \begin{split}
 Cov&(J(s, t), J(r, s)) = Cov\left(\int_s^t(\gamma_0-\hat{\gamma})e^{-d_\gamma(s'-t_0)}ds' +\int_s^t \sigma_\gamma\int_{t_0}^{s'} e^{-d_\gamma(s'-x)}dW_\gamma(x)ds'\right. \\
