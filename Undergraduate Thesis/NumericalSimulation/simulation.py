@@ -7,7 +7,8 @@ from simulation2 import kernel
 ############# Parameters ###############
 d = 1.5
 sigma = 0.1549
-omega = 1.78
+# omega = 1.78
+omega = 0
 gamma_b = 0.1*d
 sigma_gamma = 5*sigma
 sigma_b = 5*sigma
@@ -91,11 +92,24 @@ def stat(data):
 	# Cov_u_b_im = np.asarray([cov(data[0][:, i]+1j*data[1][:, i], data[2][:, i]+1j*data[3][:, i])[1] for i in range(col)])
 	# Cov_u_b_star_re = np.asarray([cov(data[0][:, i]+1j*data[1][:, i], data[2][:, i]-1j*data[3][:, i])[0] for i in range(col)])
 	# Cov_u_b_star_im = np.asarray([cov(data[0][:, i]+1j*data[1][:, i], data[2][:, i]-1j*data[3][:, i])[1] for i in range(col)])
-	Cov_u_u_star = np.asarray([cov(data[0][:, i]+1.j*data[1][:, i], data[0][:, i]-1.j*data[1][:, i]) for i in range(col)], dtype=np.complex64)
-	Cov_u_gamma = np.asarray([cov(data[0][:, i]+1.j*data[1][:, i], data[4][:, i]) for i in range(col)], dtype=np.complex64)
-	Cov_u_b = np.asarray([cov(data[0][:, i]+1.j*data[1][:, i], data[2][:, i]+1.j*data[3][:, i]) for i in range(col)], dtype=np.complex64)
-	Cov_u_b_star = np.asarray([cov(data[0][:, i]+1.j*data[1][:, i], data[2][:, i]-1.j*data[3][:, i]) for i in range(col)], dtype=np.complex64)
+	Cov_u_u_star = np.asarray([cov_u_u_star(data[0][:, i]+1.j*data[1][:, i]) for i in range(col)], dtype=np.complex64)
+	Cov_u_gamma = np.asarray([cov_u_gamma(data[0][:, i]+1.j*data[1][:, i], data[4][:, i]) for i in range(col)], dtype=np.complex64)
+	Cov_u_b = np.asarray([cov_u_b(data[0][:, i]+1.j*data[1][:, i], data[2][:, i]+1.j*data[3][:, i]) for i in range(col)], dtype=np.complex64)
+	Cov_u_b_star = np.asarray([cov_u_b_star(data[0][:, i]+1.j*data[1][:, i], data[2][:, i]-1.j*data[3][:, i]) for i in range(col)], dtype=np.complex64)
 	return mean, [var[0]+var[1], var[2]+var[3], var[4]], [sp.real(Cov_u_u_star), sp.imag(Cov_u_u_star), sp.real(Cov_u_gamma), sp.imag(Cov_u_gamma), sp.real(Cov_u_b), sp.imag(Cov_u_b), sp.real(Cov_u_b_star), sp.imag(Cov_u_b_star)]
+
+def cov_u_u_star(u):
+	return np.mean(u*u) - (np.mean(u))**2
+
+def cov_u_gamma(u, gamma):
+	return np.mean(u*(gamma-gamma_hat))+np.mean(u)*(gamma_hat-np.mean(gamma))
+
+def cov_u_b(u, b):
+	return np.mean(u*conj(b))-np.mean(u)*conj(np.mean(b))
+
+def cov_u_b_star(u, b):
+	return np.mean(u*b)-np.mean(u)*np.mean(b)
+
 
 def cov(x, y):
 	# print(x, y)

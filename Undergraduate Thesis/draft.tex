@@ -542,7 +542,7 @@ J(s, t) &= \int_s^t \left[(\gamma_0-\hat{\gamma})e^{-d_\gamma(s'-t_0)}+\sigma_\g
 
 于是由It\^{o}积分的性质有
 \begin{equation} \label{E u(t)^2}
-\E\left[|u(t)|^2\right] = \E\left[|A|^2\right]+ \E\left[|B|^2\right] + \E\left[|C|^2\right] + 2Re\{\E[A^*B]\}.
+\E\left[|u(t)|^2\right] = \E\left[|A|^2\right]+ \E\left[|B|^2\right] + \E\left[|C|^2\right] + 2\text{Re}\{\E[A^*B]\}.
 \end{equation}
 
 下面我们分别求出
@@ -553,8 +553,8 @@ $
 \begin{proposition}  \label{multiVariable gaussian exp 3} 对于复值Gaussian随机变量$z$和$w$, 以及实值Gaussian随机变量$x$,
 \[
 \begin{split}
-\E&\left[zwe^{bx}\right] = \left[\E[z]\E[w]+Cov(z, w^*)+b(\E[z]Cov(w, x))+\E[w]Cov(z, x)+ \right. \\
-& \left.b^2Cov(z, x)Cov(w, x)\right]e^{b\E[x]+\frac{b^2}{2}\Var(x)}. \\
+\E&\left[zwe^{bx}\right] = \left[\E[z]\E[w]+\Cov(z, w^*)+b(\E[z]\Cov(w, x))+\E[w]\Cov(z, x)+ \right. \\
+& \left.b^2\Cov(z, x)\Cov(w, x)\right]e^{b\E[x]+\frac{b^2}{2}\Var(x)}. \\
 \end{split}
 \]
 \end{proposition}
@@ -562,10 +562,10 @@ $
 利用上述命题, 有
 \[
 \begin{split}
-E&\left[|A|^2\right] = \left(|E[u_0]|^2 +Var(u_0) - 4Re\left\{E[u_0]^*Cov(u_0, J(t_0, t)\right\} +4|Cov(u_0, J(t_0, t)|^2\right) \cdot \\
-& e^{-2\hat{\gamma}(t-t_0)-2E[J(t_0, t)]+2Var(J(t_0, t))}, \\
-E&\left[|B|^2\right] = E\left[\left|\int_{t_0}^t (b(s)+f(s))e^{-J(s, t)+\hat{\lambda}(t-s)}ds\right|^2\right] \\
-&= \int_{t_0}^t ds\int_{t_0}^t dr E\left[(b(s)+f(s))e^{-J(s, t)+\hat{\lambda}(t-s)}\left[(b(r)+f(r))e^{-J(r, t)+\hat{\lambda}(t-r)}\right]^*\right]
+\E&\left[|A|^2\right] = \left(|\E[u_0]|^2 +\Var(u_0) - 4\text{Re}\left\{\E[u_0]^*\Cov(u_0, J(t_0, t)\right\} +4|\Cov(u_0, J(t_0, t)|^2\right) \cdot \\
+& e^{-2\hat{\gamma}(t-t_0)-2\E[J(t_0, t)]+2\Var(J(t_0, t))}, \\
+\E&\left[|B|^2\right] = \E\left[\left|\int_{t_0}^t (b(s)+f(s))e^{-J(s, t)+\hat{\lambda}(t-s)}ds\right|^2\right] \\
+&= \int_{t_0}^t ds\int_{t_0}^t dr \E\left[(b(s)+f(s))e^{-J(s, t)+\hat{\lambda}(t-s)}\left[(b(r)+f(r))e^{-J(r, t)+\hat{\lambda}(t-r)}\right]^*\right]
 \end{split}
 \]
 
@@ -584,12 +584,12 @@ E&\left[(b(s)+f(s))e^{-J(s, t)+\hat{\lambda}(t-s)}\left[(b(r)+f(r))e^{-J(r, t)+\
 % &\quad\quad +Cov(f(s), -J(r, t))+Cov(b(s), -J(r, t))] \\
 % &\quad+ [Cov(b(s), -J(s, t))+Cov(b(s), -J(r, t))+Cov(f(s), -J(s, t))+Cov(f(s), -J(r,t))] \\
 % &\quad\quad\times [Cov(b^*(r), -J(s, t))+Cov(b^*(r), -J(r, t))+Cov(f^*(r), -J(s,t))+Cov(f^*(r), -J(r, t))]\} \\
-&= e^{-J(s, t)-J(r, t)+\frac{1}{2}Var(J(s, t))+\frac{1}{2}Var(J(r, t))+Cov(J(s, t), J(r, t))-\hat{\gamma}(2t-s-r)+i\omega(r-s)} \times \\
-&\quad \{E[b(s)b^*(r)]+E[b(s)]\times[Cov(b^*(r), -J(s, t))+Cov(b^*(r), -J(r, t))] \\
-&\quad\quad+ E[b^*(r)]\times[Cov(b(s), -J(s, t))+Cov(b(s), -J(r, t))]\\
-&\quad\quad+ [Cov(b^*(r), J(s, t))+Cov(b^*(r), J(r, t))]\times [Cov(b(s), J(s, t))+Cov(b(s), J(r, t))] \\
-&\quad\quad+ f^*(r)\times[E[b(s)]-Cov(b(s), J(s, t))-Cov(b(s), J(r, t))] \\
-&\quad\quad+ f(s)\times[E[b^*(r)]-Cov(b(r), J^*(s, t))-Cov(b(r), J^*(r, t))] \\
+&= e^{-J(s, t)-J(r, t)+\frac{1}{2}\Var(J(s, t))+\frac{1}{2}\Var(J(r, t))+\Cov(J(s, t), J(r, t))-\hat{\gamma}(2t-s-r)+i\omega(r-s)} \times \\
+&\quad \{\E[b(s)b^*(r)]+\E[b(s)]\times[Cov(b^*(r), -J(s, t))+\Cov(b^*(r), -J(r, t))] \\
+&\quad\quad+ \E[b^*(r)]\times[\Cov(b(s), -J(s, t))+\Cov(b(s), -J(r, t))]\\
+&\quad\quad+ [\Cov(b^*(r), J(s, t))+\Cov(b^*(r), J(r, t))]\times [\Cov(b(s), J(s, t))+\Cov(b(s), J(r, t))] \\
+&\quad\quad+ f^*(r)\times[\E[b(s)]-\Cov(b(s), J(s, t))-\Cov(b(s), J(r, t))] \\
+&\quad\quad+ f(s)\times[\E[b^*(r)]-\Cov(b(r), J^*(s, t))-\Cov(b(r), J^*(r, t))] \\
 &\quad\quad+f(s)f^*(r)\}. \\
 \end{split}
 \]
@@ -597,10 +597,10 @@ E&\left[(b(s)+f(s))e^{-J(s, t)+\hat{\lambda}(t-s)}\left[(b(r)+f(r))e^{-J(r, t)+\
 其中, 由It\^o公式和It\^o积分的性质即知
 \[
 \begin{split}
-E&[b(s)b(r)] = E\left[\left(\hat{b}+(b_0-\hat{b})e^{\lambda_b(s-t_0)}+\sigma_b\int_{t_0}^s e^{\lambda_b(s-w)}dW_b(w)\right)\right.\times \\
+\E&[b(s)b(r)] = \E\left[\left(\hat{b}+(b_0-\hat{b})e^{\lambda_b(s-t_0)}+\sigma_b\int_{t_0}^s e^{\lambda_b(s-w)}dW_b(w)\right)\right.\times \\
 &\quad\quad\quad\quad\quad\quad\left.\left(\hat{b}+(b_0-\hat{b})e^{\lambda_b(r-t_0)}+\sigma_b\int_{t_0}^r e^{\lambda_b(r-w)}dW_b(w)\right) \right] \\
-&= \left(1-e^{\lambda_b(s-t_0)}-e^{\lambda_b(r-t_0)}+e^{\lambda_b(s+r-2t_0)}\right)\hat{b}^2 + \left(e^{\lambda_b(s-t_0)}+e^{\lambda_b(r-t_0)}-2e^{\lambda_b(s+r-2t_0)}\right)\hat{b}E[b_0] \\
-&\quad + e^{\lambda_b(s+r-2t_0)}\left(Var(b_0) + E[b_0]^2\right) + \frac{\sigma_b^2}{2\gamma_b}\left(e^{-\gamma_b(s+r-2min(s, r))}-e^{-\gamma_b(s+r-2t_0)}\right)e^{i\omega_b(s-r)}
+&= \left(1-e^{\lambda_b(s-t_0)}-e^{\lambda_b(r-t_0)}+e^{\lambda_b(s+r-2t_0)}\right)\hat{b}^2 + \left(e^{\lambda_b(s-t_0)}+e^{\lambda_b(r-t_0)}-2e^{\lambda_b(s+r-2t_0)}\right)\hat{b}\E[b_0] \\
+&\quad + e^{\lambda_b(s+r-2t_0)}\left(\Var(b_0) + \E[b_0]^2\right) + \frac{\sigma_b^2}{2\gamma_b}\left(e^{-\gamma_b(s+r-2\min(s, r))}-e^{-\gamma_b(s+r-2t_0)}\right)e^{i\omega_b(s-r)}
 \end{split}
 \]
 
@@ -885,8 +885,8 @@ $$f(t) = 0,$$方程组的参数可以取为
 \begin{equation}
 \left\{
 \begin{aligned}
-&Re(u_0), Im(u_0) \sim \mathcal{N}(0, 1/2), \quad i.i.d. \\
-&Re(b_0), Im(b_0) \sim \mathcal{N}(0, 1/2), \quad i.i.d. \\
+&\text{Re}(u_0), \text{Im}(u_0) \sim \mathcal{N}(0, 1), \quad i.i.d. \\
+&\text{Re}(b_0), \text{Im}(b_0) \sim \mathcal{N}(0, 1), \quad i.i.d. \\
 &\gamma_0 \sim \mathcal{N}(0, 1) \quad i.i.d.
 \end{aligned}
 \right.
@@ -896,10 +896,10 @@ $$f(t) = 0,$$方程组的参数可以取为
 \begin{equation}
 \left\{
 \begin{aligned}
-&Cov(u_0, u_0^*) = Var(Re(u_0))+Var(Im(u_0)) = 2 \\
-&Cov(u_0, \gamma_0) = 0 \\
-&Cov(u_0, b_0) = 0 \\
-&Cov(u_0, b_0^*) = 0
+&\Cov(u_0, u_0^*) = 0 \\
+&\Cov(u_0, \gamma_0) = 0 \\
+&\Cov(u_0, b_0) = 0 \\
+&\Cov(u_0, b_0^*) = 0
 \end{aligned}
 \right.
 \end{equation}
@@ -921,7 +921,7 @@ $$
 $$W_{Re(u)}(t) = \frac{1}{\sqrt{2}}W(t),$$
 其余项和初值也做相同的处理. \\
 
-对$R=1$进行100,000次Monte Carlo模拟\cite{robert2004monte}, $u(t)$, $b(t)$的实部和虚部,$\gamma(t)$的期望, $u(t)$, $b(t)$和$\gamma(t)$的方差的模拟结果如下图\cite{mckinney2012python}\cite{hunter2007matplotlib}, 其中蓝色的曲线为模拟产生的值, 绿色的曲线是理论计算得到的值. \\
+对$R=1$进行100,000次模拟\cite{robert2004monte}, $u(t)$, $b(t)$的实部和虚部,$\gamma(t)$的期望, $u(t)$, $b(t)$和$\gamma(t)$的方差的模拟结果如下图\cite{mckinney2012python}\cite{hunter2007matplotlib}, 其中蓝色的曲线为模拟产生的值, 绿色的曲线是理论计算得到的值. \\
 % \begin{figure}[!ht]
 % \centering
 % \includegraphics[width = 12cm]{NumericalSimulation/res/EuRe.png}
@@ -980,29 +980,29 @@ $$W_{Re(u)}(t) = \frac{1}{\sqrt{2}}W(t),$$
 
 \begin{figure}[!ht]
 \centering
-\subfloat[E(Re(u))]{
-  \includegraphics[width = .4\textwidth]{NumericalSimulation/res/EuRe.png}
+\subfloat[\text{E}(Re(u))]{
+  \includegraphics[width = .2\textwidth]{NumericalSimulation/res/EuRe.png}
   }\hfill
 \subfloat[E(Im(u))]{
-  \includegraphics[width = .4\textwidth]{NumericalSimulation/res/EuIm.png}
-  }\\
+  \includegraphics[width = .2\textwidth]{NumericalSimulation/res/EuIm.png}
+  }\hfill
 \subfloat[E(Re(b))]{
-  \includegraphics[width = .4\textwidth]{NumericalSimulation/res/EbRe.png}
+  \includegraphics[width = .2\textwidth]{NumericalSimulation/res/EbRe.png}
   }\hfill
 \subfloat[E(Im(b))]{
-  \includegraphics[width = .4\textwidth]{NumericalSimulation/res/EbIm.png}
+  \includegraphics[width = .2\textwidth]{NumericalSimulation/res/EbIm.png}
   }\\
 \subfloat[E($\gamma$)]{
-  \includegraphics[width = .4\textwidth]{NumericalSimulation/res/Egamma.png}
+  \includegraphics[width = .2\textwidth]{NumericalSimulation/res/Egamma.png}
   }\hfill
 \subfloat[Var(u)]{
-  \includegraphics[width = .4\textwidth]{NumericalSimulation/res/Varu.png}
-  }\\
+  \includegraphics[width = .2\textwidth]{NumericalSimulation/res/Varu.png}
+  }\hfill
 \subfloat[Var(b)]{
-  \includegraphics[width = .4\textwidth]{NumericalSimulation/res/Varb.png}
+  \includegraphics[width = .2\textwidth]{NumericalSimulation/res/Varb.png}
   }\hfill
 \subfloat[Var($\gamma$)]{
-  \includegraphics[width = .4\textwidth]{NumericalSimulation/res/Vargamma.png}
+  \includegraphics[width = .2\textwidth]{NumericalSimulation/res/Vargamma.png}
   }
 \caption{Simulation of Expectations and Variances}
 \label{Simulation of Expectations and Variances}
@@ -1010,29 +1010,29 @@ $$W_{Re(u)}(t) = \frac{1}{\sqrt{2}}W(t),$$
 
 \begin{figure}[!ht]
 \centering
-\subfloat[$Im(Cov(u, u^*))$]{
-  \includegraphics[width = .4\textwidth]{NumericalSimulation/res/CovuustarRe.png}
+\subfloat[$\text{Im}(\Cov(u, u^*))$]{
+  \includegraphics[width = .2\textwidth]{NumericalSimulation/res/CovuustarRe.png}
 }\hfill
-\subfloat[$Im(Cov(u, u^*))$]{
-  \includegraphics[width = .4\textwidth]{NumericalSimulation/res/CovuustarIm.png}
+\subfloat[$\text{Im}(\Cov(u, u^*))$]{
+  \includegraphics[width = .2\textwidth]{NumericalSimulation/res/CovuustarIm.png}
+}\hfill
+\subfloat[$\text{Re}(\Cov(u, \gamma))$]{
+  \includegraphics[width = .2\textwidth]{NumericalSimulation/res/CovugammaRe.png}
+}\hfill
+\subfloat[$\text{Im}(\Cov(u, \gamma))$]{
+  \includegraphics[width = .2\textwidth]{NumericalSimulation/res/CovugammaIm.png}
 }\\
-\subfloat[$Re(Cov(u, \gamma))$]{
-  \includegraphics[width = .4\textwidth]{NumericalSimulation/res/CovugammaRe.png}
+\subfloat[$\text{Re}(\Cov(u, b)$]{
+  \includegraphics[width = .2\textwidth]{NumericalSimulation/res/CovubRe.png}
 }\hfill
-\subfloat[$Im(Cov(u, \gamma))$]{
-  \includegraphics[width = .4\textwidth]{NumericalSimulation/res/CovugammaIm.png}
-}\\
-\subfloat[$Re(Cov(u, b)$]{
-  \includegraphics[width = .4\textwidth]{NumericalSimulation/res/CovubRe.png}
+\subfloat[$\text{Im}(\Cov(u, b))$]{
+  \includegraphics[width = .2\textwidth]{NumericalSimulation/res/CovubIm.png}
 }\hfill
-\subfloat[$Im(Cov(u, b))$]{
-  \includegraphics[width = .4\textwidth]{NumericalSimulation/res/CovubIm.png}
-}\\
-\subfloat[$Re(Cov(u, b^*))$]{
-  \includegraphics[width = .4\textwidth]{NumericalSimulation/res/CovubstarRe.png}
+\subfloat[$\text{Re}(\Cov(u, b^*))$]{
+  \includegraphics[width = .2\textwidth]{NumericalSimulation/res/CovubstarRe.png}
 }\hfill
-\subfloat[$Im(Cov(u, b^*))$]{
-  \includegraphics[width = .4\textwidth]{NumericalSimulation/res/CovubstarIm.png}
+\subfloat[$\text{Im}(\Cov(u, b^*))$]{
+  \includegraphics[width = .2\textwidth]{NumericalSimulation/res/CovubstarIm.png}
 }
 \caption{Simulation of Covariances}
 \label{Simulation of Covariances}
