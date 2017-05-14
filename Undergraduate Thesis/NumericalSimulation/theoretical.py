@@ -1,7 +1,8 @@
 import numpy as np
 import scipy as sp
 from scipy.integrate import quad, dblquad
-from simulation import *
+# from simulation import *
+from simulation_real import *
 
 ######### Configurations #########
 ######## Const Init Values #######
@@ -20,12 +21,16 @@ E_b0 = 0
 E_b0_star = 0
 E_gamma0 = 0 
 ##################################
-b_hat = b_hat_re + 1j*b_hat_im
-b_hat_star = b_hat_re - 1j*b_hat_im
-lambda_hat = -gamma_hat + 1j*omega
-lambda_b = -gamma_b + 1j*omega_b
-lambda_b_star = -gamma_b - 1j*omega_b
+# b_hat = b_hat_re + 1j*b_hat_im
+# b_hat_star = b_hat_re - 1j*b_hat_im
+# lambda_hat = -gamma_hat + 1j*omega
+# lambda_b = -gamma_b + 1j*omega_b
+# lambda_b_star = -gamma_b - 1j*omega_b
 ##################################
+b_hat_star = b_hat
+lambda_hat = -gamma_hat
+lambda_b = -gamma_b
+lambda_b_star = -gamma_b
 
 def brownian(inteval, step):
 	time = np.arange(inteval[0], inteval[1], step)
