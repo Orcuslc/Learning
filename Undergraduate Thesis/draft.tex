@@ -481,8 +481,7 @@ J(s, t) &= \int_s^t \left[(\gamma_0-\hat{\gamma})e^{-d_\gamma(s'-t_0)}+\sigma_\g
 \begin{equation} \label{E J(s, t)}
 \begin{split}
 \E[&J(s, t)] = \E\left[\int_s^t (\gamma(s')-\hat{\gamma})ds'\right] = \int_s^t (\E[\gamma(s')]-\hat{\gamma})ds' \\
-&= \int_s^t (\E[\gamma_0]-\hat{\gamma})e^{-d_\gamma(s'-t_0)}ds' \\
-&= \frac{1}{d_\gamma}(e^{-d_\gamma(s-t_0)}-e^{-d_\gamma(t-t_0)})(\E[\gamma_0]-\hat{\gamma}))
+&= \int_s^t (\E[\gamma_0]-\hat{\gamma})e^{-d_\gamma(s'-t_0)}ds' = \frac{1}{d_\gamma}(e^{-d_\gamma(s-t_0)}-e^{-d_\gamma(t-t_0)})(\E[\gamma_0]-\hat{\gamma}))
 \end{split}
 \end{equation}
 
@@ -490,35 +489,34 @@ J(s, t) &= \int_s^t \left[(\gamma_0-\hat{\gamma})e^{-d_\gamma(s'-t_0)}+\sigma_\g
 \[
 \E\left[\sigma_\gamma\int_s^t\int_{t_0}^{s'}e^{-d_\gamma(s'-x)}dW_\gamma(x)ds'\right] = 0.
 \]
-
+此外, 由定义即有
 \[
 \begin{split}
-\Var&(J(s, t)) = E\left[J^2(s, t)\right] - E[J(s, t)]^2 \\
-&= E\left[\left(\int_s^t (\gamma_0-\hat{\gamma})e^{-d_\gamma(s'-t_0)}ds'\right)^2\right] - E[J(s, t)]^2 \\
-&\quad+ 2E\left[\left(\int_s^t(\gamma_0-\hat{\gamma})e^{-d_\gamma(s'-t_0)}ds'\right)\left(\sigma_\gamma\int_s^t\int_{t_0}^{s'}e^{-d_\gamma(s'-x)}dW_\gamma(x)ds'\right)\right] \\
-&\quad+ \sigma_\gamma^2E\left[\left(\int_s^t\int_{t_0}^{s}e^{-d_\gamma(s'-s)}dW_\gamma(s)ds'\right)^2\right] \\
-&= \frac{1}{d_\gamma^2}\left(e^{-d_\gamma(s-t_0)}-e^{-d_\gamma(t-t_0)}\right)^2(E[\gamma_0^2]-E[\gamma_0]^2) + \sigma_\gamma^2E\left[\left(\int_{t_0}^t \frac{1}{d_\gamma}\left(1-e^{-d_\gamma}(t-x)\right)dW_\gamma(x)\right)^2\right]
+\Var&(J(s, t)) = \E\left[J^2(s, t)\right] - \E[J(s, t)]^2 \\
+&= \E\left[\left(\int_s^t (\gamma_0-\hat{\gamma})e^{-d_\gamma(s'-t_0)}ds'\right)^2\right] - \E[J(s, t)]^2 + 2\E\left[\left(\int_s^t(\gamma_0-\hat{\gamma})e^{-d_\gamma(s'-t_0)}ds'\right)\times\right. \\
+&\quad\left.\left(\sigma_\gamma\int_s^t\int_{t_0}^{s'}e^{-d_\gamma(s'-x)}dW_\gamma(x)ds'\right)\right] + \sigma_\gamma^2\E\left[\left(\int_s^t\int_{t_0}^{s}e^{-d_\gamma(s'-s)}dW_\gamma(s)ds'\right)^2\right] \\
+&= \frac{1}{d_\gamma^2}\left(e^{-d_\gamma(s-t_0)}-e^{-d_\gamma(t-t_0)}\right)^2(\E[\gamma_0^2]-\E[\gamma_0]^2) + \sigma_\gamma^2\E\left[\left(\int_{t_0}^t \frac{1}{d_\gamma}\left(1-e^{-d_\gamma}(t-x)\right)dW_\gamma(x)\right)^2\right]
 \end{split}
 \]
 
 由It\^{o}等距(定理\ref{Ito isometric})和It\^{o}公式(定理\ref{Ito formula})知上式的第二项为
 \[
 \begin{split}
-\sigma_\gamma^2E&\left[\left(\int_{t_0}^t \frac{1}{d_\gamma}\left(1-e^{-d_\gamma}(t-x)\right)dW_\gamma(x)\right)^2\right] \\
-&= \sigma_\gamma^2E\left[\left(\int_{t_0}^{s}\int_{t_0}^{t}e^{-d_\gamma(s'-x)}ds'dW_\gamma(x)+\int_s^t\int_x^t e^{-d_\gamma(s'-x)}ds'dW_\gamma(x)\right)^2\right] \\
+\sigma_\gamma^2\E&\left[\left(\int_{t_0}^t \frac{1}{d_\gamma}\left(1-e^{-d_\gamma}(t-x)\right)dW_\gamma(x)\right)^2\right] \\
+&= \sigma_\gamma^2\E\left[\left(\int_{t_0}^{s}\int_{t_0}^{t}e^{-d_\gamma(s'-x)}ds'dW_\gamma(x)+\int_s^t\int_x^t e^{-d_\gamma(s'-x)}ds'dW_\gamma(x)\right)^2\right] \\
 % &= \frac{\sigma_\gamma^2}{d_\gamma^2}E\left[\left(\int_{t_0}^t \left(e^{-d_\gamma(s-x)}-e^{-d_\gamma(t-x)}dx\right)+\int_{t_0}^t \left(1-e^{-d_\gamma(t-x)\right)^2dx\right)\right]
-&= \frac{\sigma_\gamma^2}{d_\gamma^2}E\left[\left(\int_{t_0}^{t} \left(e^{-d_\gamma(s-x)}-e^{-d_\gamma(t-x)}\right)dW_\gamma(x)+\int_{s}^{t} \left(1-e^{-d_\gamma(t-x)}\right)dW_\gamma(x)\right)^2\right] \\
+% &= \frac{\sigma_\gamma^2}{d_\gamma^2}E\left[\left(\int_{t_0}^{t} \left(e^{-d_\gamma(s-x)}-e^{-d_\gamma(t-x)}\right)dW_\gamma(x)+\int_{s}^{t} \left(1-e^{-d_\gamma(t-x)}\right)dW_\gamma(x)\right)^2\right] \\
 &= \frac{\sigma_\gamma^2}{d_\gamma^2}\left\{\int_{t_0}^t \left(e^{-d_\gamma(s-x)}-e^{-d_\gamma(t-x)}\right)^2dx+\int_{s}^t\left(1-e^{-d_\gamma(t-x)}\right)^2dx\right. \\
-&+\left.2E\left[\left(\int_{t_0}^t \left(e^{-d_\gamma(s-x)}-e^{-d_\gamma(t-x)}\right)dW_\gamma(x)\right)\left(\int_{s}^t\left(1-e^{-d_\gamma(t-x)}\right)dW_\gamma(x)\right)\right]\right\} \\
+&+\left.2\E\left[\left(\int_{t_0}^t \left(e^{-d_\gamma(s-x)}-e^{-d_\gamma(t-x)}\right)dW_\gamma(x)\right)\left(\int_{s}^t\left(1-e^{-d_\gamma(t-x)}\right)dW_\gamma(x)\right)\right]\right\} \\
 &= \frac{\sigma_\gamma^2}{d_\gamma^3}\left(-1+d_\gamma(t-s)+e^{-d_\gamma(s+t-2t_0)}+e^{-d_\gamma(t-s)}-\frac{1}{2}e^{-2d_\gamma(t-t_0)}-\frac{1}{2}e^{-2d_\gamma(s-t_0)}\right. \\
-&+ \left.\frac{1}{2}e^{-2d_\gamma(s-t)}-\frac{1}{2}e^{-2d_\gamma(t-s)}\right) + 2E\left[\int_{\min\{s, t_0\}}^t\left(e^{-d_\gamma(s-x)}-e^{-d_\gamma(t-x)}\right)\left(1-e^{-d_\gamma(t-x)}\right)dt\right]
+&+ \left.\frac{1}{2}e^{-2d_\gamma(s-t)}-\frac{1}{2}e^{-2d_\gamma(t-s)}\right) + 2\E\left[\int_{\min\{s, t_0\}}^t\left(e^{-d_\gamma(s-x)}-e^{-d_\gamma(t-x)}\right)\left(1-e^{-d_\gamma(t-x)}\right)dt\right]
 \end{split}
 \]
 
 这里我们将两个积分区域均扩展至$[\min\{s, t_0\}, t]$上, 并设积分区域较小的被积函数在延拓的区间上为0. 那么
 \begin{equation} \label{Var J(s, t) final}
 \begin{split}
-Var&(J(s, t)) = \frac{1}{d_\gamma^2}\left(e^{-d_\gamma(s-t_0)}-e^{-d_\gamma(t-t_0)}\right)^2Var(\gamma_0) \\
+\Var&(J(s, t)) = \frac{1}{d_\gamma^2}\left(e^{-d_\gamma(s-t_0)}-e^{-d_\gamma(t-t_0)}\right)^2Var(\gamma_0) \\
 &+ \frac{\sigma_\gamma^2}{d_\gamma^3}\left(-1+d_\gamma(t-s)+e^{-d_\gamma(s+t-2t_0)}+e^{-d_\gamma(t-s)}-\frac{1}{2}e^{-2d_\gamma(t-t_0)}-\frac{1}{2}e^{-2d_\gamma(s-t_0)}\right) 
 \end{split}
 \end{equation}
@@ -527,30 +525,30 @@ Var&(J(s, t)) = \frac{1}{d_\gamma^2}\left(e^{-d_\gamma(s-t_0)}-e^{-d_\gamma(t-t_
 \subsection{方差}
 利用
 \begin{equation}
-Var(u(t)) = E\left[(|u(t)|^2)\right] - \left|E[u(t)]\right|^2.
+\Var(u(t)) = \E\left[(|u(t)|^2)\right] - \left|\E[u(t)]\right|^2.
 \end{equation}
 
 我们记
-\begin{equation}
+\[
 u(t) = A + B + C,
-\end{equation}
+\]
 
 其中
-\begin{equation}
+\[
 A = e^{-J(t_0, t)+\hat{\lambda}(t-t_0)}u_0,
-\end{equation}
+\]
 
-\begin{equation}
+\[
 B = \int_{t_0}^t (b(s)+f(s))e^{-J(s, t)+\hat{\lambda}(t-s)}ds,
-\end{equation}
+\]
 
-\begin{equation}
+\[
 C = \sigma\int_{t_0}^t e^{-J(s, t)+\hat{\lambda}(t-s)}dW(s).
-\end{equation}
+\]
 
 于是由It\^{o}积分的性质有
 \begin{equation} \label{E u(t)^2}
-E\left[|u(t)|^2\right] = E\left[|A|^2\right]+ E\left[|B|^2\right] + E\left[|C|^2\right] + 2Re{E[A^*B]}.
+\E\left[|u(t)|^2\right] = \E\left[|A|^2\right]+ \E\left[|B|^2\right] + \E\left[|C|^2\right] + 2Re\{\E[A^*B]\}.
 \end{equation}
 
 下面我们分别求出
