@@ -35,7 +35,7 @@
 \usepackage{beamerthemesplit}
 \usepackage{pgf,pgfarrows,pgfnodes,pgfautomata,pgfheaps,pgfshade}
 \usepackage{graphicx}
-%\usepackage{chemarrow}
+\usepackage{chemarrow}
 
 \usepackage{epsfig, subfigure}
 \usepackage{latexsym,amssymb,lastpage}
@@ -47,19 +47,23 @@
 \newcommand{\md}{\mathrm{d}}
 
 \usefonttheme[onlymath]{serif}
-\newcommand*\oldmacro{}%
-\let\oldmacro\insertshorttitle%
-\renewcommand*\insertshorttitle{%
-  \oldmacro\hfill%
-  \insertframenumber\,/\,\inserttotalframenumber}
+\usepackage{fontspec}
+% \setmainfont{}
+\setmonofont{Microsoft YaHei}
+\setsansfont{Microsoft YaHei}
+% \newcommand*\oldmacro{}%
+% \let\oldmacro\insertshorttitle%
+% \renewcommand*\insertshorttitle{%
+%   \oldmacro\hfill%
+%   \insertframenumber\,/\,\inserttotalframenumber}
 
 \setbeamercovered{transparent}
-\usetheme{boxes}
-\pgfdeclareimage[height=.8cm]{logo}{fd1}
+\usetheme{Madrid}
+\pgfdeclareimage[height=.8cm]{logo}{fd1.eps}
 
 \title[Statistics of Solutions to A Stochastic Differential Equation Set]{Statistics of Solutions to A Stochastic Differential Equation Set}
 \author[Chuan Lu]{\Large{Chuan Lu}}
-\institute{\large{Information and Computing Science}\linebreak \linebreak
+\institute[ICS]{\large{Information and Computing Science}\linebreak \linebreak
 \pgfuseimage{logo}
 }
 \date{June 2017}
@@ -69,6 +73,7 @@
 
 
 \begin{document}
+
 \frame{\titlepage}
 \newcommand{\E}{\text{E}}
 \newcommand{\Cov}{\text{Cov}}
@@ -124,6 +129,15 @@ $dt\cdot dt = dt\cdot dB_t = dB_t\cdot dt = 0, dB_t\cdot dB_t = dt.$
 
 \section{Statistics of $b(t)$ and $\gamma(t)$}
 \frame{\frametitle{Mean}
-With It\^o formula, it is easy to 
+With It\^o formula, it is easy to know
+\begin{block}
+\[
+\begin{aligned}
+&\E(b(t)) = \hat{b} + (\E[b_0] - \hat{b})e^{\lambda_b(t-t_0)} \\
+&\E(\gamma(t)) = \hat{\gamma} + (\E[\gamma_0] - \hat{\gamma})e^{-d_{\gamma}(t-t_0)}
+\end{aligned}
+\]
+\end{block}
 }
+
 \end{document}
