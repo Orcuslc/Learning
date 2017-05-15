@@ -99,7 +99,8 @@ def stat(data):
 	return mean, [var[0]+var[1], var[2]+var[3], var[4]], [sp.real(Cov_u_u_star), sp.imag(Cov_u_u_star), sp.real(Cov_u_gamma), sp.imag(Cov_u_gamma), sp.real(Cov_u_b), sp.imag(Cov_u_b), sp.real(Cov_u_b_star), sp.imag(Cov_u_b_star)]
 
 def cov_u_u_star(u):
-	return np.mean(u*u) - (np.mean(u))**2
+	# return np.var(x)-np.var(y)+2j*(np.cov(x, y)[0, 0])
+	return np.mean(u**2) - (np.mean(u))**2
 
 def cov_u_gamma(u, gamma):
 	return np.mean(u*gamma) - np.mean(u)*np.mean(gamma)
