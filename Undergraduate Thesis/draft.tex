@@ -396,40 +396,40 @@ $$\E\left[ze^{ibx}\right] = (\E[z]+ib\Cov(z, x))e^{ib\E[x]-\frac{1}{2}b^2\Var(x)
 不妨记
 $$z = y + iw, \quad y, w\in \mathbb{R}. \label{z substitution}$$
 那么我们只要计算出$\E[ye^{ibx}]$和$\E[we^{ibx}]$, 然后利用(\ref{z substitution})将其组合起来. 令
-$\textbf{v} = (x, y, w)$, 那么由于$\textbf{v}$为一个满足多元Gauss分布的随机向量, 其特征函数由(\ref{Characteristic function of Gaussian Distribution})即可给出:
+$\mathbf{v} = (x, y, w)$, 那么由于$\mathbf{v}$为一个满足多元Gauss分布的随机向量, 其特征函数由(\ref{Characteristic function of Gaussian Distribution})即可给出:
 \[
-\phi_\textbf{v}(\textbf{s}) = exp(i\textbf{s}^\top \E[\textbf{v}]-\frac{1}{2}\textbf{s}^\top\Sigma\textbf{s}),
+\phi_\mathbf{v}(\mathbf{s}) = \exp(i\mathbf{s}^\top \E[\mathbf{v}]-\frac{1}{2}\mathbf{s}^\top\Sigma\mathbf{s}),
 \]
 
-其中$\Sigma$为协方差矩阵. 记$g(\textbf{v})$为$\textbf{v}$的概率密度函数, 那么由特征函数的定义(\ref{characteristic function definition 3}), 即特征函数为概率密度的Fourier变换即可知道,
+其中$\Sigma$为协方差矩阵. 记$g(\mathbf{v})$为$\mathbf{v}$的概率密度函数, 那么由特征函数的定义(\ref{characteristic function definition 3}), 即特征函数为概率密度的Fourier变换即可知道,
 \[
-\phi_\textbf{v}(\textbf{s}) = \frac{1}{(2\pi)^3}\int e^{i\textbf{s}^\top\textbf{v}}g(\textbf{v})d\textbf{v}
+\phi_\mathbf{v}(\mathbf{s}) = \frac{1}{(2\pi)^3}\int e^{i\mathbf{s}^\top\mathbf{v}}g(\mathbf{v})d\mathbf{v}
 \]
 
 利用Fourier变换的性质(\ref{Fourier transform property 1}), 我们不妨对$s_2$求偏导\cite{gershgorin2008nonlinear}, 有
 \[
-\frac{\partial \phi_\textbf{v}(\textbf{s})}{\partial s_2} = \frac{1}{(2\pi)^3}\int iy_0e^{i\textbf{s}^\top\textbf{v}}g(\textbf{v})d\textbf{v} = i\E\left[y_0e^{i\textbf{s}^\top\textbf{v}}\right].
+\frac{\partial \phi_\mathbf{v}(\mathbf{s})}{\partial s_2} = \frac{1}{(2\pi)^3}\int iy_0e^{i\mathbf{s}^\top\mathbf{v}}g(\mathbf{v})d\mathbf{v} = i\E\left[y_0e^{i\mathbf{s}^\top\mathbf{v}}\right].
 \]
 
-令$\textbf{v} = (b, 0, 0)^\top$,
+令$\mathbf{v} = (b, 0, 0)^\top$,
 \[
-\left.\E[y_0e^{ibx_0}] = -i\frac{\partial \phi_\textbf{v}(s)}{\partial s_2}\right|_{\textbf{s} = (b, 0, 0)^\top}
+\left.\E[y_0e^{ibx_0}] = -i\frac{\partial \phi_\mathbf{v}(s)}{\partial s_2}\right|_{\mathbf{s} = (b, 0, 0)^\top}
 \]
 
 同样的, 我们有
 \[
-\left.\E[w_0e^{ibx_0}] = -i\frac{\partial \phi_\textbf{v}(s)}{\partial s_3}\right|_{\textbf{s} = (b, 0, 0)^\top}
+\left.\E[y_0e^{ibx_0}] = -i\frac{\partial \phi_\mathbf{v}(s)}{\partial s_2}\right|_{\mathbf{s} = (b, 0, 0)^\top}
 \]
 
 由多元高斯分布的概率密度函数(\ref{multiVariable gaussian pdf})有
 \[
 \begin{split}
-&\frac{\partial \phi_\textbf{v}(\textbf{s})}{\partial s_2} = (i\E[y_0]-\Var(y_0)s_2-\Cov(x_0, y_0)s_1-\Cov(y_0, w_0)s_3)\phi_{\textbf{v}}(s) \\
-&\frac{\partial \phi_\textbf{v}(\textbf{s})}{\partial s_3} = (i\E[w_0]-\Var(w_0)s_3-\Cov(x_0, w_0)s_1-\Cov(y_0, w_0)s_2)\phi_{\textbf{v}}(s)
+&\frac{\partial \phi_\mathbf{v}(\mathbf{s})}{\partial s_2} = (i\E[y_0]-\Var(y_0)s_2-\Cov(x_0, y_0)s_1-\Cov(y_0, w_0)s_3)\phi_{\mathbf{v}}(s) \\
+&\frac{\partial \phi_\mathbf{v}(\mathbf{s})}{\partial s_3} = (i\E[w_0]-\Var(w_0)s_3-\Cov(x_0, w_0)s_1-\Cov(y_0, w_0)s_2)\phi_{\mathbf{v}}(s)
 \end{split}
 \]
 
-分别计算这两个偏导数在$\textbf{s} = (b, 0, 0)^\top$处的值, 有
+分别计算这两个偏导数在$\mathbf{s} = (b, 0, 0)^\top$处的值, 有
 \[
 \begin{split}
 &\E\left[y_0e^{ibx_0}\right] = (\E[y_0]+i\Cov(x_0, y_0)b)\exp(ib\E[x_0] - \frac{1}{2}\Var(x_0)b^2) \\
@@ -438,7 +438,7 @@ $\textbf{v} = (x, y, w)$, 那么由于$\textbf{v}$为一个满足多元Gauss分�
 \]
 
 那么
-$$\E\left[ze^{ibx}\right] = (\E[z]+ib\Cov(z, x))e^{ibE[x]-\frac{1}{2}b^2Var(x)}.$$
+$$\E\left[ze^{ibx}\right] = (\E[z]+ib\Cov(z, x))e^{ib\E[x]-\frac{1}{2}b^2\Var(x)}.$$
 \end{proof}
 
 由此我们立刻可以得到

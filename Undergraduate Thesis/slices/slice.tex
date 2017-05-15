@@ -5,6 +5,7 @@
 \usepackage{times}
 \usefonttheme{structurebold}
 
+
 \usepackage[english]{babel}
 % \usepackage{fontspec}
 % \setsansfont{Microsoft YaHei}
@@ -13,6 +14,8 @@
 \usepackage[latin1]{inputenc}
 \usepackage{multimedia}
 
+\setcounter{equation}{0}
+\numberwithin{equation}{section}
 \setbeamercovered{dynamic}
 
 \newcommand{\Lang}[1]{\operatorname{\text{\textsc{#1}}}}
@@ -49,8 +52,12 @@
 \usefonttheme[onlymath]{serif}
 \usepackage{fontspec}
 % \setmainfont{}
-\setmonofont{Microsoft YaHei}
-\setsansfont{Microsoft YaHei}
+% \setmonofont{Microsoft YaHei}
+% \setsansfont{Microsoft YaHei}
+\setmonofont{Calibri}
+\setsansfont{Calibri}
+
+
 % \newcommand*\oldmacro{}%
 % \let\oldmacro\insertshorttitle%
 % \renewcommand*\insertshorttitle{%
@@ -61,7 +68,7 @@
 \usetheme{Madrid}
 \pgfdeclareimage[height=.8cm]{logo}{fd1.eps}
 
-\title[Statistics of Solutions to A Stochastic Differential Equation Set]{Statistics of Solutions to A Stochastic Differential Equation Set}
+\title[Statistics of Solutions to A Stochastic Differential Equation Set]{\huge Statistics of Solutions to A Stochastic Differential Equation Set}
 \author[Chuan Lu]{\Large{Chuan Lu}}
 \institute[ICS]{\large{Information and Computing Science}\linebreak \linebreak
 \pgfuseimage{logo}
@@ -78,6 +85,8 @@
 \newcommand{\E}{\text{E}}
 \newcommand{\Cov}{\text{Cov}}
 \newcommand{\Var}{\text{Var}}
+\renewcommand{\v}{\mathbf{v}}
+\newcommand{\s}{\mathbf{s}}
 % \frame{\tableofcontents[all]}
 
 \section{Introduction}
@@ -127,17 +136,151 @@ $dt\cdot dt = dt\cdot dB_t = dB_t\cdot dt = 0, dB_t\cdot dB_t = dt.$
 \end{block}
 }
 
+\frame{
+\begin{block}{Linear property of It\^o integration}
+$$
+\begin{aligned}
+& (1)\quad \int_S^T fdB_t = \int_S^U fdB_t + \int_U^T fdB_t, \quad \text{a.e.}\\
+& (2)\quad \int_S^T (cf+g)dB_t = c\int_S^T fdB_t + \int_S^T gdB_t, \quad \text{a.e.}\\
+& (3)\quad \E\left[\int_S^T fdB_t\right] = 0.
+\end{aligned}
+$$
+\end{block}
+}
+
 \section{Statistics of $b(t)$ and $\gamma(t)$}
 \frame{\frametitle{Mean}
-With It\^o formula, it is easy to know
-\begin{block}
-\[
+\quad With property of It\^o integration (3), it is easy to know
+\begin{block}{}
+$$
 \begin{aligned}
 &\E(b(t)) = \hat{b} + (\E[b_0] - \hat{b})e^{\lambda_b(t-t_0)} \\
 &\E(\gamma(t)) = \hat{\gamma} + (\E[\gamma_0] - \hat{\gamma})e^{-d_{\gamma}(t-t_0)}
 \end{aligned}
+$$
+\end{block}
+}
+
+\frame{\frametitle{Variance}
+\quad According to definition, 
+\[
+\begin{aligned}
+\text{Var}&(b(t)) = \E\left[(b(t)-\E[b(t)])(b(t)-\E[b(t)])^*\right] \\
+&= e^{-2\gamma_b(t-t_0)}\Var(b_0) + \E\left[\sigma_b^2\int_{t_0}^t e^{\lambda_b(t-s)}dW_b(s)\left(\int_{t_0}^t e^{\lambda_b(t-s)}dW_b(s)\right)^*\right] \\
+&= e^{-2\gamma_b(t-t_0)}\Var(b_0) + \sigma_b^2\E\left[\int_{t_0}^t e^{-2\gamma_b(t-s)}ds\right]
+\end{aligned}
+\]
+\quad The last step takes advantage of It\^o isometry.
+\begin{block}{}
+\[
+\begin{aligned}
+&\Var(b(t)) = e^{-2\gamma_b(t-t_0)}\Var(b_0) + \frac{\sigma_b^2}{2\gamma_b}(1-e^{-2\gamma_b(t-t_0)}) \\
+&\Var(\gamma(t)) = e^{-2d_\gamma(t-t_0)}\Var(\gamma_0) + \frac{\sigma_\gamma^2}{2d_\gamma}(1-e^{-2d_\gamma(t-t_0)})
+\end{aligned}
 \]
 \end{block}
+}
+
+\frame{\frametitle{Covariance}
+\[
+\begin{aligned}
+\Cov&(b(t), b(t)^*) = \E\left[(b(t) - \E[b(t)])(b(t)^* - \E[b(t)^*])\right] \\
+&= \E\left[(b_0 - \E[b_0])(b_0^* - \E[b_0^*])e^{2\lambda_b (t-t_0)}\right] + \sigma_b\E\left[(b_0 - \E[b_0])\int_{t_0}^{t}e^{\lambda_b(t-s)}dW_b(s)\right]\\
+&+ \sigma_b\E\left[(b_0^*-\E[b_0^*])e^{\lambda_b(t-t_0)}\int_{t_0}^{t}e^{\lambda_b(t-s)}dW_b(s)\right] + \sigma_b^2\E\left[(\int_{t_0}^{t}e^{\lambda_b(t-s)}dW_b(s))^2\right]
+\end{aligned}
+\]
+\quad With property of It\^o integration (3), the second and third term are both 0; with It\^o isometry we know the last term is also 0.
+\begin{block}{}
+\[
+\begin{aligned}
+&\Cov(b(t), b(t)^*) = \E[(b_0-\E[b_0])(b_0^*-\E[b_0^*])]e^{2\lambda_b(t-t_0)} = \Cov(b_0, b_0^*)e^{2\lambda_b(t-t_0)} \\
+&\Cov(b(t), \gamma(t)) = \E[(b(t) - \E[b(t)])(\gamma(t)-\E[\gamma(t)])]= \Cov(b_0, \gamma_0)e^{(\lambda_b-d_\gamma)(t-t_0)}
+\end{aligned}
+\]
+\end{block}
+}
+
+\section{Statistics of $u(t)$}
+\frame{\frametitle{Mean}
+\quad Using the same properties, it's obvious to have
+\[
+\begin{aligned}
+\E[u(t)] &= e^{\hat{\lambda}(t-t_0)}\E\left[e^{-J_0(t_0, t)}u_0\right] + \int_{t_0}^t e^{\hat{\lambda}(t-s)}\E\left[b(s)e^{-J(s, t)}\right]ds  \\
+&+ \sigma\int_{t_0}^{t} e^{\hat{\lambda}(t-s)}f(s)\E\left[e^{-J(s, t)}\right]ds.
+\end{aligned}
+\]
+\quad It is necessary to compute expectations of terms like
+$
+\E[ze^{bx}],
+$ $
+z$ is a complex-valued Gaussian random variable and x is a real-valued Gaussian variable. We propose two lemmas here.
+}
+
+\frame{\frametitle{Lemma 1}
+\begin{lemma}\label{lemma 1}
+$$\E\left[ze^{ibx}\right] = (\E[z]+ib\Cov(z, x))e^{ib\E[x]-\frac{1}{2}b^2\Var(x)}$$
+with $z$ being a complex-valued Gaussian, and $x$ a real-valued Gaussian.
+\end{lemma}
+
+\begin{Corollary} \label{corollary 1}
+Under the condition of Lemma \ref{lemma 1},
+$$\E\left[ze^{bx}\right] = (\E[z]+b\Cov(z, x))e^{b\E[x]+\frac{1}{2}b^2\Var(x)}.$$
+\end{Corollary}
+Proof of lemma \ref{lemma 1} takes advantage of the characteristic function of multivariable Gaussian distribution.
+}
+
+\frame{\frametitle{Proof}
+
+\quad Let $z = y+iw, \quad y, w \in \mathbb{R}.$ Denote $\v = (x, y, w)$, then $\v$ satisfies the multivariable Gaussian distribution, with its characteristic function
+\[
+\phi_\v(\s) = \exp(i\s^\top\E[\v]-\frac{1}{2}\s^\top\Sigma\s).
+\]
+\quad Let $g(\v)$ being the PDF of $\v$, then one knows from that char. func. being Fourier transform of PDF,
+\[
+\phi_\v(\s) = \frac{1}{(2\pi)^3}\int e^{i\s^\top\v}g(\v)d\v
+\]
+\quad According to the differential property of Fourier transform, 
+\[
+\frac{\partial \phi_\mathbf{v}(\mathbf{s})}{\partial s_2} = \frac{1}{(2\pi)^3}\int iy_0e^{i\mathbf{s}^\top\mathbf{v}}g(\mathbf{v})d\mathbf{v} = i\E\left[y_0e^{i\mathbf{s}^\top\mathbf{v}}\right].
+\]
+\quad Let $\v = (b, 0, 0)^\top$, 
+\[
+\begin{aligned}
+&\left.\E[y_0e^{ibx_0}] = -i\frac{\partial \phi_\mathbf{v}(s)}{\partial s_2}\right|_{\mathbf{s} = (b, 0, 0)^\top} \\
+&\left.\E[y_0e^{ibx_0}] = -i\frac{\partial \phi_\mathbf{v}(s)}{\partial s_2}\right|_{\mathbf{s} = (b, 0, 0)^\top}
+\end{aligned}
+\]
+}
+
+\frame{\frametitle{Proof}
+\quad From PDF of multivariable Gaussian distribution, one knows
+\[
+\begin{aligned}
+&\frac{\partial \phi_\mathbf{v}(\mathbf{s})}{\partial s_2} = (i\E[y_0]-\Var(y_0)s_2-\Cov(x_0, y_0)s_1-\Cov(y_0, w_0)s_3)\phi_{\mathbf{v}}(s) \\
+&\frac{\partial \phi_\mathbf{v}(\mathbf{s})}{\partial s_3} = (i\E[w_0]-\Var(w_0)s_3-\Cov(x_0, w_0)s_1-\Cov(y_0, w_0)s_2)\phi_{\mathbf{v}}(s)
+\end{aligned}
+\]
+\quad Compute the partial derivatives at $\s = (b, 0, 0)^\top$,
+\[
+\begin{aligned}
+&\E\left[y_0e^{ibx_0}\right] = (\E[y_0]+i\Cov(x_0, y_0)b)\exp(ib\E[x_0] - \frac{1}{2}\Var(x_0)b^2) \\
+&\E\left[w_0e^{ibx_0}\right] = (\E[w_0]+i\Cov(x_0, w_0)b)\exp(ib\E[x_0] - \frac{1}{2}\Var(x_0)b^2)
+\end{aligned}
+\]
+\quad Then $$\E\left[ze^{ibx}\right] = (\E[z]+ib\Cov(z, x))e^{ib\E[x]-\frac{1}{2}b^2\Var(x)}.$$ \qed
+}
+
+\frame{\frametitle{Lemma 2}
+\begin{lemma} \label{lemma 2}
+\[
+\begin{aligned}
+\E\left[zwe^{bx}\right] &= \left[\E[z]\E[w]+\Cov(z, w^*)+b(\E[z]\Cov(w, x))+\E[w]\Cov(z, x)+ \right. \\
+& \left.b^2\Cov(z, x)\Cov(w, x)\right]e^{b\E[x]+\frac{b^2}{2}\Var(x)}. \\
+\end{aligned}
+\]
+with $z, w$ being complex-valued Gaussian, and $x$ real-valued Gaussian.
+\end{lemma}
+The 
 }
 
 \end{document}
