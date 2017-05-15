@@ -1,8 +1,8 @@
 import numpy as np
 import scipy as sp
 from scipy.integrate import quad, dblquad
-# from simulation import *
-from simulation_real import *
+from simulation import *
+# from simulation_real import *
 
 ######### Configurations #########
 ######## Const Init Values #######
@@ -21,16 +21,16 @@ E_b0 = 0
 E_b0_star = 0
 E_gamma0 = 0 
 ##################################
-# b_hat = b_hat_re + 1j*b_hat_im
-# b_hat_star = b_hat_re - 1j*b_hat_im
-# lambda_hat = -gamma_hat + 1j*omega
-# lambda_b = -gamma_b + 1j*omega_b
-# lambda_b_star = -gamma_b - 1j*omega_b
+b_hat = b_hat_re + 1j*b_hat_im
+b_hat_star = b_hat_re - 1j*b_hat_im
+lambda_hat = -gamma_hat + 1j*omega
+lambda_b = -gamma_b + 1j*omega_b
+lambda_b_star = -gamma_b - 1j*omega_b
 ##################################
-b_hat_star = b_hat
-lambda_hat = -gamma_hat
-lambda_b = -gamma_b
-lambda_b_star = -gamma_b
+# b_hat_star = b_hat
+# lambda_hat = -gamma_hat
+# lambda_b = -gamma_b
+# lambda_b_star = -gamma_b
 
 def brownian(inteval, step):
 	time = np.arange(inteval[0], inteval[1], step)
@@ -112,7 +112,7 @@ def Cov_u_gamma(t):
 	pVar_J = lambda s, t: -1/(d_gamma**2)*(sigma_gamma**2*(np.exp(-d_gamma*(t-s))-1)) + (sigma_gamma**2-2*d_gamma*Var_gamma0)*(np.exp(-d_gamma*(t+s))-np.exp(-2*d_gamma*t))
 	A = np.exp(lambda_hat*t)*(0+(E_u0-Cov_u0_Jst(0, t))*(gamma_hat-E_gamma(t)+1/2*pVar_J(0, t)))*np.exp(-E_J(0, t)+1/2*Var_J(0, t))
 	B = complex_quad(lambda s: np.exp(lambda_hat*(t-s))*(0+(E_b(s)+f(s)-Cov_br_Jst(t, s, s))*(gamma_hat-E_gamma(t)+1/2*pVar_J(s, t)))*np.exp(-E_J(s, t)+1/2*Var_J(s, t)), 0, t)
-	return -A-B+E_u(t)*(gamma_hat*E_gamma(t))
+	return -A-B+E_u(t)*(gamma_hat-E_gamma(t))
 
 def Cov_u_b(t):
 	A = E_u(t)*conj(b_hat)*(1-np.exp(conj(lambda_b)*t)) + np.exp((lambda_hat+conj(lambda_b))*t)*(Cov_u0_b0 + E_u0*conj(E_b0)-conj(E_b0)*Cov_u0_Jst(0, t)-E_u0*conj(Cov_b0_Jst(0, t)) + Cov_u0_Jst(0, t)*conj(Cov_b0_Jst(0, t)))*np.exp(-E_J(0, t)+1/2*Var_J(0, t))

@@ -915,10 +915,10 @@ W(\tau_j) - W(\tau_{j-1}) = \sum_{k = jR-R+1}^{jR} dW_k,
 $$
 在上式中$R$为E-M算法的步长, 且
 $$
-dW = \sqrt{\Delta t}*randn().
+dW = \sqrt{\Delta t}*\tt{randn()}.
 $$
 由于模拟$u(t)$和$b(t)$时, 我们需要对其实部和虚部分别进行模拟. 为保证三个微分方程中白噪声的强度一致, 需要令
-$$W_{Re(u)}(t) = \frac{1}{\sqrt{2}}W(t),$$
+$$W_{\text{Re}(u)}(t) = \frac{1}{\sqrt{2}}W(t),$$
 其余项和初值也做相同的处理. \\
 
 对$R=1$进行100,000次模拟\cite{robert2004monte}, $u(t)$, $b(t)$的实部和虚部,$\gamma(t)$的期望, $u(t)$, $b(t)$和$\gamma(t)$的方差的模拟结果如下图\cite{mckinney2012python}\cite{hunter2007matplotlib}, 其中蓝色的曲线为模拟产生的值, 绿色的曲线是理论计算得到的值. \\
@@ -1022,7 +1022,7 @@ $$W_{Re(u)}(t) = \frac{1}{\sqrt{2}}W(t),$$
 \subfloat[$\text{Im}(\Cov(u, \gamma))$]{
   \includegraphics[width = .2\textwidth]{NumericalSimulation/res/CovugammaIm.png}
 }\\
-\subfloat[$\text{Re}(\Cov(u, b)$]{
+\subfloat[$\text{Re}(\Cov(u, b))$]{
   \includegraphics[width = .2\textwidth]{NumericalSimulation/res/CovubRe.png}
 }\hfill
 \subfloat[$\text{Im}(\Cov(u, b))$]{

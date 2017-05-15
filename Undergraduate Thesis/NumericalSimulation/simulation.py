@@ -7,8 +7,8 @@ from simulation2 import kernel
 ############# Parameters ###############
 d = 1.5
 sigma = 0.1549
-# omega = 1.78
-omega = 0
+omega = 1.78
+# omega = 0
 gamma_b = 0.1*d
 sigma_gamma = 5*sigma
 sigma_b = 5*sigma
@@ -102,7 +102,7 @@ def cov_u_u_star(u):
 	return np.mean(u*u) - (np.mean(u))**2
 
 def cov_u_gamma(u, gamma):
-	return np.mean(u*(gamma-gamma_hat))+np.mean(u)*(gamma_hat-np.mean(gamma))
+	return np.mean(u*gamma) - np.mean(u)*np.mean(gamma)
 
 def cov_u_b(u, b):
 	return np.mean(u*conj(b))-np.mean(u)*conj(np.mean(b))

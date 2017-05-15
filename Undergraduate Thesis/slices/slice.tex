@@ -54,7 +54,7 @@
   \insertframenumber\,/\,\inserttotalframenumber}
 
 \setbeamercovered{transparent}
-\usetheme{default}
+\usetheme{boxes}
 \pgfdeclareimage[height=.8cm]{logo}{fd1}
 
 \title[Statistics of Solutions to A Stochastic Differential Equation Set]{Statistics of Solutions to A Stochastic Differential Equation Set}
@@ -70,21 +70,60 @@
 
 \begin{document}
 \frame{\titlepage}
+\newcommand{\E}{\text{E}}
+\newcommand{\Cov}{\text{Cov}}
+\newcommand{\Var}{\text{Var}}
 % \frame{\tableofcontents[all]}
 
 \section{Introduction}
 \frame{\frametitle{Introduction}
-\begin{block}{Original SDEs}
-\begin{equation}
+\begin{block}{The SDEs}
+\[
 \left\{
-\begin{split}
+\begin{aligned}
 & \frac{du(t)}{dt} = (-\gamma(t)+i\omega)u(t)+b(t)+f(t)+\sigma W(t), \\
 & \frac{db(t)}{dt} = (-\gamma_b+i\omega_b)(b(t)-\hat{b})+\sigma_b W_b(t), \\
 & \frac{d\gamma(t)}{dt} = -d_\gamma(\gamma(t)-\hat{\gamma})+\sigma_\gamma W_\gamma(t)
-\end{split}
+\end{aligned}
 \right.
-\end{equation}
+\]
 \end{block}
-In which the initial values are all complex random variables, with their real and imaginary parts both obey the normalized Gaussian distribution, i.i.d. \\
+The initial values are complex random variables, with their first-order and second-order statistics known. }
+
+\frame{\frametitle{Introduction}
+\begin{block}{Solution}
+With knowledge of ODEs, the solution of the SDE set is
+\[
+\left\{
+\begin{aligned}
+& b(t) = \hat{b}+(b_0-\hat{b})e^{\lambda_b(t-t_0)}+\sigma_b\int_{t_0}^t e^{\lambda_b(t-s)}dW_b(s) \\
+& \gamma(t) = \hat{\gamma}+(\gamma_0-\hat{\gamma})e^{-d_{\gamma}(t-t_0)}+\sigma_{\gamma}\int_{t_0}^t e^{-d_{\gamma}(t-s)}dW_{\gamma}(s) \\
+& u(t) = e^{-J(t_0, t)+\hat{\lambda}(t-t_0)}u_0 + \int_{t_0}^t (b(s)+f(s))e^{-J(s, t)+\hat{\lambda}(s-t_0)}ds \\
+&\quad\quad + \sigma\int_{t_0}^{t}e^{-J(s, t)+\hat{\lambda}(s-t_0)}dW(s)
+\end{aligned}
+\right.
+\]
+with $\lambda_b = -\gamma_b+i\omega_b$, $\hat{\lambda} = -\hat{\gamma}+i\omega$, $J(s, t) = \int_s^t (\gamma(s')-\hat{\gamma})ds'$.
+\end{block}
+}
+
+\frame{\frametitle{It\^o Isometry and It\^o Formula}
+\begin{block}{It\^o Isometry}
+$\forall f\in\mathcal{V}(S, T)$, $B_t$ is a standard Brownian motion,
+$$\E\left[\left(\int_S^T f(t, \omega)dB_t\right)^2\right] = \E\left[\int_S^T f^2(t, \omega)dt\right].$$
+\end{block}	
+\begin{block}{It\^o Formula}
+Assume that $X_t$ is a It\^{o} process satisfying
+$dX_t = udt+vdB_t,$
+$g(t, x) \in C^2\left([0, \infty) \times \mathbb{R}\right)$, then $Y_t = g(t, X_t)$ is also a It\^{o} process satisfying
+$$dY_t = \frac{\partial g}{\partial t}(t, X_t)dt + \frac{\partial g}{\partial x}(t, X_t)dX_t + \frac{1}{2}\frac{\partial^2 g}{\partial x^2}(t, X_t)\cdot(dX_t)^2,$$
+with
+$dt\cdot dt = dt\cdot dB_t = dB_t\cdot dt = 0, dB_t\cdot dB_t = dt.$
+\end{block}
+}
+
+\section{Statistics of $b(t)$ and $\gamma(t)$}
+\frame{\frametitle{Mean}
+With It\^o formula, it is easy to 
 }
 \end{document}
