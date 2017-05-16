@@ -38,6 +38,7 @@
 \usepackage{beamerthemesplit}
 \usepackage{pgf,pgfarrows,pgfnodes,pgfautomata,pgfheaps,pgfshade}
 \usepackage{graphicx}
+\usepackage{subfloat}
 \usepackage{chemarrow}
 
 \usepackage{epsfig, subfigure}
@@ -90,6 +91,7 @@
 % \frame{\tableofcontents[all]}
 
 \section{Introduction}
+\subsection{SDE}
 \frame{\frametitle{Introduction}
 \begin{block}{The SDEs}
 \[
@@ -121,6 +123,7 @@ with $\lambda_b = -\gamma_b+i\omega_b$, $\hat{\lambda} = -\hat{\gamma}+i\omega$,
 \end{block}
 }
 
+\subsection{It\^o Integration}
 \frame{\frametitle{It\^o Isometry and It\^o Formula}
 \begin{block}{It\^o Isometry}
 $\forall f\in\mathcal{V}(S, T)$, $B_t$ is a standard Brownian motion,
@@ -149,6 +152,7 @@ $$
 }
 
 \section{Statistics of $b(t)$ and $\gamma(t)$}
+\subsection{Mean}
 \frame{\frametitle{Mean}
 \quad With property of It\^o integration (3), it is easy to know
 \begin{block}{}
@@ -161,6 +165,7 @@ $$
 \end{block}
 }
 
+\subsection{Variance}
 \frame{\frametitle{Variance}
 \quad According to definition, 
 \[
@@ -181,6 +186,7 @@ $$
 \end{block}
 }
 
+\subsection{Covariance}
 \frame{\frametitle{Covariance}
 \[
 \begin{aligned}
@@ -201,6 +207,7 @@ $$
 }
 
 \section{Statistics of $u(t)$}
+\subsection{Mean}
 \frame{\frametitle{Mean}
 \quad Using the same properties, it's obvious to have
 \[
@@ -280,7 +287,184 @@ Proof of lemma \ref{lemma 1} takes advantage of the characteristic function of m
 \]
 with $z, w$ being complex-valued Gaussian, and $x$ real-valued Gaussian.
 \end{lemma}
-The 
+The proof of this lemma is the same as Lemma \ref{lemma 1}.
 }
 
+\frame{\frametitle{Mean}
+\quad We now make use of Lemma \ref{lemma 1} to obtain the mean of $u(t)$.
+\begin{block}{}
+\[
+\begin{aligned}
+&\E[u(t)] = e^{\hat{\lambda}(t-t_0)}(\E[u_0]-\Cov(u_0, J(t_0, t)))e^{-\E[J(t_0, t)]+\frac{1}{2}\Var(J(t_0, t))} \\
+&\quad\quad+ \int_{t_0}^t e^{\hat{\lambda}(t-s)}(\hat{b}+e^{\lambda_b(s-t_0)}(\E[b_0]-\hat{b}-\Cov(b_0, J(s, t))))e^{-\E[J(s, t)]+\frac{1}{2}\Var(J(s, t))}ds \\
+&\quad\quad+ \int_{t_0}^t e^{\hat{\lambda}(t-s)}f(s)e^{-\E[J(s, t)]+\frac{1}{2}\Var(J(s, t))}ds
+\end{aligned}
+\]
+\end{block}
+The terms $\Cov(u_0, J(s, t))$, $\Cov(b_0, J(s, t))$, $\E[J(s, t)]$ and $\Var(J(s, t))$ can be found using It\^o isometry.
+}
+
+\subsection{Variance}
+\frame{\frametitle{Variance}
+\quad Denote $u(t) = A + B + C$, 
+\[\left\{
+\begin{split}
+&A = e^{-J(t_0, t)+\hat{\lambda}(t-t_0)}u_0, \\
+&B = \int_{t_0}^t (b(s)+f(s))e^{-J(s, t)+\hat{\lambda}(t-s)}ds, \\
+&C = \sigma\int_{t_0}^t e^{-J(s, t)+\hat{\lambda}(t-s)}dW(s).
+\end{split}
+\right.
+\]
+\quad By definition we find $\Var(u(t)) = \E\left[|u(t)|^2\right] - \left|\E[u(t)]\right|^2$, with
+\[
+\E\left[|u(t)|^2\right] = \E\left[|A|^2\right]+ \E\left[|B|^2\right] + \E\left[|C|^2\right] + 2\text{Re}\{\E[A^*B]\}.
+\]
+\quad We can obtain $\E\left[|A|^2\right]$ by Lemma 2, and $\E\left[|B|^2\right]$ by It\^o isometry and noticing that
+\[
+\Cov(J(s, t), J(r, t)) = \Var(J(s, t)) + \Cov(J(s, t), J(r, s)).
+\]
+\quad $\E\left[|C|^2\right]$ and $\text{Re}\{\E[A^*B]\}$ can also be computed by It\^o isometry and property of It\^o integration.
+}
+
+\subsection{Covariance}
+\frame{\frametitle{Covariance}
+\quad By definition, 
+\[
+\begin{aligned}
+&\Cov(u(t), u^*(t)) = \E\left[u(t)^2\right]-\E[u(t)]^2 \\
+&\Cov(u(t), \gamma(t)) = \E[u(t)(\gamma(t)-\hat\gamma)] + \E[u(t)](\hat\gamma-\E[\gamma(t)]) \\
+&\Cov(u(t), b(t)) = \E[u(t)b^*(t)] - \E[u(t)]\E[b(t)]^* \\
+&\Cov(u(t), b^*(t)) = \E[u(t)b(t)] - \E[u(t)]\E[b(t)].
+\end{aligned}
+\]
+\quad Each term can be obtained by Lemma 3 and It\^o isometry.
+}
+
+\section{Numerical Simulation}
+\frame{\frametitle{Parameters}
+\quad External forcing $f(t) = \frac{3}{2}e^{0.1it}$, and parameters of the equation set are given
+\[
+\left\{
+\begin{aligned}
+&d = 1.5,  &d_\gamma = 0.01d\\
+&\sigma = 0.1549,& \omega = 1.78 \\
+&\sigma_\gamma = 5\sigma, &\gamma_b = 0.1d \\
+&\sigma_b = 5\sigma, &\omega_b = \omega \\
+&\hat{b} = 0, &\hat\gamma = 0
+\end{aligned}
+\right.
+\]
+\quad We assume the initial values satisfying
+\[
+\left\{
+\begin{aligned}
+&\text{Re}(u_0), \text{Im}(u_0) \sim \mathcal{N}(0, \frac{1}{\sqrt{2}}), \quad \text{i.i.d.} \\
+&\text{Re}(b_0), \text{Im}(b_0) \sim \mathcal{N}(0, \frac{1}{\sqrt{2}}), \quad \text{i.i.d.} \\
+&\gamma_0 \sim \mathcal{N}(0, 1) \quad \text{i.i.d.}
+\end{aligned}
+\right.
+\]
+}
+
+\frame{\frametitle{Parameters}
+\quad The statistics between initial values are
+\[
+\left\{
+\begin{aligned}
+&\Cov(u_0, u_0^*) = 0 \\
+&\Cov(u_0, \gamma_0) = 0 \\
+&\Cov(u_0, b_0) = 0 \\
+&\Cov(u_0, b_0^*) = 0
+\end{aligned}
+\right.
+\]
+}
+
+\frame{\frametitle{Euler-Maruyama Scheme}
+\quad It\^o integration can be simulated by E-M scheme:
+\[
+X_j = X_{j-1}+f(X_{j-1})\Delta t+g(X_{t-1})(W(\tau_j) - W(\tau_{j-1})),
+\]
+\quad with 
+\[
+W(\tau_j) - W(\tau_{j-1}) = \sum_{k = jR-R+1}^{jR} dW_k,
+\]
+\quad and $R$ being the step length of E-M scheme,
+\[
+dW = \sqrt{\Delta t}*\tt{randn()}.
+\]
+}
+
+\frame{\frametitle{Simulation}
+\quad Simulate 100,000 times with $R = 1$, the results are as follows:
+\begin{figure}[!ht]
+\centering
+\subfigure[\text{E}(Re(u))]{
+  \includegraphics[width = .2\textwidth]{../NumericalSimulation/res/EuRe.png}
+  }\hfill
+\subfigure[E(Im(u))]{
+  \includegraphics[width = .2\textwidth]{../NumericalSimulation/res/EuIm.png}
+  }\hfill
+\subfigure[E(Re(b))]{
+  \includegraphics[width = .2\textwidth]{../NumericalSimulation/res/EbRe.png}
+  }\hfill
+\subfigure[E(Im(b))]{
+  \includegraphics[width = .2\textwidth]{../NumericalSimulation/res/EbIm.png}
+  }\\
+\subfigure[E($\gamma$)]{
+  \includegraphics[width = .2\textwidth]{../NumericalSimulation/res/Egamma.png}
+  }\hfill
+\subfigure[Var(u)]{
+  \includegraphics[width = .2\textwidth]{../NumericalSimulation/res/Varu.png}
+  }\hfill
+\subfigure[Var(b)]{
+  \includegraphics[width = .2\textwidth]{../NumericalSimulation/res/Varb.png}
+  }\hfill
+\subfigure[Var($\gamma$)]{
+  \includegraphics[width = .2\textwidth]{../NumericalSimulation/res/Vargamma.png}
+  }
+\caption{Simulation of Expectations and Variances}
+\label{Simulation of Expectations and Variances}
+\end{figure}
+}
+
+\frame{\frametitle{Simulation}
+\begin{figure}[!ht]
+\centering
+\subfigure[$\text{Re}(\Cov(u, u^*))$]{
+  \includegraphics[width = .2\textwidth]{../NumericalSimulation/res/CovuustarRe.png}
+}\hfill
+\subfigure[$\text{Im}(\Cov(u, u^*))$]{
+  \includegraphics[width = .2\textwidth]{../NumericalSimulation/res/CovuustarIm.png}
+}\hfill
+\subfigure[$\text{Re}(\Cov(u, \gamma))$]{
+  \includegraphics[width = .2\textwidth]{../NumericalSimulation/res/CovugammaRe.png}
+}\hfill
+\subfigure[$\text{Im}(\Cov(u, \gamma))$]{
+  \includegraphics[width = .2\textwidth]{../NumericalSimulation/res/CovugammaIm.png}
+}\\
+\subfigure[$\text{Re}(\Cov(u, b))$]{
+  \includegraphics[width = .2\textwidth]{../NumericalSimulation/res/CovubRe.png}
+}\hfill
+\subfigure[$\text{Im}(\Cov(u, b))$]{
+  \includegraphics[width = .2\textwidth]{../NumericalSimulation/res/CovubIm.png}
+}\hfill
+\subfigure[$\text{Re}(\Cov(u, b^*))$]{
+  \includegraphics[width = .2\textwidth]{../NumericalSimulation/res/CovubstarRe.png}
+}\hfill
+\subfigure[$\text{Im}(\Cov(u, b^*))$]{
+  \includegraphics[width = .2\textwidth]{../NumericalSimulation/res/CovubstarIm.png}
+}
+\caption{Simulation of Covariances}
+\label{Simulation of Covariances}
+\end{figure}
+}
+
+\frame{\frametitle{Discussion}
+From the simulation results we find that the simulation of expectations and variances fit the theoretical results properly; but the simulation of covariances have an error of $O(10^{-3})$. It could be caused by the condition number of multiplication of complex numbers.
+}
+
+\frame{
+	\quad\quad\centering{ \Huge Thank you!}
+}
 \end{document}
