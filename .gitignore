@@ -11,4 +11,5 @@
 *.sp
 *.res
 *.pyc
-
+*.snm
+*.nav
