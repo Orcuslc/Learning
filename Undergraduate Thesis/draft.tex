@@ -851,13 +851,13 @@ $
 \end{split}
 \]
 
-\newcommand{\Skew}{\text{Skew}}
-\section{三阶矩}
-\subsection{偏度}
-由定义,
-\[
-\Skew
-\]
+% \newcommand{\Skew}{\text{Skew}}
+% \section{三阶矩}
+% \subsection{偏度}
+% 由定义,
+% \[
+% \Skew
+% \]
 
 \section{数值模拟和讨论}
 % 考虑以下的这样一个简单例子. 在(\ref{E0})中, 我们不妨假设外部驱动力$f(t)$为一个周期驱动力,即
@@ -1067,8 +1067,9 @@ $$W_{\text{Re}(u)}(t) = \frac{1}{\sqrt{2}}W(t),$$
 \caption{Simulation of Covariances}
 \label{Simulation of Covariances}
 \end{figure}
+在模拟结果中我们可以看到, 对期望和方差的模拟结果和理论结果均比较符合. 而两者的差别在于方程组的初值为一个服从标准正态分布的随机变量, 其期望和方差的模拟值和理论值有一些偏差, 而这样的偏差随着时间$t$的增加而保持. 
+而在协方差的模拟结果中, 大部分的项有$O(10^{-4})$的误差, 这个误差应该是由复值协方差的条件数为二次方所引起的.
 
-在模拟结果中我们可以看到, 对期望和方差的模拟结果和理论结果均比较符合. 而两者的差别在于方程组的初值为一个服从标准正态分布的随机变量, 其期望和方差的模拟值和理论值有一些偏差, 而这样的偏差随着时间$t$的增加而保持. \\
 % \begin{figure}[!ht]
 % \centering
 % \includegraphics[width = 12cm]{NumericalSimulation/res/CovuustarRe.png}
