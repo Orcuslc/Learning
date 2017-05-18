@@ -27,6 +27,17 @@
 % \documentclass[fleqn]{article}
 \usepackage{subfig}
 
+
+% \usepackage{fontspec}
+% \setmainfont{Times New Roman}
+% \setmainfont{Centaur}
+% % \setmainfont{serif}
+% \setsansfont{Times New Roman}
+% \setmonofont{Times New Roman}
+
+
+% \usepackage{times}\usepackage[mtbold,mtpluscal,mtplusscr]{mathtime}
+
 % default paper settings, change it according to your word
 \usepackage[a4paper,hmargin={2.54cm,2.54cm},vmargin={3.17cm,3.17cm}]{geometry}
 
@@ -79,9 +90,19 @@
 
 \date{}
 
+\usepackage{fontspec}
+% \setmainfont{Times New Roman}
+\setmainfont{Perpetua}
+% \setmainfont{Segoe Script}
+\setsansfont{Perpetua}
+\setmonofont{Perpetua}
+% \setsansfont{Segoe Script}
+% \setmonofont{Segoe UI }
+
 %%%%%%%%%%%%%%%%%%%导言区设置完毕
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{document}
+
 %Styles for chapters/section
 %若要将章标题左对齐, 用下面这个语句替换相应的设置
 %\CTEXsetup[nameformat={\raggedright\zihao{3}\bfseries},%
@@ -112,6 +133,7 @@
 \thispagestyle{empty}\setcounter{page}{1}
 %%%  论文的页码从正文开始计数, 摘要页不显示页码
 % 撰写论文的摘要
+
 
 \newcommand{\Var}{\text{Var}}
 \newcommand{\E}{\text{E}}
