@@ -95,21 +95,21 @@ def stat(data):
 	Cov_u_u_star = np.asarray([cov_u_u_star(data[0][:, i], data[1][:, i]) for i in range(col)], dtype=np.complex64)
 	Cov_u_gamma = np.asarray([cov_u_gamma(data[0][:, i]+1.j*data[1][:, i], data[4][:, i]) for i in range(col)], dtype=np.complex64)
 	Cov_u_b = np.asarray([cov_u_b(data[0][:, i]+1.j*data[1][:, i], data[2][:, i]+1.j*data[3][:, i]) for i in range(col)], dtype=np.complex64)
-	Cov_u_b_star = np.asarray([cov_u_b_star(data[0][:, i]+1.j*data[1][:, i], data[2][:, i]-1.j*data[3][:, i]) for i in range(col)], dtype=np.complex64)
+	Cov_u_b_star = np.asarray([cov_u_b_star(data[0][:, i]+1.j*data[1][:, i], data[2][:, i]+1.j*data[3][:, i]) for i in range(col)], dtype=np.complex64)
 	return mean, [var[0]+var[1], var[2]+var[3], var[4]], [sp.real(Cov_u_u_star), sp.imag(Cov_u_u_star), sp.real(Cov_u_gamma), sp.imag(Cov_u_gamma), sp.real(Cov_u_b), sp.imag(Cov_u_b), sp.real(Cov_u_b_star), sp.imag(Cov_u_b_star)]
 
 def cov_u_u_star(x, y):
-	return np.var(x)-np.var(y)+2j*(np.cov(x, y)[0, 0])
-	# return np.mean(u**2) - (np.mean(u))**2
+	# return np.var(x)-np.var(y)+2j*(np.cov(x, y)[0, 0])
+	return np.mean((x+1j*y)**2, dtype=np.complex64) - (np.mean(x+1j*y, dtype=np.complex64))**2
 
 def cov_u_gamma(u, gamma):
-	return np.mean(u*gamma) - np.mean(u)*np.mean(gamma)
+	return np.mean(u*gamma, dtype=np.complex64) - np.mean(u, dtype=np.complex64)*np.mean(gamma, dtype=np.complex64)
 
 def cov_u_b(u, b):
-	return np.mean(u*conj(b))-np.mean(u)*conj(np.mean(b))
+	return np.mean(u*conj(b), dtype=np.complex64)-np.mean(u, dtype=np.complex64)*conj(np.mean(b, dtype=np.complex64))
 
 def cov_u_b_star(u, b):
-	return np.mean(u*b)-np.mean(u)*np.mean(b)
+	return np.mean(u*b, dtype=np.complex64)-np.mean(u, dtype=np.complex64)*np.mean(b, dtype=np.complex64)
 
 
 def cov(x, y):
