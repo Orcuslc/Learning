@@ -174,7 +174,7 @@
 \right.
 \end{equation}
 且$u_0$, $b_0$, $\gamma_0$均为独立的高斯随机变量, 其统计量
-$\E[u_0]$, $\E[\gamma_0]$, $\E[b_0]$, $\Var(u_0)$, $\Var(\gamma_0)$, $\Var(b_0)$, $\Cov(u_0, u_0^*)$, $\Cov(u_0, \gamma_0)$, $\Cov(u_0, b_0)$, $\Cov(u_0, b_0^*)$均假设为已知.
+$\E[u_0]$, ~$\E[\gamma_0]$, ~$\E[b_0]$, ~$\Var(u_0)$, ~$\Var(\gamma_0)$, ~$\Var(b_0)$, ~$\Cov(u_0, u_0^*)$, ~$\Cov(u_0, \gamma_0)$, ~$\Cov(u_0, b_0)$, ~$\Cov(u_0, b_0^*)$均假设为已知.
 
 (\ref{E0})的第二和第三项均为线性方程, 由求解线性常微分方程组的相关知识\cite{fulinjin1984ordinary}可知其通解有以下的形式:
 \begin{equation} \label{Sb}
@@ -201,12 +201,12 @@ u(t) &= e^{-J(t_0, t)+\hat{\lambda}(t-t_0)}u_0 + \int_{t_0}^t (b(s)+f(s))e^{-J(s
 & + \sigma\int_{t_0}^{t}e^{-J(s, t)+\hat{\lambda}(s-t_0)}dW(s).
 \end{split}
 \end{equation}
-本文在第三和第四节中将对方程(\ref{E0})的各个变量$u, b, \gamma$, 分别计算其一阶和二阶统计量, 以及各个变量间的相关性.
+本文在第三和第四节中将对方程(\ref{E0})的各个变量$u, ~b, ~\gamma$, 分别计算其一阶和二阶统计量, 以及各个变量间的相关性.
 
 \section{一些前置引理}
 \subsection{布朗运动的性质}
 在应用中, 往往将布朗运动置于随机微分方程中, 以模拟白噪声的性质\cite{hida1980brownian}. 
-为了简化计算过程, 我们在这里引入布朗运动的一些基本性质.\cite{oksendal2003stochastic}\cite{nelson1967dynamical}
+为了简化计算过程, 我们在这里引入布朗运动的一些基本性质\cite{oksendal2003stochastic}\cite{nelson1967dynamical}.
 \begin{theorem} \label{brownian1}
 布朗运动$B_t$是一个Gaussian过程. 即对于所有的$0 \leqslant t_1 \leqslant\cdots\leqslant t_k$, 随机向量$Z = (B_{t_1}, B_{t_2}\cdots ,B_{t_k})\in \mathbb{R}^{nk}$ 服从多维正态分布. 如果设$B_{t_i}$的初值均为$x$, 则此随机向量的期望为 
 $$M = \E[Z] = (x, x, \cdots, x) \in \mathbb{R}^{nk},$$
@@ -222,17 +222,19 @@ $$C = \left(\begin{matrix}
 
 此定理的证明利用了正态分布特征函数的性质, 具体过程可见\cite{oksendal2003stochastic}的附录A. 以下是定理(\ref{brownian1})的直接而显然的推论:
 \begin{theorem}
-假设布朗运动$B_t$满足定理(\ref{brownian1})中的条件, 那么对于$\forall t\geqslant 0$, $\E[B_t] = x$, $\E\left[(B_t - x)^2\right] = nt$, $\E[(B_t - x)(B_s - x)] = n\min(s, t)$. 而且如果$t \geqslant s$, 有$\E\left[(B_t - B_s)^2\right] = n(t-s)$.
+假设布朗运动$B_t$满足定理(\ref{brownian1})中的条件, 那么当$t\geqslant 0$时,
+$$\E[B_t] = x, ~\E\left[(B_t - x)^2\right] = nt, ~\E[(B_t - x)(B_s - x)] = n\min(s, t).$$ 
+而且如果$t \geqslant s$, 有$\E\left[(B_t - B_s)^2\right] = n(t-s)$.
 \end{theorem}
 
-此外, 以下的定理也是布朗运动的一个重要性质, 其证明见\cite{oksendal2003stochastic}的(2.2.12)式.
+以下的定理也是布朗运动的一个重要性质, 其证明见\cite{oksendal2003stochastic}的(2.2.12)式.
 \begin{theorem}
-$B_t$的增量独立, 即对满足$\forall 0 \leqslant t_1 < t_2 \cdots < t_k$的$(t_1, t_2, \cdots t_k)$,
-$$B_{t_1}, B_{t_2}-B_{t_1}, \cdots, B_{t_k}-B_{t_{k-1}}$$相互独立.
+$B_t$有独立的增量, 即对满足$\forall 0 \leqslant t_1 < t_2 \cdots < t_k$的$(t_1, t_2, \cdots t_k)$,
+$$B_{t_1}, ~B_{t_2}-B_{t_1}, ~\cdots, ~B_{t_k}-B_{t_{k-1}}$$相互独立.
 \end{theorem}
 
 \subsection{It\^{o}积分及其性质}
-在求解类似(\ref{E0})的随机微分方程时, 需要针对布朗运动做积分, 为此我们引入以下的It\^{o}积分\cite{oksendal2003stochastic}\cite{lawler2006introduction}:
+在求解类似(\ref{E0})的随机微分方程时, 需要针对布朗运动做积分, 为此我们需要引入以下的It\^{o}积分\cite{oksendal2003stochastic}\cite{lawler2006introduction}:
 \begin{definition}(It\^{o}积分)	设$f\in\mathcal{V}(S, T)$. 则$f$的It\^{o}积分定义为
 $$\int_S^T f(t, \omega)dB_t(\omega) = \lim_{n\to\infty}\int_S^T\phi_n(t, \omega)dB_t(\omega),$$
 其中${\phi_n}$为基本函数序列, 且满足当$n \to \infty$时
@@ -249,19 +251,19 @@ $$\E\left[\left(\int_S^T f(t, \omega)dB_t\right)^2\right] = \E\left[\int_S^T f^2
 \begin{theorem} \label{Itoint_property}
 设$f, g \in \mathcal{V}(0, T)$, $0 \leqslant S < U < T$. 那么
 \begin{flalign*}
-& (1)\quad \int_S^T fdB_t = \int_S^U fdB_t + \int_U^T fdB_t, \quad \text{a.e.}\\
-& (2)\quad \int_S^T (cf+g)dB_t = c\int_S^T fdB_t + \int_S^T gdB_t, \quad \text{a.e.}\\
+& (1)\quad \int_S^T fdB_t = \int_S^U fdB_t + \int_U^T fdB_t, ~\text{a.e.}\\
+& (2)\quad \int_S^T (cf+g)dB_t = c\int_S^T fdB_t + \int_S^T gdB_t, ~\text{a.e.}\\
 & (3)\quad \E\left[\int_S^T fdB_t\right] = 0.
 \end{flalign*}
 \end{theorem}
 
-为了便于计算, 我们还需要引入以下的一维It\^{o}公式\cite{jiangangying2016stochastic}.
+我们还需要引入以下的一维It\^{o}公式\cite{jiangangying2016stochastic}来计算一维情形的It\^o积分.
 \begin{theorem}(It\^{o}公式) \label{Ito formula} 设$X_t$为一个如下的It\^{o}过程:
 $$dX_t = udt+vdB_t,$$
 $g(t, x) \in C^2\left([0, \infty) \times \mathbb{R}\right)$, 则$Y_t = g(t, X_t)$也是一个It\^{o}过程, 且满足:
 $$dY_t = \frac{\partial g}{\partial t}(t, X_t)dt + \frac{\partial g}{\partial x}(t, X_t)dX_t + \frac{1}{2}\frac{\partial^2 g}{\partial x^2}(t, X_t)\cdot(dX_t)^2,$$
 其中
-$$dt\cdot dt = dt\cdot dB_t = dB_t\cdot dt = 0, \quad dB_t\cdot dB_t = dt.$$
+$$dt\cdot dt = dt\cdot dB_t = dB_t\cdot dt = 0, ~dB_t\cdot dB_t = dt.$$
 \end{theorem}
 
 以下是上述It\^{o}公式的积分形式.
@@ -271,7 +273,7 @@ $$\int_0^t f(s)dB_s = f(t)B_t - \int_0^t B_s df_s.$$
 上述几个定理的证明请见\cite{oksendal2003stochastic}, 21-24页及36-39页. \\
 
 \subsection{高斯分布, 复高斯分布与特征函数}
-在我们的假设中各个噪声信号都服从高斯分布, 为此我们需要知道多元高斯分布的概率密度\cite{shuyuanhe2006probability}.
+在问题的假设中, 各个噪声信号均服从高斯分布, 为此我们需要知道多元高斯分布的概率密度\cite{shuyuanhe2006probability}.
 \begin{proposition} \label{multiVariable gaussian pdf}
 如果随机向量$\textbf{X}$服从多元正态分布
 $$\textbf{X} \sim \mathcal{N}(\mu, \Sigma),$$
@@ -279,31 +281,31 @@ $$\textbf{X} \sim \mathcal{N}(\mu, \Sigma),$$
 $$f_\textbf{X}(X_1, \cdots, X_k) = \frac{\exp\left(-\frac{1}{2}(\textbf{X}-\mu)^\top\right)\Sigma^{-1}(\textbf{X}-\mu)}{\sqrt{(2\pi)^k|\Sigma|}}$$
 \end{proposition}
 对于一个复值的Gauss变量$X = a+bi$, 其中$a$与$b$均服从Gauss分布, 那么其期望和方差为
-\begin{equation}
+\[
 \begin{split}
 &\E[X] = \E[a] + i\E[b], \\
-&\Var(X) = \E[(X-\E[X])(X-\E[X])^*] = \Var(a) + \text{Var}(b)
+&\Var(X) = \E[(X-\E[X])(X-\E[X])^*]
 \end{split}
-\end{equation}
+\]
 
 除此之外, 我们还需要引入随机变量的特征函数这个工具, 用于计算较为复杂的随机变量的统计量.
-\begin{definition}(特征函数) 如果$X$是实值随机变量, $\E[\sin(tX)], \E[\cos(tX)]$均存在, 那么称
-$$\phi(t) = \E\left[e^{itX}\right] = \E[\cos(tX)] + i\E[\sin(tX)], \quad t\in \mathbb{R}$$
+\begin{definition}(特征函数) 如果$X$是实值随机变量, $\E[\sin(tX)], ~\E[\cos(tX)]$均存在, 那么称
+$$\phi(t) = \E\left[e^{itX}\right] = \E[\cos(tX)] + i\E[\sin(tX)], ~t\in \mathbb{R}$$
 为$X$的特征函数, 其中$i$为虚数单位.
 \end{definition}
 对于随机向量, 其特征函数定义为
 \begin{definition} 设$\textbf{X} = (X_1, X_2, \cdots, X_n)$为随机向量, 则$\textbf{X}$的特征函数为
-$$\phi(t) = \E\left[\exp(i\textbf{t}\textbf{X}^\top)\right], \quad \textbf{t} = (t_1, t_2, \cdots, t_n)\in \mathbb{R}^n.$$
+$$\phi(t) = \E\left[\exp(i\textbf{t}\textbf{X}^\top)\right], ~\textbf{t} = (t_1, t_2, \cdots, t_n)\in \mathbb{R}^n.$$
 \end{definition}
 以下为高斯分布的特征函数.
 \begin{proposition} \label{Characteristic function of Gaussian Distribution}
 Gauss分布$N(\mu, \sigma^2)$的特征函数为
-$$\phi(t) = e^{i\mu t - \frac{1}{2}\sigma^2t^2}$$
+$$\phi(t) = \exp(i\mu t - \frac{1}{2}\sigma^2t^2)$$
 \end{proposition}
 此命题的证明见\cite{shuyuanhe2006probability}第五章例2.4.
 一个更一般的定义如下\cite{jiangangying2013probability}:
 \begin{definition} \label{characteristic function definition 2} 设$\xi$为d-维随机变量, $F$为$\xi$的分布函数. 那么
-$$\hat{F}(x) = \int_{\mathbb{R}^d} e^{ix\cdot y}dF(y), \quad x\in \mathbb{R}^d$$
+$$\hat{F}(x) = \int_{\mathbb{R}^d} e^{ix\cdot y}dF(y), ~x\in \mathbb{R}^d$$
 (其中$(\cdot)$为$\mathbb{R}^d$空间中的内积) 称为分布函数$F$的特征函数.
 \end{definition}
 由此定义即可看出, 特征函数即为概率密度函数的Fourier变换:
@@ -311,7 +313,7 @@ $$\hat{F}(x) = \int_{\mathbb{R}^d} e^{ix\cdot y}dF(y), \quad x\in \mathbb{R}^d$$
 \hat{F}(x) = \int_{\mathbb{R}^d}e^{ix\cdot y}f(y)dy.
 \end{equation}
 
-以下是Fourier变换的一个基本性质, 在求$u(t)$的统计量时将会用到:
+以下是Fourier变换的一个基本性质, 在求$u(t)$的统计量时将会用到\cite{boggess2015first}.
 \begin{proposition}(Fourier变换的微分关系) \label{Fourier transform property 1}
 如果
 $$\lim_{|x|\to\infty} f(x) = 0,$$
