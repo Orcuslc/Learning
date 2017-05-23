@@ -82,6 +82,9 @@
 \setcounter{equation}{1}
 \def\thedefinition{\arabic{section}.\arabic{definition}}
 
+\newcommand{\nq}{\\[5pt]}
+\newcommand{\nw}{\\[10pt]}
+
 % title - \zihao{1} for size requirement \heiti for font family requirement
 
 \title{{\zihao{1}\heiti{} 一个随机微分方程组解的统计量}}
@@ -128,7 +131,6 @@
 \setcounter{page}{1}
 \tableofcontents\clearpage
 
-
 \maketitle\renewcommand{\thepage}{\arabic{page}}
 \thispagestyle{empty}\setcounter{page}{1}
 %%%  论文的页码从正文开始计数, 摘要页不显示页码
@@ -150,10 +152,10 @@
 \begin{equation} \label{E0}
 \left\{
 \begin{split}
-& \frac{du(t)}{dt} = (-\gamma(t)+i\omega)u(t)+b(t)+f(t)+\sigma W(t), \\
+& \frac{du(t)}{dt} = (-\gamma(t)+i\omega)u(t)+b(t)+f(t)+\sigma W(t), \\[5pt]
 % \end{equation}
 % \begin{equation}
-& \frac{db(t)}{dt} = (-\gamma_b+i\omega_b)(b(t)-\hat{b})+\sigma_b W_b(t), \\
+& \frac{db(t)}{dt} = (-\gamma_b+i\omega_b)(b(t)-\hat{b})+\sigma_b W_b(t), \\[5pt]
 % \end{equation}
 % \begin{equation}
 & \frac{d\gamma(t)}{dt} = -d_\gamma(\gamma(t)-\hat{\gamma})+\sigma_\gamma W_\gamma(t)
@@ -167,8 +169,8 @@
 \begin{equation} \label{init_values}
 \left\{
 \begin{split}
-& u(t_0) = u_0, \\
-& b(t_0) = b_0, \\
+& u(t_0) = u_0, \\[5pt]
+& b(t_0) = b_0, \\[5pt]
 & \gamma(t_0) = \gamma_0,
 \end{split}
 \right.
@@ -179,17 +181,16 @@ $\E[u_0]$, ~$\E[\gamma_0]$, ~$\E[b_0]$, ~$\Var(u_0)$, ~$\Var(\gamma_0)$, ~$\Var(
 (\ref{E0})的第二和第三项均为线性方程, 由求解线性常微分方程组的相关知识\cite{fulinjin1984ordinary}可知其通解有以下的形式:
 \begin{equation} \label{Sb}
 \begin{split}
-&b(t) = \hat{b}+(b_0-\hat{b})e^{\lambda_b(t-t_0)}+\sigma_b\int_{t_0}^t e^{\lambda_b(t-s)}dW_b(s), \\
+&b(t) = \hat{b}+(b_0-\hat{b})e^{\lambda_b(t-t_0)}+\sigma_b\int_{t_0}^t e^{\lambda_b(t-s)}dW_b(s), \\[5pt]
 &\gamma(t) = \hat{\gamma}+(\gamma_0-\hat{\gamma})e^{-d_{\gamma}(t-t_0)}+\sigma_{\gamma}\int_{t_0}^t e^{-d_{\gamma}(t-s)}dW_{\gamma}(s).
 \end{split}
 \end{equation}
 
 其中$\lambda_b = -\gamma_b+i\omega_b$.
 如果我们记
-
 \begin{equation} \label{def J(s, t)}
 \begin{split}
-&\hat{\lambda} = -\hat{\gamma}+i\omega, \\
+&\hat{\lambda} = -\hat{\gamma}+i\omega, \\[5pt]
 &J(s, t) = \int_s^t (\gamma(s')-\hat{\gamma})ds'
 \end{split}
 \end{equation}
@@ -197,7 +198,7 @@ $\E[u_0]$, ~$\E[\gamma_0]$, ~$\E[b_0]$, ~$\Var(u_0)$, ~$\Var(\gamma_0)$, ~$\Var(
 则(\ref{E0})的通解可以表示为
 \begin{equation} \label{Su}
 \begin{split}
-u(t) &= e^{-J(t_0, t)+\hat{\lambda}(t-t_0)}u_0 + \int_{t_0}^t (b(s)+f(s))e^{-J(s, t)+\hat{\lambda}(s-t_0)}ds \\
+u(t) &= e^{-J(t_0, t)+\hat{\lambda}(t-t_0)}u_0 + \int_{t_0}^t (b(s)+f(s))e^{-J(s, t)+\hat{\lambda}(s-t_0)}ds \\[5pt]
 & + \sigma\int_{t_0}^{t}e^{-J(s, t)+\hat{\lambda}(s-t_0)}dW(s).
 \end{split}
 \end{equation}
@@ -251,8 +252,8 @@ $$\E\left[\left(\int_S^T f(t, \omega)dB_t\right)^2\right] = \E\left[\int_S^T f^2
 \begin{theorem} \label{Itoint_property}
 设$f, g \in \mathcal{V}(0, T)$, $0 \leqslant S < U < T$. 那么
 \begin{flalign*}
-& (1)\quad \int_S^T fdB_t = \int_S^U fdB_t + \int_U^T fdB_t, ~\text{a.e.}\\
-& (2)\quad \int_S^T (cf+g)dB_t = c\int_S^T fdB_t + \int_S^T gdB_t, ~\text{a.e.}\\
+& (1)\quad \int_S^T fdB_t = \int_S^U fdB_t + \int_U^T fdB_t, ~\text{a.e.}\\[5pt]
+& (2)\quad \int_S^T (cf+g)dB_t = c\int_S^T fdB_t + \int_S^T gdB_t, ~\text{a.e.}\\[5pt]
 & (3)\quad \E\left[\int_S^T fdB_t\right] = 0.
 \end{flalign*}
 \end{theorem}
@@ -283,7 +284,7 @@ $$f_\textbf{X}(X_1, \cdots, X_k) = \frac{\exp\left(-\frac{1}{2}(\textbf{X}-\mu)^
 对于一个复值的Gauss变量$X = a+bi$, 其中$a$与$b$均服从Gauss分布, 那么其期望和方差为
 \[
 \begin{split}
-&\E[X] = \E[a] + i\E[b], \\
+&\E[X] = \E[a] + i\E[b], \\[5pt]
 &\Var(X) = \E[(X-\E[X])(X-\E[X])^*]
 \end{split}
 \]
@@ -326,7 +327,7 @@ $$\mathcal{F}[f^{(k)}(x)] = (i\omega)^k \mathcal{F}[f].$$
 
 \section{$b(t)$与$\gamma(t)$的统计量}
 \subsection{均值}
-当t固定时, 由(\ref{Sb})式可知, $b(t)$的通解第一项为常数, 而第二项中只有$b_0$是一个随机变量. 那么由(\ref{init_values})可知, $b(t)$通解第二项的期望为$(\E[b_0]-\hat{b})e^{\lambda_b(t-t_0)}$. 而由于
+当t固定时, 由(\ref{Sb})式可知$b(t)$的通解第一项为常数, 第二项中只有$b_0$是一个随机变量. 那么由(\ref{init_values})可知, $b(t)$通解第二项的期望为$(\E[b_0]-\hat{b})e^{\lambda_b(t-t_0)}$. 而由于
 $$f = f(s) = e^{\lambda_b(t-s)}\in\mathcal{V}(S, T),$$
 故由(\ref{Itoint_property})的(3)式可知,
 $$\E\left[\sigma_b\int_{t_0}^{t} e^{\lambda_b(t-s)dW_b(s)}\right] = 0.$$
@@ -341,15 +342,15 @@ $$\E\left[\sigma_b\int_{t_0}^{t} e^{\lambda_b(t-s)dW_b(s)}\right] = 0.$$
 \end{equation}
 
 \subsection{方差}
-当t固定时, 由于$b(t)$为一个复值随机变量, 由\cite{shuyuanhe2006probability}的第四章相关知识,
+当t固定时, $b(t)$为一个复值随机变量, 由\cite{shuyuanhe2006probability}的第四章相关知识,
  % 考虑到$(b_0-\hat{b})e^{\lambda_b(t-t_0)}$与$\sigma_b\int_{t_0}^t e^{\lambda_b(t-s)}dW_b(s)$相互独立(由(\ref{init_values})可知),
 \begin{equation} \label{b_stat_2_process}
 \begin{split}
-\text{Var}&(b(t)) = \E\left[(b(t)-\E[b(t)])(b(t)-\E[b(t)])^*\right] \\
-&= \E\left[\left((b_0-\E[b_0])e^{\lambda_b(t-t_0)}+\sigma_b\int_{t_0}^t e^{\lambda_b(t-s)}dW_b(s)\right)\times\right. \\
-&\quad\quad\left.\left((b_0-\E[b_0])e^{\lambda_b(t-t_0)}+\sigma_b\int_{t_0}^t dW_b(s) \right)^*\right] \\ 
-&= e^{-2\gamma_b(t-t_0)}\Var(b_0) + \E\left[\sigma_b^2\int_{t_0}^t e^{\lambda_b(t-s)}dW_b(s)\left(\int_{t_0}^t e^{\lambda_b(t-s)}dW_b(s)\right)^*\right] \\
-&= e^{-2\gamma_b(t-t_0)}\Var(b_0) + \sigma_b^2\E\left[\int_{t_0}^t e^{-2\gamma_b(t-s)}ds\right] \\
+\text{Var}&(b(t)) = \E\left[(b(t)-\E[b(t)])(b(t)-\E[b(t)])^*\right] \\[10pt]
+&= \E\left[\left((b_0-\E[b_0])e^{\lambda_b(t-t_0)}+\sigma_b\int_{t_0}^t e^{\lambda_b(t-s)}dW_b(s)\right)\times\right. \\[5pt]
+&\quad\quad\left.\left((b_0-\E[b_0])e^{\lambda_b(t-t_0)}+\sigma_b\int_{t_0}^t dW_b(s) \right)^*\right] \\[5pt] 
+&= e^{-2\gamma_b(t-t_0)}\Var(b_0) + \E\left[\sigma_b^2\int_{t_0}^t e^{\lambda_b(t-s)}dW_b(s)\left(\int_{t_0}^t e^{\lambda_b(t-s)}dW_b(s)\right)^*\right] \\[5pt]
+&= e^{-2\gamma_b(t-t_0)}\Var(b_0) + \sigma_b^2\E\left[\int_{t_0}^t e^{-2\gamma_b(t-s)}ds\right]
 \end{split}
 \end{equation}
 
@@ -366,22 +367,22 @@ $$\E\left[\sigma_b\int_{t_0}^{t} e^{\lambda_b(t-s)dW_b(s)}\right] = 0.$$
 
 \subsection{协方差}
 考虑到$b(t)$为复值函数, 由协方差的定义\cite{shuyuanhe2006probability}即可知
-\begin{equation} \label{b_b*_Cov_process}
+\[
 \begin{split}
-\Cov&(b(t), b(t)^*) = \E\left[(b(t) - \E[b(t)])(b(t)^* - \E[b(t)^*])\right] \\
-&= \E\left[(b_0 - \E[b_0]e^{\lambda_b (t-t_0)}+\sigma_b\int_{t_0}^{t} e^{\lambda_b (t-s)}dW_b(s))\right. \cdot \\
-&\quad \left.((b_0^* - \E[b_0^*])e^{\lambda_b(t-t_0)}+\sigma_b\int_{t_0}^t e^{\lambda_b (t-s)}dW_b(s))\right] \quad\cdots(\ref{b_stat_1}) \\
-&= \E\left[(b_0 - \E[b_0])(b_0^* - \E[b_0^*])e^{2\lambda_b (t-t_0)}\right] + \sigma_b\E\left[(b_0 - \E[b_0])\int_{t_0}^{t}e^{\lambda_b(t-s)}dW_b(s)\right]\\
-&+ \sigma_b\E\left[(b_0^*-\E[b_0^*])e^{\lambda_b(t-t_0)}\int_{t_0}^{t}e^{\lambda_b(t-s)}dW_b(s)\right] + \sigma_b^2\E\left[(\int_{t_0}^{t}e^{\lambda_b(t-s)}dW_b(s))^2\right]
+\Cov&(b(t), b(t)^*) = \E\left[(b(t) - \E[b(t)])(b(t)^* - \E[b(t)^*])\right] \\[10pt]
+&= \E\left[(b_0 - \E[b_0]e^{\lambda_b (t-t_0)}+\sigma_b\int_{t_0}^{t} e^{\lambda_b (t-s)}dW_b(s))\right. \times \\[5pt]
+&\quad \left.((b_0^* - \E[b_0^*])e^{\lambda_b(t-t_0)}+\sigma_b\int_{t_0}^t e^{\lambda_b (t-s)}dW_b(s))\right] \quad\quad\quad\quad\quad\quad\quad\cdots(\ref{b_stat_1}) \\[5pt]
+&= \E\left[(b_0 - \E[b_0])(b_0^* - \E[b_0^*])e^{2\lambda_b (t-t_0)}\right] + \sigma_b\E\left[(b_0 - \E[b_0])\int_{t_0}^{t}e^{\lambda_b(t-s)}dW_b(s)\right]\\[10pt]
+&\quad+ \sigma_b\E\left[(b_0^*-\E[b_0^*])e^{\lambda_b(t-t_0)}\int_{t_0}^{t}e^{\lambda_b(t-s)}dW_b(s)\right] + \sigma_b^2\E\left[(\int_{t_0}^{t}e^{\lambda_b(t-s)}dW_b(s))^2\right]
 \end{split}
-\end{equation}
+\]
 
 在上式的第二项中, 由于$b_0$与$\int_{t_0}^{t} e^{\lambda_b (t-s)}dW_b(s)$相互独立, 故由It\^{o}积分的性质(\ref{Itoint_property})可知
-\begin{equation}
+\[
 \sigma_b\E\left[(b_0 - \E[b_0])\int_{t_0}^{t}e^{\lambda_b(t-s)}dW_b(s)\right] = \sigma_b\E\left[b_0 - \E[b_0]\right]\E\left[\int_{t_0}^{t}e^{\lambda_b(t-s)}dW_b(s)\right] = 0
-\end{equation}
+\]
 
-同样的, (\ref{b_b*_Cov_process})中第三项也为0, 而第四项由It\^{o}等距(\ref{Ito isometric})即知为0. 故
+同样的, 上式中第三项也为0, 而第四项由It\^{o}等距(\ref{Ito isometric})即知为0. 故
 \begin{equation} \label{b_b*_Cov}
 \Cov(b(t), b(t)^*) = \E[(b_0-\E[b_0])(b_0^*-\E[b_0^*])]e^{2\lambda_b(t-t_0)} = \Cov(b_0, b_0^*)e^{2\lambda_b(t-t_0)}
 \end{equation}
@@ -403,7 +404,7 @@ $$\E\left[\sigma_b\int_{t_0}^{t} e^{\lambda_b(t-s)dW_b(s)}\right] = 0.$$
 在$u(t)$的表达式(\ref{Su})中, $e^{\hat{\lambda}(t-t_0)}$, $f(t)$和$\sigma$均为常值. 那么由数学期望的线性性质(\cite{shuyuanhe2006probability}第四章定理2.2)和It\^{o}积分的性质(\ref{Itoint_property})可知
 \begin{equation} \label{u_stat_1}
 \begin{split}
-\E[u(t)] &= e^{\hat{\lambda}(t-t_0)}\E\left[e^{-J_0(t_0, t)}u_0\right] + \int_{t_0}^t e^{\hat{\lambda}(t-s)}\E\left[b(s)e^{-J(s, t)}\right]ds  \\
+\E[u(t)] &= e^{\hat{\lambda}(t-t_0)}\E\left[e^{-J_0(t_0, t)}u_0\right] + \int_{t_0}^t e^{\hat{\lambda}(t-s)}\E\left[b(s)e^{-J(s, t)}\right]ds  \\[5pt]
 &+ \sigma\int_{t_0}^{t} e^{\hat{\lambda}(t-s)}f(s)\E\left[e^{-J(s, t)}\right]ds.
 \end{split}
 \end{equation}
@@ -447,7 +448,7 @@ $\mathbf{v} = (x, y, w)$, 那么由于$\mathbf{v}$为一个满足多元Gauss分�
 由多元高斯分布的概率密度函数(\ref{multiVariable gaussian pdf})有
 \[
 \begin{split}
-&\frac{\partial \phi_\mathbf{v}(\mathbf{s})}{\partial s_2} = (i\E[y_0]-\Var(y_0)s_2-\Cov(x_0, y_0)s_1-\Cov(y_0, w_0)s_3)\phi_{\mathbf{v}}(s) \\
+&\frac{\partial \phi_\mathbf{v}(\mathbf{s})}{\partial s_2} = (i\E[y_0]-\Var(y_0)s_2-\Cov(x_0, y_0)s_1-\Cov(y_0, w_0)s_3)\phi_{\mathbf{v}}(s) \\[5pt]
 &\frac{\partial \phi_\mathbf{v}(\mathbf{s})}{\partial s_3} = (i\E[w_0]-\Var(w_0)s_3-\Cov(x_0, w_0)s_1-\Cov(y_0, w_0)s_2)\phi_{\mathbf{v}}(s)
 \end{split}
 \]
@@ -455,7 +456,7 @@ $\mathbf{v} = (x, y, w)$, 那么由于$\mathbf{v}$为一个满足多元Gauss分�
 分别计算这两个偏导数在$\mathbf{s} = (b, 0, 0)^\top$处的值, 有
 \[
 \begin{split}
-&\E\left[y_0e^{ibx_0}\right] = (\E[y_0]+i\Cov(x_0, y_0)b)\exp(ib\E[x_0] - \frac{1}{2}\Var(x_0)b^2) \\
+&\E\left[y_0e^{ibx_0}\right] = (\E[y_0]+i\Cov(x_0, y_0)b)\exp(ib\E[x_0] - \frac{1}{2}\Var(x_0)b^2) \\[5pt]
 &\E\left[w_0e^{ibx_0}\right] = (\E[w_0]+i\Cov(x_0, w_0)b)\exp(ib\E[x_0] - \frac{1}{2}\Var(x_0)b^2)
 \end{split}
 \]
@@ -472,8 +473,8 @@ $$\E\left[ze^{bx}\right] = (\E[z]+b\Cov(z, x))e^{b\E[x]+\frac{1}{2}b^2\Var(x)}.$
 利用推论\ref{multiVariable gaussian exp 2}即有
 \begin{equation} \label{E u(t)}
 \begin{split}
-\E&[u(t)] = e^{\hat{\lambda}(t-t_0)}(\E[u_0]-\Cov(u_0, J(t_0, t)))e^{-\E[J(t_0, t)]+\frac{1}{2}\Var(J(t_0, t))} \\
-&+ \int_{t_0}^t e^{\hat{\lambda}(t-s)}(\hat{b}+e^{\lambda_b(s-t_0)}(\E[b_0]-\hat{b}-\Cov(b_0, J(s, t))))e^{-\E[J(s, t)]+\frac{1}{2}\Var(J(s, t))}ds \\
+\E&[u(t)] = e^{\hat{\lambda}(t-t_0)}(\E[u_0]-\Cov(u_0, J(t_0, t)))e^{-\E[J(t_0, t)]+\frac{1}{2}\Var(J(t_0, t))} \\[10pt]
+&+ \int_{t_0}^t e^{\hat{\lambda}(t-s)}(\hat{b}+e^{\lambda_b(s-t_0)}(\E[b_0]-\hat{b}-\Cov(b_0, J(s, t))))e^{-\E[J(s, t)]+\frac{1}{2}\Var(J(s, t))}ds \\[5pt]
 &+ \int_{t_0}^t e^{\hat{\lambda}(t-s)}f(s)e^{-\E[J(s, t)]+\frac{1}{2}\Var(J(s, t))}ds
 \end{split}
 \end{equation}
@@ -484,7 +485,7 @@ $$\Cov(u_0, J(s, t)), \Cov(b_0, J(s, t)), \E[J(s, t)], \Var(J(s, t)).$$
 首先,
 \begin{equation} \label{J(s, t) all}
 \begin{split}
-J(s, t) &= \int_s^t \left[(\gamma_0-\hat{\gamma})e^{-d_\gamma(s'-t_0)}+\sigma_\gamma\int_{t_0}^{s'}e^{-d_\gamma(s'-x)}dW_\gamma(x)\right]ds' \\
+J(s, t) &= \int_s^t \left[(\gamma_0-\hat{\gamma})e^{-d_\gamma(s'-t_0)}+\sigma_\gamma\int_{t_0}^{s'}e^{-d_\gamma(s'-x)}dW_\gamma(x)\right]ds' \\[5pt]
 & = \int_s^t(\gamma_0-\hat{\gamma})e^{-d_\gamma(s'-t_0)}ds' +\int_s^t \sigma_\gamma\int_{t_0}^{s'} e^{-d_\gamma(s'-x)}dW_\gamma(x)ds'
 \end{split}
 \end{equation}
@@ -492,9 +493,9 @@ J(s, t) &= \int_s^t \left[(\gamma_0-\hat{\gamma})e^{-d_\gamma(s'-t_0)}+\sigma_\g
 那么
 \begin{equation} \label{Cov u0 J(s, t)}
 \begin{split}
-\Cov&(u_0, J(s, t)) = \Cov\left(u_0, \frac{1}{d_\gamma}(e^{-d_\gamma(s-t_0)}-e^{-d_\gamma(t-t_0)})(\gamma_0 - \hat{\gamma})\right) \\
-&+ \Cov\left(u_0, \int_s^t \sigma_\gamma \int_{t_0}^{s'} e^{-d_\gamma(s'-x)} dW_\gamma(x)ds'\right)\\
-&= \frac{1}{d_\gamma}(e^{-d_\gamma(s-t_0)}-e^{-d_\gamma(t-t_0)})[\Cov(u_0, \gamma_0)-\Cov(u_0, \hat{\gamma})] \\
+\Cov&(u_0, J(s, t)) = \Cov\left(u_0, \frac{1}{d_\gamma}(e^{-d_\gamma(s-t_0)}-e^{-d_\gamma(t-t_0)})(\gamma_0 - \hat{\gamma})\right) \\[5pt]
+&+ \Cov\left(u_0, \int_s^t \sigma_\gamma \int_{t_0}^{s'} e^{-d_\gamma(s'-x)} dW_\gamma(x)ds'\right)\\[5pt]
+&= \frac{1}{d_\gamma}(e^{-d_\gamma(s-t_0)}-e^{-d_\gamma(t-t_0)})[\Cov(u_0, \gamma_0)-\Cov(u_0, \hat{\gamma})] \\[5pt]
 &= \frac{1}{d_\gamma}(e^{-d_\gamma(s-t_0)}-e^{-d_\gamma(t-t_0)})\Cov(u_0, \gamma_0).
 \end{split}
 \end{equation}
@@ -507,7 +508,7 @@ J(s, t) &= \int_s^t \left[(\gamma_0-\hat{\gamma})e^{-d_\gamma(s'-t_0)}+\sigma_\g
 为了计算$\E[J(s, t)]$, 我们对(\ref{gamma_stat_1})求积分, 有
 \begin{equation} \label{E J(s, t)}
 \begin{split}
-\E[&J(s, t)] = \E\left[\int_s^t (\gamma(s')-\hat{\gamma})ds'\right] = \int_s^t (\E[\gamma(s')]-\hat{\gamma})ds' \\
+\E[&J(s, t)] = \E\left[\int_s^t (\gamma(s')-\hat{\gamma})ds'\right] = \int_s^t (\E[\gamma(s')]-\hat{\gamma})ds' \\[5pt]
 &= \int_s^t (\E[\gamma_0]-\hat{\gamma})e^{-d_\gamma(s'-t_0)}ds' = \frac{1}{d_\gamma}(e^{-d_\gamma(s-t_0)}-e^{-d_\gamma(t-t_0)})(\E[\gamma_0]-\hat{\gamma}))
 \end{split}
 \end{equation}
@@ -519,9 +520,9 @@ J(s, t) &= \int_s^t \left[(\gamma_0-\hat{\gamma})e^{-d_\gamma(s'-t_0)}+\sigma_\g
 此外, 由定义即有
 \[
 \begin{split}
-\Var&(J(s, t)) = \E\left[J^2(s, t)\right] - \E[J(s, t)]^2 \\
-&= \E\left[\left(\int_s^t (\gamma_0-\hat{\gamma})e^{-d_\gamma(s'-t_0)}ds'\right)^2\right] - \E[J(s, t)]^2 + 2\E\left[\left(\int_s^t(\gamma_0-\hat{\gamma})e^{-d_\gamma(s'-t_0)}ds'\right)\times\right. \\
-&\quad\left.\left(\sigma_\gamma\int_s^t\int_{t_0}^{s'}e^{-d_\gamma(s'-x)}dW_\gamma(x)ds'\right)\right] + \sigma_\gamma^2\E\left[\left(\int_s^t\int_{t_0}^{s}e^{-d_\gamma(s'-s)}dW_\gamma(s)ds'\right)^2\right] \\
+\Var&(J(s, t)) = \E\left[J^2(s, t)\right] - \E[J(s, t)]^2 \\[10pt]
+&= \E\left[\left(\int_s^t (\gamma_0-\hat{\gamma})e^{-d_\gamma(s'-t_0)}ds'\right)^2\right] - \E[J(s, t)]^2 + 2\E\left[\left(\int_s^t(\gamma_0-\hat{\gamma})e^{-d_\gamma(s'-t_0)}ds'\right)\times\right. \\[5pt]
+&\quad\left.\left(\sigma_\gamma\int_s^t\int_{t_0}^{s'}e^{-d_\gamma(s'-x)}dW_\gamma(x)ds'\right)\right] + \sigma_\gamma^2\E\left[\left(\int_s^t\int_{t_0}^{s}e^{-d_\gamma(s'-s)}dW_\gamma(s)ds'\right)^2\right] \\[5pt]
 &= \frac{1}{d_\gamma^2}\left(e^{-d_\gamma(s-t_0)}-e^{-d_\gamma(t-t_0)}\right)^2(\E[\gamma_0^2]-\E[\gamma_0]^2) + \sigma_\gamma^2\E\left[\left(\int_{t_0}^t \frac{1}{d_\gamma}\left(1-e^{-d_\gamma}(t-x)\right)dW_\gamma(x)\right)^2\right]
 \end{split}
 \]
@@ -529,21 +530,21 @@ J(s, t) &= \int_s^t \left[(\gamma_0-\hat{\gamma})e^{-d_\gamma(s'-t_0)}+\sigma_\g
 由It\^{o}等距(定理\ref{Ito isometric})和It\^{o}公式(定理\ref{Ito formula})知上式的第二项为
 \[
 \begin{split}
-\sigma_\gamma^2\E&\left[\left(\int_{t_0}^t \frac{1}{d_\gamma}\left(1-e^{-d_\gamma}(t-x)\right)dW_\gamma(x)\right)^2\right] \\
-&= \sigma_\gamma^2\E\left[\left(\int_{t_0}^{s}\int_{t_0}^{t}e^{-d_\gamma(s'-x)}ds'dW_\gamma(x)+\int_s^t\int_x^t e^{-d_\gamma(s'-x)}ds'dW_\gamma(x)\right)^2\right] \\
+\sigma_\gamma^2\E&\left[\left(\int_{t_0}^t \frac{1}{d_\gamma}\left(1-e^{-d_\gamma}(t-x)\right)dW_\gamma(x)\right)^2\right] \\[5pt]
+&= \sigma_\gamma^2\E\left[\left(\int_{t_0}^{s}\int_{t_0}^{t}e^{-d_\gamma(s'-x)}ds'dW_\gamma(x)+\int_s^t\int_x^t e^{-d_\gamma(s'-x)}ds'dW_\gamma(x)\right)^2\right] \\[5pt]
 % &= \frac{\sigma_\gamma^2}{d_\gamma^2}E\left[\left(\int_{t_0}^t \left(e^{-d_\gamma(s-x)}-e^{-d_\gamma(t-x)}dx\right)+\int_{t_0}^t \left(1-e^{-d_\gamma(t-x)\right)^2dx\right)\right]
 % &= \frac{\sigma_\gamma^2}{d_\gamma^2}E\left[\left(\int_{t_0}^{t} \left(e^{-d_\gamma(s-x)}-e^{-d_\gamma(t-x)}\right)dW_\gamma(x)+\int_{s}^{t} \left(1-e^{-d_\gamma(t-x)}\right)dW_\gamma(x)\right)^2\right] \\
-&= \frac{\sigma_\gamma^2}{d_\gamma^2}\left\{\int_{t_0}^t \left(e^{-d_\gamma(s-x)}-e^{-d_\gamma(t-x)}\right)^2dx+\int_{s}^t\left(1-e^{-d_\gamma(t-x)}\right)^2dx\right. \\
-&+\left.2\E\left[\left(\int_{t_0}^t \left(e^{-d_\gamma(s-x)}-e^{-d_\gamma(t-x)}\right)dW_\gamma(x)\right)\left(\int_{s}^t\left(1-e^{-d_\gamma(t-x)}\right)dW_\gamma(x)\right)\right]\right\} \\
-&= \frac{\sigma_\gamma^2}{d_\gamma^3}\left(-1+d_\gamma(t-s)+e^{-d_\gamma(s+t-2t_0)}+e^{-d_\gamma(t-s)}-\frac{1}{2}e^{-2d_\gamma(t-t_0)}-\frac{1}{2}e^{-2d_\gamma(s-t_0)}\right. \\
-&+ \left.\frac{1}{2}e^{-2d_\gamma(s-t)}-\frac{1}{2}e^{-2d_\gamma(t-s)}\right) + 2\E\left[\int_{\min\{s, t_0\}}^t\left(e^{-d_\gamma(s-x)}-e^{-d_\gamma(t-x)}\right)\left(1-e^{-d_\gamma(t-x)}\right)dt\right]
+&= \frac{\sigma_\gamma^2}{d_\gamma^2}\left\{\int_{t_0}^t \left(e^{-d_\gamma(s-x)}-e^{-d_\gamma(t-x)}\right)^2dx+\int_{s}^t\left(1-e^{-d_\gamma(t-x)}\right)^2dx\right. \\[5pt]
+&\quad+\left.2\E\left[\left(\int_{t_0}^t \left(e^{-d_\gamma(s-x)}-e^{-d_\gamma(t-x)}\right)dW_\gamma(x)\right)\left(\int_{s}^t\left(1-e^{-d_\gamma(t-x)}\right)dW_\gamma(x)\right)\right]\right\} \\[5pt]
+&= \frac{\sigma_\gamma^2}{d_\gamma^3}\left(-1+d_\gamma(t-s)+e^{-d_\gamma(s+t-2t_0)}+e^{-d_\gamma(t-s)}-\frac{1}{2}e^{-2d_\gamma(t-t_0)}-\frac{1}{2}e^{-2d_\gamma(s-t_0)}\right. \\[5pt]
+&\quad+ \left.\frac{1}{2}e^{-2d_\gamma(s-t)}-\frac{1}{2}e^{-2d_\gamma(t-s)}\right) + 2\E\left[\int_{\min\{s, t_0\}}^t\left(e^{-d_\gamma(s-x)}-e^{-d_\gamma(t-x)}\right)\left(1-e^{-d_\gamma(t-x)}\right)dt\right]
 \end{split}
 \]
 
 这里我们将两个积分区域均扩展至$[\min\{s, t_0\}, t]$上, 并设积分区域较小的被积函数在延拓的区间上为0. 那么
 \begin{equation} \label{Var J(s, t) final}
 \begin{split}
-\Var&(J(s, t)) = \frac{1}{d_\gamma^2}\left(e^{-d_\gamma(s-t_0)}-e^{-d_\gamma(t-t_0)}\right)^2Var(\gamma_0) \\
+\Var&(J(s, t)) = \frac{1}{d_\gamma^2}\left(e^{-d_\gamma(s-t_0)}-e^{-d_\gamma(t-t_0)}\right)^2\Var(\gamma_0) \\[5pt]
 &+ \frac{\sigma_\gamma^2}{d_\gamma^3}\left(-1+d_\gamma(t-s)+e^{-d_\gamma(s+t-2t_0)}+e^{-d_\gamma(t-s)}-\frac{1}{2}e^{-2d_\gamma(t-t_0)}-\frac{1}{2}e^{-2d_\gamma(s-t_0)}\right) 
 \end{split}
 \end{equation}
@@ -556,8 +557,8 @@ J(s, t) &= \int_s^t \left[(\gamma_0-\hat{\gamma})e^{-d_\gamma(s'-t_0)}+\sigma_\g
 其中
 \[\left\{
 \begin{split}
-&A = e^{-J(t_0, t)+\hat{\lambda}(t-t_0)}u_0, \\
-&B = \int_{t_0}^t (b(s)+f(s))e^{-J(s, t)+\hat{\lambda}(t-s)}ds, \\
+&A = e^{-J(t_0, t)+\hat{\lambda}(t-t_0)}u_0, \nq
+&B = \int_{t_0}^t (b(s)+f(s))e^{-J(s, t)+\hat{\lambda}(t-s)}ds, \nq
 &C = \sigma\int_{t_0}^t e^{-J(s, t)+\hat{\lambda}(t-s)}dW(s).
 \end{split}
 \right.
@@ -576,8 +577,8 @@ $
 \begin{proposition}  \label{multiVariable gaussian exp 3} 对于复值Gaussian随机变量$z$和$w$, 以及实值Gaussian随机变量$x$,
 \[
 \begin{split}
-\E&\left[zwe^{bx}\right] = \left[\E[z]\E[w]+\Cov(z, w^*)+b(\E[z]\Cov(w, x))+\E[w]\Cov(z, x)+ \right. \\
-& \left.b^2\Cov(z, x)\Cov(w, x)\right]e^{b\E[x]+\frac{b^2}{2}\Var(x)}. \\
+\E\left[zwe^{bx}\right] =& \left[\E[z]\E[w]+\Cov(z, w^*)+b(\E[z]\Cov(w, x))+\E[w]\Cov(z, x) \right. \nq
+&\quad +\left.b^2\Cov(z, x)\Cov(w, x)\right]e^{b\E[x]+\frac{b^2}{2}\Var(x)}. \nq
 \end{split}
 \]
 \end{proposition}
@@ -585,9 +586,9 @@ $
 利用上述命题, 有
 \[
 \begin{split}
-\E&\left[|A|^2\right] = \left(|\E[u_0]|^2 +\Var(u_0) - 4\text{Re}\left\{\E[u_0]^*\Cov(u_0, J(t_0, t)\right\} +4|\Cov(u_0, J(t_0, t)|^2\right) \cdot \\
-& e^{-2\hat{\gamma}(t-t_0)-2\E[J(t_0, t)]+2\Var(J(t_0, t))}, \\
-\E&\left[|B|^2\right] = \E\left[\left|\int_{t_0}^t (b(s)+f(s))e^{-J(s, t)+\hat{\lambda}(t-s)}ds\right|^2\right] \\
+\E\left[|A|^2\right] &= \left(|\E[u_0]|^2 +\Var(u_0) - 4\text{Re}\left\{\E[u_0]^*\Cov(u_0, J(t_0, t)\right\} +4|\Cov(u_0, J(t_0, t)|^2\right) \times \nq
+& \quad e^{-2\hat{\gamma}(t-t_0)-2\E[J(t_0, t)]+2\Var(J(t_0, t))}, \nq
+\E\left[|B|^2\right] &= \E\left[\left|\int_{t_0}^t (b(s)+f(s))e^{-J(s, t)+\hat{\lambda}(t-s)}ds\right|^2\right] \nq
 &= \int_{t_0}^t ds\int_{t_0}^t dr \E\left[(b(s)+f(s))e^{-J(s, t)+\hat{\lambda}(t-s)}\left[(b(r)+f(r))e^{-J(r, t)+\hat{\lambda}(t-r)}\right]^*\right]
 \end{split}
 \]
@@ -595,9 +596,9 @@ $
 在上式中, 被积的最后一项为
 \[
 \begin{split}
-E&\left[(b(s)+f(s))e^{-J(s, t)+\hat{\lambda}(t-s)}\left[(b(r)+f(r))e^{-J(r, t)+\hat{\lambda}(t-r)}\right]^*\right] \\
+\E&\left[(b(s)+f(s))e^{-J(s, t)+\hat{\lambda}(t-s)}\left[(b(r)+f(r))e^{-J(r, t)+\hat{\lambda}(t-r)}\right]^*\right] \nw
 % &= E\left[(b(s)+f(s))(b^*(r)+f^*(r))e^{-J(s, t)-J(r, t)+(-\hat{\gamma}+i\omega)(t-s)+(-\hat{\gamma}-i\omega)(t-r)}\right] \\
-&= E\left[(b(s)+f(s))(b^*(r)+f^*(r))e^{-J(s, t)-J(r, t)-\hat{\gamma}(2t-s-r)+i\omega(r-s)}\right] \\
+&= \E\left[(b(s)+f(s))(b^*(r)+f^*(r))e^{-J(s, t)-J(r, t)-\hat{\gamma}(2t-s-r)+i\omega(r-s)}\right] \nw
 % &= e^{-J(s, t)-J(r, t)+\frac{1}{2}Var(J(s, t))+\frac{1}{2}Var(J(r, t))+Cov(J(s, t), J(r, t))-\hat{\gamma}(2t-s-r)+i\omega(r-s)} \times \\
 % &\quad \{E\left[b(s)b^*(r)\right] + E[b(s)f^*(r)] + E[f(s)b^*(r)] + E[f(s)f^*(r)] \\
 % &\quad+ Cov(b(s), b(r)) + Cov(b(s), f(r))+Cov(f(s), b(r))+Cov(f(s), f(r)) \\
@@ -607,22 +608,22 @@ E&\left[(b(s)+f(s))e^{-J(s, t)+\hat{\lambda}(t-s)}\left[(b(r)+f(r))e^{-J(r, t)+\
 % &\quad\quad +Cov(f(s), -J(r, t))+Cov(b(s), -J(r, t))] \\
 % &\quad+ [Cov(b(s), -J(s, t))+Cov(b(s), -J(r, t))+Cov(f(s), -J(s, t))+Cov(f(s), -J(r,t))] \\
 % &\quad\quad\times [Cov(b^*(r), -J(s, t))+Cov(b^*(r), -J(r, t))+Cov(f^*(r), -J(s,t))+Cov(f^*(r), -J(r, t))]\} \\
-&= e^{-J(s, t)-J(r, t)+\frac{1}{2}\Var(J(s, t))+\frac{1}{2}\Var(J(r, t))+\Cov(J(s, t), J(r, t))-\hat{\gamma}(2t-s-r)+i\omega(r-s)} \times \\
-&\quad \{\E[b(s)b^*(r)]+\E[b(s)]\times[Cov(b^*(r), -J(s, t))+\Cov(b^*(r), -J(r, t))] \\
-&\quad\quad+ \E[b^*(r)]\times[\Cov(b(s), -J(s, t))+\Cov(b(s), -J(r, t))]\\
-&\quad\quad+ [\Cov(b^*(r), J(s, t))+\Cov(b^*(r), J(r, t))]\times [\Cov(b(s), J(s, t))+\Cov(b(s), J(r, t))] \\
-&\quad\quad+ f^*(r)\times[\E[b(s)]-\Cov(b(s), J(s, t))-\Cov(b(s), J(r, t))] \\
-&\quad\quad+ f(s)\times[\E[b^*(r)]-\Cov(b(r), J^*(s, t))-\Cov(b(r), J^*(r, t))] \\
-&\quad\quad+f(s)f^*(r)\}. \\
+&= e^{-J(s, t)-J(r, t)+\frac{1}{2}\Var(J(s, t))+\frac{1}{2}\Var(J(r, t))+\Cov(J(s, t), J(r, t))-\hat{\gamma}(2t-s-r)+i\omega(r-s)} \times \nw
+&\quad \{\E[b(s)b^*(r)]+\E[b(s)]\times[\Cov(b^*(r), -J(s, t))+\Cov(b^*(r), -J(r, t))] \nq
+&\quad\quad+ \E[b^*(r)]\times[\Cov(b(s), -J(s, t))+\Cov(b(s), -J(r, t))]\nq
+&\quad\quad+ [\Cov(b^*(r), J(s, t))+\Cov(b^*(r), J(r, t))]\times [\Cov(b(s), J(s, t))+\Cov(b(s), J(r, t))] \nq
+&\quad\quad+ f^*(r)\times[\E[b(s)]-\Cov(b(s), J(s, t))-\Cov(b(s), J(r, t))] \nq
+&\quad\quad+ f(s)\times[\E[b^*(r)]-\Cov(b(r), J^*(s, t))-\Cov(b(r), J^*(r, t))] \nq
+&\quad\quad+f(s)f^*(r)\}.
 \end{split}
 \]
 
 其中, 由It\^o公式和It\^o积分的性质即知
 \[
 \begin{split}
-\E&[b(s)b(r)] = \E\left[\left(\hat{b}+(b_0-\hat{b})e^{\lambda_b(s-t_0)}+\sigma_b\int_{t_0}^s e^{\lambda_b(s-w)}dW_b(w)\right)\right.\times \\
-&\quad\quad\quad\quad\quad\quad\left.\left(\hat{b}+(b_0-\hat{b})e^{\lambda_b(r-t_0)}+\sigma_b\int_{t_0}^r e^{\lambda_b(r-w)}dW_b(w)\right) \right] \\
-&= \left(1-e^{\lambda_b(s-t_0)}-e^{\lambda_b(r-t_0)}+e^{\lambda_b(s+r-2t_0)}\right)\hat{b}^2 + \left(e^{\lambda_b(s-t_0)}+e^{\lambda_b(r-t_0)}-2e^{\lambda_b(s+r-2t_0)}\right)\hat{b}\E[b_0] \\
+\E&[b(s)b(r)] = \E\left[\left(\hat{b}+(b_0-\hat{b})e^{\lambda_b(s-t_0)}+\sigma_b\int_{t_0}^s e^{\lambda_b(s-w)}dW_b(w)\right)\right.\times \nq
+&\quad\quad\quad\quad\quad\quad\left.\left(\hat{b}+(b_0-\hat{b})e^{\lambda_b(r-t_0)}+\sigma_b\int_{t_0}^r e^{\lambda_b(r-w)}dW_b(w)\right) \right] \nw
+&= \left(1-e^{\lambda_b(s-t_0)}-e^{\lambda_b(r-t_0)}+e^{\lambda_b(s+r-2t_0)}\right)\hat{b}^2 + \left(e^{\lambda_b(s-t_0)}+e^{\lambda_b(r-t_0)}-2e^{\lambda_b(s+r-2t_0)}\right)\hat{b}\E[b_0] \nq
 &\quad + e^{\lambda_b(s+r-2t_0)}\left(\Var(b_0) + \E[b_0]^2\right) + \frac{\sigma_b^2}{2\gamma_b}\left(e^{-\gamma_b(s+r-2\min(s, r))}-e^{-\gamma_b(s+r-2t_0)}\right)e^{i\omega_b(s-r)}
 \end{split}
 \]
@@ -630,7 +631,7 @@ E&\left[(b(s)+f(s))e^{-J(s, t)+\hat{\lambda}(t-s)}\left[(b(r)+f(r))e^{-J(r, t)+\
 结合(\ref{E J(s, t)})和(\ref{Cov b0 J(s, t)})有
 \[
 \begin{split}
-\Cov&(b(r), J(s, t)) = e^{\lambda_b(r-t_0)}\Cov(b_0, J(s, t)) + \sigma_b\Cov\left(\int_{t_0}^r e^{\lambda_b(r-w)}dW_b(w), J(s, t)\right) \\
+\Cov&(b(r), J(s, t)) = e^{\lambda_b(r-t_0)}\Cov(b_0, J(s, t)) + \sigma_b\Cov\left(\int_{t_0}^r e^{\lambda_b(r-w)}dW_b(w), J(s, t)\right) \nq
 &= \frac{1}{d_\gamma}(e^{-d_\gamma(s-t_0)}-e^{-d_\gamma(t-t_0)})e^{\lambda_b(r-t_0)}\Cov(b_0, \gamma_0)
 \end{split}
 \]
@@ -643,9 +644,9 @@ E&\left[(b(s)+f(s))e^{-J(s, t)+\hat{\lambda}(t-s)}\left[(b(r)+f(r))e^{-J(r, t)+\
 其中$\Var(J(s, t))$由(\ref{Var J(s, t) final})已求出. 由类似求$\Var(J(s, t))$的过程, 有
 \[
 \begin{split}
-\Cov&(J(s, t), J(r, s)) = \Cov\left(\int_s^t(\gamma_0-\hat{\gamma})e^{-d_\gamma(s'-t_0)}ds' +\int_s^t \sigma_\gamma\int_{t_0}^{s'} e^{-d_\gamma(s'-x)}dW_\gamma(x)ds'\right. \\
-&\quad\quad\quad\left. \int_r^s(\gamma_0-\hat{\gamma})e^{-d_\gamma(s'-t_0)}ds' +\int_r^s \sigma_\gamma\int_{t_0}^{s'} e^{-d_\gamma(s'-x)}dW_\gamma(x)ds'\right) \\
-&= \frac{\Var(\gamma_0)}{d_\gamma^2}\left(e^{-d_\gamma(t-t_0)}-e^{-d_\gamma(s-t_0)})(e^{-d_\gamma(s-t_0)}e^{-d_\gamma(r-t_0)}\right)-\frac{\sigma_\gamma^2}{2d_\gamma^3}\left(e^{-d_\gamma(t-s)}-e^{-d_\gamma(t-r)}  \right.\\
+\Cov&(J(s, t), J(r, s)) = \Cov\left(\int_s^t(\gamma_0-\hat{\gamma})e^{-d_\gamma(s'-t_0)}ds' +\int_s^t \sigma_\gamma\int_{t_0}^{s'} e^{-d_\gamma(s'-x)}dW_\gamma(x)ds',\right. \nq
+&\quad\quad\quad\left. \int_r^s(\gamma_0-\hat{\gamma})e^{-d_\gamma(s'-t_0)}ds' +\int_r^s \sigma_\gamma\int_{t_0}^{s'} e^{-d_\gamma(s'-x)}dW_\gamma(x)ds'\right) \nw
+&= \frac{\Var(\gamma_0)}{d_\gamma^2}\left(e^{-d_\gamma(t-t_0)}-e^{-d_\gamma(s-t_0)})(e^{-d_\gamma(s-t_0)}e^{-d_\gamma(r-t_0)}\right)-\frac{\sigma_\gamma^2}{2d_\gamma^3}\left(e^{-d_\gamma(t-s)}-e^{-d_\gamma(t-r)}  \right.\nq
 &\left.\quad+e^{-d_\gamma(t+s-2t_0)}-e^{-d_\gamma(t+r-2t_0)}-1+e^{-d_\gamma(s-r)}-e^{-2d_\gamma(s-t_0)}+e^{-d_\gamma(s+r-2t_0)}\right)
 \end{split}
 \]
@@ -657,10 +658,10 @@ $
 于是只要在结果中将$s$与$r$交换即可. 接下来,由It\^o等距有
 \[
 \begin{split}
-\E&\left[|C|^2\right] = \sigma^2\E\left[\left(\int_{t_0}^t e^{-J(s, t)+\hat{\lambda}(t-s)}dW(s)\right)^2\right] \\
-&= \sigma^2\int_{t_0}^te^{-2\hat\gamma(t-s)}\E\left[e^{-2J(s, t)}\right]ds = \sigma^2\int_{t_0}^t e^{-2\hat\gamma(t-s)-2\E[J(s, t)]+2\Var(J(s, t))}ds \\
-\E&[A^*B] = \E\left[\left(e^{-J(t_0, t)+\hat{\lambda}(t-t_0)}u_0\right)^*\int_{t_0}^t(b(s)+f(s))e^{-J(s, t)+\hat{\lambda}(t-s)}ds\right]\\
-&= e^{-\hat\gamma(t-t_0)}\int_{t_0}^t \left(\E\left[u_0^*b_0e^{-J(t_0, t)-J(s, t)}\right]e^{(\lambda_b-i\omega)(s-t_0)}\right.\\
+\E&\left[|C|^2\right] = \sigma^2\E\left[\left(\int_{t_0}^t e^{-J(s, t)+\hat{\lambda}(t-s)}dW(s)\right)^2\right] \nq
+&= \sigma^2\int_{t_0}^te^{-2\hat\gamma(t-s)}\E\left[e^{-2J(s, t)}\right]ds = \sigma^2\int_{t_0}^t e^{-2\hat\gamma(t-s)-2\E[J(s, t)]+2\Var(J(s, t))}ds \nw
+\E&[A^*B] = \E\left[\left(e^{-J(t_0, t)+\hat{\lambda}(t-t_0)}u_0\right)^*\int_{t_0}^t(b(s)+f(s))e^{-J(s, t)+\hat{\lambda}(t-s)}ds\right]\nq
+&= e^{-\hat\gamma(t-t_0)}\int_{t_0}^t \left(\E\left[u_0^*b_0e^{-J(t_0, t)-J(s, t)}\right]e^{(\lambda_b-i\omega)(s-t_0)}\right.\nq
 &\quad+\left.\left(\hat{b}\left(1-e^{\lambda_b(s-t_0)}\right)+f(s)\right)\E\left[u_0e^{-J(t_0, t)-J(s, t)}\right]^*\right)ds
 \end{split}
 \]
@@ -668,11 +669,11 @@ $
 由命题(\ref{multiVariable gaussian exp 3}), 以及类似$\E\left[B^2\right]$的计算过程, 类似的能得到
 \[
 \begin{split}
-\E&\left[u_0^*b_0e^{-J(t_0, t)-J(s, t)}\right] = e^{-\E[J(s, t)]-\E[J(t_0, t)]+\frac{1}{2}\Var(J(s, t))+\frac{1}{2}\Var(J(t_0, t))+\Cov(J(s, t), J(t_0, t))}\times \\
-&\quad[\E[u_0^*]\E[b_0]+\Cov(u_0^*, b_0^*) - \E[u_0^*](\Cov(b_0, J(s, t))+\Cov(b_0, J(t_0, t))) \\
-&\quad-\E[b_0](\Cov(J(s, t), u_0^*)+\Cov(J(t_0, t), u_0^*))+(\Cov(u_0^*, J(s, t))+\Cov(u_0^*, J(t_0, t))) \\
-&\quad\times(\Cov(b_0, J(s, t))+\Cov(b_0, J(t_0, t)))], \\
-\E&\left[u_0e^{-J(t_0, t)-J(s, t)}\right] = e^{-\E[J(s, t)]-\E[J(t_0, t)]+\frac{1}{2}\Var(J(s, t))+\frac{1}{2}\Var(J(t_0, t))+\Cov(J(s, t), J(t_0, t))}\times \\
+\E&\left[u_0^*b_0e^{-J(t_0, t)-J(s, t)}\right] = e^{-\E[J(s, t)]-\E[J(t_0, t)]+\frac{1}{2}\Var(J(s, t))+\frac{1}{2}\Var(J(t_0, t))+\Cov(J(s, t), J(t_0, t))}\times \nq
+&\quad[\E[u_0^*]\E[b_0]+\Cov(u_0^*, b_0^*) - \E[u_0^*](\Cov(b_0, J(s, t))+\Cov(b_0, J(t_0, t))) \nq
+&\quad-\E[b_0](\Cov(J(s, t), u_0^*)+\Cov(J(t_0, t), u_0^*))+(\Cov(u_0^*, J(s, t))+\Cov(u_0^*, J(t_0, t))) \nq
+&\quad\times(\Cov(b_0, J(s, t))+\Cov(b_0, J(t_0, t)))], \nw
+\E&\left[u_0e^{-J(t_0, t)-J(s, t)}\right] = e^{-\E[J(s, t)]-\E[J(t_0, t)]+\frac{1}{2}\Var(J(s, t))+\frac{1}{2}\Var(J(t_0, t))+\Cov(J(s, t), J(t_0, t))}\times \nq
 &(\E[u_0]-\Cov(u_0, J(s, t))-\Cov(u_0, J(t_0, t)))
 \end{split}
 \]
@@ -693,21 +694,21 @@ $
 利用命题(\ref{multiVariable gaussian exp 3}), 和上一节类似的, 我们有
 \[
 \begin{split}
-\E&[A^2] = \E[e^{-2J(t_0, t)+2\hat\lambda(t-t_0)}u_0^2] = e^{-2\hat\gamma(t-t_0)-2\E[J(t_0, t)]+2\Var(J(t_0, t))}\times \\
-&\quad\left(\E[u_0]^2+\Cov(u_0, u_0^*)-4\E[u_0]\Cov(u_0, J(t_0, t))+4\Cov(u_0, J(t_0, t))^2\right), \\
-\E&\left[B^2\right] = \int_{t_0}^t ds \int_{t_0}^t dr \E\left[((b(s)+f(s))(b(r)+f(r))e^{-J(s, t)-J(r, t)+\hat\lambda(2t-s-r)}\right] \\
+\E&[A^2] = \E[e^{-2J(t_0, t)+2\hat\lambda(t-t_0)}u_0^2] = e^{-2\hat\gamma(t-t_0)-2\E[J(t_0, t)]+2\Var(J(t_0, t))}\times \nw
+&\quad\left(\E[u_0]^2+\Cov(u_0, u_0^*)-4\E[u_0]\Cov(u_0, J(t_0, t))+4\Cov(u_0, J(t_0, t))^2\right), \nw
+\E&\left[B^2\right] = \int_{t_0}^t ds \int_{t_0}^t dr \E\left[((b(s)+f(s))(b(r)+f(r))e^{-J(s, t)-J(r, t)+\hat\lambda(2t-s-r)}\right]
 \end{split}
 \]
 
 上式中的被积项为
 \[
 \begin{split}
-\E&\left[((b(s)+f(s))(b(r)+f(r))e^{-J(s, t)-J(r, t)+\hat\lambda(2t-s-r)}\right] \\
-&= e^{-\hat\lambda(2t-s-r)-\E[J(s, t)]-\E[J(r, t)]+\frac{1}{2}\Var(J(s, t))+\frac{1}{2}\Var(r, t)+\Cov(J(s, t), J(r, t))} \times \\
-&\quad [\E[b(s)b(r)]-\E[b(s)]\times(\Cov(b(r), J(r, t))+\Cov(b(r), J(s, t))) \\
-&\quad- \E[b(r)]\times(\Cov(b(s), J(r, t))+\Cov(b(s), J(s, t))) \\
-&\quad + [\Cov(b(r), J(s, t))+\Cov(b(r), J(r, t))]\times[\Cov(b(s), J(s, t))+\Cov(b(s), J(r, t))]\\
-&\quad + f(r)\times[\E[b(s)]-\Cov(b(s), J(s, t))-\Cov(b(s), J(r, t))]\\
+\E&\left[((b(s)+f(s))(b(r)+f(r))e^{-J(s, t)-J(r, t)+\hat\lambda(2t-s-r)}\right] \nw
+&= e^{-\hat\lambda(2t-s-r)-\E[J(s, t)]-\E[J(r, t)]+\frac{1}{2}\Var(J(s, t))+\frac{1}{2}\Var(r, t)+\Cov(J(s, t), J(r, t))} \times \nw
+&\quad [\E[b(s)b(r)]-\E[b(s)]\times(\Cov(b(r), J(r, t))+\Cov(b(r), J(s, t))) \nq
+&\quad- \E[b(r)]\times(\Cov(b(s), J(r, t))+\Cov(b(s), J(s, t))) \nq
+&\quad + [\Cov(b(r), J(s, t))+\Cov(b(r), J(r, t))]\times[\Cov(b(s), J(s, t))+\Cov(b(s), J(r, t))]\nq
+&\quad + f(r)\times[\E[b(s)]-\Cov(b(s), J(s, t))-\Cov(b(s), J(r, t))]\nq
 &\quad +f(s)\times[\E[b(r)]-\Cov(b(r), J(r, t))-\Cov(b(r), J(s, t))]+f(s)f(r)]
 \end{split}
 \]
@@ -715,14 +716,9 @@ $
 其中
 \[
 \begin{split}
-\E&[b(s)b(r)] = \left(1-e^{\lambda_b(s-t_0)}-e^{\lambda_b(r-t_0)}+e^{\lambda_b(s+r-2t_0)}\right)\hat{b}^2 \\
-&+ \left(e^{\lambda_b(s-t_0)+e^{\lambda_b(r-t_0)}-2e^{\lambda_b(s-t_0)(r-t_0)}}\right)\hat{b}\E[b_0] + e^{\lambda_b(s+r-2t_0)}\left(\Var(b_0)+|\E[b_0]|^2\right),
-\end{split}
-\]
-
-\[
-\begin{split}
-\E&[AB] = \E[e^{-J(t_0, t)+\hat{\lambda}(t-t_0)}u_0\int_{t_0}^t (b(s)+f(s))e^{-J(s, t)+\hat\lambda(t-s)}ds] \\
+\E&[b(s)b(r)] = \left(1-e^{\lambda_b(s-t_0)}-e^{\lambda_b(r-t_0)}+e^{\lambda_b(s+r-2t_0)}\right)\hat{b}^2 \nq
+&+ \left(e^{\lambda_b(s-t_0)+e^{\lambda_b(r-t_0)}-2e^{\lambda_b(s-t_0)(r-t_0)}}\right)\hat{b}\E[b_0] + e^{\lambda_b(s+r-2t_0)}\left(\Var(b_0)+|\E[b_0]|^2\right), \nw
+\E&[AB] = \E[e^{-J(t_0, t)+\hat{\lambda}(t-t_0)}u_0\int_{t_0}^t (b(s)+f(s))e^{-J(s, t)+\hat\lambda(t-s)}ds] \nq
 &= e^{\hat\lambda(2t-s-t_0)}\int_{t_0}^t \left[e^{\lambda_b(s-t_0)}\E[u_0b_0e^{-J(t_0, t)-J(s, t)}]+(\hat{b}(1-e^{\lambda_b(s-t_0)})+f(s))\E[u_0e^{-J(t_0, t)-J(s, t)}]\right]ds.
 \end{split}
 \]
@@ -730,12 +726,13 @@ $
 上式中的第二个期望在上一节中已经求出结果了, 而
 \[
 \begin{split}
-\E&[u_0b_0e^{-J(t_0, t)-J(s, t)}] = e^{-\E[J(t_0, t)]-\E[J(s, t)]+\frac{1}{2}(\Var(J(t_0, t))+\Var(J(s, t)))+\Cov(J(t_0, t), J(s, t))}\times \\
-&\quad (\Cov(u_0, b_0^*)+\E[u_0]\E[b_0]-\E[u_0](\Cov(b_0, J(t_0, t))+\Cov(b_0, J(s, t)))\\
-&\quad -\E[b_0](\Cov(u_0, J(t_0, t))+\Cov(u_0, J(s, t)))\\
+\E&[u_0b_0e^{-J(t_0, t)-J(s, t)}] = e^{-\E[J(t_0, t)]-\E[J(s, t)]+\frac{1}{2}(\Var(J(t_0, t))+\Var(J(s, t)))+\Cov(J(t_0, t), J(s, t))}\times \nw
+&\quad (\Cov(u_0, b_0^*)+\E[u_0]\E[b_0]-\E[u_0](\Cov(b_0, J(t_0, t))+\Cov(b_0, J(s, t)))\nq
+&\quad -\E[b_0](\Cov(u_0, J(t_0, t))+\Cov(u_0, J(s, t)))\nq
 &\quad +[\Cov(b_0, J(t_0, t))+\Cov(b_0, J(s, t))]\times[\Cov(u_0, J(s, t))+\Cov(u_0, J(t_0, t))]).
 \end{split}
 \]
+\\
 
 \subsubsection{$\Cov(u(t), \gamma(t))$}
 % 下面考虑$Cov(u(t), \gamma(t))$.
@@ -747,9 +744,9 @@ $
 上式的第二项由(\ref{gamma_stat_1})和(\ref{E u(t)})可以直接计算得到. 下面我们计算上式的第一项. 由It\^o等距知,
 \[
 \begin{split}
-E&[u(t)(\gamma(t)-\hat\gamma)] = E\left[\left(e^{-J(t_0, t)+\hat\lambda(t-t_0)}u_0+\int_{t_0}^t(b(s)+f(s))e^{-J(s, t)+\hat\lambda(s-t_0)}ds\right.\right. \\
-&\quad \left.\left.+\sigma\int_{t_0}^t e^{-J(s, t)+\hat\lambda(s-t_0)}dW(s)\right)\times(\gamma(t)-\hat\gamma)\right] \\
-&= e^{\hat\lambda(t-t_0)}E\left[(\gamma(t)-\hat\gamma)u_0e^{\hat\lambda(t-t_0)}\right]+\int_{t_0}^t e^{-\hat\lambda(s-t_0)}E\left[(b(s)+f(s))(\gamma(t)-\hat\gamma)e^{-J(s, t)}\right]ds
+\E&[u(t)(\gamma(t)-\hat\gamma)] = \E\left[\left(e^{-J(t_0, t)+\hat\lambda(t-t_0)}u_0+\int_{t_0}^t(b(s)+f(s))e^{-J(s, t)+\hat\lambda(s-t_0)}ds\right.\right. \nq
+&\quad\quad\quad\quad\quad\quad\quad \left.\left.+\sigma\int_{t_0}^t e^{-J(s, t)+\hat\lambda(s-t_0)}dW(s)\right)\times(\gamma(t)-\hat\gamma)\right] \nq
+&= e^{\hat\lambda(t-t_0)}\E\left[(\gamma(t)-\hat\gamma)u_0e^{\hat\lambda(t-t_0)}\right]+\int_{t_0}^t e^{-\hat\lambda(s-t_0)}\E\left[(b(s)+f(s))(\gamma(t)-\hat\gamma)e^{-J(s, t)}\right]ds
 \end{split}
 \]
 
@@ -757,7 +754,7 @@ E&[u(t)(\gamma(t)-\hat\gamma)] = E\left[\left(e^{-J(t_0, t)+\hat\lambda(t-t_0)}u
 $
 \frac{\partial J(t_0, t)}{\partial t} = (\gamma(t)-\hat\gamma),
 $
-那么
+那么\\
 % (\ref{E u(t) gamma})可以表示为
 \[
 \E[u(t)(\gamma(t)-\hat\gamma)] = -e^{\hat\lambda(t-t_0)}\frac{\partial}{\partial t}\E\left[u_0e^{-J(t_0, t)}\right]-\int_{t_0}^t e^{\hat\lambda(s-t_0)}\frac{\partial}{\partial t}\E\left[(b(s)+f(s))e^{-J(s, t)}\right]ds,
@@ -766,18 +763,18 @@ $
 其中由(\ref{multiVariable gaussian exp 2})和协方差的线性性质,
 \[
 \begin{split}
-\frac{\partial}{\partial t}&\E\left[u_0e^{-J(t_0, t)}\right] = \frac{\partial}{\partial t}\left[(\E[u_0]+\Cov(-J(t_0, t), u_0))e^{-\E[J(t_0, t)]+\frac{1}{2}\Var(J(t_0, t))}\right] \\
-&= \left(\frac{\partial}{\partial t}\Cov(-J(t_0, t), u_0)\right)e^{-\E[J(t_0, t)]+\frac{1}{2}\Var(J(t_0, t))} \\
-&\quad + (\E[u_0] + \Cov(u_0, -J(t_0, t)))\frac{\partial}{\partial t}e^{-\E[J(t_0, t)]+\frac{1}{2}Var(J(t_0, t))} \\
-&= e^{-J(t_0, t)+\frac{1}{2}\Var(J(t_0, t))}\times\left[\Cov(-\gamma(t), u_0)+(\E[u_0]+\Cov(-J(t_0, t), u_0))\times\right. \\
+\frac{\partial}{\partial t}&\E\left[u_0e^{-J(t_0, t)}\right] = \frac{\partial}{\partial t}\left[(\E[u_0]+\Cov(-J(t_0, t), u_0))e^{-\E[J(t_0, t)]+\frac{1}{2}\Var(J(t_0, t))}\right] \nq
+&= \left(\frac{\partial}{\partial t}\Cov(-J(t_0, t), u_0)\right)e^{-\E[J(t_0, t)]+\frac{1}{2}\Var(J(t_0, t))} \nq
+&\quad + (\E[u_0] + \Cov(u_0, -J(t_0, t)))\frac{\partial}{\partial t}e^{-\E[J(t_0, t)]+\frac{1}{2}Var(J(t_0, t))} \nq
+&= e^{-J(t_0, t)+\frac{1}{2}\Var(J(t_0, t))}\times\left[\Cov(-\gamma(t), u_0)+(\E[u_0]+\Cov(-J(t_0, t), u_0))\times\right. \nq
 &\quad \left.(\hat\gamma-\E[\gamma(t)]+\frac{1}{2}\frac{\partial}{\partial t}\Var(J(t_0, t)))\right],
 \end{split}
 \]
 
 \[
 \begin{split}
-\frac{\partial}{\partial t}&\E\left[(b(s)+f(s))e^{-J(s, t)}\right] = \frac{\partial}{\partial t}\left[(E[b(s)]+f(s)+\Cov(b(s)+f(s), -J(s, t)))e^{-\E[J(s, t)]+\frac{1}{2}\Var(J(s, t))}\right] \\
-&= e^{-\E[J(s, t)]+\frac{1}{2}\Var(J(s, t))}\times\left[\Cov(-\gamma(t), b(s))+(\E[b(s)]+f(s)+\Cov(b(s), J(s, t)))\times \right. \\
+\frac{\partial}{\partial t}&\E\left[(b(s)+f(s))e^{-J(s, t)}\right] = \frac{\partial}{\partial t}\left[(\E[b(s)]+f(s)+\Cov(b(s)+f(s), -J(s, t)))e^{-\E[J(s, t)]+\frac{1}{2}\Var(J(s, t))}\right] \nw
+&= e^{-\E[J(s, t)]+\frac{1}{2}\Var(J(s, t))}\times\left[\Cov(-\gamma(t), b(s))+(\E[b(s)]+f(s)+\Cov(b(s), J(s, t)))\times \right. \nq
 &\quad \left.\left(\hat\gamma - \E[\gamma(t)]+\frac{1}{2}\frac{\partial}{\partial t}\Var(J(s, t))\right)\right].
 \end{split}
 \]
@@ -785,11 +782,12 @@ $
 且在上两式中,
 \[
 \begin{split}
-\frac{\partial}{\partial t}&\Var(J(s, t)) = \frac{\partial}{\partial t}\left[\frac{1}{d_\gamma^2}\left(e^{-d_\gamma(s-t_0)}-e^{-d_\gamma(t-t_0)}\right)^2\Var(\gamma_0)\right. \\
-&\quad+ \left.\frac{\sigma_\gamma^2}{d_\gamma^3}\left(-1+d_\gamma(t-s)+e^{-d_\gamma(s+t-2t_0)}+e^{-d_\gamma(t-s)}-\frac{1}{2}e^{-2d_\gamma(t-t_0)}-\frac{1}{2}e^{-2d_\gamma(s-t_0)}\right)\right] \\
+\frac{\partial}{\partial t}&\Var(J(s, t)) = \frac{\partial}{\partial t}\left[\frac{1}{d_\gamma^2}\left(e^{-d_\gamma(s-t_0)}-e^{-d_\gamma(t-t_0)}\right)^2\Var(\gamma_0)\right. \nq
+&\quad+ \left.\frac{\sigma_\gamma^2}{d_\gamma^3}\left(-1+d_\gamma(t-s)+e^{-d_\gamma(s+t-2t_0)}+e^{-d_\gamma(t-s)}-\frac{1}{2}e^{-2d_\gamma(t-t_0)}-\frac{1}{2}e^{-2d_\gamma(s-t_0)}\right)\right] \nq
 &= \frac{\sigma_\gamma^2}{d_\gamma^2}\left(1-e^{-d_\gamma(t-s)}-e^{-d_\gamma(t+s-2t_0)}+e^{-2d_\gamma(t-t_0)}\right)+\frac{2}{d_\gamma}\Var(\gamma_0)\times\left(e^{-d_\gamma(t+s-2t_0)}-e^{-2d_\gamma(t-t_0)}\right).
 \end{split}
 \]
+\\
 
 \subsubsection{$\Cov(u(t), b(t))$}
 % 下面考虑$Cov(u(t), b(t))$. 
@@ -800,13 +798,13 @@ $
 第二项由(\ref{E u(t)})和(\ref{b_stat_1})即可计算得到. 结合It\^o公式, 完全类似之前的计算过程, 第一项为
 \[
 \begin{split}
-\E&[u(t)b^*(t)] = \E\left[u(t)\left(\hat{b}^*+(b_0^*-\hat{b}^*)e^{\lambda_b^*(t-t_0)}+\sigma_b\int_{t_0}^t e^{\lambda_b(t-s)}dW_b(s)\right)\right] \\
-&= \left(1-e^{\lambda_b^*(t-t_0)}\right)\hat{b}^*\E[u(t)] + \E\left[u(t)b_0^*e^{\lambda_b^*(t-t_0)}\right] \\
-&\quad + \E[\sigma\sigma_b\int_{t_0}^t\int_{t_0}^te^{-J(s, t)+\hat\lambda(s-t_0)+\lambda_b^*(t-\xi)}dW(s)dW_b(\xi)] \\
-&= \left(1-e^{\lambda_b^*(t-t_0)}\right)\hat{b}^*\E[u(t)] + \E\left[\left(e^{-J(t_0, t)+\hat\lambda(s-t_0)}+\int_{t_0}^t (b(s)+f(s))e^{-J(s, t)+\hat\lambda(s-t_0)}ds\right)b_0^*e^{\lambda_b^*(t-t_0)}\right] \\
-&\quad + \frac{\sigma\sigma_b}{2\gamma_b}\E\left[\int_{t_0}^t e^{-J(s, t)}e^{-\lambda(t-s)}\left(e^{\lambda_b^*(t-s)}-e^{-i\omega_b(t-s)-\gamma_b(s+t-2t_0)}\right)\right] \\
-&= \left(1-e^{\lambda_b^*(t-t_0)}\right)\hat{b}^*\E[u(t)] + e^{(\hat\lambda+\lambda_b^*)(t-t_0)}\E\left[u_0b_0^*e^{-J(t_0, t)}\right] + e^{\lambda_b^*(t-t_0)}\times \\
-&\quad \int_{t_0}^t e^{\hat\lambda(t-s)}\left(\E\left[b_0^*b(s)e^{-J(s, t)}\right]+f(s)\E\left[b_0e^{-J(s, t)}\right]^*ds\right) \\
+\E&[u(t)b^*(t)] = \E\left[u(t)\left(\hat{b}^*+(b_0^*-\hat{b}^*)e^{\lambda_b^*(t-t_0)}+\sigma_b\int_{t_0}^t e^{\lambda_b(t-s)}dW_b(s)\right)\right] \nq
+&= \left(1-e^{\lambda_b^*(t-t_0)}\right)\hat{b}^*\E[u(t)] + \E\left[u(t)b_0^*e^{\lambda_b^*(t-t_0)}\right] \nq
+&\quad + \E[\sigma\sigma_b\int_{t_0}^t\int_{t_0}^te^{-J(s, t)+\hat\lambda(s-t_0)+\lambda_b^*(t-\xi)}dW(s)dW_b(\xi)] \nq
+&= \left(1-e^{\lambda_b^*(t-t_0)}\right)\hat{b}^*\E[u(t)] + \E\left[\left(e^{-J(t_0, t)+\hat\lambda(s-t_0)}+\int_{t_0}^t (b(s)+f(s))e^{-J(s, t)+\hat\lambda(s-t_0)}ds\right)b_0^*e^{\lambda_b^*(t-t_0)}\right] \nq
+&\quad + \frac{\sigma\sigma_b}{2\gamma_b}\E\left[\int_{t_0}^t e^{-J(s, t)}e^{-\lambda(t-s)}\left(e^{\lambda_b^*(t-s)}-e^{-i\omega_b(t-s)-\gamma_b(s+t-2t_0)}\right)\right] \nq
+&= \left(1-e^{\lambda_b^*(t-t_0)}\right)\hat{b}^*\E[u(t)] + e^{(\hat\lambda+\lambda_b^*)(t-t_0)}\E\left[u_0b_0^*e^{-J(t_0, t)}\right] + e^{\lambda_b^*(t-t_0)}\times \nq
+&\quad \int_{t_0}^t e^{\hat\lambda(t-s)}\left(\E\left[b_0^*b(s)e^{-J(s, t)}\right]+f(s)\E\left[b_0e^{-J(s, t)}\right]^*ds\right) \nq
 &\quad + \frac{\sigma\sigma_b}{2\gamma_b}\E\left[\int_{t_0}^t e^{-\E[J(s, t)]+\frac{1}{2}\Var(J(s, t))}e^{-\lambda(t-s)}\left(e^{\lambda_b^*(t-s)}-e^{-i\omega_b(t-s)-\gamma_b(s+t-2t_0)}\right)\right],
 \end{split}
 \]
@@ -814,13 +812,14 @@ $
 利用命题(\ref{multiVariable gaussian exp 3}), 在上式中
 \[
 \begin{split}
-\E&\left[b_0e^{-J(s, t)}\right] = e^{-\E[J(s, t)]+\frac{1}{2}\Var(J(s, t))}\times(\E[b_0]+\Cov(b_0, -J(s, t))), \\
-\E&\left[u_0b_0^*e^{-J(t_0, t)}\right] = e^{-\E[J(t_0, t)]+\frac{1}{2}\Var(J(t_0, t))}\times[\E[u_0]\E[b_0]^*+\Cov(u_0, b_0)+\E[u_0]\Cov(b_0, -J(t_0, t))^*\\
-&+\E[b_0]^*\Cov(u_0, -J(t_0, t)) + \Cov(u_0, -J(t_0, t))\Cov(b_0, -J(t_0, t))^*], \\
-\E&[b_0^*b(s)e^{-J(s, t)}] = e^{-J(s, t)+\frac{1}{2}\Var(J(s, t))}\times [\E[b_0]^*\E[b(s)]+\Cov(b_0, b(s))+\E[b_0]^*\Cov(b(s), -J(s, t))\\
+\E&\left[b_0e^{-J(s, t)}\right] = e^{-\E[J(s, t)]+\frac{1}{2}\Var(J(s, t))}\times(\E[b_0]+\Cov(b_0, -J(s, t))), \nw
+\E&\left[u_0b_0^*e^{-J(t_0, t)}\right] = e^{-\E[J(t_0, t)]+\frac{1}{2}\Var(J(t_0, t))}\times[\E[u_0]\E[b_0]^*+\Cov(u_0, b_0)+\E[u_0]\Cov(b_0, -J(t_0, t))^*\nq
+&+\E[b_0]^*\Cov(u_0, -J(t_0, t)) + \Cov(u_0, -J(t_0, t))\Cov(b_0, -J(t_0, t))^*], \nw
+\E&[b_0^*b(s)e^{-J(s, t)}] = e^{-J(s, t)+\frac{1}{2}\Var(J(s, t))}\times [\E[b_0]^*\E[b(s)]+\Cov(b_0, b(s))+\E[b_0]^*\Cov(b(s), -J(s, t))\nq
 &+\E[b(s)]\Cov(b_0, -J(s, t))^*+\Cov(b_0, -J(s, t))^*\Cov(b(s), -J(s, t))].
 \end{split}
 \]
+\\
 
 \subsubsection{$\Cov(u(t), b^*(t))$}
 
@@ -833,21 +832,21 @@ $
 和前一部分类似的, 只要考虑上式的第一项.我们有
 \[
 \begin{split}
-\E&[u(t)b(t)] = \E\left[u(t)\left(\hat{b}+(b_0-\hat{b})e^{\lambda_b(t-t_0)}+\sigma_b\int_{t_0}^t e^{\lambda_b(t-s)}dW_b(s)\right)\right] \\
-&= \left(1-e^{\lambda_b(t-t_0)}\right)\hat{b}\E[u(t)] + \E\left[u(t)b_0e^{\lambda_b(t-t_0)}\right] \\
-&\quad + \E[\sigma\sigma_b\int_{t_0}^t\int_{t_0}^te^{-J(s, t)+\hat\lambda(s-t_0)+\lambda_b(t-\xi)}dW(s)dW_b(\xi)] \\
-&= \left(1-e^{\lambda_b^*(t-t_0)}\right)\hat{b}\E[u(t)] + \E\left[\left(e^{-J(t_0, t)+\hat\lambda(s-t_0)}+\int_{t_0}^t (b(s)+f(s))e^{-J(s, t)+\hat\lambda(s-t_0)}ds\right)b_0e^{\lambda_b(t-t_0)}\right] \\
-&= \left(1-e^{\lambda_b(t-t_0)}\right)\hat{b}\E[u(t)] + e^{(\hat\lambda+\lambda_b)(t-t_0)}\E\left[u_0b_0e^{-J(t_0, t)}\right] + e^{\lambda_b(t-t_0)}\times \\
-&\quad \int_{t_0}^t e^{\hat\lambda(t-s)}\left(\E\left[b_0b(s)e^{-J(s, t)}\right]+f(s)\E\left[b_0e^{-J(s, t)}\right]ds\right) \\
+\E&[u(t)b(t)] = \E\left[u(t)\left(\hat{b}+(b_0-\hat{b})e^{\lambda_b(t-t_0)}+\sigma_b\int_{t_0}^t e^{\lambda_b(t-s)}dW_b(s)\right)\right] \nq
+&= \left(1-e^{\lambda_b(t-t_0)}\right)\hat{b}\E[u(t)] + \E\left[u(t)b_0e^{\lambda_b(t-t_0)}\right] \nq
+&\quad + \E[\sigma\sigma_b\int_{t_0}^t\int_{t_0}^te^{-J(s, t)+\hat\lambda(s-t_0)+\lambda_b(t-\xi)}dW(s)dW_b(\xi)] \nq
+&= \left(1-e^{\lambda_b^*(t-t_0)}\right)\hat{b}\E[u(t)] + \E\left[\left(e^{-J(t_0, t)+\hat\lambda(s-t_0)}+\int_{t_0}^t (b(s)+f(s))e^{-J(s, t)+\hat\lambda(s-t_0)}ds\right)b_0e^{\lambda_b(t-t_0)}\right] \nq
+&= \left(1-e^{\lambda_b(t-t_0)}\right)\hat{b}\E[u(t)] + e^{(\hat\lambda+\lambda_b)(t-t_0)}\E\left[u_0b_0e^{-J(t_0, t)}\right] + e^{\lambda_b(t-t_0)}\times \nq
+&\quad \int_{t_0}^t e^{\hat\lambda(t-s)}\left(\E\left[b_0b(s)e^{-J(s, t)}\right]+f(s)\E\left[b_0e^{-J(s, t)}\right]ds\right) \nq
 \end{split}
 \]
 
 在上式中, 由命题(\ref{multiVariable gaussian exp 3})知,
 \[
 \begin{split}
-\E&\left[u_0b_0e^{-J(t_0, t)}\right] = e^{-\E[J(t_0, t)]+\frac{1}{2}\Var(J(t_0, t))}\times[\E[u_0]\E[b_0]+\Cov(u_0, b_0^*)+\E[b_0]\Cov(u_0, -J(t_0, t))\\
-&\quad + \E[u_0]\Cov(b_0, -J(t_0, t))+\Cov(u_0, -J(t_0, t))\Cov(b_0, -J(t_0, t))], \\
-\E&\left[b_0b(s)e^{-J(s, t)}\right] = e^{-J(s, t)+\frac{1}{2}\Var(J(s, t))}\times [\E[b_0]\E[b(s)]+\Cov(b_0, b(s)^*)+\E[b_0]\Cov(b(s), -J(s, t)) \\
+\E&\left[u_0b_0e^{-J(t_0, t)}\right] = e^{-\E[J(t_0, t)]+\frac{1}{2}\Var(J(t_0, t))}\times[\E[u_0]\E[b_0]+\Cov(u_0, b_0^*)+\E[b_0]\Cov(u_0, -J(t_0, t))\nq
+&\quad + \E[u_0]\Cov(b_0, -J(t_0, t))+\Cov(u_0, -J(t_0, t))\Cov(b_0, -J(t_0, t))], \nw
+\E&\left[b_0b(s)e^{-J(s, t)}\right] = e^{-J(s, t)+\frac{1}{2}\Var(J(s, t))}\times [\E[b_0]\E[b(s)]+\Cov(b_0, b(s)^*)+\E[b_0]\Cov(b(s), -J(s, t)) \nq
 &\quad + \E[b(s)]\Cov(b_0, -J(s, t)) + \Cov(b_0, -J(s, t))\Cov(b(s), -J(s, t))].
 \end{split}
 \]
@@ -899,7 +898,7 @@ $
 % \end{equation}
 \subsection{参数选择}
 在实践中, 我们可以考虑以下的一个简单例子. 在(\ref{E0})中, 我们令外界驱动力
-$$f(t) = 1.5e^{0.1it},$$方程组的参数可以取为
+$$f(t) = \frac{3}{2}e^{0.1it},$$方程组的参数可以取为
 \begin{equation} \label{parameters}
 \left\{
 \begin{aligned}
