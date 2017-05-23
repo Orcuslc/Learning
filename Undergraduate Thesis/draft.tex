@@ -90,12 +90,12 @@
 
 \date{}
 
-% \usepackage{fontspec}
+\usepackage{fontspec}
 % \setmainfont{Times New Roman}
-% \setmainfont{Perpetua}
+\setmainfont{Lucida Bright} 
 % \setmainfont{Segoe Script}
-% \setsansfont{Perpetua}
-% \setmonofont{Perpetua}
+\setsansfont{Lucida Bright} 
+\setmonofont{Lucida Bright} 
 % \setsansfont{Segoe Script}
 % \setmonofont{Segoe UI }
 
@@ -140,13 +140,13 @@
 \newcommand{\Cov}{\text{Cov}}
 
 \begin{abstract}
-本文研究了一个Kalman滤波模型中重要的随机微分方程组的解, 利用特征函数和It\^o公式补全了解的一阶和二阶统计量的计算过程, 并使用Monte Carlo模拟对理论结果进行了数值检验. \\
-\noindent{\heiti 关键字:} 随机微分方程组; 统计量; 数值模拟
+本文研究了一个用于改进Kalman滤波结果的重要随机微分方程组的解, 利用It\^o积分和It\^o等距补全了解的一阶和二阶统计量的计算过程, 并使用Monte Carlo模拟对理论结果进行了数值检验. \\
+\noindent{\heiti 关键字:} 随机微分方程组; 统计量; It\^o积分
 \end{abstract}
 
 \section{导言}
 \subsection{问题简介}
-考虑以下的一个随机微分方程组, 其作用为改进对模型误差的滤波\cite{gershgorin2010test}:
+在对Kalman滤波的结果进行改进时, 研究者提出了如下的一个随机微分方程组来模拟现实中常见的随机信号\cite{gershgorin2010test}:
 \begin{equation} \label{E0}
 \left\{
 \begin{split}
@@ -161,9 +161,9 @@
 \right.
 \end{equation}
 
-其中$\omega$为$u(t)$的振荡频率, $f(t)$为外部驱动力, $\sigma$表示白噪声$W(t)$的强度. 此外, 参数$\gamma_b$和$d_\gamma$表示振荡阻尼, $\sigma_b$和$\sigma_\gamma$分别表示加性和乘性修正((\ref{E0})中第2, 3式)中白噪声的强度. $\hat{b}$和$\hat{\gamma}$分别表示$b(t)$和$\gamma(t)$的固定平均偏差修正, $\omega_b$表示加性噪声的频率. 白噪声$W_\gamma(t)$是实值函数, 而$W(t)$及$W_b(t)$均为复值, 且其实部和虚部均为独立的白噪声. \\
+其中$\omega$为$u(t)$的振荡频率, $f(t)$为外部驱动力, $\sigma$表示白噪声$W(t)$的强度. 此外, 参数$\gamma_b$和$d_\gamma$表示振荡阻尼, $\sigma_b$和$\sigma_\gamma$分别表示加性和乘性修正((\ref{E0})中第2, 3式)中白噪声的强度. $\hat{b}$和$\hat{\gamma}$分别表示$b(t)$和$\gamma(t)$的固定平均偏差修正, $\omega_b$表示加性噪声的频率. 白噪声$W_\gamma(t)$是实值函数, 而$W(t)$及$W_b(t)$均为复值, 且其实部和虚部均为独立的白噪声. 
 
-我们一般认为方程组(\ref{E0})有初值
+一般认为方程组(\ref{E0})有初值
 \begin{equation} \label{init_values}
 \left\{
 \begin{split}
@@ -176,23 +176,22 @@
 且$u_0$, $b_0$, $\gamma_0$均为独立的高斯随机变量, 其统计量
 $\E[u_0]$, $\E[\gamma_0]$, $\E[b_0]$, $\Var(u_0)$, $\Var(\gamma_0)$, $\Var(b_0)$, $\Cov(u_0, u_0^*)$, $\Cov(u_0, \gamma_0)$, $\Cov(u_0, b_0)$, $\Cov(u_0, b_0^*)$均假设为已知.
 
-由求解线性微分方程组的相关知识\cite{fulinjin1984ordinary}可以知道, (\ref{E0})的第二和第三项均为线性方程, 故有通解
+(\ref{E0})的第二和第三项均为线性方程, 由求解线性常微分方程组的相关知识\cite{fulinjin1984ordinary}可知其通解有以下的形式:
 \begin{equation} \label{Sb}
-b(t) = \hat{b}+(b_0-\hat{b})e^{\lambda_b(t-t_0)}+\sigma_b\int_{t_0}^t e^{\lambda_b(t-s)}dW_b(s),
+\begin{split}
+&b(t) = \hat{b}+(b_0-\hat{b})e^{\lambda_b(t-t_0)}+\sigma_b\int_{t_0}^t e^{\lambda_b(t-s)}dW_b(s), \\
+&\gamma(t) = \hat{\gamma}+(\gamma_0-\hat{\gamma})e^{-d_{\gamma}(t-t_0)}+\sigma_{\gamma}\int_{t_0}^t e^{-d_{\gamma}(t-s)}dW_{\gamma}(s).
+\end{split}
 \end{equation}
 
-\begin{equation} \label{Sg}
-\gamma(t) = \hat{\gamma}+(\gamma_0-\hat{\gamma})e^{-d_{\gamma}(t-t_0)}+\sigma_{\gamma}\int_{t_0}^t e^{-d_{\gamma}(t-s)}dW_{\gamma}(s).
-\end{equation}
-
-其中$\lambda_b = -\gamma_b+i\omega_b$, $\hat{b}$与$\hat{\gamma}$分别是$b(t)$和$\gamma(t)$的固定偏差校正.
+其中$\lambda_b = -\gamma_b+i\omega_b$.
 如果我们记
-\begin{equation}
-\hat{\lambda} = -\hat{\gamma}+i\omega,
-\end{equation}
 
 \begin{equation} \label{def J(s, t)}
-J(s, t) = \int_s^t (\gamma(s')-\hat{\gamma})ds'
+\begin{split}
+&\hat{\lambda} = -\hat{\gamma}+i\omega, \\
+&J(s, t) = \int_s^t (\gamma(s')-\hat{\gamma})ds'
+\end{split}
 \end{equation}
 
 则(\ref{E0})的通解可以表示为
@@ -202,14 +201,14 @@ u(t) &= e^{-J(t_0, t)+\hat{\lambda}(t-t_0)}u_0 + \int_{t_0}^t (b(s)+f(s))e^{-J(s
 & + \sigma\int_{t_0}^{t}e^{-J(s, t)+\hat{\lambda}(s-t_0)}dW(s).
 \end{split}
 \end{equation}
-以下将对方程(\ref{E0})的各个变量$u, b, \gamma$, 分别计算其统计量.
+本文在第三和第四节中将对方程(\ref{E0})的各个变量$u, b, \gamma$, 分别计算其一阶和二阶统计量, 以及各个变量间的相关性.
 
 \section{一些前置引理}
 \subsection{布朗运动的性质}
-在应用中, 往往将布朗运动置于一个随机微分方程(组)中, 来近似的模拟白噪声的性质\cite{hida1980brownian}. 
-为此, 我们需要引入布朗运动的一些基本性质.\cite{oksendal2003stochastic}\cite{nelson1967dynamical}
+在应用中, 往往将布朗运动置于随机微分方程中, 以模拟白噪声的性质\cite{hida1980brownian}. 
+为了简化计算过程, 我们在这里引入布朗运动的一些基本性质.\cite{oksendal2003stochastic}\cite{nelson1967dynamical}
 \begin{theorem} \label{brownian1}
-布朗运动$B_t$是一个Gauss过程. 对于所有的$0 \leqslant t_1 \leqslant\cdots\leqslant t_k$, 随机变量$Z = (B_{t_1}, B_{t_2}\cdots ,B_{t_k})\in \mathbb{R}^{nk}$ 服从多重正态分布. 如果设$B_t$的初值为$x$, 则其期望为 
+布朗运动$B_t$是一个Gaussian过程. 即对于所有的$0 \leqslant t_1 \leqslant\cdots\leqslant t_k$, 随机向量$Z = (B_{t_1}, B_{t_2}\cdots ,B_{t_k})\in \mathbb{R}^{nk}$ 服从多维正态分布. 如果设$B_{t_i}$的初值均为$x$, 则此随机向量的期望为 
 $$M = \E[Z] = (x, x, \cdots, x) \in \mathbb{R}^{nk},$$
 协方差矩阵为
 $$C = \left(\begin{matrix}
@@ -221,7 +220,7 @@ $$C = \left(\begin{matrix}
 			\right).$$
 \end{theorem}
 
-此定理的证明利用了特征函数的性质, 具体过程可见\cite{oksendal2003stochastic}的附录A. 以下的定理是(\ref{brownian1})的直接而显然的推论:
+此定理的证明利用了正态分布特征函数的性质, 具体过程可见\cite{oksendal2003stochastic}的附录A. 以下是定理(\ref{brownian1})的直接而显然的推论:
 \begin{theorem}
 假设布朗运动$B_t$满足定理(\ref{brownian1})中的条件, 那么对于$\forall t\geqslant 0$, $\E[B_t] = x$, $\E\left[(B_t - x)^2\right] = nt$, $\E[(B_t - x)(B_s - x)] = n\min(s, t)$. 而且如果$t \geqslant s$, 有$\E\left[(B_t - B_s)^2\right] = n(t-s)$.
 \end{theorem}
@@ -1067,9 +1066,13 @@ $$W_{\text{Re}(u)}(t) = \frac{1}{\sqrt{2}}W(t),$$
 \caption{Simulation of Covariances}
 \label{Simulation of Covariances}
 \end{figure}
-在模拟结果中我们可以看到, 对期望和方差的模拟结果和理论结果均比较符合. 而两者的差别在于方程组的初值为一个服从标准正态分布的随机变量, 其期望和方差的模拟值和理论值有一些偏差, 而这样的偏差随着时间$t$的增加而保持. 
-而在协方差的模拟结果中, 大部分的项有$O(10^{-4})$的误差, 这个误差应该是由复值协方差的条件数为二次方所引起的.
 
+\subsection{讨论和展望}
+在模拟结果中我们可以看到, 对期望和方差的模拟结果和理论结果均十分符合. 其中$\Var(b)$和$\Var(\gamma)$的模拟结果为一条和理论结果平行的曲线, 仅在初始时有截距上的误差, 这是由于初始值为随机变量所引起的. 如果不考虑这个由于模拟次数不够所引起的系统误差, 其截断误差达到了$O(10^{-6})$, 已近似达到了单精度计算时的机器精度. 
+
+在协方差的模拟结果中我们可以发现, 对$\Cov(u, b)$和$\Cov(u, b^*)$的模拟结果在模拟100,000次时有$O(10^{-4})$的误差, 而对$\Cov(u, u^*)$和$\Cov(u, \gamma)$的模拟误差达到了$O(10^{-2})$的数量级. 根据分析\cite{golub2012matrix}, 这是因为复数运算时的条件数为实数运算的二次方, 故误差值也随之提高了两个数量级. \\
+
+事实上, 根据相同的方法, 我们可以求出此随机微分方程组解的三节甚至四阶的统计量, 它们可以用初值和初始统计量的多重积分表示出来. 不过由于时间关系, 在这篇论文中没有将其详细的写出, 也没有对其进行数值上的模拟. 这些部分我们留待未来的研究中完成.
 % \begin{figure}[!ht]
 % \centering
 % \includegraphics[width = 12cm]{NumericalSimulation/res/CovuustarRe.png}
