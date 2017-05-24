@@ -1,25 +1,18 @@
 \documentclass[10pt]{beamer}
 
 \usepackage{beamerthemesplit}
-
 \usepackage{times}
 \usefonttheme{structurebold}
-
-
 \usepackage[english]{babel}
-% \usepackage{fontspec}
-% \setsansfont{Microsoft YaHei}
 \usepackage{pgf,pgfarrows,pgfnodes,pgfautomata,pgfheaps}
 \usepackage{amsmath,amssymb}
 \usepackage[latin1]{inputenc}
 \usepackage{multimedia}
-
 \setcounter{equation}{0}
 \numberwithin{equation}{section}
 \setbeamercovered{dynamic}
 
 \newcommand{\Lang}[1]{\operatorname{\text{\textsc{#1}}}}
-
 \newcommand{\Class}[1]{\operatorname{\mathchoice
   {\text{\sf \small #1}}
   {\text{\sf \small #1}}
@@ -28,9 +21,7 @@
 
 \newcommand{\NumSAT}      {\text{\small\#SAT}}
 \newcommand{\NumA}        {\#_{\!A}}
-
 \newcommand{\barA}        {\,\bar{\!A}}
-
 \newcommand{\Nat}{\mathbb{N}}
 \newcommand{\Set}[1]{\{#1\}}
 
@@ -40,7 +31,6 @@
 \usepackage{graphicx}
 \usepackage{subfloat}
 \usepackage{chemarrow}
-
 \usepackage{epsfig, subfigure}
 \usepackage{latexsym,amssymb,lastpage}
 \usepackage{graphicx,amsfonts}
@@ -50,21 +40,16 @@
 \newcommand{\mi}{\mathrm{i}}
 \newcommand{\md}{\mathrm{d}}
 
-% \usefonttheme[onlymath]{serif}
-% \usepackage{fontspec}
-% \setmainfont{}
-% \setmonofont{Microsoft YaHei}
-% \setsansfont{Microsoft YaHei}
-% \setmonofont{Calibri}
-% \setsansfont{Calibri}
+\usefonttheme{professionalfonts}
+\usefonttheme{serif}
 
 \def\mathfamilydefault{\rmdefault}
 
-% \newcommand*\oldmacro{}%
-% \let\oldmacro\insertshorttitle%
-% \renewcommand*\insertshorttitle{%
-%   \oldmacro\hfill%
-%   \insertframenumber\,/\,\inserttotalframenumber}
+\usepackage{fontspec}
+\setmainfont{Lucida Bright}
+
+\newcommand{\nq}{\\[5pt]}
+\newcommand{\nw}{\\[10pt]}
 
 \setbeamercovered{transparent}
 \usetheme{Madrid}
@@ -98,8 +83,8 @@
 \[
 \left\{
 \begin{aligned}
-& \frac{du(t)}{dt} = (-\gamma(t)+i\omega)u(t)+b(t)+f(t)+\sigma W(t), \\
-& \frac{db(t)}{dt} = (-\gamma_b+i\omega_b)(b(t)-\hat{b})+\sigma_b W_b(t), \\
+& \frac{du(t)}{dt} = (-\gamma(t)+i\omega)u(t)+b(t)+f(t)+\sigma W(t), \nq
+& \frac{db(t)}{dt} = (-\gamma_b+i\omega_b)(b(t)-\hat{b})+\sigma_b W_b(t), \nq
 & \frac{d\gamma(t)}{dt} = -d_\gamma(\gamma(t)-\hat{\gamma})+\sigma_\gamma W_\gamma(t)
 \end{aligned}
 \right.
@@ -113,19 +98,19 @@ With knowledge of ODEs, the solution of the SDE set is
 \[
 \left\{
 \begin{aligned}
-& b(t) = \hat{b}+(b_0-\hat{b})e^{\lambda_b(t-t_0)}+\sigma_b\int_{t_0}^t e^{\lambda_b(t-s)}dW_b(s) \\
-& \gamma(t) = \hat{\gamma}+(\gamma_0-\hat{\gamma})e^{-d_{\gamma}(t-t_0)}+\sigma_{\gamma}\int_{t_0}^t e^{-d_{\gamma}(t-s)}dW_{\gamma}(s) \\
-& u(t) = e^{-J(t_0, t)+\hat{\lambda}(t-t_0)}u_0 + \int_{t_0}^t (b(s)+f(s))e^{-J(s, t)+\hat{\lambda}(s-t_0)}ds \\
+& b(t) = \hat{b}+(b_0-\hat{b})e^{\lambda_b(t-t_0)}+\sigma_b\int_{t_0}^t e^{\lambda_b(t-s)}dW_b(s) \nq
+& \gamma(t) = \hat{\gamma}+(\gamma_0-\hat{\gamma})e^{-d_{\gamma}(t-t_0)}+\sigma_{\gamma}\int_{t_0}^t e^{-d_{\gamma}(t-s)}dW_{\gamma}(s) \nq
+& u(t) = e^{-J(t_0, t)+\hat{\lambda}(t-t_0)}u_0 + \int_{t_0}^t (b(s)+f(s))e^{-J(s, t)+\hat{\lambda}(s-t_0)}ds \nq
 &\quad\quad + \sigma\int_{t_0}^{t}e^{-J(s, t)+\hat{\lambda}(s-t_0)}dW(s)
 \end{aligned}
 \right.
 \]
-with $\lambda_b = -\gamma_b+i\omega_b$, $\hat{\lambda} = -\hat{\gamma}+i\omega$, $J(s, t) = \int_s^t (\gamma(s')-\hat{\gamma})ds'$.
 \end{block}
+with $\lambda_b = -\gamma_b+i\omega_b$, ~$\hat{\lambda} = -\hat{\gamma}+i\omega$, ~$J(s, t) = \int_s^t (\gamma(s')-\hat{\gamma})ds'$.
 }
 
 \subsection{It\^o Integration}
-\frame{\frametitle{It\^o Isometry and It\^o Formula}
+\frame{\frametitle{It\^o integration}
 \begin{block}{It\^o Isometry}
 $\forall f\in\mathcal{V}(S, T)$, $B_t$ is a standard Brownian motion,
 $$\E\left[\left(\int_S^T f(t, \omega)dB_t\right)^2\right] = \E\left[\int_S^T f^2(t, \omega)dt\right].$$
@@ -136,16 +121,16 @@ $dX_t = udt+vdB_t,$
 $g(t, x) \in C^2\left([0, \infty) \times \mathbb{R}\right)$, then $Y_t = g(t, X_t)$ is also a It\^{o} process satisfying
 $$dY_t = \frac{\partial g}{\partial t}(t, X_t)dt + \frac{\partial g}{\partial x}(t, X_t)dX_t + \frac{1}{2}\frac{\partial^2 g}{\partial x^2}(t, X_t)\cdot(dX_t)^2,$$
 with
-$dt\cdot dt = dt\cdot dB_t = dB_t\cdot dt = 0, dB_t\cdot dB_t = dt.$
+$dt\cdot dt = dt\cdot dB_t = dB_t\cdot dt = 0, ~dB_t\cdot dB_t = dt.$
 \end{block}
 }
 
-\frame{
+\frame{\frametitle{It\^o integration}
 \begin{block}{Linear property of It\^o integration}
 $$
 \begin{aligned}
-& (1)\quad \int_S^T fdB_t = \int_S^U fdB_t + \int_U^T fdB_t, \quad \text{a.e.}\\
-& (2)\quad \int_S^T (cf+g)dB_t = c\int_S^T fdB_t + \int_S^T gdB_t, \quad \text{a.e.}\\
+& (1)\quad \int_S^T fdB_t = \int_S^U fdB_t + \int_U^T fdB_t, ~\text{a.e.}\nq
+& (2)\quad \int_S^T (cf+g)dB_t = c\int_S^T fdB_t + \int_S^T gdB_t, ~\text{a.e.}\nq
 & (3)\quad \E\left[\int_S^T fdB_t\right] = 0.
 \end{aligned}
 $$
@@ -159,7 +144,7 @@ $$
 \begin{block}{}
 $$
 \begin{aligned}
-&\E(b(t)) = \hat{b} + (\E[b_0] - \hat{b})e^{\lambda_b(t-t_0)} \\
+&\E(b(t)) = \hat{b} + (\E[b_0] - \hat{b})e^{\lambda_b(t-t_0)} \nq
 &\E(\gamma(t)) = \hat{\gamma} + (\E[\gamma_0] - \hat{\gamma})e^{-d_{\gamma}(t-t_0)}
 \end{aligned}
 $$
@@ -171,8 +156,8 @@ $$
 \quad According to definition, 
 \[
 \begin{aligned}
-\text{Var}&(b(t)) = \E\left[(b(t)-\E[b(t)])(b(t)-\E[b(t)])^*\right] \\
-&= e^{-2\gamma_b(t-t_0)}\Var(b_0) + \E\left[\sigma_b^2\int_{t_0}^t e^{\lambda_b(t-s)}dW_b(s)\left(\int_{t_0}^t e^{\lambda_b(t-s)}dW_b(s)\right)^*\right] \\
+\text{Var}&(b(t)) = \E\left[(b(t)-\E[b(t)])(b(t)-\E[b(t)])^*\right] \nq
+&= e^{-2\gamma_b(t-t_0)}\Var(b_0) + \E\left[\sigma_b^2\int_{t_0}^t e^{\lambda_b(t-s)}dW_b(s)\left(\int_{t_0}^t e^{\lambda_b(t-s)}dW_b(s)\right)^*\right] \nq
 &= e^{-2\gamma_b(t-t_0)}\Var(b_0) + \sigma_b^2\E\left[\int_{t_0}^t e^{-2\gamma_b(t-s)}ds\right]
 \end{aligned}
 \]
@@ -180,7 +165,7 @@ $$
 \begin{block}{}
 \[
 \begin{aligned}
-&\Var(b(t)) = e^{-2\gamma_b(t-t_0)}\Var(b_0) + \frac{\sigma_b^2}{2\gamma_b}(1-e^{-2\gamma_b(t-t_0)}) \\
+&\Var(b(t)) = e^{-2\gamma_b(t-t_0)}\Var(b_0) + \frac{\sigma_b^2}{2\gamma_b}(1-e^{-2\gamma_b(t-t_0)}) \nq
 &\Var(\gamma(t)) = e^{-2d_\gamma(t-t_0)}\Var(\gamma_0) + \frac{\sigma_\gamma^2}{2d_\gamma}(1-e^{-2d_\gamma(t-t_0)})
 \end{aligned}
 \]
@@ -191,8 +176,8 @@ $$
 \frame{\frametitle{Covariance}
 \[
 \begin{aligned}
-\Cov&(b(t), b(t)^*) = \E\left[(b(t) - \E[b(t)])(b(t)^* - \E[b(t)^*])\right] \\
-&= \E\left[(b_0 - \E[b_0])(b_0^* - \E[b_0^*])e^{2\lambda_b (t-t_0)}\right] + \sigma_b\E\left[(b_0 - \E[b_0])\int_{t_0}^{t}e^{\lambda_b(t-s)}dW_b(s)\right]\\
+\Cov&(b(t), b(t)^*) = \E\left[(b(t) - \E[b(t)])(b(t)^* - \E[b(t)^*])\right] \nw
+&= \E\left[(b_0 - \E[b_0])(b_0^* - \E[b_0^*])e^{2\lambda_b (t-t_0)}\right] + \sigma_b\E\left[(b_0 - \E[b_0])\int_{t_0}^{t}e^{\lambda_b(t-s)}dW_b(s)\right]\nq
 &+ \sigma_b\E\left[(b_0^*-\E[b_0^*])e^{\lambda_b(t-t_0)}\int_{t_0}^{t}e^{\lambda_b(t-s)}dW_b(s)\right] + \sigma_b^2\E\left[(\int_{t_0}^{t}e^{\lambda_b(t-s)}dW_b(s))^2\right]
 \end{aligned}
 \]
@@ -200,7 +185,7 @@ $$
 \begin{block}{}
 \[
 \begin{aligned}
-&\Cov(b(t), b(t)^*) = \E[(b_0-\E[b_0])(b_0^*-\E[b_0^*])]e^{2\lambda_b(t-t_0)} = \Cov(b_0, b_0^*)e^{2\lambda_b(t-t_0)} \\
+&\Cov(b(t), b(t)^*) = \E[(b_0-\E[b_0])(b_0^*-\E[b_0^*])]e^{2\lambda_b(t-t_0)} = \Cov(b_0, b_0^*)e^{2\lambda_b(t-t_0)} \nq
 &\Cov(b(t), \gamma(t)) = \E[(b(t) - \E[b(t)])(\gamma(t)-\E[\gamma(t)])]= \Cov(b_0, \gamma_0)e^{(\lambda_b-d_\gamma)(t-t_0)}
 \end{aligned}
 \]
@@ -213,15 +198,15 @@ $$
 \quad Using the same properties, it's obvious to have
 \[
 \begin{aligned}
-\E[u(t)] &= e^{\hat{\lambda}(t-t_0)}\E\left[e^{-J_0(t_0, t)}u_0\right] + \int_{t_0}^t e^{\hat{\lambda}(t-s)}\E\left[b(s)e^{-J(s, t)}\right]ds  \\
+\E[u(t)] &= e^{\hat{\lambda}(t-t_0)}\E\left[e^{-J_0(t_0, t)}u_0\right] + \int_{t_0}^t e^{\hat{\lambda}(t-s)}\E\left[b(s)e^{-J(s, t)}\right]ds  \nq
 &+ \sigma\int_{t_0}^{t} e^{\hat{\lambda}(t-s)}f(s)\E\left[e^{-J(s, t)}\right]ds.
 \end{aligned}
 \]
 \quad It is necessary to compute expectations of terms like
 $
 \E[ze^{bx}],
-$ $
-z$ is a complex-valued Gaussian random variable and x is a real-valued Gaussian variable. We propose two lemmas here.
+$
+where $z$ is a complex-valued Gaussian random variable and x is a real-valued Gaussian variable. We propose two lemmas here.
 }
 
 \frame{\frametitle{Lemma 1}
@@ -264,14 +249,14 @@ Proof of lemma \ref{lemma 1} takes advantage of the characteristic function of m
 \quad From PDF of multivariable Gaussian distribution, one knows
 \[
 \begin{aligned}
-&\frac{\partial \phi_\mathbf{v}(\mathbf{s})}{\partial s_2} = (i\E[y_0]-\Var(y_0)s_2-\Cov(x_0, y_0)s_1-\Cov(y_0, w_0)s_3)\phi_{\mathbf{v}}(s) \\
+&\frac{\partial \phi_\mathbf{v}(\mathbf{s})}{\partial s_2} = (i\E[y_0]-\Var(y_0)s_2-\Cov(x_0, y_0)s_1-\Cov(y_0, w_0)s_3)\phi_{\mathbf{v}}(s) \nq
 &\frac{\partial \phi_\mathbf{v}(\mathbf{s})}{\partial s_3} = (i\E[w_0]-\Var(w_0)s_3-\Cov(x_0, w_0)s_1-\Cov(y_0, w_0)s_2)\phi_{\mathbf{v}}(s)
 \end{aligned}
 \]
 \quad Compute the partial derivatives at $\s = (b, 0, 0)^\top$,
 \[
 \begin{aligned}
-&\E\left[y_0e^{ibx_0}\right] = (\E[y_0]+i\Cov(x_0, y_0)b)\exp(ib\E[x_0] - \frac{1}{2}\Var(x_0)b^2) \\
+&\E\left[y_0e^{ibx_0}\right] = (\E[y_0]+i\Cov(x_0, y_0)b)\exp(ib\E[x_0] - \frac{1}{2}\Var(x_0)b^2) \nq
 &\E\left[w_0e^{ibx_0}\right] = (\E[w_0]+i\Cov(x_0, w_0)b)\exp(ib\E[x_0] - \frac{1}{2}\Var(x_0)b^2)
 \end{aligned}
 \]
@@ -282,7 +267,7 @@ Proof of lemma \ref{lemma 1} takes advantage of the characteristic function of m
 \begin{lemma} \label{lemma 2}
 \[
 \begin{aligned}
-\E\left[zwe^{bx}\right] &= \left[\E[z]\E[w]+\Cov(z, w^*)+b(\E[z]\Cov(w, x))+\E[w]\Cov(z, x)+ \right. \\
+\E\left[zwe^{bx}\right] &= \left[\E[z]\E[w]+\Cov(z, w^*)+b(\E[z]\Cov(w, x))+\E[w]\Cov(z, x)+ \right. \nq
 & \left.b^2\Cov(z, x)\Cov(w, x)\right]e^{b\E[x]+\frac{b^2}{2}\Var(x)}. \\
 \end{aligned}
 \]
@@ -296,8 +281,8 @@ The proof of this lemma is the same as Lemma \ref{lemma 1}.
 \begin{block}{}
 \[
 \begin{aligned}
-&\E[u(t)] = e^{\hat{\lambda}(t-t_0)}(\E[u_0]-\Cov(u_0, J(t_0, t)))e^{-\E[J(t_0, t)]+\frac{1}{2}\Var(J(t_0, t))} \\
-&\quad\quad+ \int_{t_0}^t e^{\hat{\lambda}(t-s)}(\hat{b}+e^{\lambda_b(s-t_0)}(\E[b_0]-\hat{b}-\Cov(b_0, J(s, t))))e^{-\E[J(s, t)]+\frac{1}{2}\Var(J(s, t))}ds \\
+&\E[u(t)] = e^{\hat{\lambda}(t-t_0)}(\E[u_0]-\Cov(u_0, J(t_0, t)))e^{-\E[J(t_0, t)]+\frac{1}{2}\Var(J(t_0, t))} \nw
+&\quad\quad+ \int_{t_0}^t e^{\hat{\lambda}(t-s)}(\hat{b}+e^{\lambda_b(s-t_0)}(\E[b_0]-\hat{b}-\Cov(b_0, J(s, t))))e^{-\E[J(s, t)]+\frac{1}{2}\Var(J(s, t))}ds \nq
 &\quad\quad+ \int_{t_0}^t e^{\hat{\lambda}(t-s)}f(s)e^{-\E[J(s, t)]+\frac{1}{2}\Var(J(s, t))}ds
 \end{aligned}
 \]
@@ -310,8 +295,8 @@ The terms $\Cov(u_0, J(s, t))$, $\Cov(b_0, J(s, t))$, $\E[J(s, t)]$ and $\Var(J(
 \quad Denote $u(t) = A + B + C$, 
 \[\left\{
 \begin{split}
-&A = e^{-J(t_0, t)+\hat{\lambda}(t-t_0)}u_0, \\
-&B = \int_{t_0}^t (b(s)+f(s))e^{-J(s, t)+\hat{\lambda}(t-s)}ds, \\
+&A = e^{-J(t_0, t)+\hat{\lambda}(t-t_0)}u_0, \nq
+&B = \int_{t_0}^t (b(s)+f(s))e^{-J(s, t)+\hat{\lambda}(t-s)}ds, \nq
 &C = \sigma\int_{t_0}^t e^{-J(s, t)+\hat{\lambda}(t-s)}dW(s).
 \end{split}
 \right.
@@ -332,9 +317,9 @@ The terms $\Cov(u_0, J(s, t))$, $\Cov(b_0, J(s, t))$, $\E[J(s, t)]$ and $\Var(J(
 \quad By definition, 
 \[
 \begin{aligned}
-&\Cov(u(t), u^*(t)) = \E\left[u(t)^2\right]-\E[u(t)]^2 \\
-&\Cov(u(t), \gamma(t)) = \E[u(t)(\gamma(t)-\hat\gamma)] + \E[u(t)](\hat\gamma-\E[\gamma(t)]) \\
-&\Cov(u(t), b(t)) = \E[u(t)b^*(t)] - \E[u(t)]\E[b(t)]^* \\
+&\Cov(u(t), u^*(t)) = \E\left[u(t)^2\right]-\E[u(t)]^2 \nq
+&\Cov(u(t), \gamma(t)) = \E[u(t)(\gamma(t)-\hat\gamma)] + \E[u(t)](\hat\gamma-\E[\gamma(t)]) \nq
+&\Cov(u(t), b(t)) = \E[u(t)b^*(t)] - \E[u(t)]\E[b(t)]^* \nq
 &\Cov(u(t), b^*(t)) = \E[u(t)b(t)] - \E[u(t)]\E[b(t)].
 \end{aligned}
 \]
@@ -359,8 +344,8 @@ The terms $\Cov(u_0, J(s, t))$, $\Cov(b_0, J(s, t))$, $\E[J(s, t)]$ and $\Var(J(
 \[
 \left\{
 \begin{aligned}
-&\text{Re}(u_0), \text{Im}(u_0) \sim \mathcal{N}(0, \frac{1}{\sqrt{2}}), \quad \text{i.i.d.} \\
-&\text{Re}(b_0), \text{Im}(b_0) \sim \mathcal{N}(0, \frac{1}{\sqrt{2}}), \quad \text{i.i.d.} \\
+&\text{Re}(u_0), \text{Im}(u_0) \sim \mathcal{N}(0, \frac{1}{\sqrt{2}}), \quad \text{i.i.d.} \nq
+&\text{Re}(b_0), \text{Im}(b_0) \sim \mathcal{N}(0, \frac{1}{\sqrt{2}}), \quad \text{i.i.d.} \nq
 &\gamma_0 \sim \mathcal{N}(0, 1) \quad \text{i.i.d.}
 \end{aligned}
 \right.
@@ -372,9 +357,9 @@ The terms $\Cov(u_0, J(s, t))$, $\Cov(b_0, J(s, t))$, $\E[J(s, t)]$ and $\Var(J(
 \[
 \left\{
 \begin{aligned}
-&\Cov(u_0, u_0^*) = 0 \\
-&\Cov(u_0, \gamma_0) = 0 \\
-&\Cov(u_0, b_0) = 0 \\
+&\Cov(u_0, u_0^*) = 0 \nq
+&\Cov(u_0, \gamma_0) = 0 \nq
+&\Cov(u_0, b_0) = 0 \nq
 &\Cov(u_0, b_0^*) = 0
 \end{aligned}
 \right.
