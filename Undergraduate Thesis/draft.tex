@@ -142,7 +142,8 @@
 \newcommand{\Cov}{\text{Cov}}
 
 \begin{abstract}
-本文研究了一个用于改进Kalman滤波结果的重要随机微分方程组的解, 利用It\^o积分和It\^o等距补全了解的一阶和二阶统计量的计算过程, 并使用Monte Carlo模拟对理论结果进行了数值检验. \\
+本文研究了一个用于改进Kalman滤波结果的重要随机微分方程组的解, 利用It\^o积分和特征函数补全了解的一阶和二阶统计量的计算过程, 并对理论结果进行了数值检验. \\
+
 \noindent{\heiti 关键字:} 随机微分方程组; 统计量; It\^o积分
 \end{abstract}
 
@@ -949,9 +950,9 @@ dW = \sqrt{\Delta t}*\tt{randn()}.
 $$
 由于模拟$u(t)$和$b(t)$时, 我们需要对其实部和虚部分别进行模拟. 为保证三个微分方程中白噪声的强度一致, 需要令
 $$W_{\text{Re}(u)}(t) = \frac{1}{\sqrt{2}}W(t),$$
-其余项和初值也做相同的处理. \\
+其余项和初值也做相同的处理.
 
-对$R=1$进行100,000次模拟\cite{robert2004monte}, $u(t)$, $b(t)$的实部和虚部,$\gamma(t)$的期望, $u(t)$, $b(t)$和$\gamma(t)$的方差的模拟结果如下图\cite{mckinney2012python}\cite{hunter2007matplotlib}, 其中蓝色的曲线为模拟产生的值, 绿色的曲线是理论计算得到的值. \\
+\quad 对$R=1$进行100,000次模拟\cite{robert2004monte}, $u(t)$, $b(t)$的实部和虚部,$\gamma(t)$的期望, $u(t)$, $b(t)$和$\gamma(t)$的方差的模拟结果如下图\cite{mckinney2012python}\cite{hunter2007matplotlib}, 其中蓝色的曲线为模拟产生的值, 绿色的曲线是理论计算得到的值. \\
 % \begin{figure}[!ht]
 % \centering
 % \includegraphics[width = 12cm]{NumericalSimulation/res/EuRe.png}
@@ -1037,6 +1038,43 @@ $$W_{\text{Re}(u)}(t) = \frac{1}{\sqrt{2}}W(t),$$
 \caption{Simulation of Expectations and Variances}
 \label{Simulation of Expectations and Variances}
 \end{figure}
+\begin{figure}[!ht]
+\centering
+\subfloat[$\text{Re}(\Cov(u, u^*))$]{
+  \includegraphics[width = .2\textwidth]{NumericalSimulation/res/lim/covuustarre.png}
+}\hfill
+\subfloat[$\text{Im}(\Cov(u, u^*))$]{
+  \includegraphics[width = .2\textwidth]{NumericalSimulation/res/lim/covuustarim.png}
+}\hfill
+\subfloat[$\text{Re}(\Cov(u, \gamma))$]{
+  \includegraphics[width = .2\textwidth]{NumericalSimulation/res/lim/covugammare.png}
+}\hfill
+\subfloat[$\text{Im}(\Cov(u, \gamma))$]{
+  \includegraphics[width = .2\textwidth]{NumericalSimulation/res/lim/covugammaim.png}
+}\\
+\subfloat[$\text{Re}(\Cov(u, b))$]{
+  \includegraphics[width = .2\textwidth]{NumericalSimulation/res/lim/covubre.png}
+}\hfill
+\subfloat[$\text{Im}(\Cov(u, b))$]{
+  \includegraphics[width = .2\textwidth]{NumericalSimulation/res/lim/covubim.png}
+}\hfill
+\subfloat[$\text{Re}(\Cov(u, b^*))$]{
+  \includegraphics[width = .2\textwidth]{NumericalSimulation/res/lim/covubstarre.png}
+}\hfill
+\subfloat[$\text{Im}(\Cov(u, b^*))$]{
+  \includegraphics[width = .2\textwidth]{NumericalSimulation/res/lim/covubstarim.png}
+}
+\caption{Simulation of Covariances}
+\label{Simulation of Covariances}
+\end{figure}
+
+\newpage
+
+
+\subsection{讨论和展望}
+在模拟结果中我们可以看到, 对期望和方差的模拟结果和理论结果均十分符合. 其中$\Var(b)$和$\Var(\gamma)$的模拟结果为一条和理论结果平行的曲线, 仅在初始时有截距上的误差, 这是由于初始值为随机变量所引起的. 
+
+在协方差的模拟结果中我们可以发现, 如果我们将得到的图进行放大, 如下图所示:
 
 \begin{figure}[!ht]
 \centering
@@ -1064,14 +1102,11 @@ $$W_{\text{Re}(u)}(t) = \frac{1}{\sqrt{2}}W(t),$$
 \subfloat[$\text{Im}(\Cov(u, b^*))$]{
   \includegraphics[width = .2\textwidth]{NumericalSimulation/res/CovubstarIm.png}
 }
-\caption{Simulation of Covariances}
+\caption{Simulation of Covariances, Detailed}
 \label{Simulation of Covariances}
 \end{figure}
 
-\subsection{讨论和展望}
-在模拟结果中我们可以看到, 对期望和方差的模拟结果和理论结果均十分符合. 其中$\Var(b)$和$\Var(\gamma)$的模拟结果为一条和理论结果平行的曲线, 仅在初始时有截距上的误差, 这是由于初始值为随机变量所引起的. 如果不考虑这个由于模拟次数不够所引起的系统误差, 其截断误差达到了$O(10^{-6})$, 已近似达到了单精度计算时的机器精度. 
-
-在协方差的模拟结果中我们可以发现, 对$\Cov(u, b)$和$\Cov(u, b^*)$的模拟结果在模拟100,000次时有$O(10^{-4})$的误差, 而对$\Cov(u, u^*)$和$\Cov(u, \gamma)$的模拟误差达到了$O(10^{-2})$的数量级. 根据分析\cite{golub2012matrix}, 这是因为复数运算时的条件数为实数运算的二次方, 故误差值也随之提高了两个数量级. \\
+我们可以发现, 对$\Cov(u, b)$和$\Cov(u, b^*)$的模拟结果在模拟100,000次时有$O(10^{-4})$的误差, 而对$\Cov(u, u^*)$和$\Cov(u, \gamma)$的模拟误差达到了$O(10^{-2})$的数量级. 根据分析\cite{golub2012matrix}, 这是因为复数运算时的条件数为实数运算的二次方, 故误差值也随之提高了两个数量级.
 
 事实上, 根据相同的方法, 我们可以求出此随机微分方程组解的三节甚至四阶的统计量, 它们可以用初值和初始统计量的多重积分表示出来. 不过由于时间关系, 在这篇论文中没有将其详细的写出, 也没有对其进行数值上的模拟. 这些部分我们留待未来的研究中完成.
 % \begin{figure}[!ht]
