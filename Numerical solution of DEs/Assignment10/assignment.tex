@@ -1,0 +1,99 @@
+%!TEX program = xelate
+\input{structure.tex}
+\usepackage{epstopdf}
+\usepackage{graphics}
+\usepackage{subfig}
+\usepackage{listings}
+\lstset{
+  numbers=left,
+    framexleftmargin=10mm,
+    frame=none,
+    backgroundcolor=\color[RGB]{245,245,244},
+  keywordstyle=\bf\color{blue},
+  identifierstyle=\bf,
+  numberstyle=\color[RGB]{0,192,192},
+  commentstyle=\it\color[RGB]{0,96,96},
+  stringstyle=\rmfamily\slshape\color[RGB]{128,0,0},
+  showstringspaces=false,
+  extendedchars=false
+    }
+\DeclareGraphicsExtensions{.eps,.ps,.jpg,.bmp}
+
+\begin{document}
+\title{Assignment 9}{}
+
+\problem{1}{Problem 2, Page 151}
+\proof{Proof}{
+First, one notices that $e_0 = 0$, thus
+\[
+e_i = e_0 + h\sum_{j = 0}^{i-1} \delta_x^+ = h\sum_{j=0}^{i-1}\delta_x^+e_j.
+\]
+\qquad\qquad Using Schwarz inequality, one finds
+\[
+\begin{aligned}
+\vt{\mathbf{e}}_{\mathnormal{l}^2}^2 &= \vt{\left(h\sum_{j=0}^{i-1}\delta_x^+e_j\right)_i}_{l^2}^2 = \sum_{i=1}^{N}\left(h\sum_{j=0}^{i-1}\delta_x^+e_j\right)^2 \leqslant \sum_{i=1}^{N}ih^2\sum_{j=0}^{i-1}\left(\delta_x^+e_j\right)^2 \n
+&\leqslant N^2h^2\sum_{i=1}^{N-1}(\delta_x^+e_j)^2 = \vt{\delta_x^+\mathbf{e}}_{l^2}.
+\end{aligned}
+\]
+
+\qquad\qquad So we have proved (3.1.54). Next we use this inequality to proof the convergence. \n
+\qquad\qquad The truncation error of the differenced system is
+\[
+R_i = -\delta_x^2u(x_i) - f(x_i) = -\delta_x^2u(x_i) + \frac{d^2u}{dx^2} = 	-\frac{h^2}{12}+O(h^4).
+\]
+\qquad\qquad Define $e_i = u(x_i) - u_i$, then $e_i$ satisfies
+\[
+-\delta_x^2 e_i = R_i.
+\]
+\qq\qq So we have
+\[
+\vt{\mathbf{e}} \leqslant \vt{\sigma_x^+e} \leqslant \vt{R} \sim O(h^2).
+\]
+\qq\qq It means the function value is of order-2 convergent. When it comes to the derivatives,
+\[
+\frac{du}{dx}(x_i) = \frac{u(x_{i+1})-u(x_{i-1})}{2h} + \frac{h^2}{12}u^{(3)}(x_i) + O(h^3).
+\]
+\qq\qq Using the same methods we can get that the values of derivatives are of order-2 convergent.
+}
+
+
+\problem{2}{Problem 3, Page 151}
+\proof{Proof}{
+\[
+-\frac{d}{dx}\left(a(x)\frac{du}{dx}\right) = -(a'(x)u'(x) + a(x)u''(x)) = f
+\]
+\qq\qq Thus the three-point-difference scheme is
+\[
+-a_i'\delta_xu_i - a_i\delta_x^2u_i = f_i.
+\]
+\qq\qq When $f_i \geqslant 0$, 
+\[
+\begin{aligned}
+u_{i+1} &= 2u_i - u_{i-1} - \frac{h^2}{a_i}f_i - \frac{h_ia_i'}{a_i}\delta_xu_i \n
+& \leqslant (2-\frac{h_ia_i'}{a_i})u_i - (1-\frac{h_ia_i'}{a_i})u_{i-1},
+\end{aligned}
+\]
+\qq\qq where we used the backward scheme in the last term. According to the same process as Lemma 3.1.12, we finds that either $u_i$ being a constant, or the minimum is reached on the boarder.
+}
+\solution{Max-module estimation}{
+We construct a problem:
+\[
+\left\{
+\begin{aligned}
+&v_0 = v_n = 0, \n
+&-\delta_x(a_i\delta_xu_i) = \vt{\mathbf{R}}_{l^\infty},
+\end{aligned}
+\right.
+\]
+\qq\qq Then $v_i = \frac{1}{N}\sum_{j=1}^{i}\frac{\frac{i}{N}\vt{\mathbf{R}}_{l^\infty} + \frac{\sum_{j=1}^{N}\frac{i\vt{\mathbf{R}}_{l^\infty}}{a_i}}{\sum_{j=1}^{N}\frac{1}{a_i}}}{a_i}$.
+Thus
+\[
+\vt{e_i} \leqslant v_i \leqslant C\vt{\mathbf{R}}_{l^\infty} \leqslant C_2h^2.
+\]
+}
+% \refgroup{
+% \reference{a a a a  a a}
+% }
+
+
+\end{document}
