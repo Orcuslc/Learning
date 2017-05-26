@@ -102,8 +102,8 @@ def Var_u(t):
 E_bs_br = lambda s, r: (1-np.exp(lambda_b*s))*(1-np.exp(lambda_b*r))*b_hat**2 + np.exp(lambda_b*s)*(1-np.exp(lambda_b*r))*b_hat*E_b0 + np.exp(lambda_b*r)*(1-np.exp(lambda_b*s))*b_hat*E_b0 + np.exp(lambda_b*s)*np.exp(lambda_b*r)*(Var_b0*abs(E_b0)**2)
 
 def Cov_u_u_star(t):
-	A = np.exp(2*gamma_hat*t)*(E_u0**2+Cov_u0_u0_star-4*E_u0*Cov_u0_Jst(0, t)+4*Cov_u0_Jst(0, t)**2)*np.exp(-2*E_J(0, t)+2*Var_J(0, t))
-	B = complex_dblquad(lambda s, r: np.exp(lambda_hat*(2*t-s-r)*np.exp(-E_J(s, t)-E_J(r, t)+1/2*Var_J(s, t)+1/2*Var_J(r, t)+Cov_Jst_Jrt(t, s, r))) * (E_bs_br(s, r) - E_b(s)*(Cov_br_Jst(t, s, r)+Cov_br_Jst(t, r, r)) - E_b(r)*(Cov_br_Jst(t, s, s)+Cov_br_Jst(t, r, s)) + (Cov_br_Jst(t, s, r)+Cov_br_Jst(t, r, r))*(Cov_br_Jst(t, s, s)+Cov_br_Jst(t, r, s)) + f(r)*(E_b(s)-Cov_br_Jst(t, s, s)-Cov_br_Jst(t, r, s)) + f(s)*(E_b(r)-Cov_br_Jst(t, s, r)-Cov_br_Jst(t, r, r)) + f(s)*f(r)), 0, t, lambda s: 0, lambda s: t)
+	A = np.exp(-2*gamma_hat*t)*(E_u0**2+Cov_u0_u0_star-4*E_u0*Cov_u0_Jst(0, t)+4*Cov_u0_Jst(0, t)**2)*np.exp(-2*E_J(0, t)+2*Var_J(0, t))
+	B = complex_dblquad(lambda s, r: np.exp(-lambda_hat*(2*t-s-r)*np.exp(-E_J(s, t)-E_J(r, t)+1/2*Var_J(s, t)+1/2*Var_J(r, t)+Cov_Jst_Jrt(t, s, r))) * (E_bs_br(s, r) - E_b(s)*(Cov_br_Jst(t, s, r)+Cov_br_Jst(t, r, r)) - E_b(r)*(Cov_br_Jst(t, s, s)+Cov_br_Jst(t, r, s)) + (Cov_br_Jst(t, s, r)+Cov_br_Jst(t, r, r))*(Cov_br_Jst(t, s, s)+Cov_br_Jst(t, r, s)) + f(r)*(E_b(s)-Cov_br_Jst(t, s, s)-Cov_br_Jst(t, r, s)) + f(s)*(E_b(r)-Cov_br_Jst(t, s, r)-Cov_br_Jst(t, r, r)) + f(s)*f(r)), 0, t, lambda s: 0, lambda s: t)
 	AB = complex_quad(lambda s: np.exp(lambda_hat*(2*t-s)+lambda_b*s)*(Cov_u0_b0_star + E_u0*E_b0 - E_u0*(Cov_b0_Jst(0, t)+Cov_b0_Jst(s, t)) - E_b0*(Cov_u0_Jst(0, t)+Cov_u0_Jst(s, t)) + (Cov_b0_Jst(0, t)+Cov_b0_Jst(s, t))*(Cov_u0_Jst(0, t)+Cov_u0_Jst(s, t)))*np.exp(-E_J(0, t)-E_J(s, t)+1/2*Var_J(0, t)+1/2*Var_J(s, t)+Cov_Jst_Jrt(t, 0, s)), 0, t) + complex_quad(lambda s: np.exp(lambda_hat*(2*t-s))*(b_hat*(1-np.exp(lambda_b*s))+f(s))*t2(s, t), 0, t)
 	# return A+B+2*AB-abs(E_u(t))**2
 	return A+B+2*AB-E_u(t)**2
