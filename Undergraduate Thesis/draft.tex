@@ -144,7 +144,7 @@
 \begin{abstract}
 本文研究了一个用于改进Kalman滤波结果的重要随机微分方程组的解, 利用It\^o积分和特征函数补全了解的一阶和二阶统计量的计算过程, 并对理论结果进行了数值检验. \\
 
-\noindent{\heiti 关键字:} 随机微分方程组; 统计量; It\^o积分
+\noindent{\heiti 关键字: } 随机微分方程组; 统计量; It\^o积分
 \end{abstract}
 
 \newpage
@@ -177,7 +177,7 @@
 \end{split}
 \right.
 \end{equation}
-且$u_0$, $b_0$, $\gamma_0$均为独立的高斯随机变量, 其统计量
+且$u_0$, ~$b_0$, ~$\gamma_0$均为独立的高斯随机变量, 其统计量
 $\E[u_0]$, ~$\E[\gamma_0]$, ~$\E[b_0]$, ~$\Var(u_0)$, ~$\Var(\gamma_0)$, ~$\Var(b_0)$, ~$\Cov(u_0, u_0^*)$, ~$\Cov(u_0, \gamma_0)$, ~$\Cov(u_0, b_0)$, ~$\Cov(u_0, b_0^*)$均假设为已知.
 
 (\ref{E0})的第二和第三项均为线性方程, 由求解线性常微分方程组的相关知识\cite{fulinjin1984ordinary}可知其通解有以下的形式:
@@ -209,8 +209,8 @@ u(t) &= e^{-J(t_0, t)+\hat{\lambda}(t-t_0)}u_0 + \int_{t_0}^t (b(s)+f(s))e^{-J(s
 \section{一些前置引理}
 \subsection{布朗运动的性质}
 在应用中, 往往将布朗运动置于随机微分方程中, 以模拟白噪声的性质\cite{hida1980brownian}. 
-为了简化计算过程, 我们在这里引入布朗运动的一些基本性质\cite{oksendal2003stochastic}\cite{nelson1967dynamical}.
-\begin{theorem} \label{brownian1}
+为了简化计算过程, 我们在这里引入布朗运动的一些基本性质\cite{nelson1967dynamical}.
+\begin{theorem}\cite{oksendal2003stochastic} \label{brownian1}
 布朗运动$B_t$是一个Gaussian过程. 即对于所有的$0 \leqslant t_1 \leqslant\cdots\leqslant t_k$, 随机向量$Z = (B_{t_1}, B_{t_2}\cdots ,B_{t_k})\in \mathbb{R}^{nk}$ 服从多维正态分布. 如果设$B_{t_i}$的初值均为$x$, 则此随机向量的期望为 
 $$M = \E[Z] = (x, x, \cdots, x) \in \mathbb{R}^{nk},$$
 协方差矩阵为
@@ -224,28 +224,28 @@ $$C = \left(\begin{matrix}
 \end{theorem}
 
 此定理的证明利用了正态分布特征函数的性质, 具体过程可见\cite{oksendal2003stochastic}的附录A. 以下是定理(\ref{brownian1})的直接而显然的推论:
-\begin{theorem}
+\begin{theorem}\cite{oksendal2003stochastic}
 假设布朗运动$B_t$满足定理(\ref{brownian1})中的条件, 那么当$t\geqslant 0$时,
 $$\E[B_t] = x, ~\E\left[(B_t - x)^2\right] = nt, ~\E[(B_t - x)(B_s - x)] = n\min(s, t).$$ 
 而且如果$t \geqslant s$, 有$\E\left[(B_t - B_s)^2\right] = n(t-s)$.
 \end{theorem}
 
 以下的定理也是布朗运动的一个重要性质, 其证明见\cite{oksendal2003stochastic}的(2.2.12)式.
-\begin{theorem}
+\begin{theorem}\cite{oksendal2003stochastic}
 $B_t$有独立的增量, 即对满足$\forall 0 \leqslant t_1 < t_2 \cdots < t_k$的$(t_1, t_2, \cdots t_k)$,
 $$B_{t_1}, ~B_{t_2}-B_{t_1}, ~\cdots, ~B_{t_k}-B_{t_{k-1}}$$相互独立.
 \end{theorem}
 
 \subsection{It\^{o}积分及其性质}
 在求解类似(\ref{E0})的随机微分方程时, 需要针对布朗运动做积分, 为此我们需要引入以下的It\^{o}积分\cite{oksendal2003stochastic}\cite{lawler2006introduction}:
-\begin{definition}(It\^{o}积分)	设$f\in\mathcal{V}(S, T)$. 则$f$的It\^{o}积分定义为
+\begin{definition}\cite{oksendal2003stochastic}(It\^{o}积分)	设$f\in\mathcal{V}(S, T)$. 则$f$的It\^{o}积分定义为
 $$\int_S^T f(t, \omega)dB_t(\omega) = \lim_{n\to\infty}\int_S^T\phi_n(t, \omega)dB_t(\omega),$$
 其中${\phi_n}$为基本函数序列, 且满足当$n \to \infty$时
 $$\E\left[\int_S^T (f(t, \omega)-\phi_n(t, \omega))^2dt\right] \to 0.$$
 \end{definition}
 
 由上述定义即可得到It\^{o}积分的一个重要性质:
-\begin{theorem} \label{Ito isometric} (It\^{o}等距) 对于$\forall f\in\mathcal{V}(S, T)$有
+\begin{theorem}\cite{oksendal2003stochastic} \label{Ito isometric} (It\^{o}等距) 对于$\forall f\in\mathcal{V}(S, T)$有
 $$\E\left[\left(\int_S^T f(t, \omega)dB_t\right)^2\right] = \E\left[\int_S^T f^2(t, \omega)dt\right].$$
 \end{theorem}
 
@@ -261,7 +261,7 @@ $$\E\left[\left(\int_S^T f(t, \omega)dB_t\right)^2\right] = \E\left[\int_S^T f^2
 \end{theorem}
 
 我们还需要引入以下的一维It\^{o}公式\cite{jiangangying2016stochastic}来计算一维情形的It\^o积分.
-\begin{theorem}(It\^{o}公式) \label{Ito formula} 设$X_t$为一个如下的It\^{o}过程:
+\begin{theorem}\cite{oksendal2003stochastic}(It\^{o}公式) \label{Ito formula} 设$X_t$为一个如下的It\^{o}过程:
 $$dX_t = udt+vdB_t,$$
 $g(t, x) \in C^2\left([0, \infty) \times \mathbb{R}\right)$, 则$Y_t = g(t, X_t)$也是一个It\^{o}过程, 且满足:
 $$dY_t = \frac{\partial g}{\partial t}(t, X_t)dt + \frac{\partial g}{\partial x}(t, X_t)dX_t + \frac{1}{2}\frac{\partial^2 g}{\partial x^2}(t, X_t)\cdot(dX_t)^2,$$
@@ -270,14 +270,14 @@ $$dt\cdot dt = dt\cdot dB_t = dB_t\cdot dt = 0, ~dB_t\cdot dB_t = dt.$$
 \end{theorem}
 
 以下是上述It\^{o}公式的积分形式.
-\begin{theorem} \label{Itoint}(分部积分) 设$f(s, \omega)$对几乎所有的$\omega$关于$s\in [0, t]$是连续的, 且为有界变差函数, 则有
+\begin{theorem}\cite{oksendal2003stochastic} \label{Itoint}(分部积分) 设$f(s, \omega)$对几乎所有的$\omega$关于$s\in [0, t]$是连续的, 且为有界变差函数, 则有
 $$\int_0^t f(s)dB_s = f(t)B_t - \int_0^t B_s df_s.$$
 \end{theorem}
 上述几个定理的证明请见\cite{oksendal2003stochastic}, 21-24页及36-39页. \\
 
 \subsection{高斯分布, 复高斯分布与特征函数}
 在问题的假设中, 各个噪声信号均服从高斯分布, 为此我们需要知道多元高斯分布的概率密度\cite{shuyuanhe2006probability}.
-\begin{proposition} \label{multiVariable gaussian pdf}
+\begin{proposition}\cite{shuyuanhe2006probability} \label{multiVariable gaussian pdf}
 如果随机向量$\textbf{X}$服从多元正态分布
 $$\textbf{X} \sim \mathcal{N}(\mu, \Sigma),$$
 那么$\textbf{X}$的概率密度为
@@ -292,7 +292,7 @@ $$f_\textbf{X}(X_1, \cdots, X_k) = \frac{\exp\left(-\frac{1}{2}(\textbf{X}-\mu)^
 \]
 
 除此之外, 我们还需要引入随机变量的特征函数这个工具, 用于计算较为复杂的随机变量的统计量.
-\begin{definition}(特征函数) 如果$X$是实值随机变量, $\E[\sin(tX)], ~\E[\cos(tX)]$均存在, 那么称
+\begin{definition}\cite{shuyuanhe2006probability}(特征函数) 如果$X$是实值随机变量, $\E[\sin(tX)], ~\E[\cos(tX)]$均存在, 那么称
 $$\phi(t) = \E\left[e^{itX}\right] = \E[\cos(tX)] + i\E[\sin(tX)], ~t\in \mathbb{R}$$
 为$X$的特征函数, 其中$i$为虚数单位.
 \end{definition}
@@ -329,7 +329,7 @@ $$\mathcal{F}[f^{(k)}(x)] = (i\omega)^k \mathcal{F}[f].$$
 
 \section{$b(t)$与$\gamma(t)$的统计量}
 \subsection{均值}
-当t固定时, 由(\ref{Sb})式可知$b(t)$的通解第一项为常数, 第二项中只有$b_0$是一个随机变量. 那么由(\ref{init_values})可知, $b(t)$通解第二项的期望为$(\E[b_0]-\hat{b})e^{\lambda_b(t-t_0)}$. 而由于
+当$t$固定时, 由(\ref{Sb})式可知$b(t)$的通解第一项为常数, 第二项中只有$b_0$是一个随机变量. 那么由(\ref{init_values})可知, $b(t)$通解第二项的期望为$(\E[b_0]-\hat{b})e^{\lambda_b(t-t_0)}$. 而由于
 $$f = f(s) = e^{\lambda_b(t-s)}\in\mathcal{V}(S, T),$$
 故由(\ref{Itoint_property})的(3)式可知,
 $$\E\left[\sigma_b\int_{t_0}^{t} e^{\lambda_b(t-s)dW_b(s)}\right] = 0.$$
@@ -344,7 +344,7 @@ $$\E\left[\sigma_b\int_{t_0}^{t} e^{\lambda_b(t-s)dW_b(s)}\right] = 0.$$
 \end{equation}
 
 \subsection{方差}
-当t固定时, $b(t)$为一个复值随机变量, 由\cite{shuyuanhe2006probability}的第四章相关知识,
+当$t$固定时, $b(t)$为一个复值随机变量, 由\cite{shuyuanhe2006probability}的第四章相关知识,
  % 考虑到$(b_0-\hat{b})e^{\lambda_b(t-t_0)}$与$\sigma_b\int_{t_0}^t e^{\lambda_b(t-s)}dW_b(s)$相互独立(由(\ref{init_values})可知),
 \begin{equation} \label{b_stat_2_process}
 \begin{split}
@@ -375,7 +375,7 @@ $$\E\left[\sigma_b\int_{t_0}^{t} e^{\lambda_b(t-s)dW_b(s)}\right] = 0.$$
 &= \E\left[(b_0 - \E[b_0]e^{\lambda_b (t-t_0)}+\sigma_b\int_{t_0}^{t} e^{\lambda_b (t-s)}dW_b(s))\right. \times \\[5pt]
 &\quad \left.((b_0^* - \E[b_0^*])e^{\lambda_b(t-t_0)}+\sigma_b\int_{t_0}^t e^{\lambda_b (t-s)}dW_b(s))\right] \quad\quad\quad\quad\quad\quad\quad\cdots(\ref{b_stat_1}) \\[5pt]
 &= \E\left[(b_0 - \E[b_0])(b_0^* - \E[b_0^*])e^{2\lambda_b (t-t_0)}\right] + \sigma_b\E\left[(b_0 - \E[b_0])\int_{t_0}^{t}e^{\lambda_b(t-s)}dW_b(s)\right]\\[10pt]
-&\quad+ \sigma_b\E\left[(b_0^*-\E[b_0^*])e^{\lambda_b(t-t_0)}\int_{t_0}^{t}e^{\lambda_b(t-s)}dW_b(s)\right] + \sigma_b^2\E\left[(\int_{t_0}^{t}e^{\lambda_b(t-s)}dW_b(s))^2\right]
+&\quad+ \sigma_b\E\left[(b_0^*-\E[b_0^*])e^{\lambda_b(t-t_0)}\int_{t_0}^{t}e^{\lambda_b(t-s)}dW_b(s)\right] + \sigma_b^2\E\left[\left(\int_{t_0}^{t}e^{\lambda_b(t-s)}dW_b(s)\right)^2\right]
 \end{split}
 \]
 
@@ -482,7 +482,7 @@ $$\E\left[ze^{bx}\right] = (\E[z]+b\Cov(z, x))e^{b\E[x]+\frac{1}{2}b^2\Var(x)}.$
 \end{equation}
 
 下面我们计算
-$$\Cov(u_0, J(s, t)), \Cov(b_0, J(s, t)), \E[J(s, t)], \Var(J(s, t)).$$
+$$\Cov(u_0, J(s, t)), ~\Cov(b_0, J(s, t)), ~\E[J(s, t)], ~\Var(J(s, t)).$$
 
 首先,
 \begin{equation} \label{J(s, t) all}
@@ -543,7 +543,7 @@ J(s, t) &= \int_s^t \left[(\gamma_0-\hat{\gamma})e^{-d_\gamma(s'-t_0)}+\sigma_\g
 \end{split}
 \]
 
-这里我们将两个积分区域均扩展至$[\min\{s, t_0\}, t]$上, 并设积分区域较小的被积函数在延拓的区间上为0. 那么
+这里我们将两个积分区域均扩展至$[\min\{s, t_0\}, ~t]$上, 并设积分区域较小的被积函数在延拓的区间上为0. 那么
 \begin{equation} \label{Var J(s, t) final}
 \begin{split}
 \Var&(J(s, t)) = \frac{1}{d_\gamma^2}\left(e^{-d_\gamma(s-t_0)}-e^{-d_\gamma(t-t_0)}\right)^2\Var(\gamma_0) \\[5pt]
@@ -917,9 +917,9 @@ $$f(t) = \frac{3}{2}e^{0.1it},$$方程组的参数可以取为
 \begin{equation}
 \left\{
 \begin{aligned}
-&\text{Re}(u_0), \text{Im}(u_0) \sim \mathcal{N}(0, 1), \quad \text{i.i.d.} \\
-&\text{Re}(b_0), \text{Im}(b_0) \sim \mathcal{N}(0, 1), \quad \text{i.i.d.} \\
-&\gamma_0 \sim \mathcal{N}(0, 1) \quad \text{i.i.d.}
+&\text{Re}(u_0), ~\text{Im}(u_0) \sim \mathcal{N}(0, 1), ~\text{i.i.d.} \\
+&\text{Re}(b_0), ~\text{Im}(b_0) \sim \mathcal{N}(0, 1), ~\text{i.i.d.} \\
+&\gamma_0 \sim \mathcal{N}(0, 1)
 \end{aligned}
 \right.
 \end{equation}
@@ -937,7 +937,7 @@ $$f(t) = \frac{3}{2}e^{0.1it},$$方程组的参数可以取为
 \end{equation}
 
 \subsection{数值模拟}
-由(\cite{higham2001algorithmic})知对布朗运动进行的随机It\^o积分可以由Euler-Maruyama方法进行模拟\cite{higham2000mean}:
+由\cite{higham2001algorithmic}知对布朗运动进行的随机It\^o积分可以由Euler-Maruyama方法进行模拟\cite{higham2000mean}:
 \begin{equation}
 X_j = X_{j-1}+f(X_{j-1})\Delta t+g(X_{t-1})(W(\tau_j) - W(\tau_{j-1}))
 \end{equation}
@@ -1107,10 +1107,10 @@ $$W_{\text{Re}(u)}(t) = \frac{1}{\sqrt{2}}W(t),$$
 \label{Simulation of Covariances}
 \end{figure}
 
-我们可以发现, 对$\Cov(u, b)$和$\Cov(u, b^*)$的模拟结果在模拟100,000次时有$O(10^{-4})$的误差, 而对$\Cov(u, u^*)$和$\Cov(u, \gamma)$的模拟误差达到了$O(10^{-2})$的数量级. 根据分析\cite{golub2012matrix}, 这是因为复数运算时的条件数为实数运算的二次方, 故误差值也随之提高了两个数量级.
+我们可以发现, 对$\Cov(u, b)$和$\Cov(u, b^*)$的模拟结果在模拟100,000次时有$O(10^{-4})$的误差, 而对$\Cov(u, u^*)$和$\Cov(u, \gamma)$的模拟误差达到了$O(10^{-2})$的数量级. 根据分析\cite{golub2012matrix}, 这是因为复数运算时的条件数为实数运算的二次方导致的.
 
 事实上, 根据相同的方法, 我们可以求出此随机微分方程组解的三节甚至四阶的统计量, 它们可以用初值和初始统计量的多重积分表示出来. 不过由于时间关系, 在这篇论文中没有将其详细的写出, 也没有对其进行数值上的模拟. 这些部分我们留待未来的研究中完成.
-% \begin{figure}[!ht]
+% \begin{figure}[!ht]s
 % \centering
 % \includegraphics[width = 12cm]{NumericalSimulation/res/CovuustarRe.png}
 % \caption{Simulation of $Re(Cov(u, u^*))$}
@@ -1168,12 +1168,13 @@ $$W_{\text{Re}(u)}(t) = \frac{1}{\sqrt{2}}W(t),$$
 \bibliographystyle{plain}
 \bibliography{../../CONFIG/LaTeX-bib/Chuan}
 
-\chapter*{\heiti 致谢}
-\begin{flushleft}
-感谢陆帅老师对本文研究方向的指导和帮助; \\
-感谢宋杰承和唐博浩同学对本文理论和数值模拟的技术性建议; \\
-感谢魏益民和赵冬华老师这一年来对我学习和研究的关心与支持; \\
-感谢628的室友们, 数院和其他学院的同学们, 朋友和家人的陪伴; \\
-最后, 感谢东区18和19号楼下的猫在最困难的的日子里给予我的慰藉.
-\end{flushleft}
+% \chapter*{\heiti 致谢}
+% \begin{flushleft}
+% 感谢陆帅老师对本文研究方向的指导和帮助; \\
+% 感谢宋杰承和唐博浩同学对本文理论和数值模拟的技术性建议; \\
+% 感谢魏益民和赵冬华老师这一年来对我学习和研究的关心与支持; \\
+% 感谢628的室友们, 数院和其他学院的同学们, 朋友和家人的陪伴; \\
+% 最后, 感谢东区18和19号楼下的猫在最困难的的日子里给予我的慰藉.
+% \end{flushleft}
+
 \end{document}{}
