@@ -943,11 +943,11 @@ X_j = X_{j-1}+f(X_{j-1})\Delta t+g(X_{t-1})(W(\tau_j) - W(\tau_{j-1}))
 \end{equation}
 其中
 $$
-W(\tau_j) - W(\tau_{j-1}) = \sum_{k = jR-R+1}^{jR} dW_k,
+W(\tau_j) - W(\tau_{j-1}) = \sum_{k = jR-R+1}^{jR} \mathrm{d}W_k,
 $$
 在上式中$R$为E-M算法的步长, 且
 $$
-dW = \sqrt{\Delta t}*\tt{randn()}.
+\mathrm{d}W = \sqrt{\Delta t}*\tt{randn()}.
 $$
 由于模拟$u(t)$和$b(t)$时, 我们需要对其实部和虚部分别进行模拟. 为保证三个微分方程中白噪声的强度一致, 需要令
 $$W_{\text{Re}(u)}(t) = \frac{1}{\sqrt{2}}W(t),$$
