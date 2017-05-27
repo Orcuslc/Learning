@@ -476,8 +476,8 @@ $\mathbf{v} = (x, y, w)$, 那么由于$\mathbf{v}$为一个满足多元Gauss分�
 分别计算这两个偏导数在$\mathbf{s} = (b, 0, 0)^\top$处的值, 有
 \[
 \begin{split}
-&\E\left[y_0e^{ibx_0}\right] = (\E[y_0]+\ii\Cov(x_0, y_0)b)\exp(\ii b\E[x_0] - \frac{1}{2}\Var(x_0)b^2) \\[5pt]
-&\E\left[w_0e^{ibx_0}\right] = (\E[w_0]+\ii\Cov(x_0, w_0)b)\exp(\ii b\E[x_0] - \frac{1}{2}\Var(x_0)b^2)
+&\E\left[y_0e^{\ii bx_0}\right] = (\E[y_0]+\ii\Cov(x_0, y_0)b)\exp(\ii b\E[x_0] - \frac{1}{2}\Var(x_0)b^2) \\[5pt]
+&\E\left[w_0e^{\ii bx_0}\right] = (\E[w_0]+\ii\Cov(x_0, w_0)b)\exp(\ii b\E[x_0] - \frac{1}{2}\Var(x_0)b^2)
 \end{split}
 \]
 
@@ -714,7 +714,7 @@ $
 利用命题(\ref{multiVariable gaussian exp 3}), 和上一节类似的, 我们有
 \[
 \begin{split}
-\E&[A^2] = \E[e^{-2J(t_0, t)+2\hat\lambda(t-t_0)}u_0^2] = e^{2\hat\gamma(t-t_0)-2\E[J(t_0, t)]+2\Var(J(t_0, t))}\times \nw
+\E&[A^2] = \E[e^{-2J(t_0, t)+2\hat\lambda(t-t_0)}u_0^2] = e^{2\hat\lambda(t-t_0)-2\E[J(t_0, t)]+2\Var(J(t_0, t))}\times \nw
 &\quad\left(\E[u_0]^2+\Cov(u_0, u_0^*)-4\E[u_0]\Cov(u_0, J(t_0, t))+4\Cov(u_0, J(t_0, t))^2\right), \nw
 \E&\left[B^2\right] = \int_{t_0}^t ds \int_{t_0}^t dr \E\left[((b(s)+f(s))(b(r)+f(r))e^{-J(s, t)-J(r, t)+\hat\lambda(2t-s-r)}\right]
 \end{split}
@@ -737,7 +737,7 @@ $
 \[
 \begin{split}
 \E&[b(s)b(r)] = \left(1-e^{\lambda_b(s-t_0)}-e^{\lambda_b(r-t_0)}+e^{\lambda_b(s+r-2t_0)}\right)\hat{b}^2 \nq
-&+ \left(e^{\lambda_b(s-t_0)+e^{\lambda_b(r-t_0)}-2e^{\lambda_b(s-t_0)(r-t_0)}}\right)\hat{b}\E[b_0] + e^{\lambda_b(s+r-2t_0)}\left(\Var(b_0)+|\E[b_0]|^2\right), \nw
+&+ \left(e^{\lambda_b(s-t_0)}+e^{\lambda_b(r-t_0)}-2e^{\lambda_b(s-t_0)(r-t_0)}\right)\hat{b}\E[b_0] + e^{\lambda_b(s+r-2t_0)}\left(\Var(b_0)+|\E[b_0]|^2\right), \nw
 \E&[AB] = \E[e^{-J(t_0, t)+\hat{\lambda}(t-t_0)}u_0\int_{t_0}^t (b(s)+f(s))e^{-J(s, t)+\hat\lambda(t-s)}ds] \nq
 &= e^{\hat\lambda(2t-s-t_0)}\int_{t_0}^t \left[e^{\lambda_b(s-t_0)}\E[u_0b_0e^{-J(t_0, t)-J(s, t)}]+(\hat{b}(1-e^{\lambda_b(s-t_0)})+f(s))\E[u_0e^{-J(t_0, t)-J(s, t)}]\right]ds.
 \end{split}
@@ -777,7 +777,7 @@ $
 那么\\
 % (\ref{E u(t) gamma})可以表示为
 \[
-\E[u(t)(\gamma(t)-\hat\gamma)] = -e^{\hat\lambda(t-t_0)}\frac{\partial}{\partial t}\E\left[u_0e^{-J(t_0, t)}\right]-\int_{t_0}^t e^{\hat\lambda(s-t_0)}\frac{\partial}{\partial t}\E\left[(b(s)+f(s))e^{-J(s, t)}\right]ds,
+\E[u(t)(\gamma(t)-\hat\gamma)] = -e^{\hat\lambda(t-t_0)}\frac{\partial}{\partial t}\E\left[u_0e^{-J(t_0, t)}\right]-\int_{t_0}^t e^{-\hat\lambda(s-t_0)}\frac{\partial}{\partial t}\E\left[(b(s)+f(s))e^{-J(s, t)}\right]ds,
 \]
 
 其中由(\ref{multiVariable gaussian exp 2})和协方差的线性性质,
