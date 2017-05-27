@@ -87,7 +87,7 @@
 
 % title - \zihao{1} for size requirement \heiti for font family requirement
 
-\title{{\zihao{1}\heiti{} 一个随机微分方程组解的统计量}}
+\title{{\zihao{1}\heiti{} 随机Kalman滤波模型中一个随机微分方程组解的统计量}}
 
 \author{卢川\\学号：13300180056\\专业：信息与计算科学}
 
@@ -141,11 +141,12 @@
 \newcommand{\E}{\text{E}}
 \newcommand{\Cov}{\text{Cov}}
 \newcommand{\ii}{\text{i}}
+\newcommand{\dotW}{\dot{W}}
 
 \begin{abstract}
-本文研究了随机参数化Kalman滤波模型中一个重要随机微分方程组的解, 利用It\^o积分和特征函数补全了解的一阶和二阶统计量的计算过程, 并对理论结果进行了数值检验. \\
+本文研究了随机参数化Kalman滤波模型中一个得到广泛应用的随机微分方程组的解, 利用It\^o积分和特征函数补全了解的一阶和二阶统计量的计算过程, 并对理论结果进行了数值检验. \\
 
-\noindent{\heiti 关键字: } 随机微分方程组; 统计量; It\^o积分
+\noindent{\heiti 关键字: } 随机参数化Kalman滤波; 随机微分方程组; 统计量; It\^o积分
 \end{abstract}
 
 \newpage
@@ -155,20 +156,20 @@
 
 自然界中的信号可近似的用Langevin方程的解进行模拟\cite{langevin1908theorie}:
 \[
-\frac{\mathrm{d}u(t)}{\mathrm{d}t} = -\gamma(t)u(t) + \ii\omega u(t)+\sigma W(t)+f(t),
+\frac{\mathrm{d}u(t)}{\mathrm{d}t} = -\gamma(t)u(t) + \ii\omega u(t)+\sigma \dotW(t)+f(t),
 \]
 其中$W(t)$表示复值白噪声, $f(t)$表示外界的驱动力. 在\cite{gershgorin2010test}中, Gershgorin等提出了一个测试模型, 将Langevin方程中的各个项进行随机参数化, 以改进模型的系统误差:
 
 \begin{equation} \label{E0}
 \left\{
 \begin{split}
-& \frac{du(t)}{dt} = (-\gamma(t)+\ii\omega)u(t)+b(t)+f(t)+\sigma W(t), \\[5pt]
+& \frac{du(t)}{dt} = (-\gamma(t)+\ii\omega)u(t)+b(t)+f(t)+\sigma \dotW(t), \\[5pt]
 % \end{equation}
 % \begin{equation}
-& \frac{db(t)}{dt} = (-\gamma_b+\ii\omega_b)(b(t)-\hat{b})+\sigma_b W_b(t), \\[5pt]
+& \frac{db(t)}{dt} = (-\gamma_b+\ii\omega_b)(b(t)-\hat{b})+\sigma_b \dotW_b(t), \\[5pt]
 % \end{equation}
 % \begin{equation}
-& \frac{d\gamma(t)}{dt} = -d_\gamma(\gamma(t)-\hat{\gamma})+\sigma_\gamma W_\gamma(t)
+& \frac{d\gamma(t)}{dt} = -d_\gamma(\gamma(t)-\hat{\gamma})+\sigma_\gamma \dotW_\gamma(t)
 \end{split}
 \right.
 \end{equation}
@@ -177,7 +178,7 @@
 
 \subsection{基本假设}
 
-在(\ref{E0})中, $\omega$为$u(t)$的振荡频率, $f(t)$为外部驱动力, $\sigma$表示白噪声$W(t)$的强度. 此外, 参数$\gamma_b$和$d_\gamma$表示振荡阻尼, $\sigma_b$和$\sigma_\gamma$分别表示加性和乘性修正((\ref{E0})中第2, 3式)中白噪声的强度. $\hat{b}$和$\hat{\gamma}$分别表示$b(t)$和$\gamma(t)$的固定平均偏差修正, $\omega_b$表示加性噪声的频率. 白噪声$W_\gamma(t)$是实值函数, 而$W(t)$及$W_b(t)$均为复值, 且其实部和虚部均为独立的白噪声. 
+在(\ref{E0})中, $\omega$为$u(t)$的振荡频率, $f(t)$为外部驱动力, $\sigma$表示白噪声$\dotW(t)$的强度. 此外, 参数$\gamma_b$和$d_\gamma$表示振荡阻尼, $\sigma_b$和$\sigma_\gamma$分别表示加性和乘性修正((\ref{E0})中第2, 3式)中白噪声的强度. $\hat{b}$和$\hat{\gamma}$分别表示$b(t)$和$\gamma(t)$的固定平均偏差修正, $\omega_b$表示加性噪声的频率. 白噪声$\dotW_\gamma(t)$是实值函数, 而$\dotW(t)$及$\dotW_b(t)$均为复值, 且其实部和虚部均为独立的白噪声. 
 
 一般认为方程组(\ref{E0})有初值
 \begin{equation} \label{init_values}
@@ -346,7 +347,7 @@ $$\mathcal{F}[f^{(k)}(x)] = (\ii\omega)^k \mathcal{F}[f].$$\\[5pt]
 
 \section{$b(t)$与$\gamma(t)$的统计量}
 \subsection{均值}
-当$t$固定时, 由(\ref{Sb})式可知$b(t)$的通解第一项为常数, 第二项中只有$b_0$是一个随机变量. 那么由(\ref{init_values}), $b(t)$通解第二项的期望为$(\E[b_0]-\hat{b})e^{\lambda_b(t-t_0)}$. 而由于
+当$t$固定时, 由(\ref{Sb})式可知$b(t)$的通解第一项为常数, 第二项中只有$b_0$是一个随机变量. 那么由(\ref{init_values}), ~$b(t)$通解第二项的期望为$(\E[b_0]-\hat{b})e^{\lambda_b(t-t_0)}$. 而由于
 $$f = f(s) = e^{\lambda_b(t-s)}\in\mathcal{V}(S, T),$$
 故由(\ref{Itoint_property})的(3)式,
 $$\E\left[\sigma_b\int_{t_0}^{t} e^{\lambda_b(t-s)dW_b(s)}\right] = 0.$$
@@ -425,7 +426,7 @@ $$\E\left[\sigma_b\int_{t_0}^{t} e^{\lambda_b(t-s)dW_b(s)}\right] = 0.$$
 \begin{equation} \label{u_stat_1}
 \begin{split}
 \E[u(t)] &= e^{\hat{\lambda}(t-t_0)}\E\left[e^{-J_0(t_0, t)}u_0\right] + \int_{t_0}^t e^{\hat{\lambda}(t-s)}\E\left[b(s)e^{-J(s, t)}\right]ds  \\[5pt]
-&+ \sigma\int_{t_0}^{t} e^{\hat{\lambda}(t-s)}f(s)\E\left[e^{-J(s, t)}\right]ds.
+&+ \sigma\int_{t_0}^{t} e^{\hat{\lambda}(t-s)}f(s)\E\left[e^{-J(s, t)}\right]ds
 \end{split}
 \end{equation}
 
@@ -957,21 +958,21 @@ $$f(t) = \frac{3}{2}e^{0.1\ii t},$$方程组的参数可以取为
 \subsection{数值模拟}
 由\cite{higham2001algorithmic}知对布朗运动进行的随机It\^o积分可以由Euler-Maruyama方法进行模拟\cite{higham2000mean}:
 \begin{equation}
-X_j = X_{j-1}+f(X_{j-1})\Delta t+g(X_{t-1})(W(\tau_j) - W(\tau_{j-1}))
+X_j = X_{j-1}+f(X_{j-1})\Delta t+g(X_{t-1})(\dotW(\tau_j) - \dotW(\tau_{j-1}))
 \end{equation}
 其中
 $$
-W(\tau_j) - W(\tau_{j-1}) = \sum_{k = jR-R+1}^{jR} \mathrm{d}W_k,
+\dotW(\tau_j) - \dotW(\tau_{j-1}) = \sum_{k = jR-R+1}^{jR} \mathrm{d}\dotW_k,
 $$
 在上式中$R$为E-M算法的步长, 且
 $$
-\mathrm{d}W = \sqrt{\Delta t}\times\tt{randn()}.
+\mathrm{d}\dotW = \sqrt{\Delta t}\times\tt{randn()}.
 $$
 由于模拟$u(t)$和$b(t)$时, 我们需要对其实部和虚部分别进行模拟. 为保证三个微分方程中白噪声的强度一致, 需要令
-$$W_{\text{Re}(u)}(t) = \frac{1}{\sqrt{2}}W(t),$$
+$$\dotW_{\text{Re}(u)}(t) = \frac{1}{\sqrt{2}}\dotW(t),$$
 其余项和初值也做相同的处理.
 
-\quad 对$R=1$进行100,000次模拟\cite{robert2004monte}, $u(t)$, $b(t)$的实部和虚部,$\gamma(t)$的期望, $u(t)$, $b(t)$和$\gamma(t)$的方差, 以及各项协方差的模拟结果如下图\cite{mckinney2012python}\cite{hunter2007matplotlib}. \\
+\quad 首先, 对$R=1$进行$10^{6}$次模拟\cite{robert2004monte}, $u(t)$, $b(t)$的实部和虚部,$\gamma(t)$的期望, $u(t)$, $b(t)$和$\gamma(t)$的方差, 以及各项协方差的模拟结果如下图\cite{mckinney2012python}\cite{hunter2007matplotlib}.
 % \begin{figure}[!ht]
 % \centering
 % \includegraphics[width = 12cm]{NumericalSimulation/res/EuRe.png}
@@ -1054,7 +1055,7 @@ $$W_{\text{Re}(u)}(t) = \frac{1}{\sqrt{2}}W(t),$$
 \subfloat[Var($\gamma$)]{
   \includegraphics[width = .2\textwidth]{NumericalSimulation/100k/Vargamma.png}
   }
-\caption{Simulation of Expectations and Variances, $n = 100,000$}
+\caption{Simulation of Expectations and Variances, $n = 10^{6}$}
 \label{Simulation of Expectations and Variances}
 \end{figure}
 
@@ -1084,11 +1085,12 @@ $$W_{\text{Re}(u)}(t) = \frac{1}{\sqrt{2}}W(t),$$
 \subfloat[$\text{Im}(\Cov(u, b^*))$]{
   \includegraphics[width = .2\textwidth]{NumericalSimulation/100k/covubstarim.png}
 }
-\caption{Simulation of Covariances, $n = 100,000$}
+\caption{Simulation of Covariances, $n = 10^{6}$}
 \label{Simulation of Covariances}
 \end{figure}
 
-下面我们测试了模拟次数为$n = 1,000,000$时的期望, 方差和协方差的模拟结果:
+\newpage
+下面我们测试了模拟次数为$n = 10^{7}$时的期望, 方差和协方差的模拟结果:
 
 \begin{figure}[!ht]
 \centering
@@ -1116,7 +1118,7 @@ $$W_{\text{Re}(u)}(t) = \frac{1}{\sqrt{2}}W(t),$$
 \subfloat[Var($\gamma$)]{
   \includegraphics[width = .2\textwidth]{NumericalSimulation/1m/Vargamma.png}
   }
-\caption{Simulation of Expectations and Variances, $n = 1,000,000$}
+\caption{Simulation of Expectations and Variances, $n = 10^{7}$}
 \label{Simulation of Expectations and Variances}
 \end{figure}
 
@@ -1147,7 +1149,7 @@ $$W_{\text{Re}(u)}(t) = \frac{1}{\sqrt{2}}W(t),$$
 \subfloat[$\text{Im}(\Cov(u, b^*))$]{
   \includegraphics[width = .2\textwidth]{NumericalSimulation/1m/CovubstarIm.png}
 }
-\caption{Simulation of Covariances, $n = 1,000,000$}
+\caption{Simulation of Covariances, $n = 10^{7}$}
 \label{Simulation of Covariances}
 \end{figure}
 
@@ -1155,8 +1157,7 @@ $$W_{\text{Re}(u)}(t) = \frac{1}{\sqrt{2}}W(t),$$
 
 
 \subsection{讨论和展望}
-从数值模拟结果我们可以看出, 当模拟次数$n = 100,000$时, 对期望的模拟结果和理论值基本重合, 方差的模拟结果和理论值有着$O(10^{-2})\sim O(10^{-3})$的误差, 而协方差的误差在$O(10^{-3})\sim O(10^{-4})$的数量级. 而当模拟次数$n = 1,000,000$时, 期望和方差的模拟结果和理论值几乎完全一致, $\Cov(u, u^*)$及$\Cov(u, \gamma)$的误差为$O(10^{-2})$, $\Cov(u, b)$和$\Cov(u, b^*)$的误差为$O(10^{-4})$. 由模拟结果可以知道, $\Cov(u, b)$和$\Cov(u, b^*)$的误差随着模拟次数的增加而线性降低, 故我们有足够的理由认为当$n \to \infty$时其模拟结果和理论解会趋于一致. 但是$\Cov(u, \gamma)$和$\Cov(u, u^*)$的模拟误差没有随着模拟次数的增加而降低, 其原因尚未确定.
-
+从数值模拟结果我们可以看出, 当模拟次数$n = 10^{6}$时, 对期望的模拟结果和理论值基本重合, 方差的模拟结果和理论值有着$O(10^{-2})\sim O(10^{-3})$的误差, 而协方差的误差在$O(10^{-3})\sim O(10^{-4})$的数量级. 而当模拟次数$n = 10^{7}$时, 期望和方差的模拟结果和理论值几乎完全一致, $\Cov(u, u^*)$及$\Cov(u, \gamma)$的误差为$O(10^{-3})$, $\Cov(u, b)$和$\Cov(u, b^*)$的误差为$O(10^{-4})$. 由模拟结果可以知道, 这些统计量的误差随着模拟次数的增加而降低, 故我们有足够的理由认为当$n \to \infty$时其模拟结果和理论解会趋于一致. 这也说明了我们的理论解是符合实际的.
 
 
 % \begin{figure}[!ht]
