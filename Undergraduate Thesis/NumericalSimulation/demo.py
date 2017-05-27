@@ -10,7 +10,7 @@ inteval = [0, 0.2]
 step = 1e-3
 start = 0
 t = np.arange(inteval[0], inteval[1], step)
-n = 100000
+n = 1000000
 
 ## simulation results ###
 data = MC(n, t)
