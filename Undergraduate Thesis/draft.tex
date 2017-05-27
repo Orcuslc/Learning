@@ -27,7 +27,7 @@
 % \documentclass[fleqn]{article}
 \usepackage{subfig}
 
-
+% \usepackage{ccmap}
 % \usepackage{fontspec}
 % \setmainfont{Times New Roman}
 % \setmainfont{Centaur}
@@ -140,9 +140,10 @@
 \newcommand{\Var}{\text{Var}}
 \newcommand{\E}{\text{E}}
 \newcommand{\Cov}{\text{Cov}}
+\newcommand{\ii}{\text{i}}
 
 \begin{abstract}
-本文研究了一个用于改进Kalman滤波结果的重要随机微分方程组的解, 利用It\^o积分和特征函数补全了解的一阶和二阶统计量的计算过程, 并对理论结果进行了数值检验. \\
+本文研究了随机参数化Kalman滤波模型中一个重要随机微分方程组的解, 利用It\^o积分和特征函数补全了解的一阶和二阶统计量的计算过程, 并对理论结果进行了数值检验. \\
 
 \noindent{\heiti 关键字: } 随机微分方程组; 统计量; It\^o积分
 \end{abstract}
@@ -150,14 +151,21 @@
 \newpage
 \section{导言}
 \subsection{问题简介}
-在对Kalman滤波的结果进行改进时, 研究者提出了如下的一个随机微分方程组来模拟现实中常见的随机信号\cite{gershgorin2010test}:
+滤波是从自然信号中得到最佳统计估计的过程. 在实际应用中, 研究者需要对自然界中的物理过程进行参数化表示, 而在此过程中, 不合适的采样率和不完全的物理认知会造成模型的系统误差, 最终使得对混乱信号的滤波结果受到较大的影响. 为此, B. Gershgorin等提出了随机参数化Kalman滤波模型\cite{gershgorin2010improving}\cite{gershgorin2010test}, 以降低模型的系统误差, 改进滤波结果.
+
+自然界中的信号可近似的用Langevin方程的解进行模拟\cite{langevin1908theorie}:
+\[
+\frac{\mathrm{d}u(t)}{\mathrm{d}t} = -\gamma(t)u(t) + \ii\omega u(t)+\sigma W(t)+f(t),
+\]
+其中$W(t)$表示复值白噪声, $f(t)$表示外界的驱动力. 在\cite{gershgorin2010test}中, Gershgorin等提出了一个测试模型, 将Langevin方程中的各个项进行随机参数化, 以改进模型的系统误差:
+
 \begin{equation} \label{E0}
 \left\{
 \begin{split}
-& \frac{du(t)}{dt} = (-\gamma(t)+i\omega)u(t)+b(t)+f(t)+\sigma W(t), \\[5pt]
+& \frac{du(t)}{dt} = (-\gamma(t)+\ii\omega)u(t)+b(t)+f(t)+\sigma W(t), \\[5pt]
 % \end{equation}
 % \begin{equation}
-& \frac{db(t)}{dt} = (-\gamma_b+i\omega_b)(b(t)-\hat{b})+\sigma_b W_b(t), \\[5pt]
+& \frac{db(t)}{dt} = (-\gamma_b+\ii\omega_b)(b(t)-\hat{b})+\sigma_b W_b(t), \\[5pt]
 % \end{equation}
 % \begin{equation}
 & \frac{d\gamma(t)}{dt} = -d_\gamma(\gamma(t)-\hat{\gamma})+\sigma_\gamma W_\gamma(t)
@@ -165,7 +173,11 @@
 \right.
 \end{equation}
 
-其中$\omega$为$u(t)$的振荡频率, $f(t)$为外部驱动力, $\sigma$表示白噪声$W(t)$的强度. 此外, 参数$\gamma_b$和$d_\gamma$表示振荡阻尼, $\sigma_b$和$\sigma_\gamma$分别表示加性和乘性修正((\ref{E0})中第2, 3式)中白噪声的强度. $\hat{b}$和$\hat{\gamma}$分别表示$b(t)$和$\gamma(t)$的固定平均偏差修正, $\omega_b$表示加性噪声的频率. 白噪声$W_\gamma(t)$是实值函数, 而$W(t)$及$W_b(t)$均为复值, 且其实部和虚部均为独立的白噪声. 
+此随机微分方程组解的一阶和二阶统计量在大量文献中作为测试标准被广泛应用, 但是Gershgorin在\cite{gershgorin2010test}中没有给出这些统计量的推导过程. 本文利用了It\^o积分和特征函数, 补全了这些统计量的计算过程, 并对其理论结果进行了数值验证.
+
+\subsection{基本假设}
+
+在(\ref{E0})中, $\omega$为$u(t)$的振荡频率, $f(t)$为外部驱动力, $\sigma$表示白噪声$W(t)$的强度. 此外, 参数$\gamma_b$和$d_\gamma$表示振荡阻尼, $\sigma_b$和$\sigma_\gamma$分别表示加性和乘性修正((\ref{E0})中第2, 3式)中白噪声的强度. $\hat{b}$和$\hat{\gamma}$分别表示$b(t)$和$\gamma(t)$的固定平均偏差修正, $\omega_b$表示加性噪声的频率. 白噪声$W_\gamma(t)$是实值函数, 而$W(t)$及$W_b(t)$均为复值, 且其实部和虚部均为独立的白噪声. 
 
 一般认为方程组(\ref{E0})有初值
 \begin{equation} \label{init_values}
@@ -188,11 +200,11 @@ $\E[u_0]$, ~$\E[\gamma_0]$, ~$\E[b_0]$, ~$\Var(u_0)$, ~$\Var(\gamma_0)$, ~$\Var(
 \end{split}
 \end{equation}
 
-其中$\lambda_b = -\gamma_b+i\omega_b$.
+其中$\lambda_b = -\gamma_b+\ii\omega_b$.
 如果我们记
 \begin{equation} \label{def J(s, t)}
 \begin{split}
-&\hat{\lambda} = -\hat{\gamma}+i\omega, \\[5pt]
+&\hat{\lambda} = -\hat{\gamma}+\ii\omega, \\[5pt]
 &J(s, t) = \int_s^t (\gamma(s')-\hat{\gamma})ds'
 \end{split}
 \end{equation}
@@ -204,40 +216,41 @@ u(t) &= e^{-J(t_0, t)+\hat{\lambda}(t-t_0)}u_0 + \int_{t_0}^t (b(s)+f(s))e^{-J(s
 & + \sigma\int_{t_0}^{t}e^{-J(s, t)+\hat{\lambda}(s-t_0)}dW(s).
 \end{split}
 \end{equation}
-本文在第三和第四节中将对方程(\ref{E0})的各个变量$u, ~b, ~\gamma$, 分别计算其一阶和二阶统计量, 以及各个变量间的相关性.
+
+本文在第三和第四节中将对$u, ~b, ~\gamma$, 分别计算其一阶和二阶统计量, 以及各个变量间的相关性.\\[5pt]
 
 \section{一些前置引理}
-\subsection{布朗运动的性质}
-在应用中, 往往将布朗运动置于随机微分方程中, 以模拟白噪声的性质\cite{hida1980brownian}. 
-为了简化计算过程, 我们在这里引入布朗运动的一些基本性质\cite{nelson1967dynamical}.
-\begin{theorem}\cite{oksendal2003stochastic} \label{brownian1}
-布朗运动$B_t$是一个Gaussian过程. 即对于所有的$0 \leqslant t_1 \leqslant\cdots\leqslant t_k$, 随机向量$Z = (B_{t_1}, B_{t_2}\cdots ,B_{t_k})\in \mathbb{R}^{nk}$ 服从多维正态分布. 如果设$B_{t_i}$的初值均为$x$, 则此随机向量的期望为 
-$$M = \E[Z] = (x, x, \cdots, x) \in \mathbb{R}^{nk},$$
-协方差矩阵为
-$$C = \left(\begin{matrix}
-			t_1I_n & t_1I_n & \cdots & t_1I_n \\
-			t_1I_n & t_2I_n & \cdots & t_2I_n \\
-			\vdots & \vdots & \ddots & \vdots \\
-			t_1I_n & t_2I_n & \cdots & t_kI_n 
-			\end{matrix}
-			\right).$$
-\end{theorem}
+% \subsection{布朗运动的性质}
+% 在应用中, 往往将布朗运动置于随机微分方程中, 以模拟白噪声的性质\cite{hida1980brownian}. 
+% 为了简化计算过程, 我们在这里引入布朗运动的一些基本性质\cite{nelson1967dynamical}.
+% \begin{theorem}\cite{oksendal2003stochastic} \label{brownian1}
+% 布朗运动$B_t$是一个Gaussian过程. 即对于所有的$0 \leqslant t_1 \leqslant\cdots\leqslant t_k$, 随机向量$Z = (B_{t_1}, B_{t_2}\cdots ,B_{t_k})\in \mathbb{R}^{nk}$ 服从多维正态分布. 如果设$B_{t_i}$的初值均为$x$, 则此随机向量的期望为 
+% $$M = \E[Z] = (x, x, \cdots, x) \in \mathbb{R}^{nk},$$
+% 协方差矩阵为
+% $$C = \left(\begin{matrix}
+% 			t_1I_n & t_1I_n & \cdots & t_1I_n \\
+% 			t_1I_n & t_2I_n & \cdots & t_2I_n \\
+% 			\vdots & \vdots & \ddots & \vdots \\
+% 			t_1I_n & t_2I_n & \cdots & t_kI_n 
+% 			\end{matrix}
+% 			\right).$$
+% \end{theorem}
 
-此定理的证明利用了正态分布特征函数的性质, 具体过程可见\cite{oksendal2003stochastic}的附录A. 以下是定理(\ref{brownian1})的直接而显然的推论:
-\begin{theorem}\cite{oksendal2003stochastic}
-假设布朗运动$B_t$满足定理(\ref{brownian1})中的条件, 那么当$t\geqslant 0$时,
-$$\E[B_t] = x, ~\E\left[(B_t - x)^2\right] = nt, ~\E[(B_t - x)(B_s - x)] = n\min(s, t).$$ 
-而且如果$t \geqslant s$, 有$\E\left[(B_t - B_s)^2\right] = n(t-s)$.
-\end{theorem}
+% 此定理的证明利用了正态分布特征函数的性质, 具体过程可见\cite{oksendal2003stochastic}的附录A. 以下是定理(\ref{brownian1})的直接而显然的推论:
+% \begin{theorem}\cite{oksendal2003stochastic}
+% 假设布朗运动$B_t$满足定理(\ref{brownian1})中的条件, 那么当$t\geqslant 0$时,
+% $$\E[B_t] = x, ~\E\left[(B_t - x)^2\right] = nt, ~\E[(B_t - x)(B_s - x)] = n\min(s, t).$$ 
+% 而且如果$t \geqslant s$, 有$\E\left[(B_t - B_s)^2\right] = n(t-s)$.
+% \end{theorem}
 
-以下的定理也是布朗运动的一个重要性质, 其证明见\cite{oksendal2003stochastic}的(2.2.12)式.
-\begin{theorem}\cite{oksendal2003stochastic}
-$B_t$有独立的增量, 即对满足$\forall 0 \leqslant t_1 < t_2 \cdots < t_k$的$(t_1, t_2, \cdots t_k)$,
-$$B_{t_1}, ~B_{t_2}-B_{t_1}, ~\cdots, ~B_{t_k}-B_{t_{k-1}}$$相互独立.
-\end{theorem}
+% 以下的定理也是布朗运动的一个重要性质, 其证明见\cite{oksendal2003stochastic}的(2.2.12)式.
+% \begin{theorem}\cite{oksendal2003stochastic}
+% $B_t$有独立的增量, 即对满足$\forall 0 \leqslant t_1 < t_2 \cdots < t_k$的$(t_1, t_2, \cdots t_k)$,
+% $$B_{t_1}, ~B_{t_2}-B_{t_1}, ~\cdots, ~B_{t_k}-B_{t_{k-1}}$$相互独立.
+% \end{theorem}
 
-\subsection{It\^{o}积分及其性质}
-在求解类似(\ref{E0})的随机微分方程时, 需要针对布朗运动做积分, 为此我们需要引入以下的It\^{o}积分\cite{oksendal2003stochastic}\cite{lawler2006introduction}:
+\subsection{It\^{o}积分和It\^o等距}
+在求解随机微分方程时, 需要对布朗运动进行积分. 由\cite{oksendal2003stochastic}的例3.1.1, 我们可以定义多种不同的随机积分形式, 其中It\^o积分是应用最广的一种:
 \begin{definition}\cite{oksendal2003stochastic}(It\^{o}积分)	设$f\in\mathcal{V}(S, T)$. 则$f$的It\^{o}积分定义为
 $$\int_S^T f(t, \omega)dB_t(\omega) = \lim_{n\to\infty}\int_S^T\phi_n(t, \omega)dB_t(\omega),$$
 其中${\phi_n}$为基本函数序列, 且满足当$n \to \infty$时
@@ -251,7 +264,7 @@ $$\E\left[\left(\int_S^T f(t, \omega)dB_t\right)^2\right] = \E\left[\int_S^T f^2
 
 这里$\mathcal{V}(S, T)$见\cite{oksendal2003stochastic}中的定义3.1.2至3.1.4. \\
 利用上述方法, 即利用基本函数序列来逼近$\mathcal{V}(S, T)$中的函数, 我们能够得到It\^{o}积分的线性性质:
-\begin{theorem} \label{Itoint_property}
+\begin{theorem}\cite{oksendal2003stochastic} \label{Itoint_property}
 设$f, g \in \mathcal{V}(0, T)$, $0 \leqslant S < U < T$. 那么
 \begin{flalign*}
 & (1)\quad \int_S^T fdB_t = \int_S^U fdB_t + \int_U^T fdB_t, ~\text{a.e.}\\[5pt]
@@ -260,60 +273,64 @@ $$\E\left[\left(\int_S^T f(t, \omega)dB_t\right)^2\right] = \E\left[\int_S^T f^2
 \end{flalign*}
 \end{theorem}
 
-我们还需要引入以下的一维It\^{o}公式\cite{jiangangying2016stochastic}来计算一维情形的It\^o积分.
-\begin{theorem}\cite{oksendal2003stochastic}(It\^{o}公式) \label{Ito formula} 设$X_t$为一个如下的It\^{o}过程:
-$$dX_t = udt+vdB_t,$$
-$g(t, x) \in C^2\left([0, \infty) \times \mathbb{R}\right)$, 则$Y_t = g(t, X_t)$也是一个It\^{o}过程, 且满足:
-$$dY_t = \frac{\partial g}{\partial t}(t, X_t)dt + \frac{\partial g}{\partial x}(t, X_t)dX_t + \frac{1}{2}\frac{\partial^2 g}{\partial x^2}(t, X_t)\cdot(dX_t)^2,$$
-其中
-$$dt\cdot dt = dt\cdot dB_t = dB_t\cdot dt = 0, ~dB_t\cdot dB_t = dt.$$
-\end{theorem}
+% 我们还需要引入以下的一维It\^{o}公式\cite{jiangangying2016stochastic}来计算一维情形的It\^o积分.
+% \begin{theorem}\cite{oksendal2003stochastic}(It\^{o}公式) \label{Ito formula} 设$X_t$为一个如下的It\^{o}过程:
+% $$dX_t = udt+vdB_t,$$
+% $g(t, x) \in C^2\left([0, \infty) \times \mathbb{R}\right)$, 则$Y_t = g(t, X_t)$也是一个It\^{o}过程, 且满足:
+% $$dY_t = \frac{\partial g}{\partial t}(t, X_t)dt + \frac{\partial g}{\partial x}(t, X_t)dX_t + \frac{1}{2}\frac{\partial^2 g}{\partial x^2}(t, X_t)\cdot(dX_t)^2,$$
+% 其中
+% $$dt\cdot dt = dt\cdot dB_t = dB_t\cdot dt = 0, ~dB_t\cdot dB_t = dt.$$
+% \end{theorem}
 
-以下是上述It\^{o}公式的积分形式.
-\begin{theorem}\cite{oksendal2003stochastic} \label{Itoint}(分部积分) 设$f(s, \omega)$对几乎所有的$\omega$关于$s\in [0, t]$是连续的, 且为有界变差函数, 则有
-$$\int_0^t f(s)dB_s = f(t)B_t - \int_0^t B_s df_s.$$
-\end{theorem}
-上述几个定理的证明请见\cite{oksendal2003stochastic}, 21-24页及36-39页. \\
+% 以下是上述It\^{o}公式的积分形式.
+% \begin{theorem}\cite{oksendal2003stochastic} \label{Itoint}(分部积分) 设$f(s, \omega)$对几乎所有的$\omega$关于$s\in [0, t]$是连续的, 且为有界变差函数, 则有
+% $$\int_0^t f(s)dB_s = f(t)B_t - \int_0^t B_s df_s.$$
+% \end{theorem}
+上述几个定理的证明请见\cite[Page 26-31]{oksendal2003stochastic}. \\
 
-\subsection{高斯分布, 复高斯分布与特征函数}
-在问题的假设中, 各个噪声信号均服从高斯分布, 为此我们需要知道多元高斯分布的概率密度\cite{shuyuanhe2006probability}.
+\subsection{高斯分布与特征函数}
 \begin{proposition}\cite{shuyuanhe2006probability} \label{multiVariable gaussian pdf}
 如果随机向量$\textbf{X}$服从多元正态分布
 $$\textbf{X} \sim \mathcal{N}(\mu, \Sigma),$$
 那么$\textbf{X}$的概率密度为
 $$f_\textbf{X}(X_1, \cdots, X_k) = \frac{\exp\left(-\frac{1}{2}(\textbf{X}-\mu)^\top\right)\Sigma^{-1}(\textbf{X}-\mu)}{\sqrt{(2\pi)^k|\Sigma|}}$$
 \end{proposition}
-对于一个复值的Gauss变量$X = a+bi$, 其中$a$与$b$均服从Gauss分布, 那么其期望和方差为
-\[
-\begin{split}
-&\E[X] = \E[a] + i\E[b], \\[5pt]
-&\Var(X) = \E[(X-\E[X])(X-\E[X])^*]
-\end{split}
-\]
 
-除此之外, 我们还需要引入随机变量的特征函数这个工具, 用于计算较为复杂的随机变量的统计量.
+\begin{proposition}
+对于一个复值高斯变量$X = a+b\ii$, $a$与$b$均服从高斯分布, 那么其期望和方差为
+\[
+\left\{
+\begin{split}
+&\E[X] = \E[a] + \ii\E[b], \\[5pt]
+&\Var(X) = \E[(X-\E[X])(X-\E[X])^*].
+\end{split}
+\right.
+\]
+\end{proposition}
+
+除此之外, 我们还需要引入随机变量的特征函数:
 \begin{definition}\cite{shuyuanhe2006probability}(特征函数) 如果$X$是实值随机变量, $\E[\sin(tX)], ~\E[\cos(tX)]$均存在, 那么称
-$$\phi(t) = \E\left[e^{itX}\right] = \E[\cos(tX)] + i\E[\sin(tX)], ~t\in \mathbb{R}$$
-为$X$的特征函数, 其中$i$为虚数单位.
+$$\phi(t) = \E\left[e^{\ii tX}\right] = \E[\cos(tX)] + \ii\E[\sin(tX)], ~t\in \mathbb{R}$$
+为$X$的特征函数, 其中$\ii$为虚数单位.
 \end{definition}
 对于随机向量, 其特征函数定义为
 \begin{definition} 设$\textbf{X} = (X_1, X_2, \cdots, X_n)$为随机向量, 则$\textbf{X}$的特征函数为
-$$\phi(t) = \E\left[\exp(i\textbf{t}\textbf{X}^\top)\right], ~\textbf{t} = (t_1, t_2, \cdots, t_n)\in \mathbb{R}^n.$$
+$$\phi(t) = \E\left[\exp(\ii\textbf{t}\textbf{X}^\top)\right], ~\textbf{t} = (t_1, t_2, \cdots, t_n)\in \mathbb{R}^n.$$
 \end{definition}
 以下为高斯分布的特征函数.
 \begin{proposition} \label{Characteristic function of Gaussian Distribution}
-Gauss分布$N(\mu, \sigma^2)$的特征函数为
-$$\phi(t) = \exp(i\mu t - \frac{1}{2}\sigma^2t^2)$$
+高斯分布$N(\mu, \sigma^2)$的特征函数为
+$$\phi(t) = \exp(\ii\mu t - \frac{1}{2}\sigma^2t^2)$$
 \end{proposition}
 此命题的证明见\cite{shuyuanhe2006probability}第五章例2.4.
-一个更一般的定义如下\cite{jiangangying2013probability}:
-\begin{definition} \label{characteristic function definition 2} 设$\xi$为d-维随机变量, $F$为$\xi$的分布函数. 那么
-$$\hat{F}(x) = \int_{\mathbb{R}^d} e^{ix\cdot y}dF(y), ~x\in \mathbb{R}^d$$
+一个更一般的定义如下:
+\begin{definition}\cite{jiangangying2013probability} \label{characteristic function definition 2} 设$\xi$为d-维随机变量, $F$为$\xi$的分布函数. 那么
+$$\hat{F}(x) = \int_{\mathbb{R}^d} e^{\ii x\cdot y}dF(y), ~x\in \mathbb{R}^d$$
 (其中$(\cdot)$为$\mathbb{R}^d$空间中的内积) 称为分布函数$F$的特征函数.
 \end{definition}
 由此定义即可看出, 特征函数即为概率密度函数的Fourier变换:
 \begin{equation} \label{characteristic function definition 3}
-\hat{F}(x) = \int_{\mathbb{R}^d}e^{ix\cdot y}f(y)dy.
+\hat{F}(x) = \int_{\mathbb{R}^d}e^{\ii x\cdot y}f(y)dy.
 \end{equation}
 
 以下是Fourier变换的一个基本性质, 在求$u(t)$的统计量时将会用到\cite{boggess2015first}.
@@ -321,17 +338,17 @@ $$\hat{F}(x) = \int_{\mathbb{R}^d} e^{ix\cdot y}dF(y), ~x\in \mathbb{R}^d$$
 如果
 $$\lim_{|x|\to\infty} f(x) = 0,$$
 且$f'(x)$的Fourier变换存在, 那么
-$$\mathcal{F}[f'(x)] = i\omega\mathcal{F}[f(x)].$$
+$$\mathcal{F}[f'(x)] = \ii\omega\mathcal{F}[f(x)].$$
 更一般的, 若
 $f(\infty) = f'(\infty) = \cdots = f^{(k-1)}(\infty) = 0,$ 且$\mathcal{F}[f^{(k)}(x)]$存在, 则
-$$\mathcal{F}[f^{(k)}(x)] = (i\omega)^k \mathcal{F}[f].$$
+$$\mathcal{F}[f^{(k)}(x)] = (\ii\omega)^k \mathcal{F}[f].$$\\[5pt]
 \end{proposition}
 
 \section{$b(t)$与$\gamma(t)$的统计量}
 \subsection{均值}
-当$t$固定时, 由(\ref{Sb})式可知$b(t)$的通解第一项为常数, 第二项中只有$b_0$是一个随机变量. 那么由(\ref{init_values})可知, $b(t)$通解第二项的期望为$(\E[b_0]-\hat{b})e^{\lambda_b(t-t_0)}$. 而由于
+当$t$固定时, 由(\ref{Sb})式可知$b(t)$的通解第一项为常数, 第二项中只有$b_0$是一个随机变量. 那么由(\ref{init_values}), $b(t)$通解第二项的期望为$(\E[b_0]-\hat{b})e^{\lambda_b(t-t_0)}$. 而由于
 $$f = f(s) = e^{\lambda_b(t-s)}\in\mathcal{V}(S, T),$$
-故由(\ref{Itoint_property})的(3)式可知,
+故由(\ref{Itoint_property})的(3)式,
 $$\E\left[\sigma_b\int_{t_0}^{t} e^{\lambda_b(t-s)dW_b(s)}\right] = 0.$$
 从而
 \begin{equation} \label{b_stat_1}
@@ -399,6 +416,7 @@ $$\E\left[\sigma_b\int_{t_0}^{t} e^{\lambda_b(t-s)dW_b(s)}\right] = 0.$$
 = \Cov(b_0, \gamma_0)e^{(\lambda_b-d_\gamma)(t-t_0)}
 % \end{split}
 \end{equation}
+\\[5pt]
 % 上述的第三个等式也用到了It\^{o}等距(\ref{Ito isometric}).
 
 \section{$u(t)$的统计量}
@@ -411,60 +429,60 @@ $$\E\left[\sigma_b\int_{t_0}^{t} e^{\lambda_b(t-s)dW_b(s)}\right] = 0.$$
 \end{split}
 \end{equation}
 
-下面我们用高斯随机过程$J(s, t)$的特征函数\cite{gershgorin2008nonlinear}\cite{gershgorin2010filtering}来计算上式的右边. \\
+下面我们利用高斯随机过程$J(s, t)$的特征函数来计算上式的右边. \\
 首先我们有以下的命题:
-\begin{proposition} \label{multiVariable gaussian exp 1}
-$$\E\left[ze^{ibx}\right] = (\E[z]+ib\Cov(z, x))e^{ib\E[x]-\frac{1}{2}b^2\Var(x)}$$
+\begin{proposition}\cite{gershgorin2008nonlinear}\cite{gershgorin2010filtering} \label{multiVariable gaussian exp 1}
+$$\E\left[ze^{\ii bx}\right] = (\E[z]+\ii b\Cov(z, x))e^{\ii b\E[x]-\frac{1}{2}b^2\Var(x)}$$
 其中z为复值高斯随机变量, x为实值高斯随机变量. 
 \end{proposition}
 
 \begin{proof}[证明]
 不妨记
-$$z = y + iw, \quad y, w\in \mathbb{R}. \label{z substitution}$$
-那么我们只要计算出$\E[ye^{ibx}]$和$\E[we^{ibx}]$, 然后利用(\ref{z substitution})将其组合起来. 令
+$$z = y + \ii w, \quad y, w\in \mathbb{R}. \label{z substitution}$$
+那么我们只要计算出$\E[ye^{\ii bx}]$和$\E[we^{\ii bx}]$, 然后利用(\ref{z substitution})将其组合起来. 令
 $\mathbf{v} = (x, y, w)$, 那么由于$\mathbf{v}$为一个满足多元Gauss分布的随机向量, 其特征函数由(\ref{Characteristic function of Gaussian Distribution})即可给出:
 \[
-\phi_\mathbf{v}(\mathbf{s}) = \exp(i\mathbf{s}^\top \E[\mathbf{v}]-\frac{1}{2}\mathbf{s}^\top\Sigma\mathbf{s}),
+\phi_\mathbf{v}(\mathbf{s}) = \exp(\ii\mathbf{s}^\top \E[\mathbf{v}]-\frac{1}{2}\mathbf{s}^\top\Sigma\mathbf{s}),
 \]
 
 其中$\Sigma$为协方差矩阵. 记$g(\mathbf{v})$为$\mathbf{v}$的概率密度函数, 那么由特征函数的定义(\ref{characteristic function definition 3}), 即特征函数为概率密度的Fourier变换即可知道,
 \[
-\phi_\mathbf{v}(\mathbf{s}) = \frac{1}{(2\pi)^3}\int e^{i\mathbf{s}^\top\mathbf{v}}g(\mathbf{v})d\mathbf{v}
+\phi_\mathbf{v}(\mathbf{s}) = \frac{1}{(2\pi)^3}\int e^{\ii\mathbf{s}^\top\mathbf{v}}g(\mathbf{v})d\mathbf{v}
 \]
 
 利用Fourier变换的性质(\ref{Fourier transform property 1}), 我们不妨对$s_2$求偏导\cite{gershgorin2008nonlinear}, 有
 \[
-\frac{\partial \phi_\mathbf{v}(\mathbf{s})}{\partial s_2} = \frac{1}{(2\pi)^3}\int iy_0e^{i\mathbf{s}^\top\mathbf{v}}g(\mathbf{v})d\mathbf{v} = i\E\left[y_0e^{i\mathbf{s}^\top\mathbf{v}}\right].
+\frac{\partial \phi_\mathbf{v}(\mathbf{s})}{\partial s_2} = \frac{1}{(2\pi)^3}\int \ii y_0e^{\ii\mathbf{s}^\top\mathbf{v}}g(\mathbf{v})d\mathbf{v} = i\E\left[y_0e^{\ii\mathbf{s}^\top\mathbf{v}}\right].
 \]
 
 令$\mathbf{v} = (b, 0, 0)^\top$,
 \[
-\left.\E[y_0e^{ibx_0}] = -i\frac{\partial \phi_\mathbf{v}(s)}{\partial s_2}\right|_{\mathbf{s} = (b, 0, 0)^\top}
+\left.\E[y_0e^{\ii bx_0}] = -\ii\frac{\partial \phi_\mathbf{v}(s)}{\partial s_2}\right|_{\mathbf{s} = (b, 0, 0)^\top}
 \]
 
 同样的, 我们有
 \[
-\left.\E[y_0e^{ibx_0}] = -i\frac{\partial \phi_\mathbf{v}(s)}{\partial s_2}\right|_{\mathbf{s} = (b, 0, 0)^\top}
+\left.\E[y_0e^{\ii bx_0}] = -\ii\frac{\partial \phi_\mathbf{v}(s)}{\partial s_2}\right|_{\mathbf{s} = (b, 0, 0)^\top}
 \]
 
 由多元高斯分布的概率密度函数(\ref{multiVariable gaussian pdf})有
 \[
 \begin{split}
-&\frac{\partial \phi_\mathbf{v}(\mathbf{s})}{\partial s_2} = (i\E[y_0]-\Var(y_0)s_2-\Cov(x_0, y_0)s_1-\Cov(y_0, w_0)s_3)\phi_{\mathbf{v}}(s) \\[5pt]
-&\frac{\partial \phi_\mathbf{v}(\mathbf{s})}{\partial s_3} = (i\E[w_0]-\Var(w_0)s_3-\Cov(x_0, w_0)s_1-\Cov(y_0, w_0)s_2)\phi_{\mathbf{v}}(s)
+&\frac{\partial \phi_\mathbf{v}(\mathbf{s})}{\partial s_2} = (\ii\E[y_0]-\Var(y_0)s_2-\Cov(x_0, y_0)s_1-\Cov(y_0, w_0)s_3)\phi_{\mathbf{v}}(s) \\[5pt]
+&\frac{\partial \phi_\mathbf{v}(\mathbf{s})}{\partial s_3} = (\ii\E[w_0]-\Var(w_0)s_3-\Cov(x_0, w_0)s_1-\Cov(y_0, w_0)s_2)\phi_{\mathbf{v}}(s)
 \end{split}
 \]
 
 分别计算这两个偏导数在$\mathbf{s} = (b, 0, 0)^\top$处的值, 有
 \[
 \begin{split}
-&\E\left[y_0e^{ibx_0}\right] = (\E[y_0]+i\Cov(x_0, y_0)b)\exp(ib\E[x_0] - \frac{1}{2}\Var(x_0)b^2) \\[5pt]
-&\E\left[w_0e^{ibx_0}\right] = (\E[w_0]+i\Cov(x_0, w_0)b)\exp(ib\E[x_0] - \frac{1}{2}\Var(x_0)b^2)
+&\E\left[y_0e^{ibx_0}\right] = (\E[y_0]+\ii\Cov(x_0, y_0)b)\exp(\ii b\E[x_0] - \frac{1}{2}\Var(x_0)b^2) \\[5pt]
+&\E\left[w_0e^{ibx_0}\right] = (\E[w_0]+\ii\Cov(x_0, w_0)b)\exp(\ii b\E[x_0] - \frac{1}{2}\Var(x_0)b^2)
 \end{split}
 \]
 
 那么
-$$\E\left[ze^{ibx}\right] = (\E[z]+ib\Cov(z, x))e^{ib\E[x]-\frac{1}{2}b^2\Var(x)}.$$
+$$\E\left[ze^{\ii bx}\right] = (\E[z]+\ii b\Cov(z, x))e^{\ii b\E[x]-\frac{1}{2}b^2\Var(x)}.$$
 \end{proof}
 
 由此我们立刻可以得到
@@ -529,7 +547,7 @@ J(s, t) &= \int_s^t \left[(\gamma_0-\hat{\gamma})e^{-d_\gamma(s'-t_0)}+\sigma_\g
 \end{split}
 \]
 
-由It\^{o}等距(定理\ref{Ito isometric})和It\^{o}公式(定理\ref{Ito formula})知上式的第二项为
+由It\^{o}等距(定理\ref{Ito isometric})知上式的第二项为
 \[
 \begin{split}
 \sigma_\gamma^2\E&\left[\left(\int_{t_0}^t \frac{1}{d_\gamma}\left(1-e^{-d_\gamma}(t-x)\right)dW_\gamma(x)\right)^2\right] \\[5pt]
@@ -546,8 +564,8 @@ J(s, t) &= \int_s^t \left[(\gamma_0-\hat{\gamma})e^{-d_\gamma(s'-t_0)}+\sigma_\g
 这里我们将两个积分区域均扩展至$[\min\{s, t_0\}, ~t]$上, 并设积分区域较小的被积函数在延拓的区间上为0. 那么
 \begin{equation} \label{Var J(s, t) final}
 \begin{split}
-\Var&(J(s, t)) = \frac{1}{d_\gamma^2}\left(e^{-d_\gamma(s-t_0)}-e^{-d_\gamma(t-t_0)}\right)^2\Var(\gamma_0) \\[5pt]
-&+ \frac{\sigma_\gamma^2}{d_\gamma^3}\left(-1+d_\gamma(t-s)+e^{-d_\gamma(s+t-2t_0)}+e^{-d_\gamma(t-s)}-\frac{1}{2}e^{-2d_\gamma(t-t_0)}-\frac{1}{2}e^{-2d_\gamma(s-t_0)}\right) 
+\Var&(J(s, t)) = \frac{1}{d_\gamma^2}\left(e^{-d_\gamma(s-t_0)}-e^{-d_\gamma(t-t_0)}\right)^2\Var(\gamma_0)+ \frac{\sigma_\gamma^2}{d_\gamma^3}(-1+d_\gamma(t-s) \\[5pt]
+&\left.+e^{-d_\gamma(s+t-2t_0)}+e^{-d_\gamma(t-s)}-\frac{1}{2}e^{-2d_\gamma(t-t_0)}-\frac{1}{2}e^{-2d_\gamma(s-t_0)}\right) 
 \end{split}
 \end{equation}
 将(\ref{Var J(s, t) final}), (\ref{Cov u0 J(s, t)}), (\ref{Cov b0 J(s, t)})代入(\ref{E u(t)})式即得$u(t)$的均值.
@@ -588,10 +606,10 @@ $
 利用上述命题, 有
 \[
 \begin{split}
-\E\left[|A|^2\right] &= \left(|\E[u_0]|^2 +\Var(u_0) - 4\text{Re}\left\{\E[u_0]^*\Cov(u_0, J(t_0, t)\right\} +4|\Cov(u_0, J(t_0, t)|^2\right) \times \nq
-& \quad e^{-2\hat{\gamma}(t-t_0)-2\E[J(t_0, t)]+2\Var(J(t_0, t))}, \nq
-\E\left[|B|^2\right] &= \E\left[\left|\int_{t_0}^t (b(s)+f(s))e^{-J(s, t)+\hat{\lambda}(t-s)}ds\right|^2\right] \nq
-&= \int_{t_0}^t ds\int_{t_0}^t dr \E\left[(b(s)+f(s))e^{-J(s, t)+\hat{\lambda}(t-s)}\left[(b(r)+f(r))e^{-J(r, t)+\hat{\lambda}(t-r)}\right]^*\right]
+&\E\left[|A|^2\right] = \left(|\E[u_0]|^2 +\Var(u_0) - 4\text{Re}\left\{\E[u_0]^*\Cov(u_0, J(t_0, t)\right\} +4|\Cov(u_0, J(t_0, t)|^2\right) \times \nq
+& \qquad\qquad e^{-2\hat{\gamma}(t-t_0)-2\E[J(t_0, t)]+2\Var(J(t_0, t))}, \nq
+&\E\left[|B|^2\right] = \E\left[\left|\int_{t_0}^t (b(s)+f(s))e^{-J(s, t)+\hat{\lambda}(t-s)}ds\right|^2\right] \nq
+&\qquad\qquad= \int_{t_0}^t ds\int_{t_0}^t dr \E\left[(b(s)+f(s))e^{-J(s, t)+\hat{\lambda}(t-s)}\left[(b(r)+f(r))e^{-J(r, t)+\hat{\lambda}(t-r)}\right]^*\right]
 \end{split}
 \]
 
@@ -600,7 +618,7 @@ $
 \begin{split}
 \E&\left[(b(s)+f(s))e^{-J(s, t)+\hat{\lambda}(t-s)}\left[(b(r)+f(r))e^{-J(r, t)+\hat{\lambda}(t-r)}\right]^*\right] \nw
 % &= E\left[(b(s)+f(s))(b^*(r)+f^*(r))e^{-J(s, t)-J(r, t)+(-\hat{\gamma}+i\omega)(t-s)+(-\hat{\gamma}-i\omega)(t-r)}\right] \\
-&= \E\left[(b(s)+f(s))(b^*(r)+f^*(r))e^{-J(s, t)-J(r, t)-\hat{\gamma}(2t-s-r)+i\omega(r-s)}\right] \nw
+&= \E\left[(b(s)+f(s))(b^*(r)+f^*(r))e^{-J(s, t)-J(r, t)-\hat{\gamma}(2t-s-r)+\ii\omega(r-s)}\right] \nw
 % &= e^{-J(s, t)-J(r, t)+\frac{1}{2}Var(J(s, t))+\frac{1}{2}Var(J(r, t))+Cov(J(s, t), J(r, t))-\hat{\gamma}(2t-s-r)+i\omega(r-s)} \times \\
 % &\quad \{E\left[b(s)b^*(r)\right] + E[b(s)f^*(r)] + E[f(s)b^*(r)] + E[f(s)f^*(r)] \\
 % &\quad+ Cov(b(s), b(r)) + Cov(b(s), f(r))+Cov(f(s), b(r))+Cov(f(s), f(r)) \\
@@ -610,7 +628,7 @@ $
 % &\quad\quad +Cov(f(s), -J(r, t))+Cov(b(s), -J(r, t))] \\
 % &\quad+ [Cov(b(s), -J(s, t))+Cov(b(s), -J(r, t))+Cov(f(s), -J(s, t))+Cov(f(s), -J(r,t))] \\
 % &\quad\quad\times [Cov(b^*(r), -J(s, t))+Cov(b^*(r), -J(r, t))+Cov(f^*(r), -J(s,t))+Cov(f^*(r), -J(r, t))]\} \\
-&= e^{-J(s, t)-J(r, t)+\frac{1}{2}\Var(J(s, t))+\frac{1}{2}\Var(J(r, t))+\Cov(J(s, t), J(r, t))-\hat{\gamma}(2t-s-r)+i\omega(r-s)} \times \nw
+&= e^{-J(s, t)-J(r, t)+\frac{1}{2}\Var(J(s, t))+\frac{1}{2}\Var(J(r, t))+\Cov(J(s, t), J(r, t))-\hat{\gamma}(2t-s-r)+\ii\omega(r-s)} \times \nw
 &\quad \{\E[b(s)b^*(r)]+\E[b(s)]\times[\Cov(b^*(r), -J(s, t))+\Cov(b^*(r), -J(r, t))] \nq
 &\quad\quad+ \E[b^*(r)]\times[\Cov(b(s), -J(s, t))+\Cov(b(s), -J(r, t))]\nq
 &\quad\quad+ [\Cov(b^*(r), J(s, t))+\Cov(b^*(r), J(r, t))]\times [\Cov(b(s), J(s, t))+\Cov(b(s), J(r, t))] \nq
@@ -626,7 +644,7 @@ $
 \E&[b(s)b(r)] = \E\left[\left(\hat{b}+(b_0-\hat{b})e^{\lambda_b(s-t_0)}+\sigma_b\int_{t_0}^s e^{\lambda_b(s-w)}dW_b(w)\right)\right.\times \nq
 &\quad\quad\quad\quad\quad\quad\left.\left(\hat{b}+(b_0-\hat{b})e^{\lambda_b(r-t_0)}+\sigma_b\int_{t_0}^r e^{\lambda_b(r-w)}dW_b(w)\right) \right] \nw
 &= \left(1-e^{\lambda_b(s-t_0)}-e^{\lambda_b(r-t_0)}+e^{\lambda_b(s+r-2t_0)}\right)\hat{b}^2 + \left(e^{\lambda_b(s-t_0)}+e^{\lambda_b(r-t_0)}-2e^{\lambda_b(s+r-2t_0)}\right)\hat{b}\E[b_0] \nq
-&\quad + e^{\lambda_b(s+r-2t_0)}\left(\Var(b_0) + \E[b_0]^2\right) + \frac{\sigma_b^2}{2\gamma_b}\left(e^{-\gamma_b(s+r-2\min(s, r))}-e^{-\gamma_b(s+r-2t_0)}\right)e^{i\omega_b(s-r)}
+&\quad + e^{\lambda_b(s+r-2t_0)}\left(\Var(b_0) + \E[b_0]^2\right) + \frac{\sigma_b^2}{2\gamma_b}\left(e^{-\gamma_b(s+r-2\min(s, r))}-e^{-\gamma_b(s+r-2t_0)}\right)e^{\ii\omega_b(s-r)}
 \end{split}
 \]
 
@@ -663,7 +681,7 @@ $
 \E&\left[|C|^2\right] = \sigma^2\E\left[\left(\int_{t_0}^t e^{-J(s, t)+\hat{\lambda}(t-s)}dW(s)\right)^2\right] \nq
 &= \sigma^2\int_{t_0}^te^{-2\hat\gamma(t-s)}\E\left[e^{-2J(s, t)}\right]ds = \sigma^2\int_{t_0}^t e^{-2\hat\gamma(t-s)-2\E[J(s, t)]+2\Var(J(s, t))}ds \nw
 \E&[A^*B] = \E\left[\left(e^{-J(t_0, t)+\hat{\lambda}(t-t_0)}u_0\right)^*\int_{t_0}^t(b(s)+f(s))e^{-J(s, t)+\hat{\lambda}(t-s)}ds\right]\nq
-&= e^{-\hat\gamma(t-t_0)}\int_{t_0}^t \left(\E\left[u_0^*b_0e^{-J(t_0, t)-J(s, t)}\right]e^{(\lambda_b-i\omega)(s-t_0)}\right.\nq
+&= e^{-\hat\gamma(t-t_0)}\int_{t_0}^t \left(\E\left[u_0^*b_0e^{-J(t_0, t)-J(s, t)}\right]e^{(\lambda_b-\ii\omega)(s-t_0)}\right.\nq
 &\quad+\left.\left(\hat{b}\left(1-e^{\lambda_b(s-t_0)}\right)+f(s)\right)\E\left[u_0e^{-J(t_0, t)-J(s, t)}\right]^*\right)ds
 \end{split}
 \]
@@ -676,7 +694,7 @@ $
 &\quad-\E[b_0](\Cov(J(s, t), u_0^*)+\Cov(J(t_0, t), u_0^*))+(\Cov(u_0^*, J(s, t))+\Cov(u_0^*, J(t_0, t))) \nq
 &\quad\times(\Cov(b_0, J(s, t))+\Cov(b_0, J(t_0, t)))], \nw
 \E&\left[u_0e^{-J(t_0, t)-J(s, t)}\right] = e^{-\E[J(s, t)]-\E[J(t_0, t)]+\frac{1}{2}\Var(J(s, t))+\frac{1}{2}\Var(J(t_0, t))+\Cov(J(s, t), J(t_0, t))}\times \nq
-&(\E[u_0]-\Cov(u_0, J(s, t))-\Cov(u_0, J(t_0, t)))
+&\quad(\E[u_0]-\Cov(u_0, J(s, t))-\Cov(u_0, J(t_0, t)))
 \end{split}
 \]
 于是把上述的几个式子代回到(\ref{E u(t)^2})即得到了$\Var(u(t))$.
@@ -696,7 +714,7 @@ $
 利用命题(\ref{multiVariable gaussian exp 3}), 和上一节类似的, 我们有
 \[
 \begin{split}
-\E&[A^2] = \E[e^{-2J(t_0, t)+2\hat\lambda(t-t_0)}u_0^2] = e^{-2\hat\gamma(t-t_0)-2\E[J(t_0, t)]+2\Var(J(t_0, t))}\times \nw
+\E&[A^2] = \E[e^{-2J(t_0, t)+2\hat\lambda(t-t_0)}u_0^2] = e^{2\hat\gamma(t-t_0)-2\E[J(t_0, t)]+2\Var(J(t_0, t))}\times \nw
 &\quad\left(\E[u_0]^2+\Cov(u_0, u_0^*)-4\E[u_0]\Cov(u_0, J(t_0, t))+4\Cov(u_0, J(t_0, t))^2\right), \nw
 \E&\left[B^2\right] = \int_{t_0}^t ds \int_{t_0}^t dr \E\left[((b(s)+f(s))(b(r)+f(r))e^{-J(s, t)-J(r, t)+\hat\lambda(2t-s-r)}\right]
 \end{split}
@@ -706,12 +724,12 @@ $
 \[
 \begin{split}
 \E&\left[((b(s)+f(s))(b(r)+f(r))e^{-J(s, t)-J(r, t)+\hat\lambda(2t-s-r)}\right] \nw
-&= e^{-\hat\lambda(2t-s-r)-\E[J(s, t)]-\E[J(r, t)]+\frac{1}{2}\Var(J(s, t))+\frac{1}{2}\Var(r, t)+\Cov(J(s, t), J(r, t))} \times \nw
+&= e^{\hat\lambda(2t-s-r)-\E[J(s, t)]-\E[J(r, t)]+\frac{1}{2}\Var(J(s, t))+\frac{1}{2}\Var(r, t)+\Cov(J(s, t), J(r, t))} \times \nw
 &\quad [\E[b(s)b(r)]-\E[b(s)]\times(\Cov(b(r), J(r, t))+\Cov(b(r), J(s, t))) \nq
 &\quad- \E[b(r)]\times(\Cov(b(s), J(r, t))+\Cov(b(s), J(s, t))) \nq
 &\quad + [\Cov(b(r), J(s, t))+\Cov(b(r), J(r, t))]\times[\Cov(b(s), J(s, t))+\Cov(b(s), J(r, t))]\nq
 &\quad + f(r)\times[\E[b(s)]-\Cov(b(s), J(s, t))-\Cov(b(s), J(r, t))]\nq
-&\quad +f(s)\times[\E[b(r)]-\Cov(b(r), J(r, t))-\Cov(b(r), J(s, t))]+f(s)f(r)]
+&\quad +f(s)\times[\E[b(r)]-\Cov(b(r), J(r, t))-\Cov(b(r), J(s, t))]+f(s)f(r)],
 \end{split}
 \]
 
@@ -767,7 +785,7 @@ $
 \begin{split}
 \frac{\partial}{\partial t}&\E\left[u_0e^{-J(t_0, t)}\right] = \frac{\partial}{\partial t}\left[(\E[u_0]+\Cov(-J(t_0, t), u_0))e^{-\E[J(t_0, t)]+\frac{1}{2}\Var(J(t_0, t))}\right] \nq
 &= \left(\frac{\partial}{\partial t}\Cov(-J(t_0, t), u_0)\right)e^{-\E[J(t_0, t)]+\frac{1}{2}\Var(J(t_0, t))} \nq
-&\quad + (\E[u_0] + \Cov(u_0, -J(t_0, t)))\frac{\partial}{\partial t}e^{-\E[J(t_0, t)]+\frac{1}{2}Var(J(t_0, t))} \nq
+&\quad + (\E[u_0] + \Cov(u_0, -J(t_0, t)))\frac{\partial}{\partial t}e^{-\E[J(t_0, t)]+\frac{1}{2}\Var(J(t_0, t))} \nq
 &= e^{-J(t_0, t)+\frac{1}{2}\Var(J(t_0, t))}\times\left[\Cov(-\gamma(t), u_0)+(\E[u_0]+\Cov(-J(t_0, t), u_0))\times\right. \nq
 &\quad \left.(\hat\gamma-\E[\gamma(t)]+\frac{1}{2}\frac{\partial}{\partial t}\Var(J(t_0, t)))\right],
 \end{split}
@@ -804,7 +822,7 @@ $
 &= \left(1-e^{\lambda_b^*(t-t_0)}\right)\hat{b}^*\E[u(t)] + \E\left[u(t)b_0^*e^{\lambda_b^*(t-t_0)}\right] \nq
 &\quad + \E[\sigma\sigma_b\int_{t_0}^t\int_{t_0}^te^{-J(s, t)+\hat\lambda(s-t_0)+\lambda_b^*(t-\xi)}dW(s)dW_b(\xi)] \nq
 &= \left(1-e^{\lambda_b^*(t-t_0)}\right)\hat{b}^*\E[u(t)] + \E\left[\left(e^{-J(t_0, t)+\hat\lambda(s-t_0)}+\int_{t_0}^t (b(s)+f(s))e^{-J(s, t)+\hat\lambda(s-t_0)}ds\right)b_0^*e^{\lambda_b^*(t-t_0)}\right] \nq
-&\quad + \frac{\sigma\sigma_b}{2\gamma_b}\E\left[\int_{t_0}^t e^{-J(s, t)}e^{-\lambda(t-s)}\left(e^{\lambda_b^*(t-s)}-e^{-i\omega_b(t-s)-\gamma_b(s+t-2t_0)}\right)\right] \nq
+&\quad + \frac{\sigma\sigma_b}{2\gamma_b}\E\left[\int_{t_0}^t e^{-J(s, t)}e^{-\lambda(t-s)}\left(e^{\lambda_b^*(t-s)}-e^{-\ii\omega_b(t-s)-\gamma_b(s+t-2t_0)}\right)\right] \nq
 &= \left(1-e^{\lambda_b^*(t-t_0)}\right)\hat{b}^*\E[u(t)] + e^{(\hat\lambda+\lambda_b^*)(t-t_0)}\E\left[u_0b_0^*e^{-J(t_0, t)}\right] + e^{\lambda_b^*(t-t_0)}\times \nq
 &\quad \int_{t_0}^t e^{\hat\lambda(t-s)}\left(\E\left[b_0^*b(s)e^{-J(s, t)}\right]+f(s)\E\left[b_0e^{-J(s, t)}\right]^*ds\right) \nq
 &\quad + \frac{\sigma\sigma_b}{2\gamma_b}\E\left[\int_{t_0}^t e^{-\E[J(s, t)]+\frac{1}{2}\Var(J(s, t))}e^{-\lambda(t-s)}\left(e^{\lambda_b^*(t-s)}-e^{-i\omega_b(t-s)-\gamma_b(s+t-2t_0)}\right)\right],
@@ -900,7 +918,7 @@ $
 % \end{equation}
 \subsection{参数选择}
 在实践中, 我们可以考虑以下的一个简单例子. 在(\ref{E0})中, 我们令外界驱动力
-$$f(t) = \frac{3}{2}e^{0.1it},$$方程组的参数可以取为
+$$f(t) = \frac{3}{2}e^{0.1\ii t},$$方程组的参数可以取为
 \begin{equation} \label{parameters}
 \left\{
 \begin{aligned}
@@ -947,13 +965,13 @@ W(\tau_j) - W(\tau_{j-1}) = \sum_{k = jR-R+1}^{jR} \mathrm{d}W_k,
 $$
 在上式中$R$为E-M算法的步长, 且
 $$
-\mathrm{d}W = \sqrt{\Delta t}*\tt{randn()}.
+\mathrm{d}W = \sqrt{\Delta t}\times\tt{randn()}.
 $$
 由于模拟$u(t)$和$b(t)$时, 我们需要对其实部和虚部分别进行模拟. 为保证三个微分方程中白噪声的强度一致, 需要令
 $$W_{\text{Re}(u)}(t) = \frac{1}{\sqrt{2}}W(t),$$
 其余项和初值也做相同的处理.
 
-\quad 对$R=1$进行100,000次模拟\cite{robert2004monte}, $u(t)$, $b(t)$的实部和虚部,$\gamma(t)$的期望, $u(t)$, $b(t)$和$\gamma(t)$的方差的模拟结果如下图\cite{mckinney2012python}\cite{hunter2007matplotlib}, 其中蓝色的曲线为模拟产生的值, 绿色的曲线是理论计算得到的值. \\
+\quad 对$R=1$进行100,000次模拟\cite{robert2004monte}, $u(t)$, $b(t)$的实部和虚部,$\gamma(t)$的期望, $u(t)$, $b(t)$和$\gamma(t)$的方差, 以及各项协方差的模拟结果如下图\cite{mckinney2012python}\cite{hunter2007matplotlib}. \\
 % \begin{figure}[!ht]
 % \centering
 % \includegraphics[width = 12cm]{NumericalSimulation/res/EuRe.png}
@@ -1013,103 +1031,167 @@ $$W_{\text{Re}(u)}(t) = \frac{1}{\sqrt{2}}W(t),$$
 \begin{figure}[!ht]
 \centering
 \subfloat[\text{E}(Re(u))]{
-  \includegraphics[width = .2\textwidth]{NumericalSimulation/res/EuRe.png}
+  \includegraphics[width = .2\textwidth]{NumericalSimulation/100k/EuRe.png}
   }\hfill
 \subfloat[E(Im(u))]{
-  \includegraphics[width = .2\textwidth]{NumericalSimulation/res/EuIm.png}
+  \includegraphics[width = .2\textwidth]{NumericalSimulation/100k/EuIm.png}
   }\hfill
 \subfloat[E(Re(b))]{
-  \includegraphics[width = .2\textwidth]{NumericalSimulation/res/EbRe.png}
+  \includegraphics[width = .2\textwidth]{NumericalSimulation/100k/EbRe.png}
   }\hfill
 \subfloat[E(Im(b))]{
-  \includegraphics[width = .2\textwidth]{NumericalSimulation/res/EbIm.png}
+  \includegraphics[width = .2\textwidth]{NumericalSimulation/100k/EbIm.png}
   }\\
 \subfloat[E($\gamma$)]{
-  \includegraphics[width = .2\textwidth]{NumericalSimulation/res/Egamma.png}
+  \includegraphics[width = .2\textwidth]{NumericalSimulation/100k/Egamma.png}
   }\hfill
 \subfloat[Var(u)]{
-  \includegraphics[width = .2\textwidth]{NumericalSimulation/res/Varu.png}
+  \includegraphics[width = .2\textwidth]{NumericalSimulation/100k/Varu.png}
   }\hfill
 \subfloat[Var(b)]{
-  \includegraphics[width = .2\textwidth]{NumericalSimulation/res/Varb.png}
+  \includegraphics[width = .2\textwidth]{NumericalSimulation/100k/Varb.png}
   }\hfill
 \subfloat[Var($\gamma$)]{
-  \includegraphics[width = .2\textwidth]{NumericalSimulation/res/Vargamma.png}
+  \includegraphics[width = .2\textwidth]{NumericalSimulation/100k/Vargamma.png}
   }
-\caption{Simulation of Expectations and Variances}
+\caption{Simulation of Expectations and Variances, $n = 100,000$}
 \label{Simulation of Expectations and Variances}
 \end{figure}
+
 \begin{figure}[!ht]
 \centering
 \subfloat[$\text{Re}(\Cov(u, u^*))$]{
-  \includegraphics[width = .2\textwidth]{NumericalSimulation/res/lim/covuustarre.png}
+  \includegraphics[width = .2\textwidth]{NumericalSimulation/100k/covuustarre.png}
 }\hfill
 \subfloat[$\text{Im}(\Cov(u, u^*))$]{
-  \includegraphics[width = .2\textwidth]{NumericalSimulation/res/lim/covuustarim.png}
+  \includegraphics[width = .2\textwidth]{NumericalSimulation/100k/covuustarim.png}
 }\hfill
 \subfloat[$\text{Re}(\Cov(u, \gamma))$]{
-  \includegraphics[width = .2\textwidth]{NumericalSimulation/res/lim/covugammare.png}
+  \includegraphics[width = .2\textwidth]{NumericalSimulation/100k/covugammare.png}
 }\hfill
 \subfloat[$\text{Im}(\Cov(u, \gamma))$]{
-  \includegraphics[width = .2\textwidth]{NumericalSimulation/res/lim/covugammaim.png}
+  \includegraphics[width = .2\textwidth]{NumericalSimulation/100k/covugammaim.png}
 }\\
 \subfloat[$\text{Re}(\Cov(u, b))$]{
-  \includegraphics[width = .2\textwidth]{NumericalSimulation/res/lim/covubre.png}
+  \includegraphics[width = .2\textwidth]{NumericalSimulation/100k/covubre.png}
 }\hfill
 \subfloat[$\text{Im}(\Cov(u, b))$]{
-  \includegraphics[width = .2\textwidth]{NumericalSimulation/res/lim/covubim.png}
+  \includegraphics[width = .2\textwidth]{NumericalSimulation/100k/covubim.png}
 }\hfill
 \subfloat[$\text{Re}(\Cov(u, b^*))$]{
-  \includegraphics[width = .2\textwidth]{NumericalSimulation/res/lim/covubstarre.png}
+  \includegraphics[width = .2\textwidth]{NumericalSimulation/100k/covubstarre.png}
 }\hfill
 \subfloat[$\text{Im}(\Cov(u, b^*))$]{
-  \includegraphics[width = .2\textwidth]{NumericalSimulation/res/lim/covubstarim.png}
+  \includegraphics[width = .2\textwidth]{NumericalSimulation/100k/covubstarim.png}
 }
-\caption{Simulation of Covariances}
+\caption{Simulation of Covariances, $n = 100,000$}
 \label{Simulation of Covariances}
 \end{figure}
 
-\newpage
+下面我们测试了模拟次数为$n = 1,000,000$时的期望, 方差和协方差的模拟结果:
+
+\begin{figure}[!ht]
+\centering
+\subfloat[\text{E}(Re(u))]{
+  \includegraphics[width = .2\textwidth]{NumericalSimulation/1m/EuRe.png}
+  }\hfill
+\subfloat[E(Im(u))]{
+  \includegraphics[width = .2\textwidth]{NumericalSimulation/1m/EuIm.png}
+  }\hfill
+\subfloat[E(Re(b))]{
+  \includegraphics[width = .2\textwidth]{NumericalSimulation/1m/EbRe.png}
+  }\hfill
+\subfloat[E(Im(b))]{
+  \includegraphics[width = .2\textwidth]{NumericalSimulation/1m/EbIm.png}
+  }\\
+\subfloat[E($\gamma$)]{
+  \includegraphics[width = .2\textwidth]{NumericalSimulation/1m/Egamma.png}
+  }\hfill
+\subfloat[Var(u)]{
+  \includegraphics[width = .2\textwidth]{NumericalSimulation/1m/Varu.png}
+  }\hfill
+\subfloat[Var(b)]{
+  \includegraphics[width = .2\textwidth]{NumericalSimulation/1m/Varb.png}
+  }\hfill
+\subfloat[Var($\gamma$)]{
+  \includegraphics[width = .2\textwidth]{NumericalSimulation/1m/Vargamma.png}
+  }
+\caption{Simulation of Expectations and Variances, $n = 1,000,000$}
+\label{Simulation of Expectations and Variances}
+\end{figure}
+
+
+\begin{figure}[!ht]
+\centering
+\subfloat[$\text{Re}(\Cov(u, u^*))$]{
+  \includegraphics[width = .2\textwidth]{NumericalSimulation/1m/CovuustarRe.png}
+}\hfill
+\subfloat[$\text{Im}(\Cov(u, u^*))$]{
+  \includegraphics[width = .2\textwidth]{NumericalSimulation/1m/CovuustarIm.png}
+}\hfill
+\subfloat[$\text{Re}(\Cov(u, \gamma))$]{
+  \includegraphics[width = .2\textwidth]{NumericalSimulation/1m/CovugammaRe.png}
+}\hfill
+\subfloat[$\text{Im}(\Cov(u, \gamma))$]{
+  \includegraphics[width = .2\textwidth]{NumericalSimulation/1m/CovugammaIm.png}
+}\\
+\subfloat[$\text{Re}(\Cov(u, b))$]{
+  \includegraphics[width = .2\textwidth]{NumericalSimulation/1m/CovubRe.png}
+}\hfill
+\subfloat[$\text{Im}(\Cov(u, b))$]{
+  \includegraphics[width = .2\textwidth]{NumericalSimulation/1m/CovubIm.png}
+}\hfill
+\subfloat[$\text{Re}(\Cov(u, b^*))$]{
+  \includegraphics[width = .2\textwidth]{NumericalSimulation/1m/CovubstarRe.png}
+}\hfill
+\subfloat[$\text{Im}(\Cov(u, b^*))$]{
+  \includegraphics[width = .2\textwidth]{NumericalSimulation/1m/CovubstarIm.png}
+}
+\caption{Simulation of Covariances, $n = 1,000,000$}
+\label{Simulation of Covariances}
+\end{figure}
+
+
 
 
 \subsection{讨论和展望}
-在模拟结果中我们可以看到, 对期望和方差的模拟结果和理论结果均十分符合. 其中$\Var(b)$和$\Var(\gamma)$的模拟结果为一条和理论结果平行的曲线, 仅在初始时有截距上的误差, 这是由于初始值为随机变量所引起的. 
+从数值模拟结果我们可以看出, 当模拟次数$n = 100,000$时, 对期望的模拟结果和理论值基本重合, 方差的模拟结果和理论值有着$O(10^{-2})\sim O(10^{-3})$的误差, 而协方差的误差在$O(10^{-3})\sim O(10^{-4})$的数量级. 而当模拟次数$n = 1,000,000$时, 期望和方差的模拟结果和理论值几乎完全一致, $\Cov(u, u^*)$及$\Cov(u, \gamma)$的误差为$O(10^{-2})$, $\Cov(u, b)$和$\Cov(u, b^*)$的误差为$O(10^{-4})$. 由模拟结果可以知道, $\Cov(u, b)$和$\Cov(u, b^*)$的误差随着模拟次数的增加而线性降低, 故我们有足够的理由认为当$n \to \infty$时其模拟结果和理论解会趋于一致. 但是$\Cov(u, \gamma)$和$\Cov(u, u^*)$的模拟误差没有随着模拟次数的增加而降低, 其原因尚未确定.
 
-在协方差的模拟结果中我们可以发现, 如果我们将得到的图进行放大, 如下图所示:
 
-\begin{figure}[!ht]
-\centering
-\subfloat[$\text{Re}(\Cov(u, u^*))$]{
-  \includegraphics[width = .2\textwidth]{NumericalSimulation/res/CovuustarRe.png}
-}\hfill
-\subfloat[$\text{Im}(\Cov(u, u^*))$]{
-  \includegraphics[width = .2\textwidth]{NumericalSimulation/res/CovuustarIm.png}
-}\hfill
-\subfloat[$\text{Re}(\Cov(u, \gamma))$]{
-  \includegraphics[width = .2\textwidth]{NumericalSimulation/res/CovugammaRe.png}
-}\hfill
-\subfloat[$\text{Im}(\Cov(u, \gamma))$]{
-  \includegraphics[width = .2\textwidth]{NumericalSimulation/res/CovugammaIm.png}
-}\\
-\subfloat[$\text{Re}(\Cov(u, b))$]{
-  \includegraphics[width = .2\textwidth]{NumericalSimulation/res/CovubRe.png}
-}\hfill
-\subfloat[$\text{Im}(\Cov(u, b))$]{
-  \includegraphics[width = .2\textwidth]{NumericalSimulation/res/CovubIm.png}
-}\hfill
-\subfloat[$\text{Re}(\Cov(u, b^*))$]{
-  \includegraphics[width = .2\textwidth]{NumericalSimulation/res/CovubstarRe.png}
-}\hfill
-\subfloat[$\text{Im}(\Cov(u, b^*))$]{
-  \includegraphics[width = .2\textwidth]{NumericalSimulation/res/CovubstarIm.png}
-}
-\caption{Simulation of Covariances, Detailed}
-\label{Simulation of Covariances}
-\end{figure}
 
-我们可以发现, 对$\Cov(u, b)$和$\Cov(u, b^*)$的模拟结果在模拟100,000次时有$O(10^{-4})$的误差, 而对$\Cov(u, u^*)$和$\Cov(u, \gamma)$的模拟误差达到了$O(10^{-2})$的数量级. 根据分析\cite{golub2012matrix}, 这是因为复数运算时的条件数为实数运算的二次方导致的.
+% \begin{figure}[!ht]
+% \centering
+% \subfloat[$\text{Re}(\Cov(u, u^*))$]{
+%   \includegraphics[width = .2\textwidth]{NumericalSimulation/res/CovuustarRe.png}
+% }\hfill
+% \subfloat[$\text{Im}(\Cov(u, u^*))$]{
+%   \includegraphics[width = .2\textwidth]{NumericalSimulation/res/CovuustarIm.png}
+% }\hfill
+% \subfloat[$\text{Re}(\Cov(u, \gamma))$]{
+%   \includegraphics[width = .2\textwidth]{NumericalSimulation/res/CovugammaRe.png}
+% }\hfill
+% \subfloat[$\text{Im}(\Cov(u, \gamma))$]{
+%   \includegraphics[width = .2\textwidth]{NumericalSimulation/res/CovugammaIm.png}
+% }\\
+% \subfloat[$\text{Re}(\Cov(u, b))$]{
+%   \includegraphics[width = .2\textwidth]{NumericalSimulation/res/CovubRe.png}
+% }\hfill
+% \subfloat[$\text{Im}(\Cov(u, b))$]{
+%   \includegraphics[width = .2\textwidth]{NumericalSimulation/res/CovubIm.png}
+% }\hfill
+% \subfloat[$\text{Re}(\Cov(u, b^*))$]{
+%   \includegraphics[width = .2\textwidth]{NumericalSimulation/res/CovubstarRe.png}
+% }\hfill
+% \subfloat[$\text{Im}(\Cov(u, b^*))$]{
+%   \includegraphics[width = .2\textwidth]{NumericalSimulation/res/CovubstarIm.png}
+% }
+% \caption{Simulation of Covariances, Detailed}
+% \label{Simulation of Covariances}
+% \end{figure}
 
-事实上, 根据相同的方法, 我们可以求出此随机微分方程组解的三节甚至四阶的统计量, 它们可以用初值和初始统计量的多重积分表示出来. 不过由于时间关系, 在这篇论文中没有将其详细的写出, 也没有对其进行数值上的模拟. 这些部分我们留待未来的研究中完成.
+% 我们可以发现, 对$\Cov(u, b)$和$\Cov(u, b^*)$的模拟结果在模拟100,000次时有$O(10^{-4})$的误差, 而对$\Cov(u, u^*)$和$\Cov(u, \gamma)$的模拟误差达到了$O(10^{-2})$的数量级. 根据分析\cite{golub2012matrix}, 这是因为复数运算时的条件数为实数运算的二次方导致的.
+
+此外, 根据相同的方法, 我们可以求出此随机微分方程组解的三节甚至四阶的统计量, 它们可以用初值和初始统计量的多重积分表示出来. 不过由于时间关系, 在这篇论文中没有将其详细的写出, 也没有对其进行数值上的模拟. 这些部分我们留待未来的研究中完成.
 % \begin{figure}[!ht]s
 % \centering
 % \includegraphics[width = 12cm]{NumericalSimulation/res/CovuustarRe.png}
@@ -1168,13 +1250,13 @@ $$W_{\text{Re}(u)}(t) = \frac{1}{\sqrt{2}}W(t),$$
 \bibliographystyle{plain}
 \bibliography{../../CONFIG/LaTeX-bib/Chuan}
 
-% \chapter*{\heiti 致谢}
-% \begin{flushleft}
-% 感谢陆帅老师对本文研究方向的指导和帮助; \\
-% 感谢宋杰承和唐博浩同学对本文理论和数值模拟的技术性建议; \\
-% 感谢魏益民和赵冬华老师这一年来对我学习和研究的关心与支持; \\
-% 感谢628的室友们, 数院和其他学院的同学们, 朋友和家人的陪伴; \\
-% 最后, 感谢东区18和19号楼下的猫在最困难的的日子里给予我的慰藉.
-% \end{flushleft}
+\chapter*{\heiti 致谢}
+\begin{flushleft}
+感谢陆帅老师对本文研究方向的指导和帮助; \\
+感谢唐博浩和宋杰承同学对本文理论和数值模拟的技术性建议; \\
+感谢魏益民和赵冬华老师这一年来对我学习和研究的关心与支持; \\
+感谢628的室友们, 数院和其他学院的同学们, 朋友和家人的陪伴; \\
+最后, 感谢东区18和19号楼下的猫在最困难的的日子里给予我的慰藉.
+\end{flushleft}
 
 \end{document}{}

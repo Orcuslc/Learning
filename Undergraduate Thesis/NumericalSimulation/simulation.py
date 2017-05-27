@@ -98,9 +98,13 @@ def stat(data):
 	Cov_u_b_star = np.asarray([cov_u_b_star(data[0][:, i]+1.j*data[1][:, i], data[2][:, i]+1.j*data[3][:, i]) for i in range(col)], dtype=np.complex64)
 	return mean, [var[0]+var[1], var[2]+var[3], var[4]], [sp.real(Cov_u_u_star), sp.imag(Cov_u_u_star), sp.real(Cov_u_gamma), sp.imag(Cov_u_gamma), sp.real(Cov_u_b), sp.imag(Cov_u_b), sp.real(Cov_u_b_star), sp.imag(Cov_u_b_star)]
 
+def stat_cov(data):
+	r = np.asarray([cov_u_u_star(data[0][:, i], data[1][:, i]) for i in range(data[0].shape[1])], dtype=np.complex64)
+	return [sp.real(r), sp.imag(r)]
+
 def cov_u_u_star(x, y):
 	# return np.var(x)-np.var(y)+2j*(np.cov(x, y)[0, 0])
-	return np.mean((x+1j*y)**2, dtype=np.complex64) - (np.mean(x+1j*y, dtype=np.complex64))**2
+	return np.mean((x+1.j*y)**2, dtype=np.complex64) - (np.mean(x+1.j*y, dtype=np.complex64))**2
 
 def cov_u_gamma(u, gamma):
 	return np.mean(u*gamma, dtype=np.complex64) - np.mean(u, dtype=np.complex64)*np.mean(gamma, dtype=np.complex64)
@@ -148,7 +152,7 @@ def test_rd():
 	print(cov(x, y))
 
 if __name__ == '__main__':
-	t = np.arange(0, 0.2, 1e-1)
+	t = np.arange(0, 0.2, 1e-3)
 	# data = MC(100, t)
 	# _, _, cov = stat(data)
 	# import matplotlib.pyplot as plt
@@ -157,5 +161,11 @@ if __name__ == '__main__':
 	# plt.show()
 	# test_cov(10000)
 	# test(1000000)
-	test_sim(10, t)
+	# test_sim(10, t)
 	# test_rd()
+	data = MC(100000, t)
+	cov = stat_cov(data)
+	from matplotlib import pyplot as plt
+	plt.plot(t, cov[0])
+	plt.show()
+	# print(cov[0])
