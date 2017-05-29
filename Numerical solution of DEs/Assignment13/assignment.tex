@@ -20,11 +20,75 @@
 \DeclareGraphicsExtensions{.eps,.ps,.jpg,.bmp}
 
 \begin{document}
-\title{Homework 1}{16.9.21}
+\title{Homework 13}{ }
 
-\problem{1}{Rewrite the target function of K-means in matrix form.}
-\solution{Solution}{
-$f(x) = argmin_{\mathcal{S}}\sum_{i=1}^{k}\sum_{x_j\in S_j}\sum_{1\le m\le p}\lvert x_{jl} - x_{jm} \rvert^2.$
+\problem{1}{Prove 4.2.16}
+\proof{Proof}{
+The truncation error at point $(t_n, x_i)$ is
+\[
+\begin{aligned}
+R_i^n &= \frac{u(t_{n+1}, x_i)-u(t_{n-1}, x_i)}{2\tau} - a\Delta_h u(t_n, x_i) - f(t_n, x_i) \\
+&= R_t + R_x,
+\end{aligned}
+\]
+where
+\[
+\begin{aligned}
+R_t &= \frac{u(t_{n+1}, x_i)-u(t_{n-1}, x_i)}{2\tau} - \frac{\partial u}{\partial t}(t_n, x_i) \\
+&= \frac{\tau^2}{6}\frac{\partial^3u}{\partial t^3}(t_n, x_i)+O(\tau^4), \\
+R_x &= -a\Delta_h u_i^n + a\frac{\partial^2u}{\partial x^2}(t_n, x_i) \\
+&= -\frac{ah^2}{12}\frac{\partial^4u}{\partial x^4}(t_n, x_i)+O(h^4)
+\end{aligned}
+\]
+Adding the two terms we can get (4.2.16).
+}
+
+\problem{2}{Problem 1, Page 195}
+\solution{The schemes}{
+The iteration of $\theta$ scheme is
+\[
+(\mx{I} - a\tau\theta\Delta_h)\mx{u}^{n+1} = (\mx{I} + a\tau(1-\theta)\Delta_h)\mx{u}^{n} + \tau(\theta \mx{f}^{n+1}+\mx{f}^n),
+\]
+where $\mx{u}$ and $\mx{f}$ are vectors of grid points.
+
+The exact solution is
+\[
+u(t, x) = \sin\pi xe^{-\pi^2t}.
+\]
+}
+\solution{Result}{
+The results are as follows:
+\begin{figure}[htbp]
+\centering
+\includegraphics[width = 5cm]{code/exactsolution.eps}
+\caption{Exact sol.}
+\end{figure}
+
+\begin{figure}
+\centering
+\includegraphics[width = 5cm]{code/expliciteuler.eps}
+\caption{$\theta = 0$}
+\end{figure}
+
+\begin{figure}
+\centering
+\includegraphics[width = 5cm]{code/impliciteuler.eps}
+\caption{$\theta = 1$}
+\end{figure}
+
+\begin{figure}
+\centering
+\includegraphics[width = 5cm]{code/cranknicholson.eps}
+\caption{$\theta = \frac{1}{2}$}
+\end{figure}
+
+\begin{figure}
+\centering
+\includegraphics[width = 5cm]{code/richardson.eps}
+\caption{Richardson}
+\end{figure}
+
+When $t\to \infty$, the computational result should be the same as the exact solution.
 }
 
 % \refgroup{
