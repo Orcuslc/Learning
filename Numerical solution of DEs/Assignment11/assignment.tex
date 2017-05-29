@@ -1,0 +1,55 @@
+%!TEX program = xelate
+\input{structure.tex}
+\usepackage{epstopdf}
+\usepackage{graphics}
+\usepackage{subfig}
+\usepackage{listings}
+\lstset{
+  numbers=left,
+    framexleftmargin=10mm,
+    frame=none,
+    backgroundcolor=\color[RGB]{245,245,244},
+  keywordstyle=\bf\color{blue},
+  identifierstyle=\bf,
+  numberstyle=\color[RGB]{0,192,192},
+  commentstyle=\it\color[RGB]{0,96,96},
+  stringstyle=\rmfamily\slshape\color[RGB]{128,0,0},
+  showstringspaces=false,
+  extendedchars=false
+    }
+\DeclareGraphicsExtensions{.eps,.ps,.jpg,.bmp}
+
+
+\begin{document}
+\title{Homework 11}{ }
+
+
+\problem{1}{Problem 1, Page 164.}
+\solution{Properties of $\mx{A}+\mx{I}$}{
+$\mx{A}+\mx{I}$ is a symmetric and strictly diagonally dominate matrix.
+}
+\solution{Convergence order of this scheme}{
+On the grid points we have
+\[
+\begin{aligned}
+&-\Delta u(x_l)+u(x_l) = f(x_l) \\
+&-\Delta u_{h, l} + u_{h, l} = f_{h, l}.
+\end{aligned}
+\]
+Denote error $e_{h, l} = u_{h, l} - u(x_l)$, then $e_{h, l}$ satisfies
+\[
+\Delta_h e_{h, l}+e_{h, l} = R_{h, l},
+\]
+where $R_{h, l}$ is the truncation error. When $u\in C^4(\bar\Omega)$, using the process in Chapter 2, we have $\vt{R_h}_{\Omega_h}\leqslant CMh^2$, where $M = \max(u^{(4)})$. \\
+Notice that $u|_{\partial\Omega}=1$, with Lemma 3.2.5,
+\[
+\vt{e_h}_{\bar\Omega_h} \leqslant \hat{C}\vt{R_h}_{\Omega_h} \leqslant CMh^2.
+\]
+Thus the scheme is of order-2 convergent.
+}
+% \refgroup{
+% \reference{a a a a  a a}
+% }
+
+
+\end{document}
