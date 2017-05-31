@@ -81,7 +81,7 @@
 
 \section{Introduction}
 
-\subsection{Stochastic Parameterization Extended Kalman Filter(SPEKF)}
+\subsection{Stochastic Parameterization Extended Kalman Filter (SPEKF)}
 
 \begin{frame}\frametitle{Introduction}
 Signals from nature can be modeled by Langevin equation:
@@ -89,22 +89,21 @@ Signals from nature can be modeled by Langevin equation:
 \[
 \frac{\mathrm{d}u(t)}{\mathrm{d}t} = -\gamma(t)u(t) + \ii\omega u(t)+\sigma \dotW(t)+f(t),
 \]
-where $\dotW(t)$ is a Brownian motion, and $f(t)$ is the external force. ~\cite{langevin1908theorie}
+where $\dotW(t)$ is a Brownian motion, and $f(t)$ is the external force. 
 \end{block}
 
-A major difficulty in accurate filtering of noisy signals with many degrees of freedom is model error; signal from nature is processed through incomplete physical models, as well as parameterized to inadequate numerical resolution.
+A major difficulty in accurate filtering of noisy signals with many degrees of freedom is model error; signal from nature is processed through incomplete physical models, as well as parameterized to inadequate numerical resolution.\\[10pt]
 
+B. Gershgorin, \textit{et, al} proposed the Stochastic Parameterization Extended Kalman Filter (SPEKF) to cope with model errors.
 \end{frame}
 
-
-\frame{\frametitle{SPEKF}
-B. Gershgorin, \textit{et, al} proposed the Stochastic Parameterization Extended Kalman Filter\cite{gershgorin2010test}\cite{gershgorin2008nonlinear}\cite{gershgorin2010improving} to 
-\begin{block}{The SDEs}
+\frame{\frametitle{Test Model}
+\begin{block}{SDEs in Test Model}
 \[
 \left\{
 \begin{aligned}
-& \frac{du(t)}{dt} = (-\gamma(t)+i\omega)u(t)+b(t)+f(t)+\sigma W(t), \nq
-& \frac{db(t)}{dt} = (-\gamma_b+i\omega_b)(b(t)-\hat{b})+\sigma_b W_b(t), \nq
+& \frac{du(t)}{dt} = (-\gamma(t)+\ii\omega)u(t)+b(t)+f(t)+\sigma W(t), \nq
+& \frac{db(t)}{dt} = (-\gamma_b+\ii\omega_b)(b(t)-\hat{b})+\sigma_b W_b(t), \nq
 & \frac{d\gamma(t)}{dt} = -d_\gamma(\gamma(t)-\hat{\gamma})+\sigma_\gamma W_\gamma(t)
 \end{aligned}
 \right.
@@ -126,26 +125,17 @@ With knowledge of ODEs, the solution of the SDE set is
 \right.
 \]
 \end{block}
-with $\lambda_b = -\gamma_b+i\omega_b$, ~$\hat{\lambda} = -\hat{\gamma}+i\omega$, ~$J(s, t) = \int_s^t (\gamma(s')-\hat{\gamma})ds'$.
+with $\lambda_b = -\gamma_b+\ii\omega_b$, ~$\hat{\lambda} = -\hat{\gamma}+\ii\omega$, ~$J(s, t) = \int_s^t (\gamma(s')-\hat{\gamma})ds'$.
 }
 
 \subsection{It\^o Integration}
-\frame{\frametitle{It\^o integration}
+\frame{\frametitle{Introduction}
 \begin{block}{It\^o Isometry}
 $\forall f\in\mathcal{V}(S, T)$, $B_t$ is a standard Brownian motion,
 $$\E\left[\left(\int_S^T f(t, \omega)dB_t\right)^2\right] = \E\left[\int_S^T f^2(t, \omega)dt\right].$$
 \end{block}	
-\begin{block}{It\^o Formula}
-Assume that $X_t$ is a It\^{o} process satisfying
-$dX_t = udt+vdB_t,$
-$g(t, x) \in C^2\left([0, \infty) \times \mathbb{R}\right)$, then $Y_t = g(t, X_t)$ is also a It\^{o} process satisfying
-$$dY_t = \frac{\partial g}{\partial t}(t, X_t)dt + \frac{\partial g}{\partial x}(t, X_t)dX_t + \frac{1}{2}\frac{\partial^2 g}{\partial x^2}(t, X_t)\cdot(dX_t)^2,$$
-with
-$dt\cdot dt = dt\cdot dB_t = dB_t\cdot dt = 0, ~dB_t\cdot dB_t = dt.$
-\end{block}
-}
 
-\frame{\frametitle{It\^o integration}
+
 \begin{block}{Linear property of It\^o integration}
 $$
 \begin{aligned}
@@ -159,7 +149,7 @@ $$
 
 \section{Statistics of $b(t)$ and $\gamma(t)$}
 \subsection{Mean}
-\frame{\frametitle{Mean}
+\frame{\frametitle{Mean of $b(t)$, $\gamma(t)$}
 \quad With property of It\^o integration (3), it is easy to know
 \begin{block}{}
 $$
@@ -172,7 +162,7 @@ $$
 }
 
 \subsection{Variance}
-\frame{\frametitle{Variance}
+\frame{\frametitle{Variance of $b(t)$, $\gamma(t)$}
 \quad According to definition, 
 \[
 \begin{aligned}
@@ -193,7 +183,7 @@ $$
 }
 
 \subsection{Covariance}
-\frame{\frametitle{Covariance}
+\frame{\frametitle{Covariance of $b(t)$, $\gamma(t)$}
 \[
 \begin{aligned}
 \Cov&(b(t), b(t)^*) = \E\left[(b(t) - \E[b(t)])(b(t)^* - \E[b(t)^*])\right] \nw
@@ -214,8 +204,8 @@ $$
 
 \section{Statistics of $u(t)$}
 \subsection{Mean}
-\frame{\frametitle{Mean}
-\quad Using the same properties, it's obvious to have
+\frame{\frametitle{Mean of $u(t)$}
+\quad Using the same properties, it is obvious to find
 \[
 \begin{aligned}
 \E[u(t)] &= e^{\hat{\lambda}(t-t_0)}\E\left[e^{-J_0(t_0, t)}u_0\right] + \int_{t_0}^t e^{\hat{\lambda}(t-s)}\E\left[b(s)e^{-J(s, t)}\right]ds  \nq
@@ -229,9 +219,9 @@ $
 where $z$ is a complex-valued Gaussian random variable and x is a real-valued Gaussian variable. We propose two lemmas here.
 }
 
-\frame{\frametitle{Lemma 1}
+\frame{\frametitle{Mean of $u(t)$}
 \begin{lemma}\label{lemma 1}
-$$\E\left[ze^{ibx}\right] = (\E[z]+ib\Cov(z, x))e^{ib\E[x]-\frac{1}{2}b^2\Var(x)}$$
+$$\E\left[ze^{\ii bx}\right] = (\E[z]+\ii b\Cov(z, x))e^{\ii b\E[x]-\frac{1}{2}b^2\Var(x)}$$
 with $z$ being a complex-valued Gaussian, and $x$ a real-valued Gaussian.
 \end{lemma}
 
@@ -244,23 +234,23 @@ Proof of lemma \ref{lemma 1} takes advantage of the characteristic function of m
 
 \frame{\frametitle{Proof}
 
-\quad Let $z = y+iw, \quad y, w \in \mathbb{R}.$ Denote $\v = (x, y, w)$, then $\v$ satisfies the multivariable Gaussian distribution, with its characteristic function
+\quad Let $z = y+\ii w, \quad y, w \in \mathbb{R}.$ Denote $\v = (x, y, w)$, then $\v$ satisfies the multivariable Gaussian distribution, with its characteristic function
 \[
-\phi_\v(\s) = \exp(i\s^\top\E[\v]-\frac{1}{2}\s^\top\Sigma\s).
+\phi_\v(\s) = \exp(\ii\s^\top\E[\v]-\frac{1}{2}\s^\top\Sigma\s).
 \]
 \quad Let $g(\v)$ being the PDF of $\v$, then one knows from that char. func. being Fourier transform of PDF,
 \[
-\phi_\v(\s) = \frac{1}{(2\pi)^3}\int e^{i\s^\top\v}g(\v)d\v
+\phi_\v(\s) = \frac{1}{(2\pi)^3}\int e^{\ii\s^\top\v}g(\v)d\v
 \]
 \quad According to the differential property of Fourier transform, 
 \[
-\frac{\partial \phi_\mathbf{v}(\mathbf{s})}{\partial s_2} = \frac{1}{(2\pi)^3}\int iy_0e^{i\mathbf{s}^\top\mathbf{v}}g(\mathbf{v})d\mathbf{v} = i\E\left[y_0e^{i\mathbf{s}^\top\mathbf{v}}\right].
+\frac{\partial \phi_\mathbf{v}(\mathbf{s})}{\partial s_2} = \frac{1}{(2\pi)^3}\int \ii y_0e^{\ii\mathbf{s}^\top\mathbf{v}}g(\mathbf{v})d\mathbf{v} = \ii\E\left[y_0e^{\ii\mathbf{s}^\top\mathbf{v}}\right].
 \]
 \quad Let $\v = (b, 0, 0)^\top$, 
 \[
 \begin{aligned}
-&\left.\E[y_0e^{ibx_0}] = -i\frac{\partial \phi_\mathbf{v}(s)}{\partial s_2}\right|_{\mathbf{s} = (b, 0, 0)^\top} \\
-&\left.\E[y_0e^{ibx_0}] = -i\frac{\partial \phi_\mathbf{v}(s)}{\partial s_2}\right|_{\mathbf{s} = (b, 0, 0)^\top}
+&\left.\E[y_0e^{\ii bx_0}] = -\ii\frac{\partial \phi_\mathbf{v}(s)}{\partial s_2}\right|_{\mathbf{s} = (b, 0, 0)^\top} \\
+&\left.\E[y_0e^{\ii bx_0}] = -\ii\frac{\partial \phi_\mathbf{v}(s)}{\partial s_2}\right|_{\mathbf{s} = (b, 0, 0)^\top}
 \end{aligned}
 \]
 }
@@ -269,21 +259,21 @@ Proof of lemma \ref{lemma 1} takes advantage of the characteristic function of m
 \quad From PDF of multivariable Gaussian distribution, one knows
 \[
 \begin{aligned}
-&\frac{\partial \phi_\mathbf{v}(\mathbf{s})}{\partial s_2} = (i\E[y_0]-\Var(y_0)s_2-\Cov(x_0, y_0)s_1-\Cov(y_0, w_0)s_3)\phi_{\mathbf{v}}(s) \nq
-&\frac{\partial \phi_\mathbf{v}(\mathbf{s})}{\partial s_3} = (i\E[w_0]-\Var(w_0)s_3-\Cov(x_0, w_0)s_1-\Cov(y_0, w_0)s_2)\phi_{\mathbf{v}}(s)
+&\frac{\partial \phi_\mathbf{v}(\mathbf{s})}{\partial s_2} = (\ii\E[y_0]-\Var(y_0)s_2-\Cov(x_0, y_0)s_1-\Cov(y_0, w_0)s_3)\phi_{\mathbf{v}}(s) \nq
+&\frac{\partial \phi_\mathbf{v}(\mathbf{s})}{\partial s_3} = (\ii\E[w_0]-\Var(w_0)s_3-\Cov(x_0, w_0)s_1-\Cov(y_0, w_0)s_2)\phi_{\mathbf{v}}(s)
 \end{aligned}
 \]
 \quad Compute the partial derivatives at $\s = (b, 0, 0)^\top$,
 \[
 \begin{aligned}
-&\E\left[y_0e^{ibx_0}\right] = (\E[y_0]+i\Cov(x_0, y_0)b)\exp(ib\E[x_0] - \frac{1}{2}\Var(x_0)b^2) \nq
-&\E\left[w_0e^{ibx_0}\right] = (\E[w_0]+i\Cov(x_0, w_0)b)\exp(ib\E[x_0] - \frac{1}{2}\Var(x_0)b^2)
+&\E\left[y_0e^{\ii bx_0}\right] = (\E[y_0]+\ii\Cov(x_0, y_0)b)\exp(\ii b\E[x_0] - \frac{1}{2}\Var(x_0)b^2) \nq
+&\E\left[w_0e^{\ii bx_0}\right] = (\E[w_0]+\ii\Cov(x_0, w_0)b)\exp(\ii b\E[x_0] - \frac{1}{2}\Var(x_0)b^2)
 \end{aligned}
 \]
-\quad Then $$\E\left[ze^{ibx}\right] = (\E[z]+ib\Cov(z, x))e^{ib\E[x]-\frac{1}{2}b^2\Var(x)}.$$ \qed
+\quad Then $$\E\left[ze^{\ii bx}\right] = (\E[z]+\ii b\Cov(z, x))e^{\ii b\E[x]-\frac{1}{2}b^2\Var(x)}.$$ \qed
 }
 
-\frame{\frametitle{Lemma 2}
+\frame{\frametitle{Mean of $u(t)$}
 \begin{lemma} \label{lemma 2}
 \[
 \begin{aligned}
@@ -296,7 +286,7 @@ with $z, w$ being complex-valued Gaussian, and $x$ real-valued Gaussian.
 The proof of this lemma is the same as Lemma \ref{lemma 1}.
 }
 
-\frame{\frametitle{Mean}
+\frame{\frametitle{Mean of $u(t)$}
 \quad We now make use of Lemma \ref{lemma 1} to obtain the mean of $u(t)$.
 \begin{block}{}
 \[
@@ -311,7 +301,7 @@ The terms $\Cov(u_0, J(s, t))$, $\Cov(b_0, J(s, t))$, $\E[J(s, t)]$ and $\Var(J(
 }
 
 \subsection{Variance}
-\frame{\frametitle{Variance}
+\frame{\frametitle{Variance of $u(t)$}
 \quad Denote $u(t) = A + B + C$, 
 \[\left\{
 \begin{split}
@@ -333,7 +323,7 @@ The terms $\Cov(u_0, J(s, t))$, $\Cov(b_0, J(s, t))$, $\E[J(s, t)]$ and $\Var(J(
 }
 
 \subsection{Covariance}
-\frame{\frametitle{Covariance}
+\frame{\frametitle{Covariances}
 \quad By definition, 
 \[
 \begin{aligned}
@@ -347,6 +337,7 @@ The terms $\Cov(u_0, J(s, t))$, $\Cov(b_0, J(s, t))$, $\E[J(s, t)]$ and $\Var(J(
 }
 
 \section{Numerical Simulation}
+\subsection{Parameters and Algorithms}
 \frame{\frametitle{Parameters}
 \quad External forcing $f(t) = \frac{3}{2}e^{0.1it}$, and parameters of the equation set are given
 \[
@@ -364,9 +355,9 @@ The terms $\Cov(u_0, J(s, t))$, $\Cov(b_0, J(s, t))$, $\E[J(s, t)]$ and $\Var(J(
 \[
 \left\{
 \begin{aligned}
-&\text{Re}(u_0), \text{Im}(u_0) \sim \mathcal{N}(0, \frac{1}{\sqrt{2}}), \quad \text{i.i.d.} \nq
-&\text{Re}(b_0), \text{Im}(b_0) \sim \mathcal{N}(0, \frac{1}{\sqrt{2}}), \quad \text{i.i.d.} \nq
-&\gamma_0 \sim \mathcal{N}(0, 1) \quad \text{i.i.d.}
+&\text{Re}(u_0), \text{Im}(u_0) \sim \mathcal{N}(0, \frac{1}{\sqrt{2}}), ~ \text{i.i.d.} \nq
+&\text{Re}(b_0), \text{Im}(b_0) \sim \mathcal{N}(0, \frac{1}{\sqrt{2}}), ~ \text{i.i.d.} \nq
+&\gamma_0 \sim \mathcal{N}(0, 1)
 \end{aligned}
 \right.
 \]
@@ -393,87 +384,169 @@ X_j = X_{j-1}+f(X_{j-1})\Delta t+g(X_{t-1})(W(\tau_j) - W(\tau_{j-1})),
 \]
 \quad with 
 \[
-W(\tau_j) - W(\tau_{j-1}) = \sum_{k = jR-R+1}^{jR} dW_k,
+W(\tau_j) - W(\tau_{j-1}) = \sum_{k = jR-R+1}^{jR} \mathrm{d}W_k,
 \]
 \quad and $R$ being the step length of E-M scheme,
 \[
-dW = \sqrt{\Delta t}*\tt{randn()}.
+\mathrm{d}W = \sqrt{\Delta t}\times\tt{randn()}.
 \]
 }
 
-\frame{\frametitle{Simulation}
-\quad Simulate 100,000 times with $R = 1$, the results are as follows:
+\subsection{Results}
+\frame{\frametitle{Result}
+\quad Simulate $10^6$ times with $R = 1$, the results are as follows:
 \begin{figure}[!ht]
 \centering
 \subfigure[\text{E}(Re(u))]{
-  \includegraphics[width = .2\textwidth]{../NumericalSimulation/res/EuRe.png}
+  \includegraphics[width = .2\textwidth]{../NumericalSimulation/100k/EuRe.png}
   }\hfill
 \subfigure[E(Im(u))]{
-  \includegraphics[width = .2\textwidth]{../NumericalSimulation/res/EuIm.png}
+  \includegraphics[width = .2\textwidth]{../NumericalSimulation/100k/EuIm.png}
   }\hfill
 \subfigure[E(Re(b))]{
-  \includegraphics[width = .2\textwidth]{../NumericalSimulation/res/EbRe.png}
+  \includegraphics[width = .2\textwidth]{../NumericalSimulation/100k/EbRe.png}
   }\hfill
 \subfigure[E(Im(b))]{
-  \includegraphics[width = .2\textwidth]{../NumericalSimulation/res/EbIm.png}
+  \includegraphics[width = .2\textwidth]{../NumericalSimulation/100k/EbIm.png}
   }\\
 \subfigure[E($\gamma$)]{
-  \includegraphics[width = .2\textwidth]{../NumericalSimulation/res/Egamma.png}
+  \includegraphics[width = .2\textwidth]{../NumericalSimulation/100k/Egamma.png}
   }\hfill
 \subfigure[Var(u)]{
-  \includegraphics[width = .2\textwidth]{../NumericalSimulation/res/Varu.png}
+  \includegraphics[width = .2\textwidth]{../NumericalSimulation/100k/Varu.png}
   }\hfill
 \subfigure[Var(b)]{
-  \includegraphics[width = .2\textwidth]{../NumericalSimulation/res/Varb.png}
+  \includegraphics[width = .2\textwidth]{../NumericalSimulation/100k/Varb.png}
   }\hfill
 \subfigure[Var($\gamma$)]{
-  \includegraphics[width = .2\textwidth]{../NumericalSimulation/res/Vargamma.png}
+  \includegraphics[width = .2\textwidth]{../NumericalSimulation/100k/Vargamma.png}
   }
-\caption{Simulation of Expectations and Variances}
-\label{Simulation of Expectations and Variances}
+\caption{Simulation of Expectations and Variances, $n = 10^6$}
+\label{Simulation of Expectations and Variances 1}
 \end{figure}
 }
 
-\frame{\frametitle{Simulation}
+\frame{\frametitle{Result}
 \begin{figure}[!ht]
 \centering
 \subfigure[$\text{Re}(\Cov(u, u^*))$]{
-  \includegraphics[width = .2\textwidth]{../NumericalSimulation/res/CovuustarRe.png}
+  \includegraphics[width = .2\textwidth]{../NumericalSimulation/100k/CovuustarRe.png}
 }\hfill
 \subfigure[$\text{Im}(\Cov(u, u^*))$]{
-  \includegraphics[width = .2\textwidth]{../NumericalSimulation/res/CovuustarIm.png}
+  \includegraphics[width = .2\textwidth]{../NumericalSimulation/100k/CovuustarIm.png}
 }\hfill
 \subfigure[$\text{Re}(\Cov(u, \gamma))$]{
-  \includegraphics[width = .2\textwidth]{../NumericalSimulation/res/CovugammaRe.png}
+  \includegraphics[width = .2\textwidth]{../NumericalSimulation/100k/CovugammaRe.png}
 }\hfill
 \subfigure[$\text{Im}(\Cov(u, \gamma))$]{
-  \includegraphics[width = .2\textwidth]{../NumericalSimulation/res/CovugammaIm.png}
+  \includegraphics[width = .2\textwidth]{../NumericalSimulation/100k/CovugammaIm.png}
 }\\
 \subfigure[$\text{Re}(\Cov(u, b))$]{
-  \includegraphics[width = .2\textwidth]{../NumericalSimulation/res/CovubRe.png}
+  \includegraphics[width = .2\textwidth]{../NumericalSimulation/100k/CovubRe.png}
 }\hfill
 \subfigure[$\text{Im}(\Cov(u, b))$]{
-  \includegraphics[width = .2\textwidth]{../NumericalSimulation/res/CovubIm.png}
+  \includegraphics[width = .2\textwidth]{../NumericalSimulation/100k/CovubIm.png}
 }\hfill
 \subfigure[$\text{Re}(\Cov(u, b^*))$]{
-  \includegraphics[width = .2\textwidth]{../NumericalSimulation/res/CovubstarRe.png}
+  \includegraphics[width = .2\textwidth]{../NumericalSimulation/100k/CovubstarRe.png}
 }\hfill
 \subfigure[$\text{Im}(\Cov(u, b^*))$]{
-  \includegraphics[width = .2\textwidth]{../NumericalSimulation/res/CovubstarIm.png}
+  \includegraphics[width = .2\textwidth]{../NumericalSimulation/100k/CovubstarIm.png}
 }
-\caption{Simulation of Covariances}
-\label{Simulation of Covariances}
+\caption{Simulation of Covariances, $n = 10^7$}
+\label{Simulation of Covariances 1}
+\end{figure}
+}
+
+\frame{\frametitle{Results}
+\quad Simulate $10^7$ times with $R = 1$, the results are as follows:
+\begin{figure}[!ht]
+\centering
+\subfigure[\text{E}(Re(u))]{
+  \includegraphics[width = .2\textwidth]{../NumericalSimulation/1m/EuRe.png}
+  }\hfill
+\subfigure[E(Im(u))]{
+  \includegraphics[width = .2\textwidth]{../NumericalSimulation/1m/EuIm.png}
+  }\hfill
+\subfigure[E(Re(b))]{
+  \includegraphics[width = .2\textwidth]{../NumericalSimulation/1m/EbRe.png}
+  }\hfill
+\subfigure[E(Im(b))]{
+  \includegraphics[width = .2\textwidth]{../NumericalSimulation/1m/EbIm.png}
+  }\\
+\subfigure[E($\gamma$)]{
+  \includegraphics[width = .2\textwidth]{../NumericalSimulation/1m/Egamma.png}
+  }\hfill
+\subfigure[Var(u)]{
+  \includegraphics[width = .2\textwidth]{../NumericalSimulation/1m/Varu.png}
+  }\hfill
+\subfigure[Var(b)]{
+  \includegraphics[width = .2\textwidth]{../NumericalSimulation/1m/Varb.png}
+  }\hfill
+\subfigure[Var($\gamma$)]{
+  \includegraphics[width = .2\textwidth]{../NumericalSimulation/1m/Vargamma.png}
+  }
+\caption{Simulation of Expectations and Variances, $n = 10^7$}
+\label{Simulation of Expectations and Variances 2}
+\end{figure}
+}
+
+
+\frame{\frametitle{Result}
+\begin{figure}[!ht]
+\centering
+\subfigure[$\text{Re}(\Cov(u, u^*))$]{
+  \includegraphics[width = .2\textwidth]{../NumericalSimulation/1m/CovuustarRe.png}
+}\hfill
+\subfigure[$\text{Im}(\Cov(u, u^*))$]{
+  \includegraphics[width = .2\textwidth]{../NumericalSimulation/1m/CovuustarIm.png}
+}\hfill
+\subfigure[$\text{Re}(\Cov(u, \gamma))$]{
+  \includegraphics[width = .2\textwidth]{../NumericalSimulation/1m/CovugammaRe.png}
+}\hfill
+\subfigure[$\text{Im}(\Cov(u, \gamma))$]{
+  \includegraphics[width = .2\textwidth]{../NumericalSimulation/1m/CovugammaIm.png}
+}\\
+\subfigure[$\text{Re}(\Cov(u, b))$]{
+  \includegraphics[width = .2\textwidth]{../NumericalSimulation/1m/CovubRe.png}
+}\hfill
+\subfigure[$\text{Im}(\Cov(u, b))$]{
+  \includegraphics[width = .2\textwidth]{../NumericalSimulation/1m/CovubIm.png}
+}\hfill
+\subfigure[$\text{Re}(\Cov(u, b^*))$]{
+  \includegraphics[width = .2\textwidth]{../NumericalSimulation/1m/CovubstarRe.png}
+}\hfill
+\subfigure[$\text{Im}(\Cov(u, b^*))$]{
+  \includegraphics[width = .2\textwidth]{../NumericalSimulation/1m/CovubstarIm.png}
+}
+\caption{Simulation of Covariances, $n = 10^7$}
+\label{Simulation of Covariances 2}
 \end{figure}
 }
 
 \frame{\frametitle{Discussion}
-From the simulation results we find that the simulation of expectations and variances fit the theoretical results properly; but the simulation of covariances have an error of $O(10^{-3})$. It could be caused by the condition number of multiplication of complex numbers.
+From the simulation results we find that the simulation of expectations fit the theoretical results satisfyingly. 
+
+For the results of Variances and Covariances, \\[5pt]
+\begin{itemize}
+\item When $n = 10^6$, the error of variances is about $O(10^{-2})\sim O(10^{-3})$, \\[10pt]
+\item error of covariances is about $O(10^{-4})$. \\[10pt]
+\item When $n = 10^7$, the error of $\Var(u), ~\Var(b)$ is about $O(10^{-6})$, and error of $\Var(\gamma)$ is about $O(10^{-3})\sim O(10^{-4})$, \\[10pt]
+\item error of $\Cov(u, u^*), ~\Cov(u, \gamma)$ is about $O(10^{-3})$, error of $\Cov(u, b), ~\Cov(u, b^*)$ is $O(10^{-4})$.
+\end{itemize}
+}
+\frame{\frametitle{Discussion}
+We can find that with the increase of simulations, errors of all statistics decrease almost linearly. Thus we can believe, when $n\to\infty$, the simulation result would converge to the theoretical result. 
+
+In fact, the source of errors is that initial values are all random variables, and according to Law of large numbers, the error would converge to 0 when $n\to\infty$.\\[10pt]
+
+We can get third-order and fourth-order statistics of $u, b, \gamma$ with the same methods, which could be written in a form of multiple integrals of statistics of initial values.
 }
 
-\begin{frame}{References}
-    \bibliographystyle{amsalpha}
-    \bibliography{../../../CONFIG/Latex-bib/Chuan}
-\end{frame}
+% \begin{frame}{References}
+%     \bibliographystyle{amsalpha}
+%     \bibliography{../../../CONFIG/Latex-bib/Chuan}
+% \end{frame}
 
 \frame{
 	\quad\quad\centering{ \Huge Thank you!}
