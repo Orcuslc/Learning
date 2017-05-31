@@ -75,11 +75,30 @@
 \newcommand{\Var}{\text{Var}}
 \renewcommand{\v}{\mathbf{v}}
 \newcommand{\s}{\mathbf{s}}
+\newcommand{\ii}{\mathrm{i}}
+\newcommand{\dotW}{\dot{W}}
 % \frame{\tableofcontents[all]}
 
 \section{Introduction}
-\subsection{SDE}
-\frame{\frametitle{Introduction}
+
+\subsection{Stochastic Parameterization Extended Kalman Filter(SPEKF)}
+
+\begin{frame}\frametitle{Introduction}
+Signals from nature can be modeled by Langevin equation:
+\begin{block}{Langevin Equation}
+\[
+\frac{\mathrm{d}u(t)}{\mathrm{d}t} = -\gamma(t)u(t) + \ii\omega u(t)+\sigma \dotW(t)+f(t),
+\]
+where $\dotW(t)$ is a Brownian motion, and $f(t)$ is the external force. ~\cite{langevin1908theorie}
+\end{block}
+
+A major difficulty in accurate filtering of noisy signals with many degrees of freedom is model error; signal from nature is processed through incomplete physical models, as well as parameterized to inadequate numerical resolution.
+
+\end{frame}
+
+
+\frame{\frametitle{SPEKF}
+B. Gershgorin, \textit{et, al} proposed the Stochastic Parameterization Extended Kalman Filter\cite{gershgorin2010test}\cite{gershgorin2008nonlinear}\cite{gershgorin2010improving} to 
 \begin{block}{The SDEs}
 \[
 \left\{
@@ -450,6 +469,11 @@ dW = \sqrt{\Delta t}*\tt{randn()}.
 \frame{\frametitle{Discussion}
 From the simulation results we find that the simulation of expectations and variances fit the theoretical results properly; but the simulation of covariances have an error of $O(10^{-3})$. It could be caused by the condition number of multiplication of complex numbers.
 }
+
+\begin{frame}{References}
+    \bibliographystyle{amsalpha}
+    \bibliography{../../../CONFIG/Latex-bib/Chuan}
+\end{frame}
 
 \frame{
 	\quad\quad\centering{ \Huge Thank you!}
