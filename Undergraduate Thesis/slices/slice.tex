@@ -396,6 +396,14 @@ W(\tau_j) - W(\tau_{j-1}) = \sum_{k = jR-R+1}^{jR} \mathrm{d}W_k,
 \]
 }
 
+\frame{\frametitle{Revised Euler Scheme}
+\quad Since we need to simulate a SDE set with three relevant equations, we choose the Revised Euler Scheme from numerical solution to ODE:
+\[
+x_n = x_{n-1} + \Delta t \phi(t_{n-1}+\frac{\Delta t}{2}, ~x_{n-1}+\frac{\Delta t}{2}\phi(t_{n-1}, ~x_{n-1})),
+\]
+\quad it is a second-order Runge-Kutta scheme with a locally quadratic convergence.
+}
+
 \subsection{Results}
 \frame{\frametitle{Result}
 \quad Simulate $10^6$ times with $R = 1$, the results are as follows:
