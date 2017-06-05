@@ -53,8 +53,9 @@
 \newcommand{\nw}{\\[10pt]}
 
 \setbeamercovered{transparent}
-% \usetheme{m}
+% \usetheme[darktheme]{m}
 \usetheme{Madrid}
+% \usetheme{lankton-keynote}
 % \usecolortheme{dolphin}
 
 \pgfdeclareimage[height=.8cm]{logo}{fd1.eps}
@@ -92,8 +93,6 @@ Signals from nature can be modeled by Langevin equation:
 \]
 where $\dotW(t)$ is a Brownian motion, and $f(t)$ is the external force. 
 \end{block}
-
-A major difficulty in accurate filtering of noisy signals with many degrees of freedom is model error; signal from nature is processed through incomplete physical models, as well as parameterized to inadequate numerical resolution.\\[10pt]
 
 B. Gershgorin, \textit{et, al} proposed the Stochastic Parameterization Extended Kalman Filter (SPEKF) to cope with model errors.
 \end{frame}
@@ -148,9 +147,19 @@ $$
 \end{block}
 }
 
-\section{Statistics of $b(t)$ and $\gamma(t)$}
+\section{Statistics of $b(t)$ and $\gamma(t)$, Gaussian}
 \subsection{Mean}
 \frame{\frametitle{Mean of $b(t)$, $\gamma(t)$}
+\begin{block}{Solution}
+\[
+\left\{
+\begin{aligned}
+& b(t) = \hat{b}+(b_0-\hat{b})e^{\lambda_b(t-t_0)}+\sigma_b\int_{t_0}^t e^{\lambda_b(t-s)}dW_b(s) \nq
+& \gamma(t) = \hat{\gamma}+(\gamma_0-\hat{\gamma})e^{-d_{\gamma}(t-t_0)}+\sigma_{\gamma}\int_{t_0}^t e^{-d_{\gamma}(t-s)}dW_{\gamma}(s)
+\end{aligned}
+\right.
+\]
+\end{block}
 \quad With property of It\^o integration (3), the last term in $\E[b(t)]$ is $0$. \\
 \quad Thus we find
 \begin{block}{}
@@ -205,7 +214,7 @@ According to definition,
 \end{block}
 }
 
-\section{Statistics of $u(t)$}
+\section{Statistics of $u(t)$, Non-Gaussian}
 \subsection{Mean}
 \frame{\frametitle{Mean of $u(t)$}
 \quad Using the same properties, it is easy to find
@@ -340,7 +349,7 @@ The terms $\Cov(u_0, J(s, t))$, $\Cov(b_0, J(s, t))$, $\E[J(s, t)]$ and $\Var(J(
 \section{Numerical Simulation}
 \subsection{Parameters and Algorithms}
 \frame{\frametitle{Parameters}
-\quad As a real-world example, we choose external forcing 
+\quad As a real-world example, we choose a periodic external force
 \[
 f(t) = \frac{3}{2}e^{\frac{1}{10}\ii t},
 \]
@@ -398,7 +407,7 @@ W(\tau_j) - W(\tau_{j-1}) = \sum_{k = jR-R+1}^{jR} \mathrm{d}W_k,
 }
 
 \frame{\frametitle{Revised Euler Scheme}
-\quad Since we need to simulate a SDE set with three relevant equations, we choose the Revised Euler Scheme from numerical solution to ODE:
+\quad Since we need to simulate a SDE set with three relevant equations, we choose the Revised Euler Scheme from numerical solution to ODE for simulating $u(t)$:
 \[
 x_n = x_{n-1} + \Delta t \phi(t_{n-1}+\frac{\Delta t}{2}, ~x_{n-1}+\frac{\Delta t}{2}\phi(t_{n-1}, ~x_{n-1})),
 \]
