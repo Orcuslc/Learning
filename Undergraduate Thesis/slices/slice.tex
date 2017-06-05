@@ -52,26 +52,40 @@
 \newcommand{\nq}{\\[5pt]}
 \newcommand{\nw}{\\[10pt]}
 
-\setbeamercovered{transparent}
-% \usetheme[darktheme]{m}
-\usetheme{Madrid}
+% \setbeamercovered{transparent}
+\usetheme[progressbar=head]{metropolis}
+% \usetheme{Madrid}
+% \useoutertheme{metropolis}
+% \useinnertheme{metropolis}
+% \usefonttheme{metropolis}
+% \usecolortheme[block=fill]{metropolis}
+\metroset{block = fill}
+% \usetitleprogressbar
+% \usetheme{Madrid}
 % \usetheme{lankton-keynote}
 % \usecolortheme{dolphin}
 
 \pgfdeclareimage[height=.8cm]{logo}{fd1.eps}
 
-\title[Statistics of Solutions to Test Models for SPEKF]{\huge Statistics of Solutions to Test Models for SPEKF}
+\title[\centering Statistics of Solutions to Test Models for SPEKF]{\huge Statistics of Solutions to Test Models for SPEKF}
 \author[Chuan Lu]{\Large{Chuan Lu}}
+% \institute[ICS]{\large{Information and Computing Science}\linebreak \linebreak
+% \pgfuseimage{logo}
+% }
 \institute[ICS]{\large{Information and Computing Science}\linebreak \linebreak
-\pgfuseimage{logo}
+\pgfuseimage{logo}\linebreak
 }
 \date{June 2017}
 
-\AtBeginSection[]{\frame{\frametitle{Outline}\tableofcontents[current]}}
+\AtBeginSection[]{\frame{\footnotesize{\par\frametitle{Outline}\tableofcontents[current]}}}
 
 \begin{document}
 
+% \begin{frame}[standout]
+% \titlepage
+% \end{frame}
 \frame{\titlepage}
+
 \newcommand{\E}{\text{E}}
 \newcommand{\Cov}{\text{Cov}}
 \newcommand{\Var}{\text{Var}}
@@ -85,7 +99,7 @@
 
 \subsection{Stochastic Parameterization Extended Kalman Filter (SPEKF)}
 
-\begin{frame}\frametitle{Introduction}
+\begin{frame}[dark]\frametitle{Introduction}
 Signals from nature can be modeled by Langevin equation:
 \begin{block}{Langevin Equation}
 \[
@@ -196,6 +210,7 @@ $$
 \subsection{Covariance}
 \frame{\frametitle{Covariance of $b(t)$, $\gamma(t)$}
 According to definition,
+\footnotesize{
 \[
 \begin{aligned}
 \Cov&(b(t), b(t)^*) = \E\left[(b(t) - \E[b(t)])(b(t)^* - \E[b(t)^*])\right] \nw
@@ -203,14 +218,17 @@ According to definition,
 &+ \sigma_b\E\left[(b_0^*-\E[b_0^*])e^{\lambda_b(t-t_0)}\int_{t_0}^{t}e^{\lambda_b(t-s)}dW_b(s)\right] + \sigma_b^2\E\left[(\int_{t_0}^{t}e^{\lambda_b(t-s)}dW_b(s))^2\right]
 \end{aligned}
 \]
+}
 \quad With property of It\^o integration (3), the second and third term are both 0; with It\^o isometry we know the last term is also 0. Accordingly,
 \begin{block}{}
+\footnotesize{
 \[
 \begin{aligned}
 &\Cov(b(t), b(t)^*) = \E[(b_0-\E[b_0])(b_0^*-\E[b_0^*])]e^{2\lambda_b(t-t_0)} = \Cov(b_0, b_0^*)e^{2\lambda_b(t-t_0)} \nq
 &\Cov(b(t), \gamma(t)) = \E[(b(t) - \E[b(t)])(\gamma(t)-\E[\gamma(t)])]= \Cov(b_0, \gamma_0)e^{(\lambda_b-d_\gamma)(t-t_0)}
 \end{aligned}
 \]
+}
 \end{block}
 }
 
@@ -298,6 +316,7 @@ The proof of this lemma is the same as Lemma \ref{lemma 1}.
 
 \frame{\frametitle{Mean of $u(t)$}
 \quad We now make use of Lemma \ref{lemma 1} to obtain mean of $u(t)$.
+\footnotesize{
 \begin{block}{}
 \[
 \begin{aligned}
@@ -307,6 +326,7 @@ The proof of this lemma is the same as Lemma \ref{lemma 1}.
 \end{aligned}
 \]
 \end{block}
+}
 The terms $\Cov(u_0, J(s, t))$, $\Cov(b_0, J(s, t))$, $\E[J(s, t)]$ and $\Var(J(s, t))$ can be found using It\^o isometry.
 }
 
@@ -480,7 +500,7 @@ x_n = x_{n-1} + \Delta t \phi(t_{n-1}+\frac{\Delta t}{2}, ~x_{n-1}+\frac{\Delta 
 \end{figure}
 }
 
-\frame{\frametitle{Results}
+\frame{\frametitle{Result}
 \quad Simulate $10^7$ times with $R = 1$, the results are as follows:
 \begin{figure}[!ht]
 \centering
