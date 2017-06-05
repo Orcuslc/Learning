@@ -144,15 +144,15 @@
 \newcommand{\dotW}{\dot{W}}
 
 \begin{abstract}
-本文研究了随机参数化Kalman滤波中得到广泛应用的测试模型的解, 利用It\^o积分和特征函数补全了解的一阶和二阶统计量的计算过程, 并对理论结果进行了数值检验. \\
+本文研究了随机参数化Kalman滤波中一个得到广泛应用的测试模型的解, 利用It\^o积分和特征函数补全了解的一阶和二阶统计量的计算过程, 并对理论结果进行了数值检验. \\
 
-\noindent{\heiti 关键字: } 随机参数化Kalman滤波; 随机微分方程组; 统计量; It\^o积分
+\noindent{\heiti 关键字: } 随机参数化Kalman滤波; 随机微分方程组; 统计量; 数值模拟
 \end{abstract}
 
 \newpage
 \section{导言}
 \subsection{问题简介}
-滤波是从自然信号中得到最佳统计估计的过程. 在实际应用中, 研究者需要对自然界中的物理过程进行参数化表示, 而在此过程中, 不合适的采样率和不完全的物理认知会造成模型的系统误差, 最终使得对混乱信号的滤波结果受到较大的影响. 为此, B. Gershgorin等提出了随机参数化扩展Kalman滤波模型\cite{gershgorin2010improving}\cite{gershgorin2010test}, 以降低模型的系统误差, 改进滤波结果.
+滤波是从自然信号中得到最佳统计估计的过程. 在实际应用中, 研究者需要对自然界中的物理过程进行参数化表示, 而在此过程中, 不合适的采样率和不完全的物理认知会造成模型的系统误差, 最终使得对混乱信号的滤波结果受到较大的影响. 为此, B. Gershgorin等提出了随机参数化Kalman滤波模型\cite{gershgorin2010improving, gershgorin2010test}, 以降低模型的系统误差, 改进滤波结果.
 
 自然界中的信号可近似的用Langevin方程的解进行模拟\cite{langevin1908theorie}:
 \[
@@ -178,7 +178,7 @@
 
 \subsection{基本假设}
 
-在(\ref{E0})中, $\omega$为$u(t)$的振荡频率, $f(t)$为外部驱动力, $\sigma$表示白噪声$\dotW(t)$的强度. 此外, 参数$\gamma_b$和$d_\gamma$表示振荡阻尼, $\sigma_b$和$\sigma_\gamma$分别表示加性和乘性修正((\ref{E0})中第2, 3式)中白噪声的强度. $\hat{b}$和$\hat{\gamma}$分别表示$b(t)$和$\gamma(t)$的固定平均偏差修正, $\omega_b$表示加性噪声的频率. 白噪声$\dotW_\gamma(t)$是实值函数, 而$\dotW(t)$及$\dotW_b(t)$均为复值, 且其实部和虚部均为独立的白噪声. 
+在(\ref{E0})中, $\omega$为$u(t)$的振荡频率, $f(t)$为外部驱动力, $\sigma$表示白噪声$\dotW(t)$的强度. 此外, 参数$\gamma_b$和$d_\gamma$表示振荡阻尼, $\sigma_b$和$\sigma_\gamma$分别表示加性和乘性修正(分别为(\ref{E0})中第2, 3式)中白噪声的强度. $\hat{b}$和$\hat{\gamma}$分别表示$b(t)$和$\gamma(t)$的固定平均偏差修正, $\omega_b$表示加性噪声的频率. 白噪声$\dotW_\gamma(t)$是实值函数, 而$\dotW(t)$及$\dotW_b(t)$均为复值, 且其实部和虚部均为独立的白噪声. 
 
 一般认为方程组(\ref{E0})有初值
 \begin{equation} \label{init_values}
@@ -193,7 +193,7 @@
 且$u_0$, ~$b_0$, ~$\gamma_0$均为独立的高斯随机变量, 其统计量
 $\E[u_0]$, ~$\E[\gamma_0]$, ~$\E[b_0]$, ~$\Var(u_0)$, ~$\Var(\gamma_0)$, ~$\Var(b_0)$, ~$\Cov(u_0, u_0^*)$, ~$\Cov(u_0, \gamma_0)$, ~$\Cov(u_0, b_0)$, ~$\Cov(u_0, b_0^*)$均假设为已知.
 
-(\ref{E0})的第二和第三项均为线性方程, 由求解线性常微分方程组的相关知识\cite{fulinjin1984ordinary}可知其通解有以下的形式:
+鉴于(\ref{E0})的第二和第三项均为线性方程, 由求解线性常微分方程组的相关知识\cite{fulinjin1984ordinary}可知其通解有以下的形式:
 \begin{equation} \label{Sb}
 \begin{split}
 &b(t) = \hat{b}+(b_0-\hat{b})e^{\lambda_b(t-t_0)}+\sigma_b\int_{t_0}^t e^{\lambda_b(t-s)}dW_b(s), \\[5pt]
@@ -251,7 +251,7 @@ u(t) &= e^{-J(t_0, t)+\hat{\lambda}(t-t_0)}u_0 + \int_{t_0}^t (b(s)+f(s))e^{-J(s
 % \end{theorem}
 
 \subsection{It\^{o}积分和It\^o等距}
-在求解随机微分方程时, 需要对布朗运动进行积分. 由\cite{oksendal2003stochastic}的例3.1.1, 我们可以定义多种不同的随机积分形式, 其中It\^o积分是应用最广的一种:
+由\cite[例3.1.1]{oksendal2003stochastic}, 我们可以定义多种不同的随机积分形式, 其中It\^o积分是应用最广的一种:
 \begin{definition}\cite{oksendal2003stochastic}(It\^{o}积分)	设$f\in\mathcal{V}(S, T)$. 则$f$的It\^{o}积分定义为
 $$\int_S^T f(t, \omega)dB_t(\omega) = \lim_{n\to\infty}\int_S^T\phi_n(t, \omega)dB_t(\omega),$$
 其中${\phi_n}$为基本函数序列, 且满足当$n \to \infty$时
@@ -263,7 +263,7 @@ $$\E\left[\int_S^T (f(t, \omega)-\phi_n(t, \omega))^2dt\right] \to 0.$$
 $$\E\left[\left(\int_S^T f(t, \omega)dB_t\right)^2\right] = \E\left[\int_S^T f^2(t, \omega)dt\right].$$
 \end{theorem}
 
-这里$\mathcal{V}(S, T)$见\cite{oksendal2003stochastic}中的定义3.1.2至3.1.4. \\
+这里$\mathcal{V}(S, T)$见\cite[定义3.1.2至3.1.4]{oksendal2003stochastic}. \\
 利用上述方法, 即利用基本函数序列来逼近$\mathcal{V}(S, T)$中的函数, 我们能够得到It\^{o}积分的线性性质:
 \begin{theorem}\cite{oksendal2003stochastic} \label{Itoint_property}
 设$f, g \in \mathcal{V}(0, T)$, $0 \leqslant S < U < T$. 那么
@@ -334,8 +334,8 @@ $$\hat{F}(x) = \int_{\mathbb{R}^d} e^{\ii x\cdot y}dF(y), ~x\in \mathbb{R}^d$$
 \hat{F}(x) = \int_{\mathbb{R}^d}e^{\ii x\cdot y}f(y)dy.
 \end{equation}
 
-以下是Fourier变换的一个基本性质, 在求$u(t)$的统计量时将会用到\cite{boggess2015first}.
-\begin{proposition}(Fourier变换的微分关系) \label{Fourier transform property 1}
+以下是Fourier变换的一个基本性质, 在求$u(t)$的统计量时将会用到.
+\begin{proposition}\cite{boggess2015first}(Fourier变换的微分关系) \label{Fourier transform property 1}
 如果
 $$\lim_{|x|\to\infty} f(x) = 0,$$
 且$f'(x)$的Fourier变换存在, 那么
@@ -422,7 +422,7 @@ $$\E\left[\sigma_b\int_{t_0}^{t} e^{\lambda_b(t-s)dW_b(s)}\right] = 0.$$
 
 \section{$u(t)$的统计量}
 \subsection{均值}
-在$u(t)$的表达式(\ref{Su})中, $e^{\hat{\lambda}(t-t_0)}$, $f(t)$和$\sigma$均为常值. 那么由数学期望的线性性质(\cite{shuyuanhe2006probability}第四章定理2.2)和It\^{o}积分的性质(\ref{Itoint_property})可知
+在$u(t)$的表达式(\ref{Su})中, $e^{\hat{\lambda}(t-t_0)}$, $f(t)$和$\sigma$均为常值. 那么由数学期望的线性性质\cite[定理4.2.2]{shuyuanhe2006probability}和It\^{o}积分的性质(\ref{Itoint_property})可知
 \begin{equation} \label{u_stat_1}
 \begin{split}
 \E[u(t)] &= e^{\hat{\lambda}(t-t_0)}\E\left[e^{-J_0(t_0, t)}u_0\right] + \int_{t_0}^t e^{\hat{\lambda}(t-s)}\E\left[b(s)e^{-J(s, t)}\right]ds  \\[5pt]
@@ -432,7 +432,7 @@ $$\E\left[\sigma_b\int_{t_0}^{t} e^{\lambda_b(t-s)dW_b(s)}\right] = 0.$$
 
 下面我们利用高斯随机过程$J(s, t)$的特征函数来计算上式的右边. \\
 首先我们有以下的命题:
-\begin{proposition}\cite{gershgorin2008nonlinear}\cite{gershgorin2010filtering} \label{multiVariable gaussian exp 1}
+\begin{proposition}\cite{gershgorin2008nonlinear, gershgorin2010filtering} \label{multiVariable gaussian exp 1}
 $$\E\left[ze^{\ii bx}\right] = (\E[z]+\ii b\Cov(z, x))e^{\ii b\E[x]-\frac{1}{2}b^2\Var(x)}$$
 其中z为复值高斯随机变量, x为实值高斯随机变量. 
 \end{proposition}
@@ -451,7 +451,7 @@ $\mathbf{v} = (x, y, w)$, 那么由于$\mathbf{v}$为一个满足多元Gauss分�
 \phi_\mathbf{v}(\mathbf{s}) = \frac{1}{(2\pi)^3}\int e^{\ii\mathbf{s}^\top\mathbf{v}}g(\mathbf{v})d\mathbf{v}
 \]
 
-利用Fourier变换的性质(\ref{Fourier transform property 1}), 我们不妨对$s_2$求偏导\cite{gershgorin2008nonlinear}, 有
+利用Fourier变换的性质(\ref{Fourier transform property 1}), 我们不妨对$s_2$求偏导, 有
 \[
 \frac{\partial \phi_\mathbf{v}(\mathbf{s})}{\partial s_2} = \frac{1}{(2\pi)^3}\int \ii y_0e^{\ii\mathbf{s}^\top\mathbf{v}}g(\mathbf{v})d\mathbf{v} = i\E\left[y_0e^{\ii\mathbf{s}^\top\mathbf{v}}\right].
 \]
@@ -548,7 +548,7 @@ J(s, t) &= \int_s^t \left[(\gamma_0-\hat{\gamma})e^{-d_\gamma(s'-t_0)}+\sigma_\g
 \end{split}
 \]
 
-由It\^{o}等距(定理\ref{Ito isometric})知上式的第二项为
+由It\^{o}等距知上式的第二项为
 \[
 \begin{split}
 \sigma_\gamma^2\E&\left[\left(\int_{t_0}^t \frac{1}{d_\gamma}\left(1-e^{-d_\gamma}(t-x)\right)dW_\gamma(x)\right)^2\right] \\[5pt]
@@ -569,7 +569,7 @@ J(s, t) &= \int_s^t \left[(\gamma_0-\hat{\gamma})e^{-d_\gamma(s'-t_0)}+\sigma_\g
 &\left.+e^{-d_\gamma(s+t-2t_0)}+e^{-d_\gamma(t-s)}-\frac{1}{2}e^{-2d_\gamma(t-t_0)}-\frac{1}{2}e^{-2d_\gamma(s-t_0)}\right) 
 \end{split}
 \end{equation}
-将(\ref{Var J(s, t) final}), (\ref{Cov u0 J(s, t)}), (\ref{Cov b0 J(s, t)})代入(\ref{E u(t)})式即得$u(t)$的均值.
+将(\ref{Var J(s, t) final}), ~(\ref{Cov u0 J(s, t)}), ~(\ref{Cov b0 J(s, t)})代入(\ref{E u(t)})式即得$u(t)$的均值.
 
 \subsection{方差}
 利用定义$\Var(u(t)) = \E\left[|u(t)|^2\right] - \left|\E[u(t)]\right|^2,$
@@ -672,9 +672,9 @@ $
 \end{split}
 \]
 
-当$t_0 \leqslant s \leqslant r \leqslant t$时, 只要考虑到
+当$t_0 \leqslant s \leqslant r \leqslant t$时, 考虑到
 $
-\Cov(J(s, t), J(r, t)) = \Cov(J(r, t), J(s, t)),
+\Cov(J(s, t), ~J(r, t)) = \Cov(J(r, t), ~J(s, t)),
 $
 于是只要在结果中将$s$与$r$交换即可. 接下来,由It\^o等距有
 \[
@@ -919,7 +919,7 @@ $
 % \end{equation}
 \subsection{参数选择}
 在实践中, 我们可以考虑以下的一个简单例子. 在(\ref{E0})中, 我们令外界驱动力
-$$f(t) = \frac{3}{2}e^{0.1\ii t},$$方程组的参数可以取为
+$$f(t) = \frac{3}{2}e^{\frac{1}{10}\ii t},$$方程组的参数可以取为
 \begin{equation} \label{parameters}
 \left\{
 \begin{aligned}
@@ -943,30 +943,30 @@ $$f(t) = \frac{3}{2}e^{0.1\ii t},$$方程组的参数可以取为
 \right.
 \end{equation}
 
-那么初始变量间的统计量为
-\begin{equation}
-\left\{
-\begin{aligned}
-&\Cov(u_0, u_0^*) = 0 \\
-&\Cov(u_0, \gamma_0) = 0 \\
-&\Cov(u_0, b_0) = 0 \\
-&\Cov(u_0, b_0^*) = 0
-\end{aligned}
-\right.
-\end{equation}
+% 那么初始变量间的统计量为
+% \begin{equation}
+% \left\{
+% \begin{aligned}
+% &\Cov(u_0, u_0^*) = 0 \\
+% &\Cov(u_0, \gamma_0) = 0 \\
+% &\Cov(u_0, b_0) = 0 \\
+% &\Cov(u_0, b_0^*) = 0
+% \end{aligned}
+% \right.
+% \end{equation}
 
 \subsection{数值模拟}
-对布朗运动进行的It\^o积分可以由Euler-Maruyama方法进行模拟\cite{higham2000mean}\cite{higham2001algorithmic}:
+对布朗运动进行的It\^o积分可以由Euler-Maruyama方法进行模拟\cite{higham2000mean, higham2001algorithmic}:
 \[
 X_j = X_{j-1}+f(X_{j-1})\Delta t+g(X_{t-1})(\dotW(\tau_j) - \dotW(\tau_{j-1}))
 \]
 其中
 $$
-\dotW(\tau_j) - \dotW(\tau_{j-1}) = \sum_{k = jR-R+1}^{jR} \mathrm{d}\dotW_k,
+\dotW(\tau_j) - \dotW(\tau_{j-1}) = \sum_{k = (j-1)R+1}^{jR} \mathrm{d}W_k,
 $$
 在上式中$R$为E-M算法的步长, 且
 $$
-\mathrm{d}\dotW = \sqrt{\Delta t}\times\tt{randn()}.
+\mathrm{d}W = \sqrt{\Delta t}\times\tt{randn()}.
 $$
 在对$u(t)$和$b(t)$进行数值模拟时, 我们需要分别模拟其实部和虚部. 为保证三个微分方程中白噪声的强度一致, 需要令
 $$\dotW_{\text{Re}(u)}(t) = \frac{1}{\sqrt{2}}\dotW(t),$$
@@ -978,7 +978,7 @@ x_n = x_{n-1} + \Delta t \phi(t_{n-1}+\frac{\Delta t}{2}, ~x_{n-1}+\frac{\Delta 
 \]
 这是一个二级的Runge-Kutta方法, 有局部二阶收敛的性质.
 
-\quad 首先, 对$R=1$进行$10^{6}$次模拟\cite{robert2004monte}, $u(t)$, $b(t)$的实部和虚部,$\gamma(t)$的期望, $u(t)$, $b(t)$和$\gamma(t)$的方差, 以及各项协方差的模拟结果如下图\cite{mckinney2012python}\cite{hunter2007matplotlib}.
+\quad 首先, 对$R=1$进行$10^{6}$次模拟\cite{robert2004monte}, $u(t)$, $b(t)$的实部和虚部,$\gamma(t)$的期望, $u(t)$, $b(t)$和$\gamma(t)$的方差, 以及各项协方差的模拟结果如下图\cite{mckinney2012python, hunter2007matplotlib}.
 % \begin{figure}[!ht]
 % \centering
 % \includegraphics[width = 12cm]{NumericalSimulation/res/EuRe.png}
