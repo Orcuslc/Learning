@@ -97,8 +97,8 @@ A major difficulty in accurate filtering of noisy signals with many degrees of f
 B. Gershgorin, \textit{et, al} proposed the Stochastic Parameterization Extended Kalman Filter (SPEKF) to cope with model errors.
 \end{frame}
 
-\frame{\frametitle{Test Model}
-\begin{block}{SDEs in Test Model}
+\frame{\frametitle{Introduction}
+\begin{block}{Test Model}
 \[
 \left\{
 \begin{aligned}
@@ -113,7 +113,7 @@ The initial values are complex random variables, with their first-order and seco
 
 \frame{\frametitle{Introduction}
 \begin{block}{Solution}
-With knowledge of ODEs, the solution of the SDE set is
+With knowledge of ODEs, solution of the SDE set is
 \[
 \left\{
 \begin{aligned}
@@ -150,12 +150,13 @@ $$
 \section{Statistics of $b(t)$ and $\gamma(t)$}
 \subsection{Mean}
 \frame{\frametitle{Mean of $b(t)$, $\gamma(t)$}
-\quad With property of It\^o integration (3), it is easy to know
+\quad With property of It\^o integration (3), the last term in $\E[b(t)]$ is $0$. \\
+\quad Thus we find
 \begin{block}{}
 $$
 \begin{aligned}
-&\E(b(t)) = \hat{b} + (\E[b_0] - \hat{b})e^{\lambda_b(t-t_0)} \nq
-&\E(\gamma(t)) = \hat{\gamma} + (\E[\gamma_0] - \hat{\gamma})e^{-d_{\gamma}(t-t_0)}
+&\E[b(t)] = \hat{b} + (\E[b_0] - \hat{b})e^{\lambda_b(t-t_0)} \nq
+&\E[\gamma(t)] = \hat{\gamma} + (\E[\gamma_0] - \hat{\gamma})e^{-d_{\gamma}(t-t_0)}
 \end{aligned}
 $$
 \end{block}
@@ -171,7 +172,7 @@ $$
 &= e^{-2\gamma_b(t-t_0)}\Var(b_0) + \sigma_b^2\E\left[\int_{t_0}^t e^{-2\gamma_b(t-s)}ds\right]
 \end{aligned}
 \]
-\quad The last step takes advantage of It\^o isometry.
+\quad The last step takes use of It\^o isometry. Compute the integration in last term, we have
 \begin{block}{}
 \[
 \begin{aligned}
@@ -184,6 +185,7 @@ $$
 
 \subsection{Covariance}
 \frame{\frametitle{Covariance of $b(t)$, $\gamma(t)$}
+According to definition,
 \[
 \begin{aligned}
 \Cov&(b(t), b(t)^*) = \E\left[(b(t) - \E[b(t)])(b(t)^* - \E[b(t)^*])\right] \nw
@@ -191,7 +193,7 @@ $$
 &+ \sigma_b\E\left[(b_0^*-\E[b_0^*])e^{\lambda_b(t-t_0)}\int_{t_0}^{t}e^{\lambda_b(t-s)}dW_b(s)\right] + \sigma_b^2\E\left[(\int_{t_0}^{t}e^{\lambda_b(t-s)}dW_b(s))^2\right]
 \end{aligned}
 \]
-\quad With property of It\^o integration (3), the second and third term are both 0; with It\^o isometry we know the last term is also 0.
+\quad With property of It\^o integration (3), the second and third term are both 0; with It\^o isometry we know the last term is also 0. Accordingly,
 \begin{block}{}
 \[
 \begin{aligned}
@@ -205,53 +207,51 @@ $$
 \section{Statistics of $u(t)$}
 \subsection{Mean}
 \frame{\frametitle{Mean of $u(t)$}
-\quad Using the same properties, it is obvious to find
+\quad Using the same properties, it is easy to find
 \[
 \begin{aligned}
 \E[u(t)] &= e^{\hat{\lambda}(t-t_0)}\E\left[e^{-J_0(t_0, t)}u_0\right] + \int_{t_0}^t e^{\hat{\lambda}(t-s)}\E\left[b(s)e^{-J(s, t)}\right]ds  \nq
 &+ \sigma\int_{t_0}^{t} e^{\hat{\lambda}(t-s)}f(s)\E\left[e^{-J(s, t)}\right]ds.
 \end{aligned}
 \]
-\quad It is necessary to compute expectations of terms like
-$
+\quad We find it necessary to compute expectations of terms like
+\[
 \E[ze^{bx}],
-$
+\]
 where $z$ is a complex-valued Gaussian random variable and x is a real-valued Gaussian variable. We propose two lemmas here.
 }
 
 \frame{\frametitle{Mean of $u(t)$}
-\begin{lemma}\label{lemma 1}
-$$\E\left[ze^{\ii bx}\right] = (\E[z]+\ii b\Cov(z, x))e^{\ii b\E[x]-\frac{1}{2}b^2\Var(x)}$$
+\begin{lemma}[1]\label{lemma 1}
+$$\E\left[ze^{\ii bx}\right] = (\E[z]+\ii b\Cov(z, x))e^{\ii b\E[x]-\frac{1}{2}b^2\Var(x)},$$
 with $z$ being a complex-valued Gaussian, and $x$ a real-valued Gaussian.
 \end{lemma}
 
-\begin{Corollary} \label{corollary 1}
+\begin{Corollary}[1] \label{corollary 1}
 Under the condition of Lemma \ref{lemma 1},
 $$\E\left[ze^{bx}\right] = (\E[z]+b\Cov(z, x))e^{b\E[x]+\frac{1}{2}b^2\Var(x)}.$$
 \end{Corollary}
-Proof of lemma \ref{lemma 1} takes advantage of the characteristic function of multivariable Gaussian distribution.
+Proof of lemma \ref{lemma 1} takes advantage of characteristic function of multivariable Gaussian distribution.
 }
 
 \frame{\frametitle{Proof}
 
-\quad Let $z = y+\ii w, \quad y, w \in \mathbb{R}.$ Denote $\v = (x, y, w)$, then $\v$ satisfies the multivariable Gaussian distribution, with its characteristic function
+\quad Let $z = y+\ii w, ~y, w \in \mathbb{R}.$ Denote $\v = (x, y, w)^\top$, then $\v$ satisfies the multivariable Gaussian distribution, with its characteristic function
 \[
 \phi_\v(\s) = \exp(\ii\s^\top\E[\v]-\frac{1}{2}\s^\top\Sigma\s).
 \]
 \quad Let $g(\v)$ being the PDF of $\v$, then one knows from that char. func. being Fourier transform of PDF,
 \[
-\phi_\v(\s) = \frac{1}{(2\pi)^3}\int e^{\ii\s^\top\v}g(\v)d\v
+\phi_\v(\s) = \frac{1}{(2\pi)^3}\int e^{\ii\s^\top\v}g(\v)d\v.`'
 \]
-\quad According to the differential property of Fourier transform, 
+\quad According to the differential property of Fourier transform (Proposition 2.10), 
 \[
 \frac{\partial \phi_\mathbf{v}(\mathbf{s})}{\partial s_2} = \frac{1}{(2\pi)^3}\int \ii y_0e^{\ii\mathbf{s}^\top\mathbf{v}}g(\mathbf{v})d\mathbf{v} = \ii\E\left[y_0e^{\ii\mathbf{s}^\top\mathbf{v}}\right].
 \]
 \quad Let $\v = (b, 0, 0)^\top$, 
 \[
-\begin{aligned}
-&\left.\E[y_0e^{\ii bx_0}] = -\ii\frac{\partial \phi_\mathbf{v}(s)}{\partial s_2}\right|_{\mathbf{s} = (b, 0, 0)^\top} \\
-&\left.\E[y_0e^{\ii bx_0}] = -\ii\frac{\partial \phi_\mathbf{v}(s)}{\partial s_2}\right|_{\mathbf{s} = (b, 0, 0)^\top}
-\end{aligned}
+\left.\E[y_0e^{\ii bx_0}] = -\ii\frac{\partial \phi_\mathbf{v}(s)}{\partial s_2}\right|_{\mathbf{s} = (b, 0, 0)^\top}, ~
+\left.\E[w_0e^{\ii bx_0}] = -\ii\frac{\partial \phi_\mathbf{v}(s)}{\partial s_3}\right|_{\mathbf{s} = (b, 0, 0)^\top}
 \]
 }
 
@@ -274,7 +274,7 @@ Proof of lemma \ref{lemma 1} takes advantage of the characteristic function of m
 }
 
 \frame{\frametitle{Mean of $u(t)$}
-\begin{lemma} \label{lemma 2}
+\begin{lemma}[2] \label{lemma 2}
 \[
 \begin{aligned}
 \E\left[zwe^{bx}\right] &= \left[\E[z]\E[w]+\Cov(z, w^*)+b(\E[z]\Cov(w, x))+\E[w]\Cov(z, x)+ \right. \nq
@@ -287,7 +287,7 @@ The proof of this lemma is the same as Lemma \ref{lemma 1}.
 }
 
 \frame{\frametitle{Mean of $u(t)$}
-\quad We now make use of Lemma \ref{lemma 1} to obtain the mean of $u(t)$.
+\quad We now make use of Lemma \ref{lemma 1} to obtain mean of $u(t)$.
 \begin{block}{}
 \[
 \begin{aligned}
@@ -315,7 +315,7 @@ The terms $\Cov(u_0, J(s, t))$, $\Cov(b_0, J(s, t))$, $\E[J(s, t)]$ and $\Var(J(
 \[
 \E\left[|u(t)|^2\right] = \E\left[|A|^2\right]+ \E\left[|B|^2\right] + \E\left[|C|^2\right] + 2\text{Re}\{\E[A^*B]\}.
 \]
-\quad We can obtain $\E\left[|A|^2\right]$ by Lemma 2, and $\E\left[|B|^2\right]$ by It\^o isometry and noticing that
+\quad We can obtain $\E\left[|A|^2\right]$ by Lemma 2, and $\E\left[|B|^2\right]$ by It\^o isometry. Noticing that
 \[
 \Cov(J(s, t), J(r, t)) = \Var(J(s, t)) + \Cov(J(s, t), J(r, s)).
 \]
@@ -339,7 +339,11 @@ The terms $\Cov(u_0, J(s, t))$, $\Cov(b_0, J(s, t))$, $\E[J(s, t)]$ and $\Var(J(
 \section{Numerical Simulation}
 \subsection{Parameters and Algorithms}
 \frame{\frametitle{Parameters}
-\quad External forcing $f(t) = \frac{3}{2}e^{0.1it}$, and parameters of the equation set are given
+\quad As a real-world example, we choose external forcing 
+\[
+f(t) = \frac{3}{2}e^{0.1\ii t},
+\]
+and parameters of the equation set are given
 \[
 \left\{
 \begin{aligned}
@@ -351,31 +355,31 @@ The terms $\Cov(u_0, J(s, t))$, $\Cov(b_0, J(s, t))$, $\E[J(s, t)]$ and $\Var(J(
 \end{aligned}
 \right.
 \]
-\quad We assume the initial values satisfying
+\quad We assume that initial values satisfy
 \[
 \left\{
 \begin{aligned}
-&\text{Re}(u_0), \text{Im}(u_0) \sim \mathcal{N}(0, \frac{1}{\sqrt{2}}), ~ \text{i.i.d.} \nq
-&\text{Re}(b_0), \text{Im}(b_0) \sim \mathcal{N}(0, \frac{1}{\sqrt{2}}), ~ \text{i.i.d.} \nq
+&\text{Re}(u_0), \text{Im}(u_0) \sim \mathcal{N}(0, \frac{1}{\sqrt{2}}), ~ \text{i.i.d.} \\
+&\text{Re}(b_0), \text{Im}(b_0) \sim \mathcal{N}(0, \frac{1}{\sqrt{2}}), ~ \text{i.i.d.} \\
 &\gamma_0 \sim \mathcal{N}(0, 1)
 \end{aligned}
 \right.
 \]
 }
 
-\frame{\frametitle{Parameters}
-\quad The statistics between initial values are
-\[
-\left\{
-\begin{aligned}
-&\Cov(u_0, u_0^*) = 0 \nq
-&\Cov(u_0, \gamma_0) = 0 \nq
-&\Cov(u_0, b_0) = 0 \nq
-&\Cov(u_0, b_0^*) = 0
-\end{aligned}
-\right.
-\]
-}
+% \frame{\frametitle{Parameters}
+% \quad The statistics between initial values are
+% \[
+% \left\{
+% \begin{aligned}
+% &\Cov(u_0, u_0^*) = 0 \nq
+% &\Cov(u_0, \gamma_0) = 0 \nq
+% &\Cov(u_0, b_0) = 0 \nq
+% &\Cov(u_0, b_0^*) = 0
+% \end{aligned}
+% \right.
+% \]
+% }
 
 \frame{\frametitle{Euler-Maruyama Scheme}
 \quad It\^o integration can be simulated by E-M scheme:
@@ -453,7 +457,7 @@ W(\tau_j) - W(\tau_{j-1}) = \sum_{k = jR-R+1}^{jR} \mathrm{d}W_k,
 \subfigure[$\text{Im}(\Cov(u, b^*))$]{
   \includegraphics[width = .2\textwidth]{../NumericalSimulation/100k/CovubstarIm.png}
 }
-\caption{Simulation of Covariances, $n = 10^7$}
+\caption{Simulation of Covariances, $n = 10^6$}
 \label{Simulation of Covariances 1}
 \end{figure}
 }
@@ -529,14 +533,12 @@ From the simulation results we find that the simulation of expectations fit the 
 
 For the results of Variances and Covariances, \\[5pt]
 \begin{itemize}
-\item When $n = 10^6$, the error of variances is about $O(10^{-2})\sim O(10^{-3})$, \\[10pt]
-\item error of covariances is about $O(10^{-4})$. \\[10pt]
-\item When $n = 10^7$, the error of $\Var(u), ~\Var(b)$ is about $O(10^{-6})$, and error of $\Var(\gamma)$ is about $O(10^{-3})\sim O(10^{-4})$, \\[10pt]
-\item error of $\Cov(u, u^*), ~\Cov(u, \gamma)$ is about $O(10^{-3})$, error of $\Cov(u, b), ~\Cov(u, b^*)$ is $O(10^{-4})$.
+\item When $n = 10^6$, the error of variances is about $O(10^{-2})\sim O(10^{-3})$, error of covariances is about $O(10^{-2})\sim O(10^{-3})$. \\[10pt]
+\item When $n = 10^7$, the error of $\Var(u), ~\Var(b)$ is about $O(10^{-5})$, and error of $\Var(\gamma)$ is about $O(10^{-3})\sim O(10^{-4})$, error of $\Cov(u, u^*), ~\Cov(u, \gamma)$ is about $O(10^{-3})$, error of $\Cov(u, b), ~\Cov(u, b^*)$ is $O(10^{-4})$.
 \end{itemize}
 }
 \frame{\frametitle{Discussion}
-One can find that with the increase of simulations, errors decrease almost linearly. Thus one could believe that when $n\to\infty$, the simulation would converge to the theoretical result. In fact, error of simulation comes from that initial values are all random variables; according to Law of large numbers, the errors would converge to 0 when $n\to\infty$.\\[10pt]
+One can find the simulation errors decrease with the growth of simulations. Thus one could believe that when $n\to\infty$, the simulation would converge to the theoretical result. In fact, error of simulation comes from that initial values are all random variables; according to Law of large numbers, the errors would converge to 0 when $n\to\infty$.\\[10pt]
 
 We can get third-order and fourth-order statistics of $u, b, \gamma$ with the same methods, which could be written in a form of multiple integrals of statistics of initial values.
 }
