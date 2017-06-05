@@ -1,0 +1,122 @@
+% Beamer mtheme
+%
+% Copyright 2014 Matthias Vogelgesang
+% Licensed under CC-BY-SA 4.0 International.
+%
+% The initial template comes from the HSRM beamer theme by Benjamin Weiss, which
+% you can find at https://github.com/hsrmbeamertheme/hsrmbeamertheme.
+%
+
+\ProvidesPackage{beamercolorthememetropolis}
+
+
+%}}}
+%{{{ --- Options ----------------------
+
+\newif\if@beamer@metropolis@blockbg
+\newif\if@darktheme
+\@beamer@metropolis@blockbgfalse
+\@darkthemefalse
+\DeclareOptionBeamer{blockbg}{
+\mode<beamer>{
+\@beamer@metropolis@blockbgtrue
+}}
+\DeclareOptionBeamer{darktheme}{\@darkthemetrue}
+
+\DeclareOptionBeamer*{%
+  \PackageWarning{beamercolorthememetropolis}{Unknown option `\CurrentOption'}%
+}
+
+\ProcessOptionsBeamer
+
+%}}}
+%{{{ --- Colors ---------------------
+
+% http://paletton.com/#uid=7050t0kkJkJsntwoyp6gYgoddc4
+
+\definecolor{mDarkBrown}{HTML}{604C38}
+\definecolor{mMediumBrown}{HTML}{C87A2F}
+
+\definecolor{mDarkTeal}{HTML}{23373B}
+\definecolor{mOrange}{HTML}{FF9A00} %EB811B
+\colorlet{mDarkOrange}{mOrange!65!black}
+
+\colorlet{mNormalText}{black!97}
+\colorlet{mReverseText}{black!3}
+
+\setbeamercolor{structure}{fg=mDarkTeal}
+
+\setbeamercolor{palette primary}{parent=structure, bg=black!2}
+\setbeamercolor{palette secondary}{fg=white, bg=mDarkTeal}
+%\setbeamercolor{palette tertiary}{fg=mReverseText, bg=mMediumBrown}
+\setbeamercolor{palette tertiary}{fg=mMediumBrown}
+\setbeamercolor{palette quaternary}{fg=mDarkOrange}
+\setbeamercolor{palette cinq}{fg=mReverseText}
+
+\setbeamercolor{normal text}{fg=mNormalText}
+
+\mode<beamer>{
+\if@darktheme
+  \setbeamercolor{palette primary}{use=structure, fg=black!2, bg=structure.fg}
+  \setbeamercolor{palette cinq}{fg=mNormalText}
+  \setbeamercolor{normal text}{fg=mReverseText}
+  \setbeamercolor*{page number in head/foot}{parent=palette primary,use=palette primary,fg=palette primary.fg!50!palette primary.bg}
+  \setbeamercolor*{section in head/foot}{parent=palette primary,use=palette primary,fg=palette primary.fg!50!palette primary.bg}
+\fi
+}
+
+\setbeamercolor{title}{parent=palette primary}
+\setbeamercolor{subtitle}{parent=palette primary}
+\setbeamercolor{author}{parent=palette primary}
+\setbeamercolor{date}{parent=palette primary}
+\setbeamercolor{institute}{parent=palette primary}
+
+\setbeamercolor{section title}{parent=palette primary}
+\setbeamercolor{frametitle}{parent=palette secondary}
+\setbeamercolor{background canvas}{parent=palette primary}
+
+\setbeamercolor{alerted text}{fg=mOrange}
+
+\setbeamercolor{footnote}{parent=palette primary}
+\setbeamercolor{footnote mark}{fg=.}
+%\setbeamercolor*{page number in head/foot}{parent=palette primary}
+%\setbeamercolor*{section in head/foot}{use=palette primary,bg=palette primary.fg, fg=palette primary.bg}
+\setbeamercolor*{navigation symbols}{parent=palette primary}
+
+%\setbeamercolor{description item}{parent=palette primary}
+
+\setbeamercolor{bibliography item}{parent=palette primary}
+\setbeamercolor*{bibliography entry author}{parent=bibliography item}
+\setbeamercolor{bibliography entry title}{parent=normal text}
+\setbeamercolor{bibliography entry location}{use=palette primary,fg=palette primary.fg!65!palette primary.bg}
+\setbeamercolor{bibliography entry note}{parent=bibliography entry location}
+
+
+\if@beamer@metropolis@blockbg
+\setbeamercolor{block title}{parent=palette primary,use=palette primary,bg=palette primary.fg!11}
+\setbeamercolor{block title alerted}{use=alerted text,parent=palette primary,fg=alerted text.fg,bg=alerted text.fg!10}
+\setbeamercolor{block title example}{use=example text,parent=palette primary,fg=example text.fg,bg=example text.fg!9}
+
+\else
+
+\setbeamercolor{block title}{parent=palette primary,use=background canvas,bg=background canvas.bg}
+\setbeamercolor{block title alerted}{use=alerted text,parent=palette primary,fg=alerted text.fg,,use=background canvas,bg=background canvas.bg}
+\setbeamercolor{block title example}{use=example text,parent=palette primary,fg=example text.fg,,use=background canvas,bg=background canvas.bg}
+
+\fi
+
+\setbeamercolor{block body}{parent=normal text,use=block title,bg=block title.bg}
+\setbeamercolor{block body alerted}{parent=normal text,use=block title alerted,bg=block title alerted.bg}
+\setbeamercolor{block body example}{parent=normal text,use=block title example,bg=block title example.bg}
+
+%\setbeamercolor{frame number in foot}{parent=structure,use=structure, fg=structure.fg}
+\setbeamercolor{frame number in foot}{parent=palette primary}
+\setbeamercolor{frame number in foot}{parent=background canvas}
+
+\mode<handout>{
+
+\setbeamercolor{background canvas}{fg=black,bg=white}
+\setbeamercolor{frametitle}{fg=black,bg=white}
+}
+
+\mode<all>
