@@ -1,0 +1,149 @@
+
+\documentclass{article}%
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{amsfonts}%
+\usepackage{amssymb}
+
+
+\setlength{\topmargin}{-0.75in}
+\setlength{\textheight}{9.25in}
+\setlength{\oddsidemargin}{0.0in}
+\setlength{\evensidemargin}{0.0in}
+\setlength{\textwidth}{6.5in}
+\def\labelenumi{\arabic{enumi}.}
+\def\theenumi{\arabic{enumi}}
+\def\labelenumii{(\alph{enumii})}
+\def\theenumii{\alph{enumii}}
+\def\p@enumii{\theenumi.}
+\def\labelenumiii{\arabic{enumiii}.}
+\def\theenumiii{\arabic{enumiii}}
+\def\p@enumiii{(\theenumi)(\theenumii)}
+\def\labelenumiv{\arabic{enumiv}.}
+\def\theenumiv{\arabic{enumiv}}
+\def\p@enumiv{\p@enumiii.\theenumiii}
+\pagestyle{plain}
+\setcounter{secnumdepth}{0}
+\newtheorem{theorem}{Theorem}
+\newtheorem{acknowledgement}[theorem]{Acknowledgement}
+\newtheorem{algorithm}[theorem]{Algorithm}
+\newtheorem{axiom}[theorem]{Axiom}
+\newtheorem{case}[theorem]{Case}
+\newtheorem{claim}[theorem]{Claim}
+\newtheorem{conclusion}[theorem]{Conclusion}
+\newtheorem{condition}[theorem]{Condition}
+\newtheorem{conjecture}[theorem]{Conjecture}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{criterion}[theorem]{Criterion}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{example}[theorem]{Example}
+\newtheorem{exercise}[theorem]{Exercise}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{notation}[theorem]{Notation}
+\newtheorem{problem}[theorem]{Problem}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{solution}[theorem]{Solution}
+\newtheorem{summary}[theorem]{Summary}
+\newenvironment{proof}[1][Proof]{\textbf{#1.} }{\ \rule{0.5em}{0.5em}}
+
+\begin{document}
+
+\begin{center}
+\textbf{Introduction to Analysis $I$\\Homework 1\\Tuesday, August 22, 2017}\bigskip
+\end{center}
+
+\noindent\textbf{Instructions}: You may submit this homework ``the old fashion'' way, i.e., using paper and pencil (or pen), but if you do so, please use at least one sheet of ($8\frac{1}{2}%
+\times11$) paper per problem. Write your name at the top of each sheet you
+use. Please write neatly. Staple the sheets together or use a paper clip.
+
+However, I encourage you to do at least some of the problems using LaTeX.  As of the third assignment, you will have to submit your homework in LaTeX.
+
+\noindent If you use results from books, Royden or others, please be explicit about what results you are using.
+
+
+
+\begin{center}
+\emph{Homework 1 is due by the start of class on Wednesday, September 6.}
+\end{center} 
+\medskip
+
+\begin{enumerate}
+\item \textbf{Problem 34, page 20}.  Show that the assertion of the Heine-Borel Theorem is equivalent to the Completeness Axiom for the real numbers.  Show that the assertion of the Nested Set Theorem is equivalent to the Completeness Axiom for the real numbers.
+
+\bigskip
+\textbf{Collaborators:}\\
+\smallskip
+ 
+\textbf{Solution:}
+\begin{proof}
+
+\end{proof}
+
+\bigskip
+
+\item \textbf{Problem 44, page 24}.  Let $p$ be a natural number greater than $1$, and $x$ a real number, $0<x<1$.  Show that there is a sequence $\{a_n\}$ of integers with $0\leq a_n < p$ for each $n$ such that \[
+x = \sum_{n=1}^{\infty} \frac{a_n}{p^n} \]and that this sequence is unique except when $x$ is of the form $q/p^n$, in which case there are exactly two such sequences.  Show that, conversely, if $\{a_n\}$ is any sequence of integers with $0\leq a_n < p$, then the series \[\sum_{n=1}^{\infty} \frac{a_n}{p^n} \]converges to a real number $x$ with $0\leq x \leq 1$. (If $p = 10$, this series is called the \emph{decimal} expansion of $x$.  For $p = 2$ it is called the \emph{binary} expansion of $x$, and for $p = 3$, the \emph{tenary} expansion.) 
+
+
+\bigskip
+\textbf{Collaborators:}\\
+\smallskip
+ 
+\textbf{Solution:}
+\bigskip
+
+
+
+\item \textbf{Problem 46, page 25}. Show that the assertion of the Bolzano-Weierstrass Theorem is equivalent to the Completeness Axiom of the real numbers.  Show that the assertion of the Monotone Convergence Theorem is equivalent to the Completeness Axiom for the real numbers.
+
+
+\bigskip
+\textbf{Collaborators:}\\
+\smallskip
+ 
+\textbf{Solution:}
+\bigskip
+
+
+
+\item Let $\mathbb{F}$ be an ordered field with the property that if $[a,b]$ is any closed interval and if $f:[a,b]\rightarrow \mathbb{F}$ is any continuous function such that $f(a)>0$ and $f(b)<0$, then there is an $x$, $a < x < b$, such that $f(x)=0$.  Show that such a field $\mathbb{F}$ has the least upper bound property.
+
+
+\bigskip
+\textbf{Collaborators:}\\
+\smallskip
+ 
+\textbf{Solution:}
+\bigskip
+
+
+\item Show that if $\mathbb{F}$ is an ordered field such that
+\begin{enumerate}
+\item the order for $\mathbb{F}$ satisfies the Archimedean property, and
+\item every Cauchy sequence is convergent, 
+\end{enumerate}
+then $\mathbb{F}$ satisfies the Completeness Axiom. (There are examples of ordered fields that \emph{don't} have the Archimedean property and \emph{do} have the property that every Cauchy sequence is convergent.  Can you come up with such an example?)
+
+
+\bigskip
+\textbf{Collaborators:}\\
+\smallskip
+ 
+\textbf{Solution:}
+\bigskip
+
+
+\item Suppose that for $i = 1,2$, $\mathbb{F}_i$ is an ordered field satisfying the Completeness Axiom. Show that there is a unique isomorphism $\alpha$ from $\mathbb{F}_1$ onto $\mathbb{F}_2$. That is, $\alpha$ is a field isomorphism that preserves the order ($x \leq_1 y$ implies $\alpha(x) \leq_2 \alpha(y)$, where $\leq_i$ denotes ``less than or equal to'' in the field $\mathbb{F}_i$). Thus, there is at most \emph{one} field of ``real numbers''. 
+
+
+\bigskip
+\textbf{Collaborators:}\\
+\smallskip
+ 
+\textbf{Solution:}
+\bigskip
+
+
+\end{enumerate}
+\end{document}
