@@ -75,13 +75,19 @@ However, I encourage you to do at least some of the problems using LaTeX.  As of
 \textbf{Collaborators:}\\
 \smallskip
  
-\textbf{Solution:} \\
+\textbf{Solution:}
 \begin{proof}
-Completeness Axiom $\to$ Heine-Borel: \\
-Let $\mathcal{D}$ being a set of open sets, which covers a bounded close set $F$. Assume $F\subset [a, b]$.
+\textbf{Completeness Axiom $\to$ Heine-Borel theorem} is shown in the proof of Heine-Borel theorem in Page 18.
 \\
-Heine-Borel $\to$ Completeness Axiom: \\
-Let $E$ be a nonempty set of real numbers, with one of it's upper bound $x_0$.
+\textbf{Heine-Borel theorem $\to$ Nested Set theorem} is shown in Page 19. \\
+\textbf{Nested Set theorem $\to$ Completeness Axiom theorem:}\\
+Let $E$ be a nonempty and upper-bounded set of real numbers, and let $T$ is the set consists of all upper bounders of $E$. Pick $a_1\notin T$, and $b_1 \notin T$, then $a_1 < b_1$.
+If $\frac{a_1+b_1}{2} \in T$, then $[a_2, b_2] = \left[a_1, \frac{a_1+b_1}{2}\right]$; else $[a_2, b_2] = \left[\frac{a_1+b_1}{2}, b_1\right]$. 
+Construct $[a_3, b_3], \cdots$ as above, we can get a nested set series $\{[a_n, b_n]\}$, satisfying $a_n\notin T, b_n\in T$. With Nested Set theorem, there exist a real number $x$ belongs to all these close sets, and $\lim_{n\to\infty}a_n = \lim_{n\to\infty}b_n = x$.\\
+If $x\notin T$, then exists $y\in E$, s.t. $x < y$. So $b_n < x$ when $n$ is large enough. This makes a contradiction with $b_n\in T$, so $x\in T$. On the othe hand, if there exists $z\in T$, s.t. $z < x$, then $a_n > z$ when n is large enough. This makes a contradiction with $a_n\in E$. So $x$ is the supremum of $E$.
+\\
+To sum up, we have a logical circle like this: \\
+Completeness Axiom $\to$ Heine-Borel theorem $\to$ Nested Set theorem $\to$ Completeness Axiom. So these three theorems are equivalent.
 \end{proof}
 
 \bigskip
