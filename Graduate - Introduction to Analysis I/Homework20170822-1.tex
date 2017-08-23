@@ -72,28 +72,29 @@ However, I encourage you to do at least some of the problems using LaTeX.  As of
 \item \textbf{Problem 34, page 20}.  Show that the assertion of the Heine-Borel Theorem is equivalent to the Completeness Axiom for the real numbers.  Show that the assertion of the Nested Set Theorem is equivalent to the Completeness Axiom for the real numbers.
 
 \bigskip
-\textbf{Collaborators:}\\
+\textbf{Collaborators:} Me \& One of my undergraduate classmate;
 \smallskip
  
 \textbf{Solution:}
 \begin{proof}
 \textbf{Completeness Axiom $\to$ Heine-Borel theorem} is shown in the proof of Heine-Borel theorem in Page 18.
 \\
-\textbf{Heine-Borel theorem $\to$ Nested Set theorem} is shown in Page 19. \\
+\textbf{Heine-Borel theorem $\to$ Completeness Axiom:} \\
+Let $E$ be a nonempty and upper-bounded set of real numbers, and let $b$ be one of it's upper boundaries. Pick $a\in E$, then $[a, b]$ is a closed set. Let $U$ be the set of upper boundaries of $E$, and $T = E\bigcap [a, b]$. If the supremum does not exist, then $\forall x\in[a, b]$, either $\exists a_1\in E$, s.t. $a_1 > x$, or $\exists b_1\in T$, s.t. $b_1 < x$. If it is the former case, we define an open set $A_1 = (a-1, a_1)$; else we define an open set $B_1 = (b_1, b+1)$. Since we can define such an open set to cover every $x\in [a, b]$, there exists a open cover $\{A_i\}\bigcup\{B_i\}$. According to Heine-Borel theorem, there exists a finite cover $\{A\}_{i = 1}^{n_1}\bigcup\{B\}_{i = 1}^{n_2}$. If we denote $A_0 = \bigcup_{i=1}^{n_1}\{A_i\}, B_0 = \bigcup_{i=1}^{n_2}\{B_i\}$, then since $A_0$ consists of elements in $T$, while $B_0$ consists of elements of $E's$ upper bound, we have $A_0\bigcap B_0 = \emptyset$. Then there exists a number $\epsilon\in T$, s.t. $\epsilon\notin A_0\bigcup B_0$. It is contradictory to the assumption that $A_0\bigcup B_0$ is a cover of $[a, b]$. So $E$ has a supremum. \\
+\textbf{Completeness Axiom $\to$ Nested Set theorem:} \\
+Let $\{[a_i, b_i\}$ being a descending closed set series. Denote $A = \{a_i\}, B = \{b_i\}$, then $A$ has an upper bound $b_0$, and $B$ has an lower bound $a_0$. According to the Completeness Axiom, $A$ has a supremum, denoted by $x$, and B has a infimum, denoted by $y$. If $x > y$, then according to the definition of supremum and infimum, there exists $j_1, j_2$, s.t. $y \le b_{j_2} < \frac{x+y}{2} < a_{j_1} \le x$. It contradicts with that $a_i < b_j, \forall i, j$. so $x \le y$, which means $\bigcap \{[a_i, b_i]\} \ne \emptyset$. \\
+For the general case, it is the same using the similar skills.\\ 
 \textbf{Nested Set theorem $\to$ Completeness Axiom theorem:}\\
 Let $E$ be a nonempty and upper-bounded set of real numbers, and let $T$ is the set consists of all upper bounders of $E$. Pick $a_1\notin T$, and $b_1 \notin T$, then $a_1 < b_1$.
 If $\frac{a_1+b_1}{2} \in T$, then $[a_2, b_2] = \left[a_1, \frac{a_1+b_1}{2}\right]$; else $[a_2, b_2] = \left[\frac{a_1+b_1}{2}, b_1\right]$. 
-Construct $[a_3, b_3], \cdots$ as above, we can get a nested set series $\{[a_n, b_n]\}$, satisfying $a_n\notin T, b_n\in T$. With Nested Set theorem, there exist a real number $x$ belongs to all these close sets, and $\lim_{n\to\infty}a_n = \lim_{n\to\infty}b_n = x$.\\
+Construct $[a_3, b_3], \cdots$ as above, we can get a nested set series $\{[a_n, b_n]\}$, satisfying $a_n\notin T, b_n\in T$. With Nested Set theorem, there exist a real number $x$ belongs to all these closed sets, and $\lim_{n\to\infty}a_n = \lim_{n\to\infty}b_n = x$.\\
 If $x\notin T$, then exists $y\in E$, s.t. $x < y$. So $b_n < x$ when $n$ is large enough. This makes a contradiction with $b_n\in T$, so $x\in T$. On the othe hand, if there exists $z\in T$, s.t. $z < x$, then $a_n > z$ when n is large enough. This makes a contradiction with $a_n\in E$. So $x$ is the supremum of $E$.
-\\
-To sum up, we have a logical circle like this: \\
-Completeness Axiom $\to$ Heine-Borel theorem $\to$ Nested Set theorem $\to$ Completeness Axiom. So these three theorems are equivalent.
 \end{proof}
 
 \bigskip
 
 \item \textbf{Problem 44, page 24}.  Let $p$ be a natural number greater than $1$, and $x$ a real number, $0<x<1$.  Show that there is a sequence $\{a_n\}$ of integers with $0\leq a_n < p$ for each $n$ such that \[
-x = \sum_{n=1}^{\infty} \frac{a_n}{p^n} \]and that this sequence is unique except when $x$ is of the form $q/p^n$, in which case there are exactly two such sequences.  Show that, conversely, if $\{a_n\}$ is any sequence of integers with $0\leq a_n < p$, then the series \[\sum_{n=1}^{\infty} \frac{a_n}{p^n} \]converges to a real number $x$ with $0\leq x \leq 1$. (If $p = 10$, this series is called the \emph{decimal} expansion of $x$.  For $p = 2$ it is called the \emph{binary} expansion of $x$, and for $p = 3$, the \emph{tenary} expansion.) 
+x = \sum_{n=1}^{\infty} \frac{a_n}{p^n} \]and that this sequence is unique except when $x$ is of the form $q/p^n$, in which case there are exactly two such sequences.  Show that, conversely, if $\{a_n\}$ is any sequence of integers with $0\leq a_n < p$, then the sequence \[\sum_{n=1}^{\infty} \frac{a_n}{p^n} \]converges to a real number $x$ with $0\leq x \leq 1$. (If $p = 10$, this series is called the \emph{decimal} expansion of $x$.  For $p = 2$ it is called the \emph{binary} expansion of $x$, and for $p = 3$, the \emph{tenary} expansion.) 
 
 
 \bigskip
@@ -101,6 +102,10 @@ x = \sum_{n=1}^{\infty} \frac{a_n}{p^n} \]and that this sequence is unique excep
 \smallskip
  
 \textbf{Solution:}
+\begin{proof}
+\textbf{Existance:} \\
+Let $a_1 = \lfloor px\rfloor$, $a_2 = \lfloor p^2x-a_1p\rfloor$, $\cdots$, $a_n = \lfloor p^nx - \Sum_{i=1}^{n-1}a_ip^{n-i}$. From this inductive construction we know that the subsum $S_n = \Sum_{i=1}^n\frac{a_i}{p^i}$ forms a increasing sequence, while it is upper bounded by $x$. According to the Monotone Convergence Criterion, this sequence has a limitation. Moreover, $|x - S_n| \le \frac{1}{p^{n-1}}$ for each n, so $\lim_{n\to\infty} |x-S_n|= 0$
+\end{proof}
 \bigskip
 
 
