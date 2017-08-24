@@ -104,7 +104,7 @@ x = \sum_{n=1}^{\infty} \frac{a_n}{p^n} \]and that this sequence is unique excep
 \textbf{Solution:}
 \begin{proof}
 \textbf{Existance:} \\
-Let $a_1 = \lfloor px\rfloor$, $a_2 = \lfloor p^2x-a_1p\rfloor$, $\cdots$, $a_n = \lfloor p^nx - \Sum_{i=1}^{n-1}a_ip^{n-i}$. From this inductive construction we know that the subsum $S_n = \Sum_{i=1}^n\frac{a_i}{p^i}$ forms a increasing sequence, while it is upper bounded by $x$. According to the Monotone Convergence Criterion, this sequence has a limitation. Moreover, $|x - S_n| \le \frac{1}{p^{n-1}}$ for each n, so $\lim_{n\to\infty} |x-S_n|= 0$
+Let $a_1 = \lfloor px\rfloor$, $a_2 = \lfloor p^2x-a_1p\rfloor$, $\cdots$, $a_n = \lfloor p^nx - \Sum_{i=1}^{n-1}a_ip^{n-i}$. From this inductive construction we know that the subsum $S_n = \Sum_{i=1}^n\frac{a_i}{p^i}$ forms a increasing sequence, while it is upper bounded by $x$. According to the Monotone Convergence Criterion, this sequence has a limitation. Moreover, $|x - S_n| \le \frac{1}{p^{n-1}}$ for each n, so $\lim_{n\to\infty} |x-S_n|= 0$, which means the sequence converge to 
 \end{proof}
 \bigskip
 
