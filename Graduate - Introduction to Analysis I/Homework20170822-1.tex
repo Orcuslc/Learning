@@ -78,12 +78,12 @@ However, I encourage you to do at least some of the problems using LaTeX.  As of
 \textbf{Solution:}
 \begin{proof}
 \textbf{Completeness Axiom $\to$ Heine-Borel theorem} is shown in the proof of Heine-Borel theorem in Page 18.
-\\
+\\[5pt]
 \textbf{Heine-Borel theorem $\to$ Completeness Axiom:} \\
-Let $E$ be a nonempty and upper-bounded set of real numbers, and let $b$ be one of it's upper boundaries. Pick $a\in E$, then $[a, b]$ is a closed set. Let $U$ be the set of upper boundaries of $E$, and $T = E\bigcap [a, b]$. If the supremum does not exist, then $\forall x\in[a, b]$, either $\exists a_1\in E$, s.t. $a_1 > x$, or $\exists b_1\in T$, s.t. $b_1 < x$. If it is the former case, we define an open set $A_1 = (a-1, a_1)$; else we define an open set $B_1 = (b_1, b+1)$. Since we can define such an open set to cover every $x\in [a, b]$, there exists a open cover $\{A_i\}\bigcup\{B_i\}$. According to Heine-Borel theorem, there exists a finite cover $\{A\}_{i = 1}^{n_1}\bigcup\{B\}_{i = 1}^{n_2}$. If we denote $A_0 = \bigcup_{i=1}^{n_1}\{A_i\}, B_0 = \bigcup_{i=1}^{n_2}\{B_i\}$, then since $A_0$ consists of elements in $T$, while $B_0$ consists of elements of $E's$ upper bound, we have $A_0\bigcap B_0 = \emptyset$. Then there exists a number $\epsilon\in T$, s.t. $\epsilon\notin A_0\bigcup B_0$. It is contradictory to the assumption that $A_0\bigcup B_0$ is a cover of $[a, b]$. So $E$ has a supremum. \\
+Let $E$ be a nonempty and upper-bounded set of real numbers, and let $b$ be one of it's upper boundaries. Pick $a\in E$, then $[a, b]$ is a closed set. Let $U$ be the set of upper boundaries of $E$, and $T = E\bigcap [a, b]$. If the supremum does not exist, then $\forall x\in[a, b]$, either $\exists a_1\in E$, s.t. $a_1 > x$, or $\exists b_1\in T$, s.t. $b_1 < x$. If it is the former case, we define an open set $A_1 = (a-1, a_1)$; else we define an open set $B_1 = (b_1, b+1)$. Since we can define such an open set to cover every $x\in [a, b]$, there exists a open cover $\{A_i\}\bigcup\{B_i\}$. According to Heine-Borel theorem, there exists a finite cover $\{A\}_{i = 1}^{n_1}\bigcup\{B\}_{i = 1}^{n_2}$. If we denote $A_0 = \bigcup_{i=1}^{n_1}\{A_i\}, B_0 = \bigcup_{i=1}^{n_2}\{B_i\}$, then since $A_0$ consists of elements in $T$, while $B_0$ consists of elements of $E's$ upper bound, we have $A_0\bigcap B_0 = \emptyset$. Then there exists a number $\epsilon\in T$, s.t. $\epsilon\notin A_0\bigcup B_0$. It is contradictory to the assumption that $A_0\bigcup B_0$ is a cover of $[a, b]$. So $E$ has a supremum. \\[5pt]
 \textbf{Completeness Axiom $\to$ Nested Set theorem:} \\
 Let $\{[a_i, b_i\}$ being a descending closed set series. Denote $A = \{a_i\}, B = \{b_i\}$, then $A$ has an upper bound $b_0$, and $B$ has an lower bound $a_0$. According to the Completeness Axiom, $A$ has a supremum, denoted by $x$, and B has a infimum, denoted by $y$. If $x > y$, then according to the definition of supremum and infimum, there exists $j_1, j_2$, s.t. $y \le b_{j_2} < \frac{x+y}{2} < a_{j_1} \le x$. It contradicts with that $a_i < b_j, \forall i, j$. so $x \le y$, which means $\bigcap \{[a_i, b_i]\} \ne \emptyset$. \\
-For the general case, it is the same using the similar skills.\\ 
+For the general case, it is the same using the similar skills.\\[5pt]
 \textbf{Nested Set theorem $\to$ Completeness Axiom theorem:}\\
 Let $E$ be a nonempty and upper-bounded set of real numbers, and let $T$ is the set consists of all upper bounders of $E$. Pick $a_1\notin T$, and $b_1 \notin T$, then $a_1 < b_1$.
 If $\frac{a_1+b_1}{2} \in T$, then $[a_2, b_2] = \left[a_1, \frac{a_1+b_1}{2}\right]$; else $[a_2, b_2] = \left[\frac{a_1+b_1}{2}, b_1\right]$. 
@@ -104,7 +104,10 @@ x = \sum_{n=1}^{\infty} \frac{a_n}{p^n} \]and that this sequence is unique excep
 \textbf{Solution:}
 \begin{proof}
 \textbf{Existance:} \\
-Let $a_1 = \lfloor px\rfloor$, $a_2 = \lfloor p^2x-a_1p\rfloor$, $\cdots$, $a_n = \lfloor p^nx - \Sum_{i=1}^{n-1}a_ip^{n-i}$. From this inductive construction we know that the subsum $S_n = \Sum_{i=1}^n\frac{a_i}{p^i}$ forms a increasing sequence, while it is upper bounded by $x$. According to the Monotone Convergence Criterion, this sequence has a limitation. Moreover, $|x - S_n| \le \frac{1}{p^{n-1}}$ for each n, so $\lim_{n\to\infty} |x-S_n|= 0$
+Let $a_1 = \lfloor px\rfloor$, $a_2 = \lfloor p^2x-a_1p\rfloor$, $\cdots$, $a_n = \lfloor p^nx - \sum_{i=1}^{n-1}a_ip^{n-i}\rfloor=-$. From this inductive construction we know that the subsum $S_n = \sum_{i=1}^n\frac{a_i}{p^i}$ forms a increasing sequence, while it is upper bounded by $x$. According to the Monotone Convergence Criterion, this sequence has a limitation. Moreover, $|x - S_n| \le \frac{1}{p^{n-1}}$ for each n, so $\lim_{n\to\infty} |x-S_n|= 0$, that means $x$ is a limitation of $\{S_n\}$. By the same criterion, we can know that $x$ is the only limitation of $\{S_n\}$, that means $x = \sum_{n=1}^{\infty}\frac{a_n}{p^n}$. \\[5pt]
+\textbf{Uniqueness:} \\
+First, we need to prove that $0$ can be represented in this way by two sequences if we may let $a_0 = -1$. The two sequences are trivial: the first one is $a_i = 0$, and the second one is $a_0 = -1, a_i = p-1$. If there exist a third sequence ${b_i}$, then if $b_0 \ge 0, b_j > 0$, then $\sum_{b_i} \ge \frac{1}{p^j} > 0$. If $b_0 \le -1, b_j < p-1$, the $\sum_{b_i} \le -\frac{1}{p^j} < 0$. So there only exists two sequences for $0$. When $x = \frac{q}{p^n}$, it is just the same as $x = 0$ since we only need to shuffle the point n times to the right. So there also exists two sequences for $x$. \\
+When $x \ne \frac{q}{p^n}$, assume there exists two sequences for representing $x$, denoted by $\{a_i\}$ and $\{b_i\}$. According to this assumption, there must exist a $j$, s.t. $a_j \ne 9$. Let $k$ be the first position of difference between these two sequences, then $|\sum{a_i}-\sum{b_i}| >= \frac{1}{p^k}-\sum_{i=k+1}^{\infty}\frac{|a_i-b_i|}{p^i} > \frac{1}{p^j}$. So this contradicts with our assumption, which means $x$ only has one sequence in this form.
 \end{proof}
 \bigskip
 
@@ -117,7 +120,15 @@ Let $a_1 = \lfloor px\rfloor$, $a_2 = \lfloor p^2x-a_1p\rfloor$, $\cdots$, $a_n 
 \textbf{Collaborators:}\\
 \smallskip
  
-\textbf{Solution:}
+\textbf{Solution:} 
+\begin{proof}
+\textbf{Completeness Axiom $\to$ Monotone Convergence Criterion is shown is the proof in Page 21.} \\
+\textbf{Monotone Convergence Criterion $\to$ Completeness Axiom:} \\
+Let $E$ be a upper bounded set, and $T$ be the set of upper bound of $E$. Pick $a_1 \in E, b_1 \in T$. If $\frac{a_1+b_1}{2}\in E$, we choose $a_2 = \frac{a_1+b_1}{2}, b_2 = b_1$; else we choose $a_2 = a_1, b_2 = \frac{a_1+b_1}{2}$. Similarly, we get two sequences $\{a_n\}, \{b_n\}$, and $\{a_n\}$ is a upper bounded monotone increasing sequence, $\{b_n\}$ is a lower bounded monotone decreasing sequence, and $b_n-a_n\to 0$. According to Monotone Convergence Criterion, there exists $\alpha$, s.t. $\alpha = \lim_{n\to\infty}a_n$. Next we prove $\alpha = \sup E$. \\
+First, $\forall \epsilon > 0, \exists N_\epsilon$, s.t. when $n > N_\epsilon$, $\alpha-\epsilon < a_n$. Since $a_n$ is not an upper bound of $E$, there exists $x_\epsilon \in E$, s.t. $\alpha-\epsilon < a_n < x_\epsilon$. On the other hand, if there exists $x_0\in E$, s.t. $x_0 > \alpha$, then $\lim_{n\to\infty}b_n = \lim_{n\to\infty}a_n+\lim_{n\to\infty}\frac{b_1-a_1}{2^n} = \alpha$. Thus $\exists n_0 > 0$, s.t. $x_0 > b_{n_0}$. It contradicts with the assumption that $b_i$ are upper bounds of $E$. So $\alpha = \sup E$. \\[5pt]
+Since \textbf{Nested Set theorem $\to$ Bolzano-Weierstarss theorem} has been proved in Page 21, and \textbf{Bolzano-Weierstarss theorem $\to$ Cauchy Convergence Criterion} has been proved in Page 22, and we have proved the Nested Set theorem is equavilent to Completeness Axiom, we only need to prove \textbf{Cauchy Convergence Criterion $\to$ Nested Set theorem}. \\
+Assume $\{[a_n, b_n\}$ is a sequence of closed sets, and $\lim_{n\to\infty}(b_n-a_n) = 0$. Then pick $m > n$, we have $0 \le a_m-a_n < b_n-a_n\to 0$. So $\{a_n\}$ is Cauchy, which means $\lim_{n\to\infty}a_n = \alpha$, and $\lim_{n\to\infty}b_n = \alpha$. Since $\{a_n\}$ is monotone increasing while $\{b_n\}$ is monotone decreasing, we know $\alpha$ is the only number belongs to every closed set.
+\end{proof}
 \bigskip
 
 
@@ -145,7 +156,8 @@ then $\mathbb{F}$ satisfies the Completeness Axiom. (There are examples of order
 \textbf{Collaborators:}\\
 \smallskip
  
-\textbf{Solution:}
+\textbf{Solution:} \\
+
 \bigskip
 
 
