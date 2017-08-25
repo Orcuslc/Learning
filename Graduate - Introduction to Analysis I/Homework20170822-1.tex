@@ -107,7 +107,7 @@ x = \sum_{n=1}^{\infty} \frac{a_n}{p^n} \]and that this sequence is unique excep
 Let $a_1 = \lfloor px\rfloor$, $a_2 = \lfloor p^2x-a_1p\rfloor$, $\cdots$, $a_n = \lfloor p^nx - \sum_{i=1}^{n-1}a_ip^{n-i}\rfloor=-$. From this inductive construction we know that the subsum $S_n = \sum_{i=1}^n\frac{a_i}{p^i}$ forms a increasing sequence, while it is upper bounded by $x$. According to the Monotone Convergence Criterion, this sequence has a limitation. Moreover, $|x - S_n| \le \frac{1}{p^{n-1}}$ for each n, so $\lim_{n\to\infty} |x-S_n|= 0$, that means $x$ is a limitation of $\{S_n\}$. By the same criterion, we can know that $x$ is the only limitation of $\{S_n\}$, that means $x = \sum_{n=1}^{\infty}\frac{a_n}{p^n}$. \\[5pt]
 \textbf{Uniqueness:} \\
 First, we need to prove that $0$ can be represented in this way by two sequences if we may let $a_0 = -1$. The two sequences are trivial: the first one is $a_i = 0$, and the second one is $a_0 = -1, a_i = p-1$. If there exist a third sequence ${b_i}$, then if $b_0 \ge 0, b_j > 0$, then $\sum_{b_i} \ge \frac{1}{p^j} > 0$. If $b_0 \le -1, b_j < p-1$, the $\sum_{b_i} \le -\frac{1}{p^j} < 0$. So there only exists two sequences for $0$. When $x = \frac{q}{p^n}$, it is just the same as $x = 0$ since we only need to shuffle the point n times to the right. So there also exists two sequences for $x$. \\
-When $x \ne \frac{q}{p^n}$, assume there exists two sequences for representing $x$, denoted by $\{a_i\}$ and $\{b_i\}$. According to this assumption, there must exist a $j$, s.t. $a_j \ne 9$. Let $k$ be the first position of difference between these two sequences, then $|\sum{a_i}-\sum{b_i}| >= \frac{1}{p^k}-\sum_{i=k+1}^{\infty}\frac{|a_i-b_i|}{p^i} > \frac{1}{p^j}$. So this contradicts with our assumption, which means $x$ only has one sequence in this form.
+When $x \ne \frac{q}{p^n}$, assume there exists two sequences for representing $x$, denoted by $\{a_i\}$ and $\{b_i\}$. According to this assumption, there must exist a $j$, s.t. $a_j \ne q-1$. Let $k$ be the first position of difference between these two sequences, then $|\sum{a_i}-\sum{b_i}| >= \frac{1}{p^k}-\sum_{i=k+1}^{\infty}\frac{|a_i-b_i|}{p^i} > \frac{1}{p^j}$. So this contradicts with our assumption, which means $x$ only has one sequence in this form.
 \end{proof}
 \bigskip
 
@@ -142,7 +142,16 @@ Assume $\{[a_n, b_n\}$ is a sequence of closed sets, and $\lim_{n\to\infty}(b_n-
  
 \textbf{Solution:}
 \begin{proof}
-Let $E\subset F$ is an upper bounded set, and $T$ is the set of upper bounds of $E$. 
+Let $E$ be a upper-bounded set, and $T$ be the set of all upper bounds of $E$. Construct a function f like this: 
+$$
+f = \left\{
+\begin{aligned} 
+1, x\in E \\
+-1, x \in T
+\end{aligned}
+\right.
+$$
+We assume that $E$ has no supremum. That means $\forall x\in E, \forall \epsilon > 0$(We may assume $x$ is a inner point of $E$), we can find $x_1 > x \in E$, so $\forall x_2 \in (x-\delta, x_1), |f(x_1)-f(x)| = 0 < \epsilon$. So $f$ is continuous on $x$. With the arbitrariness of $x$, $f$ is continuous on $E$. Similarly, $f$ is continuous on $T$. Now we prove that $f$ is continuous on $E\bigcup T$. If not, assume $f$ is not continuous on $x_0$. If $x_0 \in E$, then $f$ should be discontinuous on the right side, which means $\exists \epsilon > 0, \forall \eta > 0, \exists x$, s.t. $|x_0 - x| < \eta, |f(x_0)-f(x)|>\epsilon$. That just means $x_0$ is the supremum of $E$, which makes a contradiction. If $x_0 \in T$, similarly $x_0$ is the supremum of $E$ according to definition. So $f$ is continuous on $E\bigcup T$. Using the property in the problem, for $a \in E, b\in T$, there must exist $x$, s.t. $f(x) = 0$. It contradicts with the construction of $f$. So E has a supremum, which means $\mathcal{F}$ has the least upper bound property.
 \end{proof}
 \bigskip
 
@@ -159,7 +168,7 @@ then $\mathbb{F}$ satisfies the Completeness Axiom. (There are examples of order
 \textbf{Collaborators:}\\
 \smallskip
  
-\textbf{Solution:} \\
+\textbf{Solution:}
 
 \bigskip
 
