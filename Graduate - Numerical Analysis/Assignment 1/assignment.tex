@@ -1,0 +1,88 @@
+%!TEX program = xelate
+\input{structure.tex}
+\usepackage{epstopdf}
+\usepackage{graphics}
+\usepackage{subfig}
+\usepackage{listings}
+\lstset{
+  breaklines=true,
+  xleftmargin=25pt,
+  xrightmargin=25pt,
+  aboveskip=0pt,
+  belowskip=10pt,
+  basicstyle=\ttfamily,
+  showstringspaces=false,
+  frame=ltrb,
+  tabsize=4,
+  numbers=left,
+  numberstyle=\small,
+  numbersep=8pt,
+  morekeywords={*, factorial, sum, erlang},
+}
+\DeclareGraphicsExtensions{.eps,.ps,.jpg,.bmp}
+
+\begin{document}
+
+\title{Numerical Analysis \\ Assignment 1}
+\date{\today}
+\author{Chuan}
+
+\maketitle
+
+\problem{1}{Problem 1.1, Page 43}
+\solution{(a)}{
+In fact, 
+$$
+\frac{1}{n} n\inf_{a\le x\le b} f(x) \le \frac{1}{n}\sum_{i=1}^{n}f(i) \le \frac{1}{n}n\sup_{a\le x\le b}f(x).
+$$
+So according to intermediate theorem, there exists $\zeta\in[a, b]$, $S = f(\zeta)$.
+}
+\solution{(b)}{
+The proposition now becomes as this:
+$$
+S = \sum_{i=1}^{n}w_if(x_i) = f(\zeta)\sum_{i=1}^{n}w_i,
+$$
+for some $\zeta\in [a, b]$. The proof is just the same as (a).
+}
+
+\problem{2}{Problem 1.2, Page 43}
+\solution{(a)}{
+Assume $0 > x > z$, then 
+$$
+\begin{aligned}
+\left|e^x-e^z\right| &= e^z(e^{x-z}-1) = e^z\left[(x-z) + \frac{(x-z)^2}{2} + \frac{e^{\xi}}{3!}(x-z)^3\right] \\
+&= e^z(x-z)\left[1+\frac{(x-z)}{2}\right]
+\end{aligned}
+$$
+}
+\solution{(b)}{
+a
+}
+\solution{(c)}{
+Denote $\xi = x-y$, then
+$$
+x^p-y^p = (y+\xi)^p-y^p = py^{p-1}\xi + R, ~R > 0.
+$$
+and we have
+$$
+x^p-y^p = x^p-(x-\xi)^p = px^{p-1}\xi + R, ~R < 0.
+$$
+So the inequality stands.
+}
+
+\problem{3}{Problem 1.4, Page 44}
+\solution{Proof}{
+According to Integral Mean Value theorem, 
+$$
+\int_{0}^h x^2(h-x)^2g(x)dx = g(\xi)\int_{0}^h x^2(h-x)^2dx = \frac{1}{30}h^5g(\xi),
+$$
+for some $\xi\in [0, h]$.
+}
+
+\problem{4}{Problem 1.5, Page 44}
+\solution{(a)}{
+$$
+\frac{1}{x}\int_0^x e^{-t^2}dt = 
+$$
+}
+\end{document}
