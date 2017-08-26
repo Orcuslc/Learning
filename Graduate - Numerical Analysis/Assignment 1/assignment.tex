@@ -47,16 +47,13 @@ for some $\zeta\in [a, b]$. The proof is just the same as (a).
 
 \problem{2}{Problem 1.2, Page 43}
 \solution{(a)}{
-Assume $0 > x > z$, then 
-$$
-\begin{aligned}
-\left|e^x-e^z\right| &= e^z(e^{x-z}-1) = e^z\left[(x-z) + \frac{(x-z)^2}{2} + \frac{e^{\xi}}{3!}(x-z)^3\right] \\
-&= e^z(x-z)\left[1+\frac{(x-z)}{2}\right]
-\end{aligned}
-$$
+I believe without the condition that $x, z$ are in the neighbourhood of $0$, it can not be derived by only Taylor series. \\
+Fix $z < 0$, let $f(t) = |e^(t+z) - e^z|-|t|$.
+When $t > 0$, $f'(t) = e^(t+z)-1$. So $f(t)$ reaches it's maximum when $t=-z$, and $\max f(t) = 0$. It is similar when $t < 0$. With the arbitrariness of $z$, we can derive the inequality.
 }
 \solution{(b)}{
-a
+Similar with (a), we choose to use other methods.
+Fix $z$, denote $t = x-z$, let $f = |\tan(z+t)-\tan(z)|-|t|$. When $t > 0$, we have $f'(t) = \frac{1}{\cos^2(z+t)}-1 >= 0$, so $\min f = 0$. Similarly when $t < 0$, we have $\min f = 0$. So $|x-z| \le |\tan(x)-\tan(z)|$. 
 }
 \solution{(c)}{
 Denote $\xi = x-y$, then
