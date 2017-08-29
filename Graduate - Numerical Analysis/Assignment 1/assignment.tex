@@ -45,27 +45,41 @@ $$
 for some $\zeta\in [a, b]$. The proof is just the same as (a).
 }
 
-\problem{2}{Problem 1.2, Page 43}
+\problem{2}{Promblem 1.2, Page 43}
 \solution{(a)}{
-I believe without the condition that $x, z$ are in the neighbourhood of $0$, it can not be derived by only Taylor series. \\
-Fix $z < 0$, let $f(t) = |e^(t+z) - e^z|-|t|$.
-When $t > 0$, $f'(t) = e^(t+z)-1$. So $f(t)$ reaches it's maximum when $t=-z$, and $\max f(t) = 0$. It is similar when $t < 0$. With the arbitrariness of $z$, we can derive the inequality.
+Denote $f(x) = e^{x}$, then according to the mean value theorem,
+$$
+|e^x-e^z| = f'(\xi)|x-z|,
+$$
+where $\xi \le 0$, so $|e^x-e^z| \le |x-z|$.
 }
 \solution{(b)}{
-Similar with (a), we choose to use other methods.
-Fix $z$, denote $t = x-z$, let $f = |\tan(z+t)-\tan(z)|-|t|$. When $t > 0$, we have $f'(t) = \frac{1}{\cos^2(z+t)}-1 >= 0$, so $\min f = 0$. Similarly when $t < 0$, we have $\min f = 0$. So $|x-z| \le |\tan(x)-\tan(z)|$. 
+Denote $f(x) = \tan(x)$, then $|\tan(x)-\tan(x)| = f'(\xi)|x-z| \le |x-z|$.
 }
 \solution{(c)}{
-Denote $\xi = x-y$, then
-$$
-x^p-y^p = (y+\xi)^p-y^p = py^{p-1}\xi + R, ~R > 0.
-$$
-and we have
-$$
-x^p-y^p = x^p-(x-\xi)^p = px^{p-1}\xi + R, ~R < 0.
-$$
-So the inequality stands.
+Denote $f(x) = x^p$, then $x^p-y^p = f'(\xi)(x-y), ~\xi\in[x, y]$. Thus $py^{p-1}(x-y) \le x^p-y^p \le px^{p-1}(x-y).$
 }
+% \problem{2}{Problem 1.2, Page 43}
+% \solution{(a)}{
+% I believe without the condition that $x, z$ are in the neighbourhood of $0$, it can not be derived by only Taylor series. \\
+% Fix $z < 0$, let $f(t) = |e^(t+z) - e^z|-|t|$.
+% When $t > 0$, $f'(t) = e^(t+z)-1$. So $f(t)$ reaches it's maximum when $t=-z$, and $\max f(t) = 0$. It is similar when $t < 0$. With the arbitrariness of $z$, we can derive the inequality.
+% }
+% \solution{(b)}{
+% Similar with (a), we choose to use other methods.
+% Fix $z$, denote $t = x-z$, let $f = |\tan(z+t)-\tan(z)|-|t|$. When $t > 0$, we have $f'(t) = \frac{1}{\cos^2(z+t)}-1 >= 0$, so $\min f = 0$. Similarly when $t < 0$, we have $\min f = 0$. So $|x-z| \le |\tan(x)-\tan(z)|$. 
+% }
+% \solution{(c)}{
+% Denote $\xi = x-y$, then
+% $$
+% x^p-y^p = (y+\xi)^p-y^p = py^{p-1}\xi + R, ~R > 0.
+% $$
+% and we have
+% $$
+% x^p-y^p = x^p-(x-\xi)^p = px^{p-1}\xi + R, ~R < 0.
+% $$
+% So the inequality stands.
+% }
 
 \problem{3}{Problem 1.4, Page 44}
 \solution{Proof}{
