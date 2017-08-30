@@ -185,6 +185,29 @@ then $\mathbb{F}$ satisfies the Completeness Axiom. (There are examples of order
 \textbf{Uniqueness:} \\
 Assume there exists two field isomorphisms $f_1, f_2$ from $\mathcal{F}_1$ onto $\mathcal{F}_2$. Let $E$ is an upper bounded set in $\mathcal{F}_1$, and according to the Completeness Axiom, it's supremum is $e$. Denote $E_1 = f_1(E)\in \mathcal{F}_2, E_2 = f_2(E)\in\mathcal{F}_2$. Then according to properties of isomorphism, $E_1, E_2$ are both upper bounded sets, so they both have supremums, denoted by $e_1, e_2$. Then since the isomorphism preserves the order, we have $f_1(e) = f_2(e) = e_1 = e_2$. Since for each $x\in \mathcal{F}_1$, we can construct a set with $x$ being it's supremum (for example, a sequence converge to $x$), we have $f_1(x) = f_2(x)$. Thus $f_1 = f_2$. \\[5pt]
 \textbf{Existence:} \\
+Since $\mathcal{F}_1, \mathcal{F}_2$ are fields, they close to multiplications. Let $I_1$ be the identity of $\mathcal{F}_1$, and $I_2$ be the identity of $\mathcal{F}_2$. Then since each non-zero element have an inverse, we can define rational numbers in $F_i$:
+$$
+q = (c_1I_i)\times (c_2I_i)^{-1},
+$$
+where $x^{-1}$ means the inverse in it's field. \\
+Now we construct the map like this: \\
+$$
+\begin{aligned}
+f: ~\mathcal{F}_1&\to\mathcal{F}_2 \\
+(c_1I_1)\times(c_2I_1)^{-1} &\mapsto (c_1I_2)\times(c_2I_2)^{-1}.
+\end{aligned}
+$$
+For $x \in \mathcal{F}_1$, if $x$ is not a rational number, we call it an irrational number. If $x$ is an irrational number, if we can construct two monotone sequences of rational numbers ${a_i}, {b_i}$, s.t. $a_{i+1}>a{i}$, $b{i+1} < b{i}$, and ${a_i}, {b_i} \to x$, then since the map preserves the order for rational numbers, we can define 
+$$
+f(x) = \lim_{i\to\infty}f(a_i) = \lim_{i\to\infty}f(b_i).
+$$
+for irrational numbers. Then using the linear property of limit, it is trivial to prove that this function is a field isomorphism.
+
+First we prove that $\mathcal{F}$ has the Archimedean property. If not, suppose for $a, b\in \mathcal{F}$, there do not exist a natural number n, $n\cdot a > b$. Suppose $E$ is a bounded set, and $b \in E$, while $a \notin E$. According to the Completeness Axiom, $E$ has a supremum, denoted by $x_0$. 
+
+
+suppose $E$ is a bounded set in $\mathcal{F}$, and with the completeness property, $E$ has a supremum, denoted by $x_0$. 
+According to properties of ordered field, there exists $a_0$, 
 
 \end{proof}
 \bigskip
