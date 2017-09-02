@@ -169,7 +169,27 @@ then $\mathbb{F}$ satisfies the Completeness Axiom. (There are examples of order
 \smallskip
  
 \textbf{Solution:}
-
+\begin{proof}
+Let $E$ be any upper bounded set in $\mathcal{F}$. Let $T$ be the set of all upper bounds of $E$. Select $x_1 \in E$, $y_1 \in T$, and we construct two sequences like this:
+$$
+x_2 = \left\{
+\begin{aligned}
+&x_1, ~\frac{x_1+y_1}{2}\in T, \\
+&\frac{x_1+y_1}{2}, ~\frac{x_1+y_1}{2}\in E
+\end{aligned}
+\right.
+$$
+$$
+y_2 = \left\{
+\begin{aligned}
+&\frac{x_1+y_1}{2}, ~\frac{x_1+y_1}{2}\in T \\
+&y_1, ~\frac{x_1+y_1}{2}\in E
+\end{aligned}
+\right.
+$$
+Let $\{z_n\} = \{x_1, y_1, y_2, x_2,\cdots\}$, let $\xi = y_1-x_1$, then according to Archimedean property, for $\forall \epsilon > 0$, there exists a $N > 0$, $\forall m, n > N$, $|z_m-z_n| < \frac{\xi}{2^N} < \epsilon$. Thus $\{z_n\}$ is a Cauchy sequence, so it convergent to $z$. \\
+Now we prove that $z$ is the supremum of $E$. First, we have $\{x_i\} \le z \le \{y_i\}$, or if there exists $n$, s.t. $x_n > z$, then with the monotoness of $\{x_i\}$, for $\forall m > n$, $|x_m - z| \le |x_n-z|$, which contradicts with that $\{x_n\}\subset\{z_n\}\to z$. In fact this already contains that $z$ is the minimal element of $T$, whichi means $z$ is the supremum of $E$. Thus we proved the Completeness Axiom.
+\end{proof}
 \bigskip
 
 
@@ -185,6 +205,8 @@ then $\mathbb{F}$ satisfies the Completeness Axiom. (There are examples of order
 \textbf{Uniqueness:} \\
 Assume there exists two field isomorphisms $f_1, f_2$ from $\mathcal{F}_1$ onto $\mathcal{F}_2$. Let $E$ is an upper bounded set in $\mathcal{F}_1$, and according to the Completeness Axiom, it's supremum is $e$. Denote $E_1 = f_1(E)\in \mathcal{F}_2, E_2 = f_2(E)\in\mathcal{F}_2$. Then according to properties of isomorphism, $E_1, E_2$ are both upper bounded sets, so they both have supremums, denoted by $e_1, e_2$. Then since the isomorphism preserves the order, we have $f_1(e) = f_2(e) = e_1 = e_2$. Since for each $x\in \mathcal{F}_1$, we can construct a set with $x$ being it's supremum (for example, a sequence converge to $x$), we have $f_1(x) = f_2(x)$. Thus $f_1 = f_2$. \\[5pt]
 \textbf{Existence:} \\
+We construct the function like this: \\
+According to the properties of fields, there exists $0_1, 1_1\in \mathcal{F}_1,~ 0_2, 1_2\in \mathcal{F}_2$, 
 Since $\mathcal{F}_1, \mathcal{F}_2$ are fields, they close to multiplications. Let $I_1$ be the identity of $\mathcal{F}_1$, and $I_2$ be the identity of $\mathcal{F}_2$. Then since each non-zero element have an inverse, we can define rational numbers in $F_i$:
 $$
 q = (c_1I_i)\times (c_2I_i)^{-1},
@@ -197,7 +219,8 @@ f: ~\mathcal{F}_1&\to\mathcal{F}_2 \\
 (c_1I_1)\times(c_2I_1)^{-1} &\mapsto (c_1I_2)\times(c_2I_2)^{-1}.
 \end{aligned}
 $$
-For $x \in \mathcal{F}_1$, if $x$ is not a rational number, we call it an irrational number. If $x$ is an irrational number, if we can construct two monotone sequences of rational numbers ${a_i}, {b_i}$, s.t. $a_{i+1}>a{i}$, $b{i+1} < b{i}$, and ${a_i}, {b_i} \to x$, then since the map preserves the order for rational numbers, we can define 
+For $x \in \mathcal{F}_1$, if $x$ is not a rational number, we call it an irrational number. 
+If $x$ is an irrational number, if we can construct two monotone sequences of rational numbers ${a_i}, {b_i}$, s.t. $a_{i+1}>a_{i}$, $b_{i+1} < b_{i}$, and ${a_i}, {b_i} \to x$, then since the map preserves the order for rational numbers, we can define 
 $$
 f(x) = \lim_{i\to\infty}f(a_i) = \lim_{i\to\infty}f(b_i).
 $$
