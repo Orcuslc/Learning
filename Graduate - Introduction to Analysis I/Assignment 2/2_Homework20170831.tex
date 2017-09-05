@@ -108,11 +108,18 @@ $$
 $$
 Thus the series converges, and the sum is $\sum_{j\in J}f(j)$. \\[2pt]
 \textbf{(b) $\to$ (c):}
-Denote $A = \{i|f(j_i) > 0\}, B = \{i|f(j_i) < 0\}$. If $\#A < \infty$, then $S_1 = \sum_{i\in A} f(i) < \infty$. We can set the bijection as $\phi(i) = k\in A, ~1\le i \le \#A$, and make the rest part a bijection to $B$. Since the series converges, we can know that $\sum_{i\in B} f(i)$ converges. Thus $\sum|f(j)| \le S1+\sum_{i\in B}f(i)$ also converges. Similarly, if $\#B < \infty$ we can get the same result. If $\#A, \#B = \infty$, we can 
-
-
-\textbf{(c) $\to$ (a):}
-If $\sum_{j\in J}|f(j)|$ converges, then $\forall \epsilon > 0$, there $\exists N > 0$, s.t. $\sum_{i= N}^{\infty} |f(j_i)| \le \epsilon$. Then for this $\epsilon$, we take $F_0 = \{a_1, a_2, \cdots, a_{N-1}\}$, then 
+According to (b) we have $\sum_{k=1}^{\infty}f(j_k)$ converges. Suppose $\sum_{j\in J}|f(j)|$ does not converge, we first prove that $\sum_{k=1}^{\infty}f(j_k)^+$ and $\sum_{k=1}^{\infty}f(j_k)^-$ do not converge, where $f(j_k)^+, f(j_k)^-$ means the absolute value of positive and negative terms in $f(j)$, seperately. \\[2pt]
+Suppose $\sum_{k=1}^{\infty}f(j_k)+$ converges, then since
+$$
+\sum_{k=1}^{\infty}f(j_k)^- = \sum_{k=1}^{\infty}f(j_k)^+-\sum_{k=1}^{\infty}f(j_k),
+$$
+we know that $\sum_{k=1}^{\infty}f(j_k)^-$ converges, which means
+$$
+\sum_{k=1}^{\infty}|f(k_j)| = \sum_{k=1}^{\infty}f(k_j)^++\sum_{k=1}^{\infty}f(k_j)^-
+$$
+also converges, which lead to a contradiction. \\[2pt]
+Thus we can rearrange the order of $\sum_{j\in J}f(j)$ like this: for each $f(a_i) > 0$, put enough $f(b_i) < 0$ after it, making $f(a_i) + \sum_{i}f(b_i) < 1$. The possibility of this map comes from that $\sum_{j}f(j)^-\to\infty$. Then we constructed a bijection from $\mathbb{N}\to J$. However, $\sum_{j}\phi(f(j)) < \sum_{j_i}-1\to -\infty$, which makes a contradiction. Thus $\sum_{j}|f(j)|$ converges. \\[2pt]
+\textbf{(c) $\to$ (a):} Since the series of absolute values $\sum_{j\in J}|f(j)|$ converges, we have the original series $\sum_{j\in J}|f(j)|$ converges, and mark that sum as $S$. Then according to the definition, for $\forall \epsilon > 0$, there $\exists N > 0$, $\sum_{i=N}^{\infty}|f(j_i)| < \epsilon$. If we take $F_0 = \{j_1, j_2, \cdots, j_{N-1}\}$, then $\forall$ finite $F\supset F_0$, $\sum_{j\in F\setminus F_0} f(j) \le \sum_{i=N}^{\infty}|f(j_i)|< \epsilon$. That means (a) holds.
 \end{proof}
 \bigskip
 
@@ -134,7 +141,28 @@ If $\sum_{j\in J}|f(j)|$ converges, then $\forall \epsilon > 0$, there $\exists 
 \textbf{Solution:}
 \begin{proof}
 \textbf{(a)} \\[2pt]
-
+$$
+\begin{aligned}
+\sum_{n\ne m}\frac{1}{m^2-n^2} &= -\frac{1}{2m}\sum_{n\ne m}\left(\frac{1}{n-m}-\frac{1}{n+m} \right)\\
+&=-\frac{1}{2m}(-\frac{1}{m-1}-\frac{1}{m+1}-\cdots-1-\frac{1}{2m-1}\\
+&\quad + 1-\frac{1}{2m+1}+\cdots+\frac{1}{m}-\frac{1}{3m}\\
+&\quad + \frac{1}{m+1}-\frac{1}{3m+1}+\cdots+\frac{1}{2m}-\frac{1}{4m}+\cdots) \\
+&= -\frac{1}{2m}\left(\lim_{n\to\infty}(-\sum_{i=-m}^{m}\frac{1}{n+i}) + \frac{1}{m} + \frac{1}{2m}\right) \\
+&= -\frac{3}{4m}.
+\end{aligned}
+$$
+\\
+\textbf{(b)} 
+According to (a),
+$$
+\sum_{n=0}^{\infty}u_{mn} = -\frac{3}{4m^2}+\frac{1}{m^2} = \frac{1}{4m^2}, ~\sum_{m=0}^{\infty}u_{mn} = -\frac{1}{4n^2}.
+$$
+Thus
+$$
+\sum_{m=0}^{\infty}\left(\sum_{n=0}^{\infty} u_{mn}\right) = -\sum_{n=0}^{\infty}\left(\sum_{m=0}^{\infty} u_{mn}\right) = \sum_{n=1}^{\infty}\frac{1}{4n^2}\ne 0.
+$$
+\\
+\textbf{(c)}
 \end{proof}
 \bigskip
 
