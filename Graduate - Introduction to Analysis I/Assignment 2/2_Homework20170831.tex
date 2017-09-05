@@ -1,0 +1,204 @@
+
+\documentclass{article}%
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{amsfonts}%
+\usepackage{amssymb}
+
+
+\setlength{\topmargin}{-0.75in}
+\setlength{\textheight}{9.25in}
+\setlength{\oddsidemargin}{0.0in}
+\setlength{\evensidemargin}{0.0in}
+\setlength{\textwidth}{6.5in}
+\def\labelenumi{\arabic{enumi}.}
+\def\theenumi{\arabic{enumi}}
+\def\labelenumii{(\alph{enumii})}
+\def\theenumii{\alph{enumii}}
+\def\p@enumii{\theenumi.}
+\def\labelenumiii{\arabic{enumiii}.}
+\def\theenumiii{\arabic{enumiii}}
+\def\p@enumiii{(\theenumi)(\theenumii)}
+\def\labelenumiv{\arabic{enumiv}.}
+\def\theenumiv{\arabic{enumiv}}
+\def\p@enumiv{\p@enumiii.\theenumiii}
+\pagestyle{plain}
+\setcounter{secnumdepth}{0}
+\newtheorem{theorem}{Theorem}
+\newtheorem{acknowledgement}[theorem]{Acknowledgement}
+\newtheorem{algorithm}[theorem]{Algorithm}
+\newtheorem{axiom}[theorem]{Axiom}
+\newtheorem{case}[theorem]{Case}
+\newtheorem{claim}[theorem]{Claim}
+\newtheorem{conclusion}[theorem]{Conclusion}
+\newtheorem{condition}[theorem]{Condition}
+\newtheorem{conjecture}[theorem]{Conjecture}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{criterion}[theorem]{Criterion}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{example}[theorem]{Example}
+\newtheorem{exercise}[theorem]{Exercise}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{notation}[theorem]{Notation}
+\newtheorem{problem}[theorem]{Problem}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{solution}[theorem]{Solution}
+\newtheorem{summary}[theorem]{Summary}
+\newenvironment{proof}[1][Proof]{\textbf{#1.} }{\ \rule{0.5em}{0.5em}}
+
+\begin{document}
+
+\begin{center}
+\textbf{Introduction to Analysis $I$\\Homework 2\\Thursday, August 31, 2017}\bigskip
+\end{center}
+
+\noindent\textbf{Instructions}: You may submit this homework ``the old fashion'' way, i.e., using paper and pencil (or pen), but if you do so, please use at least one sheet of ($8\frac{1}{2}%
+\times11$) paper per problem. Write your name at the top of each sheet you
+use. Please write neatly. Staple the sheets together or use a paper clip.
+
+However, I encourage you to do at least some of the problems using LaTeX.  As of the third assignment, you will have to submit your homework in LaTeX.
+
+\noindent If you use results from books, Royden or others, please be explicit about what results you are using.
+
+
+
+\begin{center}
+\emph{Homework 2 is due by the start of class on Wednesday, September 13.}
+\end{center} 
+\medskip
+
+\begin{enumerate}
+\item Recall the unconventional terminology I introduced in class: If $J$ is an infinite set and $f:J\to \mathbb{R}$ is a real-valued function, then the symbol $\sum_{j\in J} f(j)$ is the series determined by $J$, with terms $f(j)$.  We say $\sum_{j\in J} f(j)$ \emph{converges to $S$ unconditionally} if for every $\epsilon > 0$ there is a finite subset $F_0 \subset J$ such that if $F$ is any finite subset of $J$ that contains $F_0$, then $|\sum_{j\in F} f(j) - S|< \epsilon$. Show that if $\sum_{j\in J} f(j)$ converges to some $S$ unconditionally, then $\{j\in J \mid f(j)\neq 0\}$ is countable.
+
+\bigskip
+\textbf{Collaborators:}\\
+\smallskip
+
+\textbf{Solution:}
+\begin{proof} 
+According to the assumption, $\forall \epsilon > 0$, there is a finite subset $F_0$, $\forall$ finite $F\supset F_0$, $-\epsilon-(\sum_{j\in F_0}f(j)-S) < \sum_{j\in F\setminus F_0}f(j) < \epsilon-(\sum_{j\in F_0}f(j)-S)$. Denote $\alpha = \epsilon-(\sum_{j\in F_0}f(j)-S)$. \\[2pt]
+Suppose that $E$ = $\{j\in J|f(j)\ne 0\}$ is uncountable, denote $E_1 = \{j\in J|f(j) > 0\}$, $E_2 = \{j\in J|f(j) < 0\}$, then $E = E_1+E_2$. Then either $E_1$ or $E_2$ is uncountable, otherwise $E$ is countable. We may assume that $E_1$ is uncountable. We can construct a sequence of subsets $\{F_n\}$ like this: \\[2pt]
+First, $F_1 = \{j\in J|f(j) > \alpha\}$ is countable, otherwise $F_1\setminus F_0$ is uncountable, which means we can find a finite set from $F_1\setminus F_0$, s.t. $\sum_{j\in F_1\setminus F_0}f(j) > \alpha$. Similarly, $F_{n+1} = \{j\in J|f(j) > \frac{\alpha}{2^n}\}$ are all countable, which means $G_n = E_1 - F_{n+1}$ is uncountable. However, since the countable sum of countable sequences is also countable, so $\lim_{n\to\infty}G_n = \{j\in J|f(j)\le 0\}$ is uncountable, and it contradicts to the assumption. So there must exist a $k > 0$, $F_k$ is uncountable, and thus $F_k \setminus F_0$ is uncountable. Thus we can select $2^k$ elements from $F_k$, and their sum is larger then $\alpha$, and it also contradicts with our assumption.
+\end{proof}
+\bigskip
+
+\item Assume now that $J$ is countably infinite and show that the following assertions about a series $\sum_{j\in J} f(j)$ are equivalent:
+\begin{enumerate}
+\item The series $\sum_{j\in J} f(j)$ converges unconditionally.
+\item For each bijection $\phi:\mathbb{N}\to J$, the series $\sum_{k = 1}^{\infty} f\circ(\phi(k))$ converges in the sense discussed in the text, and that the sum is the sum of $\sum_{j\in J} f(j)$.
+\item The series of absolute values $\sum_{j\in J} |f(j)|$ converges.
+\end{enumerate}
+
+\bigskip
+\textbf{Collaborators:}\\
+\smallskip
+ 
+\textbf{Solution:}
+\begin{proof}
+Since $J$ is countably infinite, we may assume $J = \{j_i\}_{i=0}^{\infty}$. \\[2pt]
+\textbf{(a) $\to$ (b):}
+Since $\sum_{j\in J}f(j)$ converges unconditionally, $\forall \epsilon > 0$, $\exists$ a finite set $F_0$, $\forall F\supset F_0$,
+$$
+\left|\sum_{j\in F}f(j)-\sum_{i=1}^{\infty}f(j_i)\right|<\epsilon.
+$$
+Since $\phi$ is a bijection, there $\exists N > 0$, $\phi(\{1, 2, \cdots, N\})\supset F_0$. Denote $\phi(\{1, 2, \cdots, N\}) = F$, then
+$$
+\left|\sum_{i=1}^{N}f(\phi(i))-\sum_{i=1}^{\infty}f(j_i)\right| = \left|\sum_{i=1}^{N}f(\phi(i))-\sum_{i=1}^{\infty}f(\phi(j_i))\right| < \epsilon.
+$$
+Thus the series converges, and the sum is $\sum_{j\in J}f(j)$. \\[2pt]
+\textbf{(b) $\to$ (c):}
+According to (b) we have $\sum_{k=1}^{\infty}f(j_k)$ converges. Suppose $\sum_{j\in J}|f(j)|$ does not converge, we first prove that $\sum_{k=1}^{\infty}f(j_k)^+$ and $\sum_{k=1}^{\infty}f(j_k)^-$ do not converge, where $f(j_k)^+, f(j_k)^-$ means the absolute value of positive and negative terms in $f(j)$, seperately. \\[2pt]
+Suppose $\sum_{k=1}^{\infty}f(j_k)+$ converges, then since
+$$
+\sum_{k=1}^{\infty}f(j_k)^- = \sum_{k=1}^{\infty}f(j_k)^+-\sum_{k=1}^{\infty}f(j_k),
+$$
+we know that $\sum_{k=1}^{\infty}f(j_k)^-$ converges, which means
+$$
+\sum_{k=1}^{\infty}|f(k_j)| = \sum_{k=1}^{\infty}f(k_j)^++\sum_{k=1}^{\infty}f(k_j)^-
+$$
+also converges, which lead to a contradiction. \\[2pt]
+Thus we can rearrange the order of $\sum_{j\in J}f(j)$ like this: for each $f(a_i) > 0$, put enough $f(b_i) < 0$ after it, making $f(a_i) + \sum_{i}f(b_i) < 1$. The possibility of this map comes from that $\sum_{j}f(j)^-\to\infty$. Then we constructed a bijection from $\mathbb{N}\to J$. However, $\sum_{j}\phi(f(j)) < \sum_{j_i}-1\to -\infty$, which makes a contradiction. Thus $\sum_{j}|f(j)|$ converges. \\[2pt]
+\textbf{(c) $\to$ (a):} Since the series of absolute values $\sum_{j\in J}|f(j)|$ converges, we have the original series $\sum_{j\in J}|f(j)|$ converges, and mark that sum as $S$. Then according to the definition, for $\forall \epsilon > 0$, there $\exists N > 0$, $\sum_{i=N}^{\infty}|f(j_i)| < \epsilon$. If we take $F_0 = \{j_1, j_2, \cdots, j_{N-1}\}$, then $\forall$ finite $F\supset F_0$, $\sum_{j\in F\setminus F_0} f(j) \le \sum_{i=N}^{\infty}|f(j_i)|< \epsilon$. That means (a) holds.
+\end{proof}
+\bigskip
+
+
+
+\item \begin{enumerate}
+\item Show that the series \[
+\sum_{n\geq 1, n\neq m} \frac{1}{m^2 - n^2}\]is convergent and has sum equal to $-\frac{3}{4m^2}$ (decompose the rational fraction $1/(m^2 - x^2)$).
+\item Let $u_{mn} = \frac{1}{m^2 - n^2}$ if $m\neq n$, and let $u_{nn} = 0$. Show that \[
+\sum_{m=0}^{\infty}\left(\sum_{n=0}^{\infty} u_{mn}\right) = -\sum_{n=0}^{\infty}\left(\sum_{m=0}^{\infty} u_{mn}\right) \neq 0.\]
+\item Explain what, if anything, the computations of parts a) and b) of this problem have to do with Problem 2.
+\end{enumerate}
+
+
+\bigskip
+\textbf{Collaborators:}\\
+\smallskip
+ 
+\textbf{Solution:}
+\begin{proof}
+\textbf{(a)} \\[2pt]
+$$
+\begin{aligned}
+\sum_{n\ne m}\frac{1}{m^2-n^2} &= -\frac{1}{2m}\sum_{n\ne m}\left(\frac{1}{n-m}-\frac{1}{n+m} \right)\\
+&=-\frac{1}{2m}(-\frac{1}{m-1}-\frac{1}{m+1}-\cdots-1-\frac{1}{2m-1}\\
+&\quad + 1-\frac{1}{2m+1}+\cdots+\frac{1}{m}-\frac{1}{3m}\\
+&\quad + \frac{1}{m+1}-\frac{1}{3m+1}+\cdots+\frac{1}{2m}-\frac{1}{4m}+\cdots) \\
+&= -\frac{1}{2m}\left(\lim_{n\to\infty}(-\sum_{i=-m}^{m}\frac{1}{n+i}) + \frac{1}{m} + \frac{1}{2m}\right) \\
+&= -\frac{3}{4m}.
+\end{aligned}
+$$
+\\
+\textbf{(b)} 
+According to (a),
+$$
+\sum_{n=0}^{\infty}u_{mn} = -\frac{3}{4m^2}+\frac{1}{m^2} = \frac{1}{4m^2}, ~\sum_{m=0}^{\infty}u_{mn} = -\frac{1}{4n^2}.
+$$
+Thus
+$$
+\sum_{m=0}^{\infty}\left(\sum_{n=0}^{\infty} u_{mn}\right) = -\sum_{n=0}^{\infty}\left(\sum_{m=0}^{\infty} u_{mn}\right) = \sum_{n=1}^{\infty}\frac{1}{4n^2}\ne 0.
+$$
+\\
+\textbf{(c)}
+\end{proof}
+\bigskip
+
+
+
+\item (Problems 17, 18, and 19, page 43) These problems tie well together, so I thought I would make them one big problem.
+
+\begin{enumerate}
+\item Show that a set $E$ is measurable if and only if for each $\epsilon > 0$, there is a closed set $F$ and an open set $\mathcal{O}$ for which $F\subseteq E \subseteq \mathcal{O}$ and $m^*(\mathcal{O} \sim F)< \epsilon.$
+\item Suppose $E$ is a set with finite outer measure. Show that there is a $G_{\delta}$ set $G$ such that $
+ E \subseteq G \text{ and } m^*(E) = m(G).$  Show that $E$ is measurable if and only if there is an $F_{\sigma}$ set $F$ contained in $E$ such that $m(F) = m^*(E)$.
+\item Suppose $E$ is a set with finite outer measure. Show that if $E$ is \emph{not} measurable then there is an open set $\mathcal{O}$ containing $E$ that has finite outer measure for which \[
+m^*(\mathcal{O}\sim E) > m^*(\mathcal{O}) - m^*(E).                                                                                                                                                                                                
+                                                                                                                                                                                               \]
+
+  
+\end{enumerate}
+
+
+\bigskip
+\textbf{Collaborators:}\\
+\smallskip
+ 
+\textbf{Solution:}
+\bigskip
+
+
+\item (Problem 28, Page 47) Show that continuity of measure together  with finite additivity of measure implies countable additivity of measure.
+
+\bigskip
+\textbf{Collaborators:}\\
+\smallskip
+ 
+\textbf{Solution:}
+\bigskip
+
+
+\end{enumerate}
+\end{document}
