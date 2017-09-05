@@ -104,7 +104,7 @@ x = \sum_{n=1}^{\infty} \frac{a_n}{p^n} \]and that this sequence is unique excep
 \textbf{Solution:}
 \begin{proof}
 \textbf{Existance:} \\
-Let $a_1 = \lfloor px\rfloor$, $a_2 = \lfloor p^2x-a_1p\rfloor$, $\cdots$, $a_n = \lfloor p^nx - \sum_{i=1}^{n-1}a_ip^{n-i}\rfloor=-$. From this inductive construction we know that the subsum $S_n = \sum_{i=1}^n\frac{a_i}{p^i}$ forms a increasing sequence, while it is upper bounded by $x$. According to the Monotone Convergence Criterion, this sequence has a limitation. Moreover, $|x - S_n| \le \frac{1}{p^{n-1}}$ for each n, so $\lim_{n\to\infty} |x-S_n|= 0$, that means $x$ is a limitation of $\{S_n\}$. By the same criterion, we can know that $x$ is the only limitation of $\{S_n\}$, that means $x = \sum_{n=1}^{\infty}\frac{a_n}{p^n}$. \\[5pt]
+Let $a_1 = \lfloor px\rfloor$, $a_2 = \lfloor p^2x-a_1p\rfloor$, $\cdots$, $a_n = \lfloor p^nx - \sum_{i=1}^{n-1}a_ip^{n-i}\rfloor$. From this inductive construction we know that the subsum $S_n = \sum_{i=1}^n\frac{a_i}{p^i}$ forms a increasing sequence, while it is upper bounded by $x$. According to the Monotone Convergence Criterion, this sequence has a limitation. Moreover, $|x - S_n| \le \frac{1}{p^{n-1}}$ for each n, so $\lim_{n\to\infty} |x-S_n|= 0$, that means $x$ is a limitation of $\{S_n\}$. By the same criterion, we can know that $x$ is the only limitation of $\{S_n\}$, that means $x = \sum_{n=1}^{\infty}\frac{a_n}{p^n}$. \\[5pt]
 \textbf{Uniqueness:} \\
 First, we need to prove that $0$ can be represented in this way by two sequences if we may let $a_0 = -1$. The two sequences are trivial: the first one is $a_i = 0$, and the second one is $a_0 = -1, a_i = p-1$. If there exist a third sequence ${b_i}$, then if $b_0 \ge 0, b_j > 0$, then $\sum_{b_i} \ge \frac{1}{p^j} > 0$. If $b_0 \le -1, b_j < p-1$, the $\sum_{b_i} \le -\frac{1}{p^j} < 0$. So there only exists two sequences for $0$. When $x = \frac{q}{p^n}$, it is just the same as $x = 0$ since we only need to shuffle the point n times to the right. So there also exists two sequences for $x$. \\
 When $x \ne \frac{q}{p^n}$, assume there exists two sequences for representing $x$, denoted by $\{a_i\}$ and $\{b_i\}$. According to this assumption, there must exist a $j$, s.t. $a_j \ne q-1$. Let $k$ be the first position of difference between these two sequences, then $|\sum{a_i}-\sum{b_i}| >= \frac{1}{p^k}-\sum_{i=k+1}^{\infty}\frac{|a_i-b_i|}{p^i} > \frac{1}{p^j}$. So this contradicts with our assumption, which means $x$ only has one sequence in this form.
@@ -219,18 +219,17 @@ f: ~\mathcal{F}_1&\to\mathcal{F}_2 \\
 (c_1I_1)\times(c_2I_1)^{-1} &\mapsto (c_1I_2)\times(c_2I_2)^{-1}.
 \end{aligned}
 $$
-For $x \in \mathcal{F}_1$, if $x$ is not a rational number, we call it an irrational number. 
-If $x$ is an irrational number, if we can construct two monotone sequences of rational numbers ${a_i}, {b_i}$, s.t. $a_{i+1}>a_{i}$, $b_{i+1} < b_{i}$, and ${a_i}, {b_i} \to x$, then since the map preserves the order for rational numbers, we can define 
+For $x \in \mathcal{F}_1$, if $x$ is not a rational number, we call it an irrational number. Since $\mathcal{F}$ has the Archimedean property(WHICH I DIDN'T PROVE), the rational numbers are density in $\mathcal{F}$. So $\forall x\in \mathcal{F}$, if $x$ is an irrational number, we can construct two monotone sequences of rational numbers ${a_i}, {b_i}$, s.t. $a_{i+1}>a_{i}$, $b_{i+1} < b_{i}$, and ${a_i}, {b_i} \to x$, then since the map preserves the order for rational numbers, we can define 
 $$
 f(x) = \lim_{i\to\infty}f(a_i) = \lim_{i\to\infty}f(b_i).
 $$
 for irrational numbers. Then using the linear property of limit, it is trivial to prove that this function is a field isomorphism.
 
-First we prove that $\mathcal{F}$ has the Archimedean property. If not, suppose for $a, b\in \mathcal{F}$, there do not exist a natural number n, $n\cdot a > b$. Suppose $E$ is a bounded set, and $b \in E$, while $a \notin E$. According to the Completeness Axiom, $E$ has a supremum, denoted by $x_0$. 
+% First we prove that $\mathcal{F}$ has the Archimedean property. If not, suppose for $a, b\in \mathcal{F}$, there do not exist a natural number n, $n\cdot a > b$. Suppose $E$ is a bounded set, and $b \in E$, while $a \notin E$. According to the Completeness Axiom, $E$ has a supremum, denoted by $x_0$. 
 
 
-suppose $E$ is a bounded set in $\mathcal{F}$, and with the completeness property, $E$ has a supremum, denoted by $x_0$. 
-According to properties of ordered field, there exists $a_0$, 
+% suppose $E$ is a bounded set in $\mathcal{F}$, and with the completeness property, $E$ has a supremum, denoted by $x_0$. 
+% According to properties of ordered field, there exists $a_0$, 
 
 \end{proof}
 \bigskip
