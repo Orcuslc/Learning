@@ -254,58 +254,60 @@ The results of the original function and revised function are listed as follows,
 \\
 \begin{minipage}{0.5\textwidth}
 \begin{lstlisting}[language = MATLAB]
+>> format long e
 >> x = 10.^(-1:-1:-16);
 >> prob2(x)
 
 ans =
 
-   0.048808848170152
-   0.004987562112089
-   0.000499875062461
-   0.000049998750062
-   0.000004999987500
-   0.000000499999875
-   0.000000049999999
-   0.000000005000000
-   0.000000000500000
-   0.000000000050000
-   0.000000000005000
-   0.000000000000500
-   0.000000000000050
-   0.000000000000005
-   0.000000000000000
-                   0
+     4.880884817015163e-02
+     4.987562112088950e-03
+     4.998750624609638e-04
+     4.999875006239662e-05
+     4.999987500031722e-06
+     4.999998750587764e-07
+     4.999999880794803e-08
+     4.999999969612645e-09
+     5.000000413701855e-10
+     5.000000413701855e-11
+     5.000000413701855e-12
+     5.000444502911705e-13
+     4.996003610813204e-14
+     4.884981308350689e-15
+     4.440892098500626e-16
+                         0
 \end{lstlisting}
 \end{minipage}
 \hspace{10pt}
 \begin{minipage}{0.5\textwidth}
 \begin{lstlisting}[language = MATLAB]
+>> format long e
 >> x = 10.^(-1:-1:-16);
 >> prob2revised(x)
 
 ans =
 
-   0.048808848170152
-   0.004987562112089
-   0.000499875062461
-   0.000049998750062
-   0.000004999987500
-   0.000000499999875
-   0.000000049999999
-   0.000000005000000
-   0.000000000500000
-   0.000000000050000
-   0.000000000005000
-   0.000000000000500
-   0.000000000000050
-   0.000000000000005
-   0.000000000000000
-   0.000000000000000
+     4.880884817015155e-02
+     4.987562112089027e-03
+     4.998750624609648e-04
+     4.999875006249610e-05
+     4.999987500062500e-06
+     4.999998750000624e-07
+     4.999999875000006e-08
+     4.999999987500000e-09
+     4.999999998750000e-10
+     4.999999999875000e-11
+     4.999999999987501e-12
+     4.999999999998750e-13
+     4.999999999999876e-14
+     4.999999999999988e-15
+     4.999999999999999e-16
+     5.000000000000000e-17
 \end{lstlisting}
 \end{minipage}
 \\
 \solution{Discussion}{
-From the result we can know when $x = 10^{-16}$, the original computation loses all significant numbers, while the modified computation still has a significant number.
+From the result we can know when $x = 10^{-10}$, the original computation starts to lose significant numbers, and when $x = 10^{-17}$, the modified computation still does not lose significant numbers.
 }
 
 \end{document}
