@@ -228,10 +228,23 @@ Thus $G = \bigcap G_k$ is a $G_\delta$ set, and $F = \bigcup F_k$ is a $F_\sigma
 $$
 m(G) - m^*(E) \le m(G\setminus E) < \frac{\epsilon}{2^n}, ~m^*(E)-m(F)\le m(E\setminus F) < \frac{\epsilon}{2^n}.
 $$
-Let $n\to\infty$, we have $m^*(E) = m(G) = m(F)$. \\[2pt]
+Let $n\to\infty$, we have $m^*(E) = m(G) = m(F)$.
+
+On the other hand, suppose there exists a $F_\sigma$ set $F$ contained in $E$, s.t. $m(F) = m^*(E)$. Then similar to the process of (a), $\forall \epsilon > 0$, there is an open set $G\supset E$, s.t. $m^*(G\setminus E) < \epsilon$. Thus $m^*(G\setminus F) < m^*(G\setminus E) + m^*(E\setminus F) < \epsilon$. Then $E$ is a measurable set. 
+
 \textbf{(c):}
-
-
+Fisrt there exist an open set $O\supset E$ which has finite outer measure.
+Suppose for each open set $O$ containing $E$ that has finite outer measure, 
+$$
+m^*(O\setminus E) \le m^*(O)-m^*(E).
+$$
+Then we have
+$$
+m^*(O\setminus E) = m^*(O)-m^*(E)
+$$
+according to the properties of outer measures. 
+So according to the definition of outer measures, $\forall \epsilon > 0$, there is an open set $O\supset E$, s.t. $m^*(O)-m^*(E) < \epsilon$. This leads to $m^*(O\setminus E) < epsilon$. Accoding to Theorem 11 on Page 40, $E$ is measurable, which makes an contradiction. 
+% Denote $\{O_k\}$ to be the set of open sets containing $E$, then $O = \bigcap O_k$ is the smallest $G_\sigma$ set containing $E$, but 
 \end{proof}
 \bigskip
 
