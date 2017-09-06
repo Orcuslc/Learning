@@ -47,14 +47,8 @@ void keyboardFunc( unsigned char key, int x, int y )
 		colorIndex = rand();
 		break;
 	case 'r':
-		if(rotate == 0) {
-			glutTimerFunc(100, TimerFunc, 1);
-			rotate = 1;
-		}
-		else {
-			glutTimerFunc(100, TimerFunc, 0);
-			rotate = 0;
-		}
+		if(rotate == 0) rotate = 1;
+		else rotate = 0;
 		break;
 	default:
 		cout << "Unhandled key press " << key << "." << endl;        
@@ -260,6 +254,8 @@ int main( int argc, char** argv )
 	// Set up callback functions for key presses
 	glutKeyboardFunc(keyboardFunc); // Handles "normal" ascii symbols
 	glutSpecialFunc(specialFunc);   // Handles "special" keyboard keys
+
+	glutTimerFunc(100, TimerFunc, flag);
 
 	 // Set up the callback function for resizing windows
 	glutReshapeFunc( reshapeFunc );
