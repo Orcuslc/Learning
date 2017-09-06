@@ -163,6 +163,7 @@ $$
 $$
 \\
 \textbf{(c)}
+The computation of (b) has the same principle as (c)$\to$(b) in prob. 2.
 \end{proof}
 \bigskip
 
@@ -190,9 +191,47 @@ m^*(\mathcal{O}\sim E) > m^*(\mathcal{O}) - m^*(E).
 \begin{proof}
 \textbf{(a):}\\[2pt]
 \textbf{Sufficiency:}
-For $\forall A\subset \mathbb{R}$, first we have $m^*(A) \le m^*(A\bigcap E) + m^*(A\bigcap E^c)$. So we only need to show that $m^*(A) \ge m^*(A\bigcap E) + m^*(A\bigcap E^c)$. According to assumption, $m^*(A\bigcap E) + m^*(A\bigcap E^c) \le m^*(A\bigcap O)+m^*(A\bigcap F^c) < m^*(A\bigcap O)+m^*(A\bigcap O^c)+\epsilon$. Since the open set $O$ is measurable, we have $m^*(A\bigcap )+m^*(A\bigcap O^c) = m^*(O)$. Thus by the arbitrariness of $\epsilon$, we know that $m^*(A) = m^*(A\bigcap E)+m^*(A\bigcap E^c)$. \\[2pt]
-\textbf{Necessity:} P24
-We first prove that 
+For $\forall A\subset \mathbb{R}$, first we have $m^*(A) \le m^*(A\cap E) + m^*(A\cap E^c)$. So we only need to show that $m^*(A) \ge m^*(A\cap E) + m^*(A\cap E^c)$. According to assumption, $m^*(A\cap E) + m^*(A\cap E^c) \le m^*(A\cap O)+m^*(A\cap F^c) < m^*(A\cap O)+m^*(A\cap O^c)+\epsilon$. Since the open set $O$ is measurable, we have $m^*(A\cap )+m^*(A\cap O^c) = m^*(O)$. Thus by the arbitrariness of $\epsilon$, we know that $m^*(A) = m^*(A\cap E)+m^*(A\cap E^c)$. \\[2pt]
+
+\textbf{Necessity:} We first show that $\forall \epsilon > 0$, we can find an open set $O\supset E$, s.t. $m^*(O\setminus E) < \epsilon$. \\[2pt]
+First, if $m^*(E) <\infty$. Then according to definition of outer measure, $\forall\epsilon > 0$, there is an open cover $\{O_i\}$ of $E$, s.t. 
+$$
+\sum_{i}m^*(O_i) < m^*(E)+\epsilon.
+$$
+Let $O = \bigcup_{i}O_i$, then $m^*(O) < m^*(E)+\epsilon$, and $O$ is an open set. Thus 
+$$
+m^*(O\setminus E) = m^*(E)-m^*(E\cap O) = m^*(O)-m^*(E) < \epsilon.
+$$
+If $m^*(E) = \infty$, define $E_{n} = \{x\in E:|x|\le n\}$. Then $E_n$ is measurable with finite outer measure, the argument above shows that there is an open set $O_k\supset E_k$, s.t.
+$$
+m^*(O_k\setminus E_k) < \frac{\epsilon}{2^k}.
+$$
+Then $O = \bigcup_{k} O_k$ is an open set that contains $E$, and 
+$$
+m^*(O\setminus E) = m^*\left(\bigcup_{k}O_k\setminus E\right)\le\sum_{k}m^*(O_k\setminus E)\le\sum_{k}m^*(O_k\setminus E_k)<\epsilon.
+$$
+So there is an open set $O\supset E$, s.t. $m^*(O\setminus E) < \frac{\epsilon}{2}$. Meanwhile, since $E^c$ is measurable, there is an open set $G\supset E^c$, s.t. $m^*(G\setminus E^c)<\frac{\epsilon}{2}$. Thus we have a closed set $F = G^c$, and $O\supset E\supset F$,
+$$
+m^*(O\setminus F) \le m^*(O\setminus E)+m^*(E\setminus F) = m^*(O\setminus E)+m^*(G\setminus E^c) < \epsilon.
+$$
+\\[2pt]
+\textbf{(b):}
+From (a) we know that $\forall \epsilon > 0$, there exists an open set $G$ and a closed set $F$, s.t. $G\supset E\supset F$. So 
+$$
+m(G\setminus E) \le m(G\setminus F) < \epsilon, ~m(E\setminus F) \le m(G\setminus F) < \epsilon.
+$$
+Thus we can construct two series of sets $\{G_k\}$ and $\{F_k\}$:
+$$
+G_k\supset E\supset F_k, ~m(G_k\setminus E) < \frac{\epsilon}{2^k}, ~m(E\setminus F_k) < \frac{\epsilon}{2^k}.
+$$
+Thus $G = \bigcap G_k$ is a $G_\delta$ set, and $F = \bigcup F_k$ is a $F_\sigma$ set, and
+$$
+m(G) - m^*(E) \le m(G\setminus E) < \frac{\epsilon}{2^n}, ~m^*(E)-m(F)\le m(E\setminus F) < \frac{\epsilon}{2^n}.
+$$
+Let $n\to\infty$, we have $m^*(E) = m(G) = m(F)$. \\[2pt]
+\textbf{(c):}
+
+
 \end{proof}
 \bigskip
 
