@@ -33,7 +33,6 @@ vector<vector<unsigned> > vecf;
 
 // This function is called whenever a "Normal" key press is received.
 int colorIndex = 0, rotate = 0;
-void TimerFunc(int);
 void keyboardFunc( unsigned char key, int x, int y )
 {
 	switch ( key )
@@ -47,8 +46,7 @@ void keyboardFunc( unsigned char key, int x, int y )
 		colorIndex = rand();
 		break;
 	case 'r':
-		if(rotate == 0) rotate = 1;
-		else rotate = 0;
+		rotate = !rotate;
 		break;
 	default:
 		cout << "Unhandled key press " << key << "." << endl;        
@@ -93,14 +91,11 @@ void specialFunc( int key, int x, int y )
 
 GLfloat theta = 0.0f;
 void TimerFunc(int flag) {
-	if(rotate == 0) {
-		return;
+	if(rotate) {
+		theta += 5.f;
 	}
-	else {
-		theta += 0.1;
-		glutPostRedisplay();
-		glutTimerFunc(100, TimerFunc, flag);
-	}
+	glutPostRedisplay();
+	glutTimerFunc(10, TimerFunc, 0);
 }
 
 // This function is responsible for displaying the object.
@@ -120,8 +115,6 @@ void drawScene(void)
 	gluLookAt(0.0, 0.0, 5.0,
 			  0.0, 0.0, 0.0,
 			  0.0, 1.0, 0.0);
-
-	glRotatef(theta, 0.0f, 1.0f, 0.0f);
 
 	// Set material properties of object
 
@@ -152,6 +145,7 @@ void drawScene(void)
 
 	glLightfv(GL_LIGHT0, GL_DIFFUSE, Lt0diff);
 	glLightfv(GL_LIGHT0, GL_POSITION, Lt0pos);
+	glRotatef(theta, 0.f, 0.1f, 0.f);
 
 	// This GLUT method draws a teapot.  You should replace
 	// it with code which draws the object you loaded.
@@ -165,9 +159,10 @@ void drawScene(void)
 		glVertex3d(vecv[d-1][0], vecv[d-1][1], vecv[d-1][2]);
 		glNormal3d(vecn[i-1][0], vecn[i-1][1], vecn[i-1][2]);
 		glVertex3d(vecv[g-1][0], vecv[g-1][1], vecv[g-1][2]);
+
 		glEnd();
 	}
-	
+
 	// Dump the image to the screen.
 	glutSwapBuffers();
 
@@ -254,8 +249,8 @@ int main( int argc, char** argv )
 	// Set up callback functions for key presses
 	glutKeyboardFunc(keyboardFunc); // Handles "normal" ascii symbols
 	glutSpecialFunc(specialFunc);   // Handles "special" keyboard keys
-
-	glutTimerFunc(100, TimerFunc, flag);
+	
+	glutTimerFunc(10, TimerFunc, 0);
 
 	 // Set up the callback function for resizing windows
 	glutReshapeFunc( reshapeFunc );
