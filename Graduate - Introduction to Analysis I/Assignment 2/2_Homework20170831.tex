@@ -256,6 +256,17 @@ So according to the definition of outer measures, $\forall \epsilon > 0$, there 
 \smallskip
  
 \textbf{Solution:}
+\begin{proof}
+Let $\{A_k\}_{k=1}^\infty$ be a set of disjoint measurable sets. Denote $B_k = \bigcup_{i=1}^k A_i$, then $\{B_k\}$ is an ascending sequence of measurable sets, and 
+$$
+m(B_k) = \sum_{i=1}^k m(A_i).
+$$
+According to the continuity of measure, 
+$$
+m\left(\bigcup_{k=1}^{\infty}A_k \right) = m\left(\bigcup_{k=1}^\infty B_k\right) = \lim_{k\to\infty}m(B_k) = \lim_{k\to\infty}\sum_{n=1}^n m(A_k) = \sum_{k=1}^{\infty}m(A_k).
+$$
+It shows the countable additivity of measure.
+\end{proof}
 \bigskip
 
 
