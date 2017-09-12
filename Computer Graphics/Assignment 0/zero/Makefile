@@ -2,7 +2,7 @@ INCFLAGS  = -I /usr/include/GL
 INCFLAGS += -I ~/include/mit-vecmath
 
 LINKFLAGS  = -lglut -lGL -lGLU
-LINKFLAGS += -L ~/lib -lvecmath
+LINKFLAGS += -L ./ -lvecmath
 
 CFLAGS    = -O2
 CC        = g++ -std=c++11

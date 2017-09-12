@@ -1,9 +1,8 @@
-INCFLAGS  = -I /usr/include/GL
-INCFLAGS += -I ./vecmath/include
-INCFLAGS += -I ./vecmath/src
+lINCFLAGS  = -I /usr/include/GL
+INCFLAGS += -I ./vecmath
 
 LINKFLAGS = -lglut -lGL -lGLU
-LINKFLAGS += -L ~/lib -lvecmath
+LINKFLAGS += -L ./vecmath -lvecmath
 
 CFLAGS    = -O2 -Wall -ansi -DSOLN
 CC        = g++
@@ -15,6 +14,7 @@ all: $(SRCS) $(PROG)
 
 $(PROG): $(OBJS)
 	$(CC) $(CFLAGS) $(OBJS) -o $@ $(LINKFLAGS)
+
 .cpp.o:
 	$(CC) $(CFLAGS) $< -c -o $@ $(INCFLAGS)
 

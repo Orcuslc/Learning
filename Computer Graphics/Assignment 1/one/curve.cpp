@@ -67,19 +67,40 @@ Curve evalBezier( const vector< Vector3f >& P, unsigned steps )
     // receive have G1 continuity.  Otherwise, the TNB will not be
     // be defined at points where this does not hold.
 
-    cerr << "\t>>> evalBezier has been called with the following input:" << endl;
+    // cerr << "\t>>> evalBezier has been called with the following input:" << endl;
 
-    cerr << "\t>>> Control points (type vector< Vector3f >): "<< endl;
-    for( unsigned i = 0; i < P.size(); ++i )
-    {
-        cerr << "\t>>> " << P[i] << endl;
+    // cerr << "\t>>> Control points (type vector< Vector3f >): "<< endl;
+    // for( unsigned i = 0; i < P.size(); ++i )
+    // {
+    //     cerr << "\t>>> " << P[i] << endl;
+    // }
+
+    // cerr << "\t>>> Steps (type steps): " << steps << endl;
+    // cerr << "\t>>> Returning empty curve." << endl;
+
+    // // Right now this will just return this empty curve.
+    // return Curve();
+    int n = P.size()-1;
+    vector<GLfloat> timePoints(steps);
+    for(int i = 0; i < steps; i++) timePoints[i] = i*1/(steps-1);
+    Curve Bezier(steps);
+    for(int i = 0; i < steps; i++) {
+        Bezier[i].V = Vector3f(0.0);
+        Bezier[i].T = Vector3f(0.0);
+        Bezier[i].N = Vector3f(0.0);
+        Bezier[i].B = Vector3f(0.0);
+        // V
+        for(int j = 0; j <= n; j++) {
+            Bezier[i].V += P[j]*Berstein(n, j, timePoints[i]);
+        }
+        // T
+        for(int j = 0; j <= n; j++) {
+            Bezier[i].T += P[j]*dBerstein(n, j, timePoints[i]);
+        }
+        // N
+
     }
-
-    cerr << "\t>>> Steps (type steps): " << steps << endl;
-    cerr << "\t>>> Returning empty curve." << endl;
-
-    // Right now this will just return this empty curve.
-    return Curve();
+    return Bezier;
 }
 
 Curve evalBspline( const vector< Vector3f >& P, unsigned steps )
