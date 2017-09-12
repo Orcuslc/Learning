@@ -1,0 +1,33 @@
+%!TEX program = xelate
+\input{structure.tex}
+\usepackage{epstopdf}
+\usepackage{graphics}
+\usepackage{subfig}
+\usepackage{listings}
+\lstset{
+  breaklines=true,
+  xleftmargin=25pt,
+  xrightmargin=25pt,
+  aboveskip=0pt,
+  belowskip=10pt,
+  basicstyle=\ttfamily,
+  showstringspaces=false,
+  frame=ltrb,
+  tabsize=4,
+  numbers=left,
+  numberstyle=\small,
+  numbersep=8pt,
+  morekeywords={*, factorial, sum, erlang},
+  keywordstyle=\color{blue!70}, commentstyle=\color{red!50!green!50!blue!50},
+}
+\DeclareGraphicsExtensions{.eps,.ps,.jpg,.bmp}
+
+\begin{document}
+
+\lstinputlisting[language = MATLAB]{Explicit_Euler.m}
+\lstinputlisting[language = MATLAB]{Partitioned_Euler_I.m}
+\lstinputlisting[language = MATLAB]{main.m}
+
+\includegraphics[width = \textwidth]{Result.eps}
+
+\end{document}
