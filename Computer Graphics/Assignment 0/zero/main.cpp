@@ -99,6 +99,7 @@ void TimerFunc(int flag) {
 }
 
 // This function is responsible for displaying the object.
+GLfloat xAngle = 0.0f, yAngle = 0.0f, zAngle = 0.0f;
 void drawScene(void)
 {
 	int i;
@@ -145,7 +146,7 @@ void drawScene(void)
 
 	glLightfv(GL_LIGHT0, GL_DIFFUSE, Lt0diff);
 	glLightfv(GL_LIGHT0, GL_POSITION, Lt0pos);
-	glRotatef(theta, 0.f, 0.1f, 0.f);
+	glRotatef(theta, 0.0, 0.0, 1.0);
 
 	// This GLUT method draws a teapot.  You should replace
 	// it with code which draws the object you loaded.
@@ -167,6 +168,14 @@ void drawScene(void)
 	glutSwapBuffers();
 
 
+}
+
+void mouseFunc(int button, int state, int x, int y) {
+	if(button == GLUT_LEFT_BUTTON) {
+		xAngle = x;
+		yAngle = y;
+		zAngle = x+y;
+	}
 }
 
 // Initialize OpenGL's rendering modes
