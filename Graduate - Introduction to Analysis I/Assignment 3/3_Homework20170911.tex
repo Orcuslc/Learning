@@ -191,22 +191,17 @@ Thus $m(F) = 0$ iff $\sum{\theta_i} = \infty$.
 \textbf{Solution:}
 $X = \{x^2\mid x\in Z\}$ is also measure 0. 
 
-On one hand, we can define a map 
-$$
-\begin{aligned}
-\phi: X &\to Z, \\
-x&\mapsto \sqrt{x}, \quad\text{if}~ \sqrt{x}\in Z. \\
-x&\mapsto -\sqrt{x}, \quad\text{if}~ \sqrt{x}\notin Z ~\text{and}~ -\sqrt{x}\in Z.
-\end{aligned}
-$$
-Then it is a bijection from $X$ to a subset of $Z$.
+First, if the set $Z$ is bounded, which means $Z\in [0, M]$. Since $m(Z) = 0$, $\forall \epsilon > 0$, there exists an open cover $\{O_i\} = \{(a_i, b_i)\}$, s.t. $m^*(\cup\{O_i\}\setminus Z) < \epsilon$. Thus $\{(a_i^2, b_i^2)\}$ is an open cover of $X$, and $m^*(\cup(a_i^2, b_i^2)\setminus X) \le M\sum(b_i-a_i) < M\epsilon$. Thus now $X$ is a measure-zero set. When $Z \in [-M, 0]$, with the same process above, we can know that $X$ is a measure-zero set. Then when $Z \in [-M, M]$, we know $X$ is also measure zero.
 
-On the other hand, the map
+Since $Z$ is measure zero, for $\forall \epsilon > 0$ and integer $n > 0$, we have $m(Z\cap [-n, n]) < 2^{-n}\epsilon$. Thus from the discussion above we have $m(X\cap [-n^2, n^2]) < 2^{-n}\epsilon$. Since 
 $$
-\begin{aligned}
-\varphi: Z &\to X
-\end{aligned}
+X = \bigcup_{n=1}^{\infty}X\cap[-n, n],
 $$
+with the addivity of measure, 
+$$
+m(X) < \sum_{n=1}^{\infty}2^{-n}\epsilon = \epsilon.
+$$
+With the arbitrariness of $\epsilon$, we have $m(X) = 0$.
 \bigskip
 
 
@@ -217,6 +212,7 @@ $$
 \smallskip
  
 \textbf{Solution:}
+
 \bigskip
 
 
