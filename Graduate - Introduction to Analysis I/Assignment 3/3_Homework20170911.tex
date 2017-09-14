@@ -83,7 +83,7 @@ First, since $\phi(x)$ is a continuous, strictly increasing function on $[0, 1]$
 
 Denote $D = \phi(C)$, then according to theorems in the book, $m(D) = 1$. $\forall x_1 < x_2\in D$, if $\phi^{-1}(x_1) \ge \phi^{-1}(x_2)$, then since $\phi$ is strictly increasing, $\phi(\phi^{-1}(x_1)) = x_1+\phi^{-1}(x_1) \ge \phi(\phi^{-1}(x_2)) = x_2+\phi^{-1}(x_2)$, which means $\phi^{-1}(x_1) < \phi^{-1}(x_2)$, leading to a contradictory. Thus $\phi^{-1}$ is strictly increasing.
 
-On the other hand, $\forall x_0 \in D, \forall \epsilon > 0$, since $\phi$ is continuous on $C$, then $\forall \delta > 0, ~\exists\epsilon_1 > 0, ~\forall y\in C, ~|y-\phi^{-1}(x_0)| < \epsilon_1, ~|\phi(y)-x_0| < \delta$. Denote $\epsilon_1 = \min(\epsilon_1, \epsilon)$, then $\forall y\in C, ~|y-\phi^{-1}(x_0)| < \epsilon_1, ~|\phi(y)-x_0| < \delta$. Thus according to properties of strictly increasing bijection, $\forall x\in D, ~|x-x_0| < \delta, ~|\phi^{-1}(x)-\phi^{-1}(x_0)| < \epsilon_1\le \epsilon$. It means that $\phi^{-1}$ is continuous on $D$.
+On the other hand, $\forall x_0 \in D, \forall \epsilon > 0$, we need to show that $\exists\delta > 0, ~\forall x_1\in D, ~|x_1-x_{0}| < \delta$, then $|\phi^{-1}(x_1)-\phi^{-1}(x)| < \epsilon$. Denote $y_1 = \phi(\min\{(\phi^{-1}(x_0)-\epsilon, ~\phi^{-1}(x_0)+\epsilon)\cap C\}), ~y_2 = \phi(\max\{(\phi^{-1}(x_0)-\epsilon, ~\phi^{-1}(x_0)+\epsilon)\cap C\})$, then let $\delta = \min{y_1-x_0, y_2-x_0}$, we have $\forall |x-x_0|< \delta$, $|\phi^{-1}(x)-\phi^{-1}(x_0)| < \epsilon$. Thus $\phi^{-1}$ is continuous on $D$.
 
 Since $C$ is measure zero, we get a function satisfying the properties in the problem.
 \bigskip
@@ -95,7 +95,9 @@ Since $C$ is measure zero, we get a function satisfying the properties in the pr
 \textbf{Collaborators:}\\
 \smallskip
  
-\textbf{Solution:}
+\textbf{Solution:} It is not true. 
+
+We may consider the function $\psi(x)$ defined by Proposition 21 on Page 52. It is a strictly increasing continuous function, and it maps a measurable set $A\subset C$, onto a nonmeasurable set. Thus if we consider $\psi^{-1}(x)$, it has been proved as a strictly increasing continuous function in Problem 1. Then $\psi^{-1}(A)$ is nonmeasurable.
 
 \bigskip
 
@@ -112,6 +114,17 @@ that $F$ is a closed set, $[0, 1]\sim F$ dense in $[0,1]$, and $m(F) = 1- a$. Su
 \smallskip
  
 \textbf{Solution:}
+First, we denote $F_1 = \left[0, \frac{3-\alpha}{6}\right]\cup \left[1-\frac{3-\alpha}{6}, 1\right]$. With the same process of constructing the Cantor set, we have a collection of $F_n$. We define the generalized Cantor set as 
+$$
+F = \bigcap_{k=1}^{\infty}F_n.
+$$
+Since each $F_n$ is a closed set, we have $F$ as well closed. Then $F_n$ is the disjoint of union of $2^n$ intervals, each of length $(1-\alpha)\frac{1}{2^n}+\frac{\alpha}{3^n}$. By the finite additivity of Lebesgue measure, 
+$$
+m(F_k) = 1-\alpha + \left(\frac{2}{3}\right)^n\alpha.
+$$
+According to the continuity of measure, we have $m(F) = \lim_{k\to\infty}m(F_k) = 1-\alpha$.
+
+Let $x < y\in [0, 1]$. If $y\notin F_k$ for one of the $k$, then since $[0, 1]\setminus F$ is open, there exists $t < y$ in $N(y)$, s.t. $t\in [0, 1]\setminus F$. If $x\notin F_k$, it is the same case. Now we assume that $x, ~y \in F$. If $x, ~y$ are not in the same subset of $F_k$, then $\exists t\in [0, 1]\setminus F$. Then we can assume that $x, ~y$ always belong to the same subset. However, the subsets make a nested set with the limit of lower bound and the upper bound be the same. According to Nested Set Theorem, we have $x = y$. Then we have proved that $[0, 1]\setminus F$ is dense.
 \bigskip
 
 \item Let $C$ be the Cantor set and let $\varphi$ be the Cantor-Lebesgue function.
@@ -124,6 +137,15 @@ that $F$ is a closed set, $[0, 1]\sim F$ dense in $[0,1]$, and $m(F) = 1- a$. Su
 \smallskip
  
 \textbf{Solution:}
+\textbf{(a).} We show by induction that a number belongs to the intervals we removed in each step iff its ternary expasion has a coefficient 1. First, the interval removed at the first step can be represented as $(0.1, ~0.2)$. Thus $0.1 \notin F$, and $0.0, 0.2\in F$. Assume it holds in the first $n$ steps, then the intervals removed at the $n+1$ step has the representation $(0.a_1a_2\cdots a_n1, ~0.a_1a_2\cdots a_n2)$, in which $a_i\in\{0, 2\}$. Then each number in this interval has an expansion like
+$$
+0.a_1a_2\cdots a_n1a_{n+1}\cdots.
+$$
+Thus each number in $F$ has a coefficient 1 in its expansion.
+According to the construction process, we can also know that the reverse also holds. Thus the proposition holds.
+
+\textbf{(b)}. 
+According to (a), if we count the numbers starting by $0$, then $x$ is in the $c_{k}^{th}$ set in $k^{th}$ step. Thus according to the construction of Cantor function, we have $\varphi(x) = \sum_{k}(\frac{1}{2}c_k)2^{-k}$.
 \bigskip
 
 \item  Construct a Cantor-type subset of $[0,1]$ by removing from each interval remaining at the $k^{\text{th}}$ stage, a subinterval of relative length $\theta_k$, $0 < \theta_k < 1$. Show that the remainder has measure zero if and only if $\sum_{k\geq 1} \theta_k = \infty$.  (Use the fact that for $a_k > 0$, the product $\Pi_{k = 1}^{\infty} a_k$ converges, in the sense that $\lim_{n\to \infty} \Pi_{k=1}^N a_k$ exists and  is not zero, if and only if $\sum_{k =1}^{\infty} \ln a_k$ converges.)
@@ -133,6 +155,25 @@ that $F$ is a closed set, $[0, 1]\sim F$ dense in $[0,1]$, and $m(F) = 1- a$. Su
 \smallskip
  
 \textbf{Solution:}
+Denote $F_n$ as the remained set after $n$ steps. Then according to the construction, we have 
+$$
+m(F_n) = \prod_{i=1}^{n}(1-\theta_i).
+$$
+First we have $\sum_{n=1}^{\infty}-\theta_n$ and $\sum_{n=1}^{\infty}\ln(1-\theta_n)$ be both negative-term series, and the necessity of their convergence is $\lim_{n\to\infty}\theta_n = 0$. On the other hand, when $\lim_{n\to\infty} \theta_n = 0$, 
+$$
+\lim_{n\to\infty}\frac{\ln(1-\theta_n)}{-\theta_n} = 1,
+$$
+thus that $\sum{\ln(1-\theta_n)}$ converges is equivalent to the convergence of $\sum{-\theta_n}$.
+
+Then according to the continuity of measure,
+$$
+\begin{aligned}
+m(F) > 0 \Leftrightarrow m(\lim_{n\to\infty}F_n) > 0 \Leftrightarrow \prod_{i=1}^{\infty}(1-\theta_i) ~\text{converges} \Leftrightarrow \sum_{i=1}^{\infty} \ln(1-\theta_i) ~\text{converges} \\
+\Leftrightarrow \sum_{i=1}^{\infty}\theta_i ~\text{converges}.
+\end{aligned}
+$$
+Thus $m(F) = 0$ iff $\sum{\theta_i} = \infty$.
+
 \bigskip
 
 
