@@ -212,6 +212,20 @@ With the arbitrariness of $\epsilon$, we have $m(X) = 0$.
 \smallskip
  
 \textbf{Solution:}
+Consider the intervals $E_k^i = [i\cdot2^-{k}, ~(i+1)2^{-k})$. Then
+$$
+T[E_k] = \bigcap_{i=1}^{2^k}F_{k_i},
+$$
+where 
+$$
+F_{k_i} = \left\{
+\begin{aligned}
+&[F_{k_{i-1}}.\text{left}, ~F_{k_{i-1}}.\text{mid}), ~\text{if}~ k_i = 0 \\
+&[F_{k_{i-1}}.\text{mid}, ~F_{k_{i-1}}.\text{right}), ~\text{if}~ k_i = 1.
+\end{aligned}
+\right.
+$$
+Then since the finite intersection of closed sets is measurable, we know that $T[E_k]$ is measurable, and we have $m(T(E_k)) = m(E_k)$ since the probability of the numbers with infinite length be seperated into the intervals. Then since each open interval can be written as a countable union of non-overlapping half-open dyadic intervals, we know from the discussion above that $T(E)$ is measurable, and $m(T(E)) = m(E)$.
 
 \bigskip
 
