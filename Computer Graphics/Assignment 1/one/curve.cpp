@@ -95,8 +95,10 @@ Curve evalBezier( const vector< Vector3f >& P, unsigned steps )
         for(unsigned j = 0; j <= n; j++) {
             Bezier[i].T += P[j]*dBerstein(n, j, timePoints[i]);
         }
+        // normalizing
+        Bezier[i].T = Bezier[i].T.normalized();
         // N
-
+        for()
     }
     return Bezier;
 
