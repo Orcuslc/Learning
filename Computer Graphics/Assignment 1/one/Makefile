@@ -1,8 +1,11 @@
-lINCFLAGS  = -I /usr/include/GL
+INCFLAGS  = -I /usr/include/GL
 INCFLAGS += -I ./vecmath
+# INCFLAGS += -I ~/include/mit-vecmath
 
 LINKFLAGS = -lglut -lGL -lGLU
 LINKFLAGS += -L ./vecmath -lvecmath
+# LINKFLAGS += -L ~/lib -lvecmath
+# LINKFLAGS += -lfunction ~/include/mit-vecmath/output/libvecmath.so
 
 CFLAGS    = -O2 -Wall -ansi -DSOLN
 CC        = g++

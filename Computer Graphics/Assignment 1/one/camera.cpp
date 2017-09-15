@@ -2,6 +2,7 @@
 #include "extra.h"
 #include <GL/glu.h>
 #include <iostream>
+#include "vecmath/Matrix4f.h"
 using namespace std;
 
 Camera::Camera()

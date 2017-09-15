@@ -18,24 +18,24 @@ namespace
 
     
 }
-    
-unsigned nChoosek(unsigned n, unsigned k) {
+
+inline unsigned nChoosek(unsigned n, unsigned k) {
     if(k > n) return 0;
     if(k*2 > n) k = n-k;
     if(k == 0) return 1;
-    int res = n;
-    for(int i = 2; i <= k; i++) {
+    unsigned res = n;
+    for(unsigned i = 2; i <= k; i++) {
         res *= (n-i+1);
         res /= i;
     }
     return res;
 }
 
-unsigned Berstein(unsigned n, unsigned i, GLfloat t) {
+inline unsigned Berstein(unsigned n, unsigned i, GLfloat t) {
     return nChoosek(n, i)*pow(t, i)*pow((1-t), n-i);
 }
 
-unsigned dBerstein(unsigned n, unsigned i, GLfloat t) {
+inline unsigned dBerstein(unsigned n, unsigned i, GLfloat t) {
     if(i == 0) return n*pow(1-t, n-1);
     if(i == n) return n*pow(t, n-1);
     return nChoosek(n, i)*pow(t, i-1)*pow(1-t, n-i-1)*(i*(1-t)+(n-i)*t);
@@ -78,29 +78,30 @@ Curve evalBezier( const vector< Vector3f >& P, unsigned steps )
     // cerr << "\t>>> Steps (type steps): " << steps << endl;
     // cerr << "\t>>> Returning empty curve." << endl;
 
-    // // Right now this will just return this empty curve.
-    // return Curve();
-    int n = P.size()-1;
+    unsigned n = P.size()-1;
     vector<GLfloat> timePoints(steps);
-    for(int i = 0; i < steps; i++) timePoints[i] = i*1/(steps-1);
+    for(unsigned i = 0; i < steps; i++) timePoints[i] = i*1/(steps-1);
     Curve Bezier(steps);
-    for(int i = 0; i < steps; i++) {
+    for(unsigned i = 0; i < steps; i++) {
         Bezier[i].V = Vector3f(0.0);
         Bezier[i].T = Vector3f(0.0);
         Bezier[i].N = Vector3f(0.0);
         Bezier[i].B = Vector3f(0.0);
         // V
-        for(int j = 0; j <= n; j++) {
+        for(unsigned j = 0; j <= n; j++) {
             Bezier[i].V += P[j]*Berstein(n, j, timePoints[i]);
         }
         // T
-        for(int j = 0; j <= n; j++) {
+        for(unsigned j = 0; j <= n; j++) {
             Bezier[i].T += P[j]*dBerstein(n, j, timePoints[i]);
         }
         // N
 
     }
     return Bezier;
+
+    // Right now this will just return this empty curve.
+    // return Curve();
 }
 
 Curve evalBspline( const vector< Vector3f >& P, unsigned steps )
