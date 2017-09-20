@@ -148,7 +148,7 @@ According to the construction process, we can also know that the reverse also ho
 % According to (a), if we count the numbers starting by $0$, then $x$ is in the $c_{k}^{th}$ set in $k^{th}$ step. Thus according to the construction of Cantor function, we have $\varphi(x) = \sum_{k}(\frac{1}{2}c_k)2^{-k}$.
 First, assume $x\in O$. According to the construction of Cantor function, if $x = \sum_{k} c_k3^{-k}$ is the ternary expansion of $x$, and the first $1$ in the ternary expansion is in the $n_{th}$ place, then $\varphi(x) = \frac{1}{2^n} + \sum_{k < n}\frac{1}{2}c_k 2^{-k} $.
 
-If $x = \sum_{k}c_k3^{-k}\in C$, according to the extension of $\varphi(x)$, $\varphi(x) = \sup\{\varphi(t)\mid t\in O\cap[0, x)\} $. We can construct a sequence $\{t_i\} = \{\sum_{k} d_k3^{-k}\}$, s.t. $d_i = c_i, \forall i < m_{i+1} $, where $m_i $ is the position of $i_{th}~ 2~ \text{in}~ c_k $, and $d_{m_{i+1}} = 1$. Then $\{t_i\}$ is a strictly increasing sequence, and $\lim_{i\to\infty}t_{i} = x$.
+If $x = \sum_{k}c_k3^{-k}\in C$, according to the extension of $\varphi(x)$, $\varphi(x) = \sup\{\varphi(t)\mid t\in O\cap[0, x)\} $. We can construct a sequence $\{t_i\} = \{\sum_{k} d_k3^{-k}\}$, s.t. $d_i = c_i, \forall i < m_{i+1} $, where $m_i $ is the position of $i_{th}~ 2~ \text{in}~ c_k $, and $d_{m_{i+1}} = 1, ~d_{k} = 0, ~\forall k > m_{i+1}$. Then $\{t_i\}$ is a strictly increasing sequence, and $\lim_{i\to\infty}t_{i} = x$.
 
 Since $\varphi(x)$ is a strictly increasing function in $O$, we know that
 $$
@@ -164,7 +164,7 @@ $$
 $$ 
 So 
 $$
-\varphi(x) = \sup\{\varphi(t)\mid t\in O\cap[0, x)\} = \frac{1}{2^i}+\sum_{k<i}\frac{1}{2}d_k2^{-k}.
+\varphi(x) = \sup\{\varphi(t)\mid t\in O\cap[0, x)\} = \sum_{k}\frac{1}{2}c_k2^{-k}.
 $$
 \bigskip
 
