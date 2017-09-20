@@ -145,7 +145,27 @@ Thus each number in $F$ has a coefficient 1 in its expansion.
 According to the construction process, we can also know that the reverse also holds. Thus the proposition holds.
 
 \textbf{(b)}. 
-According to (a), if we count the numbers starting by $0$, then $x$ is in the $c_{k}^{th}$ set in $k^{th}$ step. Thus according to the construction of Cantor function, we have $\varphi(x) = \sum_{k}(\frac{1}{2}c_k)2^{-k}$.
+% According to (a), if we count the numbers starting by $0$, then $x$ is in the $c_{k}^{th}$ set in $k^{th}$ step. Thus according to the construction of Cantor function, we have $\varphi(x) = \sum_{k}(\frac{1}{2}c_k)2^{-k}$.
+First, assume $x\in O$. According to the construction of Cantor function, if $x = \sum_{k} c_k3^{-k}$ is the ternary expansion of $x$, and the first $1$ in the ternary expansion is in the $n_{th}$ place, then $\varphi(x) = \frac{1}{2^n} + \sum_{k < n}\frac{1}{2}c_k 2^{-k} $.
+
+If $x = \sum_{k}c_k3^{-k}\in C$, according to the extension of $\varphi(x)$, $\varphi(x) = \sup\{\varphi(t)\mid t\in O\cap[0, x)\} $. We can construct a sequence $\{t_i\} = \{\sum_{k} d_k3^{-k}\}$, s.t. $d_i = c_i, \forall i < m_{i+1} $, where $m_i $ is the position of $i_{th}~ 2~ \text{in}~ c_k $, and $d_{m_{i+1}} = 1$. Then $\{t_i\}$ is a strictly increasing sequence, and $\lim_{i\to\infty}t_{i} = x$.
+
+Since $\varphi(x)$ is a strictly increasing function in $O$, we know that
+$$
+\varphi(x) = \sup\{\varphi(t)\mid t\in O\cap[0, x)\} \ge \varphi(t_i) = \frac{1}{2^i}+\sum_{k<i}\frac{1}{2}d_k2^{-k}.
+$$ 
+Thus 
+$$
+\varphi(x) \ge \sum_{k}\frac{1}{2}c_k2^{-k} 
+$$
+when we let $i\to\infty$. On the other hand, $\forall \epsilon > 0$, $\exists i > 0$, $\frac{1}{2^i} < \epsilon$. Thus
+$$
+\varphi(t_i) > \sum_{k}\frac{1}{2}c_k2^{-k} - \epsilon.
+$$ 
+So 
+$$
+\varphi(x) = \sup\{\varphi(t)\mid t\in O\cap[0, x)\} = \frac{1}{2^i}+\sum_{k<i}\frac{1}{2}d_k2^{-k}.
+$$
 \bigskip
 
 \item  Construct a Cantor-type subset of $[0,1]$ by removing from each interval remaining at the $k^{\text{th}}$ stage, a subinterval of relative length $\theta_k$, $0 < \theta_k < 1$. Show that the remainder has measure zero if and only if $\sum_{k\geq 1} \theta_k = \infty$.  (Use the fact that for $a_k > 0$, the product $\Pi_{k = 1}^{\infty} a_k$ converges, in the sense that $\lim_{n\to \infty} \Pi_{k=1}^N a_k$ exists and  is not zero, if and only if $\sum_{k =1}^{\infty} \ln a_k$ converges.)
