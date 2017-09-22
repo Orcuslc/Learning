@@ -1,0 +1,106 @@
+%!TEX program = xelate
+\input{structure.tex}
+\usepackage{epstopdf}
+\usepackage{graphics}
+\usepackage{subfig}
+\usepackage{listings}
+\lstset{
+  breaklines=true,
+  xleftmargin=25pt,
+  xrightmargin=25pt,
+  aboveskip=0pt,
+  belowskip=10pt,
+  basicstyle=\ttfamily,
+  showstringspaces=false,
+  frame=ltrb,
+  tabsize=4,
+  numbers=left,
+  numberstyle=\small,
+  numbersep=8pt,
+  morekeywords={*, factorial, sum, erlang},
+}
+\DeclareGraphicsExtensions{.eps,.ps,.jpg,.bmp}
+
+\begin{document}
+
+\title{Numerical Analysis \\ Assignment 5}
+\date{\today}
+\author{Chuan Lu}
+
+\maketitle
+
+\problem{1}{Problem 2.21, Page 121}
+\solution{Solution}{
+According to Theorem 2.7, we should choose $c$ so as to have $|g'(\alpha)| < 1$. Thus
+$$
+|g'(\alpha)| = |1+cf'(\alpha)| < 1.
+$$
+So $c$ satisfies $-2 < cf'(\alpha) < 0$. For a good rate of convergence, pick $c$ s.t. $cf'(\alpha) \sim 0$.
+}
+
+\problem{2}{Problem 2.24, Page 121}
+\solution{Solution}{
+\textbf{(a)} 
+$$
+g(x) = -16+6x+\frac{12}{x}.
+$$
+Thus $g'(2) = 3 > 1.$ So the iteration does not converge. 
+
+\textbf{(b)}
+$$
+g(x) = \frac{2}{3}x+\frac{1}{x^2}.
+$$
+Thus $g'(3^{\frac{1}{3}}) = \frac{2}{3}-2\alpha^{-3} = 0$. So the iteration converges. Since
+$$
+\begin{aligned}
+\lim_{n\to\infty}\frac{\alpha-x_{n+1}}{(\alpha-x_n)^2} &= \lim_{n\to\infty}\frac{-2x_n^3+3\alpha x_n^2-3}{3x_n^2(\alpha-x_n)^2} = \lim_{x_n\to\alpha}\frac{-2x_n^3+3\alpha x_n^2-3}{3x_n^2(\alpha-x_n)^2}\\
+&= \lim_{x_n\to\alpha}\frac{-6x_n^2+6\alpha x_n}{6x_n(\alpha-x_n)^2-6x_n^2(\alpha-x_n)} = \lim_{x_n\to\alpha}\frac{1}{\alpha-2x_n} \\
+&= -\frac{1}{\alpha}.
+\end{aligned}
+$$
+We know the iteration is second-order convergent.
+
+\textbf{(c)}
+$$
+g(x) = \frac{12}{1+x}.
+$$
+Thus $g'(\alpha) = -\frac{3}{4}$, so the iteration converges. Since
+$$
+\lim_{n\to\infty}\frac{\alpha-x_{n+1}}{\alpha-x_n} = \frac{(1+x_n)\alpha-12}{(1+x_n)(\alpha-x_n)} = \frac{\alpha}{\alpha-2x_n-1} = -\frac{3}{4},
+$$
+We know the iteration is linear convergence, and the rate is $\frac{3}{4}$.
+}
+
+\problem{3}{Problem 2.28, Page 122}
+\solution{Proof}{
+Assume $f(x) = (x-\alpha)h(x), ~h(\alpha) \ne 0$. Then
+$$
+\begin{aligned}
+g(x) &= x - \frac{f(x)}{D(x)} = x-\frac{(x-\alpha)^2h^2(x)}{(x-\alpha)(h(x)+1)h((x-\alpha)h(x)+x)-(x-\alpha)h(x)} \\
+&= x - \frac{(x-\alpha)h^2(x)}{(h(x)+1)h((x-\alpha)h(x)+x)-h(x)}.
+\end{aligned}
+$$
+Thus 
+$$
+\begin{aligned}
+g'(\alpha) &= \left.1-\frac{(h^2(x)+2(x-\alpha)h(x)h'(x))((h(x)+1)h((x-\alpha)h(x)+x)-h(x)) - (x-\alpha)M}{((h(x)+1)h((x-\alpha)h(x)+x)-h(x))^2}\right|_{x=\alpha} \\
+&= 1-\frac{h^4(\alpha)}{h^4(\alpha)} = 0.
+\end{aligned}
+$$
+And we can know that $g''(\alpha)\ne 0$. Accoding to Theorem 2.8, this iteration is a second-order method.
+}
+
+\problem{4}{Problem 2.48, Page 126}
+\solution{Proof}{
+According to the continuity of $\lVert\cdot\rVert_{\infty}$, we can find an $\epsilon$ and a closed set $B(\alpha, \delta)$, s.t. $\forall x\in B(\alpha, \delta)$, $\lVert G(x)\rVert_{\infty} \le 1-\epsilon$. Then $\forall x_0 \in B = B(\alpha, \delta)$,
+$$
+\lVert \alpha-x_{n+1}\rVert = \lVert g(\alpha)-g(x_n)\rVert = \lVert G(\xi)\rVert \cdot \lVert \alpha-x_n\rVert \le (1-\epsilon) \lVert \alpha-x_n\rVert \le (1-\epsilon)^n \lVert \alpha-x_0\rVert.
+$$
+Thus $\lVert \alpha-x_{n+1}\rVert \to 0, ~t\to\infty$. So the iteration converges to $\alpha$. And since $g(B) \subset B$ according to that $\lVert\alpha-g(x)\rVert < \lVert\alpha-x\rVert$, and $\max \lVert G(x)\rVert < 1$, we know that it satisfies the condition of Theorem 2.9.
+}
+
+\problem{5}{Problem 2.50, Page 127}
+\solution{Solution}{
+
+}
+\end{document}
