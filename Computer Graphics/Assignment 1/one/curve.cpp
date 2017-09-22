@@ -88,9 +88,6 @@ Curve evalBezier( const vector< Vector3f >& P, unsigned steps )
         Bezier[i].B = B;
     }
     return Bezier;
-
-    // Right now this will just return this empty curve.
-    // return Curve();
 }
 
 inline Vector4f splineBasis(GLfloat t) {
