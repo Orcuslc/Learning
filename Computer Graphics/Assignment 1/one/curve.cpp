@@ -31,11 +31,11 @@ inline unsigned nChoosek(unsigned n, unsigned k) {
     return res;
 }
 
-inline unsigned Berstein(unsigned n, unsigned i, GLfloat t) {
+inline float Berstein(unsigned n, unsigned i, GLfloat t) {
     return nChoosek(n, i)*pow(t, i)*pow((1-t), n-i);
 }
 
-inline unsigned dBerstein(unsigned n, unsigned i, GLfloat t) {
+inline float dBerstein(unsigned n, unsigned i, GLfloat t) {
     if(i == 0) return n*pow(1-t, n-1);
     if(i == n) return n*pow(t, n-1);
     return nChoosek(n, i)*pow(t, i-1)*pow(1-t, n-i-1)*(i*(1-t)+(n-i)*t);
@@ -49,7 +49,6 @@ Curve evalBezier( const vector< Vector3f >& P, unsigned steps )
         cerr << "evalBezier must be called with 3n+1 control points." << endl;
         exit( 0 );
     }
-
     // TODO:
     // You should implement this function so that it returns a Curve
     // (e.g., a vector< CurvePoint >).  The variable "steps" tells you
@@ -67,43 +66,39 @@ Curve evalBezier( const vector< Vector3f >& P, unsigned steps )
     // receive have G1 continuity.  Otherwise, the TNB will not be
     // be defined at points where this does not hold.
 
-    // cerr << "\t>>> evalBezier has been called with the following input:" << endl;
-
-    // cerr << "\t>>> Control points (type vector< Vector3f >): "<< endl;
-    // for( unsigned i = 0; i < P.size(); ++i )
-    // {
-    //     cerr << "\t>>> " << P[i] << endl;
-    // }
-
-    // cerr << "\t>>> Steps (type steps): " << steps << endl;
-    // cerr << "\t>>> Returning empty curve." << endl;
-
     unsigned n = P.size()-1;
     vector<GLfloat> timePoints(steps);
-    for(unsigned i = 0; i < steps; i++) timePoints[i] = i*1/(steps-1);
+    for(unsigned i = 0; i < steps; i++) timePoints[i] = i*1.0/(float)steps;
     Curve Bezier(steps);
+    Vector3f B0(-1.34, 2.034, 1.21); // random B0;
+    B0.normalize();
     for(unsigned i = 0; i < steps; i++) {
-        Bezier[i].V = Vector3f(0.0);
-        Bezier[i].T = Vector3f(0.0);
-        Bezier[i].N = Vector3f(0.0);
-        Bezier[i].B = Vector3f(0.0);
-        // V
-        for(unsigned j = 0; j <= n; j++) {
-            Bezier[i].V += P[j]*Berstein(n, j, timePoints[i]);
-        }
-        // T
-        for(unsigned j = 0; j <= n; j++) {
-            Bezier[i].T += P[j]*dBerstein(n, j, timePoints[i]);
-        }
-        // normalizing
-        Bezier[i].T = Bezier[i].T.normalized();
-        // N
-        for()
+        Vector3f V, T, N, B;
+        for(unsigned j = 0; j <= n; j++) 
+            V += P[j]*Berstein(n, j, timePoints[i]);
+        for(unsigned j = 0; j <= n; j++) 
+            T += P[j]*dBerstein(n, j, timePoints[i]);
+        T.normalize();
+        N = Vector3f::cross(B0, T).normalized();
+        B = Vector3f::cross(T, N).normalized();
+        B0 = B;
+        Bezier[i].V = V;
+        Bezier[i].T = T;
+        Bezier[i].N = N;
+        Bezier[i].B = B;
     }
     return Bezier;
 
     // Right now this will just return this empty curve.
     // return Curve();
+}
+
+inline Vector4f splineBasis(GLfloat t) {
+    return Vector4f(1, t, t*t, pow(t, 3));
+}
+
+inline Vector4f dsplineBasis(GLfloat t) {
+    return Vector4f(0, 1, 2*t, 3*t*t);
 }
 
 Curve evalBspline( const vector< Vector3f >& P, unsigned steps )
@@ -119,20 +114,38 @@ Curve evalBspline( const vector< Vector3f >& P, unsigned steps )
     // It is suggested that you implement this function by changing
     // basis from B-spline to Bezier.  That way, you can just call
     // your evalBezier function.
-
-    cerr << "\t>>> evalBSpline has been called with the following input:" << endl;
-
-    cerr << "\t>>> Control points (type vector< Vector3f >): "<< endl;
-    for( unsigned i = 0; i < P.size(); ++i )
-    {
-        cerr << "\t>>> " << P[i] << endl;
+    Matrix4f basis(1, -3, 3, -1,
+                   4, 0, -6, 3,
+                   1, 3,  3, -3,
+                   0, 0, 0, 1);
+    basis /= 6.0;
+    vector<GLfloat> timePoints(steps);
+    for(unsigned i = 0; i < steps; i++) {
+        timePoints[i] = 1.0/(double)steps*i;
     }
-
-    cerr << "\t>>> Steps (type steps): " << steps << endl;
-    cerr << "\t>>> Returning empty curve." << endl;
-
-    // Return an empty curve right now.
-    return Curve();
+    Curve Bspline;
+    Vector3f T1 = -0.5*P[0]+0.5*P[2];
+    Vector3f B0(1.2324, 0.0, 1.0);
+    if(Vector3f::dot(T1, B0) < 1e-4) {
+        B0.y() = 1.0;
+    }
+    B0.normalize();
+    for(unsigned int i = 0; i < P.size()-3; i++) {
+        Vector3f V, T, N, B;
+        for(unsigned j = 0; j < steps; j++) {
+            Vector4f bV = basis*splineBasis(timePoints[j]);
+            Vector4f bT = basis*dsplineBasis(timePoints[j]);
+            V = bV[0]*P[i]+bV[1]*P[i+1]+bV[2]*P[i+2]+bV[3]*P[i+3];
+            T = bT[0]*P[i]+bT[1]*P[i+1]+bT[2]*P[i+2]+bT[3]*P[i+3];
+            T.normalize();
+            N = Vector3f::cross(B0, T);
+            B = Vector3f::cross(T, N);
+            B0 = B;
+            CurvePoint c = {V, T, N, B};
+            Bspline.push_back(c);
+        }
+    }
+    return Bspline;
 }
 
 Curve evalCircle( float radius, unsigned steps )
