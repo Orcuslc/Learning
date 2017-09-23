@@ -18,6 +18,7 @@
   numberstyle=\small,
   numbersep=8pt,
   morekeywords={*, factorial, sum, erlang},
+  keywordstyle=\color{blue!70}, commentstyle=\color{red!50!green!50!blue!50},
 }
 \DeclareGraphicsExtensions{.eps,.ps,.jpg,.bmp}
 
@@ -101,6 +102,59 @@ Thus $\lVert \alpha-x_{n+1}\rVert \to 0, ~t\to\infty$. So the iteration converge
 
 \problem{5}{Problem 2.50, Page 127}
 \solution{Solution}{
-
+The code and result are as follows;(In fact)
 }
+\lstinputlisting[language = MATLAB]{Newton.m}
+\lstinputlisting[language = MATLAB]{prob50.m}
+\begin{lstlisting}[language = MATLAB]
+>> prob50
+   1.600000000000000   1.200000000000000
+   1.581250000000000   1.225000000000000
+   1.581138833992095   1.224744897959184
+\end{lstlisting}
+
+\problem{6}{Problem 2.51, Page 127}
+\solution{Solution}{
+We just use the code of Newton's method from Problem 2.50, and the executive script is as follows;
+}
+\lstinputlisting[language = MATLAB]{prob51.m}
+\solution{Result}{
+The result is shown in the following table \ref{Table 1}, and the convergence speed shown in \ref{Graph 1}. From the result we know that different initial values may lead to convergence to different roots, while when the iteration comes to very close to the root, the convergence order is first-order.
+}
+\begin{table}[!htb]
+\centering
+\begin{tabular}{|c|c|c|c|}
+\hline
+Initial Point & Convergence & Result & Number of iterates \\
+\hline
+(1.2, 2.5) & Yes & (1.336355248159268, 1.754234729131226) & 11 \\
+\hline
+(-2, 2.5) & Yes & (1.336355247361990, 1.754234726236878) & 19 \\
+\hline
+(-1.2, -2.5) & Yes & (1.336355235838950, 1.754234684404958) & 24 \\
+\hline
+(2, -2.5) & Yes & (2.998365352785336, 0.148430977265564) & 9 \\
+\hline
+\end{tabular}
+\caption{The result of convergence and iteration count.}
+\label{Table 1}
+\end{table}
+
+\begin{figure}[!htb]
+\centering
+\begin{minipage}{0.45\textwidth}
+\includegraphics[width = \textwidth]{res1.eps}
+\end{minipage}
+\begin{minipage}{0.45\textwidth}
+\includegraphics[width = \textwidth]{res2.eps}
+\end{minipage} \\
+\begin{minipage}{0.45\textwidth}
+\includegraphics[width = \textwidth]{res3.eps}
+\end{minipage}
+\begin{minipage}{0.45\textwidth}
+\includegraphics[width = \textwidth]{res4.eps}
+\end{minipage}
+\caption{Convergence Order}
+\label{Figure 1}
+\end{figure}
 \end{document}
