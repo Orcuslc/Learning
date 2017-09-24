@@ -1,5 +1,7 @@
 #include "surf.h"
 #include "extra.h"
+#include <math.h>
+#include <iostream>
 using namespace std;
 
 namespace
@@ -10,11 +12,12 @@ namespace
     static bool checkFlat(const Curve &profile)
     {
         for (unsigned i=0; i<profile.size(); i++)
-            if (profile[i].V[2] != 0.0 ||
-                profile[i].T[2] != 0.0 ||
-                profile[i].N[2] != 0.0)
-                return false;
-    
+            // if (profile[i].V[2] != 0.0 ||
+            //     profile[i].T[2] != 0.0 ||
+            //     profile[i].N[2] != 0.0) {
+            //     return false;
+            // }
+            if(profile[i].V[2] != 0.0) return false;
         return true;
     }
 }
@@ -23,16 +26,47 @@ Surface makeSurfRev(const Curve &profile, unsigned steps)
 {
     Surface surface;
     
-    if (!checkFlat(profile))
-    {
-        cerr << "surfRev profile curve must be flat on xy plane." << endl;
-        exit(0);
-    }
+    // if (!checkFlat(profile))
+    // {
+    //     cerr << "surfRev profile curve must be flat on xy plane." << endl;
+    //     exit(0);
+    // }
 
     // TODO: Here you should build the surface.  See surf.h for details.
-
-    cerr << "\t>>> makeSurfRev called (but not implemented).\n\t>>> Returning empty surface." << endl;
- 
+    double angle = 2*M_PI/steps;
+    // Rotate about y-axis: the transform matrix
+    Matrix3f M = Matrix3f((float)cos(angle), 0, (float)sin(angle),
+        0, 1, 0,
+        (float)(-sin(angle)), 0, (float)cos(angle));
+    M.transpose();
+    Curve c = profile;
+    unsigned num = c.size();
+    for(unsigned s = 0; s < steps; s++) {
+        Curve newC;
+        // Rotate an angle each time step;
+        for(unsigned i = 0; i < num; i++) {
+            CurvePoint cur = c[i];
+            surface.VV.push_back(cur.V);
+            surface.VN.push_back(-cur.N);
+            Vector3f newV = M*cur.V;
+            Vector3f newN = M*cur.N;
+            newN.normalize();
+            CurvePoint newP = {newV, cur.T, newN, cur.B};
+            newC.push_back(newP);
+        }
+        c = newC;
+        newC.clear();
+    }
+    
+    unsigned next;
+    for(unsigned s = 0; s < steps; s++) {
+        if(s == steps-1) next = 0;
+        else next = s+1;
+        for(unsigned i = 0; i < num-1; i++) {
+            surface.VF.push_back(Tup3u(s*num+i, next*num+i, next*num+i+1));
+            surface.VF.push_back(Tup3u(s*num+i, next*num+i+1, s*num+i+1));
+        }
+    }
     return surface;
 }
 
