@@ -1,0 +1,136 @@
+
+\documentclass{article}%
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{amsfonts}%
+\usepackage{amssymb}
+
+
+\setlength{\topmargin}{-0.75in}
+\setlength{\textheight}{9.25in}
+\setlength{\oddsidemargin}{0.0in}
+\setlength{\evensidemargin}{0.0in}
+\setlength{\textwidth}{6.5in}
+\def\labelenumi{\arabic{enumi}.}
+\def\theenumi{\arabic{enumi}}
+\def\labelenumii{(\alph{enumii})}
+\def\theenumii{\alph{enumii}}
+\def\p@enumii{\theenumi.}
+\def\labelenumiii{\arabic{enumiii}.}
+\def\theenumiii{\arabic{enumiii}}
+\def\p@enumiii{(\theenumi)(\theenumii)}
+\def\labelenumiv{\arabic{enumiv}.}
+\def\theenumiv{\arabic{enumiv}}
+\def\p@enumiv{\p@enumiii.\theenumiii}
+\pagestyle{plain}
+\setcounter{secnumdepth}{0}
+\newtheorem{theorem}{Theorem}
+\newtheorem{acknowledgement}[theorem]{Acknowledgement}
+\newtheorem{algorithm}[theorem]{Algorithm}
+\newtheorem{axiom}[theorem]{Axiom}
+\newtheorem{case}[theorem]{Case}
+\newtheorem{claim}[theorem]{Claim}
+\newtheorem{conclusion}[theorem]{Conclusion}
+\newtheorem{condition}[theorem]{Condition}
+\newtheorem{conjecture}[theorem]{Conjecture}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{criterion}[theorem]{Criterion}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{example}[theorem]{Example}
+\newtheorem{exercise}[theorem]{Exercise}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{notation}[theorem]{Notation}
+\newtheorem{problem}[theorem]{Problem}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{solution}[theorem]{Solution}
+\newtheorem{summary}[theorem]{Summary}
+\newenvironment{proof}[1][Proof]{\textbf{#1.} }{\ \rule{0.5em}{0.5em}}
+
+\begin{document}
+
+\begin{center}
+\textbf{Introduction to Analysis $I$\\Homework 4\\Wednesday, September 27, 2017}\bigskip
+\end{center}
+
+\noindent\textbf{Instructions}: This and all subsequent homeworks must be submitted written in \LaTeX.
+
+\noindent If you use results from books, Royden or others, please be explicit about what results you are using.
+
+
+
+\begin{center}
+\emph{Homework 4 is due by midnight, Saturday, October 7.}
+\end{center} 
+\medskip
+
+\begin{enumerate}
+\item  (Problem 18, Page 63) Let $I$ be a closed bounded interval and let $f$ be a bounded measurable function defined on $I$. Let $\epsilon > 0$.  Show that there is a step function $h$ on $I$ and a measurable subset $F$ of $I$ for which \[
+|h-f|< \epsilon \text{ on } F \text{ and } m(I\sim F)< \epsilon .\]
+
+
+\bigskip
+\textbf{Collaborators:}\\
+\smallskip
+ 
+\textbf{Solution:}
+\bigskip
+
+\item (Problem 22, Page 64) (Dini's Theorem)  Let $\{f_n\}$ be an increasing sequence of continuous functions on $[a,b]$ which converges pointwise on $[a,b]$ to the continuous function $f$ on $[a,b]$.  Show that the convergence is uniform on $[a,b]$.
+
+
+\bigskip
+\textbf{Collaborators:}\\
+\smallskip
+ 
+\textbf{Solution:}
+\bigskip
+
+
+
+\item  (Problem 5, Page 364) Show that an extended real-valued function $f$ on $X$ is measurable if and only if for each rational number $c$, $\{x\in X \mid f(x)< c\}$ is a  measurable set.
+
+
+\bigskip
+\textbf{Collaborators:}\\
+\smallskip
+ 
+\textbf{Solution:}
+\bigskip
+
+\item (Problem 13, Page 365) Let $\{f_n\}$ be a sequence of real-valued functions on $X$ such that for each natural number $n$, $\mu \{x\in X \mid |f_n (x) - f_{n+1}(x)|> 1/2^n\}<1/2^n$. Show that $\{f_n\}$ is pointwise convergent a.e. on $X$.
+
+\bigskip
+\textbf{Collaborators:}\\
+\smallskip
+ 
+\textbf{Solution:}
+\bigskip
+
+\item  (Problem 15, Page 365)  A sequence $\{f_n\}$ of measurable real-valued functions on $X$ is said to \emph{converge in measure} to a measurable function $f$  provided that for each $\eta > 0$, \[
+\lim_{n\to \infty} \mu\{x\in X \mid |f_n(x) - f(x)|>\eta \} = 0.\]A sequence $\{f_n\}$ of measurable functions is said to be \emph{Cauchy in measure} provided that for each $\epsilon > 0$ and $\eta > 0$, there is an index $N$ such that for each $m,n\geq N$, \[
+\mu\{x\in X \mid |f_n(x) - f_m(x)| > \eta \} < \epsilon.\]
+\begin{enumerate}
+\item Show that if $\mu(X)< \infty$ and if $\{f_n\}$ converges pointwise a.e. on $X$ to a measurable function $f$, then $\{f_n\}$ converges to $f$ in measure.
+\item Show that if $\{f_n\}$ converges to $f$ in measure, then there is a subsequence of $\{f_n\}$ that converges pointwise a.e. to $f$.
+\item Show that if $\{f_n\}$ is Cauchy in measure, then there is a measurable function $f$ to which $\{f_n\}$ converges in measure.\end{enumerate}
+
+\item (Problem 16, Page 365) Assume $\mu (X) < \infty$.  Show that $\{f_n\}$ converges to $f$ in measure if and only if each  subsequence of $\{f_n\}$ has a further subsequence that converges pointwise a.e. on $X$ to $f$.  Use this to show that for two sequences that converge in measure, the product sequence also converges in measure to the product of the limits. 
+
+\item Show that if $f$ is an lower semicontinuous (resp. upper semicontinuous) function on an interval $[a,b]$, then there is a family $\{f_{\alpha}\}$ of continuous functions on the interval $[a,b]$ such that $f(x) = \sup\{f_{\alpha}(x) \mid \alpha \in A \}$ (resp. $f(x) = \inf\{f_{\alpha}(x) \mid \alpha \in A \}$) for all $x \in [a,b]$.  
+
+
+\bigskip
+\textbf{Collaborators:}\\
+\smallskip
+ 
+\textbf{Solution:}
+\bigskip
+
+
+
+
+
+
+\end{enumerate}
+\end{document}
