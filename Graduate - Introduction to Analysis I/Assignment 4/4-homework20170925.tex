@@ -160,10 +160,15 @@ which makes a contradiction with the assumption. Thus the convergence is uniform
 
 
 \bigskip
-\textbf{Collaborators:}\\
+\textbf{Collaborators:} None
 \smallskip
  
 \textbf{Solution:}
+Notice that for each $r\in \mathbb{R}\supset\mathbb{Q}$, we have
+$$
+\{x\in X\mid f(x) < r\} = \bigcup_{\substack{c < r \\ c \in \mathbb{Q}}}\{x\in X\mid f(x) < c\}.
+$$
+Then since Lebesgue measurable sets make a $\sigma-$Algebra, we know $\{x\in X\mid f(x) < r\}$ is measurable. On the other hand, since each rational number is a real number, the other direction stands.
 \bigskip
 
 \item (Problem 13, Page 365) Let $\{f_n\}$ be a sequence of real-valued functions on $X$ such that for each natural number $n$, $\mu \{x\in X \mid |f_n (x) - f_{n+1}(x)|> 1/2^n\}<1/2^n$. Show that $\{f_n\}$ is pointwise convergent a.e. on $X$.
