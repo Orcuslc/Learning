@@ -174,10 +174,27 @@ Then since Lebesgue measurable sets make a $\sigma-$Algebra, we know $\{x\in X\m
 \item (Problem 13, Page 365) Let $\{f_n\}$ be a sequence of real-valued functions on $X$ such that for each natural number $n$, $\mu \{x\in X \mid |f_n (x) - f_{n+1}(x)|> 1/2^n\}<1/2^n$. Show that $\{f_n\}$ is pointwise convergent a.e. on $X$.
 
 \bigskip
-\textbf{Collaborators:}\\
+\textbf{Collaborators:} None
 \smallskip
  
 \textbf{Solution:}
+Denote
+$$
+E_n = \{x\in X\mid |f_n(x)-f_{n+1}(x)|>\frac{1}{2^n}\},
+$$
+Then 
+$$
+\bigcup_{n=1}^{\infty}\mu(E_n) < \sum_{n=1}^{\infty}\mu(E_n) < \sum_{n=1}^{\infty}\frac{1}{2^n} = 1.
+$$
+According to Borel-Cantelli Lemma, $\exists E_0$, $\mu(E_0) = 0$, s.t. $\forall x\in X\setminus E_0$, $x$ belongs to at most finite number of $E_n$. That means, $\forall x\in X\setminus E_0$, $\exists N > 0$, $\forall n > N$, $x\in E_n$. So 
+$$
+|f_n(x)-f_{n+1}(x)| < \frac{1}{2^n}.
+$$
+Thus 
+$$
+\forall m > n, |f_m(x)-f_{n}(x)| < \sum_{i=n}^{m-1}|f_{i+1}(x)-f_i(x)| < \frac{1}{2^{n-1}}.
+$$
+This means that $f_n(x)$ is a Cauchy sequence, then it converges. Thus $\{f_n\}$ is pointwise convergent on $X\setminus E_0$, and thus is pointwise convergent a.e. on $X$.
 \bigskip
 
 \item  (Problem 15, Page 365)  A sequence $\{f_n\}$ of measurable real-valued functions on $X$ is said to \emph{converge in measure} to a measurable function $f$  provided that for each $\eta > 0$, \[
@@ -186,7 +203,17 @@ Then since Lebesgue measurable sets make a $\sigma-$Algebra, we know $\{x\in X\m
 \begin{enumerate}
 \item Show that if $\mu(X)< \infty$ and if $\{f_n\}$ converges pointwise a.e. on $X$ to a measurable function $f$, then $\{f_n\}$ converges to $f$ in measure.
 \item Show that if $\{f_n\}$ converges to $f$ in measure, then there is a subsequence of $\{f_n\}$ that converges pointwise a.e. to $f$.
-\item Show that if $\{f_n\}$ is Cauchy in measure, then there is a measurable function $f$ to which $\{f_n\}$ converges in measure.\end{enumerate}
+\item Show that if $\{f_n\}$ is Cauchy in measure, then there is a measurable function $f$ to which $\{f_n\}$ converges in measure.
+\end{enumerate}
+
+\bigskip
+\textbf{Collaborators:} None
+\smallskip
+ 
+\textbf{Solution:}
+
+\bigskip
+
 
 \item (Problem 16, Page 365) Assume $\mu (X) < \infty$.  Show that $\{f_n\}$ converges to $f$ in measure if and only if each  subsequence of $\{f_n\}$ has a further subsequence that converges pointwise a.e. on $X$ to $f$.  Use this to show that for two sequences that converge in measure, the product sequence also converges in measure to the product of the limits. 
 
