@@ -74,13 +74,7 @@
 \smallskip
  
 \textbf{Solution:}
-For $\epsilon > 0$, according to Lusin's Theorem, there exists a closed subset $F$ of $I$, s.t. $m(I\setminus F) < \epsilon$, and $f$ is continuous on $F$.
-% Assume $\bigcup_{i=1}^\infty O_i$ is an open cover of $F$, in which $O_{i}$ are open intevals. Then since $F$ is closed there exists a finite open cover, denoted by $\bigcup_{i=1}^n O_i.$ Then
-% $$
-% F = \bigcup_{i=1}^n (O_i\cap F).
-% $$
-% Denote $F_{i} = O_{i}\cap F$, then 
-% Since $f$ is continuous on $F$, 
+For $\epsilon > 0$, according to Lusin's Theorem, there exists a closed subset $F$ of $I$, s.t. $m(I\setminus F) < \epsilon$, and $f$ is continuous on $F$. 
 Then for $x_0\in F$, for this $\epsilon > 0$, 
 $$
 \exists \sigma > 0, ~\forall x\in (x_0-\delta, ~x_0+\delta)\cap F, ~|f(x)-f(x_0)| < \epsilon.
@@ -114,10 +108,50 @@ Thus $h$ is the step function needed.
 
 
 \bigskip
-\textbf{Collaborators:}\\
+\textbf{Collaborators:} None
 \smallskip
  
 \textbf{Solution:}
+If the convergence is not uniform, then there $\exists \epsilon > 0, \forall N > 0, ~\exists n > N, ~\exists x\in [a, b], ~|f(x)-f_n(x)| > \epsilon $.
+
+We can construct a sequence $\{x_n\}$ like this:
+
+$$
+N = 1, ~\exists n_1 > 1, ~\exists x_1\in[a, b], ~|f_{n_1}(x_1)-f(x_1)| \geqslant \epsilon.
+$$
+$$
+N = n_1, ~\exists n_2 > n_1, ~\exists x_2\in[a, b], ~|f_{n_2}(x_2)-f(x_2)| \geqslant \epsilon.
+$$
+$$
+\cdots
+$$
+$$
+N = n_{k-1}, ~\exists n_k > n_{k-1}, ~\exists x_k\in[a, b], ~|f_{n_k}(x_k)-f(x_k)| \geqslant \epsilon.
+$$
+$$
+\cdots
+$$
+Then since $x_i\in [a, b]$, according to Bolzano-Weierstrass Theorem, there is a convergent subsequence in $\{x_i\}$, and we may denote it by $\{y_i\}$ for convinence. Assume $y_i\to y\in [a, b]$, then since
+$$
+\lim_{n\to\infty}f_n(y) = f(y),
+$$
+for this $\epsilon > 0, ~\exists N$, s.t.
+$$
+|f_N(y)-f(y)|<\epsilon.
+$$
+since $f_N$ is continuous, with $y_k\to y$, there $\exists K > 0$, 
+$$
+|f_N(y_k)-f(y_k)| < \epsilon
+$$
+holds for all $k > K$. Notice that $\{f_n\}$ is an increasing sequence, when $n > N ~\text{and}~ k > K$, 
+$$
+|f_n(y_k)-f(y_k)| \leqslant |f_N(y_k)-f(y_k)|<\epsilon.
+$$
+Since $n_k\to\infty$ when $k\to\infty$, when $k$ is sufficiently large we have $k > K, ~n_k > N$. Thus 
+$$
+|f_{n_k}(x_k)-f(x_k)| < \epsilon,
+$$ 
+which makes a contradiction with the assumption. Thus the convergence is uniform.
 \bigskip
 
 
