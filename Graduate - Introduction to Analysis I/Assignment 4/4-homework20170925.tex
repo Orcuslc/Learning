@@ -207,11 +207,75 @@ This means that $f_n(x)$ is a Cauchy sequence, then it converges. Thus $\{f_n\}$
 \end{enumerate}
 
 \bigskip
-\textbf{Collaborators:} None
+\textbf{Collaborators:} None, but (b) and (c) checked a proof from my Real Analysis textbook in college (Written by Prof. Zhaobo Huang, Fudan University).
 \smallskip
  
 \textbf{Solution:}
+\textbf{(a)} Since $\{f_n\}$ converges pointwise a.e. on $X$, there $\exists E_0, ~\mu(E_0) = 0$, s.t. $\lim\limits_{n\to\infty}f_n = f$ on $E_1 = X\setminus E_0$. Then $\forall \epsilon > 0$,
+$$
+E_1 = \bigcup_{k=1}^{\infty} \bigcap_{n=k}^{\infty} \{x\in E_1\mid |f_n(x)-f(x)| \le \epsilon\} = \varliminf_{n\to\infty} \{x\in E_1\mid |f_n(x)-f(x)| \le \epsilon\}.
+$$
+Thus, according to the continuity of measure, 
+$$
+\mu(E_1) \le \varliminf_{n\to\infty} \mu(\{x\in E_1\mid |f_n(x)-f(x)| \le \epsilon\}).
+$$
+Since $\mu(X) < \infty$, we have
+$$
+\begin{aligned}
+\lim_{n\to\infty} \mu(\{x\in E_1\mid |f_n(x)-f(x)| &> \epsilon\}) \le \varlimsup_{n\to\infty} \mu(\{x\in E_1\mid |f_n(x)-f(x)| > \epsilon\}) \\
+&= \mu(X) - \varliminf_{n\to\infty} \mu(\{x\in E_1\mid |f_n(x)-f(x)| \le \epsilon\}) \le 0.
+\end{aligned}
+$$
+Thus $\{f_n\}$ converges to $f$ in measure. 
 
+\textbf{(b)}
+Since $\{f_n\}$ converges to $f$ in measure, $\forall k \in \mathbb{N}$, $\exists n_k > n_{k-1} \in \mathbb{N}$, s.t. when $n \ge n_k$,
+$$
+\mu(\{x\in X\mid |f_n(x)-f(x)| \ge \frac{1}{2^k}\}) < \frac{1}{2^k}.
+$$
+Denote $E_{k} = \{x\in X\mid |f_{n_k}(x)-f(x)| \ge \frac{1}{2^k}\}$, then $\mu(E_k) < \frac{1}{2^k}$. Let 
+$$
+F_k = \bigcap_{i=k}^{\infty} (X\setminus 
+E_i) = \{x\in X\mid |f_{n_i}(x)-f(x)|\le \frac{1}{2^i}, i = k, k+1, \cdots\}
+$$
+then $\{f_{n_k}\}$ converges uniformly to $f$ on $F_k$, thus is convergent on $F = \bigcup\limits_{k=1}^{\infty}F_k$. On the other hand,
+$$
+X\setminus F = \bigcap_{k=1}^{\infty}(X\setminus F_k) = \bigcap_{k=1}^{\infty}\bigcup_{k=1}^{\infty}E_i = \varlimsup_{i\to\infty}E_i,
+$$
+and 
+$$
+\sum_{i=1}^{\infty}\mu(E_i) \le \sum_{i=1}^{\infty}\frac{1}{2^i} = 1, 
+$$
+thus $\mu(X\setminus F) = 0$, $\{f_{n_k}\}$ converges pointwise a.e. on $X$.
+
+\textbf{(c)} If $\{f_n\}$ is Cauchy in measure, then for each $n_i \in \mathbb{N}$, there $\exists n_{i+1} > n_{i}$, s.t. 
+$$
+\mu(\{x\in X\mid |f_{n_i}(x)-f_{n_{i+1}}(x)| \ge \frac{1}{2^i}\})\le \frac{1}{2^i}.
+$$
+We can denote the subsequence $\{f_{n_i}\}$ as $\{g_i\}$, and $E_i = \{x\in X\mid |f_{n_i}(x)-f_{n_{i+1}}(x)| \ge \frac{1}{2^i}\}$. Let $F_{k} = \bigcup\limits_{i = k}^{\infty}E_i $, then $\mu(F_k)\le \sum\limits_{i=k}^{\infty}\frac{1}{2^i}\le \frac{1}{2^{k-1}} $. Denote $F = \bigcap\limits_{i=1}^\infty F_i $, then $\mu(F) = 0$.
+
+If we choose $x\notin F_{k}$, and $i \ge j \ge k$, then 
+$$
+|g_i(x)-g_j(x)| \le \sum_{l = j}^{i-1}|g_{l+1}(x)-g_l(x)| \le \frac{1}{2^j},
+$$
+which means $g_i(x)$ is Cauchy respective to $i$ on $X\setminus F$, thus converges on $X\setminus F$. Thus we can construct a function $f$ like this: 
+$$
+f(x) = \left\{
+\begin{aligned}
+&0, ~x\in F \\
+&\lim_{i\to\infty}f_i(x), ~x\in X\setminus F.
+\end{aligned}
+\right.
+$$
+Then $\{g_i(x)\}$ converges to $f$ on $X\setminus F$, which means $\{g_i\}$ converges pointwise a.e. on $X$. Now we show $\{f_n\}$ converges to $f$ in measure. Notice
+$$
+\mu(\{x\in X\mid |f_n - f|\ge \xi\}) \le \mu(\{x\mid |f_n-g_m|\ge \frac{\xi}{2}\}) + \mu(\{x\mid |g_m-f|\ge \frac{\xi}{2}\}), ~m > n
+$$
+and when $n\to\infty$, the two terms in the right can be arbitrarily small, so 
+$$
+\lim_{n\to\infty}\mu(\{x\in X\mid |f_n - f|\ge \xi\}) = 0, ~\forall \xi > 0.
+$$
+The $\{f_{n}\}$ converges in measure.
 \bigskip
 
 
