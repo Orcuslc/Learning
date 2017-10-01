@@ -307,11 +307,48 @@ Then we get a subsequence $\{f_{n_k}\}$ which does not converge to $f$ in measur
 
 
 \bigskip
-\textbf{Collaborators:} None
+\textbf{Collaborators:} Checked https://people.math.gatech.edu/\~{}loss/16FALLTEA/NOTES/semicontinuity.pdf for help.
 \smallskip
  
 \textbf{Solution:}
+We first show a lemma.
+\begin{lemma}
+If $\{f_\alpha(x)\}$ is a family of upper semi-continuous functions, then $\inf\limits_{\alpha\in I}f_\alpha(x)$ is also upper semi-continuous. Conversely, lower semi-continuous is preserved under monotone increasing limits.
+\end{lemma}
+\begin{proof}
+In fact, suppose $\{f_\alpha(x)\}_{\alpha\in I}$ is a family of upper semi-continuous functions, then 
+$$
+\{x\in [a, b]\mid f_\alpha(x)\ge t\} = \bigcap_{\alpha\in I}\{x\in [a, b]\mid f_\alpha(x)\ge t\}.
+$$
+With the continuity of $f_\alpha(x)$ and the compactness of $[a, b]$, we know $\{x\in [a, b]\mid f_\alpha(x) \ge t\}$ is closed, so $\{x\in [a, b]\mid f_\alpha(x)\ge t\}$ is also closed. Thus $\inf\limits_{\alpha\in I} f_\alpha(x)$ is upper semi-continuous.
+\end{proof}
 
+We just show the case when $f$ is a lower semicontinuous function. Let
+$$ 
+f_\epsilon(x) = \inf_{y\in [a, b]}\left(f(y) + \frac{|x-y|}{\epsilon}\right),
+$$
+and we show that $f_\epsilon(x) $ is continuous and converges pointwise to $f$ from below when $\epsilon \to 0^+$.
+
+First, we have $f_\epsilon(x) \le f(x)$ by setting $y = x$ instead of taking the infimum. For each fixed $y\in [a, b]$, the map
+$$
+x \mapsto f(y)+\frac{|x-y|}{\epsilon}
+$$
+is continuous, hence according to the lemma, $f_{\epsilon}(x)$ is an upper semi-continuous function.
+
+Since $[a, b]$ is conpact, $f$ is lower semicontinuous, and the map $y\mapsto |x-y|$ is continuous, the infimum is attained, and there exists $y(\epsilon, x) \in [a, b]$, s.t.
+$$
+f_\epsilon(x) = f(y(\epsilon, x)) + \frac{d(x, y(\epsilon, x))}{\epsilon}.
+$$
+Pick $\{x_n\}\to x$, then since $[a, b]$ is compact we may assume $y(\epsilon, x) \to y_{0}$. Then since $f_{\epsilon}(x)$ is upper semicontinuous, 
+$$
+f_\epsilon(x)\ge \varlimsup_{n\to\infty}f_\epsilon(x_n) = \varlimsup_{n\to\infty}f(y(\epsilon, x_n)) + \frac{|x-y_0|}{\epsilon} \ge f(y_0) +\frac{|x-y_0|}{\epsilon} \ge f_\epsilon(x)
+$$
+Thus $f_\epsilon(x) $ is continuous. When $\epsilon\to 0$, we know $y(\epsilon, x) \to x$, otherwise $\frac{d(x, y(\epsilon, x))}{\epsilon}\to\infty$. And we have
+$$
+f(x) \ge \varlimsup_{\epsilon \to 0}f_\epsilon(x) = \varlimsup_{\epsilon\to 0}\left(f(y(\epsilon, x))+\frac{d(x, y(\epsilon, x))}{\epsilon}\right) \ge f(x) + \varlimsup_{\epsilon\to 0}\frac{d(x, y(\epsilon, x))}{\epsilon}.
+$$
+Which means $$\frac{d(x, y(\epsilon, x))}{\epsilon}\to 0,$$
+and $f_\epsilon(x) \to f(x)$.
 \bigskip
 
 
