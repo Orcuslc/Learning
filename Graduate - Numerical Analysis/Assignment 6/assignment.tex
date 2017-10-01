@@ -1,0 +1,113 @@
+%!TEX program = xelate
+\input{structure.tex}
+\usepackage{epstopdf}
+\usepackage{graphics}
+\usepackage{subfig}
+\usepackage{listings}
+\lstset{
+  breaklines=true,
+  xleftmargin=25pt,
+  xrightmargin=25pt,
+  aboveskip=0pt,
+  belowskip=10pt,
+  basicstyle=\ttfamily,
+  showstringspaces=false,
+  frame=ltrb,
+  tabsize=4,
+  numbers=left,
+  numberstyle=\small,
+  numbersep=8pt,
+  morekeywords={*, factorial, sum, erlang},
+  keywordstyle=\color{blue!70}, commentstyle=\color{red!50!green!50!blue!50},
+}
+\DeclareGraphicsExtensions{.eps,.ps,.jpg,.bmp}
+
+\begin{document}
+
+\title{Numerical Analysis \\ Assignment 6}
+\date{\today}
+\author{Chuan Lu}
+
+\maketitle
+
+\problem{1}{Problem 3.1, Page 185}
+\solution{(a)}{
+If we expand $V_{n}(x)$ by the last row, then we can know
+$$
+V_n(x) = A_{n+1,n+1}x^n+A_{n+1, n}x^{n-1}+\cdots + A_{n, 1},
+$$
+where $A_{i, j}$ is the cofactors of $V$. Then $V_n(x)$ is a polynomial of degree $n$, thus it has $n$ roots. By replacing $x$ with $x_{i}, i = 0, 1, \cdots, n-1$, we can find $V_{n}(x_i) = 0$, thus $x = x_{i}$ are exactly roots of $V_{n}$. On the other hand, the coefficient of $x^{n}$ is just $V_{n-1}(x_{n-1}) $, thus
+$$
+V_n(x) = V_{n-1}(x_{n-1})\prod_{i=0}^{n-1}(x-x_i).
+$$
+}
+\solution{(b)}{
+With the definition of $X$ we know
+$$
+\begin{aligned}
+\det(X) &= V_n(x_n) = V_{n-1}(x_{n-1})\prod_{i=0}^{n-1}(x_n-x_i) \\
+&= V_{n-2}(x_{n-2})\prod_{i=0}^{n-1}(x_n-x_i)\prod_{i=0}^{n-2}(x_{n-1}-x_i)\\
+&= \cdots \\ 
+&= V_0(x_0)\prod_{k=0}^{n-1}\prod_{i=0}^{k-1}(x_{k+1}-x_i) = \prod_{0\le j<i\le n}(x_i-x_j).
+\end{aligned}
+$$
+}
+
+\problem{2}{Problem 3.6, Page 186}
+\solution{Solution}{
+We know from linear interpolation,
+$$
+|E(x)| = \frac{(x-x_0)(x_1-x)}{2}\cdot \sin(\xi), ~x_0 \le \xi \le x_1.
+$$
+Since $|f''(t)| = |sin(t)| \le 1$, we should take $h$, s.t. $\frac{h^2}{8} \le 1e^{-6}$. Thus we may take $h = 0.002$.
+
+And we need a table entries of $7$ significant digits so as not to let the rounding error dominate the interpolation error.
+}
+
+\problem{3}{Problem 3.8, Page 187}
+\solution{Solution}{
+The Lagrange quadratic interpolation of $f$ at $x_i$ is
+$$
+L(x) = \frac{(x-x_1)(x-x_2)}{(x_0-x_1)(x_0-x_2)}f_0 + \frac{(x-x_0)(x-x_2)}{(x_1-x_0)(x_1-x_2)}f_1 + \frac{(x-x_0)(x-x_1)}{(x_2-x_0)(x_2-x_1)}f_2.
+$$
+Then the rounding error of quadratic interpolation is
+$$
+\begin{aligned}
+R(x) &= \frac{(x-x_1)(x-x_2)}{(x_0-x_1)(x_0-x_2)}\epsilon_0 + \frac{(x-x_0)(x-x_2)}{(x_1-x_0)(x_1-x_2)}\epsilon_1 + \frac{(x-x_0)(x-x_1)}{(x_2-x_0)(x_2-x_1)}\epsilon_2 \\
+&= \frac{1}{2h^2}((x-x_1)(x-x_2)\epsilon_0 - 2(x-x_0)(x-x_2)\epsilon_1 + (x-x_0)(x-x_1)\epsilon_2)
+\end{aligned}
+$$
+Since the maximum of a quadratic function is at either endpoints or vertex, 
+$$
+\max|R(x)| \le \max\left(|\epsilon_0|, ~|\epsilon_2|, \frac{1}{2h^2}\left(\frac{h^2}{4}+2h^2 +\frac{h^2}{4} \right)|\epsilon|~\right) = 1.25|\epsilon|.
+$$
+}
+
+\problem{4}{Problem 3.21, Page 189}
+\solution{Solution}{
+First notice $p(x)-1$ has three roots. So we may assume
+$$
+p(x) = q(x)x(x-1)(x+1)+1, ~q(x) = ax^2+bx+c.
+$$
+Then we replace $x$ with $-2, 2, 3$, we have
+$$
+\left\{
+\begin{aligned}
+&q(-2) = 1 = 4a-2b+c \\
+&q(2) = 1 = 4a+2b+c \\
+&q(3) = 1 = 9a+3b+c
+\end{aligned}
+\right.
+$$
+Then $q(x) = 1$ has at least three roots, which means $q(x) = 1$. Thus the degree of $p(x)$ is 3.
+}
+
+\problem{5}{Problem 3.24, Page 189}
+\solution{Proof}{
+With (3.2.12) we know
+$$
+|\Psi(x)| = \left|\frac{f^{(n)}(\xi)}{n!}\prod_{i=0}^n(x-x_i)\right| < \frac{1}{n!}h^{n+1}\times n! = h^{n+1}. 
+$$
+Then $\max|e^x-p_n(x)|\to 0$, when $n\to\infty$.
+}
+\end{document}
