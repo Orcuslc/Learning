@@ -70,20 +70,88 @@
 
 
 \bigskip
-\textbf{Collaborators:}\\
+\textbf{Collaborators:} None
 \smallskip
  
 \textbf{Solution:}
+For $\epsilon > 0$, according to Lusin's Theorem, there exists a closed subset $F$ of $I$, s.t. $m(I\setminus F) < \epsilon$, and $f$ is continuous on $F$. 
+Then for $x_0\in F$, for this $\epsilon > 0$, 
+$$
+\exists \sigma > 0, ~\forall x\in (x_0-\delta, ~x_0+\delta)\cap F, ~|f(x)-f(x_0)| < \epsilon.
+$$
+Since
+$$
+\bigcup_{x_0\in F} (x_0-\delta_i, ~x_0+\delta_i)
+$$
+is an open cover of the closed set $F$, it has a finite subcover, denoted by
+$$
+\bigcup_{i=1}^n (x_i-\delta_i, ~x_i+\delta_i).
+$$
+If we define
+$$
+h = \left\{
+\begin{aligned}
+&f(x_i), ~\text{for} ~x\in (x_i-\delta_i, ~x_i+\delta_i), \\
+&0, ~\text{others}
+\end{aligned}
+\right.
+$$
+then $h$ takes constant values in finite intervals, and $h = 0$ in other parts, we know $h$ is a step function. And from the construction above, on each interval $(x_i-\delta_i, x_i+\delta_i)\cap F$, 
+$$
+|h-f|< \epsilon ~\text{on}~ (x_i-\delta_i, x_i+\delta_i)\cap F.
+$$
+Thus $h$ is the step function needed.
+
 \bigskip
 
 \item (Problem 22, Page 64) (Dini's Theorem)  Let $\{f_n\}$ be an increasing sequence of continuous functions on $[a,b]$ which converges pointwise on $[a,b]$ to the continuous function $f$ on $[a,b]$.  Show that the convergence is uniform on $[a,b]$.
 
 
 \bigskip
-\textbf{Collaborators:}\\
+\textbf{Collaborators:} None
 \smallskip
  
 \textbf{Solution:}
+If the convergence is not uniform, then there $\exists \epsilon > 0, \forall N > 0, ~\exists n > N, ~\exists x\in [a, b], ~|f(x)-f_n(x)| > \epsilon $.
+
+We can construct a sequence $\{x_n\}$ like this:
+
+$$
+N = 1, ~\exists n_1 > 1, ~\exists x_1\in[a, b], ~|f_{n_1}(x_1)-f(x_1)| \geqslant \epsilon.
+$$
+$$
+N = n_1, ~\exists n_2 > n_1, ~\exists x_2\in[a, b], ~|f_{n_2}(x_2)-f(x_2)| \geqslant \epsilon.
+$$
+$$
+\cdots
+$$
+$$
+N = n_{k-1}, ~\exists n_k > n_{k-1}, ~\exists x_k\in[a, b], ~|f_{n_k}(x_k)-f(x_k)| \geqslant \epsilon.
+$$
+$$
+\cdots
+$$
+Then since $x_i\in [a, b]$, according to Bolzano-Weierstrass Theorem, there is a convergent subsequence in $\{x_i\}$, and we may denote it by $\{y_i\}$ for convinence. Assume $y_i\to y\in [a, b]$, then since
+$$
+\lim_{n\to\infty}f_n(y) = f(y),
+$$
+for this $\epsilon > 0, ~\exists N$, s.t.
+$$
+|f_N(y)-f(y)|<\epsilon.
+$$
+since $f_N$ is continuous, with $y_k\to y$, there $\exists K > 0$, 
+$$
+|f_N(y_k)-f(y_k)| < \epsilon
+$$
+holds for all $k > K$. Notice that $\{f_n\}$ is an increasing sequence, when $n > N ~\text{and}~ k > K$, 
+$$
+|f_n(y_k)-f(y_k)| \leqslant |f_N(y_k)-f(y_k)|<\epsilon.
+$$
+Since $n_k\to\infty$ when $k\to\infty$, when $k$ is sufficiently large we have $k > K, ~n_k > N$. Thus 
+$$
+|f_{n_k}(x_k)-f(x_k)| < \epsilon,
+$$ 
+which makes a contradiction with the assumption. Thus the convergence is uniform.
 \bigskip
 
 
@@ -92,19 +160,41 @@
 
 
 \bigskip
-\textbf{Collaborators:}\\
+\textbf{Collaborators:} None
 \smallskip
  
 \textbf{Solution:}
+Notice that for each $r\in \mathbb{R}\supset\mathbb{Q}$, we have
+$$
+\{x\in X\mid f(x) < r\} = \bigcup_{\substack{c < r \\ c \in \mathbb{Q}}}\{x\in X\mid f(x) < c\}.
+$$
+Then since Lebesgue measurable sets make a $\sigma-$Algebra, we know $\{x\in X\mid f(x) < r\}$ is measurable. On the other hand, since each rational number is a real number, the other direction stands.
 \bigskip
 
 \item (Problem 13, Page 365) Let $\{f_n\}$ be a sequence of real-valued functions on $X$ such that for each natural number $n$, $\mu \{x\in X \mid |f_n (x) - f_{n+1}(x)|> 1/2^n\}<1/2^n$. Show that $\{f_n\}$ is pointwise convergent a.e. on $X$.
 
 \bigskip
-\textbf{Collaborators:}\\
+\textbf{Collaborators:} None
 \smallskip
  
 \textbf{Solution:}
+Denote
+$$
+E_n = \{x\in X\mid |f_n(x)-f_{n+1}(x)|>\frac{1}{2^n}\},
+$$
+Then 
+$$
+\bigcup_{n=1}^{\infty}\mu(E_n) < \sum_{n=1}^{\infty}\mu(E_n) < \sum_{n=1}^{\infty}\frac{1}{2^n} = 1.
+$$
+According to Borel-Cantelli Lemma, $\exists E_0$, $\mu(E_0) = 0$, s.t. $\forall x\in X\setminus E_0$, $x$ belongs to at most finite number of $E_n$. That means, $\forall x\in X\setminus E_0$, $\exists N > 0$, $\forall n > N$, $x\in E_n$. So 
+$$
+|f_n(x)-f_{n+1}(x)| < \frac{1}{2^n}.
+$$
+Thus 
+$$
+\forall m > n, |f_m(x)-f_{n}(x)| < \sum_{i=n}^{m-1}|f_{i+1}(x)-f_i(x)| < \frac{1}{2^{n-1}}.
+$$
+This means that $f_n(x)$ is a Cauchy sequence, then it converges. Thus $\{f_n\}$ is pointwise convergent on $X\setminus E_0$, and thus is pointwise convergent a.e. on $X$.
 \bigskip
 
 \item  (Problem 15, Page 365)  A sequence $\{f_n\}$ of measurable real-valued functions on $X$ is said to \emph{converge in measure} to a measurable function $f$  provided that for each $\eta > 0$, \[
@@ -113,18 +203,152 @@
 \begin{enumerate}
 \item Show that if $\mu(X)< \infty$ and if $\{f_n\}$ converges pointwise a.e. on $X$ to a measurable function $f$, then $\{f_n\}$ converges to $f$ in measure.
 \item Show that if $\{f_n\}$ converges to $f$ in measure, then there is a subsequence of $\{f_n\}$ that converges pointwise a.e. to $f$.
-\item Show that if $\{f_n\}$ is Cauchy in measure, then there is a measurable function $f$ to which $\{f_n\}$ converges in measure.\end{enumerate}
+\item Show that if $\{f_n\}$ is Cauchy in measure, then there is a measurable function $f$ to which $\{f_n\}$ converges in measure.
+\end{enumerate}
+
+\bigskip
+\textbf{Collaborators:} None, but (b) and (c) checked a proof from my Real Analysis textbook in college (Written by Prof. Zhaobo Huang, Fudan University).
+\smallskip
+ 
+\textbf{Solution:}
+\textbf{(a)} Since $\{f_n\}$ converges pointwise a.e. on $X$, there $\exists E_0, ~\mu(E_0) = 0$, s.t. $\lim\limits_{n\to\infty}f_n = f$ on $E_1 = X\setminus E_0$. Then $\forall \epsilon > 0$,
+$$
+E_1 = \bigcup_{k=1}^{\infty} \bigcap_{n=k}^{\infty} \{x\in E_1\mid |f_n(x)-f(x)| \le \epsilon\} = \varliminf_{n\to\infty} \{x\in E_1\mid |f_n(x)-f(x)| \le \epsilon\}.
+$$
+Thus, according to the continuity of measure, 
+$$
+\mu(E_1) \le \varliminf_{n\to\infty} \mu(\{x\in E_1\mid |f_n(x)-f(x)| \le \epsilon\}).
+$$
+Since $\mu(X) < \infty$, we have
+$$
+\begin{aligned}
+\lim_{n\to\infty} \mu(\{x\in E_1\mid |f_n(x)-f(x)| &> \epsilon\}) \le \varlimsup_{n\to\infty} \mu(\{x\in E_1\mid |f_n(x)-f(x)| > \epsilon\}) \\
+&= \mu(X) - \varliminf_{n\to\infty} \mu(\{x\in E_1\mid |f_n(x)-f(x)| \le \epsilon\}) \le 0.
+\end{aligned}
+$$
+Thus $\{f_n\}$ converges to $f$ in measure. 
+
+\textbf{(b)}
+Since $\{f_n\}$ converges to $f$ in measure, $\forall k \in \mathbb{N}$, $\exists n_k > n_{k-1} \in \mathbb{N}$, s.t. when $n \ge n_k$,
+$$
+\mu(\{x\in X\mid |f_n(x)-f(x)| \ge \frac{1}{2^k}\}) < \frac{1}{2^k}.
+$$
+Denote $E_{k} = \{x\in X\mid |f_{n_k}(x)-f(x)| \ge \frac{1}{2^k}\}$, then $\mu(E_k) < \frac{1}{2^k}$. Let 
+$$
+F_k = \bigcap_{i=k}^{\infty} (X\setminus 
+E_i) = \{x\in X\mid |f_{n_i}(x)-f(x)|\le \frac{1}{2^i}, i = k, k+1, \cdots\}
+$$
+then $\{f_{n_k}\}$ converges uniformly to $f$ on $F_k$, thus is convergent on $F = \bigcup\limits_{k=1}^{\infty}F_k$. On the other hand,
+$$
+X\setminus F = \bigcap_{k=1}^{\infty}(X\setminus F_k) = \bigcap_{k=1}^{\infty}\bigcup_{k=1}^{\infty}E_i = \varlimsup_{i\to\infty}E_i,
+$$
+and 
+$$
+\sum_{i=1}^{\infty}\mu(E_i) \le \sum_{i=1}^{\infty}\frac{1}{2^i} = 1, 
+$$
+thus $\mu(X\setminus F) = 0$, $\{f_{n_k}\}$ converges pointwise a.e. on $X$.
+
+\textbf{(c)} If $\{f_n\}$ is Cauchy in measure, then for each $n_i \in \mathbb{N}$, there $\exists n_{i+1} > n_{i}$, s.t. 
+$$
+\mu(\{x\in X\mid |f_{n_i}(x)-f_{n_{i+1}}(x)| \ge \frac{1}{2^i}\})\le \frac{1}{2^i}.
+$$
+We can denote the subsequence $\{f_{n_i}\}$ as $\{g_i\}$, and $E_i = \{x\in X\mid |f_{n_i}(x)-f_{n_{i+1}}(x)| \ge \frac{1}{2^i}\}$. Let $F_{k} = \bigcup\limits_{i = k}^{\infty}E_i $, then $\mu(F_k)\le \sum\limits_{i=k}^{\infty}\frac{1}{2^i}\le \frac{1}{2^{k-1}} $. Denote $F = \bigcap\limits_{i=1}^\infty F_i $, then $\mu(F) = 0$.
+
+If we choose $x\notin F_{k}$, and $i \ge j \ge k$, then 
+$$
+|g_i(x)-g_j(x)| \le \sum_{l = j}^{i-1}|g_{l+1}(x)-g_l(x)| \le \frac{1}{2^j},
+$$
+which means $g_i(x)$ is Cauchy respective to $i$ on $X\setminus F$, thus converges on $X\setminus F$. Thus we can construct a function $f$ like this: 
+$$
+f(x) = \left\{
+\begin{aligned}
+&0, ~x\in F \\
+&\lim_{i\to\infty}f_i(x), ~x\in X\setminus F.
+\end{aligned}
+\right.
+$$
+Then $\{g_i(x)\}$ converges to $f$ on $X\setminus F$, which means $\{g_i\}$ converges pointwise a.e. on $X$. Now we show $\{f_n\}$ converges to $f$ in measure. Notice
+$$
+\mu(\{x\in X\mid |f_n - f|\ge \xi\}) \le \mu(\{x\mid |f_n-g_m|\ge \frac{\xi}{2}\}) + \mu(\{x\mid |g_m-f|\ge \frac{\xi}{2}\}), ~m > n
+$$
+and when $n\to\infty$, the two terms in the right can be arbitrarily small, so 
+$$
+\lim_{n\to\infty}\mu(\{x\in X\mid |f_n - f|\ge \xi\}) = 0, ~\forall \xi > 0.
+$$
+The $\{f_{n}\}$ converges in measure.
+\bigskip
+
 
 \item (Problem 16, Page 365) Assume $\mu (X) < \infty$.  Show that $\{f_n\}$ converges to $f$ in measure if and only if each  subsequence of $\{f_n\}$ has a further subsequence that converges pointwise a.e. on $X$ to $f$.  Use this to show that for two sequences that converge in measure, the product sequence also converges in measure to the product of the limits. 
+
+\bigskip
+\textbf{Collaborators:} None
+\smallskip
+ 
+\textbf{Solution:}
+\textbf{(1)} Necessity: From $\{f_n\}$ converges to $f$ in measure and the property of convergence, we know that each subsequence of $\{f_n\}$ converges to $f$ in measure. From Problem 5(b) we know $\{f_{n_k}\}$ has a subsequence $\{f_{n_{k_{j}}}\}$ converges pointwise a.e. on $X$ to $f$.
+
+Sufficiency: If each subsequence $\{f_{n_k}\}$ has a further subsequence $\{f_{n_{k_j}}\}$ converges pointwise a.e. on $X$ to $f$, then since $\mu(X) < \infty$, from Problem 5(a) we know $\{f_{n_k}\}$ converges in measure to $f$. If $\{f_n\}$ does not converge to $f$ in measure, then there $\exists \epsilon > 0$,
+$$
+\begin{aligned}
+&\text{for}~ n_1 = 1, ~\exists n_2 > n_1, ~\mu(\{x\mid |f_{n_2}-f| \ge \epsilon\}) \ge \epsilon, \\
+&\text{for}~ n_2, ~\exists n_3 > n_2, ~\mu(\{x\mid |f_{n_3}-f| \ge \epsilon\}) \ge \epsilon, \\
+&\cdots, \\
+&\text{for}~ n_k, ~\exists n_{k+1} > n_k, ~\mu(\{x\mid |f_{n_{k+1}}-f| \ge \epsilon\}) \ge \epsilon, \\
+&\cdots.
+\end{aligned}
+$$
+Then we get a subsequence $\{f_{n_k}\}$ which does not converge to $f$ in measure. It makes a contratiction.
+
+\textbf{(2)} Suppose $\{f_n\}$, $\{g_n\}$ are two sequences that converge in measure to respectively $f$ and $g$. For each subsequence $\{f_{n_k}g_{n_k}\}$ of $\{f_ng_n\}$, from (1) we know $\{f_{n_k}\}$ has a subsequence $\{f_{n_{k_l}}\}$ converges pointwise a.e. to $f$, and $\{g_{n_{k_l}}\}$ has a subsequence $\{g_{n_{k_{l_j}}}\}$ converges pointwise a.e. to $g$. Since the union of two measure-zero sets is a measure-zero set, we know $\{f_{n_{k_{l_j}}}g_{n_{k_{l_j}}}\}$ converges pointwise a.e. to $fg$ according to the linear property of limits. Thus according to (1) we know $\{f_ng_n\}$ converges in measure to the product of limits.
+\bigskip
 
 \item Show that if $f$ is an lower semicontinuous (resp. upper semicontinuous) function on an interval $[a,b]$, then there is a family $\{f_{\alpha}\}$ of continuous functions on the interval $[a,b]$ such that $f(x) = \sup\{f_{\alpha}(x) \mid \alpha \in A \}$ (resp. $f(x) = \inf\{f_{\alpha}(x) \mid \alpha \in A \}$) for all $x \in [a,b]$.  
 
 
 \bigskip
-\textbf{Collaborators:}\\
+\textbf{Collaborators:} Checked https://people.math.gatech.edu/\~{}loss/16FALLTEA/NOTES/semicontinuity.pdf for help.
 \smallskip
  
 \textbf{Solution:}
+We first show a lemma.
+\begin{lemma}
+If $\{f_\alpha(x)\}$ is a family of upper semi-continuous functions, then $\inf\limits_{\alpha\in I}f_\alpha(x)$ is also upper semi-continuous. Conversely, lower semi-continuous is preserved under monotone increasing limits.
+\end{lemma}
+\begin{proof}
+In fact, suppose $\{f_\alpha(x)\}_{\alpha\in I}$ is a family of upper semi-continuous functions, then 
+$$
+\{x\in [a, b]\mid f_\alpha(x)\ge t\} = \bigcap_{\alpha\in I}\{x\in [a, b]\mid f_\alpha(x)\ge t\}.
+$$
+With the continuity of $f_\alpha(x)$ and the compactness of $[a, b]$, we know $\{x\in [a, b]\mid f_\alpha(x) \ge t\}$ is closed, so $\{x\in [a, b]\mid f_\alpha(x)\ge t\}$ is also closed. Thus $\inf\limits_{\alpha\in I} f_\alpha(x)$ is upper semi-continuous.
+\end{proof}
+
+We just show the case when $f$ is a lower semicontinuous function. Let
+$$ 
+f_\epsilon(x) = \inf_{y\in [a, b]}\left(f(y) + \frac{|x-y|}{\epsilon}\right),
+$$
+and we show that $f_\epsilon(x) $ is continuous and converges pointwise to $f$ from below when $\epsilon \to 0^+$.
+
+First, we have $f_\epsilon(x) \le f(x)$ by setting $y = x$ instead of taking the infimum. For each fixed $y\in [a, b]$, the map
+$$
+x \mapsto f(y)+\frac{|x-y|}{\epsilon}
+$$
+is continuous, hence according to the lemma, $f_{\epsilon}(x)$ is an upper semi-continuous function.
+
+Since $[a, b]$ is conpact, $f$ is lower semicontinuous, and the map $y\mapsto |x-y|$ is continuous, the infimum is attained, and there exists $y(\epsilon, x) \in [a, b]$, s.t.
+$$
+f_\epsilon(x) = f(y(\epsilon, x)) + \frac{d(x, y(\epsilon, x))}{\epsilon}.
+$$
+Pick $\{x_n\}\to x$, then since $[a, b]$ is compact we may assume $y(\epsilon, x) \to y_{0}$. Then since $f_{\epsilon}(x)$ is upper semicontinuous, 
+$$
+f_\epsilon(x)\ge \varlimsup_{n\to\infty}f_\epsilon(x_n) = \varlimsup_{n\to\infty}f(y(\epsilon, x_n)) + \frac{|x-y_0|}{\epsilon} \ge f(y_0) +\frac{|x-y_0|}{\epsilon} \ge f_\epsilon(x)
+$$
+Thus $f_\epsilon(x) $ is continuous. When $\epsilon\to 0$, we know $y(\epsilon, x) \to x$, otherwise $\frac{d(x, y(\epsilon, x))}{\epsilon}\to\infty$. And we have
+$$
+f(x) \ge \varlimsup_{\epsilon \to 0}f_\epsilon(x) = \varlimsup_{\epsilon\to 0}\left(f(y(\epsilon, x))+\frac{d(x, y(\epsilon, x))}{\epsilon}\right) \ge f(x) + \varlimsup_{\epsilon\to 0}\frac{d(x, y(\epsilon, x))}{\epsilon}.
+$$
+Which means $$\frac{d(x, y(\epsilon, x))}{\epsilon}\to 0,$$
+and $f_\epsilon(x) \to f(x)$.
 \bigskip
 
 
