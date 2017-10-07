@@ -18,6 +18,7 @@
   numberstyle=\small,
   numbersep=8pt,
   morekeywords={*, factorial, sum, erlang},
+  keywordstyle=\color{blue!70}, commentstyle=\color{red!50!green!50!blue!50},
 }
 \DeclareGraphicsExtensions{.eps,.ps,.jpg,.bmp}
 
@@ -148,7 +149,52 @@ $$
 
 \problem{4}{For $n = 1, \cdots, 10$, generate the Newton divided difference polynomials that interpolates $\cos(x) ~\text{for}~ x \in [0, 2\pi]$, at n equally spaced points. Create an error table.}
 \solution{Solution}{
-The code is listed below.
+The code and result (the graph of error and table of Max error) is listed below.
 }
+\lstinputlisting[language = MATLAB]{newton_poly.m}
+\lstinputlisting[language = MATLAB]{prob4.m}
+
+\begin{figure}[!htb]
+\centering
+\includegraphics[width = 0.5\textwidth]{prob4.eps}
+\caption{Error of interpolation with different order}
+\end{figure}
+\begin{lstlisting}[language = MATLAB]
+>> prob4
+   1.0e+03 *
+
+    0.0020
+    0.0020
+    0.0040
+    0.0045
+    0.0520
+    0.1047
+    0.2818
+    0.9745
+    1.0237
+    7.0735
+\end{lstlisting}
+
+\problem{5}{For $n = 1,\cdots, 5$, construct Hermite interpolant that interpolates $\cos(x) ~\text{for}~ x \in [0, 2\pi]$, at $n$ equally spaced points. Create an error table.
+}
+\solution{Solution}{
+The code and result is as below. It seems Hermite intepolation is more stable then Newton intepolation.
+}
+\lstinputlisting[language = MATLAB]{Hermite_poly.m}
+\lstinputlisting[language = MATLAB]{prob5.m}
+\begin{figure}[!htb]
+\centering
+\includegraphics[width = 0.5\textwidth]{prob5.eps}
+\caption{Error of Hermite interpolation with different order}
+\end{figure}
+\begin{lstlisting}[language = MATLAB]
+>> prob5
+    2.0000
+    4.0801
+    0.8723
+    0.0900
+    0.0056
+\end{lstlisting}
+
 
 \end{document}
