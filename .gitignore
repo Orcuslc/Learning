@@ -22,3 +22,5 @@ Undergraduate Thesis/NumericalSimulation/__pycache__/theoretical.cpython-35.opt-
 Kaggle/titanic/gender_submission.csv
 *.csv
 *.a
+*.fls
+*.flb_latexmk
