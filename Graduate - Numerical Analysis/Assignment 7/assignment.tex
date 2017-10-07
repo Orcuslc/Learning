@@ -73,7 +73,7 @@ y_1' = \frac{3}{4h}(y_2-y_0)-\frac{1}{4}(y_0'+y_2').
 $$
 Then the polynomial is 
 $$
-H(x) = \sum_{i=0}^{2}h_i(x) + \sum_{i=0}^{2}\tilde{h_i}(x),
+H(x) = \sum_{i=0}^{2}h_i(x)y_i + \sum_{i=0}^{2}\tilde{h_i}(x)y'_i,
 $$
 with
 $$
@@ -116,5 +116,34 @@ $$
 }
 
 \problem{3}{Problem 3.38, Page}
+\solution{Solution}{
+Let $k(x) = \hat{s}(x)-g(x)$, then
+$$
+\begin{aligned}
+\int_{x_0}^{x_n}|g''(x)|^2dx &= \int_{x_0}^{x_n}|\hat{s}''(x)-k''(x)|^2dx \\
+&= \int_{x_0}^{x_n}|\hat{s}''(x)|^2dx-2\int_{x_0}^{x_n}\hat{s}''(x)k''(x)dx+\int_{x_0}^{x_n}|k''(x)|^2dx.
+\end{aligned}
+$$
+By integration by parts, 
+$$
+\left.\int_{x_0}^{x_n}\hat{s}''(x)k''(x)dx = \hat{s}''(x)k'(x)\right|_{x_0}^{x_n} - \int_{x_0}^{x_n}\hat{s}'''(x)k'(x)dx
+$$
+We know from the boundary conditions, 
+$$
+\hat{s}''(x_0) = \hat{s}''(x_n) = 0,
+$$
+thus the first term equals to $0$. Besides, since $\hat{s}(x)$ is a cubic polynomial, $\hat{s}'''(x)$ is a constant, denoted by $c$. Then 
+$$
+\left.\int_{x_0}^{x_n}\hat{s}'''(x)k'(x)dx = ck(x)\right|_{x_0}^{x_n} = c(k(x_n)-k(x_0)).
+$$
+We know from intepolation conditions that
+$$
+k(x_i) = \hat{s}(x_i) - g(x_i) = 0, ~0\le i\le n
+$$
+Thus the second term also equals to $0$. Then we know
+$$
+\int_{x_0}^{x_n}|g''(x)|^2dx = \int_{x_0}^{x_n}|\hat{s}''(x)|^2dx+\int_{x_0}^{x_n}|\hat{s}''(x)-g''(x)|^2dx \ge \int_{x_0}^{x_n}|\hat{s}''(x)|^2dx.
+$$
+}
 
 \end{document}
