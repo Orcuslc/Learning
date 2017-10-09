@@ -135,10 +135,28 @@ $$
 
 
 \bigskip
-\textbf{Collaborators:}\\
+\textbf{Collaborators:} None
 \smallskip
  
 \textbf{Solution:}
+\textbf{(1)} We show $\mathcal{M}_0$ is a $\sigma-$algebra. \textbf{(1.1)} First, since $X\in \mathcal{M}, \emptyset\in\mathcal{M}$, and $X = X\cup\emptyset$, and $\mu(\emptyset) = 0$, we know $X\in\mathcal{M}_0$. \textbf{(1.2)} Suppose $E\in \mathcal{M}_0$, then $E = A\cup B$ where $B\in \mathcal{M}$ and $A\subset C$ for some $C\in\mathcal{M}$, and $\mu(C) = 0$. Then $E^c = A^c\cap B^c = (B^c\cap C^c)\cup(C\setminus A)$. Since $\mathcal{M}$ is a $\sigma-$algebra, we know $B^c, C^c, B^c\cup C^c \in \mathcal{M}$, and $C\setminus A \in \mathcal{M}$, and $(C\setminus A)\subset C$, with $\mu(C) = 0$. Hence $E^c\in\mathcal{M}_0 $. \textbf{(1.3)} Suppose $\{E_n\}$ is a sequence of sets in $\mathcal{M}_0$. We may assume $E_n = A_n\cup B_n$, where $B_n\in\mathcal{M}$, and $A_n\subset C_n$ for some $C_n\in\mathcal{M}$ with $\mu(C) = 0$. Then 
+$$
+\bigcup\limits_{n=1}^{\infty}E_n = \left(\bigcup\limits_{n=1}^{\infty}A_n\right) \bigcup \left(\bigcup\limits_{n=1}^{\infty}B_n \right),
+$$
+and $\bigcup\limits_{n=1}^{\infty}B_n\in\mathcal{M} $. With the countable addivity of measure, $\bigcup\limits_{n=1}^{\infty}A_n\subset \bigcup\limits_{n=1}^{\infty}C_n\in\mathcal{M} $, and $\mu\left(\bigcup\limits_{n=1}^{\infty}C_n\right) = \sum\limits_{n=1}^{\infty}\mu(C_n) = 0$. Thus $\bigcup\limits_{n=1}^{\infty}E_n\in\mathcal{M} $.
+
+\textbf{(2)} We show $\mu_0$ is properly defined, which means $\mu_0$ satisfies the properties of measure. \textbf{(2.1)} First, for all $E\in\mathcal{M}_0$, suppose $E = A\cup B$ where $A\in\mathcal{M}$ and $B\subset C\in\mathcal{M}$ with $\mu(C) = 0$. Then $\mu_0(E) = \mu(A) \ge 0$. \textbf{(2.2)} Since $\emptyset\in\mathcal{M}$, and $\emptyset = \emptyset \cap \emptyset$ with $\mu(\emptyset) = 0$, we know $\mu_0(\emptyset) = \mu(\emptyset) = 0$. \textbf{(2.3)} Suppose $\{E_n\}$ is a countable collection of disjoint sets in $\mathcal{M}_0$, denote $E_n = A_n\cup B_n$, and $A_n\in\mathcal{M}$, $B_n\subset C_n\in\mathcal{M}$, with $\mu(C_n) = 0$. Then the same with \textbf{(1.3)}, we know
+$$
+\bigcup\limits_{n=1}^{\infty}E_n = \left(\bigcup\limits_{n=1}^{\infty}A_n\right) \bigcup \left(\bigcup\limits_{n=1}^{\infty}B_n \right),
+$$
+with $\bigcup\limits_{n=1}^{\infty}B_n\subset \bigcup\limits_{n=1}^{\infty}C_n\in\mathcal{M} $, and $\mu\left(\bigcup\limits_{n=1}^{\infty}C_n\right) = \sum\limits_{n=1}^{\infty}\mu(C_n) = 0$. Then
+$$
+\mu_0\left(\bigcup_{n=1}^{\infty}E_n\right) = \mu\left(\bigcup_{n=1}^{\infty}B_n\right) = \sum_{n=1}^{\infty}\mu(B_n) = \sum_{n=1}^{\infty}\mu_0(E_n).
+$$
+
+\textbf{(3)} We show $(X, \mathcal{M}_0, \mu_0)$ is complete. If $E\in\mathcal{M}_0$ and $\mu_0(E) = 0$, then $E = A\cup B$ where $A\in\mathcal{M}$ and $B\subset C\in \mathcal{M}$ and $\mu(C) = 0$, and $\mu(A) = \mu_0(E) = 0$. Then each subset $F\subset E$ has a form $E = \emptyset \cup F$, and $F\subset (A\cup C)$ where $\mu_0(A\cup C) = \mu(A)+\mu(C) = 0$, and $A\cup C, \emptyset \in \mathcal{M}$. Thus $F\in\mathcal{M}_0$. 
+
+
 \bigskip
 
 
