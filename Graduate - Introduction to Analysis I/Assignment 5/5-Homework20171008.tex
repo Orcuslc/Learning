@@ -69,7 +69,7 @@
 
 
 \bigskip
-\textbf{Collaborators:} None\\
+\textbf{Collaborators:} None
 \smallskip
  
 \textbf{Solution:}
@@ -97,10 +97,37 @@ hence $f_{n}$ converges to $f$ pointwise. Using Proposition 9, we know $f$ is me
 
 
 \bigskip
-\textbf{Collaborators:}\\
+\textbf{Collaborators:} None
 \smallskip
  
 \textbf{Solution:}
+\textbf{(a)} If $\mu$ is a $\sigma-$finite measure, then $X = \bigcup\limits_{n=1}^{\infty} X_i$, where $X_i$ has finite measure. Assume $E$ is a measurable set with infinite measure, then since $E\subset X$, $E = E\cap X = \bigcup\limits_{n=1}^{\infty} E\cap X_n$. For $\forall M > 0$, there must exist $N > 0$, s.t. $\mu\left(\bigcup\limits_{n=1}^{N}E\cap X_i\right) > M$, otherwise $\mu(E) \le \sum\limits_{n=1}^{\infty}\mu(E\cap X_n) < M_0$ for some $M_0 > 0$, which makes a contradiction with $\mu(E) = \infty$. Besides, we know from $\mu(X_i) < \infty$, that $\mu\left(\sum\limits_{n=1}^{N}(E\cap X_n)\right) < \infty$. Thus $\mu$ is semifinite.
+
+\textbf{(b)} Suppose $E$ is a measurable set of infinite measure in the measure space $(X, \mathcal{M}, \mu_1)$. Then according to the definite of $\mu_1$, $E$ contains measurable sets of arbitrarily large finite measure. Thus $\mu_{1}$ is semifinite.
+
+\textbf{(c)} Define $\mu_2$ like this: If $E$ can be represented as countable union of measurable sets with finite measure, then $\mu_2(E) = 0$. Otherwise $\mu_2(E) = \infty$.
+
+First, we show that $\mu = \mu_1 + \mu_2$. If $\mu(E) < \infty$, then $E = \bigcup\limits_{n=1}^{\infty}E_n$, in which $E_n = \varnothing$ for $n \ge 2$. Thus $\mu_2(E) = 0 = \mu(E) - \mu_1(E)$. Now we assume $\mu(E) = \infty$. If $E$ can be represented as countable union of measurable sets with finite measure, that is, $E = \bigcup\limits_{n=1}^{\infty}E_n$ with $\mu(E_n) < \infty$, then with the continuity of measure, $\forall M > 0$, $\exists N > 0$, s.t. $\mu\left(\bigcup\limits_{n=1}^{N}E_n\right) > M$. Since $\mathcal{M}$ is a $\sigma-$algebra, it shows that $E$ contains measurable sets of arbitrarily large finite measure. Thus $\mu(E) = \infty = \mu_1(E) + 0 = \mu_1(E) + \mu_2(E)$. If $E$ can't be represented as countable union of measurable sets with finite measure, then $\mu(E) = \infty = \mu_1(E) +\mu_2(E)$.
+% \textbf{(c)} First, when $\mu(E) < \infty$, $\mu_2(E) = \mu(E)-\mu_1(E) = 0$, and when $\mu(E) = \infty$ and $E$ does not contain measurable sets of arbitrarily large finite measure, $\mu_2(E) = \mu(E) - \mu_1(E) = \infty$. When $E$ contains measurable sets of arbitrarily large finite measure, define $\mu_2(E) = 0$. Hence $\mu = \mu_1 + \mu_2$.
+% Now we consider the case when $\mu(E) = \infty$ and $E$ contains measurable sets with arbitrarily large finite measure.
+
+% For $n = 1, 2, \cdots$, there is a measurable set $E_n \subset E$, s.t. $n \le \mu(E_n) < \infty$. Then with the Proposition of Continuity of Measure, 
+% $$
+% \mu_2\left(\bigcup_{n=1}^{\infty}E_n\right) = \lim_{n\to\infty}\mu_2(E_n) = \infty.
+% $$
+% However, since each $E_n$ is a subset of $E$, we know $\bigcup\limits_{n=1}^{\infty}E_n $ is a subset of $E$. Then use the Monotocity property of measure, 
+% $$
+% \mu_2(E) \ge \mu_2\left(\bigcup_{n=1}^{\infty}E_n\right) = \infty.
+% $$
+% Hence, when $\mu(E) = \infty$, $\mu_2(E) = \infty$. 
+Now we show that $\mu_2$ is a measure. In fact, we only need to show that $\mu_2(\varnothing) = 0$, and $\mu_2$ is countably additive. First, from the definition we know $\mu(\varnothing) = 0 < \infty$, so $\mu_2(\varnothing) = 0$. Suppose $\{E_n\}_{n=1}^{\infty}$ is a sequence of disjoint measurable sets. If $\exists i$, s.t. $\mu_2(E_i) = \infty$. Then $E_i$ can't be represented as countable union of measurable sets with finite measure, thus $\bigcup\limits_{n=1}^{\infty}E_n $ can't be represented as countable union of measurable sets with finite measure. Then
+$$
+\mu_2\left(\bigcup_{n=1}^{\infty}E_n\right) = \infty = \sum_{n=1}^{\infty}\mu_2(E_n).
+$$
+Now we suppose all $\mu_2(E_n) < \infty$. In this case, since $\mu_2$ takes value only in $\{0, \infty\}$, we have $\mu_2(E_n) = 0$. In this case, all $E_n$ is a countable union of measurable sets with finite measure, then $\bigcup\limits_{n=1}^{\infty}E_n $ is a countable union of measurable sets with finite measure. Thus
+$$
+\mu_2\left(\bigcup_{n=1}^{\infty}E_n\right) = 0 = \sum_{n=1}^{\infty}\mu_2(E_n).
+$$
 \bigskip
 
 
