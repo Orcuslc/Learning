@@ -1,0 +1,143 @@
+
+\documentclass{article}%
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{amsfonts}%
+\usepackage{amssymb}
+
+
+\setlength{\topmargin}{-0.75in}
+\setlength{\textheight}{9.25in}
+\setlength{\oddsidemargin}{0.0in}
+\setlength{\evensidemargin}{0.0in}
+\setlength{\textwidth}{6.5in}
+\def\labelenumi{\arabic{enumi}.}
+\def\theenumi{\arabic{enumi}}
+\def\labelenumii{(\alph{enumii})}
+\def\theenumii{\alph{enumii}}
+\def\p@enumii{\theenumi.}
+\def\labelenumiii{\arabic{enumiii}.}
+\def\theenumiii{\arabic{enumiii}}
+\def\p@enumiii{(\theenumi)(\theenumii)}
+\def\labelenumiv{\arabic{enumiv}.}
+\def\theenumiv{\arabic{enumiv}}
+\def\p@enumiv{\p@enumiii.\theenumiii}
+\pagestyle{plain}
+\setcounter{secnumdepth}{0}
+\newtheorem{theorem}{Theorem}
+\newtheorem{acknowledgement}[theorem]{Acknowledgement}
+\newtheorem{algorithm}[theorem]{Algorithm}
+\newtheorem{axiom}[theorem]{Axiom}
+\newtheorem{case}[theorem]{Case}
+\newtheorem{claim}[theorem]{Claim}
+\newtheorem{conclusion}[theorem]{Conclusion}
+\newtheorem{condition}[theorem]{Condition}
+\newtheorem{conjecture}[theorem]{Conjecture}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{criterion}[theorem]{Criterion}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{example}[theorem]{Example}
+\newtheorem{exercise}[theorem]{Exercise}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{notation}[theorem]{Notation}
+\newtheorem{problem}[theorem]{Problem}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{solution}[theorem]{Solution}
+\newtheorem{summary}[theorem]{Summary}
+\newenvironment{proof}[1][Proof]{\textbf{#1.} }{\ \rule{0.5em}{0.5em}}
+
+\begin{document}
+
+\begin{center}
+\textbf{Introduction to Analysis $I$\\Homework 5\\Sunday, October 8, 2017}\bigskip
+\end{center}
+
+\noindent\textbf{Instructions}: This and all subsequent homeworks must be submitted written in \LaTeX.
+
+\noindent If you use results from books, Royden or others, please be explicit about what results you are using.
+
+
+
+\begin{center}
+\emph{Homework 5 is due by midnight, Saturday, October 21.}
+\end{center} 
+\medskip
+
+\begin{enumerate}
+\item  (Problem 24, Page 64) Let $I$ be an interval in $\mathbb{R}$ and let $f:I\to \mathbb{R}$ be increasing. Show that $f$ is measurable by first showing that, for each natural number $n$, the strictly increasing function $x\to f(x)+x/n$ is measurable, and then taking pointwise limits.
+
+
+\bigskip
+\textbf{Collaborators:} None\\
+\smallskip
+ 
+\textbf{Solution:}
+Denote $f_{n}(x) = f(x)+\frac{x}{n}$. Then since $f: I \to \mathbb{R}$ is increasing, $f_n(x)$ is strictly increasing on $I \in \{[a, b], [a, b), (a, b], (a, b)\}$.
+
+For each fixed number $c$, if $\exists x_0\in I$, s.t. $f(x_0) = c$, then the set
+$$
+\{x\mid f(x) < c\} = (a, x_0),
+$$
+and the left side is the same as the set $I$, and it is an interval in $\mathbb{R}$, hence is measurable. Thus $f_{n}$ is measurable for every $n$. 
+
+For each $x\in I$, 
+$$
+\lim_{n\to\infty}f_n(x) = f(x)+\lim_{n\to\infty}\frac{x}{n} = f(x),
+$$
+hence $f_{n}$ converges to $f$ pointwise. Using Proposition 9, we know $f$ is measurable.
+\bigskip
+
+\item (Problem 8, Page 343)  Let $(X,\mathcal{M}, \mu)$ be a measure space.  The measure $\mu$ is said to be \textbf{semifinite} provided each measurable set of infinite measure contains measurable sets of arbitrarily large finite measure.
+\begin{enumerate}
+\item Show that each $\sigma$-finite measure is semifinite.
+\item For $E\in \mathcal{M}$, define $\mu_1(E) = \mu(E)$, if $\mu(E)<\infty$, and if $\mu(E)=\infty$, define $\mu_1(E)=\infty$ if $E$ contains measurable sets of arbitrarily large finite measure and $\mu_1(E)= 0$ otherwise.  Show $\mu_1$ is a semifinite measure: it is called the semifinite part of $\mu$.
+\item Find a measure $\mu_2$ on $\mathcal{M}$ that only takes the valures $0$ and $\infty$ and $\mu = \mu_1 + \mu_2$.
+\end{enumerate} 
+
+
+\bigskip
+\textbf{Collaborators:}\\
+\smallskip
+ 
+\textbf{Solution:}
+\bigskip
+
+
+\item (Problem 9, Page 343) Prove Proposition 3, that is, show that $\mathcal{M}_0$ is a $\sigma$-algebra, $\mu_0$ is properly defined and $(X,\mathcal{M}_0, \mu_0)$ is complete.  In what sense is $\mathcal{M}_0$ minimal?
+
+
+\bigskip
+\textbf{Collaborators:}\\
+\smallskip
+ 
+\textbf{Solution:}
+\bigskip
+
+
+\item (Problem 10, Page 343) If $(X,\mathcal{M},\mu)$ is a measure space, we say that a subset $E$ of $X$ is \textbf{locally measurable} provided for each $B\in \mathcal{M}$ with $\mu(B)<\infty$, the intersection $E\cap B$ belongs to $\mathcal{M}$.  The measure $\mu$ is called \textbf{saturated} provided every locally measurable set is measurable.
+\begin{enumerate}
+\item Show that each $\sigma$-finite measure is saturated.
+\item Show that the collection $\mathcal{C}$ of locally measurable sets is a $\sigma$-algebra.
+\item Let $(X,\mathcal{M},\mu)$ be a measure space and $\mathcal{C}$ the $\sigma$ of locally measurable sets. For $E\in \mathcal{C}$, define $\overline{\mu}(E) = \mu(E)$ if $E\in \mathcal{M}$ and $\overline{\mu}(E) = \infty$ if $E\notin \mathcal{M}$.  Show that $(X,\mathcal{C},\overline{\mu})$ is a saturated measure space.
+\item If $\mu$ is semifinite and $E\in \mathcal{C}$, set $\underline{\mu}(E)=\sup\{\mu(B)\mid B\in\mathcal{M},\, B\subseteq E \}$. Show that  $(X,\mathcal{C},\underline{\mu})$ is a saturated measure space and that $\underline{\mu}$ is an extension of $\mu$.  Give an example to show that $\overline{\mu}$ and $\underline{\mu}$ may be different.
+\end{enumerate}
+
+
+\bigskip
+\textbf{Collaborators:}\\
+\smallskip
+ 
+\textbf{Solution:}
+\bigskip
+
+
+
+\item (Problem 18, Page 373)  Let $\{u_n\}$ be a sequence of nonnegative measurable functions on $X$.  For $x\in X$, define $f(x) = \sum_{n=1}^{\infty} u_n(x)$.  Show that \[
+\int_X f \, d\mu = \sum_{n=1}^{\infty} \left[\int_X u_n \, d\mu \right].\]
+
+
+
+
+\end{enumerate}
+\end{document}
