@@ -170,10 +170,39 @@ $$
 
 
 \bigskip
-\textbf{Collaborators:}\\
+\textbf{Collaborators:} None
 \smallskip
  
 \textbf{Solution:}
+\textbf{(a)} Suppose $\mu$ is a $\sigma-$finite measure. Then $X = \bigcup\limits_{n=1}^{\infty}X_n $ with $X_n$ measurable and $\mu(X_n) < \infty$. Suppose $E$ is a locally measurable set, then for all $X_n$, $E\cap X_n \in\mathcal{M}$. Thus $E = \bigcup\limits_{n=1}^{\infty}(E\cap X_n) \in\mathcal{M}$.
+
+\textbf{(b)} \textbf{(b.1)} First, for all $B\in\mathcal{M}$, $\mu(B) < \infty$, $X\cap B = B\in\mathcal{M}$. Hence $X\in \mathcal{C}$. 
+\textbf{(b.2)} Suppose $E\in\mathcal{C}$, then for each $B\in\mathcal{M}$ with $\mu(B) < \infty$, $E\cap B \in\mathcal{M}$. Then $E^c\cap B = B\setminus (E\cap B) \in\mathcal{M}$.
+\textbf{(b.3)} Suppose $\{E_n\}\in \mathcal{C}$ is a sequence of local measurable sets. Then for each $B\in\mathcal{M}$ and $\mu(B) < \infty$, for all $n$, $E_n\cap B\in\mathcal{M} $. Then fix $B$, we get
+$$
+\left(\bigcup_{n=1}^{\infty}E_n\right)\cap B = \bigcup_{n=1}^{\infty}(E_n\cap B)\in\mathcal{M}.
+$$
+Hence $\mathcal{C}$ is a $\sigma-$algebra.
+
+\textbf{(c)} \textbf{(c.1)} First we show $\overline\mu$ is a measure. First, $\overline\mu(E) \ge \mu(E)\ge 0$. As $\emptyset\in\mathcal{M}$, $\overline\mu(\emptyset) = \mu(\emptyset) = 0$. Suppose $\{E_n\}\in\mathcal{C}$ is a sequence of disjoint sets, then if $\exists i$, s.t. $E_i\notin\mathcal{M}$, then $\bigcup\limits_{n=1}^{\infty}E_n \notin\mathcal{M}$. Thus
+$$
+\overline\mu\left(\bigcup\limits_{n=1}^{\infty}E_n\right) = \infty = \sum_{n=1}^{\infty}\overline\mu(E_n).
+$$
+Now suppose $E_n\in\mathcal{M}$. Thus the countably additive property of $\overline\mu$ is the same as $\mu$.
+\textbf{(c.2)} Now suppose $B\in\mathcal{C}$ and $\overline\mu(B)< \infty$, then $B\in\mathcal{M}$, otherwise $\overline\mu(B) = \infty$. Suppose $E$ is a local measurable set, then $E\cap B\in\mathcal{C}$, thus according to the definition of $\mathcal{C}$, we know $E\in\mathcal{C}$. Thus $(X, \mathcal{C}, \overline\mu)$ is a saturated measure space.
+
+\textbf{(d)} \textbf{(d.1)} First we show $\underline{\mu}$ is a measure. $\underline{\mu}(E) \ge\mu(E)\ge 0$, $\underline{\mu}(\emptyset) = \sup\{\mu(B)\mid B\in\mathcal{M}, B\subset\emptyset\} = 0$. Suppose $\{E_n\}\in\mathcal{C}$ is a sequence of disjoint sets, then if all $E_n\in\mathcal{M}$, we have $\underline{\mu}(E_n) = \mu(E_n)$. Using the countable addivity of $\mu$ we can get the countable addivity of $\underline{\mu}$. Now suppose $E_n\notin\mathcal{M}$. Then using the countable addivity of $\mu$,
+$$
+\underline{\mu}\left(\bigcup_{n=1}^{\infty}E_n \right) = \sup\left\{\mu(B)\mid B\in\mathcal{M}, B\subset\bigcup_{n=1}^{\infty}E_n\right\} = \sum_{n=1}^{\infty} \sup\{\mu(B)\mid B\in\mathcal{M}, B\subset E_n\} = \sum_{n=1}^{\infty}\underline{\mu}(E_n).
+$$
+\textbf{(d.2)} In \textbf{(d.1)} we have shown $\underline{\mu}$ is an extension of $\mu$. Now we show $(X, \mathcal{C}, \underline{\mu})$ is a saturated measure space. Suppose $E$ is a locally measurable set, then for each $B\in\mathcal{C}$, $\underline\mu(B) < \infty$, $E\cap B\in\mathcal{C}$. For all $F\in\mathcal{F}$ with $\mu(F) < \infty$, we have $\underline{\mu}(F) = \mu(F) < \infty$. Thus $E\cap F\in\mathcal{C}$, and it means $E$ is measurable in $(X, \mathcal{C}, \underline{\mu})$. Hence, $(X, \mathcal{C}, \underline{\mu})$ is a saturated measure space.
+
+% If $B\in\mathcal{M}$, and if $\mu(B) = \infty$,  since $\mu$ is semifinite, $\forall M > 0, \exists B_M\subset B\in\mathcal{M} $, s.t. $\mu(B_M) > M$. Then $\underline{\mu}(B) = \infty$, which makes a contradiction. Thus $\mu(B) < \infty$.
+% then if $\exists n$, $\mu(E_n) = \infty$, then $\underline\mu(E_n) = \sup\{\mu(B)\mid B\in\mathcal{M}, B\subset E_n\}$. Since $\mu$ is semifinite, $\forall M > 0, \exists B\in\mathcal{M}$, s.t. $\mu(B_M) > M$. Thus $\underline{\mu}(E_n) = \infty$, and $B_{M}\subset\bigcup\limits_{n=1}^{\infty}E_n$. We have
+% $$
+% \underline{\mu}\left(\bigcup_{n=1}^{\infty}E_n \right) = \infty = \sum_{n=1}^{\infty}\underline{\mu}(E_n).
+% $$
+% If $\mu(E_n) < \infty$, 
 \bigskip
 
 
