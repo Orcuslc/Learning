@@ -211,7 +211,16 @@ $$
 \int_X f \, d\mu = \sum_{n=1}^{\infty} \left[\int_X u_n \, d\mu \right].\]
 
 
-
+\smallskip
+\textbf{Solution:}
+Denote $f_n(x) = \sum\limits_{k=1}^{n}u_k(x) $. Then using Proposition 8 on Page 366, for finite $n$,
+$$
+\int_{X}f_n d\mu = \sum_{k=1}^{n}\int_{X}u_kd\mu.
+$$
+And since $u_k(x)$ are nonnegative measurable functions, we know for each $x\in X$, $\{f_n(x)\}$ is an increasing sequence, and $\lim\limits_{n\to\infty}f_n(x) = f(x) $. Thus according to the Monotone Convergence Theorem, 
+$$
+\lim_{n\to\infty}\int_{X}f_n d\mu = \sum_{k=1}^{\infty}\int_{X}u_k d\mu = \int_{X}f_n d\mu.
+$$
 
 \end{enumerate}
 \end{document}
