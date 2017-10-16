@@ -1,0 +1,117 @@
+%!TEX program = xelate
+\input{structure.tex}
+\usepackage{epstopdf}
+\usepackage{graphics}
+\usepackage{subfig}
+\usepackage{listings}
+\lstset{
+  breaklines=true,
+  xleftmargin=25pt,
+  xrightmargin=25pt,
+  aboveskip=0pt,
+  belowskip=10pt,
+  basicstyle=\ttfamily,
+  showstringspaces=false,
+  frame=ltrb,
+  tabsize=4,
+  numbers=left,
+  numberstyle=\small,
+  numbersep=8pt,
+  morekeywords={*, factorial, sum, erlang},
+  keywordstyle=\color{blue!70}, commentstyle=\color{red!50!green!50!blue!50},
+}
+\DeclareGraphicsExtensions{.eps,.ps,.jpg,.bmp}
+
+\begin{document}
+
+\title{Numerical Analysis \\ Assignment 8}
+\date{\today}
+\author{Chuan Lu}
+
+\maketitle
+
+\problem{1}{Problem 3.42, Page 193}
+\solution{(a)}{
+Consider
+$$
+e^{i\frac{2\pi jk}{m}} = \cos\left(\frac{2\pi jk}{m}\right) + i\sin\left(\frac{2\pi jk}{m}\right).
+$$
+Then if $k$ is a multiple of $m$, we have 
+$$
+\sum_{j=0}^{m-1}\cos\left(\frac{2\pi jk}{m}\right) = \sum_{j=0}^{m-1}1 = m.
+$$
+Otherwise we have
+$$
+\sum_{j=0}^{m-1}\cos\left(\frac{2\pi jk}{m}\right)+i\sum_{j=0}^{m-1}\sin\left(\frac{2\pi jk}{m}\right) = \sum_{j=0}^{m}e^{i\frac{2\pi jk}{m}} = \frac{1-e^{i\frac{2\pi k}{m}m}}{1-e^{i\frac{2\pi k}{m}}} = 0.
+$$
+Thus
+$$
+\sum_{j=0}^{m-1}\cos\left(\frac{2\pi jk}{m}\right) = \sum_{j=0}^{m-1}\sin\left(\frac{2\pi jk}{m}\right) = 0.
+$$
+}
+\solution{(b)}{
+$$
+\sum_{j=0}^{m-1}\cos\left(\frac{2\pi jk}{m}\right)\cos\left(\frac{2\pi jl}{m}\right) = \frac{1}{2}\sum_{j=0}^{m-1}\left(\cos\left(\frac{2\pi j(k+l)}{m}\right) + \cos\left(\frac{2\pi j(k-l)}{m}\right)\right)
+= \left\{
+\begin{aligned}
+&m, ~k=l=\frac{m}{2} \\
+&\frac{m}{2}, ~k=l\ne\frac{m}{2}, ~\text{or}~ k+l = m, k\ne l\\
+&0, ~\text{others}
+\end{aligned}
+\right.
+$$
+$$
+\sum_{j=0}^{m-1}\sin\left(\frac{2\pi jk}{m}\right)\sin\left(\frac{2\pi jl}{m}\right) = \frac{1}{2}\sum_{j=0}^{m-1}\left(\cos\left(\frac{2\pi j(k-l)}{m}\right) - \cos\left(\frac{2\pi j(k+l)}{m}\right)\right)
+= \left\{
+\begin{aligned}
+&\frac{m}{2}, ~k=l\ne\frac{m}{2}\\
+&-\frac{m}{2}, ~k+l=m, k\ne l \\
+&0, ~\text{others}
+\end{aligned}
+\right.
+$$
+$$
+\sum_{j=0}^{m-1}\cos\left(\frac{2\pi jk}{m}\right)\sin\left(\frac{2\pi jl}{m}\right) = \frac{1}{2}\sum_{j=0}^{m-1}\left(\sin\left(\frac{2\pi j(k+l)}{m}\right) + \sin\left(\frac{2\pi j(l-k)}{m}\right)\right)
+= 0.
+$$
+}
+
+\problem{2}{Problem 3.43, Page 194}
+\solution{(a)}{
+$$
+d_k = \frac{1}{m}\sum_{j=0}^{m-1}w_m^{jk}x_j = \frac{1}{m}\sum_{j=0}^{m-1}e^{-i\frac{2\pi jk}{m}}.
+$$
+The same with Problem 1, 
+$$
+d_k = \left\{
+\begin{aligned}
+&1, ~k=0 \\
+&0, ~k\ne 0
+\end{aligned}
+\right.
+$$
+}
+\solution{(b)}{
+$$
+d_k = \frac{1}{m}\sum_{j=0}^{m-1}w_m^{jk}x_j = \frac{1}{m}\sum_{j=0}^{m-1}(-1)^ke^{-i\frac{2\pi jk}{m}} = \frac{1}{m}\frac{1-(-1)^me^{-i2\pi jk}}{1-(-1)e^{-i\frac{2\pi k}{m}}} = 
+\left\{
+\begin{aligned}
+&1, ~k = \frac{m}{2}, ~m = 2n \\
+&0, ~\text{other}~ k, ~m = 2n \\
+\end{aligned}
+\right.
+$$
+}
+\solution{(c)}{
+$$
+d_k = \frac{1}{m}\sum_{j=0}^{m-1}je^{-i\frac{2\pi jk}{m}} = \frac{1}{e^{-i\frac{2\pi k}{m}}-1}((m-1)e^{-i2\pi k}-\frac{e^{-i\frac{2\pi k}{m}}(1-e^{-i2\pi k})}{1-e^\frac{-i2\pi k}{m}}) = 
+\left\{
+\begin{aligned}
+&\frac{m-1}{2}, ~k=0 \\
+&\frac{m-1}{e^{-i\frac{2\pi k}{m}}-1}, ~k\ne 0
+\end{aligned}
+\right.
+$$
+}
+
+\end{document}
