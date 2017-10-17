@@ -114,4 +114,22 @@ d_k = \frac{1}{m}\sum_{j=0}^{m-1}je^{-i\frac{2\pi jk}{m}} = \frac{1}{e^{-i\frac{
 $$
 }
 
+\problem{3}{ Consider approximating $f(x) = e^{\sin(x)}$ on $[0, 2\pi]$, using the triogometric interpolation $P_n(t)$. Create an maximum error  table for $n=1, \cdots,n$.}
+\lstinputlisting{trigonometric.m}
+\lstinputlisting{main.m}
+\begin{lstlisting}[language = MATLAB]
+>> error
+
+error =
+
+    1.7183
+    1.7183
+    0.3823
+    0.4854
+    0.2799
+    0.1285
+\end{lstlisting}
+\begin{figure}[!htb]
+\includegraphics[width = \textwidth]{res.eps}
+\end{figure}
 \end{document}
