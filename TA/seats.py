@@ -17,7 +17,7 @@ def _parse(row):
 	seat.remove('')
 	seat[0], seat[1] = seat[1], seat[0]
 	title = "MATH:1380 Mid Term 1 Seat: " + '-'.join(seat)
-	content = "Dear " + name + ":\n\n" + "Your seat for MATH:1380 Mid Term 1 is: " + "Building " + seat[0] + ", Room " + seat[1] + ", and Seat " + seat[2] + ". It is recommended that you explore your seat a day before the exam."
+	content = "Dear " + name + ":\n\n" + "Your seat for MATH:1380 Mid Term 1 is: " + "Building " + seat[0] + ", Room " + seat[1] + ", and Seat " + seat[2] + ". It is recommended that you explore your seat a day before the exam.\n" + "The Mid Term 1 Exam is on Oct. 3, 6:30 pm."
 	 # + "PLEASE IGNORE THE LAST EMAIL ABOUT YOUR MID TERM 1 SEAT IF YOU RECEIVED ONE, SINCE THIS IS AN UPDATED VERSION. Thank you!"
 	return [name, email, title, content]
 
@@ -36,4 +36,3 @@ with open(path, newline = '') as f:
 		send(m, name, email, title, content)
 		print(name + " Sent!")
 	f.close()
-
