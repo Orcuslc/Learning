@@ -153,6 +153,7 @@ class Window(QMainWindow):
 				[name, email, title, content] = self._parse(row)
 				self._send(m, name, email, title, content)
 				self._status_edit.append(str(count) + " " + name + " Sent!\n")
+				QCoreApplication.processEvents()
 			f.close()
 
 if __name__ == '__main__':
