@@ -6,6 +6,7 @@ import sys
 import csv
 from O365 import Message
 import os
+import json
 
 class Window(QMainWindow):
 	def __init__(self):
@@ -34,7 +35,7 @@ class Window(QMainWindow):
 		passwd, ok = QInputDialog.getText(self, 'Seats', 'Enter Password:')
 		if ok:
 			self._passwd = passwd
-			self._enter_passwd_edit.setText('*'*len(passwd))
+			self._enter_passwd_edit.setText(passwd)
 
 	def _get_seat_file_name(self):
 		self._seat_file_name = QFileDialog.getOpenFileName(self, 'Open file', './')[0]
@@ -62,6 +63,37 @@ class Window(QMainWindow):
 	def _quit(self):
 		self._sign = 0
 
+	def _dump_config(self):
+		conf = json.dumps({'Hawk ID': self._hawkid, 'Password': self._passwd, 'Course': self._course, 'Exam': self._exam, 'Time': self._time, 'Seat File': self._seat_file_name})
+		with open('config.txt', 'w') as f:
+			f.write(conf)
+			f.close()
+		self._status_edit.append('Configuration Dumped into config.txt\n')
+		QCoreApplication.processEvents()
+
+
+	def _load_config(self):
+		_config_file = QFileDialog.getOpenFileName(self, 'Open file', './')[0]
+		self._load_config_edit.setText(_config_file)
+		with open(_config_file, 'r') as f:
+			conf = json.load(f)
+			f.close()
+		self._hawkid = conf['Hawk ID']
+		self._passwd = conf['Password']
+		self._course = conf['Course']
+		self._exam = conf['Exam']
+		self._time = conf['Time']
+		self._seat_file_name = conf['Seat File']
+		self._enter_hawkid_edit.setText(self._hawkid)
+		self._enter_passwd_edit.setText(self._passwd)
+		self._enter_course_edit.setText(self._course)
+		self._enter_exam_edit.setText(self._exam)
+		self._enter_time_edit.setText(self._time)
+		self._choose_seat_file_edit.setText(self._seat_file_name)
+		self._status_edit.append('Configurations Load Complete!\n')
+		QCoreApplication.processEvents()
+
+
 	def initUI(self):
 		choose_seat_file_button = QPushButton('Choose Seat File', self)
 		choose_seat_file_button.clicked.connect(self._get_seat_file_name)
@@ -74,6 +106,7 @@ class Window(QMainWindow):
 		enter_passwd_button = QPushButton('Enter Password', self)
 		enter_passwd_button.clicked.connect(self._get_passwd)
 		self._enter_passwd_edit = QLineEdit(self)
+		self._enter_passwd_edit.setEchoMode(QLineEdit.Password)
 
 		enter_course_button = QPushButton('Enter Course', self)
 		enter_course_button.clicked.connect(self._get_course)
@@ -94,6 +127,12 @@ class Window(QMainWindow):
 
 		self._status_edit = QTextEdit(self)
 
+		dump_config_button = QPushButton('Save Config', self)
+		dump_config_button.clicked.connect(self._dump_config)
+		load_config_button = QPushButton('Load Config', self)
+		load_config_button.clicked.connect(self._load_config)
+		self._load_config_edit = QLineEdit(self)
+
 		grid = QGridLayout()
 		grid.setSpacing(10)
 		grid.addWidget(choose_seat_file_button, 3, 0)
@@ -111,6 +150,9 @@ class Window(QMainWindow):
 		grid.addWidget(send_button, 5, 4)
 		grid.addWidget(cancel_button, 5, 5)
 		grid.addWidget(self._status_edit, 6, 0, 6, 6)
+		grid.addWidget(dump_config_button, 5, 0)
+		grid.addWidget(load_config_button, 5, 1)
+		grid.addWidget(self._load_config_edit, 5, 2, 1, 2)
 
 		wid = QWidget(self)
 		self.setCentralWidget(wid)
