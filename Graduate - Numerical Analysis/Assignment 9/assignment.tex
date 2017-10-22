@@ -63,7 +63,23 @@ The error of is as follows, the left is error graph for (a) and the right is for
 \solution{(b)}{
 The linear minimax approximation to $f$ is 
 $$
-p_2(x) = 
+p_2(x) = ax+b.
+$$
+Then there exists $x_0$, s.t. 
+$$
+\ln(1) - (a+b) = \ln(2) - (2a+b) = -(\ln(x_0)-(ax_0+b)) = \rho. 
+$$
+and
+$$
+(\ln(x)-(ax+b))'|_{x_0} = 0
+$$
+Then we have
+$$
+a = \ln(2), ~x_0 = \frac{1}{\ln(2)}, b = \frac{1}{2}(\ln(\frac{1}{2}\ln(2))+1),
+$$
+thus
+$$
+p_2(x) = \ln(2)x+\frac{1}{2}(\ln(\frac{1}{2}\ln(2))+1)
 $$
 }
 \begin{figure}
@@ -71,12 +87,40 @@ $$
 \includegraphics[width = \textwidth]{prob10a.png}
 \end{minipage}
 \begin{minipage}{0.5\textwidth}
+\includegraphics[width = \textwidth]{prob10b.png}
 \end{minipage}
 \end{figure}
 
 \problem{5}{Problem 4.12, Page 241}
 \solution{Solution}{
 The linear least square approximation to $f$ is 
+$$
+q(x) = ax+b.
+$$
+Then
+$$
+E = \int_{1}^2 (\ln(x)-ax-b)^2 dx,
+$$
+and
+$$
+\frac{\partial E}{\partial a} = \int_{1}^{2} (-2x)(\ln(x)-ax-b)dx = 0,
+$$
+$$
+\frac{\partial E}{\partial b} = \int_{1}^{2} (-2)(\ln(x)-ax-b)dx = 0.
+$$
+Then 
+$$
+\left\{
+\begin{aligned}
+&\frac{3}{2}a+\frac{3}{2}b = 2\ln(2)-1 \\
+&\frac{14}{3}a+3b = 4\ln(2)-2
+\end{aligned}
+\right.
+$$
+solving this equations, we get 
+$$
+a = 0.3, ~b = \frac{4}{3}\ln(2)-\frac{29}{30}.
+$$
 }
 
 \end{document}
