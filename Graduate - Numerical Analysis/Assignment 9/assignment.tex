@@ -1,0 +1,127 @@
+%!TEX program = xelate
+\input{structure.tex}
+\usepackage{epstopdf}
+\usepackage{graphics}
+\usepackage{subfig}
+\usepackage{listings}
+\lstset{
+  breaklines=true,
+  xleftmargin=25pt,
+  xrightmargin=25pt,
+  aboveskip=0pt,
+  belowskip=10pt,
+  basicstyle=\ttfamily,
+  showstringspaces=false,
+  frame=ltrb,
+  tabsize=4,
+  numbers=left,
+  numberstyle=\small,
+  numbersep=8pt,
+  morekeywords={*, factorial, sum, erlang},
+  keywordstyle=\color{blue!70}, commentstyle=\color{red!50!green!50!blue!50},
+}
+\DeclareGraphicsExtensions{.eps,.ps,.jpg,.bmp}
+
+\begin{document}
+
+\title{Numerical Analysis \\ Assignment 9}
+\date{\today}
+\author{Chuan Lu}
+
+\maketitle
+
+\problem{1}{Problem 4.1, Page 239.}
+\solution{Solution}{
+When $n = 4$,
+$$
+\begin{aligned}
+p_4(x) &= \sum_{k=0}^{4}C_{4}^kf(\frac{k}{4})x^k(1-x)^{4-k} = f(0)(1-x)^4 + 4f(\frac{1}{4})x(1-x)^3 + 6f(\frac{1}{2})x^2(1-x)^2+4f(\frac{3}{4})x^3(1-x) + f(1)x^4 \\
+&= (6-4\sqrt{2})x^4 + 8\sqrt{2}x^3 - (12+6\sqrt{2})x^2 +2\sqrt{2}x+6 \\
+&= (6-4\sqrt{2})(x-\frac{1}{2})^4-3(x-\frac{1}{2})^2+3+\frac{\sqrt{2}}{4}
+\end{aligned}
+$$
+And the fourth degree Taylor polynomial expanded about $\frac{1}{2}$ is
+$$
+\begin{aligned}
+q_4(x) &= f(\frac{1}{2}) + f'(\frac{1}{2})(x-\frac{1}{2}) + \frac{1}{2}f''(\frac{1}{2})(x-\frac{1}{2})^2+\frac{1}{6}f^{(3)}(\frac{1}{2})(x-\frac{1}{2})^3 + \frac{1}{24}f^{(4)}(\frac{1}{2})(x-\frac{1}{2})^4 \\ 
+&= 1-\frac{1}{2}\pi^2(x-\frac{1}{2})^2+\frac{1}{24}\pi^4(x-\frac{1}{2})^4
+\end{aligned}
+$$
+}
+When $x \to\frac{1}{2}$, $q_4(x) \to 1 = f(\frac{1}{2})$, while $p_4(x) \to 3+\frac{\sqrt{2}}{4}$. Thus Bernstein polynomials are poor approximations.
+
+\problem{2}{Problem 4.5, Page 240}
+\problem{3}{Problem 4.6, Page 240}
+\problem{4}{Problem 4.10, Page 241}
+\solution{(a)}{
+The linear Taylor polynomial to $f = \ln(x)$ expanding about $\frac{3}{2}$ is
+$$
+p_1(x) = \frac{3}{2} + \frac{2}{3}(x-\frac{3}{2}) = \frac{2}{3}x+\frac{1}{2}.
+$$
+The error of is as follows, the left is error graph for (a) and the right is for (b).
+}
+\solution{(b)}{
+The linear minimax approximation to $f$ is 
+$$
+p_2(x) = ax+b.
+$$
+Then there exists $x_0$, s.t. 
+$$
+\ln(1) - (a+b) = \ln(2) - (2a+b) = -(\ln(x_0)-(ax_0+b)) = \rho. 
+$$
+and
+$$
+(\ln(x)-(ax+b))'|_{x_0} = 0
+$$
+Then we have
+$$
+a = \ln(2), ~x_0 = \frac{1}{\ln(2)}, b = \frac{1}{2}(\ln(\frac{1}{2}\ln(2))+1),
+$$
+thus
+$$
+p_2(x) = \ln(2)x+\frac{1}{2}(\ln(\frac{1}{2}\ln(2))+1)
+$$
+}
+\begin{figure}
+\begin{minipage}{0.5\textwidth}
+\includegraphics[width = \textwidth]{prob10a.png}
+\end{minipage}
+\begin{minipage}{0.5\textwidth}
+\includegraphics[width = \textwidth]{prob10b.png}
+\end{minipage}
+\end{figure}
+
+\problem{5}{Problem 4.12, Page 241}
+\solution{Solution}{
+The linear least square approximation to $f$ is 
+$$
+q(x) = ax+b.
+$$
+Then
+$$
+E = \int_{1}^2 (\ln(x)-ax-b)^2 dx,
+$$
+and
+$$
+\frac{\partial E}{\partial a} = \int_{1}^{2} (-2x)(\ln(x)-ax-b)dx = 0,
+$$
+$$
+\frac{\partial E}{\partial b} = \int_{1}^{2} (-2)(\ln(x)-ax-b)dx = 0.
+$$
+Then 
+$$
+\left\{
+\begin{aligned}
+&\frac{3}{2}a+\frac{3}{2}b = 2\ln(2)-1 \\
+&\frac{14}{3}a+3b = 4\ln(2)-2
+\end{aligned}
+\right.
+$$
+solving this equations, we get 
+$$
+a = 0.3, ~b = \frac{4}{3}\ln(2)-\frac{29}{30}.
+$$
+The error graph is showed in (b) of Problem 4.
+}
+
+\end{document}
