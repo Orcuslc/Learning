@@ -51,7 +51,45 @@ $$
 When $x \to\frac{1}{2}$, $q_4(x) \to 1 = f(\frac{1}{2})$, while $p_4(x) \to 3+\frac{\sqrt{2}}{4}$. Thus Bernstein polynomials are poor approximations.
 
 \problem{2}{Problem 4.5, Page 240}
+\solution{Solution}{
+First we have 
+$$
+R(0) = a, ~R'(x) = \frac{b-ac}{(1+cx)^2}, ~R'(0) = b-ac,
+$$
+$$
+R''(x) = -2c(b-ac)(1+cx)^{-3}, ~R''(0) = -2c(b-ac).
+$$
+This kind of approximation does not necessarily exists. For example, if we choose $f$, s.t. $f'(x) = xe^{x}$. Then $f''(x) = (1+x)e^{x}$, and $f'(x) = 0, f''(x) = 1$. But since $R''(0) = -2cR'(0) = 0$, it makes a contradiction.
+}
+
 \problem{3}{Problem 4.6, Page 240}
+\solution{Solution}{
+$$R(0) = a = f(0) = 1,$$	
+$$
+R'(0) = b-ac = f'(0) = 1,
+$$
+$$
+R''(0) = -2c(b-ac) = f''(0) = 1.
+$$
+Then $a = 1, b = \frac{1}{2}, c = -\frac{1}{2}$. Thus
+$$
+R(x) = \frac{1+\frac{1}{2}x}{1-\frac{1}{2}x}.
+$$
+And
+$$
+f(x) - R(x) = e^x-\frac{e^{\frac{1}{2}x}-\frac{1}{2}f''(\xi)(\frac{1}{2}x)^2}{e^{-\frac{1}{2}x}-\frac{1}{2}f''(\eta)(-\frac{1}{2}x)^2} = \frac{\frac{1}{8}(e^\eta+e^\xi)x^2}{e^{-\frac{1}{2}x}-\frac{1}{8}e^{\eta}x^2} = \frac{(e^\eta+e^\xi)x^2}{8-4x},
+$$
+Then
+$$
+\max_{x\in[-1, 1]}|f-R| \le \frac{e}{2}.
+$$
+Since 
+$$
+|f-p_2| = |\frac{1}{6}e^\eta x^3| \le \frac{e}{6},
+$$
+So the supremum of error of Pade approximation could be larger than Taylor polynomial.
+}
+
 \problem{4}{Problem 4.10, Page 241}
 \solution{(a)}{
 The linear Taylor polynomial to $f = \ln(x)$ expanding about $\frac{3}{2}$ is

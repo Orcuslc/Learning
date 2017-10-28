@@ -1,0 +1,110 @@
+%!TEX program = xelate
+\input{structure.tex}
+\usepackage{epstopdf}
+\usepackage{graphics}
+\usepackage{subfig}
+\usepackage{listings}
+\lstset{
+  breaklines=true,
+  xleftmargin=25pt,
+  xrightmargin=25pt,
+  aboveskip=0pt,
+  belowskip=10pt,
+  basicstyle=\ttfamily,
+  showstringspaces=false,
+  frame=ltrb,
+  tabsize=4,
+  numbers=left,
+  numberstyle=\small,
+  numbersep=8pt,
+  morekeywords={*, factorial, sum, erlang},
+  keywordstyle=\color{blue!70}, commentstyle=\color{red!50!green!50!blue!50},
+}
+\DeclareGraphicsExtensions{.eps,.ps,.jpg,.bmp}
+
+\begin{document}
+
+\title{Numerical Analysis \\ Assignment 9}
+\date{\today}
+\author{Chuan Lu}
+
+\maketitle
+
+\problem{1}{Problem 4.16, Page 242}
+\solution{Solution}{
+For each $m < n$, by integration by parts, 
+$$
+\begin{aligned}
+\int_{0}^{\infty}e^{-x} x^m \varphi_n(x)dx &= \frac{(-1)^n}{n!}\int_{0}^{\infty} x^m\frac{d^n}{dx^n}(x^ne^{-x})dx \\
+&= \frac{(-1)^n}{n!}\left.\left(x^m\frac{d^{n-1}}{dx^{n-1}}(x^ne^{-x})\right|_{0}^{\infty}-\int_{0}^{\infty}mx^{m-1}\frac{d^{n-1}}{dx^{n-1}}(x^ne^{-x})dx \right)
+\end{aligned}
+$$
+Since 
+$$
+x^m\frac{d^{n-1}}{dx^{n-1}}(x^ne^{-x}) = e^{-x}N(x),
+$$
+where $N(x)$ is a polynomial of degree $n-1+m$, by L'Hospital's Rule we know the first term in the integration is $0$. Then by induction we know
+$$
+\begin{aligned}
+\int_{0}^{\infty}e^{-x} x^m \varphi_n(x)dx &= \frac{(-1)^{n+1}m}{n!}\int_{0}^{\infty}x^{m-1}\frac{d^{n-1}}{dx^{n-1}}(x^n e^{-x})dx \\ 
+&= \frac{(-1)^{n+m}m!}{n!}\int_{0}^{\infty}\frac{d^{n-m}}{dx^{n-m}}(x^n e^{-x})dx \\
+&= \frac{(-1)^{n+m}m!}{n!}\frac{d^{n-m}}{dx^{n-m}}\int_{0}^{\infty}x^n e^{-x}dx \\
+&= \frac{(-1)^{n+m}m!}{n!}\frac{d^{n-m}}{dx^{n-m}} (n!) = 0.
+\end{aligned}
+$$
+In the deduction we used the property that $f(x) = x^n e^{-x}$ is absolutely continuous. Since $\varphi_m(x)$ is a polynomial of degree $m < n$, we know 
+$$
+(\varphi_n(x), \varphi_m(x)) = 0, ~\text{and}~ (\varphi_n(x), \varphi_n(x)) \ne 0.
+$$
+Hence $\{\varphi_n(x)\}$ is a family of orthogonal polynomials.
+}
+
+\problem{2}{Problem 4.18, Page 242}
+\solution{Solution}{
+First, we derive $c_n$. Multiply both sides of (4.4.21) by $w(x)\varphi_{n-1}(x)$, and then integrate, we get
+$$
+\int w\varphi_{n+1}\varphi_{n-1}dx = \int a_n wx\varphi_n\varphi_{n-1} + \int b_nw\varphi_n\varphi_{n-1} - c_n\int w\varphi_{n-1}^2.
+$$
+Using the orthogonality of $\varphi_n$, the left side is 0, and the second term of right side is 0. Then 
+$$
+a_n\int wx\varphi_n\varphi_{n-1} = c_n\int w\varphi_{n-1}^2.
+$$
+Since
+$$
+a_n\int wx\varphi_n\varphi_{n-1} = a_n\int  w\varphi_n(A_{n-1}x^n+B_{n-1}x^{n-1}+\cdots) = a_n\int w\varphi_n A_{n-1}x^n = a_n \frac{A_{n-1}}{A_n}\int w\varphi_n^2,
+$$
+we have
+$$
+c_n = \frac{a_n A_{n-1}\gamma_n}{A_n\gamma_{n-1}} = \frac{A_{n+1}A_{n-1}\gamma_n}{A_n^2\gamma_{n-1}}.
+$$
+Now we consider $b_n$. Multiply both sides of (4.4.21) by $w(x)\varphi_n(x)$, then integrate both sides, we get
+$$
+\int w\varphi_{n+1}\varphi_n = \int a_n wx\varphi_n^2+ \int b_n w\varphi_n^2 - \int c_n w\varphi_{n-1}\varphi_n.
+$$
+Using orthogonality, we get
+$$
+\int a_n wx\varphi_n^2 + \int b_n w\varphi_n^2 = 0.
+$$
+The first term can be wrote as 
+$$
+\begin{aligned}
+\int a_n wx\varphi_n^2 &= a_n\int w(A_n x^{n+1}+B_n x+\cdots)\varphi_n = a_n \int w (\frac{A_n}{A_{n+1}}\varphi_{n+1}- \frac{A_n B_{n+1}-A_{n+1}B_n}{A_{n+1}}x^n+\cdots)\varphi_n \\
+&= a_n\int w(B_n -\frac{A_n}{A_{n+1}}B_{n+1})x^n\varphi_n = a_n\int w\frac{1}{A_n}(B_n -\frac{A_n}{A_{n+1}}B_{n+1})\varphi_n^2.
+\end{aligned}
+$$
+Thus
+$$
+a_n (\frac{B_n}{A_n}-\frac{B_{n+1}}{A_{n+1}}) \gamma_n + b_n\gamma_n = 0,
+$$
+we know
+$$
+b_n = a_n (\frac{B_{n+1}}{A_{n+1}} - \frac{B_n}{A_n}).
+$$
+}
+
+
+\problem{3}{Problem 4.21, Page 243}
+
+\problem{4}{Problem 4.23, Page 243}
+
+\end{document}
