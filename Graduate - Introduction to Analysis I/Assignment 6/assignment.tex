@@ -1,0 +1,87 @@
+%!TEX program = xelate
+\input{structure.tex}
+\usepackage{epstopdf}
+\usepackage{graphics}
+\usepackage{subfig}
+\usepackage{listings}
+\lstset{
+  breaklines=true,
+  xleftmargin=25pt,
+  xrightmargin=25pt,
+  aboveskip=0pt,
+  belowskip=10pt,
+  basicstyle=\ttfamily,
+  showstringspaces=false,
+  frame=ltrb,
+  tabsize=4,
+  numbers=left,
+  numberstyle=\small,
+  numbersep=8pt,
+  morekeywords={*, factorial, sum, erlang},
+  keywordstyle=\color{blue!70}, commentstyle=\color{red!50!green!50!blue!50},
+}
+\DeclareGraphicsExtensions{.eps,.ps,.jpg,.bmp}
+
+\begin{document}
+
+\title{Introduction to Analysis \\ Assignment 6}
+\date{\today}
+\author{Chuan Lu}
+
+\maketitle
+
+\problem{1}{Problem 29, Section 4.4, Page 89}
+\solution{Sol}{
+Both are not true. We can construct a $f$ like this:
+$$
+f(x) = \left\{
+\begin{aligned}
+1+\frac{1}{n^2}, ~n \le x < n+\frac{1}{2}, ~\forall n\in\mathbb{N} \\
+-1, ~n+\frac{1}{2} \le x < n+1, ~\forall n\in\mathbb{N}
+\end{aligned}
+\right.
+$$
+Then $f$ is measurable, and $f$ is bounded on any bounded set, and
+$$
+a_n = \int_{n}^{n+1}f = \frac{1}{2n^2}.
+$$
+Clearly the series $\sum\limits_{n=1}^{\infty}a_n = \sum\limits_{n=1}^{\infty}\frac{1}{2n^2} $ converges absolutely, but 
+$$
+\int_{1}^{\infty}|f| = \sum_{n=1}^{\infty}(1+\frac{1}{2n^2}) = \infty,
+$$
+which means $f$ is not integratable on $[1, \infty)$.
+}
+
+\problem{2}{Problem 33, Section 4.4, Page 90}
+\solution{Proof}{
+First,
+$$
+|f_n-f| \le |f| + |f_n|, ~\forall n.
+$$
+Then since $f$ is integratable on $E$, if $\lim\limits_{n\to\infty}\int_E |f_n| = \int_{E}|f| $, we know $|f_n|+|f|$ converges pointwise a.e. to $2|f|$, and
+$$
+\lim_{n\to\infty}\int_E(|f_n|+|f|) = 2\int_E |f| < \infty,
+$$
+with General Lebesgue Dominated Convergence Theorem, notice $|f_n-f| $ converges pointwise a.e. to 0,
+$$
+\lim_{n\to\infty}\int_E|f_n-f| = \int_E 0 = 0.
+$$
+On the other hand, notice
+$$
+|f_n|-|f| \le |f_n-f|, ~\forall n.
+$$
+with the same method, since $\int_E|f-f_n|\to 0 $, and $|f-f_n| $ converges pointwise to 0,
+$$
+\lim_{n\to\infty}\int_E |f_n-f| = \int_E 0 = 0,
+$$
+we know from $|f_n|-|f| $ converges pointwise a.e. to 0,
+$$
+\lim_{n\to\infty}\int_E |f_n|-|f| = \int_E 0 = 0.
+$$
+Hence
+$$
+\lim_{n\to\infty}\int_E|f_n| = \int_E |f|.
+$$
+}
+
+\end{document}
