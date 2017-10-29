@@ -49,7 +49,7 @@ Clearly the series $\sum\limits_{n=1}^{\infty}a_n = \sum\limits_{n=1}^{\infty}\f
 $$
 \int_{1}^{\infty}|f| = \sum_{n=1}^{\infty}(1+\frac{1}{2n^2}) = \infty,
 $$
-which means $f$ is not integratable on $[1, \infty)$.
+which means $f$ is not integrable on $[1, \infty)$.
 }
 
 \problem{2}{Problem 33, Section 4.4, Page 90}
@@ -58,7 +58,7 @@ First,
 $$
 |f_n-f| \le |f| + |f_n|, ~\forall n.
 $$
-Then since $f$ is integratable on $E$, if $\lim\limits_{n\to\infty}\int_E |f_n| = \int_{E}|f| $, we know $|f_n|+|f|$ converges pointwise a.e. to $2|f|$, and
+Then since $f$ is integrable on $E$, if $\lim\limits_{n\to\infty}\int_E |f_n| = \int_{E}|f| $, we know $|f_n|+|f|$ converges pointwise a.e. to $2|f|$, and
 $$
 \lim_{n\to\infty}\int_E(|f_n|+|f|) = 2\int_E |f| < \infty,
 $$
@@ -84,4 +84,100 @@ $$
 $$
 }
 
+\problem{3}{Problem 35, Section 4.4, Page 90}
+\solution{Proof}{
+Denote $f_n(x) = f(x, a_n) $, in which $\{a_n\}$ is any series which converges to 0. Then from the condition we know $f_n(x) $ converges pointwise to $f(x)$, and $|f_n(x)| \le g(x)$. Then using Lebesgue Dominated Convergence Theorem, since $g$ is integrable on $[0, 1]$, we have
+$$
+\lim_{n\to\infty} \int_{0}^{1}f_n(x)dx = \int_{0}^{1} f(x)dx.
+$$
+It shows that 
+$$
+\limsup_{y\to 0}\int_{0}^{1}f(x, y)dx = \liminf_{y\to 0}\int_{0}^{1}f(x, y)dx = \int_{0}^{1}f(x)dx, 
+$$
+whic means 
+$$
+\lim_{y\to 0}\int_{0}^{1}f(x, y) dx = \int_{0}^{1}f(x)dx.
+$$
+For the continuity of $h$, we need to show that $\forall y_0 \in [0, 1]$, $\forall \epsilon > 0$, $\exists \delta > 0$, when $|y-y_0| <\delta $, we have $h(y)-h(y_0) = |\int_{0}^{1}f(x, y)dx-\int_{0}^{1}f(x, y_0)|dx < \epsilon$. Since $f(x, y)$ is continuous in $y$ for each $x$, then for each fixed $x$, $\exists \delta_1$, when $|y-y_0| <\delta_1 $, $|f(x, y)-f(x, y_0)| < \epsilon$. Then 
+$$
+|h(y)-h(y_0)| = \left|\int_{0}^{1} f(x, y)dx - \int_{0}^{1} f(x, y_0)dx\right| \le \int_{0}^{1} |f(x, y)-f(x, y_0)|dx < \epsilon.
+$$
+We know the continuity of $h$ since we can pick $\delta = \delta_1 $.
+}
+
+\problem{4}{Problem 36, Section 4.4, Page 90}
+\solution{Proof}{
+For any fixed $y\in [0, 1]$, suppose $\{h_n\}$ is a sequence with $h_n\to 0 $. Let
+$$
+f_n(x) = \frac{f(x, y+h_n)-f(x, y)}{h_n}
+$$
+Since $\partial f/\partial y$ exists, 
+$$
+\lim_{n\to\infty}f_n(x) = \lim_{h\to 0}\frac{f(x, y+h)-f(x, y)}{h} = \frac{\partial f}{\partial y}(x, y).
+$$
+It means $f_n(x)$ converges pointwise to $\frac{\partial f}{\partial y}(x, y)$.
+Thus
+$$
+\exists N > 0, ~\forall n > N, \left|f_n(x) - \frac{\partial f}{\partial y}(x, y)\right| < 1.
+$$
+Since 
+$$
+\left|\frac{\partial f}{\partial y}(x, y)\right| \le g(x)
+$$
+we have
+$$
+|f_n(x)| \le g(x)+1,
+$$
+and $g(x)+1$ is integrable on $[0, 1]$. By Lebesgue Dominated Convergence Theorem,
+$$
+\int_{0}^{1}f_n(x)dx \to \int_{0}^{1}\frac{\partial f}{\partial y}(x, y)dx.
+$$
+Since $\{h_n\}$ is arbitrary, and $f_n$ is integrable, we know
+$$
+\limsup_{n\to\infty}\int_{0}^{1}f_n(x)dx = \liminf_{n\to\infty}\int_{0}^{1}f_n(x) dx = \lim_{h\to 0}\frac{1}{h}\left(\int_0^1 f(x, y+h)dx-\int_{0}^{1}f(x, y)dx\right) = \frac{d}{dy}\int_{0}^{1}f(x, y)dx.
+$$
+}
+
+\problem{5}{Problem 38, Section 4.5, Page 91}
+\solution{(i)}{
+$$
+\lim_{n\to\infty}\int_{0}^{n} fdx = \lim_{n\to\infty}\sum_{m = 1}^{n}\frac{(-1)^m}{m} = -\ln2,
+$$
+But
+$$
+\int_{1}^{\infty}f^+ = \sum_{m=1}^{\infty}\frac{1}{2m} = \infty,
+$$
+So $f$ is not integrable.
+}
+\solution{(ii)}{
+$$
+\lim_{n\to\infty}\int_{1}^{n}f = \int_{1}^{\infty}\frac{\sin x}{x}dx,
+$$
+with Dirichlet's Criterion, we know this integral converges. But
+$$
+\int_{1}^{\infty}|f| \ge \int_{1}^{\infty}\frac{1}{2x}dx - \int_{1}^{\infty}\frac{\cos 2x}{x}dx,
+$$
+and the second term converges with Dirichlet's Criterion, but the first term $\to\infty$, we know this integral diverges to $\infty$. Thus $f$ is not integrable.
+
+This two counterexamples do not contradict to the continuity: $f$ is not integrable over the whole set $E = [1, \infty)$.
+}
+
+\problem{9}{Problem 39, Section 4.5, Page 91}
+\solution{Proof (i)}{
+Denote 
+$$
+F_1 = E_1, ~F_n = E_n \setminus \bigcup_{m=1}^{n-1}E_m, ~n \ge 2.
+$$
+Then $\{F_i\}$ is a sequence of disjoint measurable subsets of $E$. Then using Theorem 20,
+$$
+\int_{\cup_{n=1}^{\infty}E_n} f = \sum_{n=1}^{\infty}\int_{F_n}f = \lim_{n\to\infty}\sum_{m=1}^{n}\int_{F_m}f = \lim_{n\to\infty}\int_{E_n}f.
+$$
+}
+\solution{Proof of (ii)}{
+Using the same method with (i), only changing $F$ to 
+$$
+F_1 = E_1, ~F_n = E_1 \setminus\bigcup_{m=1}^{n-1}E_m, ~n\ge 2.
+$$
+The other parts of proof is just the same.
+}
 \end{document}
