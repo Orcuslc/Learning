@@ -229,8 +229,44 @@ Use Lusin's Theorem, the proof is the same with (ii), and we only need to change
 }
 
 \problem{8}{Problem 25, Section 18.2, Page}
+\solution{Solution}{
+With $\eta$ being the counting measure, suppose nonnegative $f$ on $\mathbb{N}$, and let nonnegative $f_n(x)$ be
+$$
+f_n(k) = \left\{
+\begin{aligned}
+&f(k), ~0 \le k \le n \\
+&0, ~k > n
+\end{aligned}
+\right.
+$$
+then $f_n \to f$ pointwise on $\mathbb{N}$, and $\{f_n\}$ is increasing. So by Monotone Convergence Thm, 
+$$
+\lim_{n\to\infty}\int_{\mathbb{N}}f_n = \int_{\mathbb{N}}f.
+$$
+Since
+$$
+\int_{\mathbb{N}}f_n = \sum_{i = 1}^{n}\int_{\{i\}}f_n + \int_{\{i \ge n\}} f_n = \sum_{i=1}^{n}\int_{\{i\}}f_n = \sum_{i=1}^{n}f_n(i),
+$$
+we have
+$$
+\int_{\mathbb{N}}f = \sum_{n = 0}^{\infty}f(n) < \infty.
+$$
+}
 
 \problem{9}{Problem 26, Section 18.2, Page}
+\solution{Solution}{
+With the definition of Dirac measure, let $g\equiv f(x_0)$, then
+$$
+m(\{g = f\}) = m_{\delta_{x_0}}(\{x\in X\mid f(x) = g(x)\}) = 1 = m(X).
+$$
+Then $f = g$, a.e. on $X$.
+$$
+\int_{X}f(x)d\delta_{x_0} =\int_{X}gd\delta_{x_0} = f(x_0)\int_{X}1d\delta_{x_0} = f(x_0) < \infty.
+$$
+}
 
 \problem{10}{Problem 27, Section 18.3, Page}
+\solution{Solution}{
+a
+}
 \end{document}

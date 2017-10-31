@@ -1,1 +1,1 @@
-{"Hawk ID": "chuanlu", "Password": "", "Course": "", "Exam": "", "Time": "", "Seat File": "/home/chuan/GitHub/Learning/TA/Seat/test.csv", "Title State": true, "Content State": true, "Title": "Math1380 Seat : {BUILDING}-{ROOM}-{SEAT}", "Content": "Dear {NAME}:\n\nYour seat for Math1380 is: {BUILDING}-{ROOM}-{SEAT}"}
+{"Hawk ID": "", "Exam": "", "Title State": false, "Password": "", "Time": "", "Seat File": null, "Title": "", "Course": "", "Content State": false, "Content": ""}
