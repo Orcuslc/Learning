@@ -266,7 +266,37 @@ $$
 }
 
 \problem{10}{Problem 27, Section 18.3, Page}
-\solution{Solution}{
-a
+\solution{(i)}{
+}
+\solution{(ii)}{
+Since $x_0\in X$, and $\mathcal{M}$ is the $\sigma-$algebra of all subsets of $X$, then $\{x_0\}$ is measurable. For any simple function $h(x) \le f(x)$, suppose
+$$
+h(x) = \sum_{i=1}^{n}c_i1_{E_i},
+$$
+and $x_0 \in c_1$, then 
+$$
+\int_{X}h(x)d\mu_{x_0} = \sum_{i=1}^{n}c_im(E_i) = c_1 \le f(x_0).
+$$
+Then according to the definition of integration, 
+$$
+\int_{X}f(x) \le f(x_0).
+$$
+On the other hand, let
+$$
+h(x) = \left\{
+\begin{aligned}
+&f(x_0), ~x = x_0 \\
+&0, ~x\ne x_0
+\end{aligned}
+\right.
+$$
+then 
+$$
+\int_{X}h(x) = \int_{\{x_0\}}h(x_0) = f(x_0).
+$$
+Hence
+$$
+\int_{X}f(x)d\mu_{x_0} = f(x_0).
+$$
 }
 \end{document}
