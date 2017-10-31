@@ -70,6 +70,14 @@ Surface makeSurfRev(const Curve &profile, unsigned steps)
     return surface;
 }
 
+Matrix4f getTransform(CurvePoint p) {
+    Vector4f c1 = Vector4f(p.N, 0);
+    Vector4f c2 = Vector4f(p.B, 0);
+    Vector4f c3 = Vector4f(p.T, 0);
+    Vector4f c4 = Vector4f(p.V, 1);
+    return Matrix4f(c1, c2, c3, c4);
+}
+
 Surface makeGenCyl(const Curve &profile, const Curve &sweep )
 {
     Surface surface;
@@ -81,9 +89,36 @@ Surface makeGenCyl(const Curve &profile, const Curve &sweep )
     }
 
     // TODO: Here you should build the surface.  See surf.h for details.
-
-    cerr << "\t>>> makeGenCyl called (but not implemented).\n\t>>> Returning empty surface." <<endl;
-
+    Curve c = profile, s = sweep;
+    unsigned steps = s.size(), num = c.size();
+    for(unsigned i = 0; i < steps; i++) {
+        CurvePoint p = s[i];
+        Matrix4f transform = getTransform(p);
+        Matrix4f transinv = transform.inverse();
+        transinv.transpose();
+        for(unsigned j = 0; j < num; j++) {
+            Vector4f tV = transform*Vector4f(c[j].V, 1);
+            Vector4f tN = transinv*Vector4f(c[j].N, 1);
+            Vector3f nV = Vector3f(tV[0], tV[1], tV[2]);
+            Vector3f nN = Vector3f(-tN[0], -tN[1], -tN[2]);
+            nN.normalize();
+            surface.VV.push_back(nV);
+            surface.VN.push_back(nN);
+        }
+    }
+    unsigned last;
+    for(unsigned i = 0; i < steps-1; i++) {
+        last = i*num;
+        for(unsigned j = 0; j <= num-1; j++) {
+            surface.VF.push_back(Tup3u(last+j+1, last+num+j+1, last+num+j));
+            surface.VF.push_back(Tup3u(last+j, last+j+1, last+num+j));
+        }
+    }
+    last = (steps-1)*num;
+    for(unsigned j = 0; j <= num-1; j++) {
+        surface.VF.push_back(Tup3u(last+j+1, j+1, j));
+        surface.VF.push_back(Tup3u(last+j, last+j+1, j));
+    }
     return surface;
 }
 
