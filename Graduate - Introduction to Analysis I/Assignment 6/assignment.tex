@@ -267,36 +267,53 @@ $$
 
 \problem{10}{Problem 27, Section 18.3, Page}
 \solution{(i)}{
+First we show that if $f$ is integrable on $X$, then the set
+$$
+F = \{x\mid f(x) \ne 0\}
+$$
+is countable. Otherwise, since $f$ is integrable, it means $f^+ $ and $f^- $ are both integrable. We now assume $f$ is nonnegative, then
+$$
+F = \bigcup_{n = 1}^{\infty}\{x\mid f(x) \ge \frac{1}{n}\}.
+$$
+If $F$ is uncountable, then there must exist $n$, s.t. $F_n = \{x\mid f(x) \ge \frac{1}{n}\}$ is uncountable, and $m(F_n) = \infty$. Thus 
+$$
+\int_{X}fd\eta \ge \int_{F_n}fd\eta \ge \frac{1}{n}\times\infty = \infty,
+$$
+which makes a contradiction. In this case, suppose there is a bijection from $F$ to a subset of $\mathbb{N}$, then this problem is the same with Problem 8.
 }
 \solution{(ii)}{
-Since $x_0\in X$, and $\mathcal{M}$ is the $\sigma-$algebra of all subsets of $X$, then $\{x_0\}$ is measurable. For any simple function $h(x) \le f(x)$, suppose
+Since $x_0\in X$, and $\mathcal{M}$ is the $\sigma-$algebra of all subsets of $X$, then $\{x_0\}$ is measurable. For any simple function $h(x) \le |f(x)|$, suppose
 $$
 h(x) = \sum_{i=1}^{n}c_i1_{E_i},
 $$
 and $x_0 \in c_1$, then 
 $$
-\int_{X}h(x)d\mu_{x_0} = \sum_{i=1}^{n}c_im(E_i) = c_1 \le f(x_0).
+\int_{X}h(x)d\mu_{x_0} = \sum_{i=1}^{n}c_im(E_i) = c_1 \le |f(x_0)|.
 $$
 Then according to the definition of integration, 
 $$
-\int_{X}f(x) \le f(x_0).
+\int_{X}|f(x)| \le |f(x_0)|.
 $$
 On the other hand, let
 $$
 h(x) = \left\{
 \begin{aligned}
-&f(x_0), ~x = x_0 \\
+&|f(x_0)|, ~x = x_0 \\
 &0, ~x\ne x_0
 \end{aligned}
 \right.
 $$
 then 
 $$
-\int_{X}h(x) = \int_{\{x_0\}}h(x_0) = f(x_0).
+\int_{X}h(x) = \int_{\{x_0\}}h(x_0) = |f(x_0)|.
 $$
 Hence
 $$
-\int_{X}f(x)d\mu_{x_0} = f(x_0).
+\int_{X}|f(x)|d\mu_{x_0} = |f(x_0)|.
+$$
+When $f$ is arbitrary real-valued function, define $f^+ $ and $f^- $ as in the textbook, then $f = f^+-f^- $, and
+$$
+\int_{X}f = \int_{X}f^+ -\int_{X}f^-.
 $$
 }
 \end{document}
