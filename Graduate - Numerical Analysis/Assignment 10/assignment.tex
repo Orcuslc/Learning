@@ -142,7 +142,7 @@ from the assumption we know $\varphi_{n-1}(x_i) $ and $\varphi_{n-1}(x_{i+1}) $ 
 \solution{Solution}{
 We know the orthogonal functions on $[-1, 1]$ with weight function $w(x) = \frac{1}{\sqrt{1-x^2}}$ are Chebyshev polynomials (normalized):
 $$
-T_0(x) = \frac{1}{\pi}, ~T_1(x) = \frac{2}{\pi}x, ~T_2(x) = \frac{2}{\pi}(2x^2-1).
+T_0(x) = \frac{1}{\sqrt{\pi}}, ~T_1(x) = \sqrt{\frac{2}{\pi}}x, ~T_2(x) = \sqrt{\frac{2}{\pi}}(2x^2-1).
 $$
 For any $p(x) = a_0+a_1x+a_2x^2 $ of degree 2 that minimizes the distance, we have
 $$
@@ -150,13 +150,13 @@ a_j = (f, T_j), ~j = 0, 1, 2.
 $$
 Thus
 $$
-a_0 = (f, T_0) = \int_{-1}^{1} \frac{1}{\pi\sqrt{1-x^2}}\cos^{-1}xdx = \int_{\pi}^{0}-\frac{1}{\pi}ydy = \frac{\pi}{2},
+a_0 = (f, T_0) = \frac{1}{\sqrt{\pi}}\int_{-1}^{1} \frac{1}{\sqrt{1-x^2}}\cos^{-1}xdx = \frac{1}{\sqrt{\pi}}\int_{\pi}^{0}-ydy = \frac{(\pi)^{\frac{3}{2}}}{2},
 $$
 $$
-a_1 = (f, T_1) = \frac{2}{\pi}\int_{-1}^{1}\frac{x}{\sqrt{1-x^2}}\cos^{-1}xdx = \left.\frac{2}{\pi}\int_{0}^{\pi} y\cos ydy = \frac{2}{\pi} (y\sin y\right|_{0}^{\pi} - \int_{0}^{\pi} \sin ydy) = -\frac{4}{\pi},
+a_1 = (f, T_1) = \sqrt{\frac{2}{\pi}}\int_{-1}^{1}\frac{x}{\sqrt{1-x^2}}\cos^{-1}xdx = \left.\sqrt{\frac{2}{\pi}}\int_{0}^{\pi} y\cos ydy = \sqrt{\frac{2}{\pi}}(y\sin y\right|_{0}^{\pi} - \int_{0}^{\pi} \sin ydy) = -\sqrt{\frac{8}{\pi}},
 $$
 $$
-a_2 = (f, T_2) = \frac{2}{\pi}\int_{-1}^{1}\frac{2x^2-1}{\sqrt{1-x^2}}\cos^{-1}xdx = \frac{2}{\pi}\left.\int_{0}^{\pi}y\cos 2ydy = \frac{2}{\pi}(\frac{y\sin 2y}{2}\right|_{0}^{\pi} - \frac{1}{2}\int_{0}^{\pi}\sin 2ydy) = 0,
+a_2 = (f, T_2) = \sqrt{\frac{2}{\pi}}\int_{-1}^{1}\frac{2x^2-1}{\sqrt{1-x^2}}\cos^{-1}xdx = \sqrt{\frac{2}{\pi}}\left.\int_{0}^{\pi}y\cos 2ydy = \sqrt{\frac{2}{\pi}}(\frac{y\sin 2y}{2}\right|_{0}^{\pi} - \frac{1}{2}\int_{0}^{\pi}\sin 2ydy) = 0,
 $$
 Thus
 $$
