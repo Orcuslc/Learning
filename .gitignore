@@ -24,3 +24,4 @@ Kaggle/titanic/gender_submission.csv
 *.a
 *.fls
 *.flb_latexmk
+*.fdb_latexmk
