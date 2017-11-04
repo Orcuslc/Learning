@@ -186,10 +186,38 @@ error4 =
 
 \problem{3}{Problem 4.34}
 \solution{Sol}{
-
+$$
+\begin{aligned}
+f(x)-I_n(x) &= f(x)-C_n(x)+C_n(x)-I_n(x) = f(x)-C_n(x)-\sum_{j=0}^{n}(f(x_j)-C_n(x_j))l_j(x) \\
+&= g(x)-\sum_{j=0}^{n}g(x_j)l_j(x),
+\end{aligned}
+$$
+where
+$$
+g(x) = f(x)-C_n(x) = c_{n+1}T_{n+1}(x)+\sum_{j = n+2}^{\infty}c_jT_j(x).
+$$
+Since $x_j$ are roots of $T_{n+1}(x)$, and 
+$$
+\sum_{j = n+2}^{\infty}c_jT_j(x) \ll c_{n+1}T_{n+1}(x),
+$$
+then there exists $\alpha_n,~\beta_n $, s.t. 
+$$
+\alpha_n|T_{n+1}| \le |f-I_n| \le \beta_n|T_{n+1}|.
+$$
+Using (4.7.28),
+$$
+\rho_n(f)\le \lVert f-I_n\rVert_{\infty} \le\frac{1}{(n+1)!2^n}\lVert f^{(n+1)}\rVert_{\infty} \le \frac{1}{(n+1)!2^n}.
+$$
+On the other hand, using (4.7.30),
+$$
+\rho_n(f) \ge \frac{1}{2+\frac{2}{\pi}\log(n+1)}\lVert f-I_n\rVert_{\infty} \ge \frac{\alpha_n}{2+\frac{2}{\pi}\log(n+1)} \max |T_{n+1}| = \frac{\alpha_n}{2+\frac{2}{\pi}\log(n+1)}.
+$$
 }
 
 \problem{4}{Problem 4.37}
+\solution{Sol}{
+We can get the result from (4.7.48) and (4.7.39).
+}
 
 
 \end{document}
