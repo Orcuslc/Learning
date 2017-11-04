@@ -114,8 +114,80 @@ $$
 }
 
 \problem{2}{Problem 4.31}
+\solution{code}{
+By Lagrange form, we can compute the near minimax approximations using the code:
+}
+\lstinputlisting[language = MATLAB]{near_minimax.m}
+\lstinputlisting[language = MATLAB]{prob2.m}
+\solution{Result}{
+The graph of error, and the max error of infinite norm are as below, and for each $n$ and function $f$, using Theorem 4.9, $\rho_n(f)$ is less or equal than the infinite norm of error. The left bound is just too difficult to find.
+}
+\begin{figure}
+\centering
+\begin{minipage}{0.45\textwidth}
+\includegraphics[width = \textwidth]{prob2a.eps}
+\end{minipage}
+\begin{minipage}{0.45\textwidth}
+\includegraphics[width = \textwidth]{prob2b.eps}
+\end{minipage} \\
+\begin{minipage}{0.45\textwidth}
+\includegraphics[width = \textwidth]{prob2c.eps}
+\end{minipage}
+\begin{minipage}{0.45\textwidth}
+\includegraphics[width = \textwidth]{prob2d.eps}
+\end{minipage}
+\end{figure}
+\begin{lstlisting}[language = MATLAB]
+error1 =
+
+   0.123795135763495
+   0.009865548570435
+   0.000600007042634
+   0.000029454776569
+   0.000001211208768
+   0.000000042830298
+   0.000000001328131
+   0.000000000036665
+
+error2 =
+
+   0.128085593199313
+   0.016221586055544
+   0.001558351287206
+   0.000120525677443
+   0.000007798442861
+   0.000000433620299
+   0.000000021134835
+   0.000000000916854
+
+error3 =
+
+   0.037696680264831
+   0.004285211299804
+   0.001249669440946
+   0.000128958381678
+   0.000031926143639
+   0.000006935414046
+   0.000000610998106
+   0.000000258964760
+
+error4 =
+
+   0.037165432256798
+   0.004372493413419
+   0.000572167228374
+   0.000079420776488
+   0.000011447097561
+   0.000001693662660
+   0.000000255467302
+   0.000000039109056
+\end{lstlisting}
+
 
 \problem{3}{Problem 4.34}
+\solution{Sol}{
+
+}
 
 \problem{4}{Problem 4.37}
 
