@@ -1,0 +1,226 @@
+
+\documentclass{article}%
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{amsfonts}%
+\usepackage{amssymb}
+
+
+\setlength{\topmargin}{-0.75in}
+\setlength{\textheight}{9.25in}
+\setlength{\oddsidemargin}{0.0in}
+\setlength{\evensidemargin}{0.0in}
+\setlength{\textwidth}{6.5in}
+\def\labelenumi{\arabic{enumi}.}
+\def\theenumi{\arabic{enumi}}
+\def\labelenumii{(\alph{enumii})}
+\def\theenumii{\alph{enumii}}
+\def\p@enumii{\theenumi.}
+\def\labelenumiii{\arabic{enumiii}.}
+\def\theenumiii{\arabic{enumiii}}
+\def\p@enumiii{(\theenumi)(\theenumii)}
+\def\labelenumiv{\arabic{enumiv}.}
+\def\theenumiv{\arabic{enumiv}}
+\def\p@enumiv{\p@enumiii.\theenumiii}
+\pagestyle{plain}
+\setcounter{secnumdepth}{0}
+\newtheorem{theorem}{Theorem}
+\newtheorem{acknowledgement}[theorem]{Acknowledgement}
+\newtheorem{algorithm}[theorem]{Algorithm}
+\newtheorem{axiom}[theorem]{Axiom}
+\newtheorem{case}[theorem]{Case}
+\newtheorem{claim}[theorem]{Claim}
+\newtheorem{conclusion}[theorem]{Conclusion}
+\newtheorem{condition}[theorem]{Condition}
+\newtheorem{conjecture}[theorem]{Conjecture}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{criterion}[theorem]{Criterion}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{example}[theorem]{Example}
+\newtheorem{exercise}[theorem]{Exercise}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{notation}[theorem]{Notation}
+\newtheorem{problem}[theorem]{Problem}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{solution}[theorem]{Solution}
+\newtheorem{summary}[theorem]{Summary}
+\newenvironment{proof}[1][Proof]{\textbf{#1.} }{\ \rule{0.5em}{0.5em}}
+
+\begin{document}
+
+\begin{center}
+\textbf{Introduction to Analysis $I$\\Homework 5\\Sunday, October 8, 2017}\bigskip
+\end{center}
+
+\noindent\textbf{Instructions}: This and all subsequent homeworks must be submitted written in \LaTeX.
+
+\noindent If you use results from books, Royden or others, please be explicit about what results you are using.
+
+
+
+\begin{center}
+\emph{Homework 5 is due by midnight, Saturday, October 21.}
+\end{center} 
+\medskip
+
+\begin{enumerate}
+\item  (Problem 24, Page 64) Let $I$ be an interval in $\mathbb{R}$ and let $f:I\to \mathbb{R}$ be increasing. Show that $f$ is measurable by first showing that, for each natural number $n$, the strictly increasing function $x\to f(x)+x/n$ is measurable, and then taking pointwise limits.
+
+
+\bigskip
+\textbf{Collaborators:} None
+\smallskip
+ 
+\textbf{Solution:}
+Denote $f_{n}(x) = f(x)+\frac{x}{n}$. Then since $f: I \to \mathbb{R}$ is increasing, $f_n(x)$ is strictly increasing on $I \in \{[a, b], [a, b), (a, b], (a, b)\}$.
+
+For each fixed number $c$, if $\exists x_0\in I$, s.t. $f(x_0) = c$, then the set
+$$
+\{x\mid f(x) < c\} = (a, x_0),
+$$
+and the left side is the same as the set $I$, and it is an interval in $\mathbb{R}$, hence is measurable. Thus $f_{n}$ is measurable for every $n$. 
+
+For each $x\in I$, 
+$$
+\lim_{n\to\infty}f_n(x) = f(x)+\lim_{n\to\infty}\frac{x}{n} = f(x),
+$$
+hence $f_{n}$ converges to $f$ pointwise. Using Proposition 9, we know $f$ is measurable.
+\bigskip
+
+\item (Problem 8, Page 343)  Let $(X,\mathcal{M}, \mu)$ be a measure space.  The measure $\mu$ is said to be \textbf{semifinite} provided each measurable set of infinite measure contains measurable sets of arbitrarily large finite measure.
+\begin{enumerate}
+\item Show that each $\sigma$-finite measure is semifinite.
+\item For $E\in \mathcal{M}$, define $\mu_1(E) = \mu(E)$, if $\mu(E)<\infty$, and if $\mu(E)=\infty$, define $\mu_1(E)=\infty$ if $E$ contains measurable sets of arbitrarily large finite measure and $\mu_1(E)= 0$ otherwise.  Show $\mu_1$ is a semifinite measure: it is called the semifinite part of $\mu$.
+\item Find a measure $\mu_2$ on $\mathcal{M}$ that only takes the valures $0$ and $\infty$ and $\mu = \mu_1 + \mu_2$.
+\end{enumerate} 
+
+
+\bigskip
+\textbf{Collaborators:} None
+\smallskip
+ 
+\textbf{Solution:}
+\textbf{(a)} If $\mu$ is a $\sigma-$finite measure, then $X = \bigcup\limits_{n=1}^{\infty} X_i$, where $X_i$ has finite measure. Assume $E$ is a measurable set with infinite measure, then since $E\subset X$, $E = E\cap X = \bigcup\limits_{n=1}^{\infty} E\cap X_n$. For $\forall M > 0$, there must exist $N > 0$, s.t. $\mu\left(\bigcup\limits_{n=1}^{N}E\cap X_i\right) > M$, otherwise $\mu(E) \le \sum\limits_{n=1}^{\infty}\mu(E\cap X_n) < M_0$ for some $M_0 > 0$, which makes a contradiction with $\mu(E) = \infty$. Besides, we know from $\mu(X_i) < \infty$, that $\mu\left(\sum\limits_{n=1}^{N}(E\cap X_n)\right) < \infty$. Thus $\mu$ is semifinite.
+
+\textbf{(b)} Suppose $E$ is a measurable set of infinite measure in the measure space $(X, \mathcal{M}, \mu_1)$. Then according to the definite of $\mu_1$, $E$ contains measurable sets of arbitrarily large finite measure. Thus $\mu_{1}$ is semifinite.
+
+\textbf{(c)} Define $\mu_2$ like this: If $E$ can be represented as countable union of measurable sets with finite measure, then $\mu_2(E) = 0$. Otherwise $\mu_2(E) = \infty$.
+
+First, we show that $\mu = \mu_1 + \mu_2$. If $\mu(E) < \infty$, then $E = \bigcup\limits_{n=1}^{\infty}E_n$, in which $E_n = \varnothing$ for $n \ge 2$. Thus $\mu_2(E) = 0 = \mu(E) - \mu_1(E)$. Now we assume $\mu(E) = \infty$. If $E$ can be represented as countable union of measurable sets with finite measure, that is, $E = \bigcup\limits_{n=1}^{\infty}E_n$ with $\mu(E_n) < \infty$, then with the continuity of measure, $\forall M > 0$, $\exists N > 0$, s.t. $\mu\left(\bigcup\limits_{n=1}^{N}E_n\right) > M$. Since $\mathcal{M}$ is a $\sigma-$algebra, it shows that $E$ contains measurable sets of arbitrarily large finite measure. Thus $\mu(E) = \infty = \mu_1(E) + 0 = \mu_1(E) + \mu_2(E)$. If $E$ can't be represented as countable union of measurable sets with finite measure, then $\mu(E) = \infty = \mu_1(E) +\mu_2(E)$.
+% \textbf{(c)} First, when $\mu(E) < \infty$, $\mu_2(E) = \mu(E)-\mu_1(E) = 0$, and when $\mu(E) = \infty$ and $E$ does not contain measurable sets of arbitrarily large finite measure, $\mu_2(E) = \mu(E) - \mu_1(E) = \infty$. When $E$ contains measurable sets of arbitrarily large finite measure, define $\mu_2(E) = 0$. Hence $\mu = \mu_1 + \mu_2$.
+% Now we consider the case when $\mu(E) = \infty$ and $E$ contains measurable sets with arbitrarily large finite measure.
+
+% For $n = 1, 2, \cdots$, there is a measurable set $E_n \subset E$, s.t. $n \le \mu(E_n) < \infty$. Then with the Proposition of Continuity of Measure, 
+% $$
+% \mu_2\left(\bigcup_{n=1}^{\infty}E_n\right) = \lim_{n\to\infty}\mu_2(E_n) = \infty.
+% $$
+% However, since each $E_n$ is a subset of $E$, we know $\bigcup\limits_{n=1}^{\infty}E_n $ is a subset of $E$. Then use the Monotocity property of measure, 
+% $$
+% \mu_2(E) \ge \mu_2\left(\bigcup_{n=1}^{\infty}E_n\right) = \infty.
+% $$
+% Hence, when $\mu(E) = \infty$, $\mu_2(E) = \infty$. 
+Now we show that $\mu_2$ is a measure. In fact, we only need to show that $\mu_2(\varnothing) = 0$, and $\mu_2$ is countably additive. First, from the definition we know $\mu(\varnothing) = 0 < \infty$, so $\mu_2(\varnothing) = 0$. Suppose $\{E_n\}_{n=1}^{\infty}$ is a sequence of disjoint measurable sets. If $\exists i$, s.t. $\mu_2(E_i) = \infty$. Then $E_i$ can't be represented as countable union of measurable sets with finite measure, thus $\bigcup\limits_{n=1}^{\infty}E_n $ can't be represented as countable union of measurable sets with finite measure. Then
+$$
+\mu_2\left(\bigcup_{n=1}^{\infty}E_n\right) = \infty = \sum_{n=1}^{\infty}\mu_2(E_n).
+$$
+Now we suppose all $\mu_2(E_n) < \infty$. In this case, since $\mu_2$ takes value only in $\{0, \infty\}$, we have $\mu_2(E_n) = 0$. In this case, all $E_n$ is a countable union of measurable sets with finite measure, then $\bigcup\limits_{n=1}^{\infty}E_n $ is a countable union of measurable sets with finite measure. Thus
+$$
+\mu_2\left(\bigcup_{n=1}^{\infty}E_n\right) = 0 = \sum_{n=1}^{\infty}\mu_2(E_n).
+$$
+\bigskip
+
+
+\item (Problem 9, Page 343) Prove Proposition 3, that is, show that $\mathcal{M}_0$ is a $\sigma$-algebra, $\mu_0$ is properly defined and $(X,\mathcal{M}_0, \mu_0)$ is complete.  In what sense is $\mathcal{M}_0$ minimal?
+
+
+\bigskip
+\textbf{Collaborators:} None
+\smallskip
+ 
+\textbf{Solution:}
+\textbf{(1)} We show $\mathcal{M}_0$ is a $\sigma-$algebra. \textbf{(1.1)} First, since $X\in \mathcal{M}, \emptyset\in\mathcal{M}$, and $X = X\cup\emptyset$, and $\mu(\emptyset) = 0$, we know $X\in\mathcal{M}_0$. \textbf{(1.2)} Suppose $E\in \mathcal{M}_0$, then $E = A\cup B$ where $B\in \mathcal{M}$ and $A\subset C$ for some $C\in\mathcal{M}$, and $\mu(C) = 0$. Then $E^c = A^c\cap B^c = (B^c\cap C^c)\cup(C\setminus A)$. Since $\mathcal{M}$ is a $\sigma-$algebra, we know $B^c, C^c, B^c\cup C^c \in \mathcal{M}$, and $C\setminus A \in \mathcal{M}$, and $(C\setminus A)\subset C$, with $\mu(C) = 0$. Hence $E^c\in\mathcal{M}_0 $. \textbf{(1.3)} Suppose $\{E_n\}$ is a sequence of sets in $\mathcal{M}_0$. We may assume $E_n = A_n\cup B_n$, where $B_n\in\mathcal{M}$, and $A_n\subset C_n$ for some $C_n\in\mathcal{M}$ with $\mu(C) = 0$. Then 
+$$
+\bigcup\limits_{n=1}^{\infty}E_n = \left(\bigcup\limits_{n=1}^{\infty}A_n\right) \bigcup \left(\bigcup\limits_{n=1}^{\infty}B_n \right),
+$$
+and $\bigcup\limits_{n=1}^{\infty}B_n\in\mathcal{M} $. With the countable addivity of measure, $\bigcup\limits_{n=1}^{\infty}A_n\subset \bigcup\limits_{n=1}^{\infty}C_n\in\mathcal{M} $, and $\mu\left(\bigcup\limits_{n=1}^{\infty}C_n\right) = \sum\limits_{n=1}^{\infty}\mu(C_n) = 0$. Thus $\bigcup\limits_{n=1}^{\infty}E_n\in\mathcal{M} $.
+
+\textbf{(2)} We show $\mu_0$ is properly defined, which means $\mu_0$ satisfies the properties of measure. \textbf{(2.1)} First, for all $E\in\mathcal{M}_0$, suppose $E = A\cup B$ where $A\in\mathcal{M}$ and $B\subset C\in\mathcal{M}$ with $\mu(C) = 0$. Then $\mu_0(E) = \mu(A) \ge 0$. \textbf{(2.2)} Since $\emptyset\in\mathcal{M}$, and $\emptyset = \emptyset \cap \emptyset$ with $\mu(\emptyset) = 0$, we know $\mu_0(\emptyset) = \mu(\emptyset) = 0$. \textbf{(2.3)} Suppose $\{E_n\}$ is a countable collection of disjoint sets in $\mathcal{M}_0$, denote $E_n = A_n\cup B_n$, and $A_n\in\mathcal{M}$, $B_n\subset C_n\in\mathcal{M}$, with $\mu(C_n) = 0$. Then the same with \textbf{(1.3)}, we know
+$$
+\bigcup\limits_{n=1}^{\infty}E_n = \left(\bigcup\limits_{n=1}^{\infty}A_n\right) \bigcup \left(\bigcup\limits_{n=1}^{\infty}B_n \right),
+$$
+with $\bigcup\limits_{n=1}^{\infty}B_n\subset \bigcup\limits_{n=1}^{\infty}C_n\in\mathcal{M} $, and $\mu\left(\bigcup\limits_{n=1}^{\infty}C_n\right) = \sum\limits_{n=1}^{\infty}\mu(C_n) = 0$. Then
+$$
+\mu_0\left(\bigcup_{n=1}^{\infty}E_n\right) = \mu\left(\bigcup_{n=1}^{\infty}B_n\right) = \sum_{n=1}^{\infty}\mu(B_n) = \sum_{n=1}^{\infty}\mu_0(E_n).
+$$
+
+\textbf{(3)} We show $(X, \mathcal{M}_0, \mu_0)$ is complete. If $E\in\mathcal{M}_0$ and $\mu_0(E) = 0$, then $E = A\cup B$ where $A\in\mathcal{M}$ and $B\subset C\in \mathcal{M}$ and $\mu(C) = 0$, and $\mu(A) = \mu_0(E) = 0$. Then each subset $F\subset E$ has a form $E = \emptyset \cup F$, and $F\subset (A\cup C)$ where $\mu_0(A\cup C) = \mu(A)+\mu(C) = 0$, and $A\cup C, \emptyset \in \mathcal{M}$. Thus $F\in\mathcal{M}_0$. 
+
+
+\bigskip
+
+
+\item (Problem 10, Page 343) If $(X,\mathcal{M},\mu)$ is a measure space, we say that a subset $E$ of $X$ is \textbf{locally measurable} provided for each $B\in \mathcal{M}$ with $\mu(B)<\infty$, the intersection $E\cap B$ belongs to $\mathcal{M}$.  The measure $\mu$ is called \textbf{saturated} provided every locally measurable set is measurable.
+\begin{enumerate}
+\item Show that each $\sigma$-finite measure is saturated.
+\item Show that the collection $\mathcal{C}$ of locally measurable sets is a $\sigma$-algebra.
+\item Let $(X,\mathcal{M},\mu)$ be a measure space and $\mathcal{C}$ the $\sigma$ of locally measurable sets. For $E\in \mathcal{C}$, define $\overline{\mu}(E) = \mu(E)$ if $E\in \mathcal{M}$ and $\overline{\mu}(E) = \infty$ if $E\notin \mathcal{M}$.  Show that $(X,\mathcal{C},\overline{\mu})$ is a saturated measure space.
+\item If $\mu$ is semifinite and $E\in \mathcal{C}$, set $\underline{\mu}(E)=\sup\{\mu(B)\mid B\in\mathcal{M},\, B\subseteq E \}$. Show that  $(X,\mathcal{C},\underline{\mu})$ is a saturated measure space and that $\underline{\mu}$ is an extension of $\mu$.  Give an example to show that $\overline{\mu}$ and $\underline{\mu}$ may be different.
+\end{enumerate}
+
+
+\bigskip
+\textbf{Collaborators:} None
+\smallskip
+ 
+\textbf{Solution:}
+\textbf{(a)} Suppose $\mu$ is a $\sigma-$finite measure. Then $X = \bigcup\limits_{n=1}^{\infty}X_n $ with $X_n$ measurable and $\mu(X_n) < \infty$. Suppose $E$ is a locally measurable set, then for all $X_n$, $E\cap X_n \in\mathcal{M}$. Thus $E = \bigcup\limits_{n=1}^{\infty}(E\cap X_n) \in\mathcal{M}$.
+
+\textbf{(b)} \textbf{(b.1)} First, for all $B\in\mathcal{M}$, $\mu(B) < \infty$, $X\cap B = B\in\mathcal{M}$. Hence $X\in \mathcal{C}$. 
+\textbf{(b.2)} Suppose $E\in\mathcal{C}$, then for each $B\in\mathcal{M}$ with $\mu(B) < \infty$, $E\cap B \in\mathcal{M}$. Then $E^c\cap B = B\setminus (E\cap B) \in\mathcal{M}$.
+\textbf{(b.3)} Suppose $\{E_n\}\in \mathcal{C}$ is a sequence of local measurable sets. Then for each $B\in\mathcal{M}$ and $\mu(B) < \infty$, for all $n$, $E_n\cap B\in\mathcal{M} $. Then fix $B$, we get
+$$
+\left(\bigcup_{n=1}^{\infty}E_n\right)\cap B = \bigcup_{n=1}^{\infty}(E_n\cap B)\in\mathcal{M}.
+$$
+Hence $\mathcal{C}$ is a $\sigma-$algebra.
+
+\textbf{(c)} \textbf{(c.1)} First we show $\overline\mu$ is a measure. First, $\overline\mu(E) \ge \mu(E)\ge 0$. As $\emptyset\in\mathcal{M}$, $\overline\mu(\emptyset) = \mu(\emptyset) = 0$. Suppose $\{E_n\}\in\mathcal{C}$ is a sequence of disjoint sets, then if $\exists i$, s.t. $E_i\notin\mathcal{M}$, then $\bigcup\limits_{n=1}^{\infty}E_n \notin\mathcal{M}$. Thus
+$$
+\overline\mu\left(\bigcup\limits_{n=1}^{\infty}E_n\right) = \infty = \sum_{n=1}^{\infty}\overline\mu(E_n).
+$$
+Now suppose $E_n\in\mathcal{M}$. Thus the countably additive property of $\overline\mu$ is the same as $\mu$.
+\textbf{(c.2)} Now suppose $B\in\mathcal{C}$ and $\overline\mu(B)< \infty$, then $B\in\mathcal{M}$, otherwise $\overline\mu(B) = \infty$. Suppose $E$ is a local measurable set, then $E\cap B\in\mathcal{C}$, thus according to the definition of $\mathcal{C}$, we know $E\in\mathcal{C}$. Thus $(X, \mathcal{C}, \overline\mu)$ is a saturated measure space.
+
+\textbf{(d)} \textbf{(d.1)} First we show $\underline{\mu}$ is a measure. $\underline{\mu}(E) \ge\mu(E)\ge 0$, $\underline{\mu}(\emptyset) = \sup\{\mu(B)\mid B\in\mathcal{M}, B\subset\emptyset\} = 0$. Suppose $\{E_n\}\in\mathcal{C}$ is a sequence of disjoint sets, then if all $E_n\in\mathcal{M}$, we have $\underline{\mu}(E_n) = \mu(E_n)$. Using the countable addivity of $\mu$ we can get the countable addivity of $\underline{\mu}$. Now suppose $E_n\notin\mathcal{M}$. Then using the countable addivity of $\mu$,
+$$
+\underline{\mu}\left(\bigcup_{n=1}^{\infty}E_n \right) = \sup\left\{\mu(B)\mid B\in\mathcal{M}, B\subset\bigcup_{n=1}^{\infty}E_n\right\} = \sum_{n=1}^{\infty} \sup\{\mu(B)\mid B\in\mathcal{M}, B\subset E_n\} = \sum_{n=1}^{\infty}\underline{\mu}(E_n).
+$$
+\textbf{(d.2)} In \textbf{(d.1)} we have shown $\underline{\mu}$ is an extension of $\mu$. Now we show $(X, \mathcal{C}, \underline{\mu})$ is a saturated measure space. Suppose $E$ is a locally measurable set, then for each $B\in\mathcal{C}$, $\underline\mu(B) < \infty$, $E\cap B\in\mathcal{C}$. For all $F\in\mathcal{F}$ with $\mu(F) < \infty$, we have $\underline{\mu}(F) = \mu(F) < \infty$. Thus $E\cap F\in\mathcal{C}$, and it means $E$ is measurable in $(X, \mathcal{C}, \underline{\mu})$. Hence, $(X, \mathcal{C}, \underline{\mu})$ is a saturated measure space.
+
+% If $B\in\mathcal{M}$, and if $\mu(B) = \infty$,  since $\mu$ is semifinite, $\forall M > 0, \exists B_M\subset B\in\mathcal{M} $, s.t. $\mu(B_M) > M$. Then $\underline{\mu}(B) = \infty$, which makes a contradiction. Thus $\mu(B) < \infty$.
+% then if $\exists n$, $\mu(E_n) = \infty$, then $\underline\mu(E_n) = \sup\{\mu(B)\mid B\in\mathcal{M}, B\subset E_n\}$. Since $\mu$ is semifinite, $\forall M > 0, \exists B\in\mathcal{M}$, s.t. $\mu(B_M) > M$. Thus $\underline{\mu}(E_n) = \infty$, and $B_{M}\subset\bigcup\limits_{n=1}^{\infty}E_n$. We have
+% $$
+% \underline{\mu}\left(\bigcup_{n=1}^{\infty}E_n \right) = \infty = \sum_{n=1}^{\infty}\underline{\mu}(E_n).
+% $$
+% If $\mu(E_n) < \infty$, 
+\bigskip
+
+
+
+\item (Problem 18, Page 373)  Let $\{u_n\}$ be a sequence of nonnegative measurable functions on $X$.  For $x\in X$, define $f(x) = \sum_{n=1}^{\infty} u_n(x)$.  Show that \[
+\int_X f \, d\mu = \sum_{n=1}^{\infty} \left[\int_X u_n \, d\mu \right].\]
+
+
+\smallskip
+\textbf{Solution:}
+Denote $f_n(x) = \sum\limits_{k=1}^{n}u_k(x) $. Then using Proposition 8 on Page 366, for finite $n$,
+$$
+\int_{X}f_n d\mu = \sum_{k=1}^{n}\int_{X}u_kd\mu.
+$$
+And since $u_k(x)$ are nonnegative measurable functions, we know for each $x\in X$, $\{f_n(x)\}$ is an increasing sequence, and $\lim\limits_{n\to\infty}f_n(x) = f(x) $. Thus according to the Monotone Convergence Theorem, 
+$$
+\lim_{n\to\infty}\int_{X}f_n d\mu = \sum_{k=1}^{\infty}\int_{X}u_k d\mu = \int_{X}f_n d\mu.
+$$
+
+\end{enumerate}
+\end{document}

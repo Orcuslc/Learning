@@ -1,0 +1,319 @@
+%!TEX program = xelate
+\input{structure.tex}
+\usepackage{epstopdf}
+\usepackage{graphics}
+\usepackage{subfig}
+\usepackage{listings}
+\lstset{
+  breaklines=true,
+  xleftmargin=25pt,
+  xrightmargin=25pt,
+  aboveskip=0pt,
+  belowskip=10pt,
+  basicstyle=\ttfamily,
+  showstringspaces=false,
+  frame=ltrb,
+  tabsize=4,
+  numbers=left,
+  numberstyle=\small,
+  numbersep=8pt,
+  morekeywords={*, factorial, sum, erlang},
+  keywordstyle=\color{blue!70}, commentstyle=\color{red!50!green!50!blue!50},
+}
+\DeclareGraphicsExtensions{.eps,.ps,.jpg,.bmp}
+
+\begin{document}
+
+\title{Introduction to Analysis \\ Assignment 6}
+\date{\today}
+\author{Chuan Lu}
+
+\maketitle
+
+\problem{1}{Problem 29, Section 4.4, Page 89}
+\solution{Sol}{
+Both are not true. We can construct a $f$ like this:
+$$
+f(x) = \left\{
+\begin{aligned}
+1+\frac{1}{n^2}, ~n \le x < n+\frac{1}{2}, ~\forall n\in\mathbb{N} \\
+-1, ~n+\frac{1}{2} \le x < n+1, ~\forall n\in\mathbb{N}
+\end{aligned}
+\right.
+$$
+Then $f$ is measurable, and $f$ is bounded on any bounded set, and
+$$
+a_n = \int_{n}^{n+1}f = \frac{1}{2n^2}.
+$$
+Clearly the series $\sum\limits_{n=1}^{\infty}a_n = \sum\limits_{n=1}^{\infty}\frac{1}{2n^2} $ converges absolutely, but 
+$$
+\int_{1}^{\infty}|f| = \sum_{n=1}^{\infty}(1+\frac{1}{2n^2}) = \infty,
+$$
+which means $f$ is not integrable on $[1, \infty)$.
+}
+
+\problem{2}{Problem 33, Section 4.4, Page 90}
+\solution{Proof}{
+First,
+$$
+|f_n-f| \le |f| + |f_n|, ~\forall n.
+$$
+Then since $f$ is integrable on $E$, if $\lim\limits_{n\to\infty}\int_E |f_n| = \int_{E}|f| $, we know $|f_n|+|f|$ converges pointwise a.e. to $2|f|$, and
+$$
+\lim_{n\to\infty}\int_E(|f_n|+|f|) = 2\int_E |f| < \infty,
+$$
+with General Lebesgue Dominated Convergence Theorem, notice $|f_n-f| $ converges pointwise a.e. to 0,
+$$
+\lim_{n\to\infty}\int_E|f_n-f| = \int_E 0 = 0.
+$$
+On the other hand, notice
+$$
+|f_n|-|f| \le |f_n-f|, ~\forall n.
+$$
+with the same method, since $\int_E|f-f_n|\to 0 $, and $|f-f_n| $ converges pointwise to 0,
+$$
+\lim_{n\to\infty}\int_E |f_n-f| = \int_E 0 = 0,
+$$
+we know from $|f_n|-|f| $ converges pointwise a.e. to 0,
+$$
+\lim_{n\to\infty}\int_E |f_n|-|f| = \int_E 0 = 0.
+$$
+Hence
+$$
+\lim_{n\to\infty}\int_E|f_n| = \int_E |f|.
+$$
+}
+
+\problem{3}{Problem 35, Section 4.4, Page 90}
+\solution{Proof}{
+Denote $f_n(x) = f(x, a_n) $, in which $\{a_n\}$ is any series which converges to 0. Then from the condition we know $f_n(x) $ converges pointwise to $f(x)$, and $|f_n(x)| \le g(x)$. Then using Lebesgue Dominated Convergence Theorem, since $g$ is integrable on $[0, 1]$, we have
+$$
+\lim_{n\to\infty} \int_{0}^{1}f_n(x)dx = \int_{0}^{1} f(x)dx.
+$$
+It shows that 
+$$
+\limsup_{y\to 0}\int_{0}^{1}f(x, y)dx = \liminf_{y\to 0}\int_{0}^{1}f(x, y)dx = \int_{0}^{1}f(x)dx, 
+$$
+whic means 
+$$
+\lim_{y\to 0}\int_{0}^{1}f(x, y) dx = \int_{0}^{1}f(x)dx.
+$$
+For the continuity of $h$, we need to show that $\forall y_0 \in [0, 1]$, $\forall \epsilon > 0$, $\exists \delta > 0$, when $|y-y_0| <\delta $, we have $h(y)-h(y_0) = |\int_{0}^{1}f(x, y)dx-\int_{0}^{1}f(x, y_0)dx| < \epsilon$. Since $f(x, y)$ is continuous in $y$ for each $x$ in a closed set, then $f(x, y)$ is uniformly bounded, then for each $x$, $\exists \delta_1$, when $|y-y_0| <\delta_1 $, $|f(x, y)-f(x, y_0)| < \epsilon$. Then 
+$$
+|h(y)-h(y_0)| = \left|\int_{0}^{1} f(x, y)dx - \int_{0}^{1} f(x, y_0)dx\right| \le \int_{0}^{1} |f(x, y)-f(x, y_0)|dx < \epsilon.
+$$
+We know the continuity of $h$ since we can pick $\delta = \delta_1 $.
+}
+
+\problem{4}{Problem 36, Section 4.4, Page 90}
+\solution{Proof}{
+For any fixed $y\in [0, 1]$, suppose $\{h_n\}$ is a sequence with $h_n\to 0 $. Let
+$$
+f_n(x) = \frac{f(x, y+h_n)-f(x, y)}{h_n}
+$$
+Since $\partial f/\partial y$ exists, 
+$$
+\lim_{n\to\infty}f_n(x) = \lim_{h\to 0}\frac{f(x, y+h)-f(x, y)}{h} = \frac{\partial f}{\partial y}(x, y).
+$$
+It means $f_n(x)$ converges pointwise to $\frac{\partial f}{\partial y}(x, y)$.
+Thus
+$$
+\exists N > 0, ~\forall n > N, \left|f_n(x) - \frac{\partial f}{\partial y}(x, y)\right| < 1.
+$$
+Since 
+$$
+\left|\frac{\partial f}{\partial y}(x, y)\right| \le g(x)
+$$
+we have
+$$
+|f_n(x)| \le g(x)+1,
+$$
+and $g(x)+1$ is integrable on $[0, 1]$. By Lebesgue Dominated Convergence Theorem,
+$$
+\int_{0}^{1}f_n(x)dx \to \int_{0}^{1}\frac{\partial f}{\partial y}(x, y)dx.
+$$
+Since $\{h_n\}$ is arbitrary, and $f_n$ is integrable, we know
+$$
+\limsup_{n\to\infty}\int_{0}^{1}f_n(x)dx = \liminf_{n\to\infty}\int_{0}^{1}f_n(x) dx = \lim_{h\to 0}\frac{1}{h}\left(\int_0^1 f(x, y+h)dx-\int_{0}^{1}f(x, y)dx\right) = \frac{d}{dy}\int_{0}^{1}f(x, y)dx.
+$$
+}
+
+\problem{5}{Problem 38, Section 4.5, Page 91}
+\solution{(i)}{
+$$
+\lim_{n\to\infty}\int_{1}^{n} fdx = \lim_{n\to\infty}\sum_{m = 1}^{n}\frac{(-1)^m}{m} = -\ln2,
+$$
+But
+$$
+\int_{1}^{\infty}f^+ = \sum_{m=1}^{\infty}\frac{1}{2m} = \infty,
+$$
+So $f$ is not integrable.
+}
+\solution{(ii)}{
+$$
+\lim_{n\to\infty}\int_{1}^{n}f = \int_{1}^{\infty}\frac{\sin x}{x}dx,
+$$
+with Dirichlet's Criterion, we know this integral converges. But
+$$
+\int_{1}^{\infty}|f| \ge \int_{1}^{\infty}\frac{1}{2x}dx - \int_{1}^{\infty}\frac{\cos 2x}{x}dx,
+$$
+and the second term converges with Dirichlet's Criterion, but the first term $\to\infty$, we know this integral diverges to $\infty$. Thus $f$ is not integrable.
+
+This two counterexamples do not contradict to the continuity: $f$ is not integrable over the whole set $E = [1, \infty)$.
+}
+
+\problem{6}{Problem 39, Section 4.5, Page 91}
+\solution{Proof (i)}{
+Denote 
+$$
+F_1 = E_1, ~F_n = E_n \setminus \bigcup_{m=1}^{n-1}E_m, ~n \ge 2.
+$$
+Then $\{F_i\}$ is a sequence of disjoint measurable subsets of $E$. Then using Theorem 20,
+$$
+\int_{\cup_{n=1}^{\infty}E_n} f = \sum_{n=1}^{\infty}\int_{F_n}f = \lim_{n\to\infty}\sum_{m=1}^{n}\int_{F_m}f = \lim_{n\to\infty}\int_{E_n}f.
+$$
+}
+\solution{Proof of (ii)}{
+Using the same method with (i), only changing $F$ to 
+$$
+F_1 = E_1, ~F_n = E_1 \setminus\bigcup_{m=1}^{n-1}E_m, ~n\ge 2.
+$$
+The other parts of proof is just the same.
+}
+
+\problem{7}{Problem 44, Section 4.6, Page 95}
+\solution{(i)}{
+First, when $f$ is nonnegative, from the definition of integrable functions we know for any $\epsilon > 0$, there is a bounded measurable function with finite support $0 \le h(x) \le f(x)$, s.t. 
+$$
+\int_{\mathbb{R}} (f-h) = \int_{\mathbb{R}}f - \int_{\mathbb{R}}h \le \frac{1}{2}\epsilon.
+$$
+Let the support set of $h$ be $M$ with $m(M) < \infty$. Then using Simple Approximation Theorem, there is a simple function $\eta$ on M, s.t. $0 \le h - \eta \le \frac{\epsilon}{2m(M)}$. Let $\eta = 0$ on $\mathbb{R}\setminus M$, then $\eta$ has finite support, and 
+$$
+\int_{\mathbb{R}}|f-\eta| = \int_{\mathbb{R}}(f-h+h-\eta) = \int_{\mathbb{R}}f-h + \int_{M} h-\eta \le \frac{1}{2}\epsilon + m(M)\frac{\epsilon}{2m(M)} = \epsilon.
+$$
+When $f$ is an arbitrary integrable function, $f^+, ~f^- $ are nonnegative functions. Let $E_+ = \{x\mid f^+ > 0\}, ~E_- = \{x\mid f^- > 0\} $, then there exists nonnegative simple functions $\eta^+, ~\eta^- $, s.t. $\eta^+ = 0 $ on $\mathbb{R}\setminus E_+ $, and $\eta^+ $ has finite support on $E_+ $, $\eta^- = 0 $ on $\mathbb{R}\setminus E_- $, and $\eta^- $ has finite support on $E_- $, and they satisfies 
+$$
+\int_{\mathbb{R}} |f^+-\eta^+| < \epsilon, ~\int_{\mathbb{R}} |f^--\eta^-| < \epsilon.
+$$
+Let
+$$
+\eta = \left\{
+\begin{aligned}
+\eta^+, ~x\in E_+ \\ 
+\eta^-, ~x\in E_-
+\end{aligned},
+\right.
+$$
+then $\eta = \eta^+-\eta^- $ is a simple function with finite support, and
+$$
+\int_{\mathbb{R}}|f-\eta| = \int_{\mathbb{R}} |f^+-f^--(\eta^+-\eta^-)| \le \int_{\mathbb{R}}|f^+-\eta^+| + \int_{\mathbb{R}}|f^--\eta^-| < 2\epsilon.
+$$
+}
+\solution{(ii)}{
+From (i) we know there is a simple function $\eta$ which has finite support (denoted as $E$) and $\int_{\mathbb{R}}|f-\eta| < \epsilon $. Since $E$ is a measurable set of finite measure, with Lemma 22, for any $\delta_1 > 0$, there is a $n > 0$,
+$$
+m(E\cap(\mathbb{R}\setminus [-n, n])) < \delta_1.
+$$
+Let $I = [-n, n]$, using the result of Problem 3.18, for any $\delta_2 > 0$, there is a step function $s$ on $I$, and a close set $F\subset I$, s.t. $|\eta - s| < \delta_2 $ on $F$, and $m(I\setminus F) < \delta_2 $. Set $s(x) = 0$ for $x$ outside $I$.
+
+With Proposition 23, for each $\epsilon > 0$, $\exists \delta > 0 $, if $m(A) < \delta$, then $\int_{A}|f| < \epsilon $. Let $\delta_1 = \delta$, $\delta_2 = \min(\delta, \frac{\epsilon}{2n}) $, then
+$$
+\begin{aligned}
+\int_{\mathbb{R}}|f-s| &\le \int_{\mathbb{R}}|f-\eta|+\int_{\mathbb{R}}|\eta-s| < \epsilon + \int_{F} |\eta-s|+ \int_{I\setminus F}|\eta-s| + \int_{\mathbb{R}\setminus I}|\eta-s| \\
+&< \epsilon + 2n\frac{\epsilon}{2n} + \epsilon + \epsilon = 4\epsilon.
+\end{aligned} 
+$$
+}
+\solution{(iii)}{
+Use Lusin's Theorem, the proof is the same with (ii), and we only need to change the step function to continuous function.
+}
+
+\problem{8}{Problem 25, Section 18.2, Page}
+\solution{Solution}{
+With $\eta$ being the counting measure, suppose nonnegative $f$ on $\mathbb{N}$, and let nonnegative $f_n(x)$ be
+$$
+f_n(k) = \left\{
+\begin{aligned}
+&f(k), ~0 \le k \le n \\
+&0, ~k > n
+\end{aligned}
+\right.
+$$
+then $f_n \to f$ pointwise on $\mathbb{N}$, and $\{f_n\}$ is increasing. So by Monotone Convergence Thm, 
+$$
+\lim_{n\to\infty}\int_{\mathbb{N}}f_n = \int_{\mathbb{N}}f.
+$$
+Since
+$$
+\int_{\mathbb{N}}f_n = \sum_{i = 1}^{n}\int_{\{i\}}f_n + \int_{\{i \ge n\}} f_n = \sum_{i=1}^{n}\int_{\{i\}}f_n = \sum_{i=1}^{n}f_n(i),
+$$
+we have
+$$
+\int_{\mathbb{N}}f = \sum_{n = 0}^{\infty}f(n) < \infty.
+$$
+}
+
+\problem{9}{Problem 26, Section 18.2, Page}
+\solution{Solution}{
+With the definition of Dirac measure, let $g\equiv f(x_0)$, then
+$$
+m(\{g = f\}) = m_{\delta_{x_0}}(\{x\in X\mid f(x) = g(x)\}) = 1 = m(X).
+$$
+Then $f = g$, a.e. on $X$.
+$$
+\int_{X}f(x)d\delta_{x_0} =\int_{X}gd\delta_{x_0} = f(x_0)\int_{X}1d\delta_{x_0} = f(x_0) < \infty.
+$$
+}
+
+\problem{10}{Problem 27, Section 18.3, Page}
+\solution{(i)}{
+First we show that if $f$ is integrable on $X$, then the set
+$$
+F = \{x\mid f(x) \ne 0\}
+$$
+is countable. Otherwise, since $f$ is integrable, it means $f^+ $ and $f^- $ are both integrable. We now assume $f$ is nonnegative, then
+$$
+F = \bigcup_{n = 1}^{\infty}\{x\mid f(x) \ge \frac{1}{n}\}.
+$$
+If $F$ is uncountable, then there must exist $n$, s.t. $F_n = \{x\mid f(x) \ge \frac{1}{n}\}$ is uncountable, and $m(F_n) = \infty$. Thus 
+$$
+\int_{X}fd\eta \ge \int_{F_n}fd\eta \ge \frac{1}{n}\times\infty = \infty,
+$$
+which makes a contradiction. In this case, suppose there is a bijection from $F$ to a subset of $\mathbb{N}$, then this problem is the same with Problem 8.
+}
+\solution{(ii)}{
+Since $x_0\in X$, and $\mathcal{M}$ is the $\sigma-$algebra of all subsets of $X$, then $\{x_0\}$ is measurable. For any simple function $h(x) \le |f(x)|$, suppose
+$$
+h(x) = \sum_{i=1}^{n}c_i1_{E_i},
+$$
+and $x_0 \in c_1$, then 
+$$
+\int_{X}h(x)d\mu_{x_0} = \sum_{i=1}^{n}c_im(E_i) = c_1 \le |f(x_0)|.
+$$
+Then according to the definition of integration, 
+$$
+\int_{X}|f(x)| \le |f(x_0)|.
+$$
+On the other hand, let
+$$
+h(x) = \left\{
+\begin{aligned}
+&|f(x_0)|, ~x = x_0 \\
+&0, ~x\ne x_0
+\end{aligned}
+\right.
+$$
+then 
+$$
+\int_{X}h(x) = \int_{\{x_0\}}h(x_0) = |f(x_0)|.
+$$
+Hence
+$$
+\int_{X}|f(x)|d\mu_{x_0} = |f(x_0)|.
+$$
+When $f$ is arbitrary real-valued function, define $f^+ $ and $f^- $ as in the textbook, then $f = f^+-f^- $, and
+$$
+\int_{X}f = \int_{X}f^+ -\int_{X}f^-.
+$$
+}
+\end{document}

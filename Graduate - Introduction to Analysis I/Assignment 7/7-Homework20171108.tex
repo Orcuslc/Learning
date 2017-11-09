@@ -1,0 +1,166 @@
+
+\documentclass{article}%
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{amsfonts}%
+\usepackage{amssymb}
+\usepackage{hyperref}
+
+\setlength{\topmargin}{-0.75in}
+\setlength{\textheight}{9.25in}
+\setlength{\oddsidemargin}{0.0in}
+\setlength{\evensidemargin}{0.0in}
+\setlength{\textwidth}{6.5in}
+\def\labelenumi{\arabic{enumi}.}
+\def\theenumi{\arabic{enumi}}
+\def\labelenumii{(\alph{enumii})}
+\def\theenumii{\alph{enumii}}
+\def\p@enumii{\theenumi.}
+\def\labelenumiii{\arabic{enumiii}.}
+\def\theenumiii{\arabic{enumiii}}
+\def\p@enumiii{(\theenumi)(\theenumii)}
+\def\labelenumiv{\arabic{enumiv}.}
+\def\theenumiv{\arabic{enumiv}}
+\def\p@enumiv{\p@enumiii.\theenumiii}
+\pagestyle{plain}
+\setcounter{secnumdepth}{0}
+\newtheorem{theorem}{Theorem}
+\newtheorem{acknowledgement}[theorem]{Acknowledgement}
+\newtheorem{algorithm}[theorem]{Algorithm}
+\newtheorem{axiom}[theorem]{Axiom}
+\newtheorem{case}[theorem]{Case}
+\newtheorem{claim}[theorem]{Claim}
+\newtheorem{conclusion}[theorem]{Conclusion}
+\newtheorem{condition}[theorem]{Condition}
+\newtheorem{conjecture}[theorem]{Conjecture}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{criterion}[theorem]{Criterion}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{example}[theorem]{Example}
+\newtheorem{exercise}[theorem]{Exercise}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{notation}[theorem]{Notation}
+\newtheorem{problem}[theorem]{Problem}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{solution}[theorem]{Solution}
+\newtheorem{summary}[theorem]{Summary}
+\newenvironment{proof}[1][Proof]{\textbf{#1.} }{\ \rule{0.5em}{0.5em}}
+
+\begin{document}
+
+\begin{center}
+\textbf{Introduction to Analysis $I$\\Homework 7\\Wednesday, November  8, 
+2017}\bigskip
+\end{center}
+
+\noindent\textbf{Instructions}: This and all subsequent homeworks must be submitted written in \LaTeX.
+
+\noindent Since by now, you should all be sufficiently familiar with \LaTeX to 
+compose on your own, I will forgo the formalities of the previous assignments 
+and simply list the problems.  I will expect, however, that you will cite 
+relevant material in Royden or other sources properly and that you will 
+acknowledge your collaborators.
+
+
+\begin{center}
+\emph{Homework 7 is due by midnight, Saturday, November 18.}
+\end{center} 
+\medskip
+
+\begin{enumerate}
+\item  Problem 9,  Chapter 6 
+
+\smallskip
+\textbf{Solution:}
+\smallskip
+Sufficiency. First, we show $\{I_k\}$ is a Vitali cover of $E$. Otherwise, there exists $x\in E, ~\epsilon > 0$, s.t. for each $I_k $ for which $x\in I_k $, $m(I_k) > \epsilon$. Then
+$$\sum_{k=1}^{\infty}m(I_k) \ge \sum_{x\in I_k}m(I_k) \ge \sum\limits_{x\in I_k}\epsilon = \infty
+$$
+since $x$ belongs to infinity many of $I_k $. This makes a contradiction with the assumptions. 
+
+By Problem 6.6 we know Vitali Covering Lemma holds for general nondegenerate intervals, then 
+
+\bigskip
+\item  Problem 10, Chapter 6
+\item  Problem 13, Chapter 6
+
+\smallskip
+\textbf{Solution:}
+\smallskip
+First, we show that under the conditions of the Vitali Covering Lemma, $\mathcal{F}\setminus \bigcup\limits_{k=1}^n I_k $ is a Vitali covering of $E\setminus \bigcup\limits_{k=1}^n I_k$. In fact, if it is not true, then there $\exists x\in E\setminus\bigcup\limits_{k=1}^n I_k$ and $\epsilon > 0$, s.t. there does not exist an interval $I\in\mathcal{F}\setminus\bigcup\limits_{k=1}^n I_k$, s.t. $x\in I$, and $m(I) < \epsilon$. However, since $\mathcal{F}$ is a Vitali covering of $E$, then for $\epsilon_i = \frac{\epsilon}{2^i}, ~i = 1, 2, \cdots $, there exists $I_i'\in\mathcal{F} $, s.t. $x\in I_i' $ and $m(I_i') < \epsilon_i $. If there exists $i_0 $, s.t. $I_{i_0}\notin \{I_k\}_{k = 1}^{n} $, then $x\in I_{i_0} $ and $m(I_{i_0}) < \epsilon$, which makes a contradiction. Then $\{I_i'\} \in \{I_k\}_{k = 1}^{n}$, but it contradicts with $n < \infty$. Hence, our claim is proved.
+
+Then we show that if $\{I_k\}_{k=1}^{n} $ is a finite sequence of closed intervals, then we can find a pairwise disjoint subsequence $\{I_{k_j}\}$ s.t. 
+$$
+m(\bigcup_{j = 1}^{m} I_{k_j}) \ge m(\bigcup_{k=1}^{n}I_k).
+$$
+The proof of this proposition can be seen at \href{http://www.personal.psu.edu/t20/papers/vitali-l2h/node5.html}{http://www.personal.psu.edu/t20/papers/vitali-l2h/node5.html}
+
+Now we use these claims to construct a collection. Using Vitali Covering Lemma, for $\epsilon = \frac{3}{4}m(E)$, there exists a finite collection of disjoint intervals $\{I_k\}$, s.t. $m(E\setminus \bigcup I_k) < \epsilon$. Denote $A = \bigcup I_k $.
+
+Since $\mathcal{F}\setminus A$ is a Vitali covering of $E\setminus I_k $, there is a finite set of intervals $J_k $, s.t. $J_k\subset E\setminus A $ (Otherwise just follow the proof of Vitali Covering Lemma on the textbook), and 
+$$
+m(E\setminus (A\cup\bigcup_{k=1}^m J_k)) < \frac{1}{12}m(E\setminus A).
+$$
+Then using claim 2, there is a pairwise disjoint subset $\{J_{k_i}\}$ s.t. 
+$$
+m(\bigcup J_{k_i}) \ge \frac{1}{3}m(\bigcup J_k).
+$$
+Then denote $B = \bigcup J_{k_i} $, and 
+$$
+m(E\setminus (A\cup B)) < \frac{2}{3}m(\bigcup J_k) +\frac{1}{12}m(E\setminus A) \le (\frac{2}{3}+\frac{1}{12})m(E\setminus A) = \frac{3}{4}m(E\setminus A).
+$$
+By constructing like above recursively, we can get a sequence of subsets $\{A_i\}$, s.t. 
+$$
+m(E\setminus \bigcup_{i=1}^n A_i) \le (\frac{3}{4})^n m(E).
+$$
+By countable addivity,
+$$
+m(E\setminus \bigcup_{i=1}^\infty A_i) = 0.
+$$
+
+\bigskip
+\item  Problem 16, Chapter 6
+
+\smallskip
+\textbf{Solution:}
+\smallskip
+First, we show that if $f_1, ~f_2$ are differentiable functions, then $f = f_1+f_2$ is differentiable. In fact,
+$$
+\begin{aligned}
+\overline{D}f(x) &= \lim_{h\to 0}\sup_{0 < |t| < h}\frac{f(x+t)-f(x)}{t} = \lim_{h\to 0}\sup_{0 < |t| < h}(\frac{f_1(x+t)-f_1(x)}{t}+\frac{f_2(x+t)-f_2(x)}{t}) \\
+&\le \lim_{h\to 0}\sup_{0 < |t| < h}\frac{f_1(x+t)-f_1(x)}{t} + \lim_{h\to 0}\sup_{0 < |t| < h}\frac{f_2(x+t)-f_2(x)}{t}
+\end{aligned}
+$$
+$$
+\begin{aligned}
+\underline{D}f(x) &= \lim_{h\to 0}\inf_{0 < |t| < h}\frac{f(x+t)-f(x)}{t} = \lim_{h\to 0}\inf_{0 < |t| < h}(\frac{f_1(x+t)-f_1(x)}{t}+\frac{f_2(x+t)-f_2(x)}{t}) \\
+&\ge \lim_{h\to 0}\inf_{0 < |t| < h}\frac{f_1(x+t)-f_1(x)}{t} + \lim_{h\to 0}\inf_{0 < |t| < h}\frac{f_2(x+t)-f_2(x)}{t}
+\end{aligned}
+$$
+But since $f_1$ and $f_2$ are both differentiable, 
+$$
+\lim_{h\to 0}\inf_{0 < |t| < h}\frac{f_i(x+t)-f_i(x)}{t} = \lim_{h\to 0}\sup_{0 < |t| < h}\frac{f_i(x+t)-f_i(x)}{t}
+$$
+holds for $i = 1, 2$. Thus $\overline{D}f(x) = \underline{D}f(x)$, which means $f$ is differentiable.
+
+Let
+$$
+g^+ = \max\{g(x), ~0\}, ~g^- = \min\{g(x), ~0\},
+$$
+Then $g^+ \ge 0, ~g^- \le 0$, and $g(x) = g^+(x) + g^-(x)$. Define
+$$
+f_1(x) = \int_{a}^{x}g^+, ~f_2(x) = \int_{a}^{x}g^-,
+$$
+then $f_1, ~f_2$ are both monotone functions, using Lebesgue's Theorem, $f_1, ~f_2 $ are both differentiable a.e. on $(a, b)$, respectively differentiable on $(a, b)\setminus E_1 $ and $(a, b) \setminus E_2 $ where $m(E_1) = m(E_2) = 0$. Then using the conclusion above, $f = f_1 + f_2 $ is differentiable on $(a, b)\setminus (E_1\cup E_2)$, and hence differentiable a.e. on $(a, b)$.
+
+
+
+
+
+\item  Problem 26, Chapter 6
+\item  Problem 29, Chapter 6
+\item  Problem 35, Chapter 6
+
+\end{enumerate}
+\end{document}
