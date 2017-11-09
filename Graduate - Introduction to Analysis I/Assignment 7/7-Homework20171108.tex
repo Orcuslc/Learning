@@ -69,10 +69,54 @@ acknowledge your collaborators.
 \medskip
 
 \begin{enumerate}
-\item  Problem 9,  Chapter 6
+\item  Problem 9,  Chapter 6 
+
+\smallskip
+\textbf{Solution:}
+\smallskip
+
+
+
 \item  Problem 10, Chapter 6
 \item  Problem 13, Chapter 6
 \item  Problem 16, Chapter 6
+
+\smallskip
+\textbf{Solution:}
+\smallskip
+First, we show that if $f_1, ~f_2$ are differentiable functions, then $f = f_1+f_2$ is differentiable. In fact,
+$$
+\begin{aligned}
+\overline{D}f(x) &= \lim_{h\to 0}\sup_{0 < |t| < h}\frac{f(x+t)-f(x)}{t} = \lim_{h\to 0}\sup_{0 < |t| < h}(\frac{f_1(x+t)-f_1(x)}{t}+\frac{f_2(x+t)-f_2(x)}{t}) \\
+&\le \lim_{h\to 0}\sup_{0 < |t| < h}\frac{f_1(x+t)-f_1(x)}{t} + \lim_{h\to 0}\sup_{0 < |t| < h}\frac{f_2(x+t)-f_2(x)}{t}
+\end{aligned}
+$$
+$$
+\begin{aligned}
+\underline{D}f(x) &= \lim_{h\to 0}\inf_{0 < |t| < h}\frac{f(x+t)-f(x)}{t} = \lim_{h\to 0}\inf_{0 < |t| < h}(\frac{f_1(x+t)-f_1(x)}{t}+\frac{f_2(x+t)-f_2(x)}{t}) \\
+&\ge \lim_{h\to 0}\inf_{0 < |t| < h}\frac{f_1(x+t)-f_1(x)}{t} + \lim_{h\to 0}\inf_{0 < |t| < h}\frac{f_2(x+t)-f_2(x)}{t}
+\end{aligned}
+$$
+But since $f_1$ and $f_2$ are both differentiable, 
+$$
+\lim_{h\to 0}\inf_{0 < |t| < h}\frac{f_i(x+t)-f_i(x)}{t} = \lim_{h\to 0}\sup_{0 < |t| < h}\frac{f_i(x+t)-f_i(x)}{t}
+$$
+holds for $i = 1, 2$. Thus $\overline{D}f(x) = \underline{D}f(x)$, which means $f$ is differentiable.
+
+Let
+$$
+g^+ = \max\{g(x), ~0\}, ~g^- = \min\{g(x), ~0\},
+$$
+Then $g^+ \ge 0, ~g^- \le 0$, and $g(x) = g^+(x) + g^-(x)$. Define
+$$
+f_1(x) = \int_{a}^{x}g^+, ~f_2(x) = \int_{a}^{x}g^-,
+$$
+then $f_1, ~f_2$ are both monotone functions, using Lebesgue's Theorem, $f_1, ~f_2 $ are both differentiable a.e. on $(a, b)$, respectively differentiable on $(a, b)\setminus E_1 $ and $(a, b) \setminus E_2 $ where $m(E_1) = m(E_2) = 0$. Then using the conclusion above, $f = f_1 + f_2 $ is differentiable on $(a, b)\setminus (E_1\cup E_2)$, and hence differentiable a.e. on $(a, b)$.
+
+
+
+
+
 \item  Problem 26, Chapter 6
 \item  Problem 29, Chapter 6
 \item  Problem 35, Chapter 6
