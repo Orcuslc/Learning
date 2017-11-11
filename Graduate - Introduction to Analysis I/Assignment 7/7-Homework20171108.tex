@@ -74,12 +74,21 @@ acknowledge your collaborators.
 \smallskip
 \textbf{Solution:}
 \smallskip
-Sufficiency. First, we show $\{I_k\}$ is a Vitali cover of $E$. Otherwise, there exists $x\in E, ~\epsilon > 0$, s.t. for each $I_k $ for which $x\in I_k $, $m(I_k) > \epsilon$. Then
-$$\sum_{k=1}^{\infty}m(I_k) \ge \sum_{x\in I_k}m(I_k) \ge \sum\limits_{x\in I_k}\epsilon = \infty
+Sufficiency. Suppose $m^*(E) = m > 0$. Since each point in $E$ belongs to infinitely many of the $I_k $, then there exists $N > 0$, s.t. 
 $$
-since $x$ belongs to infinity many of $I_k $. This makes a contradiction with the assumptions. 
+\bigcup_{k=1}^N I_k\supset E,
+$$
+otherwise there exists $x\in E$, for each $N$, $x\notin \bigcup\limits_{k=1}^N I_k $, and that means $x\notin \bigcup\limits_{k=1}^{\infty}I_k $, which leads to a contradiction. Suppose the smallest $N$ such that $E \subset \bigcup\limits_{k=1}^N I_k$ to be $N_1 $, then using the same method, there exists $N_2 > N_1 $, s.t. $E \subset \bigcup\limits_{k=N_1+1}^{N_2} I_k$. By inductively constructing such $N_j $, we get a sequence $\{N_j\}$, s.t. $E \subset \bigcup\limits_{k=N_j+1}^{N_{j+1}} I_k $. Then by the definition of outer measure and finite addivity for open sets, 
+$$
+m = m^*(E) \le m^*(\bigcup\limits_{k=N_j+1}^{N_{j+1}}I_k) = \sum_{k = N_j+1}^{N_{j+1}}m(I_k).
+$$
+Then for each $M > 0$,
+$$
+\sum_{k=1}^{\infty}m(I_k) > Mm, 
+$$
+which makes a contradiction with $\sum_{k=1}^{\infty}m(I_k) < \infty$. Then $m^*(E) = 0$.
 
-By Problem 6.6 we know Vitali Covering Lemma holds for general nondegenerate intervals, then 
+Necessity. With the definition of outer measure, for each $\epsilon_n = \epsilon{1}{2^n} $, there exist an open set $O_n = \bigcup\limits_{j=1}^{\infty}I_{n_j} $ being the construction of open intervals, s.t. $E\subset O_n $, and $m(O_n) = \sum\limits_{j=1}^{\infty}m(I_{n_j}) < \epsilon_n $. Let $\{I_n\} = \{I_{n_j}\}_{n, j} $, then for each $x\in E$, $x$ belongs to infinitely many of these open intervals, and $\sum\limits_{n=1}^{\infty}m(I_n) = \epsilon < \infty$.
 
 \bigskip
 \item  Problem 10, Chapter 6
