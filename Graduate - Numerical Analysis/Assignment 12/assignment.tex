@@ -210,5 +210,32 @@ $$
 }
 
 \problem{5}{Problem 5.10}
+\solution{Sol}{
+Using Taylor expansion of $f(x)$,
+$$
+f(x) = p_1(x)+R_2(x), ~p_1(x) = f(\frac{h}{2})+(x-\frac{h}{2})f'(\frac{h}{2}), ~R_2(x) = \int_{h/2}^{x}(x-t)f''(t)dt,
+$$
+and we know that the mid point formula has a degree of precision $m = 1$,
+$$
+\begin{aligned}
+E_1(f) &= E_1(p_1)+E_1(R_2) = E_1(R_2) = \int_{0}^{h}R_2(x)dx - hR_2(\frac{h}{2}) = \int_{0}^{h}\int_{h/2}^{x}(x-t)f''(t)dtdx - 0 \\
+&= \int_{h/2}^{0}f''(t)dt\int_{0}^{t}(x-t)dx + \int_{h/2}^{h}f''(t)dt\int_{t}^{h}(x-t)dx = \int_{0}^{h/2}\frac{1}{2}t^2f''(t)dt + \int_{h/2}^{h}\frac{1}{2}(t-h)^2f''(t)dt \\
+&= \int_{0}^{h}K(t)f''(t)dt,
+\end{aligned}
+$$
+where
+$$
+K(t) = \left\{
+\begin{aligned}
+&\frac{1}{2}t^2, ~0\le t\le h/2 \\
+&\frac{1}{2}(t-h)^2, ~h/2 \le t\le h
+\end{aligned}
+\right.
+$$
+Using mean value theorem,
+$$
+E(f) = \int_{0}^{h}K(t)f''(t)dt = f''(\eta)\int_{0}^{h}K(t)dt = \frac{1}{24}h^2f''(\eta), ~\eta\in(0, h).
+$$
+}
 
 \end{document}
