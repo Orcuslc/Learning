@@ -182,26 +182,25 @@ class Window(QMainWindow):
 		wid = QWidget(self)
 		self.setCentralWidget(wid)
 		wid.setLayout(grid)
-		# self.resize(800, 600)
 		self._centerlize()
 		self.setWindowTitle('Seats')
 		self.show()
 
 	def _parse(self, row):
 		[name, hawkid, seat] = row
+		seat = seat.split(" ")
+		building, room, seat = seat[0], seat[1], seat[2]
 		email = hawkid + "@iowa.uiowa.edu"
-		seat = seat.split(' ')
-		seat.remove('')
-		seat[0], seat[1] = seat[1], seat[0]
 		if self._title_state:
-			title = self._title.format(BUILDING = seat[0], ROOM = seat[1], SEAT = seat[2])
-		else: 
-			title = exam + " Seat: " + '-'.join(seat)
-		if self._content_state:
-			content = self._content.format(NAME = name, BUILDING = seat[0], ROOM = seat[1], SEAT = seat[2])
+			title = self._title.format(BUILDING = building, ROOM = room, SEAT = seat)
 		else:
 			exam = self._course + " " + self._exam
-			content = "Dear " + name + ":\n\n" + "Your seat for " + exam + " is: " + "Building " + seat[0] + ", Room " + seat[1] + ", and Seat " + seat[2] + ". It is recommended that you explore your seat a day before the exam.\n" + "The Exam is on " + self._time
+			title = exam + " Seat: " + "-".join([building, room, seat])
+		if self._content_state:
+			content = self._content.format(NAME = name, BUILDING = building, ROOM = room, SEAT = seat)
+		else:
+			exam = self._course + " " + self._exam
+			content = "Dear {NAME}:\n\nYour seat for {EXAM} is: Building {BUILDING}, Room {ROOM}, and Seat {SEAT}. It is recommended that you explore your seat a day before the exam.\n\nThe exam is on {TIME}.".format(NAME = name, EXAM = exam, BUILDING = building, ROOM = room, SEAT = seat, TIME = self._time)
 		return [name, email, title, content]
 
 	def _send(self, msg, name, email, title, content):
@@ -213,7 +212,7 @@ class Window(QMainWindow):
 	def run(self):
 		self._get_info()
 		self._sign = 1
-		if not self._seat_file_name or not self._hawkid or not self._passwd or not (self._title_state and self._content and not self._course and not self._exam and not self._time):
+		if not self._seat_file_name or not self._hawkid or not self._passwd:
 			self._status_edit.setText("Error: Missing Items")
 			return
 		with open(self._seat_file_name) as f:
@@ -224,11 +223,19 @@ class Window(QMainWindow):
 				if(self._sign == 0):
 					break
 				count += 1
+
 				[name, email, title, content] = self._parse(row)
+				if not name:
+					continue
 				self._send(m, name, email, title, content)
-				self._status_edit.append(str(count) + " " + name + " Sent!\n")
+				self._status_edit.append(str(count) + ": " + name + " Sent!\n")
 				QCoreApplication.processEvents()
 			f.close()
+		if self._sign == 0:
+			self._status_edit.append("Failed!")
+		else:
+			self._status_edit.append("ALL Done!")
+		QCoreApplication.processEvents()
 
 if __name__ == '__main__':
 	app = QApplication(sys.argv)
