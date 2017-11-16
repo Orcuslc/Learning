@@ -1,0 +1,1419 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pdf2xml SYSTEM "pdf2xml.dtd">
+
+<pdf2xml producer="poppler" version="0.48.0">
+<page number="1" position="absolute" top="0" left="0" height="1188" width="918">
+	<fontspec id="0" size="15" family="Helvetica" color="#3f3f3f"/>
+	<fontspec id="1" size="21" family="Times" color="#000000"/>
+	<fontspec id="2" size="19" family="Helvetica" color="#3f3f3f"/>
+	<fontspec id="3" size="27" family="Helvetica" color="#3f3f3f"/>
+	<fontspec id="4" size="18" family="Helvetica" color="#3f3f3f"/>
+	<fontspec id="5" size="21" family="Helvetica" color="#000000"/>
+	<fontspec id="6" size="12" family="Helvetica" color="#000000"/>
+	<fontspec id="7" size="12" family="Helvetica" color="#000000"/>
+	<fontspec id="8" size="19" family="Helvetica" color="#ffffff"/>
+	<fontspec id="9" size="15" family="Helvetica" color="#3f3f3f"/>
+	<fontspec id="10" size="12" family="Helvetica" color="#3f3f3f"/>
+	<fontspec id="11" size="14" family="Helvetica" color="#000000"/>
+	<fontspec id="12" size="10" family="Helvetica" color="#000000"/>
+	<fontspec id="13" size="10" family="Helvetica" color="#000000"/>
+	<fontspec id="14" size="9" family="Helvetica" color="#000000"/>
+<image top="27" left="21" width="146" height="42" src="/export/freefileconvert/902_d0ffde7452f581e1e7ff8b9a54f1696b20a151e5350d5a7136d73541b85880c8-1_1.jpg"/>
+<text top="116" left="29" width="143" height="17" font="0"><b>Testing Services</b></text>
+<text top="120" left="319" width="283" height="22" font="1">Student Score Report</text>
+<text top="317" left="29" width="194" height="20" font="2">Confirmation: 7037</text>
+<text top="282" left="29" width="95" height="20" font="2">Instructor:</text>
+<text top="282" left="175" width="108" height="20" font="2">Wang, Lihe</text>
+<text top="247" left="29" width="75" height="20" font="2">Course:</text>
+<text top="247" left="175" width="133" height="20" font="2">MATH 1380 - </text>
+<text top="168" left="30" width="17" height="28" font="3"><b>, </b></text>
+<text top="207" left="175" width="95" height="20" font="2">00215034</text>
+<text top="352" left="29" width="138" height="20" font="2">Date/Location:</text>
+<text top="352" left="175" width="144" height="19" font="4">10-05-17 10: 10</text>
+<text top="387" left="29" width="113" height="20" font="2">Description:</text>
+<text top="387" left="175" width="237" height="20" font="2">Exam Midterm 1, Form A</text>
+<text top="445" left="327" width="221" height="22" font="5"><b>Questions Missed *</b></text>
+<text top="508" left="26" width="29" height="14" font="6">1.  ?</text>
+<text top="508" left="109" width="29" height="14" font="6">2.  ?</text>
+<text top="508" left="191" width="29" height="14" font="6">3.  ?</text>
+<text top="508" left="274" width="29" height="14" font="6">4.  ?</text>
+<text top="508" left="357" width="29" height="14" font="6">5.  ?</text>
+<text top="508" left="440" width="29" height="14" font="6">6.  ?</text>
+<text top="508" left="522" width="29" height="14" font="6">7.  ?</text>
+<text top="508" left="605" width="29" height="14" font="6">8.  ?</text>
+<text top="508" left="688" width="29" height="14" font="6">9.  ?</text>
+<text top="508" left="770" width="37" height="14" font="6">10.  ?</text>
+<text top="536" left="26" width="37" height="14" font="6">11.  ?</text>
+<text top="536" left="109" width="37" height="14" font="6">12.  ?</text>
+<text top="536" left="191" width="37" height="14" font="6">13.  ?</text>
+<text top="536" left="274" width="37" height="14" font="6">14.  ?</text>
+<text top="536" left="357" width="37" height="14" font="6">15.  ?</text>
+<text top="536" left="440" width="37" height="14" font="6">16.  ?</text>
+<text top="536" left="522" width="37" height="14" font="6">17.  ?</text>
+<text top="536" left="605" width="37" height="14" font="6">18.  ?</text>
+<text top="536" left="688" width="37" height="14" font="6">19.  ?</text>
+<text top="536" left="770" width="37" height="14" font="6">20.  ?</text>
+<text top="564" left="26" width="37" height="14" font="6">21.  ?</text>
+<text top="564" left="109" width="37" height="14" font="6">22.  ?</text>
+<text top="564" left="191" width="37" height="14" font="6">23.  ?</text>
+<text top="564" left="274" width="37" height="14" font="6">24.  ?</text>
+<text top="564" left="357" width="37" height="14" font="6">25.  ?</text>
+<text top="478" left="226" width="425" height="14" font="7"><b>(Format: Question Number. Your Answer, Correct Answer) *</b></text>
+<text top="210" left="28" width="101" height="20" font="2">Student ID</text>
+<text top="164" left="588" width="140" height="20" font="8"><b>Exam Results</b></text>
+<text top="344" left="498" width="58" height="17" font="0"><b>Grade:</b></text>
+<text top="344" left="744" width="71" height="17" font="0"><b>0.0000%</b></text>
+<text top="208" left="497" width="123" height="17" font="9">Regular Points:</text>
+<text top="208" left="778" width="35" height="17" font="9">0.00</text>
+<text top="238" left="497" width="112" height="17" font="9">Bonus Points:</text>
+<text top="238" left="779" width="35" height="17" font="9">0.00</text>
+<text top="273" left="497" width="175" height="17" font="0"><b>Total Points Earned:</b></text>
+<text top="273" left="779" width="35" height="17" font="0"><b>0.00</b></text>
+<text top="377" left="806" width="8" height="14" font="10">0</text>
+<text top="377" left="498" width="134" height="14" font="10">Elapsed Time (min):</text>
+<text top="318" left="281" width="95" height="20" font="2">Booklet #:</text>
+<text top="318" left="396" width="36" height="20" font="2">N/A</text>
+<text top="1033" left="27" width="819" height="15" font="11">* If allowed by your instructor, the questions that you missed are listed.  Optionally, your answer and the correct </text>
+<text top="1054" left="27" width="845" height="15" font="11">answer may be listed as allowed by your instructor. Items with an &#34;X&#34; for the Answer are not counted against grade.</text>
+<text top="308" left="497" width="134" height="17" font="0"><b>Possible Points</b></text>
+<text top="308" left="769" width="45" height="17" font="0"><b>25.00</b></text>
+<text top="1141" left="27" width="74" height="11" font="12"><b>Report Date:</b></text>
+<text top="1141" left="126" width="212" height="11" font="13">Thursday, October 05, 2017  1030 : 14</text>
+<text top="1141" left="755" width="34" height="11" font="12"><b>Page:</b></text>
+<text top="1141" left="831" width="7" height="11" font="13">1</text>
+<text top="1167" left="148" width="571" height="11" font="14">University of Iowa - Evaluation and Exam Services - exam-service@uiowa.edu - Telephone (319) 335-0356</text>
+</page>
+<page number="2" position="absolute" top="0" left="0" height="1188" width="918">
+<image top="27" left="21" width="146" height="42" src="/export/freefileconvert/902_d0ffde7452f581e1e7ff8b9a54f1696b20a151e5350d5a7136d73541b85880c8-2_1.jpg"/>
+<text top="116" left="29" width="143" height="17" font="0"><b>Testing Services</b></text>
+<text top="120" left="319" width="283" height="22" font="1">Student Score Report</text>
+<text top="317" left="29" width="194" height="20" font="2">Confirmation: 7037</text>
+<text top="282" left="29" width="95" height="20" font="2">Instructor:</text>
+<text top="282" left="175" width="108" height="20" font="2">Wang, Lihe</text>
+<text top="247" left="29" width="75" height="20" font="2">Course:</text>
+<text top="247" left="175" width="133" height="20" font="2">MATH 1380 - </text>
+<text top="168" left="30" width="153" height="28" font="3"><b>Abel, Evan</b></text>
+<text top="207" left="175" width="95" height="20" font="2">01237595</text>
+<text top="352" left="29" width="138" height="20" font="2">Date/Location:</text>
+<text top="352" left="175" width="144" height="19" font="4">10-05-17 09: 10</text>
+<text top="387" left="29" width="113" height="20" font="2">Description:</text>
+<text top="387" left="175" width="239" height="20" font="2">Exam Midterm 1, Form C</text>
+<text top="445" left="327" width="221" height="22" font="5"><b>Questions Missed *</b></text>
+<text top="508" left="26" width="39" height="14" font="6">11.  E</text>
+<text top="508" left="109" width="39" height="14" font="6">12.  A</text>
+<text top="508" left="191" width="39" height="14" font="6">14.  B</text>
+<text top="508" left="274" width="40" height="14" font="6">16.  D</text>
+<text top="508" left="357" width="40" height="14" font="6">17.  C</text>
+<text top="508" left="440" width="40" height="14" font="6">20.  C</text>
+<text top="508" left="522" width="39" height="14" font="6">25.  A</text>
+<text top="478" left="226" width="425" height="14" font="7"><b>(Format: Question Number. Your Answer, Correct Answer) *</b></text>
+<text top="210" left="28" width="101" height="20" font="2">Student ID</text>
+<text top="164" left="588" width="140" height="20" font="8"><b>Exam Results</b></text>
+<text top="344" left="498" width="58" height="17" font="0"><b>Grade:</b></text>
+<text top="344" left="734" width="82" height="17" font="0"><b>72.0000%</b></text>
+<text top="208" left="497" width="123" height="17" font="9">Regular Points:</text>
+<text top="208" left="768" width="45" height="17" font="9">18.00</text>
+<text top="238" left="497" width="112" height="17" font="9">Bonus Points:</text>
+<text top="238" left="779" width="35" height="17" font="9">0.00</text>
+<text top="273" left="497" width="175" height="17" font="0"><b>Total Points Earned:</b></text>
+<text top="273" left="769" width="45" height="17" font="0"><b>18.00</b></text>
+<text top="377" left="806" width="8" height="14" font="10">0</text>
+<text top="377" left="498" width="134" height="14" font="10">Elapsed Time (min):</text>
+<text top="318" left="281" width="95" height="20" font="2">Booklet #:</text>
+<text top="318" left="396" width="36" height="20" font="2">N/A</text>
+<text top="1033" left="27" width="819" height="15" font="11">* If allowed by your instructor, the questions that you missed are listed.  Optionally, your answer and the correct </text>
+<text top="1054" left="27" width="845" height="15" font="11">answer may be listed as allowed by your instructor. Items with an &#34;X&#34; for the Answer are not counted against grade.</text>
+<text top="308" left="497" width="134" height="17" font="0"><b>Possible Points</b></text>
+<text top="308" left="769" width="45" height="17" font="0"><b>25.00</b></text>
+<text top="1141" left="27" width="74" height="11" font="12"><b>Report Date:</b></text>
+<text top="1141" left="126" width="212" height="11" font="13">Thursday, October 05, 2017  1030 : 14</text>
+<text top="1141" left="755" width="34" height="11" font="12"><b>Page:</b></text>
+<text top="1141" left="831" width="7" height="11" font="13">2</text>
+<text top="1167" left="148" width="571" height="11" font="14">University of Iowa - Evaluation and Exam Services - exam-service@uiowa.edu - Telephone (319) 335-0356</text>
+</page>
+<page number="3" position="absolute" top="0" left="0" height="1188" width="918">
+<image top="27" left="21" width="146" height="42" src="/export/freefileconvert/902_d0ffde7452f581e1e7ff8b9a54f1696b20a151e5350d5a7136d73541b85880c8-3_1.jpg"/>
+<text top="116" left="29" width="143" height="17" font="0"><b>Testing Services</b></text>
+<text top="120" left="319" width="283" height="22" font="1">Student Score Report</text>
+<text top="317" left="29" width="194" height="20" font="2">Confirmation: 7037</text>
+<text top="282" left="29" width="95" height="20" font="2">Instructor:</text>
+<text top="282" left="175" width="108" height="20" font="2">Wang, Lihe</text>
+<text top="247" left="29" width="75" height="20" font="2">Course:</text>
+<text top="247" left="175" width="133" height="20" font="2">MATH 1380 - </text>
+<text top="168" left="30" width="183" height="28" font="3"><b>Beyer, Claire</b></text>
+<text top="207" left="175" width="95" height="20" font="2">01179511</text>
+<text top="352" left="29" width="138" height="20" font="2">Date/Location:</text>
+<text top="352" left="175" width="144" height="19" font="4">10-05-17 09: 10</text>
+<text top="387" left="29" width="113" height="20" font="2">Description:</text>
+<text top="387" left="175" width="237" height="20" font="2">Exam Midterm 1, Form A</text>
+<text top="445" left="327" width="221" height="22" font="5"><b>Questions Missed *</b></text>
+<text top="508" left="26" width="31" height="14" font="6">8.  E</text>
+<text top="508" left="109" width="40" height="14" font="6">11.  C</text>
+<text top="508" left="191" width="39" height="14" font="6">12.  E</text>
+<text top="508" left="274" width="39" height="14" font="6">18.  E</text>
+<text top="508" left="357" width="39" height="14" font="6">19.  E</text>
+<text top="478" left="226" width="425" height="14" font="7"><b>(Format: Question Number. Your Answer, Correct Answer) *</b></text>
+<text top="210" left="28" width="101" height="20" font="2">Student ID</text>
+<text top="164" left="588" width="140" height="20" font="8"><b>Exam Results</b></text>
+<text top="344" left="498" width="58" height="17" font="0"><b>Grade:</b></text>
+<text top="344" left="734" width="82" height="17" font="0"><b>80.0000%</b></text>
+<text top="208" left="497" width="123" height="17" font="9">Regular Points:</text>
+<text top="208" left="768" width="45" height="17" font="9">20.00</text>
+<text top="238" left="497" width="112" height="17" font="9">Bonus Points:</text>
+<text top="238" left="779" width="35" height="17" font="9">0.00</text>
+<text top="273" left="497" width="175" height="17" font="0"><b>Total Points Earned:</b></text>
+<text top="273" left="769" width="45" height="17" font="0"><b>20.00</b></text>
+<text top="377" left="806" width="8" height="14" font="10">0</text>
+<text top="377" left="498" width="134" height="14" font="10">Elapsed Time (min):</text>
+<text top="318" left="281" width="95" height="20" font="2">Booklet #:</text>
+<text top="318" left="396" width="36" height="20" font="2">N/A</text>
+<text top="1033" left="27" width="819" height="15" font="11">* If allowed by your instructor, the questions that you missed are listed.  Optionally, your answer and the correct </text>
+<text top="1054" left="27" width="845" height="15" font="11">answer may be listed as allowed by your instructor. Items with an &#34;X&#34; for the Answer are not counted against grade.</text>
+<text top="308" left="497" width="134" height="17" font="0"><b>Possible Points</b></text>
+<text top="308" left="769" width="45" height="17" font="0"><b>25.00</b></text>
+<text top="1141" left="27" width="74" height="11" font="12"><b>Report Date:</b></text>
+<text top="1141" left="126" width="212" height="11" font="13">Thursday, October 05, 2017  1030 : 14</text>
+<text top="1141" left="755" width="34" height="11" font="12"><b>Page:</b></text>
+<text top="1141" left="831" width="7" height="11" font="13">3</text>
+<text top="1167" left="148" width="571" height="11" font="14">University of Iowa - Evaluation and Exam Services - exam-service@uiowa.edu - Telephone (319) 335-0356</text>
+</page>
+<page number="4" position="absolute" top="0" left="0" height="1188" width="918">
+<image top="27" left="21" width="146" height="42" src="/export/freefileconvert/902_d0ffde7452f581e1e7ff8b9a54f1696b20a151e5350d5a7136d73541b85880c8-4_1.jpg"/>
+<text top="116" left="29" width="143" height="17" font="0"><b>Testing Services</b></text>
+<text top="120" left="319" width="283" height="22" font="1">Student Score Report</text>
+<text top="317" left="29" width="194" height="20" font="2">Confirmation: 7037</text>
+<text top="282" left="29" width="95" height="20" font="2">Instructor:</text>
+<text top="282" left="175" width="108" height="20" font="2">Wang, Lihe</text>
+<text top="247" left="29" width="75" height="20" font="2">Course:</text>
+<text top="247" left="175" width="133" height="20" font="2">MATH 1380 - </text>
+<text top="168" left="30" width="215" height="28" font="3"><b>Cremer, Maxim</b></text>
+<text top="207" left="175" width="95" height="20" font="2">01251965</text>
+<text top="352" left="29" width="138" height="20" font="2">Date/Location:</text>
+<text top="352" left="175" width="144" height="19" font="4">10-05-17 09: 10</text>
+<text top="387" left="29" width="113" height="20" font="2">Description:</text>
+<text top="387" left="175" width="239" height="20" font="2">Exam Midterm 1, Form C</text>
+<text top="445" left="327" width="221" height="22" font="5"><b>Questions Missed *</b></text>
+<text top="508" left="26" width="32" height="14" font="6">1.  D</text>
+<text top="508" left="109" width="31" height="14" font="6">3.  B</text>
+<text top="508" left="191" width="39" height="14" font="6">12.  E</text>
+<text top="508" left="274" width="39" height="14" font="6">13.  A</text>
+<text top="508" left="357" width="39" height="14" font="6">19.  A</text>
+<text top="508" left="440" width="39" height="14" font="6">25.  B</text>
+<text top="478" left="226" width="425" height="14" font="7"><b>(Format: Question Number. Your Answer, Correct Answer) *</b></text>
+<text top="210" left="28" width="101" height="20" font="2">Student ID</text>
+<text top="164" left="588" width="140" height="20" font="8"><b>Exam Results</b></text>
+<text top="344" left="498" width="58" height="17" font="0"><b>Grade:</b></text>
+<text top="344" left="734" width="82" height="17" font="0"><b>76.0000%</b></text>
+<text top="208" left="497" width="123" height="17" font="9">Regular Points:</text>
+<text top="208" left="768" width="45" height="17" font="9">19.00</text>
+<text top="238" left="497" width="112" height="17" font="9">Bonus Points:</text>
+<text top="238" left="779" width="35" height="17" font="9">0.00</text>
+<text top="273" left="497" width="175" height="17" font="0"><b>Total Points Earned:</b></text>
+<text top="273" left="769" width="45" height="17" font="0"><b>19.00</b></text>
+<text top="377" left="806" width="8" height="14" font="10">0</text>
+<text top="377" left="498" width="134" height="14" font="10">Elapsed Time (min):</text>
+<text top="318" left="281" width="95" height="20" font="2">Booklet #:</text>
+<text top="318" left="396" width="36" height="20" font="2">N/A</text>
+<text top="1033" left="27" width="819" height="15" font="11">* If allowed by your instructor, the questions that you missed are listed.  Optionally, your answer and the correct </text>
+<text top="1054" left="27" width="845" height="15" font="11">answer may be listed as allowed by your instructor. Items with an &#34;X&#34; for the Answer are not counted against grade.</text>
+<text top="308" left="497" width="134" height="17" font="0"><b>Possible Points</b></text>
+<text top="308" left="769" width="45" height="17" font="0"><b>25.00</b></text>
+<text top="1141" left="27" width="74" height="11" font="12"><b>Report Date:</b></text>
+<text top="1141" left="126" width="212" height="11" font="13">Thursday, October 05, 2017  1030 : 14</text>
+<text top="1141" left="755" width="34" height="11" font="12"><b>Page:</b></text>
+<text top="1141" left="831" width="7" height="11" font="13">4</text>
+<text top="1167" left="148" width="571" height="11" font="14">University of Iowa - Evaluation and Exam Services - exam-service@uiowa.edu - Telephone (319) 335-0356</text>
+</page>
+<page number="5" position="absolute" top="0" left="0" height="1188" width="918">
+<image top="27" left="21" width="146" height="42" src="/export/freefileconvert/902_d0ffde7452f581e1e7ff8b9a54f1696b20a151e5350d5a7136d73541b85880c8-5_1.jpg"/>
+<text top="116" left="29" width="143" height="17" font="0"><b>Testing Services</b></text>
+<text top="120" left="319" width="283" height="22" font="1">Student Score Report</text>
+<text top="317" left="29" width="194" height="20" font="2">Confirmation: 7037</text>
+<text top="282" left="29" width="95" height="20" font="2">Instructor:</text>
+<text top="282" left="175" width="108" height="20" font="2">Wang, Lihe</text>
+<text top="247" left="29" width="75" height="20" font="2">Course:</text>
+<text top="247" left="175" width="133" height="20" font="2">MATH 1380 - </text>
+<text top="168" left="30" width="285" height="28" font="3"><b>Davenport, Matthew</b></text>
+<text top="207" left="175" width="95" height="20" font="2">01239907</text>
+<text top="352" left="29" width="138" height="20" font="2">Date/Location:</text>
+<text top="352" left="175" width="144" height="19" font="4">10-05-17 09: 10</text>
+<text top="387" left="29" width="113" height="20" font="2">Description:</text>
+<text top="387" left="175" width="237" height="20" font="2">Exam Midterm 1, Form B</text>
+<text top="445" left="327" width="221" height="22" font="5"><b>Questions Missed *</b></text>
+<text top="508" left="26" width="32" height="14" font="6">1.  C</text>
+<text top="508" left="109" width="31" height="14" font="6">2.  A</text>
+<text top="508" left="191" width="32" height="14" font="6">3.  C</text>
+<text top="508" left="274" width="31" height="14" font="6">5.  A</text>
+<text top="508" left="357" width="31" height="14" font="6">6.  A</text>
+<text top="508" left="440" width="39" height="14" font="6">14.  B</text>
+<text top="508" left="522" width="39" height="14" font="6">17.  A</text>
+<text top="508" left="605" width="40" height="14" font="6">18.  C</text>
+<text top="508" left="688" width="39" height="14" font="6">23.  A</text>
+<text top="508" left="770" width="39" height="14" font="6">25.  E</text>
+<text top="478" left="226" width="425" height="14" font="7"><b>(Format: Question Number. Your Answer, Correct Answer) *</b></text>
+<text top="210" left="28" width="101" height="20" font="2">Student ID</text>
+<text top="164" left="588" width="140" height="20" font="8"><b>Exam Results</b></text>
+<text top="344" left="498" width="58" height="17" font="0"><b>Grade:</b></text>
+<text top="344" left="734" width="82" height="17" font="0"><b>60.0000%</b></text>
+<text top="208" left="497" width="123" height="17" font="9">Regular Points:</text>
+<text top="208" left="768" width="45" height="17" font="9">15.00</text>
+<text top="238" left="497" width="112" height="17" font="9">Bonus Points:</text>
+<text top="238" left="779" width="35" height="17" font="9">0.00</text>
+<text top="273" left="497" width="175" height="17" font="0"><b>Total Points Earned:</b></text>
+<text top="273" left="769" width="45" height="17" font="0"><b>15.00</b></text>
+<text top="377" left="806" width="8" height="14" font="10">0</text>
+<text top="377" left="498" width="134" height="14" font="10">Elapsed Time (min):</text>
+<text top="318" left="281" width="95" height="20" font="2">Booklet #:</text>
+<text top="318" left="396" width="36" height="20" font="2">N/A</text>
+<text top="1033" left="27" width="819" height="15" font="11">* If allowed by your instructor, the questions that you missed are listed.  Optionally, your answer and the correct </text>
+<text top="1054" left="27" width="845" height="15" font="11">answer may be listed as allowed by your instructor. Items with an &#34;X&#34; for the Answer are not counted against grade.</text>
+<text top="308" left="497" width="134" height="17" font="0"><b>Possible Points</b></text>
+<text top="308" left="769" width="45" height="17" font="0"><b>25.00</b></text>
+<text top="1141" left="27" width="74" height="11" font="12"><b>Report Date:</b></text>
+<text top="1141" left="126" width="212" height="11" font="13">Thursday, October 05, 2017  1030 : 14</text>
+<text top="1141" left="755" width="34" height="11" font="12"><b>Page:</b></text>
+<text top="1141" left="831" width="7" height="11" font="13">5</text>
+<text top="1167" left="148" width="571" height="11" font="14">University of Iowa - Evaluation and Exam Services - exam-service@uiowa.edu - Telephone (319) 335-0356</text>
+</page>
+<page number="6" position="absolute" top="0" left="0" height="1188" width="918">
+<image top="27" left="21" width="146" height="42" src="/export/freefileconvert/902_d0ffde7452f581e1e7ff8b9a54f1696b20a151e5350d5a7136d73541b85880c8-6_1.jpg"/>
+<text top="116" left="29" width="143" height="17" font="0"><b>Testing Services</b></text>
+<text top="120" left="319" width="283" height="22" font="1">Student Score Report</text>
+<text top="317" left="29" width="194" height="20" font="2">Confirmation: 7037</text>
+<text top="282" left="29" width="95" height="20" font="2">Instructor:</text>
+<text top="282" left="175" width="108" height="20" font="2">Wang, Lihe</text>
+<text top="247" left="29" width="75" height="20" font="2">Course:</text>
+<text top="247" left="175" width="133" height="20" font="2">MATH 1380 - </text>
+<text top="168" left="30" width="194" height="28" font="3"><b>Eagan, Jacob</b></text>
+<text top="207" left="175" width="95" height="20" font="2">01271289</text>
+<text top="352" left="29" width="138" height="20" font="2">Date/Location:</text>
+<text top="352" left="175" width="144" height="19" font="4">10-05-17 09: 10</text>
+<text top="387" left="29" width="113" height="20" font="2">Description:</text>
+<text top="387" left="175" width="239" height="20" font="2">Exam Midterm 1, Form C</text>
+<text top="445" left="327" width="221" height="22" font="5"><b>Questions Missed *</b></text>
+<text top="508" left="26" width="31" height="14" font="6">1.  E</text>
+<text top="508" left="109" width="39" height="14" font="6">17.  E</text>
+<text top="478" left="226" width="425" height="14" font="7"><b>(Format: Question Number. Your Answer, Correct Answer) *</b></text>
+<text top="210" left="28" width="101" height="20" font="2">Student ID</text>
+<text top="164" left="588" width="140" height="20" font="8"><b>Exam Results</b></text>
+<text top="344" left="498" width="58" height="17" font="0"><b>Grade:</b></text>
+<text top="344" left="734" width="82" height="17" font="0"><b>92.0000%</b></text>
+<text top="208" left="497" width="123" height="17" font="9">Regular Points:</text>
+<text top="208" left="768" width="45" height="17" font="9">23.00</text>
+<text top="238" left="497" width="112" height="17" font="9">Bonus Points:</text>
+<text top="238" left="779" width="35" height="17" font="9">0.00</text>
+<text top="273" left="497" width="175" height="17" font="0"><b>Total Points Earned:</b></text>
+<text top="273" left="769" width="45" height="17" font="0"><b>23.00</b></text>
+<text top="377" left="806" width="8" height="14" font="10">0</text>
+<text top="377" left="498" width="134" height="14" font="10">Elapsed Time (min):</text>
+<text top="318" left="281" width="95" height="20" font="2">Booklet #:</text>
+<text top="318" left="396" width="36" height="20" font="2">N/A</text>
+<text top="1033" left="27" width="819" height="15" font="11">* If allowed by your instructor, the questions that you missed are listed.  Optionally, your answer and the correct </text>
+<text top="1054" left="27" width="845" height="15" font="11">answer may be listed as allowed by your instructor. Items with an &#34;X&#34; for the Answer are not counted against grade.</text>
+<text top="308" left="497" width="134" height="17" font="0"><b>Possible Points</b></text>
+<text top="308" left="769" width="45" height="17" font="0"><b>25.00</b></text>
+<text top="1141" left="27" width="74" height="11" font="12"><b>Report Date:</b></text>
+<text top="1141" left="126" width="212" height="11" font="13">Thursday, October 05, 2017  1030 : 14</text>
+<text top="1141" left="755" width="34" height="11" font="12"><b>Page:</b></text>
+<text top="1141" left="831" width="7" height="11" font="13">6</text>
+<text top="1167" left="148" width="571" height="11" font="14">University of Iowa - Evaluation and Exam Services - exam-service@uiowa.edu - Telephone (319) 335-0356</text>
+</page>
+<page number="7" position="absolute" top="0" left="0" height="1188" width="918">
+<image top="27" left="21" width="146" height="42" src="/export/freefileconvert/902_d0ffde7452f581e1e7ff8b9a54f1696b20a151e5350d5a7136d73541b85880c8-7_1.jpg"/>
+<text top="116" left="29" width="143" height="17" font="0"><b>Testing Services</b></text>
+<text top="120" left="319" width="283" height="22" font="1">Student Score Report</text>
+<text top="317" left="29" width="194" height="20" font="2">Confirmation: 7037</text>
+<text top="282" left="29" width="95" height="20" font="2">Instructor:</text>
+<text top="282" left="175" width="108" height="20" font="2">Wang, Lihe</text>
+<text top="247" left="29" width="75" height="20" font="2">Course:</text>
+<text top="247" left="175" width="133" height="20" font="2">MATH 1380 - </text>
+<text top="168" left="30" width="267" height="28" font="3"><b>Figge, Christopher</b></text>
+<text top="207" left="175" width="95" height="20" font="2">01243711</text>
+<text top="352" left="29" width="138" height="20" font="2">Date/Location:</text>
+<text top="352" left="175" width="144" height="19" font="4">10-05-17 09: 10</text>
+<text top="387" left="29" width="113" height="20" font="2">Description:</text>
+<text top="387" left="175" width="237" height="20" font="2">Exam Midterm 1, Form B</text>
+<text top="445" left="327" width="221" height="22" font="5"><b>Questions Missed *</b></text>
+<text top="508" left="26" width="31" height="14" font="6">1.  A</text>
+<text top="508" left="109" width="31" height="14" font="6">2.  B</text>
+<text top="508" left="191" width="31" height="14" font="6">3.  A</text>
+<text top="508" left="274" width="31" height="14" font="6">5.  B</text>
+<text top="508" left="357" width="32" height="14" font="6">7.  C</text>
+<text top="508" left="440" width="32" height="14" font="6">8.  D</text>
+<text top="508" left="522" width="39" height="14" font="6">10.  A</text>
+<text top="508" left="605" width="39" height="14" font="6">12.  E</text>
+<text top="508" left="688" width="40" height="14" font="6">17.  D</text>
+<text top="508" left="770" width="40" height="14" font="6">22.  C</text>
+<text top="536" left="26" width="39" height="14" font="6">24.  A</text>
+<text top="536" left="109" width="39" height="14" font="6">25.  A</text>
+<text top="478" left="226" width="425" height="14" font="7"><b>(Format: Question Number. Your Answer, Correct Answer) *</b></text>
+<text top="210" left="28" width="101" height="20" font="2">Student ID</text>
+<text top="164" left="588" width="140" height="20" font="8"><b>Exam Results</b></text>
+<text top="344" left="498" width="58" height="17" font="0"><b>Grade:</b></text>
+<text top="344" left="734" width="82" height="17" font="0"><b>52.0000%</b></text>
+<text top="208" left="497" width="123" height="17" font="9">Regular Points:</text>
+<text top="208" left="768" width="45" height="17" font="9">13.00</text>
+<text top="238" left="497" width="112" height="17" font="9">Bonus Points:</text>
+<text top="238" left="779" width="35" height="17" font="9">0.00</text>
+<text top="273" left="497" width="175" height="17" font="0"><b>Total Points Earned:</b></text>
+<text top="273" left="769" width="45" height="17" font="0"><b>13.00</b></text>
+<text top="377" left="806" width="8" height="14" font="10">0</text>
+<text top="377" left="498" width="134" height="14" font="10">Elapsed Time (min):</text>
+<text top="318" left="281" width="95" height="20" font="2">Booklet #:</text>
+<text top="318" left="396" width="36" height="20" font="2">N/A</text>
+<text top="1033" left="27" width="819" height="15" font="11">* If allowed by your instructor, the questions that you missed are listed.  Optionally, your answer and the correct </text>
+<text top="1054" left="27" width="845" height="15" font="11">answer may be listed as allowed by your instructor. Items with an &#34;X&#34; for the Answer are not counted against grade.</text>
+<text top="308" left="497" width="134" height="17" font="0"><b>Possible Points</b></text>
+<text top="308" left="769" width="45" height="17" font="0"><b>25.00</b></text>
+<text top="1141" left="27" width="74" height="11" font="12"><b>Report Date:</b></text>
+<text top="1141" left="126" width="212" height="11" font="13">Thursday, October 05, 2017  1030 : 14</text>
+<text top="1141" left="755" width="34" height="11" font="12"><b>Page:</b></text>
+<text top="1141" left="831" width="7" height="11" font="13">7</text>
+<text top="1167" left="148" width="571" height="11" font="14">University of Iowa - Evaluation and Exam Services - exam-service@uiowa.edu - Telephone (319) 335-0356</text>
+</page>
+<page number="8" position="absolute" top="0" left="0" height="1188" width="918">
+<image top="27" left="21" width="146" height="42" src="/export/freefileconvert/902_d0ffde7452f581e1e7ff8b9a54f1696b20a151e5350d5a7136d73541b85880c8-8_1.jpg"/>
+<text top="116" left="29" width="143" height="17" font="0"><b>Testing Services</b></text>
+<text top="120" left="319" width="283" height="22" font="1">Student Score Report</text>
+<text top="317" left="29" width="194" height="20" font="2">Confirmation: 7037</text>
+<text top="282" left="29" width="95" height="20" font="2">Instructor:</text>
+<text top="282" left="175" width="108" height="20" font="2">Wang, Lihe</text>
+<text top="247" left="29" width="75" height="20" font="2">Course:</text>
+<text top="247" left="175" width="133" height="20" font="2">MATH 1380 - </text>
+<text top="168" left="30" width="217" height="28" font="3"><b>Grazulis, Aistis</b></text>
+<text top="207" left="175" width="95" height="20" font="2">01272557</text>
+<text top="352" left="29" width="138" height="20" font="2">Date/Location:</text>
+<text top="352" left="175" width="144" height="19" font="4">10-05-17 09: 10</text>
+<text top="387" left="29" width="113" height="20" font="2">Description:</text>
+<text top="387" left="175" width="239" height="20" font="2">Exam Midterm 1, Form C</text>
+<text top="445" left="327" width="221" height="22" font="5"><b>Questions Missed *</b></text>
+<text top="508" left="26" width="39" height="14" font="6">12.  E</text>
+<text top="508" left="109" width="39" height="14" font="6">13.  B</text>
+<text top="508" left="191" width="39" height="14" font="6">25.  A</text>
+<text top="478" left="226" width="425" height="14" font="7"><b>(Format: Question Number. Your Answer, Correct Answer) *</b></text>
+<text top="210" left="28" width="101" height="20" font="2">Student ID</text>
+<text top="164" left="588" width="140" height="20" font="8"><b>Exam Results</b></text>
+<text top="344" left="498" width="58" height="17" font="0"><b>Grade:</b></text>
+<text top="344" left="734" width="82" height="17" font="0"><b>88.0000%</b></text>
+<text top="208" left="497" width="123" height="17" font="9">Regular Points:</text>
+<text top="208" left="768" width="45" height="17" font="9">22.00</text>
+<text top="238" left="497" width="112" height="17" font="9">Bonus Points:</text>
+<text top="238" left="779" width="35" height="17" font="9">0.00</text>
+<text top="273" left="497" width="175" height="17" font="0"><b>Total Points Earned:</b></text>
+<text top="273" left="769" width="45" height="17" font="0"><b>22.00</b></text>
+<text top="377" left="806" width="8" height="14" font="10">0</text>
+<text top="377" left="498" width="134" height="14" font="10">Elapsed Time (min):</text>
+<text top="318" left="281" width="95" height="20" font="2">Booklet #:</text>
+<text top="318" left="396" width="36" height="20" font="2">N/A</text>
+<text top="1033" left="27" width="819" height="15" font="11">* If allowed by your instructor, the questions that you missed are listed.  Optionally, your answer and the correct </text>
+<text top="1054" left="27" width="845" height="15" font="11">answer may be listed as allowed by your instructor. Items with an &#34;X&#34; for the Answer are not counted against grade.</text>
+<text top="308" left="497" width="134" height="17" font="0"><b>Possible Points</b></text>
+<text top="308" left="769" width="45" height="17" font="0"><b>25.00</b></text>
+<text top="1141" left="27" width="74" height="11" font="12"><b>Report Date:</b></text>
+<text top="1141" left="126" width="212" height="11" font="13">Thursday, October 05, 2017  1030 : 14</text>
+<text top="1141" left="755" width="34" height="11" font="12"><b>Page:</b></text>
+<text top="1141" left="831" width="7" height="11" font="13">8</text>
+<text top="1167" left="148" width="571" height="11" font="14">University of Iowa - Evaluation and Exam Services - exam-service@uiowa.edu - Telephone (319) 335-0356</text>
+</page>
+<page number="9" position="absolute" top="0" left="0" height="1188" width="918">
+<image top="27" left="21" width="146" height="42" src="/export/freefileconvert/902_d0ffde7452f581e1e7ff8b9a54f1696b20a151e5350d5a7136d73541b85880c8-9_1.jpg"/>
+<text top="116" left="29" width="143" height="17" font="0"><b>Testing Services</b></text>
+<text top="120" left="319" width="283" height="22" font="1">Student Score Report</text>
+<text top="317" left="29" width="194" height="20" font="2">Confirmation: 7037</text>
+<text top="282" left="29" width="95" height="20" font="2">Instructor:</text>
+<text top="282" left="175" width="108" height="20" font="2">Wang, Lihe</text>
+<text top="247" left="29" width="75" height="20" font="2">Course:</text>
+<text top="247" left="175" width="133" height="20" font="2">MATH 1380 - </text>
+<text top="168" left="30" width="269" height="28" font="3"><b>Green, John Henry</b></text>
+<text top="207" left="175" width="95" height="20" font="2">01241251</text>
+<text top="352" left="29" width="138" height="20" font="2">Date/Location:</text>
+<text top="352" left="175" width="144" height="19" font="4">10-05-17 09: 10</text>
+<text top="387" left="29" width="113" height="20" font="2">Description:</text>
+<text top="387" left="175" width="237" height="20" font="2">Exam Midterm 1, Form B</text>
+<text top="445" left="327" width="221" height="22" font="5"><b>Questions Missed *</b></text>
+<text top="508" left="26" width="31" height="14" font="6">2.  A</text>
+<text top="508" left="109" width="32" height="14" font="6">3.  D</text>
+<text top="508" left="191" width="31" height="14" font="6">5.  A</text>
+<text top="508" left="274" width="32" height="14" font="6">6.  D</text>
+<text top="508" left="357" width="40" height="14" font="6">10.  D</text>
+<text top="508" left="440" width="40" height="14" font="6">14.  C</text>
+<text top="508" left="522" width="39" height="14" font="6">22.  E</text>
+<text top="508" left="605" width="39" height="14" font="6">25.  A</text>
+<text top="478" left="226" width="425" height="14" font="7"><b>(Format: Question Number. Your Answer, Correct Answer) *</b></text>
+<text top="210" left="28" width="101" height="20" font="2">Student ID</text>
+<text top="164" left="588" width="140" height="20" font="8"><b>Exam Results</b></text>
+<text top="344" left="498" width="58" height="17" font="0"><b>Grade:</b></text>
+<text top="344" left="734" width="82" height="17" font="0"><b>68.0000%</b></text>
+<text top="208" left="497" width="123" height="17" font="9">Regular Points:</text>
+<text top="208" left="768" width="45" height="17" font="9">17.00</text>
+<text top="238" left="497" width="112" height="17" font="9">Bonus Points:</text>
+<text top="238" left="779" width="35" height="17" font="9">0.00</text>
+<text top="273" left="497" width="175" height="17" font="0"><b>Total Points Earned:</b></text>
+<text top="273" left="769" width="45" height="17" font="0"><b>17.00</b></text>
+<text top="377" left="806" width="8" height="14" font="10">0</text>
+<text top="377" left="498" width="134" height="14" font="10">Elapsed Time (min):</text>
+<text top="318" left="281" width="95" height="20" font="2">Booklet #:</text>
+<text top="318" left="396" width="36" height="20" font="2">N/A</text>
+<text top="1033" left="27" width="819" height="15" font="11">* If allowed by your instructor, the questions that you missed are listed.  Optionally, your answer and the correct </text>
+<text top="1054" left="27" width="845" height="15" font="11">answer may be listed as allowed by your instructor. Items with an &#34;X&#34; for the Answer are not counted against grade.</text>
+<text top="308" left="497" width="134" height="17" font="0"><b>Possible Points</b></text>
+<text top="308" left="769" width="45" height="17" font="0"><b>25.00</b></text>
+<text top="1141" left="27" width="74" height="11" font="12"><b>Report Date:</b></text>
+<text top="1141" left="126" width="212" height="11" font="13">Thursday, October 05, 2017  1030 : 14</text>
+<text top="1141" left="755" width="34" height="11" font="12"><b>Page:</b></text>
+<text top="1141" left="831" width="7" height="11" font="13">9</text>
+<text top="1167" left="148" width="571" height="11" font="14">University of Iowa - Evaluation and Exam Services - exam-service@uiowa.edu - Telephone (319) 335-0356</text>
+</page>
+<page number="10" position="absolute" top="0" left="0" height="1188" width="918">
+<image top="27" left="21" width="146" height="42" src="/export/freefileconvert/902_d0ffde7452f581e1e7ff8b9a54f1696b20a151e5350d5a7136d73541b85880c8-10_1.jpg"/>
+<text top="116" left="29" width="143" height="17" font="0"><b>Testing Services</b></text>
+<text top="120" left="319" width="283" height="22" font="1">Student Score Report</text>
+<text top="317" left="29" width="194" height="20" font="2">Confirmation: 7037</text>
+<text top="282" left="29" width="95" height="20" font="2">Instructor:</text>
+<text top="282" left="175" width="108" height="20" font="2">Wang, Lihe</text>
+<text top="247" left="29" width="75" height="20" font="2">Course:</text>
+<text top="247" left="175" width="133" height="20" font="2">MATH 1380 - </text>
+<text top="168" left="30" width="195" height="28" font="3"><b>Hayes, Emma</b></text>
+<text top="207" left="175" width="95" height="20" font="2">01230750</text>
+<text top="352" left="29" width="138" height="20" font="2">Date/Location:</text>
+<text top="352" left="175" width="144" height="19" font="4">10-05-17 09: 10</text>
+<text top="387" left="29" width="113" height="20" font="2">Description:</text>
+<text top="387" left="175" width="239" height="20" font="2">Exam Midterm 1, Form D</text>
+<text top="445" left="327" width="221" height="22" font="5"><b>Questions Missed *</b></text>
+<text top="508" left="26" width="31" height="14" font="6">8.  E</text>
+<text top="508" left="109" width="39" height="14" font="6">11.  A</text>
+<text top="508" left="191" width="39" height="14" font="6">14.  E</text>
+<text top="508" left="274" width="39" height="14" font="6">17.  A</text>
+<text top="508" left="357" width="39" height="14" font="6">19.  E</text>
+<text top="508" left="440" width="39" height="14" font="6">23.  B</text>
+<text top="478" left="226" width="425" height="14" font="7"><b>(Format: Question Number. Your Answer, Correct Answer) *</b></text>
+<text top="210" left="28" width="101" height="20" font="2">Student ID</text>
+<text top="164" left="588" width="140" height="20" font="8"><b>Exam Results</b></text>
+<text top="344" left="498" width="58" height="17" font="0"><b>Grade:</b></text>
+<text top="344" left="734" width="82" height="17" font="0"><b>76.0000%</b></text>
+<text top="208" left="497" width="123" height="17" font="9">Regular Points:</text>
+<text top="208" left="768" width="45" height="17" font="9">19.00</text>
+<text top="238" left="497" width="112" height="17" font="9">Bonus Points:</text>
+<text top="238" left="779" width="35" height="17" font="9">0.00</text>
+<text top="273" left="497" width="175" height="17" font="0"><b>Total Points Earned:</b></text>
+<text top="273" left="769" width="45" height="17" font="0"><b>19.00</b></text>
+<text top="377" left="806" width="8" height="14" font="10">0</text>
+<text top="377" left="498" width="134" height="14" font="10">Elapsed Time (min):</text>
+<text top="318" left="281" width="95" height="20" font="2">Booklet #:</text>
+<text top="318" left="396" width="36" height="20" font="2">N/A</text>
+<text top="1033" left="27" width="819" height="15" font="11">* If allowed by your instructor, the questions that you missed are listed.  Optionally, your answer and the correct </text>
+<text top="1054" left="27" width="845" height="15" font="11">answer may be listed as allowed by your instructor. Items with an &#34;X&#34; for the Answer are not counted against grade.</text>
+<text top="308" left="497" width="134" height="17" font="0"><b>Possible Points</b></text>
+<text top="308" left="769" width="45" height="17" font="0"><b>25.00</b></text>
+<text top="1141" left="27" width="74" height="11" font="12"><b>Report Date:</b></text>
+<text top="1141" left="126" width="212" height="11" font="13">Thursday, October 05, 2017  1030 : 14</text>
+<text top="1141" left="755" width="34" height="11" font="12"><b>Page:</b></text>
+<text top="1141" left="824" width="14" height="11" font="13">10</text>
+<text top="1167" left="148" width="571" height="11" font="14">University of Iowa - Evaluation and Exam Services - exam-service@uiowa.edu - Telephone (319) 335-0356</text>
+</page>
+<page number="11" position="absolute" top="0" left="0" height="1188" width="918">
+<image top="27" left="21" width="146" height="42" src="/export/freefileconvert/902_d0ffde7452f581e1e7ff8b9a54f1696b20a151e5350d5a7136d73541b85880c8-11_1.jpg"/>
+<text top="116" left="29" width="143" height="17" font="0"><b>Testing Services</b></text>
+<text top="120" left="319" width="283" height="22" font="1">Student Score Report</text>
+<text top="317" left="29" width="194" height="20" font="2">Confirmation: 7037</text>
+<text top="282" left="29" width="95" height="20" font="2">Instructor:</text>
+<text top="282" left="175" width="108" height="20" font="2">Wang, Lihe</text>
+<text top="247" left="29" width="75" height="20" font="2">Course:</text>
+<text top="247" left="175" width="133" height="20" font="2">MATH 1380 - </text>
+<text top="168" left="30" width="210" height="28" font="3"><b>Hemani, Aamir</b></text>
+<text top="207" left="175" width="95" height="20" font="2">01266066</text>
+<text top="352" left="29" width="138" height="20" font="2">Date/Location:</text>
+<text top="352" left="175" width="144" height="19" font="4">10-05-17 09: 10</text>
+<text top="387" left="29" width="113" height="20" font="2">Description:</text>
+<text top="387" left="175" width="237" height="20" font="2">Exam Midterm 1, Form B</text>
+<text top="445" left="327" width="221" height="22" font="5"><b>Questions Missed *</b></text>
+<text top="508" left="26" width="31" height="14" font="6">1.  A</text>
+<text top="508" left="109" width="31" height="14" font="6">2.  B</text>
+<text top="508" left="191" width="31" height="14" font="6">5.  B</text>
+<text top="508" left="274" width="31" height="14" font="6">6.  B</text>
+<text top="508" left="357" width="32" height="14" font="6">7.  C</text>
+<text top="508" left="440" width="31" height="14" font="6">8.  B</text>
+<text top="508" left="522" width="39" height="14" font="6">10.  A</text>
+<text top="508" left="605" width="40" height="14" font="6">12.  C</text>
+<text top="508" left="688" width="39" height="14" font="6">13.  A</text>
+<text top="508" left="770" width="39" height="14" font="6">14.  A</text>
+<text top="536" left="26" width="39" height="14" font="6">16.  E</text>
+<text top="536" left="109" width="39" height="14" font="6">17.  E</text>
+<text top="536" left="191" width="40" height="14" font="6">20.  D</text>
+<text top="536" left="274" width="39" height="14" font="6">25.  A</text>
+<text top="478" left="226" width="425" height="14" font="7"><b>(Format: Question Number. Your Answer, Correct Answer) *</b></text>
+<text top="210" left="28" width="101" height="20" font="2">Student ID</text>
+<text top="164" left="588" width="140" height="20" font="8"><b>Exam Results</b></text>
+<text top="344" left="498" width="58" height="17" font="0"><b>Grade:</b></text>
+<text top="344" left="734" width="82" height="17" font="0"><b>44.0000%</b></text>
+<text top="208" left="497" width="123" height="17" font="9">Regular Points:</text>
+<text top="208" left="768" width="45" height="17" font="9">11.00</text>
+<text top="238" left="497" width="112" height="17" font="9">Bonus Points:</text>
+<text top="238" left="779" width="35" height="17" font="9">0.00</text>
+<text top="273" left="497" width="175" height="17" font="0"><b>Total Points Earned:</b></text>
+<text top="273" left="769" width="45" height="17" font="0"><b>11.00</b></text>
+<text top="377" left="806" width="8" height="14" font="10">0</text>
+<text top="377" left="498" width="134" height="14" font="10">Elapsed Time (min):</text>
+<text top="318" left="281" width="95" height="20" font="2">Booklet #:</text>
+<text top="318" left="396" width="36" height="20" font="2">N/A</text>
+<text top="1033" left="27" width="819" height="15" font="11">* If allowed by your instructor, the questions that you missed are listed.  Optionally, your answer and the correct </text>
+<text top="1054" left="27" width="845" height="15" font="11">answer may be listed as allowed by your instructor. Items with an &#34;X&#34; for the Answer are not counted against grade.</text>
+<text top="308" left="497" width="134" height="17" font="0"><b>Possible Points</b></text>
+<text top="308" left="769" width="45" height="17" font="0"><b>25.00</b></text>
+<text top="1141" left="27" width="74" height="11" font="12"><b>Report Date:</b></text>
+<text top="1141" left="126" width="212" height="11" font="13">Thursday, October 05, 2017  1030 : 14</text>
+<text top="1141" left="755" width="34" height="11" font="12"><b>Page:</b></text>
+<text top="1141" left="824" width="14" height="11" font="13">11</text>
+<text top="1167" left="148" width="571" height="11" font="14">University of Iowa - Evaluation and Exam Services - exam-service@uiowa.edu - Telephone (319) 335-0356</text>
+</page>
+<page number="12" position="absolute" top="0" left="0" height="1188" width="918">
+<image top="27" left="21" width="146" height="42" src="/export/freefileconvert/902_d0ffde7452f581e1e7ff8b9a54f1696b20a151e5350d5a7136d73541b85880c8-12_1.jpg"/>
+<text top="116" left="29" width="143" height="17" font="0"><b>Testing Services</b></text>
+<text top="120" left="319" width="283" height="22" font="1">Student Score Report</text>
+<text top="317" left="29" width="194" height="20" font="2">Confirmation: 7037</text>
+<text top="282" left="29" width="95" height="20" font="2">Instructor:</text>
+<text top="282" left="175" width="108" height="20" font="2">Wang, Lihe</text>
+<text top="247" left="29" width="75" height="20" font="2">Course:</text>
+<text top="247" left="175" width="133" height="20" font="2">MATH 1380 - </text>
+<text top="168" left="30" width="356" height="28" font="3"><b>Hermanstorfer, Elizabeth</b></text>
+<text top="207" left="175" width="95" height="20" font="2">01115825</text>
+<text top="352" left="29" width="138" height="20" font="2">Date/Location:</text>
+<text top="352" left="175" width="144" height="19" font="4">10-05-17 09: 10</text>
+<text top="387" left="29" width="113" height="20" font="2">Description:</text>
+<text top="387" left="175" width="239" height="20" font="2">Exam Midterm 1, Form C</text>
+<text top="445" left="327" width="221" height="22" font="5"><b>Questions Missed *</b></text>
+<text top="508" left="26" width="39" height="14" font="6">14.  A</text>
+<text top="478" left="226" width="425" height="14" font="7"><b>(Format: Question Number. Your Answer, Correct Answer) *</b></text>
+<text top="210" left="28" width="101" height="20" font="2">Student ID</text>
+<text top="164" left="588" width="140" height="20" font="8"><b>Exam Results</b></text>
+<text top="344" left="498" width="58" height="17" font="0"><b>Grade:</b></text>
+<text top="344" left="734" width="82" height="17" font="0"><b>96.0000%</b></text>
+<text top="208" left="497" width="123" height="17" font="9">Regular Points:</text>
+<text top="208" left="768" width="45" height="17" font="9">24.00</text>
+<text top="238" left="497" width="112" height="17" font="9">Bonus Points:</text>
+<text top="238" left="779" width="35" height="17" font="9">0.00</text>
+<text top="273" left="497" width="175" height="17" font="0"><b>Total Points Earned:</b></text>
+<text top="273" left="769" width="45" height="17" font="0"><b>24.00</b></text>
+<text top="377" left="806" width="8" height="14" font="10">0</text>
+<text top="377" left="498" width="134" height="14" font="10">Elapsed Time (min):</text>
+<text top="318" left="281" width="95" height="20" font="2">Booklet #:</text>
+<text top="318" left="396" width="36" height="20" font="2">N/A</text>
+<text top="1033" left="27" width="819" height="15" font="11">* If allowed by your instructor, the questions that you missed are listed.  Optionally, your answer and the correct </text>
+<text top="1054" left="27" width="845" height="15" font="11">answer may be listed as allowed by your instructor. Items with an &#34;X&#34; for the Answer are not counted against grade.</text>
+<text top="308" left="497" width="134" height="17" font="0"><b>Possible Points</b></text>
+<text top="308" left="769" width="45" height="17" font="0"><b>25.00</b></text>
+<text top="1141" left="27" width="74" height="11" font="12"><b>Report Date:</b></text>
+<text top="1141" left="126" width="212" height="11" font="13">Thursday, October 05, 2017  1030 : 14</text>
+<text top="1141" left="755" width="34" height="11" font="12"><b>Page:</b></text>
+<text top="1141" left="824" width="14" height="11" font="13">12</text>
+<text top="1167" left="148" width="571" height="11" font="14">University of Iowa - Evaluation and Exam Services - exam-service@uiowa.edu - Telephone (319) 335-0356</text>
+</page>
+<page number="13" position="absolute" top="0" left="0" height="1188" width="918">
+<image top="27" left="21" width="146" height="42" src="/export/freefileconvert/902_d0ffde7452f581e1e7ff8b9a54f1696b20a151e5350d5a7136d73541b85880c8-13_1.jpg"/>
+<text top="116" left="29" width="143" height="17" font="0"><b>Testing Services</b></text>
+<text top="120" left="319" width="283" height="22" font="1">Student Score Report</text>
+<text top="317" left="29" width="194" height="20" font="2">Confirmation: 7037</text>
+<text top="282" left="29" width="95" height="20" font="2">Instructor:</text>
+<text top="282" left="175" width="108" height="20" font="2">Wang, Lihe</text>
+<text top="247" left="29" width="75" height="20" font="2">Course:</text>
+<text top="247" left="175" width="133" height="20" font="2">MATH 1380 - </text>
+<text top="168" left="30" width="209" height="28" font="3"><b>Holeton, Paige</b></text>
+<text top="207" left="175" width="95" height="20" font="2">01242952</text>
+<text top="352" left="29" width="138" height="20" font="2">Date/Location:</text>
+<text top="352" left="175" width="144" height="19" font="4">10-05-17 09: 10</text>
+<text top="387" left="29" width="113" height="20" font="2">Description:</text>
+<text top="387" left="175" width="237" height="20" font="2">Exam Midterm 1, Form A</text>
+<text top="445" left="327" width="221" height="22" font="5"><b>Questions Missed *</b></text>
+<text top="508" left="26" width="32" height="14" font="6">1.  C</text>
+<text top="508" left="109" width="31" height="14" font="6">2.  A</text>
+<text top="508" left="191" width="31" height="14" font="6">7.  E</text>
+<text top="508" left="274" width="40" height="14" font="6">12.  D</text>
+<text top="508" left="357" width="39" height="14" font="6">13.  A</text>
+<text top="508" left="440" width="39" height="14" font="6">14.  A</text>
+<text top="508" left="522" width="39" height="14" font="6">22.  B</text>
+<text top="508" left="605" width="40" height="14" font="6">24.  C</text>
+<text top="478" left="226" width="425" height="14" font="7"><b>(Format: Question Number. Your Answer, Correct Answer) *</b></text>
+<text top="210" left="28" width="101" height="20" font="2">Student ID</text>
+<text top="164" left="588" width="140" height="20" font="8"><b>Exam Results</b></text>
+<text top="344" left="498" width="58" height="17" font="0"><b>Grade:</b></text>
+<text top="344" left="734" width="82" height="17" font="0"><b>68.0000%</b></text>
+<text top="208" left="497" width="123" height="17" font="9">Regular Points:</text>
+<text top="208" left="768" width="45" height="17" font="9">17.00</text>
+<text top="238" left="497" width="112" height="17" font="9">Bonus Points:</text>
+<text top="238" left="779" width="35" height="17" font="9">0.00</text>
+<text top="273" left="497" width="175" height="17" font="0"><b>Total Points Earned:</b></text>
+<text top="273" left="769" width="45" height="17" font="0"><b>17.00</b></text>
+<text top="377" left="806" width="8" height="14" font="10">0</text>
+<text top="377" left="498" width="134" height="14" font="10">Elapsed Time (min):</text>
+<text top="318" left="281" width="95" height="20" font="2">Booklet #:</text>
+<text top="318" left="396" width="36" height="20" font="2">N/A</text>
+<text top="1033" left="27" width="819" height="15" font="11">* If allowed by your instructor, the questions that you missed are listed.  Optionally, your answer and the correct </text>
+<text top="1054" left="27" width="845" height="15" font="11">answer may be listed as allowed by your instructor. Items with an &#34;X&#34; for the Answer are not counted against grade.</text>
+<text top="308" left="497" width="134" height="17" font="0"><b>Possible Points</b></text>
+<text top="308" left="769" width="45" height="17" font="0"><b>25.00</b></text>
+<text top="1141" left="27" width="74" height="11" font="12"><b>Report Date:</b></text>
+<text top="1141" left="126" width="212" height="11" font="13">Thursday, October 05, 2017  1030 : 14</text>
+<text top="1141" left="755" width="34" height="11" font="12"><b>Page:</b></text>
+<text top="1141" left="824" width="14" height="11" font="13">13</text>
+<text top="1167" left="148" width="571" height="11" font="14">University of Iowa - Evaluation and Exam Services - exam-service@uiowa.edu - Telephone (319) 335-0356</text>
+</page>
+<page number="14" position="absolute" top="0" left="0" height="1188" width="918">
+<image top="27" left="21" width="146" height="42" src="/export/freefileconvert/902_d0ffde7452f581e1e7ff8b9a54f1696b20a151e5350d5a7136d73541b85880c8-14_1.jpg"/>
+<text top="116" left="29" width="143" height="17" font="0"><b>Testing Services</b></text>
+<text top="120" left="319" width="283" height="22" font="1">Student Score Report</text>
+<text top="317" left="29" width="194" height="20" font="2">Confirmation: 7037</text>
+<text top="282" left="29" width="95" height="20" font="2">Instructor:</text>
+<text top="282" left="175" width="108" height="20" font="2">Wang, Lihe</text>
+<text top="247" left="29" width="75" height="20" font="2">Course:</text>
+<text top="247" left="175" width="133" height="20" font="2">MATH 1380 - </text>
+<text top="168" left="30" width="215" height="28" font="3"><b>Howard, Jacob</b></text>
+<text top="207" left="175" width="95" height="20" font="2">01240460</text>
+<text top="352" left="29" width="138" height="20" font="2">Date/Location:</text>
+<text top="352" left="175" width="144" height="19" font="4">10-05-17 09: 10</text>
+<text top="387" left="29" width="113" height="20" font="2">Description:</text>
+<text top="387" left="175" width="237" height="20" font="2">Exam Midterm 1, Form B</text>
+<text top="445" left="327" width="221" height="22" font="5"><b>Questions Missed *</b></text>
+<text top="508" left="26" width="31" height="14" font="6">1.  E</text>
+<text top="508" left="109" width="31" height="14" font="6">2.  E</text>
+<text top="508" left="191" width="32" height="14" font="6">3.  C</text>
+<text top="508" left="274" width="31" height="14" font="6">6.  E</text>
+<text top="508" left="357" width="31" height="14" font="6">9.  E</text>
+<text top="508" left="440" width="39" height="14" font="6">10.  A</text>
+<text top="508" left="522" width="39" height="14" font="6">12.  E</text>
+<text top="508" left="605" width="39" height="14" font="6">13.  A</text>
+<text top="508" left="688" width="39" height="14" font="6">14.  E</text>
+<text top="508" left="770" width="39" height="14" font="6">20.  B</text>
+<text top="536" left="26" width="40" height="14" font="6">21.  D</text>
+<text top="536" left="109" width="39" height="14" font="6">22.  A</text>
+<text top="536" left="191" width="40" height="14" font="6">23.  C</text>
+<text top="536" left="274" width="39" height="14" font="6">25.  E</text>
+<text top="478" left="226" width="425" height="14" font="7"><b>(Format: Question Number. Your Answer, Correct Answer) *</b></text>
+<text top="210" left="28" width="101" height="20" font="2">Student ID</text>
+<text top="164" left="588" width="140" height="20" font="8"><b>Exam Results</b></text>
+<text top="344" left="498" width="58" height="17" font="0"><b>Grade:</b></text>
+<text top="344" left="734" width="82" height="17" font="0"><b>44.0000%</b></text>
+<text top="208" left="497" width="123" height="17" font="9">Regular Points:</text>
+<text top="208" left="768" width="45" height="17" font="9">11.00</text>
+<text top="238" left="497" width="112" height="17" font="9">Bonus Points:</text>
+<text top="238" left="779" width="35" height="17" font="9">0.00</text>
+<text top="273" left="497" width="175" height="17" font="0"><b>Total Points Earned:</b></text>
+<text top="273" left="769" width="45" height="17" font="0"><b>11.00</b></text>
+<text top="377" left="806" width="8" height="14" font="10">0</text>
+<text top="377" left="498" width="134" height="14" font="10">Elapsed Time (min):</text>
+<text top="318" left="281" width="95" height="20" font="2">Booklet #:</text>
+<text top="318" left="396" width="36" height="20" font="2">N/A</text>
+<text top="1033" left="27" width="819" height="15" font="11">* If allowed by your instructor, the questions that you missed are listed.  Optionally, your answer and the correct </text>
+<text top="1054" left="27" width="845" height="15" font="11">answer may be listed as allowed by your instructor. Items with an &#34;X&#34; for the Answer are not counted against grade.</text>
+<text top="308" left="497" width="134" height="17" font="0"><b>Possible Points</b></text>
+<text top="308" left="769" width="45" height="17" font="0"><b>25.00</b></text>
+<text top="1141" left="27" width="74" height="11" font="12"><b>Report Date:</b></text>
+<text top="1141" left="126" width="212" height="11" font="13">Thursday, October 05, 2017  1030 : 14</text>
+<text top="1141" left="755" width="34" height="11" font="12"><b>Page:</b></text>
+<text top="1141" left="824" width="14" height="11" font="13">14</text>
+<text top="1167" left="148" width="571" height="11" font="14">University of Iowa - Evaluation and Exam Services - exam-service@uiowa.edu - Telephone (319) 335-0356</text>
+</page>
+<page number="15" position="absolute" top="0" left="0" height="1188" width="918">
+<image top="27" left="21" width="146" height="42" src="/export/freefileconvert/902_d0ffde7452f581e1e7ff8b9a54f1696b20a151e5350d5a7136d73541b85880c8-15_1.jpg"/>
+<text top="116" left="29" width="143" height="17" font="0"><b>Testing Services</b></text>
+<text top="120" left="319" width="283" height="22" font="1">Student Score Report</text>
+<text top="317" left="29" width="194" height="20" font="2">Confirmation: 7037</text>
+<text top="282" left="29" width="95" height="20" font="2">Instructor:</text>
+<text top="282" left="175" width="108" height="20" font="2">Wang, Lihe</text>
+<text top="247" left="29" width="75" height="20" font="2">Course:</text>
+<text top="247" left="175" width="133" height="20" font="2">MATH 1380 - </text>
+<text top="168" left="30" width="199" height="28" font="3"><b>Huang, Lijuan</b></text>
+<text top="207" left="175" width="95" height="20" font="2">01274327</text>
+<text top="352" left="29" width="138" height="20" font="2">Date/Location:</text>
+<text top="352" left="175" width="144" height="19" font="4">10-05-17 09: 10</text>
+<text top="387" left="29" width="113" height="20" font="2">Description:</text>
+<text top="387" left="175" width="237" height="20" font="2">Exam Midterm 1, Form A</text>
+<text top="445" left="327" width="221" height="22" font="5"><b>Questions Missed *</b></text>
+<text top="508" left="26" width="31" height="14" font="6">4.  E</text>
+<text top="508" left="109" width="31" height="14" font="6">5.  A</text>
+<text top="508" left="191" width="39" height="14" font="6">12.  E</text>
+<text top="508" left="274" width="39" height="14" font="6">19.  A</text>
+<text top="508" left="357" width="40" height="14" font="6">20.  D</text>
+<text top="478" left="226" width="425" height="14" font="7"><b>(Format: Question Number. Your Answer, Correct Answer) *</b></text>
+<text top="210" left="28" width="101" height="20" font="2">Student ID</text>
+<text top="164" left="588" width="140" height="20" font="8"><b>Exam Results</b></text>
+<text top="344" left="498" width="58" height="17" font="0"><b>Grade:</b></text>
+<text top="344" left="734" width="82" height="17" font="0"><b>80.0000%</b></text>
+<text top="208" left="497" width="123" height="17" font="9">Regular Points:</text>
+<text top="208" left="768" width="45" height="17" font="9">20.00</text>
+<text top="238" left="497" width="112" height="17" font="9">Bonus Points:</text>
+<text top="238" left="779" width="35" height="17" font="9">0.00</text>
+<text top="273" left="497" width="175" height="17" font="0"><b>Total Points Earned:</b></text>
+<text top="273" left="769" width="45" height="17" font="0"><b>20.00</b></text>
+<text top="377" left="806" width="8" height="14" font="10">0</text>
+<text top="377" left="498" width="134" height="14" font="10">Elapsed Time (min):</text>
+<text top="318" left="281" width="95" height="20" font="2">Booklet #:</text>
+<text top="318" left="396" width="36" height="20" font="2">N/A</text>
+<text top="1033" left="27" width="819" height="15" font="11">* If allowed by your instructor, the questions that you missed are listed.  Optionally, your answer and the correct </text>
+<text top="1054" left="27" width="845" height="15" font="11">answer may be listed as allowed by your instructor. Items with an &#34;X&#34; for the Answer are not counted against grade.</text>
+<text top="308" left="497" width="134" height="17" font="0"><b>Possible Points</b></text>
+<text top="308" left="769" width="45" height="17" font="0"><b>25.00</b></text>
+<text top="1141" left="27" width="74" height="11" font="12"><b>Report Date:</b></text>
+<text top="1141" left="126" width="212" height="11" font="13">Thursday, October 05, 2017  1030 : 14</text>
+<text top="1141" left="755" width="34" height="11" font="12"><b>Page:</b></text>
+<text top="1141" left="824" width="14" height="11" font="13">15</text>
+<text top="1167" left="148" width="571" height="11" font="14">University of Iowa - Evaluation and Exam Services - exam-service@uiowa.edu - Telephone (319) 335-0356</text>
+</page>
+<page number="16" position="absolute" top="0" left="0" height="1188" width="918">
+<image top="27" left="21" width="146" height="42" src="/export/freefileconvert/902_d0ffde7452f581e1e7ff8b9a54f1696b20a151e5350d5a7136d73541b85880c8-16_1.jpg"/>
+<text top="116" left="29" width="143" height="17" font="0"><b>Testing Services</b></text>
+<text top="120" left="319" width="283" height="22" font="1">Student Score Report</text>
+<text top="317" left="29" width="194" height="20" font="2">Confirmation: 7037</text>
+<text top="282" left="29" width="95" height="20" font="2">Instructor:</text>
+<text top="282" left="175" width="108" height="20" font="2">Wang, Lihe</text>
+<text top="247" left="29" width="75" height="20" font="2">Course:</text>
+<text top="247" left="175" width="133" height="20" font="2">MATH 1380 - </text>
+<text top="168" left="30" width="175" height="28" font="3"><b>Kinzer, Jack</b></text>
+<text top="207" left="175" width="95" height="20" font="2">01184455</text>
+<text top="352" left="29" width="138" height="20" font="2">Date/Location:</text>
+<text top="352" left="175" width="144" height="19" font="4">10-05-17 09: 10</text>
+<text top="387" left="29" width="113" height="20" font="2">Description:</text>
+<text top="387" left="175" width="239" height="20" font="2">Exam Midterm 1, Form D</text>
+<text top="445" left="327" width="221" height="22" font="5"><b>Questions Missed *</b></text>
+<text top="508" left="26" width="31" height="14" font="6">2.  A</text>
+<text top="508" left="109" width="31" height="14" font="6">4.  A</text>
+<text top="508" left="191" width="32" height="14" font="6">6.  D</text>
+<text top="508" left="274" width="32" height="14" font="6">8.  C</text>
+<text top="508" left="357" width="39" height="14" font="6">10.  A</text>
+<text top="508" left="440" width="40" height="14" font="6">11.  C</text>
+<text top="508" left="522" width="39" height="14" font="6">13.  A</text>
+<text top="508" left="605" width="39" height="14" font="6">14.  B</text>
+<text top="508" left="688" width="37" height="14" font="6">18.  ?</text>
+<text top="508" left="770" width="37" height="14" font="6">19.  ?</text>
+<text top="536" left="26" width="39" height="14" font="6">23.  B</text>
+<text top="478" left="226" width="425" height="14" font="7"><b>(Format: Question Number. Your Answer, Correct Answer) *</b></text>
+<text top="210" left="28" width="101" height="20" font="2">Student ID</text>
+<text top="164" left="588" width="140" height="20" font="8"><b>Exam Results</b></text>
+<text top="344" left="498" width="58" height="17" font="0"><b>Grade:</b></text>
+<text top="344" left="734" width="82" height="17" font="0"><b>56.0000%</b></text>
+<text top="208" left="497" width="123" height="17" font="9">Regular Points:</text>
+<text top="208" left="768" width="45" height="17" font="9">14.00</text>
+<text top="238" left="497" width="112" height="17" font="9">Bonus Points:</text>
+<text top="238" left="779" width="35" height="17" font="9">0.00</text>
+<text top="273" left="497" width="175" height="17" font="0"><b>Total Points Earned:</b></text>
+<text top="273" left="769" width="45" height="17" font="0"><b>14.00</b></text>
+<text top="377" left="806" width="8" height="14" font="10">0</text>
+<text top="377" left="498" width="134" height="14" font="10">Elapsed Time (min):</text>
+<text top="318" left="281" width="95" height="20" font="2">Booklet #:</text>
+<text top="318" left="396" width="36" height="20" font="2">N/A</text>
+<text top="1033" left="27" width="819" height="15" font="11">* If allowed by your instructor, the questions that you missed are listed.  Optionally, your answer and the correct </text>
+<text top="1054" left="27" width="845" height="15" font="11">answer may be listed as allowed by your instructor. Items with an &#34;X&#34; for the Answer are not counted against grade.</text>
+<text top="308" left="497" width="134" height="17" font="0"><b>Possible Points</b></text>
+<text top="308" left="769" width="45" height="17" font="0"><b>25.00</b></text>
+<text top="1141" left="27" width="74" height="11" font="12"><b>Report Date:</b></text>
+<text top="1141" left="126" width="212" height="11" font="13">Thursday, October 05, 2017  1030 : 14</text>
+<text top="1141" left="755" width="34" height="11" font="12"><b>Page:</b></text>
+<text top="1141" left="824" width="14" height="11" font="13">16</text>
+<text top="1167" left="148" width="571" height="11" font="14">University of Iowa - Evaluation and Exam Services - exam-service@uiowa.edu - Telephone (319) 335-0356</text>
+</page>
+<page number="17" position="absolute" top="0" left="0" height="1188" width="918">
+<image top="27" left="21" width="146" height="42" src="/export/freefileconvert/902_d0ffde7452f581e1e7ff8b9a54f1696b20a151e5350d5a7136d73541b85880c8-17_1.jpg"/>
+<text top="116" left="29" width="143" height="17" font="0"><b>Testing Services</b></text>
+<text top="120" left="319" width="283" height="22" font="1">Student Score Report</text>
+<text top="317" left="29" width="194" height="20" font="2">Confirmation: 7037</text>
+<text top="282" left="29" width="95" height="20" font="2">Instructor:</text>
+<text top="282" left="175" width="108" height="20" font="2">Wang, Lihe</text>
+<text top="247" left="29" width="75" height="20" font="2">Course:</text>
+<text top="247" left="175" width="133" height="20" font="2">MATH 1380 - </text>
+<text top="168" left="30" width="200" height="28" font="3"><b>Liu, Cheng-Ju</b></text>
+<text top="207" left="175" width="95" height="20" font="2">01271068</text>
+<text top="352" left="29" width="138" height="20" font="2">Date/Location:</text>
+<text top="352" left="175" width="144" height="19" font="4">10-05-17 09: 10</text>
+<text top="387" left="29" width="113" height="20" font="2">Description:</text>
+<text top="387" left="175" width="237" height="20" font="2">Exam Midterm 1, Form A</text>
+<text top="445" left="327" width="221" height="22" font="5"><b>Questions Missed *</b></text>
+<text top="508" left="26" width="31" height="14" font="6">4.  E</text>
+<text top="508" left="109" width="31" height="14" font="6">5.  A</text>
+<text top="508" left="191" width="32" height="14" font="6">7.  D</text>
+<text top="508" left="274" width="32" height="14" font="6">8.  C</text>
+<text top="508" left="357" width="31" height="14" font="6">9.  B</text>
+<text top="508" left="440" width="39" height="14" font="6">11.  A</text>
+<text top="508" left="522" width="39" height="14" font="6">13.  B</text>
+<text top="508" left="605" width="39" height="14" font="6">14.  A</text>
+<text top="508" left="688" width="40" height="14" font="6">16.  D</text>
+<text top="508" left="770" width="39" height="14" font="6">17.  A</text>
+<text top="536" left="26" width="39" height="14" font="6">18.  A</text>
+<text top="536" left="109" width="39" height="14" font="6">20.  A</text>
+<text top="536" left="191" width="39" height="14" font="6">21.  B</text>
+<text top="536" left="274" width="40" height="14" font="6">24.  C</text>
+<text top="536" left="357" width="40" height="14" font="6">25.  C</text>
+<text top="478" left="226" width="425" height="14" font="7"><b>(Format: Question Number. Your Answer, Correct Answer) *</b></text>
+<text top="210" left="28" width="101" height="20" font="2">Student ID</text>
+<text top="164" left="588" width="140" height="20" font="8"><b>Exam Results</b></text>
+<text top="344" left="498" width="58" height="17" font="0"><b>Grade:</b></text>
+<text top="344" left="734" width="82" height="17" font="0"><b>40.0000%</b></text>
+<text top="208" left="497" width="123" height="17" font="9">Regular Points:</text>
+<text top="208" left="768" width="45" height="17" font="9">10.00</text>
+<text top="238" left="497" width="112" height="17" font="9">Bonus Points:</text>
+<text top="238" left="779" width="35" height="17" font="9">0.00</text>
+<text top="273" left="497" width="175" height="17" font="0"><b>Total Points Earned:</b></text>
+<text top="273" left="769" width="45" height="17" font="0"><b>10.00</b></text>
+<text top="377" left="806" width="8" height="14" font="10">0</text>
+<text top="377" left="498" width="134" height="14" font="10">Elapsed Time (min):</text>
+<text top="318" left="281" width="95" height="20" font="2">Booklet #:</text>
+<text top="318" left="396" width="36" height="20" font="2">N/A</text>
+<text top="1033" left="27" width="819" height="15" font="11">* If allowed by your instructor, the questions that you missed are listed.  Optionally, your answer and the correct </text>
+<text top="1054" left="27" width="845" height="15" font="11">answer may be listed as allowed by your instructor. Items with an &#34;X&#34; for the Answer are not counted against grade.</text>
+<text top="308" left="497" width="134" height="17" font="0"><b>Possible Points</b></text>
+<text top="308" left="769" width="45" height="17" font="0"><b>25.00</b></text>
+<text top="1141" left="27" width="74" height="11" font="12"><b>Report Date:</b></text>
+<text top="1141" left="126" width="212" height="11" font="13">Thursday, October 05, 2017  1030 : 14</text>
+<text top="1141" left="755" width="34" height="11" font="12"><b>Page:</b></text>
+<text top="1141" left="824" width="14" height="11" font="13">17</text>
+<text top="1167" left="148" width="571" height="11" font="14">University of Iowa - Evaluation and Exam Services - exam-service@uiowa.edu - Telephone (319) 335-0356</text>
+</page>
+<page number="18" position="absolute" top="0" left="0" height="1188" width="918">
+<image top="27" left="21" width="146" height="42" src="/export/freefileconvert/902_d0ffde7452f581e1e7ff8b9a54f1696b20a151e5350d5a7136d73541b85880c8-18_1.jpg"/>
+<text top="116" left="29" width="143" height="17" font="0"><b>Testing Services</b></text>
+<text top="120" left="319" width="283" height="22" font="1">Student Score Report</text>
+<text top="317" left="29" width="194" height="20" font="2">Confirmation: 7037</text>
+<text top="282" left="29" width="95" height="20" font="2">Instructor:</text>
+<text top="282" left="175" width="108" height="20" font="2">Wang, Lihe</text>
+<text top="247" left="29" width="75" height="20" font="2">Course:</text>
+<text top="247" left="175" width="133" height="20" font="2">MATH 1380 - </text>
+<text top="168" left="30" width="300" height="28" font="3"><b>Luna Garcia, Zayetzy</b></text>
+<text top="207" left="175" width="95" height="20" font="2">01170067</text>
+<text top="352" left="29" width="138" height="20" font="2">Date/Location:</text>
+<text top="352" left="175" width="144" height="19" font="4">10-05-17 09: 10</text>
+<text top="387" left="29" width="113" height="20" font="2">Description:</text>
+<text top="387" left="175" width="237" height="20" font="2">Exam Midterm 1, Form B</text>
+<text top="445" left="327" width="221" height="22" font="5"><b>Questions Missed *</b></text>
+<text top="508" left="26" width="32" height="14" font="6">5.  D</text>
+<text top="508" left="109" width="32" height="14" font="6">6.  D</text>
+<text top="508" left="191" width="39" height="14" font="6">12.  A</text>
+<text top="508" left="274" width="39" height="14" font="6">17.  A</text>
+<text top="508" left="357" width="39" height="14" font="6">21.  B</text>
+<text top="508" left="440" width="39" height="14" font="6">23.  A</text>
+<text top="508" left="522" width="39" height="14" font="6">25.  E</text>
+<text top="478" left="226" width="425" height="14" font="7"><b>(Format: Question Number. Your Answer, Correct Answer) *</b></text>
+<text top="210" left="28" width="101" height="20" font="2">Student ID</text>
+<text top="164" left="588" width="140" height="20" font="8"><b>Exam Results</b></text>
+<text top="344" left="498" width="58" height="17" font="0"><b>Grade:</b></text>
+<text top="344" left="734" width="82" height="17" font="0"><b>72.0000%</b></text>
+<text top="208" left="497" width="123" height="17" font="9">Regular Points:</text>
+<text top="208" left="768" width="45" height="17" font="9">18.00</text>
+<text top="238" left="497" width="112" height="17" font="9">Bonus Points:</text>
+<text top="238" left="779" width="35" height="17" font="9">0.00</text>
+<text top="273" left="497" width="175" height="17" font="0"><b>Total Points Earned:</b></text>
+<text top="273" left="769" width="45" height="17" font="0"><b>18.00</b></text>
+<text top="377" left="806" width="8" height="14" font="10">0</text>
+<text top="377" left="498" width="134" height="14" font="10">Elapsed Time (min):</text>
+<text top="318" left="281" width="95" height="20" font="2">Booklet #:</text>
+<text top="318" left="396" width="36" height="20" font="2">N/A</text>
+<text top="1033" left="27" width="819" height="15" font="11">* If allowed by your instructor, the questions that you missed are listed.  Optionally, your answer and the correct </text>
+<text top="1054" left="27" width="845" height="15" font="11">answer may be listed as allowed by your instructor. Items with an &#34;X&#34; for the Answer are not counted against grade.</text>
+<text top="308" left="497" width="134" height="17" font="0"><b>Possible Points</b></text>
+<text top="308" left="769" width="45" height="17" font="0"><b>25.00</b></text>
+<text top="1141" left="27" width="74" height="11" font="12"><b>Report Date:</b></text>
+<text top="1141" left="126" width="212" height="11" font="13">Thursday, October 05, 2017  1030 : 14</text>
+<text top="1141" left="755" width="34" height="11" font="12"><b>Page:</b></text>
+<text top="1141" left="824" width="14" height="11" font="13">18</text>
+<text top="1167" left="148" width="571" height="11" font="14">University of Iowa - Evaluation and Exam Services - exam-service@uiowa.edu - Telephone (319) 335-0356</text>
+</page>
+<page number="19" position="absolute" top="0" left="0" height="1188" width="918">
+<image top="27" left="21" width="146" height="42" src="/export/freefileconvert/902_d0ffde7452f581e1e7ff8b9a54f1696b20a151e5350d5a7136d73541b85880c8-19_1.jpg"/>
+<text top="116" left="29" width="143" height="17" font="0"><b>Testing Services</b></text>
+<text top="120" left="319" width="283" height="22" font="1">Student Score Report</text>
+<text top="317" left="29" width="194" height="20" font="2">Confirmation: 7037</text>
+<text top="282" left="29" width="95" height="20" font="2">Instructor:</text>
+<text top="282" left="175" width="108" height="20" font="2">Wang, Lihe</text>
+<text top="247" left="29" width="75" height="20" font="2">Course:</text>
+<text top="247" left="175" width="133" height="20" font="2">MATH 1380 - </text>
+<text top="168" left="30" width="227" height="28" font="3"><b>Markey, Nicolas</b></text>
+<text top="207" left="175" width="95" height="20" font="2">01263483</text>
+<text top="352" left="29" width="138" height="20" font="2">Date/Location:</text>
+<text top="352" left="175" width="144" height="19" font="4">10-05-17 09: 10</text>
+<text top="387" left="29" width="113" height="20" font="2">Description:</text>
+<text top="387" left="175" width="239" height="20" font="2">Exam Midterm 1, Form C</text>
+<text top="445" left="327" width="221" height="22" font="5"><b>Questions Missed *</b></text>
+<text top="508" left="26" width="31" height="14" font="6">1.  B</text>
+<text top="508" left="109" width="31" height="14" font="6">3.  B</text>
+<text top="508" left="191" width="32" height="14" font="6">4.  D</text>
+<text top="508" left="274" width="32" height="14" font="6">6.  C</text>
+<text top="508" left="357" width="39" height="14" font="6">10.  B</text>
+<text top="508" left="440" width="39" height="14" font="6">11.  A</text>
+<text top="508" left="522" width="40" height="14" font="6">14.  D</text>
+<text top="508" left="605" width="39" height="14" font="6">16.  A</text>
+<text top="508" left="688" width="39" height="14" font="6">17.  B</text>
+<text top="508" left="770" width="40" height="14" font="6">18.  D</text>
+<text top="536" left="26" width="40" height="14" font="6">19.  C</text>
+<text top="536" left="109" width="39" height="14" font="6">20.  B</text>
+<text top="536" left="191" width="39" height="14" font="6">22.  A</text>
+<text top="536" left="274" width="39" height="14" font="6">23.  E</text>
+<text top="478" left="226" width="425" height="14" font="7"><b>(Format: Question Number. Your Answer, Correct Answer) *</b></text>
+<text top="210" left="28" width="101" height="20" font="2">Student ID</text>
+<text top="164" left="588" width="140" height="20" font="8"><b>Exam Results</b></text>
+<text top="344" left="498" width="58" height="17" font="0"><b>Grade:</b></text>
+<text top="344" left="734" width="82" height="17" font="0"><b>44.0000%</b></text>
+<text top="208" left="497" width="123" height="17" font="9">Regular Points:</text>
+<text top="208" left="768" width="45" height="17" font="9">11.00</text>
+<text top="238" left="497" width="112" height="17" font="9">Bonus Points:</text>
+<text top="238" left="779" width="35" height="17" font="9">0.00</text>
+<text top="273" left="497" width="175" height="17" font="0"><b>Total Points Earned:</b></text>
+<text top="273" left="769" width="45" height="17" font="0"><b>11.00</b></text>
+<text top="377" left="806" width="8" height="14" font="10">0</text>
+<text top="377" left="498" width="134" height="14" font="10">Elapsed Time (min):</text>
+<text top="318" left="281" width="95" height="20" font="2">Booklet #:</text>
+<text top="318" left="396" width="36" height="20" font="2">N/A</text>
+<text top="1033" left="27" width="819" height="15" font="11">* If allowed by your instructor, the questions that you missed are listed.  Optionally, your answer and the correct </text>
+<text top="1054" left="27" width="845" height="15" font="11">answer may be listed as allowed by your instructor. Items with an &#34;X&#34; for the Answer are not counted against grade.</text>
+<text top="308" left="497" width="134" height="17" font="0"><b>Possible Points</b></text>
+<text top="308" left="769" width="45" height="17" font="0"><b>25.00</b></text>
+<text top="1141" left="27" width="74" height="11" font="12"><b>Report Date:</b></text>
+<text top="1141" left="126" width="212" height="11" font="13">Thursday, October 05, 2017  1030 : 14</text>
+<text top="1141" left="755" width="34" height="11" font="12"><b>Page:</b></text>
+<text top="1141" left="824" width="14" height="11" font="13">19</text>
+<text top="1167" left="148" width="571" height="11" font="14">University of Iowa - Evaluation and Exam Services - exam-service@uiowa.edu - Telephone (319) 335-0356</text>
+</page>
+<page number="20" position="absolute" top="0" left="0" height="1188" width="918">
+<image top="27" left="21" width="146" height="42" src="/export/freefileconvert/902_d0ffde7452f581e1e7ff8b9a54f1696b20a151e5350d5a7136d73541b85880c8-20_1.jpg"/>
+<text top="116" left="29" width="143" height="17" font="0"><b>Testing Services</b></text>
+<text top="120" left="319" width="283" height="22" font="1">Student Score Report</text>
+<text top="317" left="29" width="194" height="20" font="2">Confirmation: 7037</text>
+<text top="282" left="29" width="95" height="20" font="2">Instructor:</text>
+<text top="282" left="175" width="108" height="20" font="2">Wang, Lihe</text>
+<text top="247" left="29" width="75" height="20" font="2">Course:</text>
+<text top="247" left="175" width="133" height="20" font="2">MATH 1380 - </text>
+<text top="168" left="30" width="216" height="28" font="3"><b>Newman, Kody</b></text>
+<text top="207" left="175" width="95" height="20" font="2">01263104</text>
+<text top="352" left="29" width="138" height="20" font="2">Date/Location:</text>
+<text top="352" left="175" width="144" height="19" font="4">10-05-17 09: 10</text>
+<text top="387" left="29" width="113" height="20" font="2">Description:</text>
+<text top="387" left="175" width="239" height="20" font="2">Exam Midterm 1, Form C</text>
+<text top="445" left="327" width="221" height="22" font="5"><b>Questions Missed *</b></text>
+<text top="508" left="26" width="31" height="14" font="6">1.  E</text>
+<text top="508" left="109" width="31" height="14" font="6">3.  B</text>
+<text top="508" left="191" width="31" height="14" font="6">4.  B</text>
+<text top="508" left="274" width="32" height="14" font="6">7.  D</text>
+<text top="508" left="357" width="31" height="14" font="6">8.  A</text>
+<text top="508" left="440" width="31" height="14" font="6">9.  B</text>
+<text top="508" left="522" width="40" height="14" font="6">11.  D</text>
+<text top="508" left="605" width="39" height="14" font="6">12.  A</text>
+<text top="508" left="688" width="39" height="14" font="6">13.  A</text>
+<text top="508" left="770" width="39" height="14" font="6">14.  A</text>
+<text top="536" left="26" width="39" height="14" font="6">19.  E</text>
+<text top="536" left="109" width="40" height="14" font="6">23.  C</text>
+<text top="536" left="191" width="39" height="14" font="6">25.  B</text>
+<text top="478" left="226" width="425" height="14" font="7"><b>(Format: Question Number. Your Answer, Correct Answer) *</b></text>
+<text top="210" left="28" width="101" height="20" font="2">Student ID</text>
+<text top="164" left="588" width="140" height="20" font="8"><b>Exam Results</b></text>
+<text top="344" left="498" width="58" height="17" font="0"><b>Grade:</b></text>
+<text top="344" left="734" width="82" height="17" font="0"><b>48.0000%</b></text>
+<text top="208" left="497" width="123" height="17" font="9">Regular Points:</text>
+<text top="208" left="768" width="45" height="17" font="9">12.00</text>
+<text top="238" left="497" width="112" height="17" font="9">Bonus Points:</text>
+<text top="238" left="779" width="35" height="17" font="9">0.00</text>
+<text top="273" left="497" width="175" height="17" font="0"><b>Total Points Earned:</b></text>
+<text top="273" left="769" width="45" height="17" font="0"><b>12.00</b></text>
+<text top="377" left="806" width="8" height="14" font="10">0</text>
+<text top="377" left="498" width="134" height="14" font="10">Elapsed Time (min):</text>
+<text top="318" left="281" width="95" height="20" font="2">Booklet #:</text>
+<text top="318" left="396" width="36" height="20" font="2">N/A</text>
+<text top="1033" left="27" width="819" height="15" font="11">* If allowed by your instructor, the questions that you missed are listed.  Optionally, your answer and the correct </text>
+<text top="1054" left="27" width="845" height="15" font="11">answer may be listed as allowed by your instructor. Items with an &#34;X&#34; for the Answer are not counted against grade.</text>
+<text top="308" left="497" width="134" height="17" font="0"><b>Possible Points</b></text>
+<text top="308" left="769" width="45" height="17" font="0"><b>25.00</b></text>
+<text top="1141" left="27" width="74" height="11" font="12"><b>Report Date:</b></text>
+<text top="1141" left="126" width="212" height="11" font="13">Thursday, October 05, 2017  1030 : 14</text>
+<text top="1141" left="755" width="34" height="11" font="12"><b>Page:</b></text>
+<text top="1141" left="824" width="14" height="11" font="13">20</text>
+<text top="1167" left="148" width="571" height="11" font="14">University of Iowa - Evaluation and Exam Services - exam-service@uiowa.edu - Telephone (319) 335-0356</text>
+</page>
+<page number="21" position="absolute" top="0" left="0" height="1188" width="918">
+<image top="27" left="21" width="146" height="42" src="/export/freefileconvert/902_d0ffde7452f581e1e7ff8b9a54f1696b20a151e5350d5a7136d73541b85880c8-21_1.jpg"/>
+<text top="116" left="29" width="143" height="17" font="0"><b>Testing Services</b></text>
+<text top="120" left="319" width="283" height="22" font="1">Student Score Report</text>
+<text top="317" left="29" width="194" height="20" font="2">Confirmation: 7037</text>
+<text top="282" left="29" width="95" height="20" font="2">Instructor:</text>
+<text top="282" left="175" width="108" height="20" font="2">Wang, Lihe</text>
+<text top="247" left="29" width="75" height="20" font="2">Course:</text>
+<text top="247" left="175" width="133" height="20" font="2">MATH 1380 - </text>
+<text top="168" left="30" width="168" height="28" font="3"><b>Norton, Ella</b></text>
+<text top="207" left="175" width="95" height="20" font="2">01247524</text>
+<text top="352" left="29" width="138" height="20" font="2">Date/Location:</text>
+<text top="352" left="175" width="144" height="19" font="4">10-05-17 09: 10</text>
+<text top="387" left="29" width="113" height="20" font="2">Description:</text>
+<text top="387" left="175" width="237" height="20" font="2">Exam Midterm 1, Form A</text>
+<text top="445" left="327" width="221" height="22" font="5"><b>Questions Missed *</b></text>
+<text top="508" left="26" width="39" height="14" font="6">14.  B</text>
+<text top="508" left="109" width="40" height="14" font="6">24.  C</text>
+<text top="478" left="226" width="425" height="14" font="7"><b>(Format: Question Number. Your Answer, Correct Answer) *</b></text>
+<text top="210" left="28" width="101" height="20" font="2">Student ID</text>
+<text top="164" left="588" width="140" height="20" font="8"><b>Exam Results</b></text>
+<text top="344" left="498" width="58" height="17" font="0"><b>Grade:</b></text>
+<text top="344" left="734" width="82" height="17" font="0"><b>92.0000%</b></text>
+<text top="208" left="497" width="123" height="17" font="9">Regular Points:</text>
+<text top="208" left="768" width="45" height="17" font="9">23.00</text>
+<text top="238" left="497" width="112" height="17" font="9">Bonus Points:</text>
+<text top="238" left="779" width="35" height="17" font="9">0.00</text>
+<text top="273" left="497" width="175" height="17" font="0"><b>Total Points Earned:</b></text>
+<text top="273" left="769" width="45" height="17" font="0"><b>23.00</b></text>
+<text top="377" left="806" width="8" height="14" font="10">0</text>
+<text top="377" left="498" width="134" height="14" font="10">Elapsed Time (min):</text>
+<text top="318" left="281" width="95" height="20" font="2">Booklet #:</text>
+<text top="318" left="396" width="36" height="20" font="2">N/A</text>
+<text top="1033" left="27" width="819" height="15" font="11">* If allowed by your instructor, the questions that you missed are listed.  Optionally, your answer and the correct </text>
+<text top="1054" left="27" width="845" height="15" font="11">answer may be listed as allowed by your instructor. Items with an &#34;X&#34; for the Answer are not counted against grade.</text>
+<text top="308" left="497" width="134" height="17" font="0"><b>Possible Points</b></text>
+<text top="308" left="769" width="45" height="17" font="0"><b>25.00</b></text>
+<text top="1141" left="27" width="74" height="11" font="12"><b>Report Date:</b></text>
+<text top="1141" left="126" width="212" height="11" font="13">Thursday, October 05, 2017  1030 : 14</text>
+<text top="1141" left="755" width="34" height="11" font="12"><b>Page:</b></text>
+<text top="1141" left="824" width="14" height="11" font="13">21</text>
+<text top="1167" left="148" width="571" height="11" font="14">University of Iowa - Evaluation and Exam Services - exam-service@uiowa.edu - Telephone (319) 335-0356</text>
+</page>
+<page number="22" position="absolute" top="0" left="0" height="1188" width="918">
+<image top="27" left="21" width="146" height="42" src="/export/freefileconvert/902_d0ffde7452f581e1e7ff8b9a54f1696b20a151e5350d5a7136d73541b85880c8-22_1.jpg"/>
+<text top="116" left="29" width="143" height="17" font="0"><b>Testing Services</b></text>
+<text top="120" left="319" width="283" height="22" font="1">Student Score Report</text>
+<text top="317" left="29" width="194" height="20" font="2">Confirmation: 7037</text>
+<text top="282" left="29" width="95" height="20" font="2">Instructor:</text>
+<text top="282" left="175" width="108" height="20" font="2">Wang, Lihe</text>
+<text top="247" left="29" width="75" height="20" font="2">Course:</text>
+<text top="247" left="175" width="133" height="20" font="2">MATH 1380 - </text>
+<text top="168" left="30" width="174" height="28" font="3"><b>Price, Jesse</b></text>
+<text top="207" left="175" width="95" height="20" font="2">01176604</text>
+<text top="352" left="29" width="138" height="20" font="2">Date/Location:</text>
+<text top="352" left="175" width="144" height="19" font="4">10-05-17 09: 10</text>
+<text top="387" left="29" width="113" height="20" font="2">Description:</text>
+<text top="387" left="175" width="237" height="20" font="2">Exam Midterm 1, Form A</text>
+<text top="445" left="327" width="221" height="22" font="5"><b>Questions Missed *</b></text>
+<text top="508" left="26" width="32" height="14" font="6">2.  D</text>
+<text top="508" left="109" width="32" height="14" font="6">3.  D</text>
+<text top="508" left="191" width="32" height="14" font="6">4.  C</text>
+<text top="508" left="274" width="39" height="14" font="6">11.  B</text>
+<text top="508" left="357" width="39" height="14" font="6">12.  E</text>
+<text top="508" left="440" width="40" height="14" font="6">13.  D</text>
+<text top="508" left="522" width="39" height="14" font="6">14.  A</text>
+<text top="508" left="605" width="40" height="14" font="6">17.  D</text>
+<text top="508" left="688" width="39" height="14" font="6">18.  E</text>
+<text top="508" left="770" width="39" height="14" font="6">19.  A</text>
+<text top="536" left="26" width="39" height="14" font="6">20.  A</text>
+<text top="536" left="109" width="39" height="14" font="6">22.  B</text>
+<text top="478" left="226" width="425" height="14" font="7"><b>(Format: Question Number. Your Answer, Correct Answer) *</b></text>
+<text top="210" left="28" width="101" height="20" font="2">Student ID</text>
+<text top="164" left="588" width="140" height="20" font="8"><b>Exam Results</b></text>
+<text top="344" left="498" width="58" height="17" font="0"><b>Grade:</b></text>
+<text top="344" left="734" width="82" height="17" font="0"><b>52.0000%</b></text>
+<text top="208" left="497" width="123" height="17" font="9">Regular Points:</text>
+<text top="208" left="768" width="45" height="17" font="9">13.00</text>
+<text top="238" left="497" width="112" height="17" font="9">Bonus Points:</text>
+<text top="238" left="779" width="35" height="17" font="9">0.00</text>
+<text top="273" left="497" width="175" height="17" font="0"><b>Total Points Earned:</b></text>
+<text top="273" left="769" width="45" height="17" font="0"><b>13.00</b></text>
+<text top="377" left="806" width="8" height="14" font="10">0</text>
+<text top="377" left="498" width="134" height="14" font="10">Elapsed Time (min):</text>
+<text top="318" left="281" width="95" height="20" font="2">Booklet #:</text>
+<text top="318" left="396" width="36" height="20" font="2">N/A</text>
+<text top="1033" left="27" width="819" height="15" font="11">* If allowed by your instructor, the questions that you missed are listed.  Optionally, your answer and the correct </text>
+<text top="1054" left="27" width="845" height="15" font="11">answer may be listed as allowed by your instructor. Items with an &#34;X&#34; for the Answer are not counted against grade.</text>
+<text top="308" left="497" width="134" height="17" font="0"><b>Possible Points</b></text>
+<text top="308" left="769" width="45" height="17" font="0"><b>25.00</b></text>
+<text top="1141" left="27" width="74" height="11" font="12"><b>Report Date:</b></text>
+<text top="1141" left="126" width="212" height="11" font="13">Thursday, October 05, 2017  1030 : 14</text>
+<text top="1141" left="755" width="34" height="11" font="12"><b>Page:</b></text>
+<text top="1141" left="824" width="14" height="11" font="13">22</text>
+<text top="1167" left="148" width="571" height="11" font="14">University of Iowa - Evaluation and Exam Services - exam-service@uiowa.edu - Telephone (319) 335-0356</text>
+</page>
+<page number="23" position="absolute" top="0" left="0" height="1188" width="918">
+<image top="27" left="21" width="146" height="42" src="/export/freefileconvert/902_d0ffde7452f581e1e7ff8b9a54f1696b20a151e5350d5a7136d73541b85880c8-23_1.jpg"/>
+<text top="116" left="29" width="143" height="17" font="0"><b>Testing Services</b></text>
+<text top="120" left="319" width="283" height="22" font="1">Student Score Report</text>
+<text top="317" left="29" width="194" height="20" font="2">Confirmation: 7037</text>
+<text top="282" left="29" width="95" height="20" font="2">Instructor:</text>
+<text top="282" left="175" width="108" height="20" font="2">Wang, Lihe</text>
+<text top="247" left="29" width="75" height="20" font="2">Course:</text>
+<text top="247" left="175" width="133" height="20" font="2">MATH 1380 - </text>
+<text top="168" left="30" width="180" height="28" font="3"><b>Smith, Emily</b></text>
+<text top="207" left="175" width="95" height="20" font="2">01246228</text>
+<text top="352" left="29" width="138" height="20" font="2">Date/Location:</text>
+<text top="352" left="175" width="144" height="19" font="4">10-05-17 09: 10</text>
+<text top="387" left="29" width="113" height="20" font="2">Description:</text>
+<text top="387" left="175" width="237" height="20" font="2">Exam Midterm 1, Form B</text>
+<text top="445" left="327" width="221" height="22" font="5"><b>Questions Missed *</b></text>
+<text top="508" left="26" width="31" height="14" font="6">1.  A</text>
+<text top="508" left="109" width="31" height="14" font="6">2.  A</text>
+<text top="508" left="191" width="32" height="14" font="6">3.  C</text>
+<text top="508" left="274" width="31" height="14" font="6">6.  B</text>
+<text top="508" left="357" width="32" height="14" font="6">7.  D</text>
+<text top="508" left="440" width="31" height="14" font="6">8.  B</text>
+<text top="508" left="522" width="31" height="14" font="6">9.  B</text>
+<text top="508" left="605" width="40" height="14" font="6">10.  D</text>
+<text top="508" left="688" width="39" height="14" font="6">11.  E</text>
+<text top="508" left="770" width="40" height="14" font="6">13.  C</text>
+<text top="536" left="26" width="39" height="14" font="6">14.  A</text>
+<text top="536" left="109" width="40" height="14" font="6">20.  C</text>
+<text top="536" left="191" width="39" height="14" font="6">21.  B</text>
+<text top="536" left="274" width="40" height="14" font="6">22.  C</text>
+<text top="536" left="357" width="39" height="14" font="6">23.  E</text>
+<text top="536" left="440" width="40" height="14" font="6">25.  C</text>
+<text top="478" left="226" width="425" height="14" font="7"><b>(Format: Question Number. Your Answer, Correct Answer) *</b></text>
+<text top="210" left="28" width="101" height="20" font="2">Student ID</text>
+<text top="164" left="588" width="140" height="20" font="8"><b>Exam Results</b></text>
+<text top="344" left="498" width="58" height="17" font="0"><b>Grade:</b></text>
+<text top="344" left="734" width="82" height="17" font="0"><b>36.0000%</b></text>
+<text top="208" left="497" width="123" height="17" font="9">Regular Points:</text>
+<text top="208" left="778" width="35" height="17" font="9">9.00</text>
+<text top="238" left="497" width="112" height="17" font="9">Bonus Points:</text>
+<text top="238" left="779" width="35" height="17" font="9">0.00</text>
+<text top="273" left="497" width="175" height="17" font="0"><b>Total Points Earned:</b></text>
+<text top="273" left="779" width="35" height="17" font="0"><b>9.00</b></text>
+<text top="377" left="806" width="8" height="14" font="10">0</text>
+<text top="377" left="498" width="134" height="14" font="10">Elapsed Time (min):</text>
+<text top="318" left="281" width="95" height="20" font="2">Booklet #:</text>
+<text top="318" left="396" width="36" height="20" font="2">N/A</text>
+<text top="1033" left="27" width="819" height="15" font="11">* If allowed by your instructor, the questions that you missed are listed.  Optionally, your answer and the correct </text>
+<text top="1054" left="27" width="845" height="15" font="11">answer may be listed as allowed by your instructor. Items with an &#34;X&#34; for the Answer are not counted against grade.</text>
+<text top="308" left="497" width="134" height="17" font="0"><b>Possible Points</b></text>
+<text top="308" left="769" width="45" height="17" font="0"><b>25.00</b></text>
+<text top="1141" left="27" width="74" height="11" font="12"><b>Report Date:</b></text>
+<text top="1141" left="126" width="212" height="11" font="13">Thursday, October 05, 2017  1030 : 14</text>
+<text top="1141" left="755" width="34" height="11" font="12"><b>Page:</b></text>
+<text top="1141" left="824" width="14" height="11" font="13">23</text>
+<text top="1167" left="148" width="571" height="11" font="14">University of Iowa - Evaluation and Exam Services - exam-service@uiowa.edu - Telephone (319) 335-0356</text>
+</page>
+<page number="24" position="absolute" top="0" left="0" height="1188" width="918">
+<image top="27" left="21" width="146" height="42" src="/export/freefileconvert/902_d0ffde7452f581e1e7ff8b9a54f1696b20a151e5350d5a7136d73541b85880c8-24_1.jpg"/>
+<text top="116" left="29" width="143" height="17" font="0"><b>Testing Services</b></text>
+<text top="120" left="319" width="283" height="22" font="1">Student Score Report</text>
+<text top="317" left="29" width="194" height="20" font="2">Confirmation: 7037</text>
+<text top="282" left="29" width="95" height="20" font="2">Instructor:</text>
+<text top="282" left="175" width="108" height="20" font="2">Wang, Lihe</text>
+<text top="247" left="29" width="75" height="20" font="2">Course:</text>
+<text top="247" left="175" width="133" height="20" font="2">MATH 1380 - </text>
+<text top="168" left="30" width="189" height="28" font="3"><b>Usher, Jacob</b></text>
+<text top="207" left="175" width="95" height="20" font="2">01247729</text>
+<text top="352" left="29" width="138" height="20" font="2">Date/Location:</text>
+<text top="352" left="175" width="144" height="19" font="4">10-05-17 09: 10</text>
+<text top="387" left="29" width="113" height="20" font="2">Description:</text>
+<text top="387" left="175" width="239" height="20" font="2">Exam Midterm 1, Form C</text>
+<text top="445" left="327" width="221" height="22" font="5"><b>Questions Missed *</b></text>
+<text top="508" left="26" width="31" height="14" font="6">4.  A</text>
+<text top="508" left="109" width="32" height="14" font="6">6.  C</text>
+<text top="508" left="191" width="39" height="14" font="6">10.  A</text>
+<text top="508" left="274" width="39" height="14" font="6">12.  E</text>
+<text top="508" left="357" width="39" height="14" font="6">14.  E</text>
+<text top="508" left="440" width="40" height="14" font="6">20.  D</text>
+<text top="508" left="522" width="40" height="14" font="6">22.  C</text>
+<text top="508" left="605" width="40" height="14" font="6">24.  C</text>
+<text top="508" left="688" width="39" height="14" font="6">25.  A</text>
+<text top="478" left="226" width="425" height="14" font="7"><b>(Format: Question Number. Your Answer, Correct Answer) *</b></text>
+<text top="210" left="28" width="101" height="20" font="2">Student ID</text>
+<text top="164" left="588" width="140" height="20" font="8"><b>Exam Results</b></text>
+<text top="344" left="498" width="58" height="17" font="0"><b>Grade:</b></text>
+<text top="344" left="734" width="82" height="17" font="0"><b>64.0000%</b></text>
+<text top="208" left="497" width="123" height="17" font="9">Regular Points:</text>
+<text top="208" left="768" width="45" height="17" font="9">16.00</text>
+<text top="238" left="497" width="112" height="17" font="9">Bonus Points:</text>
+<text top="238" left="779" width="35" height="17" font="9">0.00</text>
+<text top="273" left="497" width="175" height="17" font="0"><b>Total Points Earned:</b></text>
+<text top="273" left="769" width="45" height="17" font="0"><b>16.00</b></text>
+<text top="377" left="806" width="8" height="14" font="10">0</text>
+<text top="377" left="498" width="134" height="14" font="10">Elapsed Time (min):</text>
+<text top="318" left="281" width="95" height="20" font="2">Booklet #:</text>
+<text top="318" left="396" width="36" height="20" font="2">N/A</text>
+<text top="1033" left="27" width="819" height="15" font="11">* If allowed by your instructor, the questions that you missed are listed.  Optionally, your answer and the correct </text>
+<text top="1054" left="27" width="845" height="15" font="11">answer may be listed as allowed by your instructor. Items with an &#34;X&#34; for the Answer are not counted against grade.</text>
+<text top="308" left="497" width="134" height="17" font="0"><b>Possible Points</b></text>
+<text top="308" left="769" width="45" height="17" font="0"><b>25.00</b></text>
+<text top="1141" left="27" width="74" height="11" font="12"><b>Report Date:</b></text>
+<text top="1141" left="126" width="212" height="11" font="13">Thursday, October 05, 2017  1030 : 14</text>
+<text top="1141" left="755" width="34" height="11" font="12"><b>Page:</b></text>
+<text top="1141" left="824" width="14" height="11" font="13">24</text>
+<text top="1167" left="148" width="571" height="11" font="14">University of Iowa - Evaluation and Exam Services - exam-service@uiowa.edu - Telephone (319) 335-0356</text>
+</page>
+<page number="25" position="absolute" top="0" left="0" height="1188" width="918">
+<image top="27" left="21" width="146" height="42" src="/export/freefileconvert/902_d0ffde7452f581e1e7ff8b9a54f1696b20a151e5350d5a7136d73541b85880c8-25_1.jpg"/>
+<text top="116" left="29" width="143" height="17" font="0"><b>Testing Services</b></text>
+<text top="120" left="319" width="283" height="22" font="1">Student Score Report</text>
+<text top="317" left="29" width="194" height="20" font="2">Confirmation: 7037</text>
+<text top="282" left="29" width="95" height="20" font="2">Instructor:</text>
+<text top="282" left="175" width="108" height="20" font="2">Wang, Lihe</text>
+<text top="247" left="29" width="75" height="20" font="2">Course:</text>
+<text top="247" left="175" width="133" height="20" font="2">MATH 1380 - </text>
+<text top="168" left="30" width="322" height="28" font="3"><b>Van Poucke, Benjamin</b></text>
+<text top="207" left="175" width="95" height="20" font="2">01246252</text>
+<text top="352" left="29" width="138" height="20" font="2">Date/Location:</text>
+<text top="352" left="175" width="144" height="19" font="4">10-05-17 09: 10</text>
+<text top="387" left="29" width="113" height="20" font="2">Description:</text>
+<text top="387" left="175" width="237" height="20" font="2">Exam Midterm 1, Form A</text>
+<text top="445" left="327" width="221" height="22" font="5"><b>Questions Missed *</b></text>
+<text top="508" left="26" width="31" height="14" font="6">4.  E</text>
+<text top="508" left="109" width="40" height="14" font="6">12.  D</text>
+<text top="508" left="191" width="39" height="14" font="6">14.  A</text>
+<text top="508" left="274" width="40" height="14" font="6">18.  C</text>
+<text top="478" left="226" width="425" height="14" font="7"><b>(Format: Question Number. Your Answer, Correct Answer) *</b></text>
+<text top="210" left="28" width="101" height="20" font="2">Student ID</text>
+<text top="164" left="588" width="140" height="20" font="8"><b>Exam Results</b></text>
+<text top="344" left="498" width="58" height="17" font="0"><b>Grade:</b></text>
+<text top="344" left="734" width="82" height="17" font="0"><b>84.0000%</b></text>
+<text top="208" left="497" width="123" height="17" font="9">Regular Points:</text>
+<text top="208" left="768" width="45" height="17" font="9">21.00</text>
+<text top="238" left="497" width="112" height="17" font="9">Bonus Points:</text>
+<text top="238" left="779" width="35" height="17" font="9">0.00</text>
+<text top="273" left="497" width="175" height="17" font="0"><b>Total Points Earned:</b></text>
+<text top="273" left="769" width="45" height="17" font="0"><b>21.00</b></text>
+<text top="377" left="806" width="8" height="14" font="10">0</text>
+<text top="377" left="498" width="134" height="14" font="10">Elapsed Time (min):</text>
+<text top="318" left="281" width="95" height="20" font="2">Booklet #:</text>
+<text top="318" left="396" width="36" height="20" font="2">N/A</text>
+<text top="1033" left="27" width="819" height="15" font="11">* If allowed by your instructor, the questions that you missed are listed.  Optionally, your answer and the correct </text>
+<text top="1054" left="27" width="845" height="15" font="11">answer may be listed as allowed by your instructor. Items with an &#34;X&#34; for the Answer are not counted against grade.</text>
+<text top="308" left="497" width="134" height="17" font="0"><b>Possible Points</b></text>
+<text top="308" left="769" width="45" height="17" font="0"><b>25.00</b></text>
+<text top="1141" left="27" width="74" height="11" font="12"><b>Report Date:</b></text>
+<text top="1141" left="126" width="212" height="11" font="13">Thursday, October 05, 2017  1030 : 14</text>
+<text top="1141" left="755" width="34" height="11" font="12"><b>Page:</b></text>
+<text top="1141" left="824" width="14" height="11" font="13">25</text>
+<text top="1167" left="148" width="571" height="11" font="14">University of Iowa - Evaluation and Exam Services - exam-service@uiowa.edu - Telephone (319) 335-0356</text>
+</page>
+<page number="26" position="absolute" top="0" left="0" height="1188" width="918">
+<image top="27" left="21" width="146" height="42" src="/export/freefileconvert/902_d0ffde7452f581e1e7ff8b9a54f1696b20a151e5350d5a7136d73541b85880c8-26_1.jpg"/>
+<text top="116" left="29" width="143" height="17" font="0"><b>Testing Services</b></text>
+<text top="120" left="319" width="283" height="22" font="1">Student Score Report</text>
+<text top="317" left="29" width="194" height="20" font="2">Confirmation: 7037</text>
+<text top="282" left="29" width="95" height="20" font="2">Instructor:</text>
+<text top="282" left="175" width="108" height="20" font="2">Wang, Lihe</text>
+<text top="247" left="29" width="75" height="20" font="2">Course:</text>
+<text top="247" left="175" width="133" height="20" font="2">MATH 1380 - </text>
+<text top="168" left="30" width="185" height="28" font="3"><b>Wells, Trajan</b></text>
+<text top="207" left="175" width="95" height="20" font="2">01257137</text>
+<text top="352" left="29" width="138" height="20" font="2">Date/Location:</text>
+<text top="352" left="175" width="144" height="19" font="4">10-05-17 09: 10</text>
+<text top="387" left="29" width="113" height="20" font="2">Description:</text>
+<text top="387" left="175" width="239" height="20" font="2">Exam Midterm 1, Form C</text>
+<text top="445" left="327" width="221" height="22" font="5"><b>Questions Missed *</b></text>
+<text top="508" left="26" width="32" height="14" font="6">3.  C</text>
+<text top="508" left="109" width="32" height="14" font="6">7.  D</text>
+<text top="508" left="191" width="39" height="14" font="6">10.  A</text>
+<text top="508" left="274" width="40" height="14" font="6">12.  C</text>
+<text top="508" left="357" width="40" height="14" font="6">13.  C</text>
+<text top="508" left="440" width="39" height="14" font="6">14.  A</text>
+<text top="508" left="522" width="39" height="14" font="6">15.  A</text>
+<text top="508" left="605" width="39" height="14" font="6">17.  A</text>
+<text top="508" left="688" width="39" height="14" font="6">20.  E</text>
+<text top="508" left="770" width="40" height="14" font="6">21.  D</text>
+<text top="536" left="26" width="40" height="14" font="6">23.  C</text>
+<text top="536" left="109" width="39" height="14" font="6">24.  A</text>
+<text top="478" left="226" width="425" height="14" font="7"><b>(Format: Question Number. Your Answer, Correct Answer) *</b></text>
+<text top="210" left="28" width="101" height="20" font="2">Student ID</text>
+<text top="164" left="588" width="140" height="20" font="8"><b>Exam Results</b></text>
+<text top="344" left="498" width="58" height="17" font="0"><b>Grade:</b></text>
+<text top="344" left="734" width="82" height="17" font="0"><b>52.0000%</b></text>
+<text top="208" left="497" width="123" height="17" font="9">Regular Points:</text>
+<text top="208" left="768" width="45" height="17" font="9">13.00</text>
+<text top="238" left="497" width="112" height="17" font="9">Bonus Points:</text>
+<text top="238" left="779" width="35" height="17" font="9">0.00</text>
+<text top="273" left="497" width="175" height="17" font="0"><b>Total Points Earned:</b></text>
+<text top="273" left="769" width="45" height="17" font="0"><b>13.00</b></text>
+<text top="377" left="806" width="8" height="14" font="10">0</text>
+<text top="377" left="498" width="134" height="14" font="10">Elapsed Time (min):</text>
+<text top="318" left="281" width="95" height="20" font="2">Booklet #:</text>
+<text top="318" left="396" width="36" height="20" font="2">N/A</text>
+<text top="1033" left="27" width="819" height="15" font="11">* If allowed by your instructor, the questions that you missed are listed.  Optionally, your answer and the correct </text>
+<text top="1054" left="27" width="845" height="15" font="11">answer may be listed as allowed by your instructor. Items with an &#34;X&#34; for the Answer are not counted against grade.</text>
+<text top="308" left="497" width="134" height="17" font="0"><b>Possible Points</b></text>
+<text top="308" left="769" width="45" height="17" font="0"><b>25.00</b></text>
+<text top="1141" left="27" width="74" height="11" font="12"><b>Report Date:</b></text>
+<text top="1141" left="126" width="212" height="11" font="13">Thursday, October 05, 2017  1030 : 14</text>
+<text top="1141" left="755" width="34" height="11" font="12"><b>Page:</b></text>
+<text top="1141" left="824" width="14" height="11" font="13">26</text>
+<text top="1167" left="148" width="571" height="11" font="14">University of Iowa - Evaluation and Exam Services - exam-service@uiowa.edu - Telephone (319) 335-0356</text>
+</page>
+<page number="27" position="absolute" top="0" left="0" height="1188" width="918">
+<image top="27" left="21" width="146" height="42" src="/export/freefileconvert/902_d0ffde7452f581e1e7ff8b9a54f1696b20a151e5350d5a7136d73541b85880c8-27_1.jpg"/>
+<text top="116" left="29" width="143" height="17" font="0"><b>Testing Services</b></text>
+<text top="120" left="319" width="283" height="22" font="1">Student Score Report</text>
+<text top="317" left="29" width="194" height="20" font="2">Confirmation: 7037</text>
+<text top="282" left="29" width="95" height="20" font="2">Instructor:</text>
+<text top="282" left="175" width="108" height="20" font="2">Wang, Lihe</text>
+<text top="247" left="29" width="75" height="20" font="2">Course:</text>
+<text top="247" left="175" width="133" height="20" font="2">MATH 1380 - </text>
+<text top="168" left="30" width="228" height="28" font="3"><b>Wisnewski, Eric</b></text>
+<text top="207" left="175" width="95" height="20" font="2">01247370</text>
+<text top="352" left="29" width="138" height="20" font="2">Date/Location:</text>
+<text top="352" left="175" width="144" height="19" font="4">10-05-17 09: 10</text>
+<text top="387" left="29" width="113" height="20" font="2">Description:</text>
+<text top="387" left="175" width="237" height="20" font="2">Exam Midterm 1, Form A</text>
+<text top="445" left="327" width="221" height="22" font="5"><b>Questions Missed *</b></text>
+<text top="508" left="26" width="32" height="14" font="6">1.  C</text>
+<text top="508" left="109" width="31" height="14" font="6">4.  A</text>
+<text top="508" left="191" width="32" height="14" font="6">6.  D</text>
+<text top="508" left="274" width="31" height="14" font="6">7.  E</text>
+<text top="508" left="357" width="39" height="14" font="6">11.  A</text>
+<text top="508" left="440" width="39" height="14" font="6">14.  B</text>
+<text top="478" left="226" width="425" height="14" font="7"><b>(Format: Question Number. Your Answer, Correct Answer) *</b></text>
+<text top="210" left="28" width="101" height="20" font="2">Student ID</text>
+<text top="164" left="588" width="140" height="20" font="8"><b>Exam Results</b></text>
+<text top="344" left="498" width="58" height="17" font="0"><b>Grade:</b></text>
+<text top="344" left="734" width="82" height="17" font="0"><b>76.0000%</b></text>
+<text top="208" left="497" width="123" height="17" font="9">Regular Points:</text>
+<text top="208" left="768" width="45" height="17" font="9">19.00</text>
+<text top="238" left="497" width="112" height="17" font="9">Bonus Points:</text>
+<text top="238" left="779" width="35" height="17" font="9">0.00</text>
+<text top="273" left="497" width="175" height="17" font="0"><b>Total Points Earned:</b></text>
+<text top="273" left="769" width="45" height="17" font="0"><b>19.00</b></text>
+<text top="377" left="806" width="8" height="14" font="10">0</text>
+<text top="377" left="498" width="134" height="14" font="10">Elapsed Time (min):</text>
+<text top="318" left="281" width="95" height="20" font="2">Booklet #:</text>
+<text top="318" left="396" width="36" height="20" font="2">N/A</text>
+<text top="1033" left="27" width="819" height="15" font="11">* If allowed by your instructor, the questions that you missed are listed.  Optionally, your answer and the correct </text>
+<text top="1054" left="27" width="845" height="15" font="11">answer may be listed as allowed by your instructor. Items with an &#34;X&#34; for the Answer are not counted against grade.</text>
+<text top="308" left="497" width="134" height="17" font="0"><b>Possible Points</b></text>
+<text top="308" left="769" width="45" height="17" font="0"><b>25.00</b></text>
+<text top="1141" left="27" width="74" height="11" font="12"><b>Report Date:</b></text>
+<text top="1141" left="126" width="212" height="11" font="13">Thursday, October 05, 2017  1030 : 14</text>
+<text top="1141" left="755" width="34" height="11" font="12"><b>Page:</b></text>
+<text top="1141" left="824" width="14" height="11" font="13">27</text>
+<text top="1167" left="148" width="571" height="11" font="14">University of Iowa - Evaluation and Exam Services - exam-service@uiowa.edu - Telephone (319) 335-0356</text>
+</page>
+<page number="28" position="absolute" top="0" left="0" height="1188" width="918">
+<image top="27" left="21" width="146" height="42" src="/export/freefileconvert/902_d0ffde7452f581e1e7ff8b9a54f1696b20a151e5350d5a7136d73541b85880c8-28_1.jpg"/>
+<text top="116" left="29" width="143" height="17" font="0"><b>Testing Services</b></text>
+<text top="120" left="319" width="283" height="22" font="1">Student Score Report</text>
+<text top="317" left="29" width="194" height="20" font="2">Confirmation: 7037</text>
+<text top="282" left="29" width="95" height="20" font="2">Instructor:</text>
+<text top="282" left="175" width="108" height="20" font="2">Wang, Lihe</text>
+<text top="247" left="29" width="75" height="20" font="2">Course:</text>
+<text top="247" left="175" width="133" height="20" font="2">MATH 1380 - </text>
+<text top="168" left="30" width="137" height="28" font="3"><b>Wu, Yang</b></text>
+<text top="207" left="175" width="95" height="20" font="2">01271986</text>
+<text top="352" left="29" width="138" height="20" font="2">Date/Location:</text>
+<text top="352" left="175" width="144" height="19" font="4">10-05-17 09: 10</text>
+<text top="387" left="29" width="113" height="20" font="2">Description:</text>
+<text top="387" left="175" width="237" height="20" font="2">Exam Midterm 1, Form B</text>
+<text top="445" left="327" width="221" height="22" font="5"><b>Questions Missed *</b></text>
+<text top="508" left="26" width="32" height="14" font="6">3.  C</text>
+<text top="508" left="109" width="39" height="14" font="6">12.  E</text>
+<text top="508" left="191" width="39" height="14" font="6">17.  B</text>
+<text top="508" left="274" width="39" height="14" font="6">25.  A</text>
+<text top="478" left="226" width="425" height="14" font="7"><b>(Format: Question Number. Your Answer, Correct Answer) *</b></text>
+<text top="210" left="28" width="101" height="20" font="2">Student ID</text>
+<text top="164" left="588" width="140" height="20" font="8"><b>Exam Results</b></text>
+<text top="344" left="498" width="58" height="17" font="0"><b>Grade:</b></text>
+<text top="344" left="734" width="82" height="17" font="0"><b>84.0000%</b></text>
+<text top="208" left="497" width="123" height="17" font="9">Regular Points:</text>
+<text top="208" left="768" width="45" height="17" font="9">21.00</text>
+<text top="238" left="497" width="112" height="17" font="9">Bonus Points:</text>
+<text top="238" left="779" width="35" height="17" font="9">0.00</text>
+<text top="273" left="497" width="175" height="17" font="0"><b>Total Points Earned:</b></text>
+<text top="273" left="769" width="45" height="17" font="0"><b>21.00</b></text>
+<text top="377" left="806" width="8" height="14" font="10">0</text>
+<text top="377" left="498" width="134" height="14" font="10">Elapsed Time (min):</text>
+<text top="318" left="281" width="95" height="20" font="2">Booklet #:</text>
+<text top="318" left="396" width="36" height="20" font="2">N/A</text>
+<text top="1033" left="27" width="819" height="15" font="11">* If allowed by your instructor, the questions that you missed are listed.  Optionally, your answer and the correct </text>
+<text top="1054" left="27" width="845" height="15" font="11">answer may be listed as allowed by your instructor. Items with an &#34;X&#34; for the Answer are not counted against grade.</text>
+<text top="308" left="497" width="134" height="17" font="0"><b>Possible Points</b></text>
+<text top="308" left="769" width="45" height="17" font="0"><b>25.00</b></text>
+<text top="1141" left="27" width="74" height="11" font="12"><b>Report Date:</b></text>
+<text top="1141" left="126" width="212" height="11" font="13">Thursday, October 05, 2017  1030 : 14</text>
+<text top="1141" left="755" width="34" height="11" font="12"><b>Page:</b></text>
+<text top="1141" left="824" width="14" height="11" font="13">28</text>
+<text top="1167" left="148" width="571" height="11" font="14">University of Iowa - Evaluation and Exam Services - exam-service@uiowa.edu - Telephone (319) 335-0356</text>
+</page>
+</pdf2xml>
