@@ -1,1 +1,0 @@
-{"Hawk ID": "", "Exam": "", "Title State": false, "Password": "", "Time": "", "Seat File": null, "Title": "", "Course": "", "Content State": false, "Content": ""}
