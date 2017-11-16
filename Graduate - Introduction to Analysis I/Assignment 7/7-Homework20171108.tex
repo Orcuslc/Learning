@@ -96,6 +96,7 @@ Necessity. With the definition of outer measure, for each $\epsilon_n = \epsilon
 \smallskip
 \textbf{Solution:}
 \smallskip
+
 For $x_2 > x_1 $, 
 $$
 \begin{aligned}
@@ -184,12 +185,65 @@ $$
 then $f_1, ~f_2$ are both monotone functions, using Lebesgue's Theorem, $f_1, ~f_2 $ are both differentiable a.e. on $(a, b)$, respectively differentiable on $(a, b)\setminus E_1 $ and $(a, b) \setminus E_2 $ where $m(E_1) = m(E_2) = 0$. Then using the conclusion above, $f = f_1 + f_2 $ is differentiable on $(a, b)\setminus (E_1\cup E_2)$, and hence differentiable a.e. on $(a, b)$.
 
 
-
-
-
 \item  Problem 26, Chapter 6
+
+\smallskip
+\textbf{Solution:}
+No. In fact, let $\{x_i\}$ be the sequence of rational numbers in $[0, 1]$, then for each $i$, there is an irrational number $y_i $, s.t.
+$x_i < y_i < y_{i+1} $. Then
+$$
+TV(f) \ge \sum_{i=1}^{\infty}(|f(x_{i+1})-f(y_i)|+|f(y_i)-f(x_i)|) = \sum_{i=1}^{\infty}2 = \infty.
+$$
+Thus $f$ is not of bounded variation.
+
+\bigskip
 \item  Problem 29, Chapter 6
+
+\smallskip
+\textbf{Solution:}
+
+(a). No. In fact, consider the subinterval $[0, 1]$, let $x_i = \frac{1}{\sqrt{n\pi}} $, and $P_n = \{0, x_{2n+1}, x_{2n},\cdots, x_1\} $, then
+$$
+V(f, P_n) = \frac{1}{\pi}(1+\frac{2}{2n+1}+\frac{2}{2n}+\cdots+\frac{2}{2}+\frac{2}{1}-\cos(1)).
+$$
+Since the sum is a harmonic series, which diverges, we know $f $ is not of bounded variation.
+
+(b). Yes. Consider only the interval $[0, 1]$ since $g$ is an even function. Since $g\in\mathcal{C}^1 $ and is bounded on (0, 1), then 
+$$
+g'(x) = 2x\cos\frac{1}{x}+\sin\frac{1}{x},
+$$
+and $|g'(x)|\le 3 $, thus by the definition of Riemann integral, for any partition $P$,
+$$
+V(g, P) \le \int_{0}^{1}|g'|dx.
+$$
+Thus
+$$
+TV(g) \le\int_{0}^{1}|g'|dx \le 3.
+$$
+\bigskip
 \item  Problem 35, Chapter 6
 
+\smallskip
+\textbf{Solution:}
+First, we have
+$$
+f'(x) = \alpha x^{\alpha-1}\sin(\frac{1}{x^\beta})-\beta x^{\alpha-\beta-1}\cos(\frac{1}{x^\beta}).
+$$
+Since we know $f\in\mathcal{C}^1 $ and $|f|\le 1$ on $(0, 1)$, then according to the definition of Riemann integrals, for any partition $P$ of $[0, 1]$,
+$$
+V(f, P) \le\int_{0}^{1}|f'|dx \le \int_{0}^{1}\alpha x^{\alpha-1}+\beta x^{\alpha-\beta-1}dx.
+$$
+Since $\alpha > \beta > 0$, we have $\alpha-1 > -1$, $\alpha-\beta-1 > -1$, thus 
+$$
+TV(f) \le\int_{0}^{1}\alpha x^{\alpha-1}+\beta x^{\alpha-\beta-1}dx < \infty.
+$$
+When $\alpha \le \beta$, let $P_n = \{0, (\frac{n\pi}{2})^{-\beta}, \cdots, (\frac{\pi}{2})^{-\beta}\}$ be a partition of $[0, 1]$. Then
+$$
+V(f, P_n) = \sum_{i=1}^{n}(\frac{i\pi}{2})^{-\frac{\alpha}{\beta}} \ge \sum_{i=1}^{n}\frac{2}{i}\pi.
+$$
+Since this series is a harmonic series, thus it diverges, which means
+$$
+TV(f) = \infty.
+$$
 \end{enumerate}
 \end{document}
