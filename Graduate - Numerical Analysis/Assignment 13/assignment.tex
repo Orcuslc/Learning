@@ -24,18 +24,25 @@
 
 \begin{document}
 
-\title{Numerical Analysis \\ Assignment 1}
+\title{Numerical Analysis \\ Assignment 13}
 \date{\today}
-\author{Chuan}
+\author{Chuan Lu}
 
 \maketitle
 
-\problem{1}{Rewrite the target function of K-means in matrix form.}
-\solution{Solution}{
-$f(x) = argmin_{\mathcal{S}}\sum_{i=1}^{k}\sum_{x_j\in S_j}\sum_{1\le m\le p}\lvert x_{jl} - x_{jm} \rvert^2.$
+\problem{1}{Problem 5.14}
+\solution{Sol}{
+The result is as follows. We can see the result is better than the simple trapezoidal and simpson rule when $n = 2$ and $n = 3$.
 }
-\begin{lstlisting}[language = MATLAB]
-for
-end
-\end{lstlisting}
+\lstinputlisting{gauss_legendre.m}
+\lstinputlisting{prob1_res.m}
+
+\problem{2}{Problem 5.15}
+
+
+\problem{3}{Problem 5.17}
+
+
+\problem{4}{Problem 5.19}
+
 \end{document}
