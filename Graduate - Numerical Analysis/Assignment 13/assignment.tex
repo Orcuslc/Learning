@@ -35,14 +35,69 @@
 The result is as follows. We can see the result is better than the simple trapezoidal and simpson rule when $n = 2$ and $n = 3$.
 }
 \lstinputlisting{gauss_legendre.m}
+\lstinputlisting{prob1.m}
 \lstinputlisting{prob1_res.m}
 
 \problem{2}{Problem 5.15}
-
+\solution{Sol}{
+In fact, this problem is just (3) in Problem 1, the result of which is the third column listed above. When compared to Newton-Cotes, we can see that Newton-Cotes formula does not converge when $n$ gets larger, but Gauss-Lengendre quadrature seems to converge when $n$ becomes larger. 
+}
 
 \problem{3}{Problem 5.17}
-
+\solution{Sol}{
+From Problem 4.20 we know, with weight function $w(x) = -\ln(x)$,
+$$
+\varphi_0(x) = 1, ~\varphi_1(x) = \frac{12}{\sqrt{7}}(x-\frac{1}{4}), ~\varphi_2(x) = \frac{\sqrt{647}}{180\sqrt{7}}(x^2-\frac{5}{7}(x-\frac{1}{4})-\frac{1}{9}) = \frac{\sqrt{647}}{180\sqrt{7}}(x^2-\frac{5}{7}x+\frac{17}{252})
+$$
+Thus the roots of $\varphi_2(x)$ are
+$$
+x_{1, 2} = \frac{15\pm\sqrt{106}}{42}
+$$
+and by (5.3.7),
+$$
+w_1+w_2 = 1,
+$$
+$$
+w_1x_1+w_2x_2 = \frac{1}{2}
+$$
+we get
+$$
+w_1 = \frac{1}{2}+\frac{3}{\sqrt{106}}, ~w_2 = \frac{1}{2}-\frac{3}{\sqrt{106}}.
+$$
+Hence, 
+$$
+I(f) = (\frac{1}{2}+\frac{3}{\sqrt{106}})f(\frac{15+\sqrt{106}}{42})+(\frac{1}{2}-\frac{3}{\sqrt{106}})f(\frac{15-\sqrt{106}}{42}).
+$$
+}
 
 \problem{4}{Problem 5.19}
+\solution{Sol}{
+From Problem 4.24 we know, 
+$$
+S_n(x) = \frac{1}{n+1}T_{n+1}'(x) = \frac{1}{\sqrt{1-x^2}}\sin((n+1)\cos^{-1}x).
+$$
+Then the roots of $S_{n}(x)$ are
+$$
+x_{n, j} = \cos(\frac{j\pi}{n+1}), ~j = 1, 2, \cdots, n.
+$$
+From the recursion relation we know $a_n = 2$, $c_n = \frac{\gamma_{n}}{\gamma_{n-1}} = 1$. Since 
+$$
+\gamma_0 = (S_0, S_0) = \int_{-1}^{1}\sqrt{1-x^2}dx = \frac{\pi}{2},
+$$
+we know $\gamma_n  = \frac{\pi}{2}$. Thus
+$$
+w_j = \frac{-a_n\gamma_n}{S_n'(x_j)S_{n+1}(x_j)} = -\frac{\pi\sin^2\frac{j\pi}{n+1}}{(n+1)\cos(j\pi)} = \left\{
+\begin{aligned}
+&-\frac{\pi}{n+1}\sin^2\frac{j\pi}{n+1}, ~n = 2k \\
+&\frac{\pi}{n+1}\sin^2\frac{j\pi}{n+1}, ~n=2k+1
+\end{aligned}
+\right.
+$$
+From (5.3.10) we also know the error
+$$
+E_n = \frac{\gamma_n}{A_n^2(2n)!}f^{(2n)}(\eta) = \frac{\pi}{2^{n+1}(2n)!}f^{(2n)}(\eta),
+$$
+for some $\eta\in [-1, 1]$.
+}
 
 \end{document}
