@@ -1,0 +1,68 @@
+%!TEX program = xelate
+\input{structure.tex}
+\usepackage{epstopdf}
+\usepackage{graphics}
+\usepackage{subfig}
+\usepackage{listings}
+\lstset{
+  breaklines=true,
+  xleftmargin=25pt,
+  xrightmargin=25pt,
+  aboveskip=0pt,
+  belowskip=10pt,
+  basicstyle=\ttfamily,
+  showstringspaces=false,
+  frame=ltrb,
+  tabsize=4,
+  numbers=left,
+  numberstyle=\small,
+  numbersep=8pt,
+  morekeywords={*, factorial, sum, erlang},
+  keywordstyle=\color{blue!70}, commentstyle=\color{red!50!green!50!blue!50},
+}
+\DeclareGraphicsExtensions{.eps,.ps,.jpg,.bmp}
+
+\begin{document}
+
+\title{Introduction to Analysis \\ Assignment 8}
+\date{\today}
+\author{Chuan Lu}
+
+\maketitle
+
+\problem{1}{Problem 37, Page 123}
+\solution{Sol}{
+(i) Let
+$$
+f(x) = \left\{
+\begin{aligned}
+&x\sin(\frac{1}{x}), ~0 < x \le 1, \\
+&0, ~x = 0
+\end{aligned}
+\right.
+$$
+Then $f$ is continuous on $(0, 1]$. Since $\lim\limits_{x\to 0^+}f(x) = 0 = f(0)$, $f$ is continuous on $[0, 1]$. For $x_1, x_2 \in [\epsilon, 1]$ where $\epsilon > 0$, 
+$$
+\begin{aligned}
+|f(x_1)-f(x_2)| &= |x_1\sin\frac{1}{x_1}-x_2\sin\frac{1}{x_2}| = |(x_1-x_2)\sin\frac{1}{x_1}+x_2(\sin\frac{1}{x_1}-\sin\frac{1}{x_2})| \\
+&\le |x_1-x_2|\sin\frac{1}{x_1} + 2x_2|\cos\frac{1}{2}(\frac{1}{x_1}+\frac{1}{x_2})\sin\frac{1}{2}(\frac{1}{x_1}-\frac{1}{x_2})| \\
+&\le |x_1-x_2|\sin\frac{1}{x_1} + 2x_2|\sin\frac{x_2-x_1}{2x_1x_2}| \le |x_1-x_2|\sin\frac{1}{x_1}+2x_2|\frac{x_2-x_1}{2x_1x_2}| \\
+&= |x_1-x_2|(\sin\frac{1}{x_1}+\frac{1}{x_1}) \le |x_1-x_2|(1+\frac{1}{\epsilon}).
+\end{aligned}
+$$ 
+Thus $f$ is Lipschitz, with Proposition 7 we know $f$ is absolutely continuous. 
+
+However, with Problem 35 we know $f$ is not of bounded variation on $[0, 1]$, and with Remark on Page 122 we know $f$ is not absolutely continuous on $[0, 1]$.
+}
+
+\problem{2}{Problem 39, Page 123}
+
+\problem{3}{Problem 41, Page 123}
+
+\problem{4}{Problem 49, Page 128}
+
+\problem{5}{Problem 56, Page 129}
+
+\problem{6}{Problem 59, Page 129}
+
+\end{document}
