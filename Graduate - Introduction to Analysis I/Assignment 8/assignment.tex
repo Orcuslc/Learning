@@ -53,9 +53,34 @@ $$
 Thus $f$ is Lipschitz, with Proposition 7 we know $f$ is absolutely continuous. 
 
 However, with Problem 35 we know $f$ is not of bounded variation on $[0, 1]$, and with Remark on Page 122 we know $f$ is not absolutely continuous on $[0, 1]$.
+
+(ii) If not, then there is a $\epsilon > 0$, s.t. for each $\delta > 0$, there is a finite disjoint collection $\{(a_k, b_k)\}$ of open intervals satisfying $\sum\limits_{k=1}^{n}(b_k-a_k) < \delta $, s.t. $\sum\limits_{k=1}^{n}|f(b_k)-f(a_k)| \ge \epsilon $. As suggested in conditions, for each $c > 0$, $f$ is absolutely continuous on $[c, 1]$. Then these open intervals must lie in $[0, c]$ for every $c$. With the continuity of $f$ on $[0, 1]$, there exists $c > 0$, s.t. $0 < f(c) - f(0) <\epsilon$. If we take $\delta = c$, because $f$ is increasing, $\sum\limits_{k=1}^{n}(b_k-a_k) < f(c) - f(0) <\epsilon$. It contradicts with our assumption. Hence $f$ is absolutely continuous on $[0, 1]$.
+
+(iii) First we show $f$ is absolutely continuous by showing that it satisfies the condition in (ii). For each $c > 0$, since on $[c, 1]$ we have 
+$$ 
+\sqrt{x_1}-\sqrt{x_2}| = \frac{|x_1-x_2|}{\sqrt{x_1}+\sqrt{x_2}} \le \frac{|x_1-x_2|}{2\sqrt{c}},
+$$
+we know for each $\epsilon > 0$, pick $\delta = 2\sqrt{c}\epsilon$, then for each collection $\{(a_k, b_k)\}$ satisfying $\sum\limits_{k=0}^{n}|b_k-a_k| < \delta $,
+$$
+\sum_{k=1}^{n}|f(b_k)-f(a_k)| < \sum_{k=1}^{n}\frac{|x_1-x_2|}{2\sqrt{c}} < \epsilon.
+$$
+Hence $f$ is absolutely continuous on $[c, 1]$. Since $f$ is increasing, we know $f$ is absolutely continuous on $[0, 1]$.
+
+On the other hand, if there exists $\lambda > 0$, s.t. 
+$$
+|f(x_1)-f(x_2)| < \lambda|x_1-x_2|
+$$
+for each $x_1, x_2 $, then if we pick $\max(x_1, x_2) < \frac{1}{4\lambda^2}$, from the argument above we know
+$$
+|f(x_1)-f(x_2)| = \frac{|x_1-x_2|}{\sqrt{x_1}+\sqrt{x_2}} > \lambda|x_1-x_2|.
+$$
+Hence $f$ is not Lipschitz.
 }
 
 \problem{2}{Problem 39, Page 123}
+\solution{Sol}{
+
+}
 
 \problem{3}{Problem 41, Page 123}
 
