@@ -79,10 +79,22 @@ Hence $f$ is not Lipschitz.
 
 \problem{2}{Problem 39, Page 123}
 \solution{Sol}{
+Suppose $E$ is a measurable set, then for each $\epsilon' > 0$, there exists an open set $O\supset E$, and $m(O\setminus E) < \epsilon'$. Let $O = \bigcup\limits_{k=1}^{\infty} (a_k, b_k)$ be the open decomposition of $O$, then $(a_i, b_i)$ are pairwise disjoint.
 
+If $f$ is absolutely continuous, by Problem 38, for each $\epsilon > 0$, there is a $\delta > 0$, for each $\{(a_k, b_k)\}$ satisfying $\sum\limits_{k=1}^{\infty}(b_k-a_k) < \delta$, $\sum\limits_{k=1}^{\infty}|f(b_k)-f(a_k)| < \epsilon $. In fact, if we take $\delta_1 < \delta - \epsilon'$, then since $f$ is increasing, $f(E) \in f(\cup\{(a_k, b_k)\})$ when $E \in \cup\{(a_k, b_k)\}$, thus 
+$$
+m^*(f(E)) < m(f(\cup\{(a_k, b_k)\})) < \delta.
+$$
+
+On the other hand, since open sets are measurable, with Problem 39 we know the reverse holds.
 }
 
 \problem{3}{Problem 41, Page 123}
+\solution{Sol}{
+(i) With the continuity of $f$ and the compactness of $[a, b]$, we know the maximum and minimum of $f$ on $[a, b]$ exists, thus $f$ maps $[a, b]$ to a closed set. Thus $f$ maps a $F_\sigma $ set to a $F_\sigma$ set.
+
+(ii) Problem 40 tells $f$ maps a set of measure zero to a set of measure zero. Since each measurable set could be represented as a union of a measure-zero set and a $F_\sigma $ set, we know $f$ maps a measurable set to a measurable set.
+}
 
 \problem{4}{Problem 49, Page 128}
 
