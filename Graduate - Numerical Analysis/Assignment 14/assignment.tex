@@ -31,7 +31,46 @@
 \maketitle
 
 \problem{1}{Problem 5.23}
-\solution{Sol}{
+\solution{(a)}{
+Integrate (5.4.2) with respect to x on $[0, 1]$, we get from the convergence of the function series,
+$$
+\int_{0}^{1}(\frac{t}{e^t-1}e^{tx}-\frac{t}{e^t-1})dx = \sum_{j = 1}^{\infty}\frac{t^j}{j!}\int_{0}^{1}B_j(x)dx,
+$$
+thus
+$$
+1-\frac{t}{e^t-1} = \sum_{j=1}^{\infty}\frac{t^j}{j!}\int_{0}^{1}B_j(x)dx,
+$$
+with Taylor expansion of the left term of (5.4.5), we have $B_0 = 1$, thus
+$$
+\sum_{j=1}^{\infty}(B_j + \int_{0}^{1}B_j(x)dx)\frac{t^j}{j!} = 0.
+$$
+The left term can be regarded as a Taylor series of a function $f$ at $t = 0$ which satisfies $f(0) = 0$. By the uniqueness of Taylor expansion of a analytic function, we know $f\equiv 0$. Then for all $j > 0$,
+$$
+B_j + \int_{0}^{1}B_j(x)dx = 0.
+$$
+Now we know $B_0 = 1, ~B_1 = -\frac{1}{2}$, thus from definition (5.4.5),
+$$
+\frac{t}{e^t-1}+\frac{1}{2}t = 1+\sum_{j=2}^{\infty}B_j\frac{t^j}{j!} = \frac{t}{2}\frac{e^t+1}{e^t-1} \equiv g(t).
+$$
+We have
+$$
+g(-t) = -\frac{t}{2}\frac{e^{-t}+1}{e^{-t}-1} = -\frac{t}{2}\frac{1+e^t}{1-e^t} = g(t),
+$$
+hence $g(t)$ is an even function. Substitute $t = -t$ into last term,
+$$
+1+\sum_{j=2}^{\infty}(-1)^{j}B_j\frac{t^j}{j!} = g(-t) = g(t) = 1+\sum_{j=2}^{\infty}B_j\frac{t^j}{j!}.
+$$
+By simplification,
+$$
+\sum_{j = 1}^{\infty}B_{2j+1}\frac{t^{2j+1}}{(2j+1)!} = 0.
+$$
+With the same arguments and the uniqueness of Taylor expansion, we have
+$$
+B_{2j+1} = 0, ~\text{for all}~ j \ge 1.
+$$
+}
+\solution{(b)}{
+
 }
 
 \problem{2}{Problem 5.31}
