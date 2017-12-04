@@ -1,0 +1,13 @@
+function res = romberg(f, x, n)
+% Romberg extrapolation
+% f: function
+% x: interval: [a, b]
+% n: order
+a = x(1); b = x(2);
+k = 0; m = 1;
+T = zeros(n, n);
+T(1, 1) = (feval(f, a)+feval(f, b))/2*(b-a);
+
+for i = 2:m
+    eval_points = a + (2*linspace(1, 2^(n-1), 2^(n-1))-1)/(2^n)*(b-a);
+    sums
