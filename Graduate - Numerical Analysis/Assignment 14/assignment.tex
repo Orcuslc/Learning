@@ -98,7 +98,7 @@ When comparing with Simpson's rule and trapezoidal rule, we can find that romber
 }
 
 \problem{3}{Problem 5.37}
-\lstinputlisting{gauss_laguerre.m}
+\lstinputlisting[language = MATLAB]{gauss_laguerre.m}
 \solution{Sol}{
 (a) By (5.6.11),
 $$
@@ -121,8 +121,50 @@ The result is as follows, from left to right are (a), (b), (c); the first part i
 \lstinputlisting[language = MATLAB]{res32.m}
 
 
-
-
 \problem{4}{Problem 5.40}
+\solution{(a)}{
+Let $n \ge 1, ~h = b/n, ~x_j = jh $ for $j = 0, 1, \cdots , n$. For $x_{j-1}\le x\le x_j $, define
+$$
+f_n(x) = \frac{1}{h}((x_j-x)f(x_{j-1}) + (x-x_{j-1})f(x_j)),
+$$
+then
+$$
+\begin{aligned}
+&I_n(f) = \sum_{j=1}^{n}\int_{x_{j-1}}^{x_j}\frac{1}{x^\alpha}\frac{1}{h}((x_j-x)f(x_{j-1})+(x-x_{j-1})f(x_j))dx = \sum_{k=0}^{n}w_kf(x_k), \\
+\text{with} \\
+&w_0 = \frac{1}{h}\int_{x_0}^{x_1}\frac{1}{x^\alpha}(x_1-x)dx, ~w_n = \frac{1}{h}\int_{x_{n-1}}^{x_n}\frac{1}{x^\alpha}(x-x_{n-1})dx, \\
+&w_j = \frac{1}{h}\int_{x_{j-1}}^{x_j}(x-x_{j-1})\frac{1}{x^\alpha}dx+\frac{1}{h}\int_{x_j}^{x_{j+1}}(x_{j+1}-x)\frac{1}{x^\alpha}dx.
+\end{aligned}
+$$
+To simplify, let $x-x_{j-1} = uh $,
+$$
+\frac{1}{h}\int_{x_{j-1}}^{x_j}(x-x_{j-1})\frac{1}{x^\alpha}dx = \frac{1}{h^{\alpha-1}}\int_{0}^{1}\frac{u}{(j-1+u)^\alpha}du,
+$$
+$$
+\frac{1}{h}\int_{x_{j-1}}^{x_j}(x_j-x)\frac{1}{x^\alpha}dx = \frac{1}{h^{\alpha-1}}\int_{0}^{1}\frac{1-u}{(j-1+u)^\alpha}du.
+$$
+Define
+$$
+\phi_1(k) = \int_{0}^{1}\frac{u}{(k-1+u)^\alpha}dx, ~\phi_2(k) = \int_{0}^{1}\frac{1-u}{(k-1+u)^\alpha}dx,
+$$
+then
+$$
+w_0 = \frac{1}{h^{\alpha-1}}\phi_2(1), ~w_n = \frac{1}{h^{\alpha-1}}\phi_1(n), ~w_j = \frac{1}{h^{\alpha-1}}(\phi_1(j)+\phi_2(j+1)).
+$$
+From (5.6.22) we know,
+$$
+|I(f)-I_n(f)| \le \frac{h^2}{8}\lVert f''\rVert_{\infty}\int_{0}^{b}\frac{1}{x^\alpha}dx.
+$$
+}
+\solution{(b)}{
+The code and result are as follows. For (ii), after a change of variable, we get
+$$
+\int_{0}^{1}\frac{\pi/(2\sin u)}{u^{1-\pi/2}}du,
+$$
+and $f = \frac{1}{\sin u}$ still has a singularity on $u = 0$.
+}
+\lstinputlisting[language = MATLAB]{product_trapezoidal.m}
+\lstinputlisting[language = MATLAB]{prob4.m}
+\lstinputlisting[language = MATLAB]{res4.m}
 
 \end{document}
