@@ -90,14 +90,38 @@ As proved in (a), $B_{2j+1} = 0 $ for all $j \ge 1$, the conclusion holds.
 }
 
 \problem{2}{Problem 5.31}
-\lstinputlisting{romberg.m}
-\lstinputlisting{prob2.m}
-\lstinputlisting{res2.m}
+\lstinputlisting[language = MATLAB]{romberg.m}
+\lstinputlisting[language = MATLAB]{prob2.m}
+\lstinputlisting[language = MATLAB]{res2.m}
 \solution{Cmp}{
 When comparing with Simpson's rule and trapezoidal rule, we can find that romberg extrapolation converges quicker than the corresponding order of the two rules, but slower than the $2^N $ order of the two rules.
 }
 
 \problem{3}{Problem 5.37}
+\lstinputlisting{gauss_laguerre.m}
+\solution{Sol}{
+(a) By (5.6.11),
+$$
+\int_{0}^{\infty}e^{-x^2}dx = \int_{0}^{\infty}e^{-x}e^{x-x^2}dx.
+$$
+
+(b) By (5.6.11),
+$$
+\int_{0}^{\infty}\frac{x}{(1+x^2)^2}dx = \int_{0}^{\infty}e^{-x}\frac{xe^x}{(1+x^2)^2}dx.
+$$
+
+(c) By (5.6.11),
+$$
+\int_{0}^{\infty}\frac{\sin x}{x}dx = \int_{0}^{\infty}e^{-x}\frac{e^x\sin x}{x}dx.
+$$
+
+The result is as follows, from left to right are (a), (b), (c); the first part is the result, and the second part is the error.
+}
+\lstinputlisting[language = MATLAB]{res31.m}
+\lstinputlisting[language = MATLAB]{res32.m}
+
+
+
 
 \problem{4}{Problem 5.40}
 
