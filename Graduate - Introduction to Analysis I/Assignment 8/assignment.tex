@@ -1,4 +1,3 @@
-%!TEX program = xelate
 \input{structure.tex}
 \usepackage{epstopdf}
 \usepackage{graphics}
@@ -179,9 +178,45 @@ m(g(A)) = m(g(E)) + m(g(G)) = \int_{E\cup G}g' = \int_{A}g'.
 $$
 }
 \solution{(v)}{
-
+Since $\varphi$ is a simple function, assume $\varphi = \sum\limits_{k = 1}^{n}c_k1_{E_k} $. Since $E_k $ are measurable sets, we know $g((a, b)) \cap E_k $ are all measurable. Denote $D_k = g((a, b))\cap E_k $. Since $g$ is strictly increasing and continuous, we know $g^{-1}(D_k)$ is measurable, then by addivity of domain and (iv),
+$$
+\int_{a}^{b}\varphi(g(x))g'(x)dx = \sum_{k=1}^{n}\int_{g^{-1}(D_k)}c_kg'(x)dx = \sum_{k=1}^{n}c_km(g^{-1}(D_k)) = \int_{c}^{d}c_k1_{g^{-1}(D_k)} = \int_{c}^{d}\varphi(x)dx.
+$$
+}
+\solution{(vi)}{
+By Simple Approximation Lemma, for any $\epsilon > 0$, there are simple functions $\varphi$ and $\psi$, s.t. 
+$$
+0 \le \varphi \le f \le \psi, ~0\le\psi-\varphi < \epsilon.
+$$
+Since $g$ is strictly increasing and absolutely continuous, $g'$ exists a.e., integrable on $[a, b]$, and $g' > 0$. Then
+$$
+\int_a^b \varphi(g(x))g'(x)dx \le \int_a^b f(g(x))g'(x)dx \le \int_a^b\psi(g(x))g'(x)dx.
+$$
+By (v) we know
+$$
+\int_c^d \varphi(y)dy \le \int_a^b f(g(x))g'(x)dx \le \int_c^d \psi(y)dy,
+$$
+and by montonicity of integrals,
+$$
+\int_c^d \varphi(y)dy \le \int_c^d f(y)dy \le \int_c^d \psi(y)dy,
+$$
+and
+$$
+\int_c^d\psi(y)dy - \int_c^d\varphi(y)dy = \int_c^d(\psi - \varphi)dy \le \epsilon(d-c).
+$$
+By the arbitrariness of $\epsilon$,
+$$
+\int_c^d\psi(y)dy - \int_c^d\varphi(y)dy = 0.
+$$
+Hence
+$$
+\int_a^b f(g(x))g'(x)dx = \int_c^d f(y)dy.
+$$
 }
 
 \problem{6}{Problem 59, Page 129}
+\solution{Sol}{
+
+}
 
 \end{document}
