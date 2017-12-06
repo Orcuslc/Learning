@@ -96,9 +96,91 @@ On the other hand, since open sets are measurable, with Problem 39 we know the r
 (ii) Problem 40 tells $f$ maps a set of measure zero to a set of measure zero. Since each measurable set could be represented as a union of a measure-zero set and a $F_\sigma $ set, we know $f$ maps a measurable set to a measurable set.
 }
 
+\newcommand{\df}{\text{Diff}}
 \problem{4}{Problem 49, Page 128}
+\solution{Sol}{
+Since $f$ is differentiable a.e. on $(a, b)$, we first show that $\{\df_{1/n}f\}$ converges pointwise a.e. to $f'$ on $(a, b)$. Suppose $f$ is differentiable on $E\in (a, b)$, with $m((a, b)\setminus E) = 0$. For $\forall x$ in $E$, we know for any $n > 0$, $\underline{D}f(x) \le \df_{1/n}f(x) \le \overline{D}f(x)$, so 
+$$
+\underline{D}f(x) \le \lim_{n\to\infty}\df_{1/n}f(x) \le \overline{D}f(x).
+$$
+Since $\underline{D}f(x) = \overline{D}f(x)$, we know
+$$
+\lim_{n\to\infty}\df_{1/n}f(x) = f'(x), ~\forall x\in E.
+$$
+Thus
+$$
+\int_{a}^{b}\lim_{n\to\infty}\df_{1/n}f = \int_a^b f'.
+$$
+By fundamental theorem of integral (or by (29)), we know
+$$
+\lim_{n\to\infty}\int_a^b\df_{1/n}f = f(b)-f(a).
+$$
+Hence,
+$$
+\int_{a}^{b}\lim_{n\to\infty}\df_{1/n}f = \lim_{n\to\infty}\int_a^b\df_{1/n}f
+$$
+is equivlent to
+$$
+\int_{a}^{b} f' = f(b)-f(a).
+$$
+}
 
 \problem{5}{Problem 56, Page 129}
+\solution{(i)}{
+Since $O$ is an open set, let
+$$
+O = \bigcup_{n=1}^\infty (a_i, b_i)
+$$
+be its open decomposition, where $\{(a_i, b_i)\}$ are pairwise disjoint. Then since $g$ is absolutely continuous thus continuous, and $g$ is strictly increasing, $g$ maps an open interval to an open interval (in fact, this has been proved in a midterm exam). Hence, for any open interval $(a, b)$, by Corollary 12 we have
+$$
+\int_{a}^{b}g'(x) = g(b)-g(a) = m(g((a, b))).
+$$
+By countable addivity of measure and integral,
+$$
+\int_{O}g' = \sum_{i=1}^{\infty}\int_{a_i}^{b_i}g' = \sum_{i=1}^{\infty}m(g((a_i, b_i))) = m(g(O)).
+$$
+}
+\solution{(ii)}{
+We know that the intersection of two open sets is an open set, then by induction we know
+$$
+m(g(\cap_{i=1}^n O_i)) = \int_{\cap_{i=1}^n O_i}g', ~\forall n > 0.
+$$
+Let $E = \cap_{i=1}^{\infty}O_i $, then first we have
+$$
+m(g(E)) = m(g(\cap_{i=1}^{\infty} O_i)) \le m(g(\cap_{i=1}^{n} O_i)) = \int_{\cap_{i=1}^{n} O_i} g', ~\forall n.
+$$
+The left side of this inequity is independent of $n$, thus
+$$
+m(g(E)) \le \int_{\cap_{i=1}^{\infty} O_i} g' = \int_{E}g'.
+$$
+On the other hand, we know
+$$
+\int_{E} g' \le m(g(E))
+$$
+by the same arguments. Hence
+$$
+m(g(E)) = \int_{E}g'.
+$$
+}
+\solution{(iii)}{
+In a midterm exam we have proved that a strictly increasing and continuous function maps a null set to a null set, thus $m(g(E)) = 0$. By Theorem 10 we know $g'$ is integrable on $[a, b]$, then 
+$$
+\int_{E} g' = 0.
+$$
+}
+\solution{(iv)}{
+For any measurable subset $A$, by Theorem 11 of Chapter 2, there is a $G_\delta $ set $G \supset A$, and $m(G\setminus A) = 0$. Let $E = G\setminus A$, by (ii) and (iii), we have
+$$
+m(g(E)) = \int_{E} g', ~m(g(G)) = \int_{G}g'.
+$$
+Since $E\cap G = \emptyset$, by addivity of measure and integral,
+$$
+m(g(A)) = m(g(E)) + m(g(G)) = \int_{E\cup G}g' = \int_{A}g'.
+$$
+}
+\solution{(v)}{
+
+}
 
 \problem{6}{Problem 59, Page 129}
 
