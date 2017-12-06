@@ -216,7 +216,22 @@ $$
 
 \problem{6}{Problem 59, Page 129}
 \solution{Sol}{
-
+Define $F(x) = \int_{a}^{x}f(s)ds $, then $F$ is absolutely continuous and thus its derivative exists a.e. on $(a, b)$, and $F' = f(x)$ a.e. by Theorem 14. Then
+$$
+\begin{aligned}
+\frac{d}{dx}\int_{g(a)}^{g(x)}f(s)ds &= \lim_{n\to\infty}n\int_{g(x)}^{g(x+\frac{1}{n})} f(s)ds = \lim_{n\to\infty}n(F(g(x+1/n))-F(g(x))) \\
+&= \lim_{n\to\infty}nf(g(x+\xi))(g(x+1/n)-g(x)) = \lim_{n\to\infty}f(g(x+\xi))g'(x+\eta), ~\xi, \eta\in [0, 1/n] \\
+&=f(g(x))g'(x), ~a.e.
+\end{aligned}
+$$
+In the deduction we used the mean value theorem, and used the property that $F, g$ are absolutely continuous and their derivatives exists a.e.. Hence, 
+$$
+\frac{d}{dx}(\int_{g(a)}^{g(x)}f(s)ds - \int_a^x f(g(t))g'(t)dt) = f(g(x))g'(x) - f(g(x))g'(x) = 0, ~a.e.
+$$
+Thus by Lemma 13,
+$$
+\int_{g(a)}^{g(x)}f(s)ds = \int_a^x f(g(t))g'(t)dt.
+$$
 }
 
 \end{document}
