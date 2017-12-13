@@ -187,7 +187,8 @@ class Window(QMainWindow):
 		self.show()
 
 	def _parse(self, row):
-		[name, hawkid, building, room, seat] = row
+		[name, hawkid, seat] = row
+		[building, room, seat] = seat.split('-')
 		email = hawkid + "@iowa.uiowa.edu"
 		if self._title_state:
 			title = self._title.format(BUILDING = building, ROOM = room, SEAT = seat)
