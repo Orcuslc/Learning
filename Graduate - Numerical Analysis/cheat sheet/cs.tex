@@ -1,0 +1,129 @@
+%!TEX program = xelate
+\input{structure.tex}
+\usepackage{epstopdf}
+\usepackage{graphics}
+\usepackage{subfig}
+\usepackage{listings}
+\lstset{
+  breaklines=true,
+  xleftmargin=25pt,
+  xrightmargin=25pt,
+  aboveskip=0pt,
+  belowskip=10pt,
+  basicstyle=\ttfamily,
+  showstringspaces=false,
+  frame=ltrb,
+  tabsize=4,
+  numbers=left,
+  numberstyle=\small,
+  numbersep=8pt,
+  morekeywords={*, factorial, sum, erlang},
+  keywordstyle=\color{blue!70}, commentstyle=\color{red!50!green!50!blue!50},
+}
+\DeclareGraphicsExtensions{.eps,.ps,.jpg,.bmp}
+
+\newcommand{\tb}{\textbf}
+
+\begin{document}
+\tb{Taylor.} $\mathbf{R_{n+1}(x)} = \frac{1}{n!}\int_{x_0}^{x}(x-t)^nf^{(n+1)}(t)dt = \frac{(x-x_0)^{n+1}}{(n+1)!}f^{(n+1)}(\xi) $. ~$\mathbf{\ln(1+x)} = \sum_{i=1}^{n}(-1)^{i-1}\frac{x^i}{i} $. ~$\mathbf{\sin x} = \sum_{i=1}^{n-1}(-1)^{i-1}\frac{x^{2i-1}}{(2i-1)!}+(-1)^n\frac{x^{2n+1}}{(2n+1)}\cos\xi $. ~$\mathbf{\cos x} = \sum_{i=0}^{n-1}(-1)^{i}\frac{x^{2i}}{(2i)!}+(-1)^n\frac{x^{2n}}{(2n)!}\cos\xi $. ~$\mathbf{(1+x)^\alpha} = 1+C_{\alpha}^1x+C_{\alpha}^2x^2+\cdots+C_{\alpha}^nx^n+C_{\alpha}^{n+1}\frac{x^{n+1}}{(1+\xi)^{n+1-\alpha}}. ~C_\alpha^i = \frac{\alpha(\alpha-1)\cdot(\alpha-i+1)}{i!} $. ~$\tan^{-1}(x) = x-\frac{1}{3}x^3+\frac{1}{5}x^5+\cdots + (-1)^n\frac{x^{2n+1}}{2n+1} $, ~$\frac{1}{1+x} = 1-x+x^2-\cdots+(-1)^nx^n $. ~$\frac{1}{\sqrt{1+x}} = 1-\frac{1}{2}x+\frac{1*3}{2*4}x^2+\cdots +(-1)^n\frac{(2n-1)!!}{(2n)!!}x^n $.
+
+\tb{Mean value.} Diff: $f$ cont and diff; $f(b)-f(a) = f'(\xi)(b-a)$; ~Int: $w > 0$ int, $f$ cont. $\int_a^bw(x)f(x)dx = f(\xi)\int_a^bw(x)dx $.
+
+\tb{float num.} $\sigma(0.a_1a_2\cdot a_t)\beta^e$. ~sig. digits: e.g. $0.02138, 0.02144$: 2; $0.333, 0.33$: 2; (minus 1).
+~\tb{loss of significance:} solve by rationalize; (Or Taylor expansion) ~\tb{Machine epsilon}: called unit roundoff, chop: $\beta^{-t+1} $, round: $\frac{1}{2}\beta^{-t+1} $. the smallest num s.t. $fl(1+\delta) > 1$.
+
+
+\tb{Conv Order:} 1: $|x-x_{n+1}|\le c|x-x_{n}|^p $ for some $c > 0$, $p \ge 1$. ~2: $\lim_{n\to\infty}\frac{|x-x_{n+1}|}{|x-x_n|^p} = c $ (2 also called asymptotic rate);
+
+\tb{Bisection:} cont. (intermediate value thm). ~Adv: 1: guaranteed to conv. 2: reasonal error bound; ~Disadv: 1: doesn't take adv of machine eps. 2: conv too slow.
+
+\tb{Newton:} $x_{n+1} = x_n-\frac{f(x_n)}{f'(x_n)} $, regarded as fixed-point iter $g(x) = x - \frac{f(x)}{f'(x)}$; ~Conv order and rate: Taylor expansion near $\alpha$, $\lim_{n\to\infty}\frac{\alpha-x_{n+1}}{(\alpha-x_n)^2} = -\frac{f''(\alpha)}{2f'(\alpha)} $ (Assumption: $f'(\alpha)\ne 0$, $f, f', f''$ cont, $x_0 $ sufficiently close to $\alpha$, s.t. $M = \frac{\max|f''|}{\min2|f'|})$, $M|\alpha-x_0| < 1$). ~Error estimate: $\alpha-x_n = x_{n+1}-x_n $ (by mean value thm, let $f'(\xi) = f'(x_n)$); ~Adv: quick. ~Disadv: 1: doesn't guaranteed to conv. 2: need to know $f'$;
+
+\tb{Secant:} $x_{n+1} = x_n - \frac{x_n-x_{n-1}}{f(x_n)-f(x_{n-1})}f(x_n) $. ~Error: $\alpha-x_{n+1} = -(\alpha-x_{n-1})(\alpha-x_n)\frac{f[x_{n-1}, x_n, \alpha]}{f[x_{n-1}, x_n]} = -()()\frac{f''(\xi_n)}{2f'(\eta_n)}$. ~Conv: $p = \frac{\sqrt{5}+1}{2}$, assumption: $f\in C^2, f'(\alpha) \ne 0$, $\delta = \max\{M|e_0|, M|e_1|\} < 1$, let $I = [\alpha-\epsilon, \alpha+\epsilon]$, s.t. $f'\ne 0$ in $I$. Then $M|e_{n+1}|\le \delta^{q_{n+1}}, q_{n+1} = q_n+q_{n-1} $.
+
+\tb{Fixed point iter:} $x = g(x) \to x_{n+1}=g(x_n) $. ~\tb{Exist:} assumption: $g$ cont, $g([a, b])\subset [a, b]$, then $x = g(x)$ has at least one sol in $[a, b]$ (pf: f = g(x)-x, intermediate val thm). ~\tb{Unique:} (\tb{First case:} exist cond, $|g(x)-g(y)| \le \lambda|x-y|, 0<\lambda < 1$. $\to$ for any $x_0 $, $x_n\to\alpha$, $|\alpha - x_n| \le \frac{\lambda^n}{1-\lambda}|x_1-x_0|$) ~(\tb{2nd case:} exist cond, $g$ diff. $\lambda = \max|g'| < 1$ $\to$ 1st conclusion, and $\lim\frac{\alpha-x_{n+1}}{\alpha-x_n} = g'(\alpha)$). ~(\tb{3rd case, local ver.} $g\in C^1 $ in neighbour of $\alpha, |g(\alpha)| < 1$, $x_0$ sufficiently close (s.t. $g'(x) < 1$ in this interval) to $\alpha$. $\to$ 2nd conclusion)
+
+\tb{Higher order one-point:} $g\in C^{p}, p\ge 2 $ in neighbour of $\alpha$, $g'(\alpha) = \cdots = g^{(p-1)}(\alpha) = 0, g^{(p)}(\alpha)\ne 0 $, $x_0$ sufficiently close to $\alpha$; $\to$ order $p$, $\lim\frac{\alpha-x_{n+1}}{(\alpha-x_n)^p} = (-1)^{p-1}\frac{g^{(p)}(\alpha)}{p!} $. (pf: taylor expansion)
+
+\tb{Sys of nonlinear equs:} $f_1(x_1, x_2) = 0, f_2(x_1, x_2) = 0 $. fixed-point: $\alpha-x_{n+1} = G_n(\alpha-x_n), G_n $ is Jacobian of $g$, the iteration func (not f). ~Thm: $D$ closed bounded convex, $g\in C^1 $, $g(D)\subset D$, $\lambda = \max\lVert G\rVert_\infty < 1. \to $ 1. any initial val $\to$ unique sol; 2. $\lVert \alpha-x_{n+1}\rVert_{\infty} \le (\lVert G\rVert_\infty +\epsilon_n)\lVert \alpha-x_{n}\rVert_{\infty}, \epsilon_n\to 0 $. ~\tb{local ver:} in a neighbour of $\alpha$, if $\lVert G(\alpha)\rVert_{\infty} < 1$, then $x_n\to \alpha $. ~($\lVert G\rVert_{\infty}$: maximum of row sums.) ~\tb{Newton:} $x_{n+1} = x_n-F(x_n)^{-1}f(x_n) $, $F$ is Jacobian of $(f_1, f_2) $. \\[5pt]
+
+\tb{Poly interpolation:} exist \& unique: 1. VA = y has unique sol (1.1: $\det V\ne 0$; 1.2: $VA=0$ only has zero-sol.) 2. Construct (Lagrange basis) - unique: $r(x)=p(x)-q(x)$, $r(x_i) = 0$;
+
+\tb{Lagrange:} $\Psi(x) = \prod_{i=0}^{n}(x-x_i)$, then $l_j(x) = \frac{\Psi(x)}{(x-x_j)\Psi'(x_j)}$. ~Pf of res: $G(x) = E(x)-\frac{\Psi(x)}{\Psi(t)}E(t)$, then $G$ has $n+2$ zeros, use Rolle thm. ~Rounding err: let $f_0 = f(x_0)-\epsilon,\cdots $, bound $E(x) = f(x) - L(f_i)(x)$ (use $f_i $ for interpolation)
+
+\tb{Newton:} $p_n(x) = f(x_0)+(x-x_0)f[x_0,x_1]+\cdots + (x-x_0)\cdots(x-x_{n-1})f[x_0,\cdots, x_n] $. ~$f[x_0,\cdots, x_n] = \sum_{j=0}^{n}\frac{f(x_j)}{\Psi'(x_j)}$. ~Pf of res: construct $p_{n+1}(x) $ by add a point $(t, f(t))$, then $p_{n+1}(t) = f(t) $.
+
+\tb{Residue} $f(t)- \sum_{j=0}^{n}f(x_j)l_j(t)  = \frac{(t-x_0)\cdots(t-x_n)}{(n+1)!}f^{(n+1)}(\xi) = f[x_0, \cdots, x_n, x]\prod_{i=0}^{n}(x-x_i)$.
+
+\tb{Interpolation basis:} 1. Monomial: $x^i $. adv: easy to write, matrix $A$ easy to compute and evaluate. disadv: $Ax=b$ expensive to solve, sys ill-cond; ~2. Lagrange: $l_i(x) $. adv: no need to solve equations, depend on $x_i $ not $y_i \to$ useful when many sets of $\{y_i\}$ on the same $\{x_i\}$. disadv: expensive to compute, hard to add new points; ~3. Newton: $\prod(x_i-x_j)$. adv: easy to compute, solve the matrix, bound error, add new points.
+
+\tb{Hermite:} use primes; $h_i(x) = (1-2l_i'(x_i)(x-x_i))l_i^2(x), \hat{h_i}(x) = (x-x_i)l_i^2(x) $, s.t. $h_i(x_j)=\hat{h_i'}(x_j) = \delta_{ij}, h_i'(x_j) = \hat{h_i}(x_j) = 0 $. ~$H(x) = \sum y_ih_i(x)+\sum y_i'\hat{h_i}(x) $. ~\tb{Res:} $E = f[x_1, x_1, \cdots, x_n, x_n, x]\prod(x-x_i)^2 = \Psi^2(x)\frac{f^{2n}(\xi)}{(2n)!}$, (let $p$ be interpolation on $\{x_i\}_{i=1}^{2n} $, let $x_{2i}\to x_{2i-1} $).
+
+\tb{Piecewise:} order $r$: poly order $< r$ in each interval; local cubic: lagrange/hermite;
+
+\tb{Spline:} Grid $a = x_0<\cdots<x_n = b $. $s$ is spline order $m$: 1. $s$ is poly order $<m$ on each $[x_{i-1}, x_i]$; 2. $s^{(r)} $ continuous, for $0\le r\le m-2$. then $s'$ is a spline of order $m-1$, etc. 
+
+\tb{cubic spline:} order $m=4$. cond: $s(x_i) = y_i, 0\le i\le n $. Case 1: $s'(x_0) = y_0', s'(x_n) = y_n' $, complete spline. ~Case 2: $s''(x_0) = s''(x_n) = 0$, natural spline. \tb{Error:} $\max|f^{(j)}(x)-s^{j}(x)|\le c_jh^{4-j}\max|f^{(4)}(x)| $, $c_0 = \frac{5}{384}, c_1 = \frac{1}{24}, c_2 = \frac{3}{8}. $ ~$\int_{a}^{b}\lVert s''(x)\rVert^2dx\le\int_{a}^{b}\lVert g''(x)\rVert^2dx $, for any $g$ satisfying the conditions as $s$. In order to solve Runge ($\frac{1}{1+x^2}$), the other way is to interpolate at Chebyshev zeros (see chpt 4).
+
+\tb{Trigonometric:} for periodic functions. interpolate at $t_{j} = \frac{2\pi j}{2n+1}, j = 0, \pm 1,\cdots$. Use FFT. \\[5pt]
+
+\tb{Weierstrass appro. thm:} $f$ cont on $[a, b]$. for each $\epsilon$, there is a poly $p$, s.t. $|f-p|\le\epsilon$. (Motivation for best approx: more efficient than interpolation; low degree); Taylor: error increase when $|x|$ get large, and error not distributed evenly. (so could be better).
+
+\tb{Minimax:} minimax error $\rho_n(f) = \inf_{deg(q)\le n}\lVert f-q\rVert_{\infty} $ (compute: the max error gets at endpoints and some middle points.)
+
+\tb{Least square:} minimize $M_n(f) = \inf_{deg(r)\le n}\lVert f-r\rVert_2 $. (compute: derivative of coefficients = 0.)
+
+\tb{Weight func:} nonnegative, $\int_{a}^{b}|x|^nw(x) $ finite for all $n$; if $\int_{a}^{b}w(x)g(x) = 0 $ and $g$ nonnegative, then $g = 0$.
+
+\tb{Orthogonal poly:} $(f, g) = \int_{a}^{b}w(x)f(x)g(x)dx $; Gram-Schmidt: $|\varphi_0| = 1, ~\psi(x) = x^n+a_{n,n-1}\varphi_{n-1}(x)+\cdots+a_{n, 0}\varphi_0(x), ~a_{n, j} = -(x^n, \varphi_j), ~\varphi_n(x) = \frac{\psi_n(x)}{|\psi_n(x)|} $. ~\tb{Legendre:} $w(x) = 1, \in[-1, 1]$, $P_n(x) = \frac{(-1)^n}{2^nn!}\frac{d^n}{dx^n}[(1-x^2)^n], P_0 = 1; ~(P_n, P_n) = \frac{2}{2n+1} $. ~\tb{Chebyshev:} $w(x) = \frac{1}{\sqrt{1-x^2}}, \in[-1, 1]$, $T_n(x) = \cos(n\cos^{-1}x), T_{n+1} = 2xT_n(x)-T_{n-1}(x), ~(T_n, T_m) = \pi(n=m=0), 0(n\ne m), \pi/2(n=m>0) $. ~If $deg(f) = m$, $f = \sum_{n=0}^{m}\frac{(f,\varphi_n)}{(\varphi_n, \varphi_n)}\varphi_n(x) $. ~\tb{TRR:} $\varphi_{n+1}(x) = (a_nx+b_n)\varphi_n(x)-c_n\varphi_{n-1}(x) $, where $\varphi_n = A_nx^n+B_nx^{n-1}+\cdots, ~a_n = \frac{A_{n+1}}{A_n}, \gamma_n = (\varphi_n, \varphi_n), b_n = a_n(\frac{B_{n+1}}{A_{n+1}}-\frac{B_n}{A_n}), c_n = \frac{A_{n+1}A_{n-1}}{A_n^2}\frac{\gamma_n}{\gamma_{n-1}}$. ~\tb{Laguerre:} $w(x) = e^{-x}, [0, \infty), L_n(x) = \frac{1}{n!e^{-x}}\frac{d^n}{dx^n}(x^ne^{-x}) $, $|L_n|_2 = 1 $ for all $n$.
+
+\tb{General least square sol:} $\varphi$ be (normalized) ort. poly with $w(x)$. $r(x) = \sum_{k=0}^{n}b_k\varphi_k(x) $, where $b_j = (f, \varphi_j) $. ~\tb{Bessel \& Parseval:} $|r_n^*|_2^2 = \sum_{k=0}^{n}(f, \varphi_k)^2 \le |f|_2^2 = \sum_{k=0}^{\infty}(f, \varphi_k)^2 $; ~\tb{Lagendre:} $\varphi_0(x) = \frac{1}{\sqrt{2}}, ~\varphi_n(x) = \sqrt{\frac{2n+1}{2}}\frac{(-1)^n}{2^nn!}\frac{d^n}{dx^n}[(1-x^2)^n], (f, \varphi_j) = \int_{-1}^1f(x)\varphi_j(x)dx, r_n^*(x) = \sum_{j=0}^{n}(f, \varphi_j)\varphi_j(x) $. ~\tb{Chebyshev:} $\varphi_0(x) = \frac{1}{\sqrt{\pi}}, \varphi_n(x) = \sqrt{\frac{2}{\pi}}T_n(x), (f, \varphi_j) = \int_{-1}^1\frac{f(x)\varphi_j(x)}{\sqrt{1-x^2}}dx $.
+
+\tb{Minimax:} \tb{de la Vallee-Poussin:} $f$ cont, $deg(Q)\le n$, $f(x_j)-Q(x_j) = (-1)^je_j, 0\le j\le n+1, e_j\ne 0 $ of same sign, $a\le x_0 <\cdots < x_{n+1}\le b $, then $\min|e_j| \le \rho_n(f) \le |f-Q|_\infty $. ~\tb{Equioscillation:} there is a unique poly $deg(q^*)\le n $, s.t. $\rho_n(f) = |f-q^*|_\infty $. and $q^* $ satisfy that there exists $a\le x_0 <\cdots < x_{n+1}\le b $, s.t. $f(x_j)-q^*(x_j) = \sigma(-1)^j\rho_n(f), \sigma = \pm 1 $.
+
+\tb{Near Minimax:} use chebyshev least square $C_n(x) = \sum_{j=0}^{n}c_jT_j(x), c_j = \frac{2}{\pi}\int_{-1}^{1}\frac{f(x)T_j(x)}{\sqrt{1-x^2}}dx, c_0 = c_0/2 $ as an approximation, then since $f = \sum_{j=0}^{\infty}'c_jT_j(x) (f\in C[-1, 1])$, the error $f(x) - C_n(x) $ is nearly $c_{n+1}T_{n+1}(x)$. Since $T_{n+1}(x_j) = (-1)^j, x_j = \cos\frac{j\pi}{n+1}, 0\le j\le n+1 $, with Chebyshev Equio. thm, $C_n $ should be nearly equal to the minimax approx. ~$|f-I_n|_\infty \le\frac{1}{(n+1)!2^n}|f^{(n+1)}|_\infty $
+
+\tb{Chebyshev zeros interpolation:} from Near minimax, the error is nearly $c_{n+1}T_{n+1}(x) $, thus err be nearly $0$ at roots of $T_{n+1}(x) \to x_j = \cos\frac{2j+1}{2n+2}\pi, 0\le j\le n $. Use interpolation of $f(x)$ on these nodes $I_n(x) $ as approx of $C_n $ and $q_n^*(x) $ ($I_n(x) = \sum f(x_j)l_j(x) = \sum C_n(x_j)l_j(x) + \sum (f(x_j)-C_n(x_j))l_j(x) = C_n(x) $)
+
+\tb{Cheb. Poly:} $r_n = \inf_{deg(q)\le n-1}(\max_{-1\le x\le 1}|x^n+q(x)|) $, the minimum attained at $x^n+q(x) = \frac{1}{2^{n-1}}T_n(x), r_n = \frac{1}{2^{n-1}} $.
+
+\tb{Cheb. Poly of 2nd kind:} $S_n(x) = \frac{1}{n+1}T_{n+1}'(x), [-1, 1], w(x) = \sqrt{1-x^2} $, satisfy same TRR with $\{T_n\}$.
+
+\tb{Near minimax err:} $x_i = \cos\frac{i\pi}{n+1}, 0\le i\le n+1, ~\sum_{k=0}^{n}c_{n,k}T_k(x_i)+(-1)^iE_n =f(x_i), \sum = \sum' \to c_{n, j} = \frac{2}{n+1}\sum_{i=0}^{n+1}f(x_i)\cos(\frac{ij\pi}{n+1}), \sum = \sum'', E_n = \frac{1}{n+1}\sum_{i=0}^{n+1}(-1)^if(x_i), \sum = \sum'' $. ~\tb{Notice:} $\sum_{k=1}^{n}kz^k = \frac{1-(n+1)z^n+nz^{n+1}}{(1-z)^2}z $ \\[5pt]
+
+\tb{Integration:} $I_n(f) = \int_{a}^{b}f_n(x)dx = I(f_n) = \sum_{j=1}^{n}w_{j, n}f(x_{j, n}) $, use $\{f_n\}$ to approx. $f$, s.t. $|f-f_n|_\infty\to 0 $. 
+
+\tb{Ways of deriving $w_{i}$:} 1. compute the integral of interpolation; 2. write down a series of equations.
+
+\tb{Asy. err:} $E_n $ exact; $\hat E_n $ estimate; $\lim_{n\to\infty}\frac{\hat{E_n}}{E_n} = 1 $. Corrected: $CT = I + \hat E$.
+
+\tb{trapezoidal:} $E_1(f) = \int_{a}^{b}(x-a)(x-b)f[a,b,x]dx = -\frac{(b-a)^3}{12}f''(\eta)$ (use mean value thm). ~\tb{composite:} $E_n(f) = -\frac{h^3n}{12}\frac{1}{n}\sum_{j=1}^{n}f''(\eta_j) = -\frac{(b-a)h^2}{12}f''(\eta) $. ~\tb{Asy err:} $\lim_{n\to\infty}\frac{E_n(f)}{h^2} = -\frac{1}{12}\int_{a}^{b}f''(x)dx $.
+
+\tb{Simpson:} $I_2 = \frac{h}{3}(1,4,1), h = \frac{b-a}{2}$. $E_2 = \int_{a}^{b}(x-a)(x-b)(x-c)f[a,b,c,x]dx = \int_{a}^{b}w'(x)f[a,b,c,x] dx = -\frac{h^5}{90}f^{(4)}(\eta). $ (integrate by parts; $w(x) = \int_{a}^{x}(t-a)(t-b)(t-c)dt, w(a)=w(b)=0, w(x)>0 \in (a, b) $. ) ~\tb{composite:} $h = (b-a)/n, I_n = \frac{h}{3}(1,4,2,4,2\cdots, 2,4,1) $. $E_n = -\frac{h^4(b-a)}{180}f^{(4)}(\eta) $.
+
+\tb{Peano Kernel:} $f = p_1+R_2 $, $R_2 = \int_{a}^{x}(x-t)f''(t)dt $. compute $E_1(R_2) $ use $\int_{a}^{b}\int_{a}^{x}G(x, t)dtdx = \int_a^b\int_t^bG(x, t)dxdt $, get $E_n(f) = \int_{a}^{b}K(t)f''(t)dt $.
+
+\tb{N-C:} use lag. poly to approx $f$. \tb{Err:} 1. $n$ even, $f\in C^{n+2} $. $E_n(f) = C_nh^{n+3}f^{(n+2)}(\eta), ~C_n = \frac{1}{(n+2)!}\int_{0}^{n}u^2(u-1)\cdots (u-n)du $; 2. $n$ odd, $f\in C^{n+1} $. $E_n(f) = C_nh^{n+2}f^{(n+1)}(\eta), ~C_n = \frac{1}{(n+1)!}\int_0^n u(u-1)\cdots (u-n)du $. ~\tb{Precision:} $m$ if $I = \hat{I}$ for all poly deg $\le m$.
+
+\tb{Conv NC:} $I_n(f)\to I(f) \iff $ 1. $I_n(f)\to I(f) $ for all $f\in\mathcal{F}$ dense in poly; 2. $B = \sup_{n}\sum_{j=0}^{n}|w_{j, n}| < \infty $.
+
+\tb{Midpoint:} $E_n(f) = \frac{h^2(b-a)}{24}f''(\eta) $. \\[5pt]
+
+\tb{Gaussian:} Regard $I_n(f) = \sum_{j=1}^{n}w_{j,n}f(x_{j,n}) = \int_{a}^{b}w(x)f(x)dx $. Use Orthogonal poly: (construct with Hermite). $w_i = \int_{a}^{b}w(x)l_i(x)dx $, $E_n(f) = \frac{f^{(2n)}(\eta)}{(2n)!}\int_{a}^{b}w(x)\frac{\varphi_n(x)^2}{A_n^2}dx $, $x_i $ be roots of $\varphi_n(x) $ w.r.t. $w(x)$. ~\tb{Err:}  $|E_n(f)|\le 2\rho_{2n-1}(f)\int_a^bw(x)dx $.
+
+\tb{G-Legendre:} $w(x) = 1, \in [-1, 1]$, $w_i = -\frac{2}{(n+1)P_n'(x_i)P_{n+1}(x_i)}$, $E_n(f) = \frac{2^{2n+1}(n!)^4}{(2n+1)((2n)!)^2}\frac{f^{2n}(\eta)}{(2n)!} $. 
+
+\tb{Comments:} roots of $I_n $ are diff. from $I_m $; can handle near-singular integrals.
+
+\tb{Asymptotic Err:} Euler-MacLaurin: err in trapezoidal: $E_n(f) = \int_a^bf(x)dx - h\sum_{j=0}^{n}''f(x_j)  = -\sum_{i=1}^{m}\frac{B_{2i}}{(2i)!}h^{2i}(f^{(2i-1)}(b) - f^{(2i-1)}(a)) + \frac{h^{2m+2}}{(2m+2)!}\int_a^b \bar{B}_{2m+2}(\frac{x-a}{h})f^{(2m+2)}(x)dx $, where $\frac{t(e^{xt}-1)}{e^t-1} = \sum_{j=1}^{\infty}B_j(x)\frac{t^{j}}{j!}, ~\frac{t}{e^t-1} = \sum_{j=0}^{\infty}B_j\frac{t^j}{j!}, \bar{B_j}(x)$ be periodic extension of $B_j(x) $ w./ pero. 1. (PF: consider $n=1$, then $n \ge 1$ be composite form of $n=1$). \tb{Trapezoidal:} for periodic functions, order of conv. of tra. is greater than any power of $h$.
+
+\tb{Richardson:} $I - I_n = \frac{d_2}{n^2}+\frac{d_4}{n^4}+\cdots $, $I-I_{n/2} = \frac{4d_2}{n^2}+\frac{16d_4}{n^4}+\cdots $. Then $I = \frac{4I_n-I_{n/2}}{3} - \frac{4d_4}{n^4}-\cdots$. $I_n^{(k)} = \frac{4^kI_n^{(k-1)}-I_{n/2}^{(k-1)}}{4^k-1} $. (less computing, low order conv cmp to Gaussian).
+
+\tb{Romberg:} $I_k(f) = I_{2^k}^{(k)}(f) $.
+
+\tb{Singular:} In function/in interval; sol: \tb{1. change variable}(singularity happens in func and derivatives/interval): $u = x^\alpha ,u = \frac{1}{x^\alpha}$; EXP: $I = \int_{1}^\infty\frac{f}{x^p}dx, x = \frac{1}{u^\alpha}, I = \alpha\int_0^1u^{(p-1)\alpha-1}f(\frac{1}{u^\alpha})du $, pick $(p-1)\alpha-1$ larger to max smoothness on $x = 0$. 2. for $I = \int_{a}^{b}$ has endpoint singularity, let $\psi(t) = \exp(\frac{-c}{1-t^2}), \varphi(t) = a + \frac{b-a}{\gamma}\int_{-1}^t\psi(u)du, -1\le t\le 1, \gamma  = \int_{-1}^1\psi(u)du $. Let $x = \varphi(t), I = \int_{-1}^1f(\varphi(t))\varphi'(t)dt $ ~\tb{2. Gaussian Quad:} EXP: $I = \int_{0}^{\infty}g(x)dx = \int_{0}^{\infty}e^{-x}f(x)dx $. Use Gauss-Laguerre ($w(x) = e^{-x}, L_n(x) = \frac{1}{n!e^{-x}}\frac{d^n}{dx^n}{x^ne^{-x}} $). ~EXP: $I = \int_{-1}^1\frac{f(x)}{\sqrt{1-x^2}}dx$, use Chebyshev, $x_{j, n} = \cos\frac{2j-1}{2n}\pi, 1\le j\le n, w_{j, n} = \frac{\pi}{n} $. ~\tb{Analytic:} $I = \int_{0}^{b}f(x)\log(x)dx = \int_0^\epsilon+\int_\epsilon^b  = I_1+I_2 $. Take the first terms of Taylor series of $f$ in $I_1 $. ~\tb{4. Product Integration:} $I(f) = \int_a^bw(x)f(x) $, let all singularity in $w$. Produce $\{f_n\}$, $|f-f_n|_{\infty}\to 0 $, $I_n(f) = I(f_n)  $ easily computed, then $|I(f)-I_n(f) |\le |f-f_n|_\infty \int_a^b|w(x)|dx $. EXP: product trapezoidal for $I(f) = \int_0^bf(x)\log(x)dx, x_j = jh$. For $x_{j-1}\le x\le x_j, f_n(x) = \frac{1}{h}((x_j-x)f(x_{j-1})+(x-x_{j-1})f(x_j)) $, then $|f-f_n|\le \frac{h^2}{8}|f''|$.
+
+\tb{Diff:} 0. Definition. 1. use poly. interpolation. $f'(x) = p_n'(x) = \sum_{j=0}^{n}f(x_j)l_j'(x) $, error = $\Psi_n'(x)\frac{f^{(n+1)}(\xi_1)}{(n+1)!}+\Psi_n(x)\frac{f^{(n+2)}(\xi_2)}{(n+2)!} = O(h^n)$ (when $\Psi_n'(x)\ne 0 $) and $= O(h^{n+1})$ (when $\Psi_n'(x) = 0 $). (So choose nodes to have $\Psi_n'(x) = 0 $) $\to$ if $n$ odd, nodes symmetrically about $x$. ~\tb{2. Method of Undetermined Coeff.} EXP: $f''(x) = Af(x+h)+Bf(x)+Cf(x-h)$, use Taylor expansion of $f(x), f(x\pm h)$. Notice: error dominates the result when $h$ gets very small. \\[5pt]
+
+\tb{Some Formulas:} $\sum_{k=1}^{n}kz^k = \frac{1-(n+1)z^n+nz^{n+1}}{(1-z)^2}z $ ~$\int_{0}^1x^n\ln(x)dx = -\frac{1}{(n+1)^2} $.
+\end{document}
