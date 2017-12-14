@@ -1,7 +1,6 @@
 from PyQt5.QtWidgets import *
 from PyQt5.QtGui import *
 from PyQt5.QtCore import *
-from seats import *
 import sys
 import csv
 from O365 import Message
@@ -187,8 +186,7 @@ class Window(QMainWindow):
 		self.show()
 
 	def _parse(self, row):
-		[name, hawkid, seat] = row
-		[building, room, seat] = seat.split('-')
+		[name, hawkid, building, room, seat] = row
 		email = hawkid + "@iowa.uiowa.edu"
 		if self._title_state:
 			title = self._title.format(BUILDING = building, ROOM = room, SEAT = seat)
