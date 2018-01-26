@@ -190,7 +190,33 @@ and the convergence radius of the latter series is $R' = 1$, we know $R\ge 1$. O
 
 \item Problem III.1.7
 
+\textbf{Proof.} On one hand, 
+$$
+\sum_{n=1}^{\infty} |a_n| |z^{n(n+1)}| \le \sum_{n=1}^{\infty}|a_n||z^n|,
+$$
+thus $R \ge R' = \lim|a_n/a_{n+1}| = \lim \frac{n+1}{n} = 1 $. On the other hand, if $R > 1$, pick $1 < r < R$, then $|a_n|z^{n(n+1)} = \frac{1}{n}r^{n(n+1)} = \frac{1}{n}(1+\delta)^{n(n+1)} > \frac{1}{n} (1+n\delta)^{n+1} > \frac{1}{n}(1+n(n+1)\delta) > (n+1)\delta. $ But the last term $\to\infty$ as $n\to\infty$, hence the series diverges. Thus $R = 1$.
+
+When $z = 1$, the series becomes $\sum_{n=1}^{\infty}\frac{(-1)^n}{n}$, it is a Leibniz series, thus converges. When $z = -1$, since $n(n+1)$ is a even number, it is the same with $z = 1$, thus converges. When $z = i$, the series becomes
+$$
+\begin{aligned}
+&\sum_{n=0}^{\infty} -\left(\frac{(-1)^{4n+1}}{(4n+1)}+\frac{(-1)^{4n+2}}{4n+2}\right)+\left(\frac{(-1)^{4n+3}}{(4n+3)}+\frac{(-1)^{4n+4}}{4n+4}\right) = \sum_{n=0}^{\infty}\frac{1}{4n+1}-\frac{1}{4n+2}-\frac{1}{4n+3}+\frac{1}{4n+4} \\
+&= \sum_{n=0}^{\infty}(-1)^n (\frac{1}{2n+1}-\frac{1}{2n+2}) = \sum_{n=0}^{\infty}\frac{(-1)^n}{(2n+1)(2n+2)}.
+\end{aligned}
+$$
+It is also a Leibniz series, so converges.
+
+
 \item Problem III.2.6
+
+\textbf{(i)} $z = x+iy$, then $e^z = e^x(\cos y+i\sin y) = i \to x = 0, y = 2k\pi + \frac{\pi}{2}$. Thus $z = i(2k\pi+\frac{\pi}{2}), k \in \mathbb{Z}$.
+
+\textbf{(ii)} $e^x(\cos y+i\sin y) = -1 \to x = 0, y = 2k\pi+\pi $. Thus $z = i(2k\pi+\pi), k \in \mathbb{Z}$.
+
+\textbf{(iii)} $e^x(\cos y+i\sin y) = -i \to x = 0, y = 2k\pi + \frac{3\pi}{2}$. Thus $z = i(2k\pi+\frac{3\pi}{2}), k \in \mathbb{Z}$.
+
+\textbf{(iv)} $\frac{1}{2}(e^{iz}+e^{-iz}) = 0 \to e^{-y}(\cos x+i\sin x)+e^y(\cos x-i\sin x) = 0 \to \cos x = 0, e^{-y} = e^y \to y = 0, x = k\pi+\frac{\pi}{2}. $ Thus $z = k\pi+\frac{\pi}{2}, k\in\mathbb{Z} $.
+
+\textbf{(v)} $\frac{1}{2i}(e^{iz}-e^{-iz}) = 0 \to e^{-y}(\cos x+i\sin x)-e^y(\cos x-i\sin x) = 0 \to -y = y, \sin x = 0 \to y = 0, x = k\pi $. Thus $z = k\pi, k\in\mathbb{Z}$.
 
 \item Problem III.2.7
 
