@@ -1,0 +1,206 @@
+
+
+\documentclass{article}%
+
+\usepackage{amsmath}
+
+\usepackage{graphicx}
+
+\usepackage{amsfonts}%
+
+\usepackage{amssymb}
+
+
+
+
+
+\setlength{\topmargin}{-0.75in}
+
+\setlength{\textheight}{9.25in}
+
+\setlength{\oddsidemargin}{0.0in}
+
+\setlength{\evensidemargin}{0.0in}
+
+\setlength{\textwidth}{6.5in}
+
+\def\labelenumi{\arabic{enumi}.}
+
+\def\theenumi{\arabic{enumi}}
+
+\def\labelenumii{(\alph{enumii})}
+
+\def\theenumii{\alph{enumii}}
+
+\def\p@enumii{\theenumi.}
+
+\def\labelenumiii{\arabic{enumiii}.}
+
+\def\theenumiii{\arabic{enumiii}}
+
+\def\p@enumiii{(\theenumi)(\theenumii)}
+
+\def\labelenumiv{\arabic{enumiv}.}
+
+\def\theenumiv{\arabic{enumiv}}
+
+\def\p@enumiv{\p@enumiii.\theenumiii}
+
+\pagestyle{plain}
+
+\setcounter{secnumdepth}{0}
+
+\newtheorem{theorem}{Theorem}
+
+\newtheorem{acknowledgement}[theorem]{Acknowledgement}
+
+\newtheorem{algorithm}[theorem]{Algorithm}
+
+\newtheorem{axiom}[theorem]{Axiom}
+
+\newtheorem{case}[theorem]{Case}
+
+\newtheorem{claim}[theorem]{Claim}
+
+\newtheorem{conclusion}[theorem]{Conclusion}
+
+\newtheorem{condition}[theorem]{Condition}
+
+\newtheorem{conjecture}[theorem]{Conjecture}
+
+\newtheorem{corollary}[theorem]{Corollary}
+
+\newtheorem{criterion}[theorem]{Criterion}
+
+\newtheorem{definition}[theorem]{Definition}
+
+\newtheorem{example}[theorem]{Example}
+
+\newtheorem{exercise}[theorem]{Exercise}
+
+\newtheorem{lemma}[theorem]{Lemma}
+
+\newtheorem{notation}[theorem]{Notation}
+
+\newtheorem{problem}[theorem]{Problem}
+
+\newtheorem{proposition}[theorem]{Proposition}
+
+\newtheorem{remark}[theorem]{Remark}
+
+\newtheorem{solution}[theorem]{Solution}
+
+\newtheorem{summary}[theorem]{Summary}
+
+\newenvironment{proof}[1][Proof]{\textbf{#1.} }{\ \rule{0.5em}{0.5em}}
+
+
+
+\begin{document}
+
+
+
+\begin{center}
+
+\textbf{Homework 1}\bigskip
+
+\end{center}
+
+
+
+\noindent\textbf{Instructions}: 
+
+\noindent In problems 3. - 5., references such as III.2.7 refer to Problem 7 in Section 2 of Chapter III in Conway's book.\smallskip
+
+
+
+\noindent If you use results from books including Conway's, please be explicit about what results you are using.
+
+
+
+
+
+
+\begin{center}
+
+\emph{Homework 1 is due on Dropbox on Monday, February  5.}
+
+\end{center} 
+
+\medskip
+
+
+
+\begin{enumerate}
+
+\item Show that $\lim_{n\to \infty}{n^{\frac{1}{n}}} = 1$ without using logarithms.
+
+\textbf{Proof.} Let $n^{1/n} = 1+y_n $. First we know $n^{1/n} > 1^{1/n} = 1 $, so $y_{n} > 0$. Then 
+$$
+n = (1+y_n)^n = 1+ny_n+\frac{n(n-1)}{2}y_n^2+\cdots+y_n^n > 1+\frac{n(n-1)}{2}y_n^2.
+$$
+Thus $\frac{n(n-1)}{2}y_n^2 < n-1 $, which means $y_n < \sqrt{2/n}. $ Hence $\lim\limits_{n\to\infty} y_n \le \lim\limits_{n\to\infty}\sqrt{2/n} = 0$, which means $y_n\to 0 $, and thus $n^{1/n}\to 1 $.
+
+
+\item Given a power series, $\sum_{n=0}^{n=\infty} a_n(z - a)^n$, show that its radius of convergence $R$ satisfies the inequalities$$(\limsup{\vert \frac{a_{n+1}}{a_n} \vert})^{-1} \leq R \leq \limsup{\vert \frac{a_{n}}{a_{n+1}} \vert}.$$
+
+\textbf{Proof.} We only proof the right inequality since it is just the same for the left one. If $R > r > \limsup|\frac{a_n}{a_{n+1}}| = \alpha $, then there is an $N > 0$ s.t. $r > |a_n/a_{n+1}| $ for all $n \ge N$. Let $B = |a_N|r^N $, then $|a_{N+1}|r^{N+1} = |a_{N+1}|rr^{N} > B $. Hence for all $n > N$ we have $|a_n|r^n > B $, which gives $|a_nz^n| \ge B |z|^n/|r|^n $ when $n > N$. But $|z|/|r| > 1$, which makes $|z|^n/|r|^n \to\infty $ when $n\to\infty$. Hence $\sum a_nz^n $ diverges, so $R \le \alpha$.
+
+
+\item Problem III.1.6.
+
+\textbf{(a).} By Theorem 1.3, 
+$$
+\limsup |a_n|^{1/n} = \limsup |a^n|^{1/n} = |a|,
+$$
+thus $R = \frac{1}{|a|}$.
+
+\textbf{(b).} By Theorem 1.3,
+$$
+\limsup |a_n|^{1/n} = \limsup |a^{n^2}|^{1/n} = \limsup |a^n| = \left\{
+\begin{aligned} 
+&0, |a| < 1, \\
+&1, |a| = 1, \\
+&\infty, |a| > 1.
+\end{aligned}
+\right.
+$$
+Thus 
+$$
+R = \left\{
+\begin{aligned}
+&\infty, |a| < 1,\\
+&1, |a| = 1,\\
+&0, |a| > 1.
+\end{aligned}
+\right.
+$$
+
+\textbf{(c).} By Theorem 1.3,
+$$
+\limsup |a_n|^{1/n} = \limsup |k^n|^{1/n} = k,
+$$
+thus $R = \frac{1}{k}$.
+
+\textbf{(d).} Since 
+$$
+\sum_{n=0}^{\infty}|z|^{n!} < \sum_{n=0}^{\infty}|z|,
+$$
+and the convergence radius of the latter series is $R' = 1$, we know $R\ge 1$. On the other hand, if $R > 1$, pick $1 < |z| = r < R$, then $|z|^{n!} = r^{n!}\to\infty $ when $n\to\infty$, hence the series diverges. Thus $R = 1$.
+
+\item Problem III.1.7
+
+\item Problem III.2.6
+
+\item Problem III.2.7
+
+\item Problem III.2.9.
+
+\item Problem III.2.13
+
+\item Problem III.2.20
+
+\end{enumerate}
+
+\end{document}
+
