@@ -219,12 +219,74 @@ It is also a Leibniz series, so converges.
 \textbf{(v)} $\frac{1}{2i}(e^{iz}-e^{-iz}) = 0 \to e^{-y}(\cos x+i\sin x)-e^y(\cos x-i\sin x) = 0 \to -y = y, \sin x = 0 \to y = 0, x = k\pi $. Thus $z = k\pi, k\in\mathbb{Z}$.
 
 \item Problem III.2.7
+$$
+\cos z\cos w = \frac{1}{4}(e^{iz}+e^{-iz})(e^{iw}+e^{-iw}) = \frac{1}{4}(e^{i(z+w)}+e^{-i(z+w)}+e^{i(z-w)}+e^{i(w-z)}),
+$$
+$$
+\sin z\sin w = -\frac{1}{4}(e^{iz}-e^{-iz})(e^{iw}-e^{-iw}) = \frac{1}{4}(-e^{i(z+w)}-e^{-i(z+w)}+e^{i(z-w)}+e^{i(w-z)})
+$$
+$$
+\cos z\sin w = \frac{1}{4i}(e^{iz}+e^{-iz})(e^{iw}-e^{-iw}) = \frac{1}{4i}(e^{i(z+w)}-e^{i(z-w)}+e^{i(w-z)}-e^{-i(z+w)})
+$$
+$$
+\sin z\cos w = \frac{1}{4i}(e^{iz}-e^{-iz})(e^{iw}+e^{-iw}) = \frac{1}{4i}(e^{i(z+w)}+e^{i(z-w)}-e^{i(w-z)}-e^{i(z+w)})
+$$
+Hence, 
+$$
+\cos(z+w) = \frac{1}{2}(e^{i(z+w)}+e^{-i(z+w)}) = \cos z\cos w-\sin z\sin w.
+$$
+$$
+\sin(z+w) = \frac{1}{2i}(e^{i(z+w)}-e^{-i(z+w)}) = \cos z\sin w+\sin z\cos w.
+$$
 
 \item Problem III.2.9.
 
+\textbf{Proof.} 
+$$
+\begin{aligned}
+|z_n-z| &= |r_ne^{i\theta_n}-re^{i\theta}| = |r_n\cos(\theta_n)-r\cos(\theta) + i(r_n\sin(\theta_n)-r\sin(\theta))| \\
+&= \sqrt{(r_n\cos(\theta_n)-r\cos(\theta))^2+(r_n\sin(\theta_n)-r\sin(\theta))^2} \\
+&= \sqrt{r_n^2+r^2-2r_nr\cos(\theta_n-\theta)}.
+\end{aligned}
+$$
+If $\theta_n \nrightarrow \theta $, then there exists $\epsilon > 0$
+$$
+|z_n-z| \ge \sqrt{2r_nr(1-\cos(\theta_n-\theta))} > \epsilon,
+$$
+which contradicts with $z_n\to z $. Hence $\theta_n\to \theta $. So
+$$
+|z_n-z| \to |r_n-r|.
+$$
+Thus $r_n\to r $.
+
 \item Problem III.2.13
 
+$z = f(z)^n \to f(z) = z^{1/n} $, take a branch. Thus
+$$
+f(z) = z^{1/n} = e^{\frac{1}{n}\log z} = e^{\frac{1}{n} (\log |z| + iArg z+ i2k\pi)} = |z|^{1/n}e^{\frac{i}{n}(Argz+2k\pi)}.
+$$
+Pick any $k\in\mathbb{Z}$ and we can get a function satisfying the conditions.
+
 \item Problem III.2.20
+
+$$
+\log(z_1\cdots z_n) = \log|z_1\cdots z_n|+ Arg(z_1\cdots z_n).
+$$
+We need to show that ($Arg$ is the principle branch.)
+$$
+Arg(z_1\cdots z_n) = \sum Arg(z_i).
+$$
+and
+$$
+\log|z_1\cdots z_n| = \sum\log|z_i|.
+$$
+The second term is trivial from logarithm of real numbers. For the first term, we use induction. Let $z_j = r_je^{i\theta_j} $, then from the condition we know $-\frac{\pi}{2} < \theta_j < \frac{\pi}{2}$ (*).
+
+First, when $k = 2$, from the condition we know $2k\pi-\frac{\pi}{2} < \theta_1 + \theta_2 < 2k\pi+\frac{\pi}{2}$. But from (*) we know $-\pi < \theta_1 + \theta_2 <\pi $, thus $-\frac{\pi}{2} <\theta_1 + \theta_2 < \frac{\pi}{2}$. Hence $Arg(z_1z_2) = Arg(z_1)+Arg(z_2)$.
+
+Suppose it holds when $\le n-1$. Then from induction we know $-\frac{\pi}{2} <\sum\limits_{j=1}^{n-1}\theta_j < \frac{\pi}{2}$, and using the same deduction with $k = 2$, we can know $-\frac{\pi}{2} <\sum\limits_{j=1}^{n}\theta_j < \frac{\pi}{2}$. Hence $Arg(\prod z_i) = \sum Arg(z_i)$.
+
+If the restrictions are removed, the formula is not valid. For example, $z_1 = e^{i\pi}, z_2 = e^{i\frac{3\pi}{2}} $, then $\log(z_1z_2) = i\frac{\pi}{2}$, while $\log(z_1)+\log(z_2) = i\frac{5\pi}{2}$.
 
 \end{enumerate}
 
