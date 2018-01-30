@@ -212,8 +212,45 @@ Hence $g$ is continuous at $t_0 $.
 \item Problem IV.2.2  (Please note.  This problem will be used a number of places in the theory we will develop.)
 
 \textbf{Proof.} 
+First, by the same deduction of last problem, we can show $g$ is continuous. Thus, if we prove that $g$ is differentiable with $g'$ given by 
+$$
+g'(z) = \int_{\gamma}\frac{\partial\varphi}{\partial z}(w, z)dz,
+$$
+then $g'$ is continuous since $\frac{\partial \varphi}{\partial z}$ is continuous. Hence we only need to prove the formula for $g'$.
+
+For a fixed point $z_0 $ in G, let $\epsilon > 0$. Denote $\frac{\partial \varphi}{\partial z}$ by $\phi$. Pick a closed set $F\subset G$ s.t. $z_0\in F $, then since $\gamma $ is rectifiable, $\phi$ is uniformly continuous on $\gamma\times F$. Thus, there is a $\delta > 0$ s.t. $|\phi(w', z')-\phi(w, z)| < \epsilon$ when $(w-w')^2+(z-z')^2<\delta^2 $. In particular, 
+$$
+|\phi(w, z)-\phi(w, z_0)| < \epsilon
+$$
+when $|z-z_0| < \delta$. Hence,
+$$
+|\int_{z_0}^{z}\phi(w, z)-\phi(w, z_0)dw| \le \epsilon|z-z_0|.
+$$
+For a fixed $w\in\gamma$, $\Phi(z) = \varphi(w, z)-z\phi(w, z_0)$ is a primitive of $\phi(w, z)-\phi(w, z_0)$. By Fundamental Thm of Calculus, 
+$$
+|\varphi(w, z)-\varphi(w, z_0)-(z-z_0)\phi(w, z_0)|\le \epsilon |z-z_0|
+$$
+for each $w$ when $|z-z_0|< \delta$. Hence
+$$
+|\frac{g(z)-g(z_0)}{z-z_0}-\int_{\gamma}\phi(w, z_0)dw|\le \epsilon\int_{\gamma}1ds.
+$$
+when $0 < |z-z_0| < \delta $. Hence by arbitrariness of $\epsilon$ we proved the proposition.
 
 \item Problem IV.2.3
+
+\textbf{Proof.} Let $\phi = \frac{\varphi(w)}{w-z}$, then $\frac{\partial \phi}{\partial z} = (w-z)^{-2}\varphi(w) $ is continuous on $\mathbb{C}-\{\gamma\}$. Thus by exercise 2 we know $g$ is analytic, and
+$$
+g'(z) = \int_{\gamma}\varphi(w)(w-z)^{-2}dw.
+$$
+Now suppose for $k \le n$,
+$$
+g^{(k)}(z) = n!\int_{\gamma}\varphi(w)(w-z)^{-(n+1)}dw,
+$$
+then
+$$
+g^{(n+1)}(z) = (n+1)n!\int_{\gamma}\varphi(w)(w-z)^{-(n+2)}dw = (n+1)!\int_{\gamma}\varphi(w)(w-z)^{-(n+2)}dw.
+$$
+By induction we know the result is correct.
 
 \end{enumerate}
 
