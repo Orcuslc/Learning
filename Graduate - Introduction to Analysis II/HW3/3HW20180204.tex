@@ -1,0 +1,217 @@
+
+
+\documentclass{article}%
+
+\usepackage{amsmath}
+
+\usepackage{graphicx}
+
+\usepackage{amsfonts}%
+
+\usepackage{amssymb}
+
+
+
+
+
+\setlength{\topmargin}{-0.75in}
+
+\setlength{\textheight}{9.25in}
+
+\setlength{\oddsidemargin}{0.0in}
+
+\setlength{\evensidemargin}{0.0in}
+
+\setlength{\textwidth}{6.5in}
+
+\def\labelenumi{\arabic{enumi}.}
+
+\def\theenumi{\arabic{enumi}}
+
+\def\labelenumii{(\alph{enumii})}
+
+\def\theenumii{\alph{enumii}}
+
+\def\p@enumii{\theenumi.}
+
+\def\labelenumiii{\arabic{enumiii}.}
+
+\def\theenumiii{\arabic{enumiii}}
+
+\def\p@enumiii{(\theenumi)(\theenumii)}
+
+\def\labelenumiv{\arabic{enumiv}.}
+
+\def\theenumiv{\arabic{enumiv}}
+
+\def\p@enumiv{\p@enumiii.\theenumiii}
+
+\pagestyle{plain}
+
+\setcounter{secnumdepth}{0}
+
+\newtheorem{theorem}{Theorem}
+
+\newtheorem{acknowledgement}[theorem]{Acknowledgement}
+
+\newtheorem{algorithm}[theorem]{Algorithm}
+
+\newtheorem{axiom}[theorem]{Axiom}
+
+\newtheorem{case}[theorem]{Case}
+
+\newtheorem{claim}[theorem]{Claim}
+
+\newtheorem{conclusion}[theorem]{Conclusion}
+
+\newtheorem{condition}[theorem]{Condition}
+
+\newtheorem{conjecture}[theorem]{Conjecture}
+
+\newtheorem{corollary}[theorem]{Corollary}
+
+\newtheorem{criterion}[theorem]{Criterion}
+
+\newtheorem{definition}[theorem]{Definition}
+
+\newtheorem{example}[theorem]{Example}
+
+\newtheorem{exercise}[theorem]{Exercise}
+
+\newtheorem{lemma}[theorem]{Lemma}
+
+\newtheorem{notation}[theorem]{Notation}
+
+\newtheorem{problem}[theorem]{Problem}
+
+\newtheorem{proposition}[theorem]{Proposition}
+
+\newtheorem{remark}[theorem]{Remark}
+
+\newtheorem{solution}[theorem]{Solution}
+
+\newtheorem{summary}[theorem]{Summary}
+
+\newenvironment{proof}[1][Proof]{\textbf{#1.} }{\ \rule{0.5em}{0.5em}}
+
+
+
+\begin{document}
+
+
+
+\begin{center}
+
+\textbf{Homework 2}\bigskip
+
+\end{center}
+
+
+
+\noindent\textbf{Instructions}:References such as III.2.7 refer to Problem 7 in Section 2 of Chapter III in Conway's book.\smallskip
+
+
+
+\noindent If you use results from books including Conway's, please be explicit about what results you are using.
+
+\noindent \textbf{Reminder: Exam I will be from 6:30 to 10:30 on Thursday, February 15 in Room 40 of Schaeffer Hall.}
+
+
+
+
+
+
+\begin{center}
+
+\emph{Homework 3 is due in your Dropbox folder by 11:59, Sunday , February 19.}
+
+\end{center} 
+
+\medskip
+
+\noindent Working on this homework will help you with Exam I, so please don't put it off until after the exam.
+
+
+
+\begin{enumerate}
+
+\item Problem IV.2.4
+
+\textbf{(a)}
+By Abel's transform, let $\{a_n\}, \{b_n\}$ be two sequences, and $B_k = \sum\limits_{i=1}^{k}b_i $. Then
+$$
+\sum_{k=1}^{n}a_kb_k = a_nB_n - \sum_{k=1}^{n-1}(a_{k+1}-a_k)B_k.
+$$
+Hence for each fixed $n$, denote $\sum\limits_{k=1}^{n}a_k $ by $A_n $
+$$
+C_n = \lim_{r\to1^-}\sum_{k=1}^{n}a_kr^k = r^nA_n - \sum_{k=1}^{n-1}r^k(r-1)A_k.
+$$
+Since $\sum a_n(z-a)^n $ have radius of convergence 1,
+$$
+\lim_{r\to 1^-} \sum_{n=1}^{\infty}a_nr^n < \infty,
+$$
+then we can change the order of limits:
+$$
+\lim_{r\to 1^-}\lim_{n\to\infty}\sum_{k=1}^{n}a_kr^k = \lim_{n\to\infty}\lim_{r\to 1^-}\sum_{k=1}^{n}a_kr^k = \lim_{n\to\infty} A_n
+$$
+since each $A_k $ is a finite number, which comes from $\sum a_n $ converges to $A$. Hence,
+$$
+\lim_{r\to 1^-}\sum_{n=1}^{\infty}a_nr^n = \lim_{n\to\infty} A_n = A.
+$$
+
+\textbf{(b)}
+Consider $a_n = \frac{(-1)^{n+1}}{n} $, then by Proposition III.1.4,
+$$
+\lim_{n\to\infty}\left|\frac{a_n}{a_{n+1}}\right| = \lim\frac{n+1}{n} = 1.
+$$
+Hence the series $\sum a_n(z-a)^n $ have radius of convergence 1. Since the series $\sum a_n $ is a Leibniz series, then it converges to $A < \infty$.
+
+Now consider the function $f(z) = \log z$, it is analytic on $|z-1| < 1$, and it has power series expansion
+$$
+f(z) = \sum_{n=0}^{\infty}b_n (z-1)^n,
+$$
+where $b_n = \frac{1}{n!}f^{(n)}(1) = \frac{(-1)^{n-1}}{n} (n \ge 1), $ and $b_0 = 0 $. By this we can find $a_i = b_i $ for each $i \ge 0$, thus
+$$
+\sum a_n = f(2) = \log 2
+$$
+
+
+\item Problem IV.2.6
+
+\textbf{Sol.} In the region where $f(z) = \sqrt{z}$ is analytic, 
+$$
+f(z) = \sum_{n=0}^{\infty}a_n(z-1)^n,
+$$
+where
+$$
+a_n = \frac{1}{n!}f^{(n)}(1) = \frac{(-1)^{(n-1)}}{n!}\frac{(2n-3)!!}{2^{n}} (n \ge 1), ~a_0 = 1.
+$$
+and since
+$$
+\lim_{n\to\infty}\left|\frac{a_n}{a_{n+1}}\right| = \lim_{n\to\infty} \frac{2n+2}{2n-1} = 1,
+$$
+we know the radius of convergence is 1.
+
+\item Problem IV.2.9
+
+\item Problem IV.2.11
+
+\item Problem IV.3.3
+
+\item Problem IV.3.6
+
+\item Problem IV.3.14
+
+\item Problem IV.4. 2
+
+\item Problem IV. 4.3
+
+\item Problem IV.5.7
+
+\item Problem IV.5.9
+
+
+\end{enumerate}
+
+\end{document}
+
