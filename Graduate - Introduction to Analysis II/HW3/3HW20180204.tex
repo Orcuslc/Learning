@@ -194,7 +194,96 @@ we know the radius of convergence is 1.
 
 \item Problem IV.2.9
 
+\textbf{(a)}
+Let $f(z) = e^{z}-e^{-z} $, then by Corollary 2.13,
+$$
+f^{(n-1)}(0) = \frac{(n-1)!}{2\pi i}\int_{\gamma}\frac{e^z-e^{-z}}{z^n}dz = 1+(-1)^{n}.
+$$
+Thus
+$$
+\int_{\gamma}\frac{e^z-e^{-z}}{z^n}dz = \frac{2\pi i}{(n-1)!}(1+(-1)^n).
+$$
+
+\textbf{(b)}
+Let $f(z) = 1$, then 
+$$
+f^{(n-1)}(\frac{1}{2}) = \frac{(n-1)!}{2\pi i}\int_{\gamma}\frac{1}{(z-\frac{1}{2})^n} dz = \left\{
+\begin{aligned}
+& 1, n = 1 \\
+& 0, n \ge 2
+\end{aligned}
+\right.
+$$
+Thus
+$$
+\int_{\gamma}\frac{1}{(z-\frac{1}{2})^n} dz = \left\{
+\begin{aligned}
+& 2\pi i, n = 1 \\
+& 0, n \ge 2
+\end{aligned}
+\right.
+$$
+
+\textbf{(c)}
+First, we have
+$$
+\frac{1}{z^2+1} = \frac{1}{2i}(\frac{1}{z-i}-\frac{1}{z+i}).
+$$
+Then let $f(z) = 1 = g(z)$, then
+$$
+1 = f(i) = \frac{1}{2\pi i}\int_{\gamma}\frac{1}{z-i}dz = g(-i) = \frac{1}{2\pi i}\int_{\gamma}\frac{1}{z+i}dz.
+$$
+Hence 
+$$
+\int_{\gamma}\frac{1}{z^2+1}dz = \frac{1}{2i}(\int_\gamma\frac{dz}{z-i}-\int_\gamma\frac{dz}{z+i}) = 0.
+$$
+
+\textbf{(d)}
+Let $f(z) = \sin z$, then $f$ is analytic on $\mathbb{C}$.
+$$
+f(0) = \frac{1}{2\pi i}\int_{\gamma}\frac{\sin z}{z}dz = 0.
+$$
+Hence
+$$
+\int_\gamma \frac{\sin z}{z}dz = 0.
+$$
+
+\textbf{(e)}
+Let $f(z) = z^{1/m} $, then
+$$
+f^{(m-1)}(1) = \frac{(m-1)!}{2\pi i}\int_{\gamma}\frac{z^{1/m}}{(z-1)^m}dz = \prod_{i=0}^{m-1}(\frac{1}{m}-i).
+$$
+Hence
+$$
+\int_{\gamma}\frac{z^{1/m}}{(z-1)^m}dz  = \frac{2\pi i}{(m-1)!}\prod_{i=0}^{m-1}(\frac{1}{m}-i).
+$$
+
+
 \item Problem IV.2.11
+
+First, 
+$$
+f(z) = \frac{1}{2i}\log(\frac{1+iz}{1-iz}) = \frac{1}{2i}(\log(1+iz)-\log(1-iz)).
+$$
+We know $\log(z)$ is analytic on $\mathbb{C}\setminus l$, where $l$ is a line starting from the origin. Thus $f$ is analytic on $\mathbb{C}\setminus l\{z_1, z_2\}$, where $z_1 = -i, ~z_2 = i $. Hence $l: Re(z) = 0 $.
+
+On a branch of $f$, 
+$$
+\tan f(z) = \frac{1}{i}\frac{e^{if(z)}-e^{-if(z)}}{e^{if(z)}+e^{-if(z)}}.
+$$
+Since
+$$
+e^{if(z)} = e^{\frac{1}{2}\log(\frac{1+iz}{1-iz})} = (\frac{1+iz}{1-iz})^{1/2},
+$$
+we have
+$$
+\tan f(z) = \frac{1}{i}\frac{(\frac{1+iz}{1-iz})^{1/2}-(\frac{1+iz}{1-iz})^{-1/2}}{(\frac{1+iz}{1-iz})^{1/2}+(\frac{1+iz}{1-iz})^{-1/2}} = \frac{1}{i}\frac{2iz}{2} = z.
+$$
+By exercise III.3.19(d),
+$$
+f(z) = \frac{1}{2i}(\log\frac{1+iz}{1-iz}) = \frac{1}{2i}(\log\frac{z-i}{z+i}+\log i-\log (-i)) = -\frac{1}{2}\int_{-1}^{1}\frac{dt}{z-it} - \frac{\pi}{2}
+$$
+
 
 \item Problem IV.3.3
 
