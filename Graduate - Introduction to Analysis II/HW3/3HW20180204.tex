@@ -279,17 +279,26 @@ we have
 $$
 \tan f(z) = \frac{1}{i}\frac{(\frac{1+iz}{1-iz})^{1/2}-(\frac{1+iz}{1-iz})^{-1/2}}{(\frac{1+iz}{1-iz})^{1/2}+(\frac{1+iz}{1-iz})^{-1/2}} = \frac{1}{i}\frac{2iz}{2} = z.
 $$
-By exercise III.3.19(d),
+When $|z| < 1$, $f(z)$ is analytic. Hence by Theorem 2.8, 
 $$
-f(z) = \frac{1}{2i}(\log\frac{1+iz}{1-iz}) = \frac{1}{2i}(\log\frac{z-i}{z+i}+\log i-\log (-i)) = -\frac{1}{2}\int_{-1}^{1}\frac{dt}{z-it} - \frac{\pi}{2} 
+\begin{aligned}
+\log(1+iz) - \log(1-iz) &= \sum_{n=1}^{\infty}(-1)^{n-1}\frac{((1+iz)-1)^n}{n}-\sum_{n=1}^{\infty}(-1)^{n-1}\frac{((1-iz)-1)^n}{n} \\
+&= \sum_{n=1}^{\infty}(-1)^{n-1}\frac{(iz)^n}{n}-\sum_{n=1}^{\infty}(-1)^{n-1}\frac{(-iz)^n}{n} = 2i\sum_{n=0}^{\infty}(-1)^n\frac{z^{2n+1}}{2n+1}.
+\end{aligned}
 $$
+Hence $f(z) = \sum\limits_{n=0}^{\infty}(-1)^n\frac{z^{2n+1}}{2n+1} $.
 
 
 \item Problem IV.3.3
 
+\textbf{Sol.}
+The only function is $f(z) = \exp(z)$. 
+
+First, it is clear that $f(z) = \exp(z)$ is a solution. Now suppose there is another function $g$, s.t. $g(x) = \exp(x), \forall x\in\mathbb{R}$, then for each point $x_0\in\mathbb{R} $, let $\{x_n\} = \{x_0 + \frac{1}{n}\}$, then $f(x_i) = g(x_i)$ for each $i$, and $\{x_n\}\to x_0 $. Hence, $x_0 $ is a limit point of the set $\{f = g\}$, thus by Corollary 3.8, $f = g$ on $\mathbb{C}$.
+
 \item Problem IV.3.6
 
-\item Problem IV.3.14
+\textbf{Proof.} If $f(a) = 0$, then the proposition holds. Now suppose $f(a) \ne 0$, hence $|f(a)| > 0$. Let $g(z) = \frac{1}{f(z)}$, then since $f$ is analytic, $g$ is analytic in $G$. Hence $|g(a)| = \left|\frac{1}{f(a)}\right| = \frac{1}{|f(a)|} \ge |g(z)|$ for each $z\in G$. Then by Maximum Modulus Thm, $g$ is constant, which means $f$ is constant.
 
 \item Problem IV.4. 2
 
