@@ -300,11 +300,47 @@ First, it is clear that $f(z) = \exp(z)$ is a solution. Now suppose there is ano
 
 \textbf{Proof.} If $f(a) = 0$, then the proposition holds. Now suppose $f(a) \ne 0$, hence $|f(a)| > 0$. Let $g(z) = \frac{1}{f(z)}$, then since $f$ is analytic, $g$ is analytic in $G$. Hence $|g(a)| = \left|\frac{1}{f(a)}\right| = \frac{1}{|f(a)|} \ge |g(z)|$ for each $z\in G$. Then by Maximum Modulus Thm, $g$ is constant, which means $f$ is constant.
 
-\item Problem IV.4. 2
+\item Problem IV.4.2
 
-\item Problem IV. 4.3
+\textbf{Sol.} Checked https://math.stackexchange.com/questions/2422165/finding-a-closed-rectifiable-curve-with-prescribed-winding-numbers/2422214
+
+Let $\gamma$: $[0, 1] \to \mathbb{C}$ be a union of circles:
+$$
+\gamma([\frac{1}{2}-\frac{1}{2^n}, \frac{1}{2}-\frac{1}{2^{n+1}}]) = \gamma_1 = B(\frac{1}{2^n}, \frac{1}{2^n}), ~n\ge 1,
+$$
+and
+$$
+\gamma([1-\frac{1}{2^n}, 1-\frac{1}{2^{n+1}}]) = \gamma_2 = B(-\frac{1}{2^n}, \frac{1}{2^n}), n \ge 1.
+$$
+And the direction of $\gamma_1 $ is counterclockwise and $\gamma_2 $ is clockwise.
+
+Then $\gamma$ is rectifiable since length of $\gamma$ is $2\sum_{n=1}^{\infty}2\pi\frac{1}{2^n} = 4\pi$.
+Now we show that $\gamma$ is continuous. In fact, we only need to show that $\gamma$ is continuous at the point $t = \frac{1}{2}$ and $t = 1$ since circles are continuous. First we know $\lim_{t\to 1}\gamma(t) = 0 $, hence $\gamma $ is closed. For $\forall \epsilon > 0$, pick $n$, s.t. $\frac{1}{2^n} < \frac{\epsilon}{2}$, then $d(\gamma(t), 0) < 2\times\frac{1}{2^n} < \epsilon$ for all $t\in [1-\frac{1}{2^n}, 1]$. Hence $\gamma$ is continuous at $t = 1$, and similarly, $\gamma$ is continuous at $t = \frac{1}{2}$.
+
+For any integer $k$, if $k > 0$, pick a point $a$ inside the $k^{th} $ largest circle and outside the $(k+1)^{th} $ circle of $\gamma_1 $, then by Proposition 4.1, $n(\gamma; a) = k$. If $k = 0$, pick $a$ outside the largest circle of both $\gamma_1 $ and $\gamma_2 $, then $n(\gamma; a) = 0$.
+ If $k < 0$, then pick $a$ inside the $k^{th} $ largest circle and outside the $(k+1)^{th} $ circle of $\gamma_2 $, by Prop 4.1 and Prop 4.3 $n(\gamma; a) = k$.
+
+\item Problem IV.4.3
+
+\textbf{Proof.} By Corollary 3.6, since $p$ is a polynomial of degree $n$, we know
+$$
+p(z) = c(z-z_1)(z-z_2)\cdots(z-z_n),
+$$
+where $z_i $ are roots of $p$ and $z_i $ could equal to $z_j $. Then
+$$
+\frac{p'(z)}{p(z)} = \frac{a\sum_{i=1}^{n}\prod_{j\ne i}^{n}(z-z_j)}{a\prod_{i=1}^{n}(z-z_j)} = \sum_{i=1}^{n}\frac{1}{z-z_i},
+$$
+with $z_i \in B(0, R) $.
+Hence,
+$$
+\int_{\gamma}\frac{p'(z)}{p(z)}dz = \int_{\gamma}\sum_{i=1}^{n}\frac{1}{z-z_i}dz = \sum_{i=1}^{n}
+\int_\gamma\frac{1}{z-z_i}dz = \sum_{i=1}^{n}2\pi i = 2\pi in
+$$
+by Prop 4.3 and Thm 4.4.
 
 \item Problem IV.5.7
+
+
 
 \item Problem IV.5.9
 
