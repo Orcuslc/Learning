@@ -102,7 +102,7 @@
 
 \begin{center}
 
-\textbf{Homework 2}\bigskip
+\textbf{Homework 3}\bigskip
 
 \end{center}
 
@@ -340,9 +340,48 @@ by Prop 4.3 and Thm 4.4.
 
 \item Problem IV.5.7
 
-
+\textbf{Sol.}
+Let $f(z) = z^n $. Then by Corollary 5.9,
+$$
+\int_{\gamma}\frac{z^n}{(z-1)^n}dz = \int_{\gamma}\frac{f(z)}{(z-1)^n}dz = \frac{2\pi i}{(n-1)!}f^{(n-1)}(1)n(\gamma; 1) = 2\pi in \times n(\gamma; 1) = 2\pi in.
+$$
 
 \item Problem IV.5.9
+
+\textbf{Proof.} 
+With Morera's Theorem, we need to show for each triangular $T$ in $\mathbb{C}$, the integral of $f$ on $T$ is 0. We separate it into three cases, and use $A, B, C$ to denote the vertices of $T$.
+
+1) $T$ does not intersect $[-1, 1]$. Then by Cauchy's Theorem, since $f$ is analytic on $\mathbb{C}\setminus [-1, 1]$, we know $\int_{T}f = 0 $.
+
+2) $T$ intersects $[-1, 1]$ on one point $x_0 $. Then $f$ must intersect the x-axis on another point $x_1 $. Without loss of generality, assume $A$ is on the upper half plane and $B, C$ are on lower half plane. Then
+$$
+\int_{T}f = \int_{A\to x_0}+\int_{x_0\to B}+\int_{B\to C}+\int_{C\to x_1}+\int_{x_1\to A}+\int_{x_0\to x_1}+\int_{x_1\to x_0}f = \int_{Ax_0x_1A}f + \int_{x_0BCx_1 x_0}f.
+$$
+Since $f$ is continuous, we know $f$ is uniformly continuous in the closed region with $T$ being its border. Then $\forall \epsilon > 0$, $\exists \delta > 0$, $\forall |z_1-z_2| < \delta $, $|f(z_1)-f(z_2)| < \epsilon$. And $f$ is bounded inside the region, suppose $|f(z)| \le M$.
+
+Pick $z_0 $ on $T_{A\to x_0} $ and $z_1 $ on $T_{x_1\to A} $, s.t. $Im(z_0) = Im(z_1)$, and $|z_0-x_0| < \delta, |z_1-x_1| < \delta $. Let $y_0 = Re(z_0), y_1 = Re(z_1) $, then $|x_0-y_0| < \delta, |x_1-y_1| < \delta$, and $Im(z_0) = Im(z_1) < \delta$. Denote $g(x) = f(x + Im(z_0)), x\in\mathbb{R}$,
+then
+$$
+\left|\int_{x_0}^{x_1} f - \int_{z_0}^{z_1}f\right| = \left|\int_{x_0}^{y_0}+\int_{y_0}^{y_1}+\int_{y_1}^{x_1}f - \int_{y_0}^{y_1}g\right| < 2\delta M + \left|\int_{y_0}^{y_1}(f-g)\right| < 2\delta M + \epsilon|y_1-y_0|.
+$$
+Hence
+$$
+\left|\int_{Ax_0x_1A}f\right| = \left|\int_{Az_0z_1A}f +\int_{z_0}^{x_0}+\int_{x_0}^{x_1}+\int_{x_1}^{z_1}+\int_{z_1}^{z_0}f\right| < 2\delta M + 2\delta M + \epsilon|y_1-y_0|.
+$$
+With the arbitrariness of $\epsilon$ and corrosponding $\delta$(we can make $\delta$ arbitrarily small), we know
+$$
+\int_{Ax_0x_1A}f = 0.
+$$
+Similarly, 
+$$
+\int_{T}f = \int_{Ax_0x_1A} + \int_{x_0BCx_1 x_0}f = 0.
+$$
+
+3) An edge of $T$ overlaps with $[-1, 1]$. In fact, from the discussion in 2), we know
+$$
+\int_{T} f = 0.
+$$
+Hence, $f$ is analytic on $\mathbb{C}$, which means $f$ is entire.
 
 
 \end{enumerate}
