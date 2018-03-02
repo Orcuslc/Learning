@@ -145,11 +145,61 @@ Let $f = \frac{1}{z-1}$, then $f$ is analytic in $B(0, 1)$. But when $t \to 1$, 
 $$
 n(\gamma; z_0) = \frac{1}{2\pi i}\int_{\gamma}\frac{1}{z-z_0}dz
 $$
-Since $\frac{1}{z-z_0}$ is analytic on $\{z\mid d(z, \partial G) < \frac{1}{2}r\}$, by Prop 2.15, we know the integral is $0$. Hence $\{z\mid d(z,\partial G) < \frac{1}{2}r\} \subset H$.
+Since $\frac{1}{z-z_0}$ is analytic on $\{z\mid d(z, \partial G) < \frac{1}{2}r\}$, by Prop 2.15, we know the integral is $0$. Hence $\{z\mid d(z,\partial G) < \frac{1}{2}r\} \subset H$.																
 
 \item V.1.1
 
+\textbf{(a)} Around $z = 0$,
+$$
+\lim_{z\to 0}|zf(z)| = \lim_{z\to 0}|\sin(z)| =\frac{1}{2}\lim_{z\to 0}|e^{iz}-e^{-iz}| \le \lim_{z\to 0}|z| = 0.
+$$
+Hence by Thm 1.2, $z = 0$ is removable, and $f(0) = 1$ by power series expansion.
+
+\textbf{(b)} At $z = 0$, $g(z) = \cos(z)$ is analytic, and $\cos(0) = 1$. Thus by Prop 1.4, $z = 0$ is a pole, and the singular part is $\frac{1}{z}$.
+
+\textbf{(c)} At $z = 0$, $\lim_{z \to 0} zf(z) = \lim_{z\to 0}\cos z-1 = 0 $, then by Thm 1.2, $0$ is removable, and $f(0) = 0$ by power series expansion.
+
+\textbf{(d)} At $z = 0$, 
+$$
+f(z) = \sum_{n=0}^{-\infty}\frac{1}{(-n)!}z^{n} ,
+$$
+hence $0$ is an essential singularity, and $f(0<|z|<\delta) = \{z\mid |z| > exp(\frac{1}{\delta})\} $.
+
+\textbf{(e)} At $z = 0$,
+$$
+f(z) = \frac{1}{z^2}\sum_{n=1}^{\infty}(-1)^{n-1}\frac{z^n}{n} = \frac{1}{z}+\sum_{n=0}^{\infty}\frac{(-1)^{n+1}}{n+2}z^n.
+$$
+Hence $0$ is a pole, and the singularity part is $\frac{1}{z}$.
+
+\textbf{(f)} At $z = 0$, 
+$$
+f(z) = z\sum_{n=0}^{\infty}(-1)^n\frac{z^{-2n}}{n!} = z+\sum_{n=-1}^{-\infty} (-1)^{-n}\frac{z^{2n+1}}{(-n)!}
+$$
+Hence $0$ is an essential singularity, and $f(0<|z|<\delta) = \mathbb{C}$.
+
+\textbf{(g)} Around $z = 0$, notice $\frac{z^2+1}{z-1}$ is analytic, hence $0$ is a pole. Since $|z| < 1$,
+$$
+f(z) = 1-\frac{1}{z}+\frac{2}{z-1} = 1-\frac{1}{z}-2\sum_{n=0}^{\infty}z^n,
+$$
+we know the singular part is $-\frac{1}{z}$.
+
+\textbf{(h)} For any $n > 0$, 
+$$
+\lim_{z\to 0}z^nf(z) = \lim_{z\to 0}z^n\frac{1}{\sum_{n=1}^{\infty}\frac{1}{n!}z^n} = \infty,
+$$
+hence $0$ is an essential singularity, and $f(0<|z|<\delta) = \{z\mid |z| > \frac{1}{1-e^{\delta}}\} $.
+
+\textbf{(i)} 
+$$
+f(z) = z\sum_{n=0}^{\infty}(-1)^n\frac{z^{-(2n+1)}}{(2n+1)!} = 1+\sum_{n=-1}^{-\infty}(-1)^{-n}\frac{z^{2n-1}}{(-2n+1)!},
+$$
+hence $0$ is an essential singularity, and $f(0<|z|<\delta) = \{z\mid |z| < \delta\} $.
+
+\textbf{(j)} Same with (i), 0 is an essential singularity, and $f(0<|z|<\delta) = \{z\mid |z| < \delta^n\}$.
+
 \item V.1.4
+
+
 
 \item V.1.12
 
