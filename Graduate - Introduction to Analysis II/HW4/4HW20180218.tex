@@ -199,9 +199,43 @@ hence $0$ is an essential singularity, and $f(0<|z|<\delta) = \{z\mid |z| < \del
 
 \item V.1.4
 
+\textbf{(a)} 
+$$
+f(z) = \frac{1}{z}(\frac{1}{1-z}-\frac{1}{2(1-z/2)}) = \frac{1}{z}(\sum_{n=0}^{\infty}z^n-\frac{1}{2}\sum_{n=0}^{\infty}(\frac{z}{2})^n) = \frac{1}{2z} + \sum_{n=0}^{\infty}(1-\frac{1}{2^{n+2}})z^n
+$$
 
+\textbf{(b)} 
+% $$
+% f(z) = \frac{1}{z-1}\frac{-1}{2}(\frac{1}{1-(z-1)}+\frac{1}{1+(z-1)}) = -\frac{1}{2}\frac{1}{z-1}(\sum_{n=0}^{\infty}(z-1)^n + \sum_{n=0}^\infty(-1)^n(z-1)^n) = -\frac{1}{z-1}-\sum_{n=0}^{\infty}(z-1)^{2n+1}.
+% $$
+$$
+f(z) = \frac{1}{z}(\frac{1}{z-2}-\frac{1}{z-1}) = \frac{1}{z}(-\frac{1}{2}\frac{1}{1-\frac{z}{2}} - \frac{1}{z}\frac{1}{1-\frac{1}{z}}) = \frac{1}{z}(-\sum_{n=0}^{\infty}\frac{z^n}{2^{n+1}} -\sum_{n=0}^{\infty}z^{-n-1}) = -\sum_{n=-1}^{\infty}\frac{z^n}{2^{n+2}}-\sum_{n=-\infty}^{-2}z^n
+$$
+
+\textbf{(c)}
+$$
+f(z) = \frac{1}{z}(\frac{\frac{1}{z}}{1-\frac{2}{z}}-\frac{\frac{1}{z}}{1-\frac{1}{z}}) = \frac{1}{z}(\sum_{n=0}^{\infty}(\frac{2}{z})^n-\sum_{n=0}^{\infty}\frac{1}{z^n}) = \sum_{n=-\infty}^{-1}(2^{-(n+1)}-1)z^n.
+$$
 
 \item V.1.12
+
+\textbf{Proof.}
+By (1.11), 
+$$
+a_n = \frac{1}{2\pi i}\int_{\gamma}\frac{\exp(\frac{1}{2}\lambda(z+\frac{1}{z}) )}{z^{n+1}}dz
+$$
+pick $\gamma = \exp(it)$, the unit circle, then
+$$
+a_n = \frac{1}{2\pi }\int_{0}^{2\pi}e^{\lambda\cos t}e^{-int}dt = \frac{1}{2\pi}\int_{0}^{2\pi}e^{\lambda\cos t}(\cos nt -i\sin nt)dt
+$$
+
+$$
+b_n = \frac{1}{2\pi i}\int_{\gamma}\frac{\exp(\frac{1}{2}\lambda(z-\frac{1}{z}))}{z^{n+1}}dz
+$$
+pick $\gamma = \exp(it)$,
+$$
+b_n = \frac{1}{2\pi}\int_{0}^{2\pi}e^{\lambda i \sin t}e^{-int}dt = \frac{1}{2\pi}\int_{0}^{2\pi} \cos(nt-\lambda \sin t) -i\sin(nt - \lambda \sin t) dt.
+$$
 
 \item V.1.13
 
