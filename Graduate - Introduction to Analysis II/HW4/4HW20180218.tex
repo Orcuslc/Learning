@@ -1,0 +1,178 @@
+
+
+\documentclass{article}%
+
+\usepackage{amsmath}
+
+\usepackage{graphicx}
+
+\usepackage{amsfonts}%
+
+\usepackage{amssymb}
+
+
+
+
+
+\setlength{\topmargin}{-0.75in}
+
+\setlength{\textheight}{9.25in}
+
+\setlength{\oddsidemargin}{0.0in}
+
+\setlength{\evensidemargin}{0.0in}
+
+\setlength{\textwidth}{6.5in}
+
+\def\labelenumi{\arabic{enumi}.}
+
+\def\theenumi{\arabic{enumi}}
+
+\def\labelenumii{(\alph{enumii})}
+
+\def\theenumii{\alph{enumii}}
+
+\def\p@enumii{\theenumi.}
+
+\def\labelenumiii{\arabic{enumiii}.}
+
+\def\theenumiii{\arabic{enumiii}}
+
+\def\p@enumiii{(\theenumi)(\theenumii)}
+
+\def\labelenumiv{\arabic{enumiv}.}
+
+\def\theenumiv{\arabic{enumiv}}
+
+\def\p@enumiv{\p@enumiii.\theenumiii}
+
+\pagestyle{plain}
+
+\setcounter{secnumdepth}{0}
+
+\newtheorem{theorem}{Theorem}
+
+\newtheorem{acknowledgement}[theorem]{Acknowledgement}
+
+\newtheorem{algorithm}[theorem]{Algorithm}
+
+\newtheorem{axiom}[theorem]{Axiom}
+
+\newtheorem{case}[theorem]{Case}
+
+\newtheorem{claim}[theorem]{Claim}
+
+\newtheorem{conclusion}[theorem]{Conclusion}
+
+\newtheorem{condition}[theorem]{Condition}
+
+\newtheorem{conjecture}[theorem]{Conjecture}
+
+\newtheorem{corollary}[theorem]{Corollary}
+
+\newtheorem{criterion}[theorem]{Criterion}
+
+\newtheorem{definition}[theorem]{Definition}
+
+\newtheorem{example}[theorem]{Example}
+
+\newtheorem{exercise}[theorem]{Exercise}
+
+\newtheorem{lemma}[theorem]{Lemma}
+
+\newtheorem{notation}[theorem]{Notation}
+
+\newtheorem{problem}[theorem]{Problem}
+
+\newtheorem{proposition}[theorem]{Proposition}
+
+\newtheorem{remark}[theorem]{Remark}
+
+\newtheorem{solution}[theorem]{Solution}
+
+\newtheorem{summary}[theorem]{Summary}
+
+\newenvironment{proof}[1][Proof]{\textbf{#1.} }{\ \rule{0.5em}{0.5em}}
+
+
+
+\begin{document}
+
+
+
+\begin{center}
+
+\textbf{Homework 4}\bigskip
+
+\end{center}
+
+
+
+\noindent\textbf{Instructions}:
+\noindent In problems the problems below, references such as III.2.7 refer to Problem 7 in Section 2 of Chapter III in Conway's book.\smallskip
+
+
+
+\noindent If you use results from books including Conway's, please be explicit about what results you are using.
+
+
+
+
+
+
+\begin{center}
+
+\emph{Homework 4 is due in class at Midnight March 9.}
+
+\end{center} 
+
+\medskip
+
+Do the following problems:
+
+\begin{enumerate}
+
+
+\item IV.7.1
+
+\textbf{Sol. (Discussed with a college classmate)} In fact, I don't think that this proposition is correct. For example, pick $G$ the unit disk $B(0, 1)$, and $\gamma = \gamma(t): [0, 1] \to B$, s.t. $\gamma(t) = t$ for $0\le t < 1$, and $\gamma(1) = 0$. Then $\gamma$ is closed, and by simple calculation we know $V(\gamma) = 2$, which shows $\gamma$ is rectifiable.
+
+Let $f = \frac{1}{z-1}$, then $f$ is analytic in $B(0, 1)$. But when $t \to 1$, $f\circ \gamma(t)\to\infty$, hence it is not rectifiable.
+
+\item IV.7.2
+
+\textbf{(a)} Let $f(z) = z$, pick any $z_0 \in \{z\mid d(z,\partial G) < \frac{1}{2}r\} $, then since there is only one point $z = z_0 $ satisfies $f(z) = z_0 $, by Thm 7.2,
+$$
+n(\gamma; z_0) = \frac{1}{2\pi i}\int_{\gamma}\frac{1}{z-z_0}dz
+$$
+Since $\frac{1}{z-z_0}$ is analytic on $\{z\mid d(z, \partial G) < \frac{1}{2}r\}$, by Prop 2.15, we know the integral is $0$. Hence $\{z\mid d(z,\partial G) < \frac{1}{2}r\} \subset H$.
+
+\item V.1.1
+
+\item V.1.4
+
+\item V.1.12
+
+\item V.1.13
+
+\item V.1.17
+
+\item V.2.1
+
+\item V.2.2
+
+\item V.2.3
+
+\item V.2.4
+
+\item V.2.5 
+
+
+
+
+
+
+\end{enumerate}
+
+\end{document}
+
