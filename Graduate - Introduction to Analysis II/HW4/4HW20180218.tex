@@ -264,9 +264,62 @@ Hence $b_n = \frac{1}{\pi}\int_{0}^{\pi}\cos(nt -\lambda\sin t )dt $.
 
 \item V.1.13
 
-\textbf{(a)} 
+\textbf{(a)} Suppose $f$ is entire and has a removable singularity at $\infty$, then $g(z) = f(\frac{1}{z})$ has a removable singularity at $z = 0$, thus we can define $g(0) = a < \infty$, which means $f$ is bounded in the neighbourhood of $\infty$. Hence by Liouville Thm, $f$ is constant.
+
+\textbf{(b)} By assumption, $g(z) = f(\frac{1}{z}) = \frac{1}{z^m}h(z)$, where $h(z)$ is analytic at $z = 0$. Since $f(z) = z^{m}h(\frac{1}{z})$ is entire, it means at $z = 0$, $h$ has a definition or has a removable singularity, and $h$ is entire. Hence, by (1) we know $h$ is a constant, which means $f$ is a polynomial of degree m.
+
+\textbf{(c)} Let $f(z) = \frac{\prod (z-u_i)}{\prod (z-v_i)}$, then 
+$$
+g(z) = f(\frac{1}{z}) = \frac{\prod_{i=1}^{n} (\frac{1}{z}-u_i)}{\prod_{i=1}^{m} (\frac{1}{z}-v_i)}
+$$
+has a removable singularity at $z = 0$, which means $\lim_{z\to 0}g(z) $ exists and is not $\infty$. Notice
+$$
+\lim_{z \to 0}g(z) = \lim_{z\to 0}\frac{z^m\prod_{i=1}^{n} (\frac{1}{z}-u_i)}{\prod_{i=1}^{m} (1-v_iz)},
+$$
+if $m < n$, then $\lim_{z\to 0} g(z) = \infty$, which makes a contradiction. If $m \ge n$, then the limit is well-defined. Hence $f = \frac{p(z)}{q(z)}$, where $p, q$ are polynomials, and $\deg(p) \le \deg(q)$.
+
+\textbf{(d)} Let $f(z) = \frac{\prod (z-u_i)}{\prod (z-v_i)}$, then 
+$$
+g(z) = f(\frac{1}{z}) = \frac{\prod_{i=1}^{n} (\frac{1}{z}-u_i)}{\prod_{i=1}^{k} (\frac{1}{z}-v_i)}
+$$
+has a pole of order m at $z = 0$, which means $g(z) = \frac{h(z)}{z^m}$, where $h(z)$ is analytic at $z = 0$. Then
+$$
+z^mg(z) = \frac{z^m\prod_{i=1}^{n} (\frac{1}{z}-u_i)}{\prod_{i=1}^{k} (\frac{1}{z}-v_i)} = \frac{z^{m+k}\prod_{i=1}^{n} (\frac{1}{z}-u_i)}{\prod_{i=1}^{m} (1-v_iz)},
+$$
+and we have $m+k = n$, otherwise the order of pole is not $m$. Hence $f = \frac{p}{q}$, and $\deg(p)-\deg(q) = m$.
 
 \item V.1.17
+
+\textbf{Proof.} If not, first suppose $f$ has a pole of order $m$ at $a$. Then $f(z) = \frac{g(z)}{(z-a)^m}$, and $g$ is analytic on $G$. 
+
+i) If $g(a) = 0$, then $f(z) = 0$, and we can define $f(a) = 0$, thus $a$ is a removable singularity.
+
+ii) If $g(a)\ne 0$, then according to the isolation of zeros, $\exists r > 0$, s.t. $g(z) \ne 0$ in $B(a, 2r)$. Consider $H = B(a, r)$, by max modulus theorem, $\min_{H}|g| = \min_{\partial H}|g|$, denote is as $c \ne 0$. Hence
+$$
+\begin{aligned}
+\int\int_{H}|f(x+iy)|^2 dxdy = \int\int_{H}\frac{|g(x+iy)|^2}{|x+iy-a|^{2m}}dxdy \ge \int\int_{H}\frac{c^2}{|x+iy-a|^2}dxdy.
+\end{aligned}
+$$
+Let $x = Re(a)+s\cos t, y = Im(a)+s\sin t $, then
+$$
+\int\int_{H}|f(x+iy)|^2 dxdy \ge \int_{0}^{r}\int_{0}^{2\pi}\frac{c^2}{s^{2m}}sdsdt = 2\pi c^2\int_{0}^{r}s^{1-2m}ds.
+$$
+If $m = 1$, then the integral becomes
+$$
+\left.\int_{0}^{r} s^{-1}ds = \ln(s)\right\arrowvert_{0}^{r} = \infty.
+$$
+If $m > 1$, then the integral is
+$$
+\left.\int_{0}^{r} s^{1-2m} ds = \frac{1}{2-2m}s^{2-2m}\right\arrowvert_{0}^r = \infty.
+$$
+Since the integrand is nonnegative,
+$$
+\int_{G} |f|^2 \ge \int_{H} |f|^2 = \infty,
+$$
+which makes a contradiction. With the same method, we know $a$ is not an essential singularity. Hence $a$ is a removable one.
+
+By the deduction we know, if $0 < p < 2$, $a$ could be a removable singularity or a pole of order $m$, which satisfies $pm < 2$. If $p \ge 2$, then $a$ is a removable singularity.
+
 
 \item V.2.1
 
