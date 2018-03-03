@@ -220,14 +220,24 @@ $$
 \item V.1.12
 
 \textbf{Proof.}
-By (1.11), 
+By (1.11), since $f$ is analytic on $0 < |z| < \infty$,
 $$
 a_n = \frac{1}{2\pi i}\int_{\gamma}\frac{\exp(\frac{1}{2}\lambda(z+\frac{1}{z}) )}{z^{n+1}}dz
 $$
 pick $\gamma = \exp(it)$, the unit circle, then
 $$
-a_n = \frac{1}{2\pi }\int_{0}^{2\pi}e^{\lambda\cos t}e^{-int}dt = \frac{1}{2\pi}\int_{0}^{2\pi}e^{\lambda\cos t}(\cos nt -i\sin nt)dt
+a_n = \frac{1}{2\pi }\int_{0}^{2\pi}e^{\lambda\cos t}e^{-int}dt = \frac{1}{2\pi}\int_{0}^{2\pi}e^{\lambda\cos t}(\cos nt -i\sin nt)dt,
 $$
+the real part is
+$$
+\frac{1}{2\pi}\int_{0}^{2\pi}e^{\lambda\cos t}\cos ntdt = \frac{1}{2\pi}\left(\int_{0}^{\pi}e^{\lambda\cos t}\cos ntdt -\int_{\pi}^{0}e^{\lambda \cos(2\pi -s)}\cos(2\pi-s)ds\right) = \frac{1}{\pi}\int_{0}^{\pi}e^{\lambda\cos t}\cos ntdt.
+$$
+and the imaginary part is 
+$$
+-\frac{i}{2\pi}\int_{0}^{2\pi}e^{\lambda\cos t}\sin ntdt = -\frac{i}{2\pi} \left(\int_{0}^{\pi}e^{\lambda\cos t}\sin ntdt + \int_{\pi}^{0}e^{\lambda\cos(2\pi -s)}\sin(2\pi-s)ds\right) = 0.
+$$
+Hence $a_n = \frac{1}{\pi}\int_{0}^{\pi}e^{\lambda\cos t}\cos ntdt $.
+
 
 $$
 b_n = \frac{1}{2\pi i}\int_{\gamma}\frac{\exp(\frac{1}{2}\lambda(z-\frac{1}{z}))}{z^{n+1}}dz
@@ -236,8 +246,25 @@ pick $\gamma = \exp(it)$,
 $$
 b_n = \frac{1}{2\pi}\int_{0}^{2\pi}e^{\lambda i \sin t}e^{-int}dt = \frac{1}{2\pi}\int_{0}^{2\pi} \cos(nt-\lambda \sin t) -i\sin(nt - \lambda \sin t) dt.
 $$
+The real part is
+$$
+\begin{aligned}
+\frac{1}{2\pi}\int_{0}^{2\pi} &\cos(nt-\lambda \sin t)dt = \frac{1}{2\pi}\left(\int_{0}^{\pi}\cos(nt-\lambda \sin t)dt - \int_{\pi}^{0}\cos(n(2\pi -s)-\lambda\sin(2\pi-s))ds\right) \\
+&= \frac{1}{2\pi}\left(\int_{0}^{\pi}\cos(nt-\lambda \sin t)dt +\int_{0}^{\pi}\cos(-ns+\lambda \sin s)ds\right) = \frac{1}{\pi}\int_{0}^{\pi}\cos(nt -\lambda \sin t)dt.
+\end{aligned}
+$$
+and the imaginary part is
+$$
+\begin{aligned}
+-\frac{i}{2\pi}\int_{0}^{2\pi}&\sin(nt-\lambda \sin t)dt = -\frac{i}{2\pi} \left(\int_{0}^{\pi}\sin(nt-\lambda\sin t)dt -\int_{\pi}^{0}\sin(n(2\pi-s) -\lambda\sin(2\pi-s))ds\right) \\
+&= -\frac{i}{2\pi} \left(\int_{0}^{\pi}\sin(nt-\lambda\sin t)dt-\int_{0}^{\pi}\sin(-ns+\lambda \sin s)ds\right) = 0.
+\end{aligned}
+$$
+Hence $b_n = \frac{1}{\pi}\int_{0}^{\pi}\cos(nt -\lambda\sin t )dt $.
 
 \item V.1.13
+
+\textbf{(a)} 
 
 \item V.1.17
 
