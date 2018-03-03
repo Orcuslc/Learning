@@ -323,15 +323,159 @@ By the deduction we know, if $0 < p < 2$, $a$ could be a removable singularity o
 
 \item V.2.1
 
+\textbf{(a)} Notice $(x^4+x^2+1)(x^2-1) = x^6-1 $, so $f(z) = \frac{z^2}{z^4+z^2+1}$ has four poles of order 1, and they are sixth roots of $1$, which are $a_i = e^{i\theta_i} $ where
+$$
+\theta = \frac{\pi}{3}, \frac{2\pi}{3}, \frac{4\pi}{3}, \frac{5\pi}{3}.
+$$
+Consider the two poles in the upper-half plane $a_1, a_2 $, then
+$$
+Res(f, a_1) = \lim_{z\to a_1}(z-a_1)f(z) = a_1^2(a_1-a_2)^{-1}(a_1-a_3)^{-1}(a_1-a_4)^{-1} = \frac{1}{2\sqrt{3}i}e^{\frac{\pi}{3}i},
+$$
+$$
+Res(f, a_2) = \lim_{z\to a_2}(z-a_2)f(z) = a_2^2(a_2-a_1)^{-1}(a_2-a_3)^{-1}(a_2-a_4)^{-1} = -\frac{1}{2\sqrt{3}i}e^{\frac{2\pi}{3}i}.
+$$
+Let $\gamma$ be the closed path which is the boundary of upper half of disk of radius $R > 1$ with center 0, in counter-clockwise direction. Then by Residue Theorem, 
+$$
+\frac{1}{2\pi i}\int_{\gamma}f =  Res(f, a_1)+Res(f, a_2) = \frac{1}{2\sqrt{3}i}
+$$
+And
+$$
+\int_{\gamma}f = \int_{-R}^{R}\frac{x^2}{x^4+x^2+1}dx + i\int_{0}^{\pi}\frac{R^3e^{i3t}}{R^4e^{i4t}+R^2e^{i2t}+1}dt.
+$$
+Notice $|R^4e^{i4t}+R^2e^{i2t}+1| \ge R^4-R^2=1 $ when $R$ is sufficiently large, so
+$$
+\left|i\int_{0}^{\pi}\frac{R^3e^{i3t}}{R^4e^{i4t}+R^2e^{i2t}+1}dt\right| \le \frac{\pi R^3}{R^4-R^2-1} \to 0 ~\text{as}~ R\to\infty.
+$$
+Since $\frac{x^2}{x^4+x^2+1} \ge 0, \forall x\in\mathbb{R}$, we know
+$$
+\int_{0}^{\infty}\frac{x^2}{x^4+x^2+1}dx = \frac{1}{2}\int_{-\infty}^{\infty}\frac{x^2}{x^4+x^2+1} = \frac{1}{2}\lim_{R\to\infty}\int_{-R}^{R}\frac{x^2}{x^4+x^2+1}dx = \frac{\pi}{\sqrt{3}}.
+$$
+
+For the followsing problems, I will not write all the steps since I don't have enough time to do so. I will only write the key points.
+
+% \textbf{(b)} $f$ has a removable singularity at $z = 0$. Hence $Res(f, a) = 0$. Let $\gamma$ be the curve in Example 2.7, then
+% $$
+% 0 = \int_{r}^{R}+\int_{-R}^{-r}\frac{\cos x-1}{x^2}dx + \int_{\gamma_r}+\int_{\gamma_R}\frac{\cos z-1}{z^2}dz = 2\int_{r}^{R}\frac{\cos x-1}{x^2}dx + \int_{\gamma_r}+\int_{\gamma_R}\frac{\cos z-1}{z^2}dz.
+% $$
+% Since
+% $$
+% \left|\int_{\gamma_R}\frac{\cos z-1}{z^2}dz\right| \le \int_{\gamma_R}\left|\frac{\cos z-1}{z^2}dz\right| \le \int_{\gamma_R}\frac{2}{|z|^2}dz \to 0 ~\text{as}~ R\to \infty,
+% $$
+% and
+% $$
+% \int_{\gamma_r}\frac{\cos z-1}{z^2}dz = \int_{\gamma_r}\frac{\cos z}{z^2}dz -\int_{\gamma_r}\frac{1}{z^2}dz
+% = \int_{0}^{\pi}\frac{\exp(ire^{it})+\exp(-ire^{it})}{2re^{it}}dt 
+% $$
+
+\textbf{(b)} We know 
+$$
+\int_{r}^{R}\frac{\cos x-1}{x^2}dx = \frac{1}{2}\left(\int_{r}^{R}+\int_{-R}^{-r}\frac{e^{ix}-1}{x^2}dx\right)
+$$
+Consider $f = \frac{e^{iz}-1}{z^2}$, then $f$ has a simple pole at $z = 0$. Let $\gamma$ be the curve in Example 2.7, then
+$$
+0 = \int_{r}^{R}+\int_{-R}^{-r}\frac{e^{ix}-1}{x^2}dx + \int_{\gamma_r}+\int_{\gamma_R}\frac{e^{iz}-1}{z^2}dz
+$$
+Since 
+$$
+\left|\int_{\gamma_R}\frac{e^{iz}-1}{z^2}dz\right| = \left|\int_{0}^{\pi}\frac{\exp(iRe^{it})-1}{Re^{it}}dt\right| \le \frac{1}{R}\int_{0}^{\pi}\exp(-R\sin t)dt,
+$$
+and by Example 2.7 we know the integral $\to 0$ as $R\to \infty$. And since $\frac{e^{iz}-1-iz}{z^2}$ has a removable singularity at $z = 0$, by Example 2.7 we know
+$$
+\lim_{\gamma\to 0}\left|\int_{\gamma_r}\frac{e^{iz}-1-iz}{z^2}dz\right| = 0, 
+$$
+but $\int_{\gamma}\frac{i}{z}dz = \pi$, hence 
+$$
+\lim_{\gamma\to 0}\left|\int_{\gamma_r}\frac{e^{iz}-1}{z^2}dz\right| = \pi.
+$$
+Hence
+$$
+\int_{0}^{\infty}\frac{\cos x-1}{x^2}dx = \lim_{r\to 0, R\to\infty}\int_{r}^{R}\frac{\cos x-1}{x^2}dx = -\frac{\pi}{2}.
+$$
+
+\textbf{(c)} The same with Example 2.9, let $z = e^{i\theta} $, then
+$$
+\int_{0}^{\pi}\frac{\cos 2\theta}{1-2a\cos\theta +a^2}d\theta = -\frac{i}{4}\int_{\gamma}\frac{z^4+2z^2+1}{-az^2+(a^2+1)z-a}dz,
+$$
+where $\gamma = \{|z| = 1\}$. By residue theorem, 
+$$
+\int_{\gamma}\frac{z^4+2z^2+1}{-az^2+(a^2+1)z-a}dz = 2\pi iRes(f, a) = 2\pi i\frac{(a^2+1)^2}{1-a^2}.
+$$
+Hence
+$$
+\int_{0}^{\pi}\frac{\cos 2\theta}{1-2a\cos\theta +a^2}d\theta = \frac{\pi}{2}\frac{(a^2+1)^2}{1-a^2}.
+$$
+
+\textbf{(d)} Same with (c), let $z = e^{i\theta} $, then
+$$
+\int_{0}^{\pi}\frac{d\theta}{(a+\cos\theta)^2} = -2i\int_{\gamma}\frac{z}{(z^2+2az+1)^2}dz,
+$$
+where $\gamma = \{|z| = 1\}$. By residue theorem, 
+$$
+\int_{\gamma}\frac{z}{(z^2+2az+1)^2}dz = \frac{1}{2}\pi i a(a^2-1)^{-\frac{3}{2}}.
+$$
+Hence
+$$
+\int_{0}^{\pi}\frac{d\theta}{(a+\cos\theta)^2} = \pi a(a^2-1)^{-\frac{3}{2}}.
+$$
+
+
 \item V.2.2
+
+\textbf{(a)}
+$$
+\int_{0}^{\infty}\frac{dx}{(x^2+a^2)^2} = \frac{1}{2}\int_{-\infty}^{\infty}\frac{dx}{(x^2+a^2)^2}.
+$$
+Consider $R > a$, let $\gamma = \{|z| = R, Im(z) > 0 \}$, then by residue thm, since $f$ has a pole of order 2, $z = ai$,
+$$
+\int_{\gamma} +\int_{-R}^{R} \frac{dz}{(z^2+a^2)^2} = 2\pi i Res(f, ai) = \frac{\pi}{2a^3}.
+$$
+But
+$$
+\left|\int_{\gamma}\frac{dz}{(z^2+a^2)^2}\right| \le \int_{\gamma}\left|\frac{dz}{(z^2+a^2)^2}\right| \le \int_{0}^{\pi}\frac{1}{|R^2-a^2|^2}dt \le \frac{\pi}{|R^2-a^2|^2} \to 0, ~\text{as}~ R\to\infty.
+$$
+Hence
+$$
+\int_{0}^{\infty}\frac{dx}{(x^2+a^2)^2} = \frac{\pi}{4a^3}.
+$$
+
+\textbf{(b)} Define $G, l(z), \gamma$ as in Example 2.10, using the same method of Example 2.10, we can show
+$$
+\int_{0}^{\infty}\frac{(\log x)^2}{1+z^2}dz = 0.
+$$
+$$
+\int_{\gamma}\frac{(l(z))^3}{1+z^2}dz = \int_{r}^{R}\frac{(\log x)^3}{1+x^2}dx + \int_{0}^{\pi}\frac{(\log R+i\theta)^3}{1+R^2e^{2i\theta}}iRe^{i\theta}d\theta + \int_{-R}^{-r}\frac{(\log |x|+\pi i)^3}{1+x^2}dx + \int_{\pi}^{0}\frac{(\log r+i\theta)^3}{1+r^2e^{2i\theta}}ire^{i\theta}d\theta
+$$
+by residue thm,
+$$
+\int_{\gamma}\frac{(l(z))^3}{1+z^2}dz = 2\pi i Res(f, i) = -\frac{1}{8}\pi^4 i.
+$$
+And
+$$
+\int_{r}^{R}\frac{(\log x)^3}{1+x^2}dx + \int_{-R}^{-r}\frac{(\log |x|+\pi i)^3}{1+x^2}dx = 
+$$
+
 
 \item V.2.3
 
+\textbf{Sol.} We have proved that $f$ has an essential singularity at $z = 0$. Denote $G$ be the region surrounded by $\gamma$.
+
+i) If $0\notin G$, then by Cauchy's Thm, $\int_\gamma f = 0 $.
+
+ii) If $0\in G$, then by Laurent expansion, $Res(f, 0) = 1$. But by a problem in last homework, we can construct a $\gamma$, for each $n\in\mathbb{N}$, $n(\gamma, 0) = n$. Hence $\int_{\gamma}f = 2\pi ni, n\in\mathbb{N} $.
+
 \item V.2.4
+
+\textbf{Sol.} In fact, in a neighbourhood of $a$, $f = \frac{c_{-1}}{z-a}+\sum_{n=0}^\infty c_n(z-a)^n $, and $g = \sum_{n=0}^{\infty}d_n (z-a)^n $. Hence by definition, 
+$$
+Res(fg, a) = c_{-1}d_{0} = Res(f, a)g(a).
+$$
 
 \item V.2.5 
 
-
+\textbf{Sol.} Notice in the last problem, each simple pole of $f$ is a simple pole of $fg$. By residue thm, 
+$$
+\frac{1}{2\pi i}\int_{\gamma}fg = \sum_{k=1}^{n}n(\gamma, a_k)Res(fg, a_k) = \sum_{k=1}^{n}n(\gamma, a_k)Res(f, a_k)g(a_k).
+$$
 
 
 
@@ -340,3 +484,4 @@ By the deduction we know, if $0 < p < 2$, $a$ could be a removable singularity o
 
 \end{document}
 
+ 
