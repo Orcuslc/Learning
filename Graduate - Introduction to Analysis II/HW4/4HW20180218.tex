@@ -514,6 +514,48 @@ $$
 $$
 
 \textbf{(d)}
+If $z = e^{2i\theta} $ then $\bar{z} = \frac{1}{z}$ and so
+$$
+a+\sin^2\theta = a-\frac{1}{4}(e^{2i\theta}+e^{-2i\theta}-2) = a-\frac{1}{4}(z+\bar{z}-2) = -\frac{z^2-(4a+2)z+1}{4z}.
+$$
+Hence
+$$
+\int_{0}^{\pi/2}\frac{d\theta}{a+\sin^2\theta} = \frac{1}{2}\int_{0}^{\pi}\frac{d\theta}{a+\sin^2\theta} = i\int_{\gamma}\frac{1}{z^2-(4a+2)z+1}dz,
+$$
+where $\gamma = \{|z| = 1\}$. But $z^2-(4a+2)z+1 = (z-z_1)(z-z_2) $ where $z_1 = (1+2a)+2\sqrt{a^2+a}, ~z_2 = (1+2a)-2\sqrt{a^2+a} $. Since $a > 0$ we know $|z_1| > 1 $ and $|z_2| < 1$, by residue theorem,
+$$
+\int_{\gamma}\frac{1}{z^2-(4a+2)z+1}dz = 2\pi iRes(f, z_1) = \frac{\pi i}{-2\sqrt{a^2+a}}.
+$$
+Hence
+$$
+\int_{0}^{\pi/2}\frac{d\theta}{a+\sin^2\theta} = \frac{\pi}{2\sqrt{a^2+a}}.
+$$
+
+\textbf{(e)}
+Define $G, l(z), \gamma$ as in Example 2.10, then
+$$
+\int_{\gamma}\frac{l(z)}{(1+z^2)^2}dz = \int_{r}^{R}\frac{\log z}{(1+x^2)^2}dx +\int_{0}^{\pi}\frac{\log R +i\theta}{(1+R^2e^{2i\theta})^2}iRe^{i\theta}d\theta + \int_{-R}^{-r}\frac{\log |x|+\pi i}{(1+x^2)^2}dx + \int_{\pi}^{0}\frac{\log r +i\theta}{(1+r^2e^{2i\theta})^2}ire^{i\theta}d\theta
+$$
+by residue theorem,
+$$
+\int_{\gamma}\frac{l(z)}{(1+z^2)^2}dz = \frac{(\pi+2i)\pi i}{4}.
+$$
+First,
+$$
+\int_{r}^{R}\frac{\log z}{(1+x^2)^2}dx + \int_{-R}^{-r}\frac{\log |x|+\pi i}{(1+x^2)^2}dx = 2\int_{r}^{R}\frac{\log z}{(1+x^2)^2}dx + \frac{\pi i}{2}\left(\frac{R}{R^2+1}-\frac{r}{r^2+1}+\arctan R-\arctan r\right)
+$$
+and
+$$
+\left|\int_{0}^{\pi}\frac{\log R +i\theta}{(1+R^2e^{2i\theta})^2}iRe^{i\theta}d\theta\right| \le \frac{R|\log R|}{|1-R^2|^2}\int_{0}^{\pi}d\theta + \frac{R}{|1-R^2|^2}\int_{0}^{\pi}\theta d\theta \to 0,
+$$
+as $R\to \infty$. Also, we know $r\log r\to 0$ as $r\to 0^+ $, hence
+$$
+\left| \int_{\pi}^{0}\frac{\log r +i\theta}{(1+r^2e^{2i\theta})^2}ire^{i\theta}d\theta\right| \to 0.
+$$
+Hence,
+$$
+\int_{0}^{\infty}\frac{\log z}{(1+x^2)^2}dx = \frac{1}{2}\left(\frac{(\pi+2i)\pi i}{4}-\frac{\pi i}{2}\frac{\pi}{2}\right) = -\frac{\pi}{4}.
+$$
 
 
 \item V.2.3
