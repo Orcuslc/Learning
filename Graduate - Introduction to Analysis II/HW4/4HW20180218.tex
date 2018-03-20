@@ -438,10 +438,7 @@ $$
 \int_{0}^{\infty}\frac{dx}{(x^2+a^2)^2} = \frac{\pi}{4a^3}.
 $$
 
-\textbf{(b)} Define $G, l(z), \gamma$ as in Example 2.10, using the same method of Example 2.10, we can show
-$$
-\int_{0}^{\infty}\frac{(\log x)^2}{1+z^2}dz = 0.
-$$
+\textbf{(b)} Define $G, l(z), \gamma$ as in Example 2.10, then
 $$
 \int_{\gamma}\frac{(l(z))^3}{1+z^2}dz = \int_{r}^{R}\frac{(\log x)^3}{1+x^2}dx + \int_{0}^{\pi}\frac{(\log R+i\theta)^3}{1+R^2e^{2i\theta}}iRe^{i\theta}d\theta + \int_{-R}^{-r}\frac{(\log |x|+\pi i)^3}{1+x^2}dx + \int_{\pi}^{0}\frac{(\log r+i\theta)^3}{1+r^2e^{2i\theta}}ire^{i\theta}d\theta
 $$
@@ -451,8 +448,72 @@ $$
 $$
 And
 $$
-\int_{r}^{R}\frac{(\log x)^3}{1+x^2}dx + \int_{-R}^{-r}\frac{(\log |x|+\pi i)^3}{1+x^2}dx = 
+\begin{aligned}
+\int_{r}^{R}\frac{(\log x)^3}{1+x^2}dx &+ \int_{-R}^{-r}\frac{(\log |x|+\pi i)^3}{1+x^2}dx = \int_{r}^{R}\frac{(\log x)^3+(\log x+\pi i)^3}{1+x^2}dx \\
+&= 2\int_{r}^{R}\frac{(\log x)^3}{1+x^2} + 3\pi i\int_{r}^{R}\frac{(\log x)^2}{1+x^2}dx -3\pi^2\int_{r}^{R}\frac{\log x}{1+x^2}dx -\pi^3 i\int_{r}^{R}\frac{1}{1+x^2}dx
+\end{aligned}
 $$
+we know from example 2.10, as $r\to 0, R\to \infty$, the third term is 0, and the last term is
+$$
+-\pi^3 i\int_{0}^{\infty}\frac{1}{1+x^2}dx = -\frac{1}{2}\pi^4i.
+$$
+Now we consider the second term. Using the same notation $G, l(z), \gamma$,
+$$
+\int_{\gamma}\frac{(l(z))^2}{1+z^2}dz = \int_{r}^{R}\frac{(\log x)^2}{1+x^2}dx + \int_{0}^{\pi}\frac{(\log R+i\theta)^2}{1+R^2e^{2i\theta}}iRe^{i\theta}d\theta + \int_{-R}^{-r}\frac{(\log |x|+\pi i)^2}{1+x^2}dx + \int_{\pi}^{0}\frac{(\log r+i\theta)^2}{1+r^2e^{2i\theta}}ire^{i\theta}d\theta
+$$
+by residue theorem,
+$$
+\int_{\gamma}\frac{(l(z))^2}{1+z^2}dz = 2\pi i Res(f, i) = -\frac{1}{4}\pi^3.
+$$
+And
+$$
+\begin{aligned}
+\int_{r}^{R}\frac{(\log x)^2}{1+x^2}dx &+ \int_{-R}^{-r}\frac{(\log |x|+\pi i)^2}{1+x^2}dx = \int_{r}^{R}\frac{(\log x)^2+(\log x+\pi i)^2}{1+x^2}dx \\
+&= 2\int_{r}^{R}\frac{(\log x)^2}{1+x^2} + 2\pi i\int_{r}^{R}\frac{\log x}{1+x^2}dx -\pi^2\int_{r}^{R}\frac{1}{1+x^2}dx
+\end{aligned}
+$$
+when $r\to 0, R\to \infty$, the second term is 0, and the last term is
+$$
+-\pi^2\int_{0}^{\infty}\frac{1}{1+x^2}dx = -\frac{1}{2}\pi^3.
+$$
+Also, if $\rho > 0$ then
+$$
+\begin{aligned}
+\left|\rho\int_{0}^{\pi}\frac{(\log \rho+i\theta)^2}{1+\rho^2e^{2i\theta}}e^{i\theta}d\theta\right| &\le \rho\frac{|\log\rho|^2}{|1-\rho^2|}\int_{0}^{\pi}d\theta +2\rho\frac{|\log\rho|}{|1-\rho^2|}\int_{0}^{\pi}\theta d\theta +\frac{\rho}{|1-\rho^2|}\int_{0}^{\pi}\theta^2 d\theta \\
+&= \rho\frac{|\log\rho|^2}{|1-\rho^2|}\pi + \rho\frac{|\log\rho|}{|1-\rho^2|}\pi^2 + \frac{\rho}{|1-\rho^2|}\frac{\pi^3}{3}
+\end{aligned}
+$$
+let $\rho\to 0^+ $ or $\rho\to\infty$, these terms will be 0. It is just the same for the three-order case, thus
+$$
+\int_{0}^{\infty}\frac{(\log x)^2}{1+x^2}dx = \frac{1}{8}\pi^3,
+$$
+hence
+$$
+\int_{0}^{\infty}\frac{(\log x)^3}{1+x^2}dx = 0.
+$$
+
+\textbf{(c)}
+First,
+$$
+\int_{0}^{\infty}\frac{\cos ax}{(1+x^2)^2}dx = \frac{1}{2}\int_{-\infty}^{\infty}\frac{e^{iax}}{(1+x^2)^2}dx.
+$$
+Let $\gamma = \{|z|=R, Im(z) > 0\} \cup [-R, R]$, then by residue theorem,
+$$
+\int_{\gamma}\frac{e^{iaz}}{(1+z^2)^2}dz = 2\pi iRes(f, i) = \frac{(a+1)e^{-a}\pi}{2}.
+$$
+And
+$$
+\begin{aligned}
+\left|\int_{\gamma_R}\frac{e^{iaz}}{(1+z^2)^2}dz\right| &= \left|\int_{0}^{\pi}\frac{e^{-aR\sin\theta}(\cos(aR\cos\theta)+i\sin(aR\cos\theta))}{(1+R^2e^{2i\theta})^2}iRe^{i\theta}d\theta\right| \\
+&\le \left|\int_{0}^{\pi}\frac{R}{|1-R^2|^2}d\theta\right| \to 0, ~\text{when} ~R\to\infty.
+\end{aligned}
+$$
+Hence
+$$
+\int_{0}^{\infty}\frac{\cos ax}{(1+x^2)^2}dx = \frac{(a+1)e^{-a}\pi}{4}.
+$$
+
+\textbf{(d)}
 
 
 \item V.2.3
