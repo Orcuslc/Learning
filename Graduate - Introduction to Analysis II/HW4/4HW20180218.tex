@@ -557,6 +557,41 @@ $$
 \int_{0}^{\infty}\frac{\log z}{(1+x^2)^2}dx = \frac{1}{2}\left(\frac{(\pi+2i)\pi i}{4}-\frac{\pi i}{2}\frac{\pi}{2}\right) = -\frac{\pi}{4}.
 $$
 
+\textbf{(f)}
+$$
+\int_{0}^{\infty}\frac{dx}{1+x^2} = \frac{1}{2}\int_{-\infty}^{\infty}\frac{dx}{1+x^2}.
+$$
+Let $\gamma = \{|z| = R, Im(z) > 0\}\cup [-R, R]$, then by residue theorem,
+$$
+\int_{\gamma}\frac{dz}{1+z^2} = 2\pi i Res(f, i) = \pi.
+$$
+But as $R\to\infty$,
+$$
+\left|\int_{\gamma_R}\frac{dz}{1+z^2}\right| = \left|\int_{0}^{\pi} \frac{iRe^{i\theta}}{1+R^2e^{2i\theta}}d\theta\right| \le \frac{R}{|1-R^2|}\int_{0}^{\pi}d\theta \to 0,
+$$
+hence
+$$
+\int_{0}^{\infty}\frac{dx}{1+x^2} = \frac{\pi}{2}.
+$$
+
+\textbf{(g)}
+Let $y = e^x $, then
+$$
+\int_{-\infty}^{\infty}\frac{e^{ax}}{1+e^x}dx = \int_0^{\infty}\frac{y^{-(1-a)}}{1+y}dy.
+$$
+Since $0 < 1-a < 1$, by Example 2.12, we know
+$$
+\int_{-\infty}^{\infty}\frac{e^{ax}}{1+e^x}dx = \frac{\pi}{\sin(1-a)\pi} = \frac{\pi}{\sin a\pi}.
+$$
+
+\textbf{(h)}
+First we have
+$$
+\int_{0}^{2\pi}\log\sin^2 2\theta d\theta = 2\int_{0}^{2\pi}\log\sin2\theta d\theta = 4\int_{0}^{\pi}\log\sin\theta d\theta.
+$$
+
+
+
 
 \item V.2.3
 
