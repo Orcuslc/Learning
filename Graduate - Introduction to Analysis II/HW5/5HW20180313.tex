@@ -176,8 +176,25 @@ which means the equation has one solution.
                                        \]The hypotheses allow you to integrate this series termwise in $z$.
 
 \textbf{Proof.} Since $f$ is analytic in $\bar{B}(0, R)$, it has no poles and according to assumptions, one zeros in it. Hence
-
-
+$$
+g(w) = \frac{1}{2\pi i}\int_{\gamma}\frac{zf'(z)}{f(z)-w}dz = \frac{1}{2\pi i}\int_{\gamma}\sum_{n=1}^{\infty}\frac{w^{n-1}}{f(z)^n}zf'(z)dz.
+$$
+Let $f(z) = zh(z)$, by assumption we know $h(0)\ne 0$, hence
+$$
+\left|\frac{w^{n}}{f(z)^{n+1}}zf'(z)\right| = \left|\frac{w^{n}}{z^nh(z)^{n+1}}zf'(z)\right| = \left|\left(\frac{w}{z}\right)^n\frac{f'(z)}{h(z)^n}\right| \le \frac{|w|^n}{R^n}\frac{R^n|f'(z)|}{|f(z)|^n} = \left|\frac{w}{f(z)}\right|^n|f'(z)|.
+$$
+By assumption we know $|w| \le |f(z)|$, hence for $f(z)\ne w$ (and since the domain is $B(0; \rho)$ which means the inequality is strict), the series
+$$
+\sum_{n=0}^{\infty}\frac{|w|^n}{|f(z)|^n}f'(z)
+$$
+converges, thus by Weierstrass theorem, the series
+$$
+\sum_{n=1}^{\infty}\frac{w^{n-1}}{f(z)^n}zf'(z)dz
+$$
+converges uniformly, hence we can switch the infinity sum with the integral:
+$$
+g(w) = \frac{1}{2\pi i}\sum_{n=0}^{\infty} \int_{\gamma}\left(\frac{w}{z}\right)^n\frac{f'(z)}{h(z)^n}dz
+$$
 
 \item V.3.5
 
