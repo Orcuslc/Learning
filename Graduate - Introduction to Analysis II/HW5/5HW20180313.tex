@@ -193,8 +193,13 @@ $$
 $$
 converges uniformly, hence we can switch the infinity sum with the integral:
 $$
-g(w) = \frac{1}{2\pi i}\sum_{n=0}^{\infty} \int_{\gamma}\left(\frac{w}{z}\right)^n\frac{f'(z)}{h(z)^n}dz
+g(w) = \frac{1}{2\pi i}\sum_{n=0}^{\infty} \int_{\gamma}\left(\frac{w}{z}\right)^n\frac{f'(z)}{h(z)^n}dz.
 $$
+For an arbitrary triangle path $T$ in $B(0,\rho)$, since $w^n $ is analytic for every $n \ge 0$,
+$$
+\int_{T}g(w)dw = \frac{1}{2\pi i}\int_{T}\sum_{n=0}^{\infty}\int_{\gamma}\left(\frac{w}{z}\right)^n\frac{f'(z)}{h(z)^n}dz = \frac{1}{2\pi i}\sum_{n=0}^{\infty}\int_{\gamma}\frac{1}{z^n}\frac{f'(z)}{h(z)^n}dz\int_{T}w^ndw = 0.
+$$
+Hence by Morera's theorem, $g$ is analytic.
 
 \item V.3.5
 
