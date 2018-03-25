@@ -1,0 +1,232 @@
+
+
+\documentclass{article}%
+
+\usepackage{amsmath}
+
+\usepackage{graphicx}
+
+\usepackage{amsfonts}%
+
+\usepackage{amssymb}
+
+
+
+
+
+\setlength{\topmargin}{-0.75in}
+
+\setlength{\textheight}{9.25in}
+
+\setlength{\oddsidemargin}{0.0in}
+
+\setlength{\evensidemargin}{0.0in}
+
+\setlength{\textwidth}{6.5in}
+
+\def\labelenumi{\arabic{enumi}.}
+
+\def\theenumi{\arabic{enumi}}
+
+\def\labelenumii{(\alph{enumii})}
+
+\def\theenumii{\alph{enumii}}
+
+\def\p@enumii{\theenumi.}
+
+\def\labelenumiii{\arabic{enumiii}.}
+
+\def\theenumiii{\arabic{enumiii}}
+
+\def\p@enumiii{(\theenumi)(\theenumii)}
+
+\def\labelenumiv{\arabic{enumiv}.}
+
+\def\theenumiv{\arabic{enumiv}}
+
+\def\p@enumiv{\p@enumiii.\theenumiii}
+
+\pagestyle{plain}
+
+\setcounter{secnumdepth}{0}
+
+\newtheorem{theorem}{Theorem}
+
+\newtheorem{acknowledgement}[theorem]{Acknowledgement}
+
+\newtheorem{algorithm}[theorem]{Algorithm}
+
+\newtheorem{axiom}[theorem]{Axiom}
+
+\newtheorem{case}[theorem]{Case}
+
+\newtheorem{claim}[theorem]{Claim}
+
+\newtheorem{conclusion}[theorem]{Conclusion}
+
+\newtheorem{condition}[theorem]{Condition}
+
+\newtheorem{conjecture}[theorem]{Conjecture}
+
+\newtheorem{corollary}[theorem]{Corollary}
+
+\newtheorem{criterion}[theorem]{Criterion}
+
+\newtheorem{definition}[theorem]{Definition}
+
+\newtheorem{example}[theorem]{Example}
+
+\newtheorem{exercise}[theorem]{Exercise}
+
+\newtheorem{lemma}[theorem]{Lemma}
+
+\newtheorem{notation}[theorem]{Notation}
+
+\newtheorem{problem}[theorem]{Problem}
+
+\newtheorem{proposition}[theorem]{Proposition}
+
+\newtheorem{remark}[theorem]{Remark}
+
+\newtheorem{solution}[theorem]{Solution}
+
+\newtheorem{summary}[theorem]{Summary}
+
+\newenvironment{proof}[1][Proof]{\textbf{#1.} }{\ \rule{0.5em}{0.5em}}
+
+
+
+\begin{document}
+
+
+
+\begin{center}
+
+\textbf{Homework 5}\bigskip
+
+\end{center}
+
+
+
+\noindent\textbf{Instructions}:
+\noindent In problems the problems below, references such as III.2.7 refer to Problem 7 in Section 2 of Chapter III in Conway's book.\smallskip
+
+
+
+\noindent If you use results from books including Conway's, please be explicit about what results you are using.
+
+
+
+
+
+
+\begin{center}
+
+\emph{Homework 5 is due in class at Midnight Monday, March 26.}
+
+\end{center} 
+
+\medskip
+
+Do the following problems:
+
+\begin{enumerate}
+
+
+\item V.3.1
+
+\textbf{Proof}
+From (3.1), (3.2) we know for a zero $z = a$ of $f$,
+$$
+\frac{f'(z)}{f(z)}g(z) = \frac{m}{z-a}g(z) + \frac{h'(z)}{h(z)}g(z),
+$$
+where $f(z) = (z-a)^mh(z) $ and $h$ is analytical around $a$ and $h(a)\ne 0$. Similarly, for a pole $z = a$ of $f$,
+$$
+\frac{f'(z)}{f(z)}g(z) = \frac{-m}{z-a}g(z)+\frac{h'(z)}{h(z)}g(z),
+$$
+where $f(z) = (z-a)^{-m}h(z)$ and $h$ is analytical and $h(a)\ne 0$. In both cases, since $g$ is analytic in $G$, it has no poles in $G$, so $\frac{h'(z)}{h(z)}g(z)$ is analytic. Hence, 
+$$
+\frac{f'(z)}{f(z)}g(z) = \sum_{k=1}^{n}\frac{g(a_k)}{z-a_k} -\sum_{j = 1}^{m}\frac{g(p_j)}{z-p_j}+\frac{h'(z)}{h(z)},
+$$
+and hence by Cauchy's theorem,
+$$
+\frac{1}{2\pi i}\int_{\gamma}\frac{f'(z)}{f(z)}dz = \sum_{i=1}^{n}g(z_i)n(\gamma; z_i)-\sum_{j=1}^{m}g(p_j)n(\gamma; p_j).
+$$
+
+
+\item V.3.2
+
+\textbf{Sol.} Let $h(z) = f(z) - z^n $, $g(z) = z^n $, then by assumptions, on $\{|z| = 1\}$,
+$$
+|h(z)+g(z)| = |f(z)| < 1 = |g(z)|,
+$$
+hence by Rouche's theorem,
+$$
+Z_h-P_h = Z_g-P_g.
+$$
+Since $h, g$ are analytic on $\bar{B}(0, 1)$, $P_h = P_g = 0 $. Hence
+$$
+Z_h = Z_g = 1,
+$$
+which means the equation has one solution.
+
+
+\item V.3.3 Hint: Think about the expansion\[
+ \frac{1}{f(z)-w} = \frac{1}{f(z)} + \frac{w}{[f(z)]^2} + \cdots + \frac{w^n}{[f(t)]^{n+1}}+\cdots .                                       
+                                       \]The hypotheses allow you to integrate this series termwise in $z$.
+
+\textbf{Proof.} Since $f$ is analytic in $\bar{B}(0, R)$, it has no poles and according to assumptions, one zeros in it. Hence
+
+
+
+\item V.3.5
+
+\textbf{Proof.}
+First we show it is true for the poles. Since $f$ is meromorphic in $G$, if $z_0 $ is a limit point of poles, then $f$ is either analytic in a neighbourhood of $z_0 $ or has an isolated singularity at $z_0 $. If $f$ is analytic at $z_0 $, then $f$ is analytic at some $B(z_0, r)$. But since $z_0 $ is a limit point of poles, there must be a pole $z_1\in B(z_0, r)$, which makes a contradiction. If $z_0 $ is an isolated singularity, then there is some $r > 0$, $f$ is analytic in $B(z_0, r)\setminus\{z_0\}$. By the same reason, there is a pole $z_1\in B(z_0, r)\setminus\{z_0\}$, which makes a contradiction. Hence it is true for poles.
+
+For the zeros: suppose $z_0 $ is a limit point of zeros. First we claim that $z_0 $ cannot be a pole. Otherwise, since poles cannot have a limit points as we have shown above, $f$ has a Laurent expansion in some $B(z_0, r)\setminus\{z_0\}$:
+$$
+f(z) = \sum_{n=-m}^{\infty}a_n(z-z_0)^n.
+$$
+Then pick $r < 1$, we know
+$$
+\left|\sum_{n=0}^{\infty}a_n (z-z_0)^n\right| < \sum_{n=0}^{\infty}|a_n|r^n < M
+$$
+for some $M > 0$. However, we can pick a $\epsilon > 0$, s.t. 
+$$
+\sum_{n=-m}^{-1}a_n\epsilon^n > M.
+$$
+Hence for each $z\in B(z_0, \epsilon)$, $f(z)\ne 0$, which makes a contradiction with that $z_0 $ is a limit point of zeros. Thus, since poles cannot have a limit points, we can pick a $r > 0$, s.t. there is no pole in $B(z_0, r)$, which means $f$ is analytic in $B(z_0, r)$. By Theorem 4.3.7, zeros has no limit points in $B(z_0, r)$, which contradicts with that $z_0 $ is a limit point.
+
+Hence, the proposition holds.
+
+\item V.3.6
+
+
+
+\item V.3.7
+
+\textbf{Sol.}
+
+
+
+\item V.3.10
+
+\textbf{Proof.} In fact, by problem 2 we know there is an unique $z$ s.t. $|z| < 1$ and $f(z) = z$. When $|f(z)| \le 1$ on $|z| = 1$, we will show it is not true.
+
+i) pick $f(z) \equiv 1$, then $f(z) = z$ has no solution in $|z| < 1$.
+
+ii) pick $|f(z)| < 1$ on $|z| = 1$, then it has one solution in $|z| < 1$.
+
+iii) pick $f(z) = z$, then is has infinity number of solutions.
+
+Now we proof the only situations are as above, i.e., if a function $f$ is analytic in the unit dist $D$, and $f(D)\subset D$, then $f$ has one fixed point in $D$, except for the identity function.
+
+In fact, suppose there are two fixed points $z_1, z_2 $. If $z_1 = 0$, then by Schwarz's lemma, there is a constant $|c| = 1$, s.t. $f(z) = cz$ for all $z$ in $D$. Hence, $f(z_2) = cz_2 = z_2 $, which means $c = 1$.
+
+Now suppose $z_1, z_2\ne 0 $. Let $z_1 = re^{i\theta} $, consider $\varphi(z) = e^{i\theta}\frac{z+r}{rz+1}$, then $\varphi$ maps $D$ onto itself, and $\varphi(0) = z_1 $. Hence the function $g = \varphi^{-1} \circ f\circ\varphi$ maps $D$ to a subset of $D$ with two fixed points $t_1 = \varphi^{-1}(z_1) = 0 $, and $t_2 = \varphi^{-1}(z_1) \ne 0 $. By the first case, $g$ is the identity function, so $f$ is also the identity function.
+
+\end{enumerate}
+
+\end{document}
+
