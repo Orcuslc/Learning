@@ -1,0 +1,148 @@
+help diary
+diary - 将命令行窗口文本保存到文件中
+
+    此 MATLAB 函数 打开/关闭 diary 模式。要查看 diary 的状态，请键入 get(0,'Diary')。MATLAB 返回 on 或 off
+    以指示 diary 状态。
+
+    diary
+    diary('filename')
+    diary off
+    diary on
+    diary filename
+
+    See also <a href="https://www.mathworks.com/help/releases/R2017b/matlab/ref/evalc.html">evalc</a>
+
+    <a href="matlab:doc diary">Reference page for diary</a>
+
+a = [1, 2, 3]
+
+a =
+
+     1     2     3
+
+b = [1, 2, 3]'
+
+b =
+
+     1
+     2
+     3
+
+A = b*a
+
+A =
+
+     1     2     3
+     2     4     6
+     3     6     9
+
+det(A)
+
+ans =
+
+    -1.109335647967048e-31
+
+I = [1,0,0; 0,1,0; 0,0,1;]
+
+I =
+
+     1     0     0
+     0     1     0
+     0     0     1
+
+B = I+A
+
+B =
+
+     2     2     3
+     2     5     6
+     3     6    10
+
+det(B)
+
+ans =
+
+  14.999999999999998
+
+x = inv(B)*b
+
+x =
+
+   0.066666666666667
+   0.133333333333333
+   0.200000000000000
+
+test
+
+x =
+
+   0.066666666666667
+   0.133333333333333
+   0.200000000000000
+
+test
+{Error using <a href="matlab:matlab.internal.language.introspective.errorDocCallback('mtimes')" style="font-weight:bold"> * </a>
+Inner matrix dimensions must agree.
+
+Error in <a href="matlab:matlab.internal.language.introspective.errorDocCallback('test', 'E:\Chuan\Documents\GitHub\Learning\Graduate - PDE\MATLAB Practice\test.m', 6)" style="font-weight:bold">test</a> (<a href="matlab: opentoline('E:\Chuan\Documents\GitHub\Learning\Graduate - PDE\MATLAB Practice\test.m',6,0)">line 6</a>)
+x=inv(B)*a
+} 
+x=0:0.1:2*pi;
+y=cos(1.7*x);
+plot(x,y)
+[x,y]=meshgrid(0:0.1:2*pi);
+z=cos(1.7*x).*cos(1.7*y);
+mesh(x,y,z)
+Sum=0;
+for i=1:100,
+Sum=Sum+i;
+end
+Sum
+
+Sum =
+
+        5050
+
+Sum = sum(1:100)
+
+Sum =
+
+        5050
+
+tic; Sum = 0; for i = 1:100, Sum = Sum+i; end
+toc;
+Elapsed time is 1.535420 seconds.
+tic; Sum = 0; for i = 1:100, Sum = Sum+i; end; toc;
+Elapsed time is 0.000298 seconds.
+tic; Sum = sum(1:100); toc;
+Elapsed time is 0.000142 seconds.
+newton
+Enter the number A for which the square root is sought:  2
+Enter the desired tolerance:  .01
+The square root of 2.000000 is  1.414216 pm  0.010000 
+newton
+Enter the number A for which the square root is sought:  2
+Enter the desired tolerance:  1e-5
+The square root of 2.000000 is  1.414214 pm  0.000010 
+newton
+Enter the number A for which the square root is sought:  16
+Enter the desired tolerance:  .01
+The square root of 16.000000 is  4.000001 pm  0.010000 
+newton
+Enter the number A for which the square root is sought:  16
+Enter the desired tolerance:  1e-5
+The square root of 16.000000 is  4.000000 pm  0.000010 
+format long
+newton
+Enter the number A for which the square root is sought:  16
+Enter the desired tolerance:  1e-5
+The square root of 16.000000 is  4.000000 pm  0.000010 
+newton
+Enter the number A for which the square root is sought:  0
+Enter the desired tolerance:  .01
+The square root of 0.000000 is       NaN pm  0.010000 
+newton
+Enter the number A for which the square root is sought:  0
+Enter the desired tolerance:  1e-5
+The square root of 0.000000 is       NaN pm  0.000010 
+diary
