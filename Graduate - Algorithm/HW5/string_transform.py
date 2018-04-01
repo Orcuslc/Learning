@@ -1,14 +1,22 @@
-import random
-import string
+import time
+
+def timeit(func):
+	def timed(*args, **kw):
+		t1 = time.time()
+		res = func(*args, **kw)
+		print((time.time() - t1))
+		return res
+	return timed
 
 def edit(a, b):
 	return (0 if a == b else 1)
 
+@timeit
 def transform(source, target):
 	n = len(source)
 	# flip[i][j]: the min operations (substitution only) to transform source[i:j+1] to target[i:j+1] after a flip on source[i:j+1]. Here we use Python indices.
 	# dp[i]: the min operations to transform source[:i+1] to target[:i+1]. Use Python indices.
-	flip = [[0 for i in range(n)] for i in range(n)]
+	flip = [[n for i in range(n)] for i in range(n)]
 	dp = [n for i in range(n)]
 	dp[0] = edit(source[0], target[0])
 	flip[0][0] = dp[0]
@@ -32,10 +40,9 @@ def transform(source, target):
 
 # src = "abcde"
 # dst = "cdcbb"
-N = 1000
-
-src = "".join(random.choice(string.ascii_lowercase) for _ in range(N))
-dst = "".join(random.choice(string.ascii_lowercase) for _ in range(N))
 
 if __name__ == '__main__':
+	import sys
+	src = sys.stdin.readline()
+	dst = sys.stdin.readline()
 	print(transform(src, dst))
