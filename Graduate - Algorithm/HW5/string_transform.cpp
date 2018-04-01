@@ -36,11 +36,12 @@ int transform(string source, string target) {
 
 int main() {
 	string source, target;
-	cin >> source >> target;
-	clock_t t1, t2;
-	t1 = clock();
-	cout << transform(source, target) << endl;
-	t2 = clock();
-	cout << (float)(t2 - t1)/CLOCKS_PER_SEC << endl;
+	while(cin >> source >> target) {
+		clock_t t1, t2;
+		t1 = clock();
+		cout << transform(source, target) << endl;
+		t2 = clock();
+		cout << (float)(t2 - t1)/CLOCKS_PER_SEC << endl;
+	}
 	return 0;
 }

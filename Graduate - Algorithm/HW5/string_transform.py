@@ -43,6 +43,8 @@ def transform(source, target):
 
 if __name__ == '__main__':
 	import sys
-	src = sys.stdin.readline()
-	dst = sys.stdin.readline()
-	print(transform(src, dst))
+	complete_in = sys.stdin.read().split('\n')
+	for i in range(int(len(complete_in)/2)):
+		source = complete_in[2*i]
+		target = complete_in[2*i+1]
+		print(transform(source, target))
