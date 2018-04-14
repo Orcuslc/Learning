@@ -1,0 +1,276 @@
+
+
+\documentclass{article}%
+
+\usepackage{amsmath}
+
+\usepackage{graphicx}
+
+\usepackage{amsfonts}%
+
+\usepackage{amssymb}
+
+
+
+
+
+\setlength{\topmargin}{-0.75in}
+
+\setlength{\textheight}{9.25in}
+
+\setlength{\oddsidemargin}{0.0in}
+
+\setlength{\evensidemargin}{0.0in}
+
+\setlength{\textwidth}{6.5in}
+
+\def\labelenumi{\arabic{enumi}.}
+
+\def\theenumi{\arabic{enumi}}
+
+\def\labelenumii{(\alph{enumii})}
+
+\def\theenumii{\alph{enumii}}
+
+\def\p@enumii{\theenumi.}
+
+\def\labelenumiii{\arabic{enumiii}.}
+
+\def\theenumiii{\arabic{enumiii}}
+
+\def\p@enumiii{(\theenumi)(\theenumii)}
+
+\def\labelenumiv{\arabic{enumiv}.}
+
+\def\theenumiv{\arabic{enumiv}}
+
+\def\p@enumiv{\p@enumiii.\theenumiii}
+
+\pagestyle{plain}
+
+\setcounter{secnumdepth}{0}
+
+\newtheorem{theorem}{Theorem}
+
+\newtheorem{acknowledgement}[theorem]{Acknowledgement}
+
+\newtheorem{algorithm}[theorem]{Algorithm}
+
+\newtheorem{axiom}[theorem]{Axiom}
+
+\newtheorem{case}[theorem]{Case}
+
+\newtheorem{claim}[theorem]{Claim}
+
+\newtheorem{conclusion}[theorem]{Conclusion}
+
+\newtheorem{condition}[theorem]{Condition}
+
+\newtheorem{conjecture}[theorem]{Conjecture}
+
+\newtheorem{corollary}[theorem]{Corollary}
+
+\newtheorem{criterion}[theorem]{Criterion}
+
+\newtheorem{definition}[theorem]{Definition}
+
+\newtheorem{example}[theorem]{Example}
+
+\newtheorem{exercise}[theorem]{Exercise}
+
+\newtheorem{lemma}[theorem]{Lemma}
+
+\newtheorem{notation}[theorem]{Notation}
+
+\newtheorem{problem}[theorem]{Problem}
+
+\newtheorem{proposition}[theorem]{Proposition}
+
+\newtheorem{remark}[theorem]{Remark}
+
+\newtheorem{solution}[theorem]{Solution}
+
+\newtheorem{summary}[theorem]{Summary}
+
+\newenvironment{proof}[1][Proof]{\textbf{#1.} }{\ \rule{0.5em}{0.5em}}
+
+
+
+\begin{document}
+
+
+
+\begin{center}
+
+\textbf{Homework 6}\bigskip
+
+\end{center}
+
+
+
+\noindent\textbf{Instructions}:
+\noindent In problems the problems below, references such as III.2.7 refer to Problem 7 in Section 2 of Chapter III in Conway's book.\smallskip
+
+
+
+\noindent If you use results from books including Conway's, please be explicit about what results you are using.
+
+
+
+
+
+
+\begin{center}
+
+\emph{Homework 6 is due in class at Midnight Monday, April 23.}
+
+\end{center} 
+
+\medskip
+
+Do the following problems:
+
+\begin{enumerate}
+
+
+\item VI.1.4  Notice that this is related to a problem on the second midterm.
+
+\textbf{Proof.}
+If not, suppose for each $\epsilon > 0$, there is a polynomial $p(z)$, s.t. $\sup\{|p(z) - z^{-1}| : z\in A\} < \epsilon$. We claim that $|p(z) - z^{-1}| \le \epsilon$ for all $z\in A$. Otherwise, by the continuity of $|p(z)|$, $\exists z_0\in O(z, r)\cap A $, s.t. $|p(z_0)-z^{-1}| > \epsilon$, which makes a contradiction.
+
+Now pick $\epsilon = \frac{1}{2R}$, then in $A$, $|p(z)-\frac{1}{z}| \le \frac{1}{2R}$, which means
+$$
+|zp(z)-1|\le \frac{|z|}{|2R|} \le \frac{1}{2}
+$$
+on $A$, hence on $\{|z| = R\}\subset\partial A$. Hence, by Maximum Modulus Thm, since $g(z) = zp(z)-1$ is analytic in $O(0, R)$, we know for each $z\in O(0, R)$, $|g(z)| < \max|g(\partial A)| \le \frac{1}{2}$. However, $|g(0)| = 1 > \frac{1}{2}$, which makes a contradiction.
+
+
+\item VI.1.5
+
+\textbf{Proof.}
+Let $\{z_k\}_{k=1}^n $ be zeros of $f$ in $B(0, \frac{1}{3}R)$, and 
+$$
+g(z) = \frac{\prod_{k=1}^{n}z_k}{\prod_{k=1}^{n}(z-z_k)}f(z),
+$$
+then $g(z)$ is analytic in $B(0, R)$, and $g(0) = f(0) = a$. Hence by Max Modulus Thm,
+$$
+a = |g(0)| \le \left| \frac{\prod_{k=1}^{n}z_k}{\prod_{k=1}^{n}(z-z_k)}f(z)\right|_{z\in\{|z| = R\}} \le \frac{(\frac{1}{3}R)^n}{(\frac{2}{3}R)^n}M = \frac{1}{2^n}M.
+$$
+Then $n \le \frac{\log (M/a)}{\log 2}$.
+
+
+\item VI.1.6
+
+Let $h(z) = \frac{f(z)}{g(z)}$, then since $f, g$ never vanish in $B(0, R)$, $h$ and $H = \frac{1}{h}$ are both analytic in $B(0, R)$. Then by M.M.T,
+$$
+|h(z)| \le \left|\frac{f(z)}{g(z)}\right|_{|z| = 1} = 1, 
+$$
+and
+$$
+|H(z)| = \left|\frac{1}{h(z)}\right| \le \left|\frac{g(z)}{f(z)}\right|_{|z| = 1} = 1,
+$$
+we know $|h(z)| \equiv 1$ in $B(0, R)$, and by M.M.T, $h(z)$ is a constant $\lambda$, and $|\lambda| = 1$.
+
+\item VI.2.5
+
+\textbf{(a)}
+Consider 
+$$
+\varphi(z) = \varphi_{z_1}(z)\cdots\varphi_{z_n}(z),
+$$
+where $\varphi_{z_k}(z) $ is the Mobius transformation 
+$$
+\varphi_{z_k}(z) = \frac{z-z_k}{1-\bar{z_k}z}.
+$$
+Then 
+$$
+g(z) = \frac{f(z)}{\varphi(z)}
+$$
+is analytic in $D$. Now we only need to show that $|g| \le M$ in $D$. If not, assume there is a point $z_0\in D $ , s.t. $|g(z_0)| = M_0 > M $. Then for any $|z_0| < r < 1$, by max modulus thm, 
+$$
+\max_{|z| = r}|h(z)| \ge M_0.
+$$
+Hence there is some $z_r\in \{|z| = r\}$, s.t.
+$$
+M \ge |f(z_r)| \ge M_0\varphi(z_r).
+$$
+Let $r\to 1^- $, take limit on both side, we get
+$$
+M \ge M_0\lim_{r\to 1^-}\varphi(z_r) = M_0
+$$
+as $|\varphi| = 1$ on $\partial D$, which leads to a contradiction. Hence, $|f| \le M|\varphi|$.
+
+\textbf{(b)}
+With the same notation as (a), we notice
+$$
+h(0) = \frac{f(0)}{\varphi(0)} = (-1)^{n}M,
+$$
+which means $|h(0)| = M$. But we have shown $|h(z)| \le M$ on $D$, hence by M.M.T., 
+$$
+h(z) \equiv (-1)^nM, \forall z\in D.
+$$
+Hence
+$$
+f(z) = h(z)\varphi(z) = (-1)^nM\varphi(z).
+$$
+
+\item VI.2.8
+
+\textbf{Sol.}
+Let $g(z) = \varphi_{\frac{1}{2}}\circ f(z) $, then 
+$$
+g(0) = 0, ~g'(0) = \frac{-f(0)f'(0)+\frac{5}{4}f'(0)}{(1-\frac{1}{2}f(0))^2} = 1,
+$$
+and $g$ is analytic in $D$. Hence by Schwarz's Thm, there is some $|c| = 1$,
+$$
+g(z) = cz = \varphi_{\frac{1}{2}}\circ f(z),
+$$ 
+which means
+$$
+f(z) = \varphi_{-\frac{1}{2}}(cz),
+$$
+where $|c| = 1$. Thus the solution is not unique.
+
+
+\item VII.2.1
+
+\textbf{Proof.} 
+If $f_n\to f $, then since $\gamma$ is compact, we know $f_n\to f $ uniformly on $\gamma$.
+
+Conversely, for each $z\in G$, let $\gamma$ be a circle $C(z, r)\subset G$, then by Cauchy's theorem,
+$$
+f_n(z) = \frac{1}{2\pi i}\int_{\gamma}\frac{f_n(w)}{w-z}dw,
+$$
+hence
+$$
+|f(z)-f_n(z)| = \frac{1}{2\pi}\left|\int_{\gamma}\frac{f_n(w)-f(w)}{w-z}dw\right| \le 2\sup_{w\in\gamma}\{|f(w)-f_n(w)|\}
+$$
+For each $\epsilon > 0$, since $f_n\to f $ uniformly on $\gamma$, there is a $N > 0$, for each $n \ge N$ and each $w\in\gamma$, $|f_n(w) - f(w)| < \frac{1}{2}\epsilon$. Hence, 
+$$
+|f_n(z) - f(z)| < \epsilon.
+$$
+Thus $f_n \to f$ on every $z\in G$.
+
+\item VII.2.4
+
+\textbf{Proof.}
+Since $\{f_n\}$ is locally bounded, we know by Montel's theorem that $\{f_n\}$ is normal. Then each subsequence of $\{f_n\}$ has a subsequence that converges to an analytic function, and these functions are equal in $A$ which has a limit point. Hence these limit functions are equal in $G$, which means $f_n\to f $.
+
+
+\item VII.2.5
+
+\textbf{(b) to (a)} In fact it is trivial since uniform boundness leads to local boundness.
+
+\textbf{(a) to (b)} I don't think it is right. For example, let $f_n(z) = nz^n $ and $G$ be the unit disk $D$, then of course $\{f_n\}$ is locally bounded by Lemma 2.8. Hence by Montel's theorem, $\{f_n\}$ is normal. However, since 
+$$
+\lim_{z\to \partial D} |f_n(z)| = n,
+$$
+for each $\epsilon > 0$ and each $c > 0$, we can pick some $n$ large enough and $z$ sufficiently close to $\partial D$, and $|cf_n(z)| > \epsilon$.
+
+
+
+
+\end{enumerate}
+
+\end{document}
+
