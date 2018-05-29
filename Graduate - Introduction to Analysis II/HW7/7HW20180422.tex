@@ -1,0 +1,257 @@
+
+
+\documentclass{article}%
+
+\usepackage{amsmath}
+
+\usepackage{graphicx}
+
+\usepackage{amsfonts}%
+
+\usepackage{amssymb}
+
+
+
+
+
+\setlength{\topmargin}{-0.75in}
+
+\setlength{\textheight}{9.25in}
+
+\setlength{\oddsidemargin}{0.0in}
+
+\setlength{\evensidemargin}{0.0in}
+
+\setlength{\textwidth}{6.5in}
+
+\def\labelenumi{\arabic{enumi}.}
+
+\def\theenumi{\arabic{enumi}}
+
+\def\labelenumii{(\alph{enumii})}
+
+\def\theenumii{\alph{enumii}}
+
+\def\p@enumii{\theenumi.}
+
+\def\labelenumiii{\arabic{enumiii}.}
+
+\def\theenumiii{\arabic{enumiii}}
+
+\def\p@enumiii{(\theenumi)(\theenumii)}
+
+\def\labelenumiv{\arabic{enumiv}.}
+
+\def\theenumiv{\arabic{enumiv}}
+
+\def\p@enumiv{\p@enumiii.\theenumiii}
+
+\pagestyle{plain}
+
+\setcounter{secnumdepth}{0}
+
+\newtheorem{theorem}{Theorem}
+
+\newtheorem{acknowledgement}[theorem]{Acknowledgement}
+
+\newtheorem{algorithm}[theorem]{Algorithm}
+
+\newtheorem{axiom}[theorem]{Axiom}
+
+\newtheorem{case}[theorem]{Case}
+
+\newtheorem{claim}[theorem]{Claim}
+
+\newtheorem{conclusion}[theorem]{Conclusion}
+
+\newtheorem{condition}[theorem]{Condition}
+
+\newtheorem{conjecture}[theorem]{Conjecture}
+
+\newtheorem{corollary}[theorem]{Corollary}
+
+\newtheorem{criterion}[theorem]{Criterion}
+
+\newtheorem{definition}[theorem]{Definition}
+
+\newtheorem{example}[theorem]{Example}
+
+\newtheorem{exercise}[theorem]{Exercise}
+
+\newtheorem{lemma}[theorem]{Lemma}
+
+\newtheorem{notation}[theorem]{Notation}
+
+\newtheorem{problem}[theorem]{Problem}
+
+\newtheorem{proposition}[theorem]{Proposition}
+
+\newtheorem{remark}[theorem]{Remark}
+
+\newtheorem{solution}[theorem]{Solution}
+
+\newtheorem{summary}[theorem]{Summary}
+
+\newenvironment{proof}[1][Proof]{\textbf{#1.} }{\ \rule{0.5em}{0.5em}}
+
+
+
+\begin{document}
+
+
+
+\begin{center}
+
+\textbf{Homework 7}\bigskip
+
+\end{center}
+
+
+
+\noindent\textbf{Instructions}:
+\noindent In problems the problems below, references such as III.2.7 refer to Problem 7 in Section 2 of Chapter III in Conway's book.\smallskip
+
+
+
+\noindent If you use results from books including Conway's, please be explicit about what results you are using.
+
+
+
+
+
+
+\begin{center}
+
+\emph{Homework 7 is due at Midnight Wednesday, May 2.}
+
+\end{center} 
+
+\medskip
+
+Do the following problems:
+
+\begin{enumerate}
+
+
+\item Let $ F$ be the map that takes nonzero vectors in $ \mathbb{C}^2$ to vectors in $ \mathbb{R}^3$ by the following formula:
+\[ F(z_{1},z_{2}) := \left(
+\frac{z_{1}\bar{z}_{2} + \bar{z}_{1} z_{2}}{{z}_{1}\bar{z}_{1}+\bar{z}_2 z_2},\frac{z_{1}\bar{z}_{2} - \bar{z}_{1} z_{2}}{i({z}_{1}\bar{z}_{1}+\bar{z}_2 z_2)}, \frac{z_{1}\bar{z}_{1} - \bar{z}_{2} z_{2}}{{z}_{1}\bar{z}_{1}+\bar{z}_2 z_2}
+\right) .
+\]
+Show that:
+
+\begin{enumerate}
+ 
+\item $ F$ defines a bijection between $ \mathbb{P}^1(\mathbb{C})$ and the unit sphere in $ \mathbb{R}^3$, and
+\item if $S$ denotes stereographic projection from $\mathbb{C}_{\infty}-{\{(0,0,1)\}}$ to $\mathbb{C}$, then if $[z_1:z_2] \neq [1:0]$ , \[
+S(F([z_1:z_2])) = z_1/z_2.
+\]  
+\end{enumerate}
+
+\textbf{Proof.}
+(a)
+Let $z_1 = r_1e^{it_1}, z_2 = r_2e^{it_2} $, then $F$ maps $(r_1e^{it_1}, r_2e^{it_2})$ to
+$$
+\left(
+2\frac{r_1r_2}{r_1^2+r_2^2}\cos(t_1-t_2), ~2\frac{r_1r_2}{r_1^2+r_2^2}\sin(t_1-t_2), ~\frac{r_1^2-r_2^2}{r_1^2+r_2^2}
+\right)
+$$
+Hence if $F$ maps two vectors $(r_1e^{it_1}, r_2e^{it_2})$ and $(r_1'e^{it_1'}, r_2'e^{it_2'})$ to a same point in $\mathbb{R}^3 $, then $\tan(t_1-t_2) = \tan(t_1'-t_2')$, hence $t_1-t_2 = t_1'-t_2' $. Besides, if we denote $p_1 = \frac{r_1}{r_2}, p_1' = \frac{r_1'}{r_2'} $, then
+$$
+\frac{1-p_1^2}{p_1} = \frac{1-p_1'^2}{p_1'}, 
+$$
+and
+$$
+\frac{1+p_1^2}{p_1} = \frac{1+p_1'^2}{p_1'},
+$$
+when we add this two equations we get $p_1 = p_2 $. Hence by considering the first term we know $r_1 = r_2 $. Hence $F$ is an injection, and since $\lVert F(z) \rVert = 1$ we know $F$ is an injection from $\mathbb{P}^1(\mathbb{C}) $ to unit sphere.
+
+On the other hand, for each $(\sin\varphi\cos\theta, ~\sin\varphi\sin\theta, ~\cos\theta)$ in unit sphere, we can find $r_1, r_2, t_1, t_2 $, s.t.
+$$
+\frac{r_1r_2}{r_1^2+r_2^2} = \frac{1}{2}\sin\varphi, ~t_1-t_2 = \theta.
+$$
+Hence $F$ is a bijection.
+
+\textbf{(b)}
+
+
+
+\item III.3.8
+
+\textbf{Proof.}
+First, if we choose $a, b, c, d$ to be real, then for each $x\in\mathbb{R}$, we can pick
+$$
+z = \frac{dx-b}{-cx+a}\in\mathbb{R}_{\infty}
+$$
+then $Tz = x$. For $x = \infty$, if $c = 0$, then by $ad-bc\ne 0$ we know $d\ne 0$, hence we can pick $z = \infty$ and $Tz = x$. If $c\ne 0$, let $z = \frac{a}{c}$ then $Tz = x$.
+
+On the other hand, if $T(\mathbb{R}_\infty) = \mathbb{R}_\infty $, then there are $x_1, x_2, x_3\in\mathbb{R}_\infty $, s.t. $T(x_1) = 1, T(x_2) = 0, T(x_3) = \infty$. Then by Proposition 3.8,
+$$
+\frac{z-x_2}{z-x_3}/\frac{x_1-x_2}{x_1-x_3} = T(z) = \frac{(x_1-x_3)z - (x_1-x_3)x_2}{(x_1-x_2)z-(x_1-x_2)x_3},
+$$
+which means $a, b, c, d$ are all real.
+
+
+\item III.3.11
+
+\textbf{Proof.}
+Let $T_1 $ be the Mobius transformation which maps $(z_1, z_2, z_3)$ to $(1, 0, \infty)$, and $T_2 $ maps $(w_1, w_2, w_3)$ to $(1, 0, \infty)$. Let $T = T_2T_1^{-1} $, then $T$ maps $\mathbb{R}_\infty $ onto $\mathbb{R}_\infty $, and hence by Exercise 8, 
+$$
+T(z) = \frac{az+b}{cz+d}
+$$
+where $a, b, c, d\in\mathbb{R}$. Hence 
+$$
+T(z)^* = T(z).
+$$
+Then for $z, z^* $ satisfying $T_1(z^*) = T_1(z)^* $, $T_2(z^*) = T_2(T_1^{-1}(T_1(z^*))) = T(T_1(z^*)) = T(T_1(z)^*) = T_2(z)^* $.
+
+\item III.3.13
+
+\textbf{Sol.}
+We may consider the function
+$$
+f(z) = \frac{z^2+1}{2z}
+$$
+using the same process in Page 45.
+
+First it is not a bijection, thus is not a conformal map.
+
+\item III.3.14
+
+\textbf{Sol.}
+First, consider $T = \frac{1}{z-a}$, it maps $G$ onto a region between two parallel lines, denoted by $H$. Then we can use a rotation and translation $f$ to map $H$ onto the set $I = \{z: 0 < Im(z) < \frac{\pi}{2}\}$. Then $\exp(I) = \{z: Re(z) > 0\} = J$. At this stage we can use another Mobius transformation $g(z) = \frac{z-1}{z+1}$ to map $J$ to open unit disk. Hence
+$$
+\varphi(z) = g\circ \exp\circ f\circ T
+$$
+is what we need, and it is a conformal map.
+
+\item III.3.15
+
+\textbf{Sol.} In fact, as we have learned in Chapter 6.2, for any $|a| < 1$, 
+$$
+\varphi_a(z) = \frac{z-a}{1-\bar{a}z}
+$$
+is what we want.
+
+\item III.3.16
+
+\textbf{Sol.} First, $f(z) = \frac{z+1}{z-1}$ maps $G$ to $H = \mathbb{C} - (\{z: z\le 0\} \cup \{z = 1\})$. Then $g(z) = z^{1/2} $ maps $H$ to $I = \{z: Re(z) > 0\} - \{z = 1\}$. Then $h(z) = \frac{1-z}{1+z}$ maps $I$ to $J = D-\{z=0\}$ where $D$ is the open unit disk. By Problem 3.3.15 we know $\varphi(z) = \exp(\frac{z+1}{z-1})$ maps $D$ to $J$ conformally, hence $\varphi^{-1} $ maps $J$ to $D$ conformally. Hence, 
+$$
+\phi = \varphi^{-1}\circ h\circ g\circ f
+$$
+is what we want, and since the four functions are all analytic and one to one in their domains, $\phi$ is an analytic function and is also 1-1. 
+
+\item III.3.17
+
+\textbf{Proof.}
+In fact this is trivial by Open Mapping Theorem, since a subset of a circle cannot be open.
+
+
+
+
+
+
+\end{enumerate}
+
+\end{document}
+
